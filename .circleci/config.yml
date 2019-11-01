@@ -24,7 +24,6 @@ jobs:
             pip install -U pip
             pip install -U -r requirements.txt
             nose2
-            python setup.py test
       - save_cache: &save_cache
           key: v1-{{ .Branch }}-{{ epoch }}
           paths:
