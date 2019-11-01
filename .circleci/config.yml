@@ -9,13 +9,6 @@ jobs:
       - restore_cache: &restore_cache
           keys:
             - v1-{{ .Branch }}-
-      # - run:
-      #     name: "Install Python3"
-      #     command: |
-      #       apk add --no-cache \
-      #         python3 \
-      #         libc-dev \
-      #         gcc
       - run:
           name: "Run tests"
           command: |

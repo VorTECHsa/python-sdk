@@ -1,5 +1,7 @@
 # VortexaSDK
 
+[![CircleCI](https://circleci.com/gh/V0RT3X4/python-sdk.svg?style=svg)](https://circleci.com/gh/V0RT3X4/python-sdk)
+
 Welcome to the VortexaSDK, building upon the [VortexaAPI](https://docs.vortexa.com)
 
 
