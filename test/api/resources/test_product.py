@@ -2,7 +2,7 @@ from unittest import TestCase
 
 import jsons
 
-from python_sdk.api.resources.product_entry import ProductEntity, ProductLayer
+from python_sdk.api.resources.product import ProductEntity, ProductLayer
 
 
 class TestProductEntity(TestCase):
@@ -18,8 +18,5 @@ class TestProductEntity(TestCase):
                 probability=0.9369364,
                 label='Crude & Condensates'
             )
-
-            print(deserialized)
-            print(jsons.dump(expected))
 
             assert expected == deserialized
