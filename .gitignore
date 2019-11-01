@@ -5,7 +5,7 @@ site/
 .DS_Store
 
 
-resources/ignore/*
+data/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
