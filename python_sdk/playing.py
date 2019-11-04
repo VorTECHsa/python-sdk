@@ -1,36 +1,10 @@
+from python_sdk.operations import Reference, Search
 from python_sdk.client import default_client
 from python_sdk.constants import GEOGRAPHIES_REFERENCE
 
 
 def logInfo(a):
     print(a)  # TODO()
-
-
-class Reference:
-    """Here be some docs!!"""
-    def __init__(self, resource):
-        self._resource = resource
-
-    def reference(self, id):
-        """
-
-        Args:
-            id: ID of the entity we're searching
-
-        Returns: An entity matching the ID
-
-        """
-        client = default_client()
-        return client.get_reference(self._resource, id)
-
-
-class Search:
-    def __init__(self, resource):
-        self._resource = resource
-
-    def search(self, **data):
-        client = default_client()
-        return client.search(self._resource, **data)
 
 
 class Vessels(Reference):
@@ -95,6 +69,7 @@ for a in [
     # v.geographies.reference(id='48fca2ce4042e5e670a26f1ed2c9dbb8788bfd9bf763deb339791c3e818e2926'),
     # v.products.reference(id='8d752368ce24f1ef748a89da1cd14c0e4e8bba4042295815a63eaf736eda1a70'),
     # v.geographies.reference(id='cfb8c4ef76585c3a37792b643791a0f4ff6d5656d5508927d8017319e21f2fca'),
+    Search("/reference/vessels").search(term="DHT"),
     v.geographies.search(term="portsmouth"),  # [0]['name']
     [x["name"] for x in v.geographies.search(term="portsmouth")],  # [0]['name']
 
