@@ -1,0 +1,92 @@
+{
+  "id": "48fca2ce4042e5e670a26f1ed2c9dbb8788bfd9bf763deb339791c3e818e2926",
+  "name": "A.I.E.S.A. Boarding Pontoon",
+  "layer": [
+    "terminal"
+  ],
+  "leaf": true,
+  "bounding_box": {
+    "coordinates": [
+      [
+        [
+          -6.922674179077148,
+          37.17572267028018
+        ],
+        [
+          -6.922674179077148,
+          37.17812478494196
+        ],
+        [
+          -6.919476985931396,
+          37.17812478494196
+        ],
+        [
+          -6.919476985931396,
+          37.17572267028018
+        ],
+        [
+          -6.922674179077148,
+          37.17572267028018
+        ]
+      ]
+    ],
+    "type": "Polygon"
+  },
+  "parent": [
+    {
+      "name": "Huelva [ES]",
+      "layer": [
+        "port"
+      ],
+      "id": "d677e3a028e466356af42cacb5b8733fbc5367b99ee1075b68ea572868e55780"
+    }
+  ],
+  "exclusion_rule": [
+    {
+      "name": "A.I.E.S.A. Boarding Pontoon",
+      "layer": [
+        "terminal"
+      ],
+      "id": "48fca2ce4042e5e670a26f1ed2c9dbb8788bfd9bf763deb339791c3e818e2926"
+    }
+  ],
+  "ref_type": "geography",
+  "hierarchy": [
+    {
+      "id": "c1698979b983b265490545013156924518af07faf7f25905a78a1813054860d8",
+      "layer": "country"
+    },
+    {
+      "id": "d677e3a028e466356af42cacb5b8733fbc5367b99ee1075b68ea572868e55780",
+      "layer": "port"
+    },
+    {
+      "id": "f39d455f5d38907394d6da3a91da4e391f9a34bd6a17e826d6042761067e88f4",
+      "layer": "region"
+    },
+    {
+      "id": "676c3cff1dffd971ae51cd350f231394eeb0ab94eff981432f6ee55c5219b913",
+      "layer": "shipping_region"
+    },
+    {
+      "id": "a0a9eba4c7b8c1e853c207f32d67c4959b6197c39785e037abad42e90824c088",
+      "layer": "shipping_region"
+    },
+    {
+      "id": "6aa9a4fb76ca378e75eff85f458c90f7fd42778c26c957c417490c097161a3c5",
+      "layer": "trading_region"
+    },
+    {
+      "id": "9d18c3bff244a391b56d706cd85b3c304e875a54db5db556ad76e0be8df3329a",
+      "layer": "trading_subregion"
+    },
+    {
+      "id": "48fca2ce4042e5e670a26f1ed2c9dbb8788bfd9bf763deb339791c3e818e2926",
+      "layer": "terminal"
+    }
+  ],
+  "pos": [
+    -6.921049613576277,
+    37.17694070939973
+  ]
+}
