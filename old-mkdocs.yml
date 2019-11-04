@@ -1,4 +1,4 @@
 site_name: VortexaSDK
-theme: readthedocs
+theme: material
 
 repo_url: https://github.com/V0RT3X4/python-sdk

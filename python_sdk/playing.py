@@ -1,63 +1,27 @@
-import os
-
-import requests
-
-PAGE_SIZE = 500
-REFERENCE_PAGE_SIZE = 2000
-
-GEOGRAPHIES_REFERENCE = "/reference/geographies"
-VESSELS_REFERENCE = "/reference/vessels"
-PRODUCTS_REFERENCE = "/reference/products"
-CHARTERERS_REFERENCE = "/reference/charterers"
-
-API_URL = 'https://api.vortexa.com/v5'
+from python_sdk.client import default_client
+from python_sdk.constants import GEOGRAPHIES_REFERENCE
 
 
 def logInfo(a):
     print(a)  # TODO()
 
 
-class VortexaAPI(object):
-
-    def __init__(self, **kwargs):
-        self.api_key = kwargs["api_key"]
-
-    def get_reference(self, resource, id):
-        url = f'{API_URL}{resource}/{id}?apikey={self.api_key}'
-
-        response = requests.get(url).json()
-        # logInfo(f'URL: {url}')
-        # logInfo(f'Response: {response}')
-        return response['data']
-
-    def search(self, resource, **data):
-        url = f'{API_URL}{resource}?apikey={self.api_key}'
-        # logInfo(f'URL: {request.url}')
-        # logInfo(f'hedaers: {request.headers}')
-        response = requests.post(url, data=data).json()
-        # logInfo(f'Response: {response}')
-        return response['data']
-
-
-__api__ = None
-
-
-def default_api():
-    global __api__
-
-    if __api__ is None:
-        __api__ = VortexaAPI(api_key=os.environ["VORTEXA_API_KEY"])
-
-    return __api__
-
-
 class Reference:
+    """Here be some docs!!"""
     def __init__(self, resource):
         self._resource = resource
 
     def reference(self, id):
-        api = default_api()
-        return api.get_reference(self._resource, id)
+        """
+
+        Args:
+            id: ID of the entity we're searching
+
+        Returns: An entity matching the ID
+
+        """
+        client = default_client()
+        return client.get_reference(self._resource, id)
 
 
 class Search:
@@ -65,8 +29,8 @@ class Search:
         self._resource = resource
 
     def search(self, **data):
-        api = default_api()
-        return api.search(self._resource, **data)
+        client = default_client()
+        return client.search(self._resource, **data)
 
 
 class Vessels(Reference):
@@ -109,7 +73,7 @@ class Products(Reference):
 class VortexaSDK:
 
     def __init__(self):
-        default_api()
+        default_client()
         # self.cargo_movements: CargoMovements = CargoMovements()
         # self.vessels: Vessels = Vessels()
         self.geographies: Geographies = Geographies()
