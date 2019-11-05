@@ -5,24 +5,22 @@ site_name: VortexaSDK
 # is a tree of Python member names (modules, classes, etc.) that should be
 # documented. Higher indentation leads to smaller header size.
 generate:
-- play_const.md:
-  - python_sdk.playing++   # (+ to include members)
-  - python_sdk.constants+    # (+ to include members)
+- entities.md:
+  - python_sdk.entities++
+
+- operations.md:
+  - python_sdk.operations.Search+
+  - python_sdk.operations.Reference+
 
 # MkDocs pages configuration. The `<<` operator is sugar added by pydocmd
 # that allows you to use an external Markdown file (eg. your project's README)
 # in the documentation. The path must be relative to current working directory.
 pages:
 - Home: index.md << README.md
-- players: play_const.md
-
-nav:
-- Home: index.md << README.md
-- players: play_const.md
+- Entities: entities.md
+- Operations: operations.md
 
 
-
-
-theme: material
+theme: readthedocs
 repo_url: https://github.com/V0RT3X4/python-sdk
 

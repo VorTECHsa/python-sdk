@@ -7,7 +7,7 @@ Welcome to the VortexaSDK, building upon the [VortexaAPI](https://docs.vortexa.c
 
 ## Getting Started
 
-### Installation
+#### Installation
 
 ```bash
 pip install vendor/github.com/V0RT3X4/python-sdk
