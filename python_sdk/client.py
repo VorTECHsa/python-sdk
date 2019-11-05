@@ -33,7 +33,7 @@ class VortexaClient:
 
         while more:
             response = self._sent_post_request(url, payload, offset)
-            offset += payload.get(['size'], self._DEFAULT_PAGE_LOAD_SIZE)
+            offset += payload.get('size', self._DEFAULT_PAGE_LOAD_SIZE)
             responses += response['data']
             print(f'Adding {len(response["data"])} records to responses. len(all_responses): {len(responses)}')
 
