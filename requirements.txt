@@ -1,3 +1,4 @@
+six
 requests
 flake8==3.7.9
 pre-commit==1.20.0

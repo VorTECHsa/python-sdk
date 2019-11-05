@@ -24,8 +24,8 @@ We adopt the [Conventional Commits](https://www.conventionalcommits.org) convent
 
 
 ### Documentation
-We're using [Portray](https://github.com/timothycrosley/portray) to generate a doc site from python docs and markdowns.
-(Look into using https://github.com/NiklasRosenstein/pydoc-markdown)
+We're using [Pydocmd](https://github.com/NiklasRosenstein/pydoc-markdown)
+to automatically generate docs.
 
 ##### Installation
 ```bash
@@ -34,14 +34,9 @@ pip3 install portray
 
 ##### Running
 
-Portray:
-```bash
-portray in_browser
-```
-
 Pydocmd:
 ```bash
-pydocmd serve
+./generate_docs.sh
 ```
 
 ## Glossary
