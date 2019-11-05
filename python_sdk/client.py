@@ -18,8 +18,16 @@ class VortexaClient(object):
 
     def search(self, resource, **data):
         url = f'{API_URL}{resource}?apikey={self.api_key}'
-        response = requests.post(url, data=data).json()
-        return response['data']
+
+        non_null_payload = {k: v for k, v in data.items() if v is not None}
+
+        request = requests.post(url, json=non_null_payload)
+        response = request.json()
+        try:
+            return response['data']
+        except Exception as e:
+            print(response)
+            raise e
 
 
 __client__ = None
