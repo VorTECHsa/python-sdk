@@ -22,13 +22,10 @@ pages:
   - Entities: entities.md
   - Operations: operations.md
   - Cargo Movements: cargo_movements.md
-  - Examples: examples/rotterdam.md
+  - Examples:
+      Rotterdam Loadings: examples/rotterdam.md
+      China Loadings: examples/china.md
 
 
 theme: readthedocs
 repo_url: https://github.com/V0RT3X4/python-sdk
-
-# Additional search path for your Python module. If you use Pydocmd from a
-# subdirectory of your project (eg. docs/), you may want to add the parent
-# directory here.
-additional_search_paths: docs/
