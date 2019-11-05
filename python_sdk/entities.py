@@ -96,7 +96,7 @@ class Vessels(Reference, Search):
             "term": term,
             "ids": ids,
             "vessel_classes": [v.name for v in vessel_classes],
-            "vessel_product_types": vessel_product_types
+            "vessel_product_types": vessel_product_types,
         }
 
         return super().search(**search_params)

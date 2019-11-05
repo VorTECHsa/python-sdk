@@ -11,6 +11,8 @@ generate:
 - operations.md:
   - python_sdk.operations.Search+
   - python_sdk.operations.Reference+
+- cargo_movements.md:
+  - python_sdk.movements++
 
 # MkDocs pages configuration. The `<<` operator is sugar added by pydocmd
 # that allows you to use an external Markdown file (eg. your project's README)
@@ -19,6 +21,7 @@ pages:
 - Home: index.md << README.md
 - Entities: entities.md
 - Operations: operations.md
+- Cargo Movements: cargo_movements.md
 
 
 theme: readthedocs

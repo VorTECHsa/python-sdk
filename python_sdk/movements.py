@@ -1,3 +1,4 @@
+# from enum import Enum
 from typing import List
 
 from python_sdk.api.resources.vessel import VesselClass
@@ -5,17 +6,32 @@ from python_sdk.constants import CARGO_MOVEMENTS_RESOURCE
 from python_sdk.operations import Search
 
 
+# class FilterActivity:
+#     pass
+#
+#
+# class CargoMovementActivity(FilterActivity, Enum):
+#     IDENTIFIED_FOR_LOADING_AT = "identified_for_loading_at"
+#     LOADING_START = "loading_start"
+#
+#
+# class CargoMovementState(FilterActivity, Enum):
+#     IDENTIFIED_FOR_LOADING_AT = "identified_for_loading_at"
+#     LOADING_START = "loading_start"
+
+
 class CargoMovements(Search):
+    _MAX_PAGE_RESULT_SIZE = 500
+
     def __init__(self):
         Search.__init__(self, CARGO_MOVEMENTS_RESOURCE)
 
     def search(self,
                filter_activity: str = "loading_state",
-               filter_time_min: str = "2018-10-30T00:00:00.000Z",
-               filter_time_max: str = "2019-10-30T23:59:59.999Z",
+               filter_time_min: str = "2019-10-01T00:00:00.000Z",
+               filter_time_max: str = "2019-10-01T01:00:00.000Z",
                include_definition: bool = True,
                cm_unit: str = 'b',
-               cm_size: int = 1,
 
                filter_charterers: List[str] = None,
                filter_destinations: List[str] = None,
@@ -28,6 +44,59 @@ class CargoMovements(Search):
                filter_waypoints: List[str] = None,
                disable_geographic_exclusion_rules: bool = None,
                ):
+        """
+
+        # Arguments
+            filter_activity: Movement activity on which to base the time filter. It can be a filter for a
+             specific timestamp, which looks for it within the specified time-frame.
+
+            filter_time_min: The start date of the time filter.
+
+            filter_time_max: The end date of the time filter.
+
+            include_definition: A list of grade or grade group identifiers to filter by.
+
+            cm_unit:
+
+            filter_charterers:
+
+            filter_destinations: A list of geographical identifiers to apply to the destination filter.
+
+            filter_origins: A list of geographical identifiers to apply to the origin filter.
+
+            filter_owners:
+
+            filter_products:
+
+            filter_vessels: A list of vessel identifiers to filter by.
+
+            filter_storage_locations:
+
+            filter_ship_to_ship_locations:
+
+            filter_waypoints: A list of geographical identifiers to apply to the waypoint filter.
+
+            disable_geographic_exclusion_rules: This controls a popular industry term "intra-movements" and determines
+             the filter behaviour for cargo leaving then entering the same geographic area.
+
+        # Returns
+            List of cargo movements matching all the search parameters.
+
+
+        # Example
+        Let's search for all VLCCs that loaded from `Rotterdam [NL]` on the morning of 1st December 2018.
+
+        ```python
+
+        >>> result = CargoMovements().search(
+            filter_origins=['68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e'],
+            filter_activity='loading_state',
+            filter_time_min="2018-12-01T00:00:00.000Z",
+            filter_time_max="2018-12-01T12:00:00.000Z",
+        )
+        ```
+
+        """
         search_params = {
             # Compulsory search parameters
             'filter_activity': filter_activity,
@@ -35,7 +104,9 @@ class CargoMovements(Search):
             'filter_time_max': filter_time_max,
             'include_definition': include_definition,
             'cm_unit': cm_unit,
-            'cm_size': cm_size,
+            'size': self._MAX_PAGE_RESULT_SIZE,
+            'cm_size': self._MAX_PAGE_RESULT_SIZE,
+            # cm_size is used by the api https://docs.vortexa.com/reference/POST/cargo-movements/search
 
             "filter_charterers": filter_charterers,
             "filter_destinations": filter_destinations,
