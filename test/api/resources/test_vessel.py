@@ -2,8 +2,7 @@ from unittest import TestCase
 
 import jsons
 
-from python_sdk.api.resources.corporate import CorporateEntity, CorporateLayer
-from python_sdk.api.resources.vessel import VesselEntity, VesselClass
+from python_sdk.api.entities import CorporateEntity, VesselEntity
 
 
 class TestVesselEntity(TestCase):
@@ -20,18 +19,18 @@ class TestVesselEntity(TestCase):
                 name="RIMTHAN",
                 dwt=298855,
                 cubic_capacity=327310,
-                vessel_class=VesselClass.vlcc_plus,
+                vessel_class="vlcc_plus",
                 corporate_entities=[
                     CorporateEntity(
                         id='cbd7dfe8a9fb0fa0ce3252ce7643437db6a32d0947a0c23d68dc5dea2f2d65d7',
-                        layer=CorporateLayer.commercial_owner,
+                        layer="commercial_owner",
                         probability=1,
                         label='NGM Energy',
                         source='external'
                     ),
                     CorporateEntity(
                         id='0bdf9acdc00ad52d9b8c44dad815087a89205a9c83f53ed89e029f7d15b9ac14',
-                        layer=CorporateLayer.charterer,
+                        layer="charterer",
                         probability=1,
                         label='CHEVRON',
                         source='external'

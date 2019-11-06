@@ -5,13 +5,13 @@ import pandas as pd
 
 
 class SearchResult(ABC):
-    _result: List[dict]
+    _result: List
 
-    def __init__(self, _result: List[dict]):
-        self._result: List[dict] = _result
+    def __init__(self, _result: List):
+        self._result: List = _result
 
     @abstractmethod
-    def to_list(self) -> List[dict]:
+    def to_list(self) -> List:
         """
         Represents search result as a list
         """

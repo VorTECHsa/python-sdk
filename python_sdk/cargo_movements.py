@@ -2,7 +2,7 @@ from typing import List
 
 import pandas as pd
 
-from python_sdk.api.resources.vessel import VesselClass
+from python_sdk.api.entities import CargoMovementEntity
 from python_sdk.constants import CARGO_MOVEMENTS_RESOURCE
 from python_sdk.operations import Search
 from python_sdk.search_result import SearchResult
@@ -10,7 +10,7 @@ from python_sdk.search_result import SearchResult
 
 class CargoMovementsSearchResult(SearchResult):
 
-    def to_list(self) -> List[dict]:
+    def to_list(self) -> List[CargoMovementEntity]:
         """Represent cargo movements as a list of dictionaries."""
         return super().to_list()
 
@@ -45,7 +45,7 @@ class CargoMovements(Search):
                filter_origins: List[str] = None,
                filter_owners: List[str] = None,
                filter_products: List[str] = None,
-               filter_vessels: List[VesselClass] = None,
+               filter_vessels: List[str] = None,
                filter_storage_locations: List[str] = None,
                filter_ship_to_ship_locations: List[str] = None,
                filter_waypoints: List[str] = None,

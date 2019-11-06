@@ -2,7 +2,7 @@ from unittest import TestCase
 
 import jsons
 
-from python_sdk.api.resources.corporate import CorporateEntity, CorporateLayer
+from python_sdk.api.entities import CorporateEntity
 
 
 class TestCorporateEntity(TestCase):
@@ -14,7 +14,7 @@ class TestCorporateEntity(TestCase):
 
             expected = CorporateEntity(
                 id='cbd7dfe8a9fb0fa0ce3252ce7643437db6a32d0947a0c23d68dc5dea2f2d65d7',
-                layer=CorporateLayer.commercial_owner,
+                layer="commercial_owner",
                 probability=1,
                 label='NGM Energy',
                 source='external'

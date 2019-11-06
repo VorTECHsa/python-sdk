@@ -11,29 +11,15 @@ generate:
   - cargo_movements.md:
       - python_sdk.cargo_movements++
 
-  - vessels.md:
-      - python_sdk.vessels++
-
-  - geographies.md:
-      - python_sdk.geographies++
-
-  - products.md:
-      - python_sdk.products++
-
-  - charterers.md:
-      - python_sdk.charterers++
+  - entities.md:
+      - python_sdk.api.entities++
 
 # MkDocs pages configuration. The `<<` operator is sugar added by pydocmd
 # that allows you to use an external Markdown file (eg. your project's README)
 # in the documentation. The path must be relative to current working directory.
 pages:
   - Home: index.md << README.md
-  - Entities:
-      Vessels: vessels.md
-      Geographies: geographies.md
-      Products: products.md
-      Charterers: charterers.md
-
+  - Entities: entities.md
   - Operations: operations.md
   - Cargo Movements: cargo_movements.md
   - Examples:

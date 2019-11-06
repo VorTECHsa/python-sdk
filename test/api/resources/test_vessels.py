@@ -1,6 +1,5 @@
 from unittest import TestCase
 
-from python_sdk.api.resources.vessel import VesselClass
 from python_sdk.vessels import Vessels
 
 
@@ -19,8 +18,8 @@ class TestVessels(TestCase):
 
     def test_search_vessel_class(self):
         vessel_classes = [
-            VesselClass.vlcc_plus.name,
-            VesselClass.aframax.name
+            "vlcc_plus",
+            "aframax"
         ]
 
         vessels = Vessels().search(vessel_classes=vessel_classes).to_list()
