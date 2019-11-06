@@ -5,9 +5,6 @@ site_name: VortexaSDK
 # is a tree of Python member names (modules, classes, etc.) that should be
 # documented. Higher indentation leads to smaller header size.
 generate:
-  - entities.md:
-      - python_sdk.entities++
-
   - operations.md:
       - python_sdk.operations.Search+
       - python_sdk.operations.Reference+
@@ -17,6 +14,15 @@ generate:
   - vessels.md:
       - python_sdk.vessels++
 
+  - geographies.md:
+      - python_sdk.geographies++
+
+  - products.md:
+      - python_sdk.products++
+
+  - charterers.md:
+      - python_sdk.charterers++
+
 # MkDocs pages configuration. The `<<` operator is sugar added by pydocmd
 # that allows you to use an external Markdown file (eg. your project's README)
 # in the documentation. The path must be relative to current working directory.
@@ -24,7 +30,9 @@ pages:
   - Home: index.md << README.md
   - Entities:
       Vessels: vessels.md
-      Other: entities.md
+      Geographies: geographies.md
+      Products: products.md
+      Charterers: charterers.md
 
   - Operations: operations.md
   - Cargo Movements: cargo_movements.md

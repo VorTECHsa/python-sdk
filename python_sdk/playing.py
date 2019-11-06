@@ -1,5 +1,5 @@
 from python_sdk.client import default_client
-from python_sdk.entities import Geographies
+from geographies import Geographies
 from python_sdk.operations import Search
 
 
