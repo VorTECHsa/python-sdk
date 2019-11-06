@@ -53,4 +53,4 @@ def copy_examples(examples_dir, destination_dir):
 
 
 if __name__ == "__main__":
-    copy_examples("./python_sdk/examples", "./_build/pydocmd/examples")
+    copy_examples("./docs/examples", "./_build/pydocmd/examples")

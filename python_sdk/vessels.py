@@ -4,17 +4,15 @@ import pandas as pd
 
 from python_sdk.constants import VESSELS_REFERENCE
 from python_sdk.operations import Reference, Search
+from python_sdk.search_result import SearchResult
 
 
-class VesselsSearchResult:
+class VesselsSearchResult(SearchResult):
     """
     VesselsSearchResult is a wrapper around the result from calling the vessels API endpoint.
 
     This class lets user represent vessels as a `pd.DataFrame`, or as a list of dictionaries.
     """
-
-    def __init__(self, result: List[dict]):
-        self._result: List[dict] = result
 
     def to_list(self) -> List[dict]:
         """
@@ -22,7 +20,7 @@ class VesselsSearchResult:
         Represent vessels as a list of dictionaries.
 
         """
-        return self._result
+        return super().to_list()
 
     def to_df(self, columns=None) -> pd.DataFrame:
         """
@@ -46,9 +44,6 @@ class VesselsSearchResult:
             return df
         else:
             return df[columns]
-
-    def __str__(self):
-        return str(self._result)
 
 
 class Vessels(Reference, Search):

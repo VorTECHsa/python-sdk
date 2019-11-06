@@ -19,5 +19,6 @@ class ProductEntity:
     """A ProductEntry represents a single product layer of a hierarchical product tree. """
     id: str
     layer: ProductLayer
-    probability: float
     label: str
+    source: str
+    probability: float

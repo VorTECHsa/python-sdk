@@ -16,7 +16,8 @@ class TestProductEntity(TestCase):
                 id='6f11b0724c9a4e85ffa7f1445bc768f054af755a090118dcf99f14745c261653',
                 layer=ProductLayer.group,
                 probability=0.9369364,
-                label='Crude & Condensates'
+                label='Crude & Condensates',
+                source='model'
             )
 
             assert expected == deserialized

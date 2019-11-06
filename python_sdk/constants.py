@@ -1,5 +1,3 @@
-PAGE_SIZE = 500
-
 CARGO_MOVEMENTS_RESOURCE = "/cargo-movements/search"
 VESSEL_MOVEMENTS_RESOURCE = "/vessel-movements"
 

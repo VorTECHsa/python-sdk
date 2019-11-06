@@ -1,23 +1,30 @@
-# from enum import Enum
 from typing import List
+
+import pandas as pd
 
 from python_sdk.api.resources.vessel import VesselClass
 from python_sdk.constants import CARGO_MOVEMENTS_RESOURCE
 from python_sdk.operations import Search
+from python_sdk.search_result import SearchResult
 
 
-# class FilterActivity:
-#     pass
-#
-#
-# class CargoMovementActivity(FilterActivity, Enum):
-#     IDENTIFIED_FOR_LOADING_AT = "identified_for_loading_at"
-#     LOADING_START = "loading_start"
-#
-#
-# class CargoMovementState(FilterActivity, Enum):
-#     IDENTIFIED_FOR_LOADING_AT = "identified_for_loading_at"
-#     LOADING_START = "loading_start"
+class CargoMovementsSearchResult(SearchResult):
+
+    def to_list(self) -> List[dict]:
+        """Represent cargo movements as a list of dictionaries."""
+        return super().to_list()
+
+    def to_df(self, columns) -> pd.DataFrame:
+
+        if columns is None:
+            columns = ['cargo_movement_id', 'quantity']
+
+        df = pd.DataFrame(self._result)
+
+        if columns == 'all':
+            return df
+        else:
+            return df
 
 
 class CargoMovements(Search):
@@ -43,7 +50,7 @@ class CargoMovements(Search):
                filter_ship_to_ship_locations: List[str] = None,
                filter_waypoints: List[str] = None,
                disable_geographic_exclusion_rules: bool = None,
-               ):
+               ) -> CargoMovementsSearchResult:
         """
 
         # Arguments
@@ -120,4 +127,4 @@ class CargoMovements(Search):
             "disable_geographic_exclusion_rules": disable_geographic_exclusion_rules
         }
 
-        return super().search(**search_params)
+        return CargoMovementsSearchResult(super().search(**search_params))

@@ -9,7 +9,7 @@ generate:
       - python_sdk.operations.Search+
       - python_sdk.operations.Reference+
   - cargo_movements.md:
-      - python_sdk.movements++
+      - python_sdk.cargo_movements++
 
   - vessels.md:
       - python_sdk.vessels++

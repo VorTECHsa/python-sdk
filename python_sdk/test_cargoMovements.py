@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from python_sdk.movements import CargoMovements
+from python_sdk.cargo_movements import CargoMovements
 
 
 class TestCargoMovements(TestCase):
@@ -18,6 +18,8 @@ class TestCargoMovements(TestCase):
         print("---------------------------------")
         n_results = len(result)
         print(f'Received {n_results} results')
+
+        print(result[0])
         n_unique_results = len(set([str(k) for k in result]))
         print(f'Received {n_unique_results} unique results')
 

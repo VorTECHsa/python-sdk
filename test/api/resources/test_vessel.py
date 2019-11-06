@@ -6,7 +6,7 @@ from python_sdk.api.resources.corporate import CorporateEntity, CorporateLayer
 from python_sdk.api.resources.vessel import VesselEntity, VesselClass
 
 
-class TestProductEntity(TestCase):
+class TestVesselEntity(TestCase):
 
     def test_serialize(self):
         with open("test/api/examples/vessel_entry1.json", 'r') as f:
