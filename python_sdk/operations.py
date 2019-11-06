@@ -1,3 +1,5 @@
+from typing import List
+
 from python_sdk.client import default_client
 
 
@@ -41,7 +43,7 @@ class Search:
         """
         self._resource = resource
 
-    def search(self, **data):
+    def search(self, **data) -> List[dict]:
         """
 
         # Arguments
