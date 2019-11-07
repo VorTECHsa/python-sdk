@@ -14,10 +14,3 @@ exclude = '''
   | dist
 )/
 '''
-
-
-[tool.portray.mkdocs.theme]
-favicon = "art/favicon.ico"
-logo = "art/favicon.ico"
-name = "material"
-palette = {primary = "light blue", accent = "blue grey"}
