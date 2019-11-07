@@ -1,10 +1,14 @@
+from abc import ABC
 from dataclasses import dataclass
-from typing import List
+from typing import List, Optional
 
 
 @dataclass
-class LayerEntity:
+class Entity(ABC):
     """
+    Contains a set of attributes commonly used by various entities
+
+    [Entities Further Documentation](https://docs.vortexa.com/reference/intro-entities)
 
     """
     id: str
@@ -15,10 +19,9 @@ class LayerEntity:
 
 
 @dataclass
-class GeographyEntity(LayerEntity):
+class GeographyEntity(Entity):
     """
-    A GeographyEntry represents a hierarchy tree of locational data.
-
+    Represents a hierarchy tree of locational data.
 
     [Geography Entities Further Documentation](https://docs.vortexa.com/reference/intro-geography-entries)
 
@@ -26,9 +29,9 @@ class GeographyEntity(LayerEntity):
 
 
 @dataclass
-class ProductEntity(LayerEntity):
+class ProductEntity(Entity):
     """
-    A ProductEntry represents a single product layer of a hierarchical product tree.
+    Represents a single product layer of a hierarchical product tree.
 
     [Product Entity Further Documentation](https://docs.vortexa.com/reference/intro-product-entities)
 
@@ -36,9 +39,9 @@ class ProductEntity(LayerEntity):
 
 
 @dataclass
-class CorporateEntity(LayerEntity):
+class CorporateEntity(Entity):
     """
-    A CorporateEntity represents a relationship between a corporate entity and another entity like a vessel.
+    Represents a relationship between a corporation and another entity like a vessel.
 
     [Corporate Entity Further Documentation](https://docs.vortexa.com/reference/intro-corporate-entities)
 
@@ -48,7 +51,8 @@ class CorporateEntity(LayerEntity):
 @dataclass
 class TagEntity:
     """
-    A Tag represents a property that is associated with a period of time.
+    Represents a property that is associated with a period of time.
+
     A good example is if a vessel has acted as an FSO during a time period.
 
     [Tags Further Documentation](https://docs.vortexa.com/reference/intro-tags)
@@ -56,21 +60,20 @@ class TagEntity:
 
     """
     tag: str
-    start_timestamp: str = None
-    end_timestamp: str = None
+    start_timestamp: Optional[str] = None
+    end_timestamp: Optional[str] = None
 
 
 @dataclass
 class VesselEntity:
     """
-    A VesselEntity represents a vessel record
+    A VesselEntity represents a vessel record used in CargoMovements and VesselMovements
 
     [Vessel Entities Further Documentation](https://docs.vortexa.com/reference/intro-vessel-entities)
 
     """
     id: str
     mmsi: int
-    imo: int
     name: str
     dwt: int
     cubic_capacity: int
@@ -80,10 +83,11 @@ class VesselEntity:
     tags: List[TagEntity]
     status: str
 
-    voyage_id: str = None
-    fixture_fulfilled: bool = None
-    end_timestamp: str = None
-    fixture_id: str = None
+    imo: Optional[int] = None
+    voyage_id: Optional[str] = None
+    fixture_fulfilled: Optional[bool] = None
+    end_timestamp: Optional[str] = None
+    fixture_id: Optional[str] = None
 
 
 @dataclass
@@ -96,13 +100,13 @@ class CargoEventEntity:
 
     """
     event_type: str
-    pos: List[float]
+    location: List[GeographyEntity]
 
-    probability: float = None
-    vessel_id: str = None
-    start_timestamp: str = None
-    end_timestamp: str = None
-    location: List[GeographyEntity] = None
+    probability: Optional[float] = None
+    pos: Optional[List[float]] = None
+    vessel_id: Optional[str] = None
+    start_timestamp: Optional[str] = None
+    end_timestamp: Optional[str] = None
 
 
 @dataclass

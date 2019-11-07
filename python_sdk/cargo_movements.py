@@ -1,5 +1,6 @@
 from typing import List
 
+import jsons
 import pandas as pd
 
 from python_sdk.api.entities import CargoMovementEntity
@@ -9,6 +10,13 @@ from python_sdk.search_result import SearchResult
 
 
 class CargoMovementsSearchResult(SearchResult):
+    """
+
+    """
+
+    def __init__(self, movements: List[dict]):
+        deserialized = jsons.loads(jsons.dumps(movements), List[CargoMovementEntity])
+        super().__init__(deserialized)
 
     def to_list(self) -> List[CargoMovementEntity]:
         """Represent cargo movements as a list of dictionaries."""
@@ -28,6 +36,9 @@ class CargoMovementsSearchResult(SearchResult):
 
 
 class CargoMovements(Search):
+    """
+
+    """
     _MAX_PAGE_RESULT_SIZE = 500
 
     def __init__(self):

@@ -27,6 +27,8 @@ We adopt the [Conventional Commits](https://www.conventionalcommits.org) convent
 We're using [Pydocmd](https://github.com/NiklasRosenstein/pydoc-markdown)
 to automatically generate docs.
 
+Documentation should follow the [Google Documentation Style Guide](https://developers.google.com/style/api-reference-comments)
+
 ##### Installation
 ```bash
 $ pip3 install pydocmd

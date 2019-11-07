@@ -34,5 +34,3 @@ class TestVessels(TestCase):
 
         vessels = Vessels().search(ids=ids)
         print(vessels)
-
-        # print([x['name'] for x in vessels])

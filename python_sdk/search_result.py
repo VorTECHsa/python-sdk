@@ -1,14 +1,13 @@
 from abc import ABC, abstractmethod
+from dataclasses import dataclass
 from typing import List
 
 import pandas as pd
 
 
+@dataclass
 class SearchResult(ABC):
     _result: List
-
-    def __init__(self, _result: List):
-        self._result: List = _result
 
     @abstractmethod
     def to_list(self) -> List:
