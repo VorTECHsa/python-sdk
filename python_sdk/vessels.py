@@ -1,3 +1,4 @@
+"""Vessels Endpoint."""
 from typing import List
 
 import pandas as pd
@@ -15,11 +16,7 @@ class VesselsSearchResult(SearchResult):
     """
 
     def to_list(self) -> List[dict]:
-        """
-
-        Represent vessels as a list of dictionaries.
-
-        """
+        """Represent vessels as a list of dictionaries."""
         return super().to_list()
 
     def to_df(self, columns=None) -> pd.DataFrame:
@@ -47,13 +44,16 @@ class VesselsSearchResult(SearchResult):
 
 
 class Vessels(Reference, Search):
+    """Vessels endpoint."""
 
     def __init__(self):
+        """Instantiate endpoint using reference endpoint."""
         Reference.__init__(self, VESSELS_REFERENCE)
         Search.__init__(self, VESSELS_REFERENCE)
 
     def reference(self, id):
         """
+        Perform a vessel lookup.
 
         # Arguments
             id: Vessel ID to lookup
@@ -71,8 +71,10 @@ class Vessels(Reference, Search):
                term: str = None,
                ids: List[str] = None,
                vessel_classes: List[str] = None,
-               vessel_product_types: List[str] = None) -> VesselsSearchResult:
+               vessel_product_types: List[str] = None
+               ) -> VesselsSearchResult:
         """
+        Find all vessels matching given search terms.
 
         # Arguments
             term: The name (or partial name) of a vessel we'd like to search
@@ -114,7 +116,6 @@ class Vessels(Reference, Search):
         [VortexaAPI Vessel Reference](https://docs.vortexa.com/reference/POST/reference/vessels)
 
         """
-
         search_params = {
             "term": term,
             "ids": ids,

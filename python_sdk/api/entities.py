@@ -1,3 +1,4 @@
+"""DataClasses returned by VortexaAPI."""
 from abc import ABC
 from dataclasses import dataclass
 from typing import List, Optional
@@ -6,11 +7,13 @@ from typing import List, Optional
 @dataclass
 class Entity(ABC):
     """
-    Contains a set of attributes commonly used by various entities
+
+    Contains a set of attributes commonly used by various entities.
 
     [Entities Further Documentation](https://docs.vortexa.com/reference/intro-entities)
 
     """
+
     id: str
     layer: str
     label: str
@@ -21,9 +24,11 @@ class Entity(ABC):
 @dataclass
 class GeographyEntity(Entity):
     """
+
     Represents a hierarchy tree of locational data.
 
     [Geography Entities Further Documentation](https://docs.vortexa.com/reference/intro-geography-entries)
+
 
     """
 
@@ -31,9 +36,11 @@ class GeographyEntity(Entity):
 @dataclass
 class ProductEntity(Entity):
     """
+
     Represents a single product layer of a hierarchical product tree.
 
     [Product Entity Further Documentation](https://docs.vortexa.com/reference/intro-product-entities)
+
 
     """
 
@@ -41,9 +48,11 @@ class ProductEntity(Entity):
 @dataclass
 class CorporateEntity(Entity):
     """
+
     Represents a relationship between a corporation and another entity like a vessel.
 
     [Corporate Entity Further Documentation](https://docs.vortexa.com/reference/intro-corporate-entities)
+
 
     """
 
@@ -51,14 +60,15 @@ class CorporateEntity(Entity):
 @dataclass
 class TagEntity:
     """
+
     Represents a property that is associated with a period of time.
 
     A good example is if a vessel has acted as an FSO during a time period.
 
     [Tags Further Documentation](https://docs.vortexa.com/reference/intro-tags)
 
-
     """
+
     tag: str
     start_timestamp: Optional[str] = None
     end_timestamp: Optional[str] = None
@@ -67,11 +77,13 @@ class TagEntity:
 @dataclass
 class VesselEntity:
     """
-    A VesselEntity represents a vessel record used in CargoMovements and VesselMovements
+
+    A VesselEntity represents a vessel record used in CargoMovements and VesselMovements.
 
     [Vessel Entities Further Documentation](https://docs.vortexa.com/reference/intro-vessel-entities)
 
     """
+
     id: str
     mmsi: int
     name: str
@@ -93,12 +105,13 @@ class VesselEntity:
 @dataclass
 class CargoEventEntity:
     """
-    A CargoEvent represents an event that occurred to a cargo during a cargo movement
 
+    A CargoEvent represents an event that occurred to a cargo during a cargo movement.
 
     [Cargo Event Entities Further Documentation](https://docs.vortexa.com/reference/intro-cargo-events)
 
     """
+
     event_type: str
     location: List[GeographyEntity]
 
@@ -112,7 +125,9 @@ class CargoEventEntity:
 @dataclass
 class CargoMovementEntity:
     """
+
     Cargo movements are the base data set the Vortexa API is centred around.
+
     Each movement represents a journey of a certain quantity of a product between places.
 
     [Cargo Movement Further Documentation](https://docs.vortexa.com/reference/intro-cargo-movement)
