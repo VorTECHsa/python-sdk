@@ -99,11 +99,11 @@ class CargoMovements(Search):
              the filter behaviour for cargo leaving then entering the same geographic area.
 
         # Returns
-            List of cargo movements matching all the search parameters.
+        List of cargo movements matching all the search parameters.
 
 
         # Example
-        Let's search for all VLCCs that loaded from `Rotterdam [NL]` on the morning of 1st December 2018.
+        Let's search for all vessels that loaded from `Rotterdam [NL]` on the morning of 1st December 2018.
 
         ```python
 

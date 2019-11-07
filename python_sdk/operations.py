@@ -5,7 +5,7 @@ from python_sdk.client import default_client
 
 class Reference:
     """
-    Lookup Vortexa Reference Data using an entity ID
+    Lookup Vortexa Reference Data using an entity ID.
     """
 
     def __init__(self, resource):
@@ -31,7 +31,7 @@ class Reference:
 
 class Search:
     """
-    Search Vortexa Reference Data
+    Search Vortexa Reference Data.
     """
 
     def __init__(self, resource):

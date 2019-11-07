@@ -8,8 +8,16 @@ generate:
   - operations.md:
       - python_sdk.operations.Search+
       - python_sdk.operations.Reference+
-  - cargo_movements.md:
-      - python_sdk.cargo_movements++
+  - endpoints/cargo_movements.md:
+      - python_sdk.endpoints.cargo_movements++
+  - endpoints/charterers.md:
+      - python_sdk.endpoints.charterers++
+  - endpoints/vessels.md:
+      - python_sdk.endpoints.vessels++
+  - endpoints/geographies.md:
+      - python_sdk.endpoints.geographies++
+  - endpoints/products.md:
+      - python_sdk.endpoints.products++
 
   - entities.md:
       - python_sdk.api.entities++
@@ -21,7 +29,13 @@ pages:
   - Home: index.md << README.md
   - Entities: entities.md
   - Operations: operations.md
-  - Cargo Movements: cargo_movements.md
+  - Endpoints:
+      Cargo Movements: endpoints/cargo_movements.md
+      Vessels: endpoints/vessels.md
+      Geographies: endpoints/geographies.md
+      Products: endpoints/products.md
+      Charterers: endpoints/charterers.md
+
   - Examples:
       Rotterdam Loadings: examples/rotterdam.md
       China Loadings: examples/china.md
