@@ -1,3 +1,4 @@
+"""Products Endpoint."""
 from python_sdk.operations import Reference
 
 

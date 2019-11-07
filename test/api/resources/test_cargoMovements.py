@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from python_sdk.cargo_movements import CargoMovements
+from python_sdk.endpoints.cargo_movements import CargoMovements
 
 
 class TestCargoMovements(TestCase):

@@ -1,3 +1,4 @@
+"""Cargo Movements Endpoint."""
 from typing import List
 
 import jsons

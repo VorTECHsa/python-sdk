@@ -3,7 +3,9 @@ repos:
     rev: v1.2.3
     hooks:
       - id: flake8
-  - repo: https://github.com/PyCQA/pydocstyle
-    rev: 4.0.1
-    hooks:
-      - id: pydocstyle
+#  - repo: https://github.com/PyCQA/pydocstyle
+#    rev: 4.0.1
+#    hooks:
+#      - id: pydocstyle
+#        args:
+#          - --ignore=D107

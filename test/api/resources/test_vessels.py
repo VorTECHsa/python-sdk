@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from python_sdk.vessels import Vessels
+from python_sdk.endpoints.vessels import Vessels
 
 
 class TestVessels(TestCase):

@@ -1,3 +1,4 @@
+"""Geographies Endpoint."""
 from python_sdk.constants import GEOGRAPHIES_REFERENCE
 from python_sdk.operations import Reference, Search
 

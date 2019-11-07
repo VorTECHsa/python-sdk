@@ -1,3 +1,4 @@
+"""Charterers Endpoint."""
 from python_sdk.constants import CHARTERERS_REFERENCE
 from python_sdk.operations import Reference, Search
 
