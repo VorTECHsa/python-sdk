@@ -35,7 +35,7 @@ class VesselsSearchResult(SearchResult):
         if columns is None:
             columns = ['id', 'name', 'imo', 'vessel_class']
 
-        df = pd.DataFrame(self._result)
+        df = pd.DataFrame(self._records)
 
         if columns == 'all':
             return df

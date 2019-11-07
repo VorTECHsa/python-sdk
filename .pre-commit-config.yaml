@@ -8,4 +8,4 @@ repos:
 #    hooks:
 #      - id: pydocstyle
 #        args:
-#          - --ignore=D107
+#          - --ignore=D107,D203,D212,D100

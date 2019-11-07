@@ -11,24 +11,31 @@ from python_sdk.search_result import SearchResult
 
 
 class CargoMovementsSearchResult(SearchResult):
-    """
-
-    """
+    """Container class holdings search results returns from the cargo movements endpoint."""
 
     def __init__(self, movements: List[dict]):
         deserialized = jsons.loads(jsons.dumps(movements), List[CargoMovementEntity])
         super().__init__(deserialized)
 
     def to_list(self) -> List[CargoMovementEntity]:
-        """Represent cargo movements as a list of dictionaries."""
+        """Represent cargo movements as a list of `CargoMovementEntity`s."""
         return super().to_list()
 
     def to_df(self, columns) -> pd.DataFrame:
+        """
+        Represent cargo movements as a `pd.DataFrame`.
 
+        # Arguments
+            columns: Output columns present in the `pd.DataFrame`.
+
+        # Returns
+        `pd.DataFrame`, one row per cargo movement.
+
+        """
         if columns is None:
             columns = ['cargo_movement_id', 'quantity']
 
-        df = pd.DataFrame(self._result)
+        df = pd.DataFrame(self._records)
 
         if columns == 'all':
             return df
@@ -37,9 +44,8 @@ class CargoMovementsSearchResult(SearchResult):
 
 
 class CargoMovements(Search):
-    """
+    """Cargo Movements Endpoint."""
 
-    """
     _MAX_PAGE_RESULT_SIZE = 500
 
     def __init__(self):
@@ -64,6 +70,8 @@ class CargoMovements(Search):
                disable_geographic_exclusion_rules: bool = None,
                ) -> CargoMovementsSearchResult:
         """
+
+        Find CargoMovements matching the given search parameters.
 
         # Arguments
             filter_activity: Movement activity on which to base the time filter. It can be a filter for a

@@ -7,30 +7,31 @@ import pandas as pd
 
 @dataclass
 class SearchResult(ABC):
-    _result: List
+    """Abstract Class that holds a list of *_records*."""
 
-    @abstractmethod
+    _records: List
+
     def to_list(self) -> List:
-        """
-        Represents search result as a list
-        """
-        return self._result
+        """Represent *_records* as a list."""
+        return self._records
 
     @abstractmethod
     def to_df(self, columns) -> pd.DataFrame:
-        """
-        Represents search result as a `pd.DataFrame` with given columns
-        """
+        """Represent *_records* as a `pd.DataFrame` with given columns."""
         pass
 
     def __len__(self):
-        return len(self._result)
+        """Delegate to *_records*."""
+        return len(self._records)
 
     def __str__(self):
-        return str(self._result)
+        """Delegate to *_records*."""
+        return str(self._records)
 
     def __iter__(self):
-        return iter(self._result)
+        """Delegate to *_records*."""
+        return iter(self._records)
 
     def __getitem__(self, item):
-        return self._result.__getitem__(item)
+        """Delegate to *_records*."""
+        return self._records.__getitem__(item)
