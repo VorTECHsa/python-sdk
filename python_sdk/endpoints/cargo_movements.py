@@ -127,13 +127,23 @@ class CargoMovements(Search):
 
         ```python
 
-        >>> result = CargoMovements().search(
-            filter_origins=['68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e'],
+        >>> df = CargoMovements().search(
+            filter_origins=[g['id'] for g in Geographies().search("rotterdam") if 'port' in g['layer']],
             filter_activity='loading_state',
             filter_time_min="2018-12-01T00:00:00.000Z",
             filter_time_max="2018-12-01T12:00:00.000Z",
-        )
+        ).to_df(columns=['product.grade.label', 'product.group.label', 'vessels.0.vessel_class', 'vessels'])
         ```
+
+        |    | product.group.label   | product.grade.label             | vessels.0.vessel_class   |
+        |---:|:----------------------|:--------------------------------|:-------------------------|
+        |  0 | Clean products        | Pygas                           | general_purpose          |
+        |  1 | Clean products        | Chemicals                       | tiny_tanker              |
+        |  2 | Clean products        | Chemicals                       | tiny_tanker              |
+        |  3 | Dirty products        | Low Sulphur VGO (LSVGO)         | general_purpose          |
+        |  4 | Clean products        | ULSD (Ultra Low Sulphur Diesel) | general_purpose          |
+        |  5 | Clean products        | Chemicals                       | tiny_tanker              |
+        |  6 | Clean products        | Finished Gasoline               | handymax                 |
 
         """
         params = {

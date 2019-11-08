@@ -11,7 +11,7 @@ from python_sdk.search_result import SearchResult
 
 class VesselsSearchResult(SearchResult):
     """
-    VesselsSearchResult is a wrapper around the result from calling the vessels API endpoint.
+    VesselsSearchResult is a wrapper around the df from calling the vessels API endpoint.
 
     This class lets user represent vessels as a `pd.DataFrame`, or as a list of dictionaries.
     """
@@ -92,11 +92,11 @@ class Vessels(Reference, Search):
 
         # Examples
 
+        Let's find all the VLCCs with 'ocean' in their name, or related names.
+
         ```python
         >>> Vessels().search(vessel_classes='vlcc', term='ocean').to_df(columns=['name', 'imo', 'mmsi', 'related_names'])
         ```
-
-        returns.
 
         |    | name         |     imo |      mmsi | related_names             |
         |---:|:-------------|--------:|----------:|:--------------------------|

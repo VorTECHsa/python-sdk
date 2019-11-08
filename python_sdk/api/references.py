@@ -79,6 +79,35 @@ class ChartererNode(IDName):
 
 @dataclass(frozen=True)
 class ProductNode(Node):
-    """Represent a Product."""
+    """
+    Represent a Product.
+
+    # Further Documentation
+
+    https://docs.vortexa.com/reference/GET/reference/products/%7Bid%7D
+    """
     layer: List[str]
     meta: dict
+
+
+@dataclass(frozen=True)
+class VesselNode(Node):
+    """
+    Represent a Vessel.
+
+    # Further Documentation
+
+    https://docs.vortexa.com/reference/GET/reference/vessels/%7Bid%7D
+    """
+    related_names: List[str]
+    mmsi: int
+    imo: int
+    cubic_capacity: int
+    call_sign: str
+    to_bow: str
+    to_stern: str
+    to_port: str
+    to_starboard: str
+    year: int
+    dead_weight: int
+    gross_tonnage: int

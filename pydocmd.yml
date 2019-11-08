@@ -41,8 +41,7 @@ pages:
       Charterers: endpoints/charterers.md
 
   - Examples:
-      Rotterdam Loadings: examples/rotterdam.md
-      China Loadings: examples/china.md
+      1 China Loadings: examples/1_china.md
 
 
 theme: readthedocs
