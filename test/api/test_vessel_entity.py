@@ -30,7 +30,7 @@ ve = VesselEntity(
 class TestVesselEntity(TestCase):
 
     def test_serialize(self):
-        with open("test/api/examples/vessel_entry1.json", 'r') as f:
+        with open("test/api/examples/vessel_entity1.json", 'r') as f:
             serialized = f.read()
             deserialized = jsons.loads(serialized, VesselEntity)
 

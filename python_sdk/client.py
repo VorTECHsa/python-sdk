@@ -50,15 +50,16 @@ class VortexaClient:
 
         response = requests.post(url, json=payload)
 
-        return self._handle_response(response)
+        return self._handle_response(response, payload)
 
     @staticmethod
-    def _handle_response(response: Response):
+    def _handle_response(response: Response, payload=None):
         if response.ok:
             return response.json()
         else:
             print(response.reason)
             print(response.json())
+            print(f'payload: {payload}')
             raise Exception(response)
 
 

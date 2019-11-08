@@ -1,0 +1,80 @@
+{
+  "id": "9579af63401ee4a876768a77e5c0d34bd0a7cfe89bacd4b0e8b8b3a1bfe703bf",
+  "name": "China Bay(Ioc Terminal) (Ex-Trincomalee)",
+  "layer": [
+    "terminal"
+  ],
+  "leaf": true,
+  "bounding_box": {
+    "coordinates": [
+      [
+        [
+          81.19931307570124,
+          8.555063551140114
+        ],
+        [
+          81.19931307570124,
+          8.557012489735587
+        ],
+        [
+          81.20247418734928,
+          8.557012489735587
+        ],
+        [
+          81.20247418734928,
+          8.555063551140114
+        ],
+        [
+          81.19931307570124,
+          8.555063551140114
+        ]
+      ]
+    ],
+    "type": "Polygon"
+  },
+  "parent": [
+    {
+      "name": "Trincomalee [LK]",
+      "layer": [
+        "port"
+      ],
+      "id": "4993fda1dd7d21f6f5ef1ec349d7587df10c32b25e16527751c56f5c38a30518"
+    }
+  ],
+  "exclusion_rule": [
+    {
+      "name": "China Bay(Ioc Terminal) (Ex-Trincomalee)",
+      "layer": [
+        "terminal"
+      ],
+      "id": "9579af63401ee4a876768a77e5c0d34bd0a7cfe89bacd4b0e8b8b3a1bfe703bf"
+    }
+  ],
+  "ref_type": "geography",
+  "hierarchy": [
+    {
+      "id": "20f1a57d5d8c667c827ce96dfe1390dfb2fa4eecc6c6a87910da4a0d5bb4f874",
+      "layer": "country"
+    },
+    {
+      "id": "4993fda1dd7d21f6f5ef1ec349d7587df10c32b25e16527751c56f5c38a30518",
+      "layer": "port"
+    },
+    {
+      "id": "e6955a2c59dc90833986fe0894cf6718dddaa7816bb51bc955cdd3eb4470e554",
+      "layer": "region"
+    },
+    {
+      "id": "043b3b0acb039514160625a525d76eb8942bd5aa44daa52c4ad1cbd363d52366",
+      "layer": "trading_region"
+    },
+    {
+      "id": "9579af63401ee4a876768a77e5c0d34bd0a7cfe89bacd4b0e8b8b3a1bfe703bf",
+      "layer": "terminal"
+    }
+  ],
+  "pos": [
+    81.2008903251744,
+    8.55602523848024
+  ]
+}

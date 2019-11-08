@@ -25,8 +25,7 @@ class Reference:
             >>> Reference("/reference/geographies").reference(id='cfb8c4ef76585c3a37792b643791a0f4ff6d5656d5508927d8017319e21f2fca')
 
         """
-        client = default_client()
-        return client.get_reference(self._resource, id)
+        return default_client().get_reference(self._resource, id)
 
 
 class Search:
@@ -58,5 +57,15 @@ class Search:
 
         """
 
-        client = default_client()
-        return client.search(self._resource, **data)
+        params = {k: _to_list(v) for k, v in data.items()}
+
+        return default_client().search(self._resource, **params)
+
+
+def _to_list(a):
+    if a is None:
+        return []
+    elif isinstance(a, list):
+        return a
+    else:
+        return [a]

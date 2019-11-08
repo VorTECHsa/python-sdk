@@ -8,7 +8,7 @@ from python_sdk.api.entities import ProductEntity
 class TestProductEntity(TestCase):
 
     def test_serialize(self):
-        with open("test/api/examples/product_entry1.json", 'r') as f:
+        with open("test/api/examples/product_entity1.json", 'r') as f:
             serialized = f.read()
             deserialized = jsons.loads(serialized, ProductEntity)
 

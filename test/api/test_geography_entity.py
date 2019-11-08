@@ -7,7 +7,7 @@ from python_sdk.api.entities import GeographyEntity
 
 class TestGeographyEntity(TestCase):
     def test_serialize(self):
-        with open("test/api/examples/geography_entry1.json", 'r') as f:
+        with open("test/api/examples/geography_entity1.json", 'r') as f:
             serialized = f.read()
             deserialized = jsons.loads(serialized, GeographyEntity)
 

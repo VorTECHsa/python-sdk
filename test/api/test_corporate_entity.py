@@ -8,7 +8,7 @@ from python_sdk.api.entities import CorporateEntity
 class TestCorporateEntity(TestCase):
 
     def test_serialize(self):
-        with open("test/api/examples/corporate_entry1.json", 'r') as f:
+        with open("test/api/examples/corporate_entity1.json", 'r') as f:
             serialized = f.read()
             deserialized = jsons.loads(serialized, CorporateEntity)
 

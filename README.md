@@ -44,6 +44,6 @@ $ ./generate_docs.sh
 ## Glossary
 
 The Glossary can be found at [Vortexa API Documentation](https://docs.vortexa.com)
-This outlines selected key terms, functions and assumptions aimed at
+This outlines key terms, functions and assumptions aimed at
 helping to extract powerful findings from our data.
 

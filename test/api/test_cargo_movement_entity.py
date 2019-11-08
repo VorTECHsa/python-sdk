@@ -9,7 +9,7 @@ from python_sdk.api.entities import GeographyEntity, ProductEntity, CorporateEnt
 class TestCargoMovementEntity(TestCase):
 
     def test_serialize(self):
-        with open("test/api/examples/cargo_movement_entry1.json", 'r') as f:
+        with open("test/api/examples/cargo_movement_entity1.json", 'r') as f:
             serialized = f.read()
             deserialized = jsons.loads(serialized, CargoMovementEntity)
 

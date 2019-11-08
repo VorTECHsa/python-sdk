@@ -1,5 +1,5 @@
 """Vessels Endpoint."""
-from typing import List
+from typing import List, Union
 
 import pandas as pd
 
@@ -68,22 +68,22 @@ class Vessels(Reference, Search):
         return super().reference(id)
 
     def search(self,
-               term: str = None,
-               ids: List[str] = None,
-               vessel_classes: List[str] = None,
-               vessel_product_types: List[str] = None
+               term: Union[str, List[str]] = None,
+               ids: Union[str, List[str]] = None,
+               vessel_classes: Union[str, List[str]] = None,
+               vessel_product_types: Union[str, List[str]] = None,
                ) -> VesselsSearchResult:
         """
         Find all vessels matching given search terms.
 
         # Arguments
-            term: The name (or partial name) of a vessel we'd like to search
+            term: The name(s) (or partial name(s)) of a vessel we'd like to search
 
-            ids: List of IDs of vessels we'd like to search
+            ids: ID or IDs of vessels we'd like to search
 
-            vessel_classes: List of vessel classes, must be one of "tiny_tanker" | "general_purpose" | "handysize" | "handymax" | "panamax" | "aframax" | "suezmax" | "vlcc_plus" | "sgc" | "mgc" | "lgc" | "vlgc". Refer to [ VortexaAPI Vessel Entities](https://docs.vortexa.com/reference/intro-vessel-entities) for the most up-to-date list of vessel classes.
+            vessel_classes: vessel_class (or list of vessel classes) we'd like to search. Each vessel class must be one of "tiny_tanker" | "general_purpose" | "handysize" | "handymax" | "panamax" | "aframax" | "suezmax" | "vlcc_plus" | "sgc" | "mgc" | "lgc" | "vlgc". Refer to [ VortexaAPI Vessel Entities](https://docs.vortexa.com/reference/intro-vessel-entities) for the most up-to-date list of vessel classes.
 
-            vessel_product_types: List of product IDs, searching vessels currently (or recently) carrying these products.
+            vessel_product_types: product ID (or list of product IDs), searching vessels currently (or recently) carrying these products.
 
         # Returns
         List of vessels matching the search arguments.
@@ -92,7 +92,7 @@ class Vessels(Reference, Search):
         # Examples
 
         ```python
-        >>> Vessels().search(vessel_classes=['vlcc'], term='ocean').to_df(columns=['name', 'imo', 'mmsi', 'related_names'])
+        >>> Vessels().search(vessel_classes='vlcc', term='ocean').to_df(columns=['name', 'imo', 'mmsi', 'related_names'])
         ```
 
         returns.
