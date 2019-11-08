@@ -5,6 +5,7 @@ import jsons
 import pandas as pd
 
 from python_sdk.api.entities import CargoMovementEntity
+from python_sdk.api.entity_utils import extract_dict_from_cme
 from python_sdk.constants import CARGO_MOVEMENTS_RESOURCE
 from python_sdk.operations import Search
 from python_sdk.search_result import SearchResult
@@ -32,15 +33,8 @@ class CargoMovementsSearchResult(SearchResult):
         `pd.DataFrame`, one row per cargo movement.
 
         """
-        if columns is None:
-            columns = ['cargo_movement_id', 'quantity']
-
-        df = pd.DataFrame(self._records)
-
-        if columns == 'all':
-            return df
-        else:
-            return df
+        records = [extract_dict_from_cme(cm, columns) for cm in self.to_list()]
+        return pd.DataFrame(records)
 
 
 class CargoMovements(Search):
