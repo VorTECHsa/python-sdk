@@ -3,38 +3,43 @@ from dataclasses import dataclass
 from typing import List
 
 
-@dataclass
+@dataclass(frozen=True)
 class ID:
+    """Represent an `id`."""
     id: str
 
 
-@dataclass
+@dataclass(frozen=True)
 class Name:
+    """Represent a `name`."""
     name: str
 
 
-@dataclass
+@dataclass(frozen=True)
 class Layer:
+    """Represent a `layer`."""
     layer: str
 
 
-@dataclass
+@dataclass(frozen=True)
 class IDName(ID, Name):
+    """Tuple containing `id` and `name`."""
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class IDLayer(ID, Layer):
+    """Tuple containing `id` and `layer`."""
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class IDNameLayer(ID, Name, Layer):
-    """Triple holding ID, name, and layer."""
+    """Triple holding `id`, `name`, and `layer`."""
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class Node(ABC, IDName):
     """Abstract Base Class holding a node of a tree."""
     ref_type: str
@@ -42,14 +47,14 @@ class Node(ABC, IDName):
     parent: List[IDNameLayer]
 
 
-@dataclass
+@dataclass(frozen=True)
 class BoundingBox:
     """Polygon with list of bounding lat lon coords."""
     type: str
     coordinates: List[List[float]]
 
 
-@dataclass
+@dataclass(frozen=True)
 class GeographyNode(Node, IDNameLayer):
     """Represent a Polygon."""
     bounding_box: BoundingBox
@@ -58,12 +63,12 @@ class GeographyNode(Node, IDNameLayer):
     hierarchy: List[IDLayer]
 
 
-@dataclass
+@dataclass(frozen=True)
 class ChartererNode(IDName):
     """
     Represent a Charterer.
 
-    This class is almost a `Node`,
+    This class is almost inherets from `Node`,
      but not quite - it's parents are a list of strings rather than list of `IDName`
     """
     corporate_entity_type: List[str]
@@ -72,7 +77,8 @@ class ChartererNode(IDName):
     parent: List[str]
 
 
-@dataclass
+@dataclass(frozen=True)
 class ProductNode(Node):
+    """Represent a Product."""
     layer: List[str]
     meta: dict

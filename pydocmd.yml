@@ -22,12 +22,16 @@ generate:
   - entities.md:
       - python_sdk.api.entities++
 
+  - references.md:
+      - python_sdk.api.references++
+
 # MkDocs pages configuration. The `<<` operator is sugar added by pydocmd
 # that allows you to use an external Markdown file (eg. your project's README)
 # in the documentation. The path must be relative to current working directory.
 pages:
   - Home: index.md << README.md
   - Entities: entities.md
+  - References: references.md
   - Operations: operations.md
   - Endpoints:
       Cargo Movements: endpoints/cargo_movements.md

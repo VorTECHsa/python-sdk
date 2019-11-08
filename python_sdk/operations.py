@@ -42,11 +42,11 @@ class Search:
         """
         self._resource = resource
 
-    def search(self, **data) -> List[dict]:
+    def search(self, **params) -> List[dict]:
         """
 
         # Arguments
-            data: Search parameters
+            params: Search parameters
 
         # Returns
         VortexaAPI call matching vessels
@@ -57,15 +57,4 @@ class Search:
 
         """
 
-        params = {k: _to_list(v) for k, v in data.items()}
-
         return default_client().search(self._resource, **params)
-
-
-def _to_list(a):
-    if a is None:
-        return []
-    elif isinstance(a, list):
-        return a
-    else:
-        return [a]

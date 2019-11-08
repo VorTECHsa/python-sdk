@@ -136,7 +136,7 @@ class CargoMovements(Search):
         ```
 
         """
-        search_params = {
+        params = {
             # Compulsory search parameters
             'filter_activity': filter_activity,
             'filter_time_min': filter_time_min,
@@ -159,4 +159,4 @@ class CargoMovements(Search):
             "disable_geographic_exclusion_rules": disable_geographic_exclusion_rules
         }
 
-        return CargoMovementsSearchResult(super().search(**search_params))
+        return CargoMovementsSearchResult(super().search(**params))

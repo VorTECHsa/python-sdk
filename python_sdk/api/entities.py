@@ -1,11 +1,12 @@
 """DataClasses returned by VortexaAPI."""
-from abc import ABC
 from dataclasses import dataclass
 from typing import List, Optional
 
+from python_sdk.api.references import IDLayer, IDName
+
 
 @dataclass(frozen=True)
-class Entity(ABC):
+class Entity(IDLayer):
     """
 
     Contains a set of attributes commonly used by various entities.
@@ -13,9 +14,6 @@ class Entity(ABC):
     [Entities Further Documentation](https://docs.vortexa.com/reference/intro-entities)
 
     """
-
-    id: str
-    layer: str
     label: str
     probability: float
     source: str
@@ -75,7 +73,7 @@ class TagEntity:
 
 
 @dataclass(frozen=True)
-class VesselEntity:
+class VesselEntity(IDName):
     """
 
     A VesselEntity represents a vessel record used in CargoMovements and VesselMovements.
@@ -84,9 +82,7 @@ class VesselEntity:
 
     """
 
-    id: str
     mmsi: int
-    name: str
     dwt: int
     cubic_capacity: int
     vessel_class: str

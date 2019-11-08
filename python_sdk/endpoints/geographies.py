@@ -3,6 +3,7 @@ from typing import List, Union
 
 from python_sdk.constants import GEOGRAPHIES_REFERENCE
 from python_sdk.operations import Reference, Search
+from python_sdk.utils import convert_values_to_list
 
 
 class Geographies(Reference, Search):
@@ -28,5 +29,5 @@ class Geographies(Reference, Search):
 
         """
 
-        search_params = {"term": term}
-        return super().search(**search_params)
+        params = convert_values_to_list({"term": term})
+        return super().search(**params)

@@ -5,6 +5,7 @@ import pandas as pd
 
 from python_sdk.constants import VESSELS_REFERENCE
 from python_sdk.operations import Reference, Search
+from python_sdk.utils import convert_values_to_list
 from python_sdk.search_result import SearchResult
 
 
@@ -116,11 +117,11 @@ class Vessels(Reference, Search):
         [VortexaAPI Vessel Reference](https://docs.vortexa.com/reference/POST/reference/vessels)
 
         """
-        search_params = {
+        search_params = convert_values_to_list({
             "term": term,
             "ids": ids,
             "vessel_classes": vessel_classes,
             "vessel_product_types": vessel_product_types,
-        }
+        })
 
         return VesselsSearchResult(super().search(**search_params))
