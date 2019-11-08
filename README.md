@@ -10,7 +10,7 @@ Welcome to the Vortexa Python SDK, building upon the [Vortexa API Documentation]
 #### Installation
 
 ```bash
-pip install vendor/github.com/V0RT3X4/python-sdk
+$ pip install vortexa-sdk
 ```
 
 ### Authentication
