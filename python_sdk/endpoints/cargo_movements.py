@@ -5,10 +5,21 @@ import jsons
 import pandas as pd
 
 from python_sdk.api.entities import CargoMovementEntity
-from python_sdk.api.entity_utils import extract_dict_from_cme
+from python_sdk.api.entity_serializing import convert_cme_to_flat_dict
 from python_sdk.constants import CARGO_MOVEMENTS_RESOURCE
 from python_sdk.operations import Search
 from python_sdk.search_result import SearchResult
+
+DEFAULT_COLUMNS = [
+    'events.cargo_port_load_event.0.label',
+    'events.cargo_port_unload_event.0.label',
+    'product.group.label',
+    'product.grade.label',
+    'quantity',
+    'vessels.0.name',
+    'events.cargo_port_load_event.0.start_timestamp',
+    'events.cargo_port_unload_event.0.start_timestamp',
+]
 
 
 class CargoMovementsSearchResult(SearchResult):
@@ -22,18 +33,25 @@ class CargoMovementsSearchResult(SearchResult):
         """Represent cargo movements as a list of `CargoMovementEntity`s."""
         return super().to_list()
 
-    def to_df(self, columns) -> pd.DataFrame:
+    def to_df(self, columns=None) -> pd.DataFrame:
         """
         Represent cargo movements as a `pd.DataFrame`.
 
         # Arguments
             columns: Output columns present in the `pd.DataFrame`.
+            Enter `columns='all'` to return all available columns.
+            Enter `columns=None` to use `cargo_movements.DEFAULT_COLUMNS`.
+
 
         # Returns
         `pd.DataFrame`, one row per cargo movement.
 
         """
-        records = [extract_dict_from_cme(cm, columns) for cm in self.to_list()]
+        if columns is None:
+            columns = DEFAULT_COLUMNS
+
+        records = [convert_cme_to_flat_dict(cm, columns) for cm in self.to_list()]
+
         return pd.DataFrame(records)
 
 

@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from typing import List, Optional
 
 
-@dataclass
+@dataclass(frozen=True)
 class Entity(ABC):
     """
 
@@ -21,7 +21,7 @@ class Entity(ABC):
     source: str
 
 
-@dataclass
+@dataclass(frozen=True)
 class GeographyEntity(Entity):
     """
 
@@ -33,7 +33,7 @@ class GeographyEntity(Entity):
     """
 
 
-@dataclass
+@dataclass(frozen=True)
 class ProductEntity(Entity):
     """
 
@@ -45,7 +45,7 @@ class ProductEntity(Entity):
     """
 
 
-@dataclass
+@dataclass(frozen=True)
 class CorporateEntity(Entity):
     """
 
@@ -57,7 +57,7 @@ class CorporateEntity(Entity):
     """
 
 
-@dataclass
+@dataclass(frozen=True)
 class TagEntity:
     """
 
@@ -74,7 +74,7 @@ class TagEntity:
     end_timestamp: Optional[str] = None
 
 
-@dataclass
+@dataclass(frozen=True)
 class VesselEntity:
     """
 
@@ -102,7 +102,7 @@ class VesselEntity:
     fixture_id: Optional[str] = None
 
 
-@dataclass
+@dataclass(frozen=True)
 class CargoEventEntity:
     """
 
@@ -122,7 +122,7 @@ class CargoEventEntity:
     end_timestamp: Optional[str] = None
 
 
-@dataclass
+@dataclass(frozen=True)
 class CargoMovementEntity:
     """
 

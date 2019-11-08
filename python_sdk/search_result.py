@@ -16,7 +16,7 @@ class SearchResult(ABC):
         return self._records
 
     @abstractmethod
-    def to_df(self, columns) -> pd.DataFrame:
+    def to_df(self, columns=None) -> pd.DataFrame:
         """Represent *_records* as a `pd.DataFrame` with given columns."""
         pass
 
