@@ -7,24 +7,24 @@ repo_url: https://github.com/V0RT3X4/python-sdk
 # documented. Higher indentation leads to smaller header size.
 generate:
   - operations.md:
-      - python_sdk.operations.Search+
-      - python_sdk.operations.Reference+
+      - vortexa.operations.Search+
+      - vortexa.operations.Reference+
   - endpoints/cargo_movements.md:
-      - python_sdk.endpoints.cargo_movements++
+      - vortexa.endpoints.cargo_movements++
   - endpoints/charterers.md:
-      - python_sdk.endpoints.charterers++
+      - vortexa.endpoints.charterers++
   - endpoints/vessels.md:
-      - python_sdk.endpoints.vessels++
+      - vortexa.endpoints.vessels++
   - endpoints/geographies.md:
-      - python_sdk.endpoints.geographies++
+      - vortexa.endpoints.geographies++
   - endpoints/products.md:
-      - python_sdk.endpoints.products++
+      - vortexa.endpoints.products++
 
   - entities.md:
-      - python_sdk.api.entities++
+      - vortexa.api.entities++
 
   - references.md:
-      - python_sdk.api.references++
+      - vortexa.api.references++
 
 # MkDocs pages configuration. The `<<` operator is sugar added by pydocmd
 # that allows you to use an external Markdown file (eg. your project's README)

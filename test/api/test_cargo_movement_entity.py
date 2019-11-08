@@ -2,7 +2,7 @@ from unittest import TestCase
 
 import jsons
 
-from python_sdk.api.entities import GeographyEntity, ProductEntity, CorporateEntity, VesselEntity, \
+from vortexa.api.entities import GeographyEntity, ProductEntity, CorporateEntity, VesselEntity, \
     CargoEventEntity, CargoMovementEntity
 
 

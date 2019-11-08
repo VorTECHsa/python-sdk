@@ -2,7 +2,7 @@ from unittest import TestCase
 
 import jsons
 
-from python_sdk.api.entities import CorporateEntity, VesselEntity
+from vortexa.api.entities import CorporateEntity, VesselEntity
 
 ce1 = CorporateEntity(id='cbd7dfe8a9fb0fa0ce3252ce7643437db6a32d0947a0c23d68dc5dea2f2d65d7',
                       layer="commercial_owner", probability=1, label='NGM Energy', source='external')

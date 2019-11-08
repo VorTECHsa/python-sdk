@@ -5,7 +5,7 @@ import jsons
 # noinspection PyProtectedMember
 from flatten_dict import flatten
 
-from python_sdk.api.entities import CargoEventEntity, CargoMovementEntity, Entity, VesselEntity
+from vortexa.api.entities import CargoEventEntity, CargoMovementEntity, Entity, VesselEntity
 
 
 def _group_by_layer(entity_list: List[Entity]) -> dict:

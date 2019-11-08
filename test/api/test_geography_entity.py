@@ -2,7 +2,7 @@ from unittest import TestCase
 
 import jsons
 
-from python_sdk.api.entities import GeographyEntity
+from vortexa.api.entities import GeographyEntity
 
 
 class TestGeographyEntity(TestCase):

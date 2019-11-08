@@ -3,7 +3,7 @@ import os
 import requests
 from requests import Response
 
-from python_sdk.constants import API_URL
+from vortexa.constants import API_URL
 
 
 class VortexaClient:

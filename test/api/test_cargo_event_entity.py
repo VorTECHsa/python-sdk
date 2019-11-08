@@ -2,7 +2,7 @@ from unittest import TestCase
 
 import jsons
 
-from python_sdk.api.entities import GeographyEntity, CargoEventEntity
+from vortexa.api.entities import GeographyEntity, CargoEventEntity
 
 
 class TestCargoEventEntity(TestCase):

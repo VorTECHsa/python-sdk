@@ -2,7 +2,7 @@
 from dataclasses import dataclass
 from typing import List, Optional
 
-from python_sdk.api.references import IDLayer, IDName
+from vortexa.api.references import IDLayer, IDName
 
 
 @dataclass(frozen=True)

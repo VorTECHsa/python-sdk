@@ -3,10 +3,10 @@ from typing import List, Union
 
 import pandas as pd
 
-from python_sdk.constants import VESSELS_REFERENCE
-from python_sdk.operations import Reference, Search
-from python_sdk.utils import convert_values_to_list
-from python_sdk.search_result import SearchResult
+from vortexa.constants import VESSELS_REFERENCE
+from vortexa.operations import Reference, Search
+from vortexa.utils import convert_values_to_list
+from vortexa.search_result import SearchResult
 
 
 class VesselsSearchResult(SearchResult):

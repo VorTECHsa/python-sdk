@@ -13,9 +13,9 @@ The below script returns:
 
 """
 
-from python_sdk.endpoints.cargo_movements import CargoMovements
-from python_sdk.endpoints.geographies import Geographies
-from python_sdk.endpoints.vessels import Vessels
+from vortexa.endpoints.cargo_movements import CargoMovements
+from vortexa.endpoints.geographies import Geographies
+from vortexa.endpoints.vessels import Vessels
 
 # Search for all the VLCC vessel IDs
 vlccs = [v['id'] for v in Vessels().search(vessel_classes='vlcc')]

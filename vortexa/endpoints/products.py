@@ -1,5 +1,5 @@
 """Products Endpoint."""
-from python_sdk.operations import Reference
+from vortexa.operations import Reference
 
 
 class Products(Reference):

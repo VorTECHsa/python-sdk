@@ -1,6 +1,6 @@
 from typing import List
 
-from python_sdk.client import default_client
+from vortexa.client import default_client
 
 
 class Reference:

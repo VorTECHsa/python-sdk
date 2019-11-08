@@ -2,7 +2,7 @@ from unittest import TestCase
 
 import jsons
 
-from python_sdk.api.entities import CorporateEntity
+from vortexa.api.entities import CorporateEntity
 
 
 class TestCorporateEntity(TestCase):
