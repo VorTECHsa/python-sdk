@@ -9,16 +9,31 @@ jobs:
       - restore_cache: &restore_cache
           keys:
             - v1-{{ .Branch }}-
+
       - run:
-          name: "Run tests"
+          name: "Install requirements.txt"
           command: |
             python3.7 -m venv .venv;
             . .venv/bin/activate
             pip install -U pip
             pip install -U -r requirements.txt
             nose2
+
       - save_cache: &save_cache
           key: v1-{{ .Branch }}-{{ epoch }}
           paths:
             - ~/project/.venv
             - ~/.cache/pip
+
+      - run:
+          name: "Run tests"
+          command: |
+            . .venv/bin/activate
+            nose2
+
+      - run:
+          name: "Deploy documentation to gihub pages"
+          command: |
+            . .venv/bin/activate
+            ./docs/deploy_docs.sh
+
