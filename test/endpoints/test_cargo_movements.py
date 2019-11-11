@@ -1,14 +1,16 @@
-from unittest import TestCase
+from unittest import TestCase, skipIf
 
+from test.config import SKIP_TAGS
 from vortexa.endpoints.cargo_movements import CargoMovements
 
 
-class TestCargoMovements(TestCase):
+@skipIf('real' in SKIP_TAGS, 'Skipping tests that hit the real API server.')
+class TestCargoMovementsReal(TestCase):
     def test_defaullt_search(self):
         results = CargoMovements().search()
         print(len(results))
 
-    def test_search(self):
+    def test_search_returns_unique_results(self):
         result = CargoMovements().search(
             filter_origins=['68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e'],
             filter_time_min="2019-08-29T00:00:00.000Z",
