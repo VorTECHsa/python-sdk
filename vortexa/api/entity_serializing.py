@@ -5,7 +5,9 @@ import jsons
 # noinspection PyProtectedMember
 from flatten_dict import flatten
 
-from vortexa.api.entities import CargoEventEntity, CargoMovementEntity, Entity, VesselEntity
+from vortexa.api.cargo_movement import CargoEvent, CargoMovement
+from vortexa.api.shared_types import Entity
+from vortexa.api.vessel import VesselEntity
 
 
 def _group_by_layer(entity_list: List[Entity]) -> dict:
@@ -31,13 +33,13 @@ def _serialize_ve_layer(ve: VesselEntity) -> dict:
     return serialize(d)
 
 
-def _serialize_ce_layer(ce: CargoEventEntity) -> dict:
+def _serialize_ce_layer(ce: CargoEvent) -> dict:
     d = serialize(ce)
     d.update({"location": _group_by_layer(ce.location)})
     return serialize(d)
 
 
-def _group_cme_attributes_by_layer(cme: CargoMovementEntity) -> dict:
+def _group_cme_attributes_by_layer(cme: CargoMovement) -> dict:
     """Group relevant CargoMovementEntity attributes by `Entity.layer`."""
     vessels = [_serialize_ve_layer(ve) for ve in cme.vessels]
     products = _group_by_layer(cme.product)
@@ -53,7 +55,7 @@ def _group_cme_attributes_by_layer(cme: CargoMovementEntity) -> dict:
     return serialize(d)
 
 
-def convert_cme_to_flat_dict(cme: CargoMovementEntity, cols='all') -> dict:
+def convert_cme_to_flat_dict(cme: CargoMovement, cols='all') -> dict:
     """Convert nested `CargoMovementEntity` object to flat dictionary, keeping *cols*."""
     as_dict = _group_cme_attributes_by_layer(cme)
 

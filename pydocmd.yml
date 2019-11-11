@@ -1,14 +1,10 @@
 site_name: VortexaSDK
 repo_url: https://github.com/V0RT3X4/python-sdk
-
-# This tells pydocmd which pages to generate from which Python modules,
-# functions and classes. At the first level is the page name, below that
-# is a tree of Python member names (modules, classes, etc.) that should be
-# documented. Higher indentation leads to smaller header size.
 generate:
   - operations.md:
       - vortexa.operations.Search+
       - vortexa.operations.Reference+
+
   - endpoints/cargo_movements.md:
       - vortexa.endpoints.cargo_movements++
   - endpoints/charterers.md:
@@ -20,30 +16,33 @@ generate:
   - endpoints/products.md:
       - vortexa.endpoints.products++
 
-  - entities.md:
-      - vortexa.api.entities++
-
-  - references.md:
-      - vortexa.api.references++
-
-# MkDocs pages configuration. The `<<` operator is sugar added by pydocmd
-# that allows you to use an external Markdown file (eg. your project's README)
-# in the documentation. The path must be relative to current working directory.
+  - entities/product.md:
+      - vortexa.api.product++
+  - entities/geography.md:
+      - vortexa.api.geography++
+  - entities/corporation.md:
+      - vortexa.api.corporation++
+  - entities/vessel.md:
+      - vortexa.api.vessel++
+  - entities/cargo_movement.md:
+      - vortexa.api.cargo_movement++
 pages:
   - Home: index.md << README.md
-  - Entities: entities.md
-  - References: references.md
+  - Entities:
+      Vessel: entities/vessel.md
+      Product: entities/product.md
+      Geography: entities/geography.md
+      Corporation: entities/corporation.md
+      Cargo Movement: entities/cargo_movement.md
   - Operations: operations.md
   - Endpoints:
-      Cargo Movements: endpoints/cargo_movements.md
       Vessels: endpoints/vessels.md
-      Geographies: endpoints/geographies.md
       Products: endpoints/products.md
+      Geographies: endpoints/geographies.md
+      Cargo Movements: endpoints/cargo_movements.md
       Charterers: endpoints/charterers.md
-
   - Examples:
-      1 China Loadings: examples/1_china.md
-
+      1 China VLCC Discharges: examples/1_china.md
 
 theme:
   name: readthedocs

@@ -40,14 +40,14 @@ Documentation should follow the [Google Documentation Style Guide](https://devel
 
 ##### Installation
 ```bash
-$ pip3 install pydocmd
+$ pip3 install -r requirements.txt
 ```
 
 ##### Running
 
 Pydocmd:
 ```bash
-$ ./docs/generate_docs.sh
+$ ./docs/serve_docs.sh
 ```
 
 …and open http://localhost:8000 in your web browser.

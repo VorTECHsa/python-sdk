@@ -17,7 +17,6 @@ jobs:
             . .venv/bin/activate
             pip install -U pip
             pip install -U -r requirements.txt
-            nose2
 
       - save_cache: &save_cache
           key: v1-{{ .Branch }}-{{ epoch }}
@@ -29,11 +28,18 @@ jobs:
           name: "Run tests"
           command: |
             . .venv/bin/activate
-            nose2
+            export SKIP_TAGS=real; nose2
 
       - run:
-          name: "Deploy documentation to gihub pages"
+          name: "Build docs"
           command: |
             . .venv/bin/activate
-            ./docs/deploy_docs.sh
+            ./docs/build_docs.sh
 
+      - run:
+          name: "Deploy docs to gihub pages if master"
+          command: |
+            if [[ ${CIRCLE_BRANCH} == "master" ]]; then
+              . .venv/bin/activate
+              ./docs/deploy_docs.sh
+            fi

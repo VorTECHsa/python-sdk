@@ -53,4 +53,5 @@ def copy_examples(examples_dir, destination_dir):
 
 
 if __name__ == "__main__":
+    print(os.getcwd())
     copy_examples("./docs/examples", "./_build/pydocmd/examples")

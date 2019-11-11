@@ -2,7 +2,8 @@ from unittest import TestCase
 
 import jsons
 
-from vortexa.api.entities import GeographyEntity, CargoEventEntity
+from vortexa.api.cargo_movement import CargoEvent
+from vortexa.api.geography import GeographyEntity
 
 
 class TestCargoEventEntity(TestCase):
@@ -10,9 +11,9 @@ class TestCargoEventEntity(TestCase):
     def test_serialize(self):
         with open("test/api/examples/cargo_event_entity1.json", 'r') as f:
             serialized = f.read()
-            deserialized = jsons.loads(serialized, CargoEventEntity)
+            deserialized = jsons.loads(serialized, CargoEvent)
 
-            expected = CargoEventEntity(
+            expected = CargoEvent(
                 event_type="cargo_port_unload_event",
                 location=[
                     GeographyEntity(

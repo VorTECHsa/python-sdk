@@ -1,0 +1,130 @@
+[
+  {
+    "call_sign": "3269",
+    "dead_weight": 6403,
+    "id": "1f6145c6e8134bed20a48d5a2a77732ffb2fe4e679b4297b25582dcb93dfaa84",
+    "mmsi": 900403269,
+    "name": "0",
+    "to_bow": 120,
+    "to_port": 30,
+    "to_starboard": 5,
+    "to_stern": 5,
+    "related_names": [
+      "0"
+    ],
+    "current_product_type": [
+      {
+        "cargo_movement_id": "12d2cbca522e5570ea988b30850ad5b762e16d1b710e920f26729f08fcfdca46",
+        "product_type": [
+          {
+            "id": "b68cbb746f8b9098c50e2ba36bcad83001a53bd362e9031fb49085d02c36659c",
+            "layer": "group",
+            "label": "Clean products"
+          },
+          {
+            "id": "cbb5acffa542aad31d26712a8cdfd9884301aa7658ac95c40f86ddb31bc29d9b",
+            "layer": "group_product",
+            "label": "Other Clean products"
+          }
+        ],
+        "active": false
+      }
+    ],
+    "parent": [
+      {
+        "name": "Tiny Tanker",
+        "layer": [
+          "vessel_class"
+        ],
+        "id": "tiny_tanker"
+      }
+    ],
+    "ref_type": "vessel",
+    "vessel_status": "vessel_status_ballast",
+    "corporate_entities": [],
+    "leaf": true,
+    "vessel_class": "tiny_tanker",
+    "cubic_capacity": 7060,
+    "tags": [
+      {
+        "tag": "vessel_decommissioned_tag",
+        "start_timestamp": "2016-06-08T09:44:57+0000"
+      }
+    ],
+    "layer": [
+      "vessel"
+    ]
+  },
+  {
+    "call_sign": "839",
+    "dead_weight": 5000,
+    "id": "1761da4fb069cd6ce153b6ad1c48e15cdb994eb386e4aafbe8f1bbde993cbaef",
+    "mmsi": 413771781,
+    "name": "058",
+    "to_bow": 18,
+    "to_port": 47,
+    "to_starboard": 36,
+    "to_stern": 28,
+    "related_names": [
+      "058"
+    ],
+    "current_product_type": [
+      {
+        "cargo_movement_id": "5b74c0aab0353cccb28a1bed34c04d7fa54120efb32de10f8f0429c00dd8d536",
+        "product_type": [
+          {
+            "id": "b68cbb746f8b9098c50e2ba36bcad83001a53bd362e9031fb49085d02c36659c",
+            "layer": "group",
+            "label": "Clean products"
+          },
+          {
+            "id": "cbb5acffa542aad31d26712a8cdfd9884301aa7658ac95c40f86ddb31bc29d9b",
+            "layer": "group_product",
+            "label": "Other Clean products"
+          }
+        ],
+        "active": false
+      },
+      {
+        "cargo_movement_id": "8709d0cf0d103349c6df89f4b53ac90babc89e53c966f8cbf42aa0e93be20d96",
+        "product_type": [
+          {
+            "id": "b68cbb746f8b9098c50e2ba36bcad83001a53bd362e9031fb49085d02c36659c",
+            "layer": "group",
+            "label": "Clean products"
+          },
+          {
+            "id": "a75fcc09bfc7d16496de3336551bc52b5891838bb7c22356d2cb65451587d1e5",
+            "layer": "group_product",
+            "label": "Biodiesel"
+          }
+        ],
+        "active": false
+      }
+    ],
+    "parent": [
+      {
+        "name": "Tiny Tanker",
+        "layer": [
+          "vessel_class"
+        ],
+        "id": "tiny_tanker"
+      }
+    ],
+    "ref_type": "vessel",
+    "vessel_status": "vessel_status_laden_unknown",
+    "corporate_entities": [],
+    "leaf": true,
+    "vessel_class": "tiny_tanker",
+    "cubic_capacity": 6318,
+    "tags": [
+      {
+        "tag": "vessel_decommissioned_tag",
+        "start_timestamp": "2017-07-11T13:42:37+0000"
+      }
+    ],
+    "layer": [
+      "vessel"
+    ]
+  }
+]
