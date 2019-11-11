@@ -29,7 +29,7 @@ jobs:
           name: "Run tests"
           command: |
             . .venv/bin/activate
-            nose2
+            export SKIP_TAGS=real; nose2
 
       - run:
           name: "Deploy documentation to gihub pages"

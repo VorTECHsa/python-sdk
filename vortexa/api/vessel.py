@@ -32,9 +32,10 @@ class Vessel(Node):
     tags: List[Tag]
     current_product_type: List
 
-    gross_tonnage: Optional[int]
+    vessel_class: str
     year: Optional[int]
     imo: Optional[int]
+    gross_tonnage: Optional[int] = None
 
 
 @dataclass(frozen=True)
@@ -53,15 +54,16 @@ class VesselEntity(IDName):
     imo: Optional[int]
 
     dwt: int
-    cubic_capacity: Optional[int]
 
     vessel_class: str
     corporate_entities: List[CorporateEntity]
     tags: List[Tag]
     status: str
 
-    voyage_id: Optional[str]
-    fixture_fulfilled: Optional[bool]
     start_timestamp: ISODate
-    end_timestamp: Optional[ISODate]
-    fixture_id: Optional[str]
+
+    cubic_capacity: Optional[int] = None
+    voyage_id: Optional[str] = None
+    fixture_fulfilled: Optional[bool] = None
+    end_timestamp: Optional[ISODate] = None
+    fixture_id: Optional[str] = None

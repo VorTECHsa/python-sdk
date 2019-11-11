@@ -18,12 +18,10 @@ class VesselsSearchResult(SearchResult):
     This class lets user represent vessels as a `pd.DataFrame`, or as a list of dictionaries.
     """
 
-    def __init__(self, _results: List[dict]):
-        super().__init__(jsons.loads(jsons.dumps(_results), List[Vessel]))
-
     def to_list(self) -> List[Vessel]:
         """Represent vessels as a list of dictionaries."""
-        return super().to_list()
+        list_of_dicts = super().to_list()
+        return jsons.loads(jsons.dumps(list_of_dicts), List[Vessel])
 
     def to_df(self, columns=None) -> pd.DataFrame:
         """
@@ -41,7 +39,7 @@ class VesselsSearchResult(SearchResult):
         if columns is None:
             columns = ['id', 'name', 'imo', 'vessel_class']
 
-        df = pd.DataFrame(self._records)
+        df = pd.DataFrame(super().to_list())
 
         if columns == 'all':
             return df
