@@ -1,9 +1,25 @@
-from unittest import TestCase
+from unittest import TestCase, skipIf
 
+from test.config import SKIP_TAGS
+from test.mock_client import MockVortexaClient
+from vortexa.client import set_client
 from vortexa.endpoints.vessels import Vessels
 
 
 class TestVessels(TestCase):
+
+    def test_search_ids_retreives_names(self):
+        set_client(MockVortexaClient())
+
+        vessels = Vessels().search()
+
+        names = [x.name for x in vessels]
+
+        assert names == ['0', '058']
+
+
+@skipIf('real' in SKIP_TAGS, 'Skipping tests that hit the real API server.')
+class TestVesselsReal(TestCase):
 
     def test_search_ids(self):
         ids = [
@@ -14,7 +30,7 @@ class TestVessels(TestCase):
         vessels = Vessels().search(ids=ids).to_list()
         assert len(vessels) == 2
 
-        print([x['name'] for x in vessels])
+        print([x.name for x in vessels])
 
     def test_search_vessel_class(self):
         vessel_classes = [
@@ -24,7 +40,7 @@ class TestVessels(TestCase):
 
         vessels = Vessels().search(vessel_classes=vessel_classes).to_list()
 
-        print([x['name'] for x in vessels])
+        print([x.name for x in vessels])
 
     def test_search_vessel_class_dataframe(self):
         ids = [

@@ -6,7 +6,7 @@ from vortexa.api.corporate import CorporateEntity
 from vortexa.api.shared_types import Node, IDName, ID, ISODate, Tag
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, )
 class Vessel(Node):
     """
     Represent a Vessel reference record returned by the API.
@@ -19,9 +19,7 @@ class Vessel(Node):
     # identifiers
     related_names: List[str]
     mmsi: int
-    imo: int
     call_sign: str
-    year: int
 
     # physical attributes
     to_bow: str
@@ -30,10 +28,13 @@ class Vessel(Node):
     to_starboard: str
     cubic_capacity: int
     dead_weight: int
-    gross_tonnage: int
 
     tags: List[Tag]
     current_product_type: List
+
+    gross_tonnage: Optional[int]
+    year: Optional[int]
+    imo: Optional[int]
 
 
 @dataclass(frozen=True)

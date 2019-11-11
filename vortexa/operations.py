@@ -4,14 +4,12 @@ from vortexa.client import default_client
 
 
 class Reference:
-    """
-    Lookup Vortexa Reference Data using an entity ID.
-    """
+    """Lookup Vortexa Reference Data using an entity ID."""
 
     def __init__(self, resource):
         self._resource = resource
 
-    def reference(self, id):
+    def reference(self, id: str):
         """
 
         # Arguments
@@ -29,9 +27,7 @@ class Reference:
 
 
 class Search:
-    """
-    Search Vortexa Reference Data.
-    """
+    """Search Vortexa Reference Data."""
 
     def __init__(self, resource):
         """

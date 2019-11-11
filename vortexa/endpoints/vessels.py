@@ -1,12 +1,14 @@
 """Vessels Endpoint."""
 from typing import List, Union
 
+import jsons
 import pandas as pd
 
+from vortexa.api.vessel import Vessel
 from vortexa.constants import VESSELS_REFERENCE
 from vortexa.operations import Reference, Search
-from vortexa.utils import convert_values_to_list
 from vortexa.search_result import SearchResult
+from vortexa.utils import convert_values_to_list
 
 
 class VesselsSearchResult(SearchResult):
@@ -16,7 +18,10 @@ class VesselsSearchResult(SearchResult):
     This class lets user represent vessels as a `pd.DataFrame`, or as a list of dictionaries.
     """
 
-    def to_list(self) -> List[dict]:
+    def __init__(self, _results: List[dict]):
+        super().__init__(jsons.loads(jsons.dumps(_results), List[Vessel]))
+
+    def to_list(self) -> List[Vessel]:
         """Represent vessels as a list of dictionaries."""
         return super().to_list()
 
