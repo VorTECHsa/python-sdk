@@ -4,7 +4,7 @@ import jsons
 
 from vortexa.api.cargo_movement import CargoEvent, CargoMovement
 from vortexa.api.vessel import VesselEntity
-from vortexa.api.corporate import CorporateEntity
+from vortexa.api.corporation import CorporateEntity
 from vortexa.api.product import ProductEntity
 from vortexa.api.geography import GeographyEntity
 

@@ -5,9 +5,9 @@ from vortexa.api.shared_types import IDName, EntityWithProbability
 
 
 @dataclass(frozen=True)
-class Corporate(IDName):
+class Corporation(IDName):
     """
-    Represent a Charterer reference record returned by the API.
+    Represent a Corporation reference record returned by the API.
 
     """
     corporate_entity_type: List[str]

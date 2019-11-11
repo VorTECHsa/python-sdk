@@ -3,7 +3,7 @@ from unittest import TestCase
 import jsons
 
 from vortexa.api.vessel import VesselEntity
-from vortexa.api.corporate import CorporateEntity
+from vortexa.api.corporation import CorporateEntity
 
 ce1 = CorporateEntity(id='cbd7dfe8a9fb0fa0ce3252ce7643437db6a32d0947a0c23d68dc5dea2f2d65d7',
                       layer="commercial_owner", probability=1, label='NGM Energy', source='external')

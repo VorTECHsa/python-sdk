@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import List, Optional
 
-from vortexa.api.corporate import CorporateEntity
+from vortexa.api.corporation import CorporateEntity
 
 from vortexa.api.shared_types import Node, IDName, ID, ISODate, Tag
 
