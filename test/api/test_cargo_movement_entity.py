@@ -2,8 +2,11 @@ from unittest import TestCase
 
 import jsons
 
-from vortexa.api.entities import GeographyEntity, ProductEntity, CorporateEntity, VesselEntity, \
-    CargoEventEntity, CargoMovementEntity
+from vortexa.api.cargo_movement import CargoEvent, CargoMovement
+from vortexa.api.vessel import VesselEntity
+from vortexa.api.corporate import CorporateEntity
+from vortexa.api.product import ProductEntity
+from vortexa.api.geography import GeographyEntity
 
 
 class TestCargoMovementEntity(TestCase):
@@ -11,7 +14,7 @@ class TestCargoMovementEntity(TestCase):
     def test_serialize(self):
         with open("test/api/examples/cargo_movement_entity1.json", 'r') as f:
             serialized = f.read()
-            deserialized = jsons.loads(serialized, CargoMovementEntity)
+            deserialized = jsons.loads(serialized, CargoMovement)
 
             dictionary = {
                 "cargo_movement_id": "00886b05a0747522b67322f50123ee60e61e219fc9a9c6011be1a1dade65f63e",
@@ -67,7 +70,7 @@ class TestCargoMovementEntity(TestCase):
                     })
                 ],
                 "events": [
-                    CargoEventEntity(**{
+                    CargoEvent(**{
                         "event_type": "cargo_port_load_event",
                         "location": [
                             GeographyEntity(**{
@@ -89,6 +92,6 @@ class TestCargoMovementEntity(TestCase):
                 ]
             }
 
-            expected = CargoMovementEntity(**dictionary)
+            expected = CargoMovement(**dictionary)
 
             assert expected == deserialized

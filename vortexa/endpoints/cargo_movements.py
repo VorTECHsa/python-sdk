@@ -4,7 +4,7 @@ from typing import List
 import jsons
 import pandas as pd
 
-from vortexa.api.entities import CargoMovementEntity
+from vortexa.api.cargo_movement import CargoMovement
 from vortexa.api.entity_serializing import convert_cme_to_flat_dict
 from vortexa.constants import CARGO_MOVEMENTS_RESOURCE
 from vortexa.operations import Search
@@ -26,10 +26,10 @@ class CargoMovementsSearchResult(SearchResult):
     """Container class holdings search results returns from the cargo movements endpoint."""
 
     def __init__(self, movements: List[dict]):
-        deserialized = jsons.loads(jsons.dumps(movements), List[CargoMovementEntity])
+        deserialized = jsons.loads(jsons.dumps(movements), List[CargoMovement])
         super().__init__(deserialized)
 
-    def to_list(self) -> List[CargoMovementEntity]:
+    def to_list(self) -> List[CargoMovement]:
         """Represent cargo movements as a list of `CargoMovementEntity`s."""
         return super().to_list()
 
