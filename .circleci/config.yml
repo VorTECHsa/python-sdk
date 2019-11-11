@@ -31,8 +31,15 @@ jobs:
             export SKIP_TAGS=real; nose2
 
       - run:
-          name: "Deploy documentation to gihub pages"
+          name: "Generate documentation"
           command: |
             . .venv/bin/activate
-            ./docs/deploy_docs.sh
+            ./docs/generate_docs.sh
 
+      - run:
+          name: "Deploy documentation to gihub pages if master"
+          command: |
+            if [[ ${CIRCLE_BRANCH} == "master" ]]; then
+              . .venv/bin/activate
+              ./docs/deploy_docs.sh
+            fi
