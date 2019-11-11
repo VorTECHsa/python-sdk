@@ -1,8 +1,9 @@
 docs_dir: _build/pydocmd
 pages:
 - Home: index.md
-- Entities: entities.md
-- References: references.md
+- Entities:
+    Geography: entities/geography.md
+    Product: entities/product.md
 - Operations: operations.md
 - Endpoints:
     Cargo Movements: endpoints/cargo_movements.md
