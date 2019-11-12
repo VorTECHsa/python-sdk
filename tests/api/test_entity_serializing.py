@@ -1,7 +1,7 @@
 from unittest import TestCase
 
 from vortexa.api.entity_serializing import serialize, _serialize_ve_layer
-from test.api.test_vessel_entity import ce1, ce2, ve
+from tests.api.test_vessel_entity import ce1, ce2, ve
 
 
 class TestEntitySerializing(TestCase):
