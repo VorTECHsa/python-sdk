@@ -17,10 +17,13 @@ $ pip install vortexa-sdk
 
 Set your `VORTEXA_API_KEY` environment variable, that's all.
 
+## Documentation
+
+Read the documentaiton at https://v0rt3x4.github.io/python-sdk/
+
 ## Contributing
 
-We welcome contributions! Please read our [Contributing Guide](https://github.com/V0RT3X4/python-sdk/CONTRIBUTING.md) for ways to offer feedback and contributions.
-
+We welcome contributions! Please read our [Contributing Guide](https://github.com/V0RT3X4/python-sdk/blob/master/CONTRIBUTING.md) for ways to offer feedback and contributions.
 
 ## Glossary
 
