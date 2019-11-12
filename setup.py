@@ -22,13 +22,18 @@ setuptools.setup(
     python_requires='>=3.7',
     install_requires=[
         'pandas==0.25.2',
-        'six==1.12.0',
         'requests==2.22.0',
-        'flake8==3.7.9',
-        'pre-commit==1.20.0',
         'jsons==1.0.0',
-        'nose2==0.9.1',
-        'flatten-dict==0.2.0',
-        'pydoc-markdown==2.0.4'
-    ]
+        'flatten-dict==0.2.0'
+    ],
+    extras_require={
+        'tests': [
+            'nose2==0.9.1',
+            'pre-commit==1.20.0',
+            'flake8==3.7.9',
+            'pydoc-markdown==2.0.4',
+            'six==1.12.0'
+        ]
+    }
+
 )
