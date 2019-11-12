@@ -16,12 +16,10 @@ class Vessel(Node):
     https://docs.vortexa.com/reference/GET/reference/vessels/%7Bid%7D
     """
 
-    # identifiers
     related_names: List[str]
     mmsi: int
     call_sign: str
 
-    # physical attributes
     to_bow: str
     to_stern: str
     to_port: str
@@ -33,8 +31,8 @@ class Vessel(Node):
     current_product_type: List
 
     vessel_class: str
-    year: Optional[int]
-    imo: Optional[int]
+    year: Optional[int] = None
+    imo: Optional[int] = None
     gross_tonnage: Optional[int] = None
 
 

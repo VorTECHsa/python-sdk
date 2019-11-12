@@ -33,7 +33,7 @@ class TestVesselsReal(TestCase):
 
         assert actual == set(vessel_classes)
 
-    def test_search_vessel_class_dataframe(self):
+    def test_search_ids_dataframe(self):
         set_client(default_client())
         ids = [
             "6d8a8f0863ca087204dd68e5fc3b6469a879829e6262856e34856aea3ca20509",
@@ -41,4 +41,5 @@ class TestVesselsReal(TestCase):
         ]
 
         df = Vessels().search(ids=ids).to_df()
-        print(df)
+        assert list(df.columns) == ['id', 'name', 'imo', 'vessel_class']
+        assert len(df) == 2
