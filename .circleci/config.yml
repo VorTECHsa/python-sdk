@@ -6,6 +6,10 @@ jobs:
       - image: circleci/python:3.7
     steps:
       - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - "76:f3:aa:52:65:1f:70:08:51:fd:d6:e0:7c:8a:33:fb"
+
       - restore_cache: &restore_cache
           keys:
             - v1-{{ .Branch }}-
