@@ -1,6 +1,6 @@
 from unittest import TestCase, skipIf
 
-from test.config import SKIP_TAGS
+from tests.config import SKIP_TAGS
 from vortexa.endpoints.cargo_movements import CargoMovements
 
 

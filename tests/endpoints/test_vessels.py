@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from test.mock_client import MockVortexaClient
+from tests.mock_client import MockVortexaClient
 from vortexa.client import set_client
 from vortexa.endpoints.vessels import Vessels
 
