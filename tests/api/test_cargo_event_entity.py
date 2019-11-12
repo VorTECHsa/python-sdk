@@ -17,7 +17,7 @@ class TestCargoEventEntity(TestCase):
                 event_type="cargo_port_unload_event",
                 location=[
                     GeographyEntity(
-                        id="2aaad41b89dfad19e5668918018ae02695d7710bcbe5f2dc689234e8da492de3",
+                        id="2aaad41b89dfad19e5668918018ae02695d77allowed_high_entropy_string",
                         layer="country",
                         label="United Kingdom",
                         source="model",

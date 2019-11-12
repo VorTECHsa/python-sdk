@@ -24,7 +24,7 @@ class TestProductEntity(TestCase):
 
     def test_instantiate_from_dict(self):
         dictionary = {
-            "id": "b68cbb746f8b9098c50e2ba36bcad83001a53bd362e9031fb49085d02c36659c",
+            "id": "b68cbb746f8b9098c50e2ba36bcad83001a53allowed_high_entropy_string",
             "layer": "group",
             "probability": 0.4756425,
             "source": "model",

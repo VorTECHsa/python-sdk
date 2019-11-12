@@ -11,8 +11,8 @@ class TestVesselsReal(TestCase):
     def test_search_ids(self):
         set_client(default_client())
         ids = [
-            "6d8a8f0863ca087204dd68e5fc3b6469a879829e6262856e34856aea3ca20509",
-            "bf2b55bd31c709aa4cba91a3cc4111191c88c83753cbd285674c22150e42003e"
+            "9c85cdb9941fb063b6761da4ad1c48ed6ce15allowed_high_entropy_string",
+            "3b6761d9c85cdb9941fb06a4ad1c48ed6ce15allowed_high_entropy_string"
         ]
 
         vessels = Vessels().search(ids=ids).to_list()
@@ -36,8 +36,8 @@ class TestVesselsReal(TestCase):
     def test_search_vessel_class_dataframe(self):
         set_client(default_client())
         ids = [
-            "6d8a8f0863ca087204dd68e5fc3b6469a879829e6262856e34856aea3ca20509",
-            "bf2b55bd31c709aa4cba91a3cc4111191c88c83753cbd285674c22150e42003e"
+            "9c85cdb9941fb063b6761da4ad1c48ed6ce15allowed_high_entropy_string",
+            "3b6761d9c85cdb9941fb06a4ad1c48ed6ce15allowed_high_entropy_string"
         ]
 
         df = Vessels().search(ids=ids).to_df()
