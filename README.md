@@ -10,7 +10,7 @@ Welcome to the Vortexa Python SDK, building upon the [Vortexa API Documentation]
 #### Installation
 
 ```bash
-$ pip install vortexa-sdk
+$ pip install vortexasdk
 ```
 
 #### Authentication
@@ -19,7 +19,7 @@ Set your `VORTEXA_API_KEY` environment variable, that's all.
 
 ## Documentation
 
-Read the documentaiton at https://v0rt3x4.github.io/python-sdk/
+Read the documentation at https://v0rt3x4.github.io/python-sdk/
 
 ## Contributing
 
