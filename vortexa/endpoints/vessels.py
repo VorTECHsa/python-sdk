@@ -4,22 +4,19 @@ from typing import List, Union
 import jsons
 import pandas as pd
 
+from vortexa.api.shared_types import ID
 from vortexa.api.vessel import Vessel
 from vortexa.constants import VESSELS_REFERENCE
 from vortexa.operations import Reference, Search
-from vortexa.search_result import SearchResult
+from vortexa.search_result import Result
 from vortexa.utils import convert_values_to_list
 
 
-class VesselsSearchResult(SearchResult):
-    """
-    VesselsSearchResult is a wrapper around the df from calling the vessels API endpoint.
-
-    This class lets user represent vessels as a `pd.DataFrame`, or as a list of dictionaries.
-    """
+class VesselsResult(Result):
+    """Container class that holds the result obtained from calling the `Vessels` endpoint."""
 
     def to_list(self) -> List[Vessel]:
-        """Represent vessels as a list of dictionaries."""
+        """Represent vessels as a list."""
         list_of_dicts = super().to_list()
         return jsons.loads(jsons.dumps(list_of_dicts), List[Vessel])
 
@@ -55,7 +52,7 @@ class Vessels(Reference, Search):
         Reference.__init__(self, VESSELS_REFERENCE)
         Search.__init__(self, VESSELS_REFERENCE)
 
-    def reference(self, id):
+    def reference(self, id: ID):
         """
         Perform a vessel lookup.
 
@@ -76,7 +73,7 @@ class Vessels(Reference, Search):
                ids: Union[str, List[str]] = None,
                vessel_classes: Union[str, List[str]] = None,
                vessel_product_types: Union[str, List[str]] = None,
-               ) -> VesselsSearchResult:
+               ) -> VesselsResult:
         """
         Find all vessels matching given search terms.
 
@@ -127,4 +124,4 @@ class Vessels(Reference, Search):
             "vessel_product_types": vessel_product_types,
         })
 
-        return VesselsSearchResult(super().search(**search_params))
+        return VesselsResult(super().search(**search_params))

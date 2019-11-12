@@ -1,5 +1,6 @@
 from typing import List
 
+from vortexa.api.shared_types import ID
 from vortexa.client import default_client
 
 
@@ -7,13 +8,21 @@ class Reference:
     """Lookup Vortexa Reference Data using an entity ID."""
 
     def __init__(self, resource):
-        self._resource = resource
-
-    def reference(self, id: str):
         """
+        Init.
 
         # Arguments
-            id: ID of the entity we're searching
+            resource: The vortexa endpoint used for reference lookups.
+
+        """
+        self._resource = resource
+
+    def reference(self, id: ID):
+        """
+        Lookup reference data using ID.
+
+        # Arguments
+            id: ID of the entity we're looking up
 
         # Returns
         An entity matching the ID
@@ -31,6 +40,7 @@ class Search:
 
     def __init__(self, resource):
         """
+        Init.
 
         # Arguments
             resource: Appropriate search resource
@@ -40,17 +50,17 @@ class Search:
 
     def search(self, **params) -> List[dict]:
         """
+        Search Reference data filtering on `params`.
 
         # Arguments
             params: Search parameters
 
         # Returns
-        VortexaAPI call matching vessels
+        Result of VortexaAPI call from hitting querying the `resource` endpoint filtering with `params`.
 
         # Examples
 
             >>> Search("/reference/vessels").search(term="DHT")
 
         """
-
         return default_client().search(self._resource, **params)
