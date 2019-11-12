@@ -7,9 +7,11 @@ from vortexa.endpoints.vessels import Vessels
 
 class TestVessels(TestCase):
 
-    def test_search_ids_retreives_names(self):
+    @classmethod
+    def setUpClass(cls) -> None:
         set_client(MockVortexaClient())
 
+    def test_search_ids_retreives_names(self):
         vessels = Vessels().search().to_list()
 
         names = [x.name for x in vessels]
