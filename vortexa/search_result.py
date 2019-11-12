@@ -6,8 +6,8 @@ import pandas as pd
 
 
 @dataclass
-class SearchResult(ABC):
-    """Abstract Class that holds a list of *_records*."""
+class Result(ABC):
+    """Abstract Container that holds a list of *_records*."""
 
     _records: List
 

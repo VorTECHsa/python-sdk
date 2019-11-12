@@ -3,11 +3,11 @@ from unittest import TestCase
 import pandas as pd
 
 from tests.mock_client import example_vessels
-from vortexa.endpoints.vessels import VesselsSearchResult
+from vortexa.endpoints.vessels import VesselsResult
 
 
 class TestVesselsSearchResult(TestCase):
-    vsr = VesselsSearchResult(example_vessels)
+    vsr = VesselsResult(example_vessels)
 
     def test_to_df(self):
         df = self.vsr.to_df('all')

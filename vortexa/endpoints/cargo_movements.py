@@ -8,7 +8,7 @@ from vortexa.api.cargo_movement import CargoMovement
 from vortexa.api.entity_serializing import convert_cme_to_flat_dict
 from vortexa.constants import CARGO_MOVEMENTS_RESOURCE
 from vortexa.operations import Search
-from vortexa.search_result import SearchResult
+from vortexa.search_result import Result
 
 DEFAULT_COLUMNS = [
     'events.cargo_port_load_event.0.label',
@@ -22,7 +22,7 @@ DEFAULT_COLUMNS = [
 ]
 
 
-class CargoMovementsSearchResult(SearchResult):
+class CargoMovementsResult(Result):
     """Container class holdings search results returns from the cargo movements endpoint."""
 
     def __init__(self, movements: List[dict]):
@@ -80,7 +80,7 @@ class CargoMovements(Search):
                filter_ship_to_ship_locations: List[str] = None,
                filter_waypoints: List[str] = None,
                disable_geographic_exclusion_rules: bool = None,
-               ) -> CargoMovementsSearchResult:
+               ) -> CargoMovementsResult:
         """
 
         Find CargoMovements matching the given search parameters.
@@ -169,4 +169,4 @@ class CargoMovements(Search):
             "disable_geographic_exclusion_rules": disable_geographic_exclusion_rules
         }
 
-        return CargoMovementsSearchResult(super().search(**params))
+        return CargoMovementsResult(super().search(**params))
