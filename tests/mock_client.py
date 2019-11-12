@@ -8,7 +8,7 @@ from vortexa.constants import *
 
 
 def _read(example_file) -> List:
-    with open(f'test/api/examples/{example_file}', 'r') as f:
+    with open(f'tests/api/examples/{example_file}', 'r') as f:
         return jsons.loads(f.read(), List)
 
 

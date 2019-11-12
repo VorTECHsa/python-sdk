@@ -9,7 +9,7 @@ from vortexa.api.geography import GeographyEntity
 class TestCargoEventEntity(TestCase):
 
     def test_serialize(self):
-        with open("test/api/examples/cargo_event_entity1.json", 'r') as f:
+        with open("tests/api/examples/cargo_event_entity1.json", 'r') as f:
             serialized = f.read()
             deserialized = jsons.loads(serialized, CargoEvent)
 
