@@ -6,9 +6,9 @@ import pandas as pd
 
 from vortexa.api.shared_types import ID
 from vortexa.api.product import Product
-from vortexa.constants import PRODUCTS_REFERENCE
+from vortexa.endpoints.endpoints import PRODUCTS_REFERENCE
 from vortexa.operations import Reference, Search
-from vortexa.search_result import Result
+from vortexa.api.search_result import Result
 from vortexa.utils import convert_values_to_list
 
 
