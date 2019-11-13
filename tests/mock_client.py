@@ -2,10 +2,9 @@ from typing import List
 
 import jsons
 
-from vortexa import CHARTERERS_REFERENCE
 from vortexa.api.shared_types import ID
 from vortexa.client import AbstractVortexaClient
-from vortexa.endpoints.endpoints import VESSELS_REFERENCE
+from vortexa.endpoints.endpoints import CHARTERERS_REFERENCE, VESSELS_REFERENCE
 
 
 def _read(example_file) -> List:

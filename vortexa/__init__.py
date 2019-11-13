@@ -1,3 +1,2 @@
 """Vortexa Python SDK."""
-from vortexa.api import *
-from vortexa.endpoints import *
+from vortexa.endpoints import CargoMovements, Charterers, Geographies, Products, Vessels

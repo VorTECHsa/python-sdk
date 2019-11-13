@@ -5,7 +5,7 @@ from typing import List
 import requests
 from requests import Response
 
-from vortexa import ID
+from vortexa.api.shared_types import ID
 from vortexa.endpoints.endpoints import API_URL
 
 
