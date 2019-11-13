@@ -48,7 +48,8 @@ class VortexaClient(AbstractVortexaClient):
             if offset > response['total']:
                 print(f'Finishing. offset: {offset}, total_records: {response["total"]}')
                 more = False
-
+        
+        print("hello")
         return responses
 
     def _create_url(self, path: str) -> str:
