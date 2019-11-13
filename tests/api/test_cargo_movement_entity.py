@@ -2,7 +2,7 @@ from unittest import TestCase
 
 import jsons
 
-from vortexa.api import CargoEvent, CargoMovement, CorporateEntity, GeographyEntity, ProductEntity, VesselEntity
+from vortexasdk.api import CargoEvent, CargoMovement, CorporateEntity, GeographyEntity, ProductEntity, VesselEntity
 
 
 class TestCargoMovementEntity(TestCase):

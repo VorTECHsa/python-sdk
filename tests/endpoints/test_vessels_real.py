@@ -1,8 +1,8 @@
 from unittest import TestCase, skipIf
 
 from tests.config import SKIP_TAGS
-from vortexa.client import default_client, set_client
-from vortexa.endpoints.vessels import Vessels
+from vortexasdk.client import default_client, set_client
+from vortexasdk.endpoints.vessels import Vessels
 
 
 @skipIf('real' in SKIP_TAGS, 'Skipping tests that hit the real API server.')

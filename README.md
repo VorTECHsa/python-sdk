@@ -22,7 +22,7 @@ Set your `VORTEXA_API_KEY` environment variable, that's all.
 ##### Example
 
 ```python
->>> from vortexa.endpoints.cargo_movements import CargoMovements
+>>> from vortexasdk import CargoMovements
 >>> df = CargoMovements() \
         .search(filter_time_min="2019-08-01T00:00:00.000Z", filter_time_max="2019-08-01T00:15:00.000Z")\
         .to_df()

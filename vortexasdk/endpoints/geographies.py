@@ -1,9 +1,9 @@
 """Geographies Endpoint."""
 from typing import List, Union
 
-from vortexa.endpoints.endpoints import GEOGRAPHIES_REFERENCE
-from vortexa.operations import Reference, Search
-from vortexa.utils import convert_values_to_list
+from vortexasdk.endpoints.endpoints import GEOGRAPHIES_REFERENCE
+from vortexasdk.operations import Reference, Search
+from vortexasdk.utils import convert_values_to_list
 
 
 class Geographies(Reference, Search):

@@ -5,8 +5,8 @@ from typing import List
 import requests
 from requests import Response
 
-from vortexa.api.shared_types import ID
-from vortexa.endpoints.endpoints import API_URL
+from vortexasdk.api.shared_types import ID
+from vortexasdk.endpoints.endpoints import API_URL
 
 
 class AbstractVortexaClient(ABC):

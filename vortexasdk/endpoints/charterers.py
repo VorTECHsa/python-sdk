@@ -1,9 +1,9 @@
 """Charterers Endpoint."""
 from typing import List, Union
 
-from vortexa.endpoints.endpoints import CHARTERERS_REFERENCE
-from vortexa.operations import Reference, Search
-from vortexa.utils import convert_values_to_list
+from vortexasdk.endpoints.endpoints import CHARTERERS_REFERENCE
+from vortexasdk.operations import Reference, Search
+from vortexasdk.utils import convert_values_to_list
 
 
 class Charterers(Reference, Search):

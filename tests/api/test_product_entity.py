@@ -2,7 +2,7 @@ from unittest import TestCase
 
 import jsons
 
-from vortexa.api.product import ProductEntity
+from vortexasdk.api.product import ProductEntity
 
 
 class TestProductEntity(TestCase):

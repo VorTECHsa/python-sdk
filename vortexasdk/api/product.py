@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import List
 
-from vortexa.api.shared_types import Node, EntityWithProbability
+from vortexasdk.api.shared_types import Node, EntityWithProbability
 
 
 @dataclass(frozen=True)
@@ -13,6 +13,7 @@ class Product(Node):
 
     https://docs.vortexa.com/reference/GET/reference/products/%7Bid%7D
     """
+
     layer: List[str]
     meta: dict
 
