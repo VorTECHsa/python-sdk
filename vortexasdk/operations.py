@@ -1,7 +1,7 @@
 from typing import List
 
-from vortexa.api.shared_types import ID
-from vortexa.client import default_client
+from vortexasdk.api.shared_types import ID
+from vortexasdk.client import default_client
 
 
 class Reference:

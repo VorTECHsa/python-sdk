@@ -1,7 +1,7 @@
 from unittest import TestCase, skipIf
 
 from tests.config import SKIP_TAGS
-from vortexa.endpoints.cargo_movements import CargoMovements
+from vortexasdk.endpoints.cargo_movements import CargoMovements
 
 
 @skipIf('real' in SKIP_TAGS, 'Skipping tests that hit the real API server.')

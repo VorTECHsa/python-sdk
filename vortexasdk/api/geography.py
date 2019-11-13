@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import List, Optional, Tuple
 
-from vortexa.api.shared_types import EntityWithProbability, IDLayer, IDNameLayer, Node
+from vortexasdk.api.shared_types import EntityWithProbability, IDLayer, IDNameLayer, Node
 
 Position = Tuple[float, float]
 

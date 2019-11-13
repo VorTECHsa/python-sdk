@@ -2,30 +2,30 @@ site_name: VortexaSDK
 repo_url: https://github.com/V0RT3X4/python-sdk
 generate:
   - operations.md:
-      - vortexa.operations.Search+
-      - vortexa.operations.Reference+
+      - vortexasdk.operations.Search+
+      - vortexasdk.operations.Reference+
 
   - endpoints/cargo_movements.md:
-      - vortexa.endpoints.cargo_movements++
+      - vortexasdk.endpoints.cargo_movements++
   - endpoints/charterers.md:
-      - vortexa.endpoints.charterers++
+      - vortexasdk.endpoints.charterers++
   - endpoints/vessels.md:
-      - vortexa.endpoints.vessels++
+      - vortexasdk.endpoints.vessels++
   - endpoints/geographies.md:
-      - vortexa.endpoints.geographies++
+      - vortexasdk.endpoints.geographies++
   - endpoints/products.md:
-      - vortexa.endpoints.products++
+      - vortexasdk.endpoints.products++
 
   - entities/product.md:
-      - vortexa.api.product++
+      - vortexasdk.api.product++
   - entities/geography.md:
-      - vortexa.api.geography++
+      - vortexasdk.api.geography++
   - entities/corporation.md:
-      - vortexa.api.corporation++
+      - vortexasdk.api.corporation++
   - entities/vessel.md:
-      - vortexa.api.vessel++
+      - vortexasdk.api.vessel++
   - entities/cargo_movement.md:
-      - vortexa.api.cargo_movement++
+      - vortexasdk.api.cargo_movement++
 pages:
   - Home: index.md << README.md
   - Entities:

@@ -1,10 +1,10 @@
 from dataclasses import dataclass
 from typing import List, Optional
 
-from vortexa.api.geography import GeographyEntity
-from vortexa.api.product import ProductEntity
-from vortexa.api.shared_types import ISODate, ID
-from vortexa.api.vessel import VesselEntity
+from vortexasdk.api.geography import GeographyEntity
+from vortexasdk.api.product import ProductEntity
+from vortexasdk.api.shared_types import ISODate, ID
+from vortexasdk.api.vessel import VesselEntity
 
 
 @dataclass(frozen=True)
