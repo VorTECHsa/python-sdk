@@ -12,7 +12,7 @@ The below script returns:
 
 
 """
-from vortexa import CargoMovements, Geographies, Vessels
+from vortexasdk import CargoMovements, Geographies, Vessels
 
 print(f'Running {__file__}')
 
