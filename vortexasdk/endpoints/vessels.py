@@ -4,12 +4,12 @@ from typing import List, Union
 import jsons
 import pandas as pd
 
-from vortexa.api.shared_types import ID
-from vortexa.api.vessel import Vessel
-from vortexa.endpoints.endpoints import VESSELS_REFERENCE
-from vortexa.operations import Reference, Search
-from vortexa.api.search_result import Result
-from vortexa.utils import convert_values_to_list
+from vortexasdk.api.shared_types import ID
+from vortexasdk.api.vessel import Vessel
+from vortexasdk.endpoints.endpoints import VESSELS_REFERENCE
+from vortexasdk.operations import Reference, Search
+from vortexasdk.api.search_result import Result
+from vortexasdk.utils import convert_values_to_list
 
 
 class VesselsResult(Result):

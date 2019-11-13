@@ -1,9 +1,9 @@
 from dataclasses import dataclass
 from typing import List, Optional
 
-from vortexa.api.corporation import CorporateEntity
+from vortexasdk.api.corporation import CorporateEntity
 
-from vortexa.api.shared_types import Node, IDName, ID, ISODate, Tag
+from vortexasdk.api.shared_types import Node, IDName, ID, ISODate, Tag
 
 
 @dataclass(frozen=True, )

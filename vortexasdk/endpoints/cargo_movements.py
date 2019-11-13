@@ -4,11 +4,11 @@ from typing import List
 import jsons
 import pandas as pd
 
-from vortexa.api.cargo_movement import CargoMovement
-from vortexa.api.entity_serializing import convert_cme_to_flat_dict
-from vortexa.endpoints.endpoints import CARGO_MOVEMENTS_RESOURCE
-from vortexa.operations import Search
-from vortexa.api.search_result import Result
+from vortexasdk.api.cargo_movement import CargoMovement
+from vortexasdk.api.entity_serializing import convert_cme_to_flat_dict
+from vortexasdk.endpoints.endpoints import CARGO_MOVEMENTS_RESOURCE
+from vortexasdk.operations import Search
+from vortexasdk.api.search_result import Result
 
 DEFAULT_COLUMNS = [
     'events.cargo_port_load_event.0.label',

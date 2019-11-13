@@ -9,4 +9,4 @@ repos:
       - id: pydocstyle
         args:
           - --ignore=D107,D203,D212,D100
-        files: ^vortexa/
+        files: ^vortexasdk/

@@ -1,9 +1,14 @@
 """Products Endpoint."""
+<<<<<<< HEAD:vortexa/endpoints/products.py
 from typing import List, Union
+=======
+from vortexasdk.operations import Reference
+>>>>>>> master:vortexasdk/endpoints/products.py
 
 import jsons
 import pandas as pd
 
+<<<<<<< HEAD:vortexa/endpoints/products.py
 from vortexa.api.shared_types import ID
 from vortexa.api.product import Product
 from vortexa.endpoints.endpoints import PRODUCTS_REFERENCE
@@ -44,8 +49,9 @@ class ProductResult(Result):
             return df[columns]
 
 
-class Products(Reference, Search):
-    """Products endpoint."""
+
+class Products(Reference):
+    """Not implemented yet."""
 
     def __init__(self):
         """Instantiate endpoint using reference endpoint."""

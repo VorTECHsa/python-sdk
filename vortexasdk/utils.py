@@ -8,4 +8,5 @@ def _to_list(a) -> list:
 
 
 def convert_values_to_list(data: dict) -> dict:
+    """Convert each value to a list."""
     return {k: _to_list(v) for k, v in data.items()}
