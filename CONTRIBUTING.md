@@ -37,7 +37,7 @@ $ . venv/bin/activate
 
 install the required dependencies
 ```
-$ pip install -e .
+$ pip install -e .[tests]
 ```
 
 run tests
