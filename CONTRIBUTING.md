@@ -65,6 +65,10 @@ A good pull request:
 -  If it adds/changes a public API, it must also include documentation
    for those changes.
 
+Tips:
+- If you're adding a new endpoint, adapt and use `./docs/generate_stubs.sh` to generate sample json data used for tests.
+
+
 ## Style guide
 
 #### Commit message formatting
