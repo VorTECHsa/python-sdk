@@ -1,4 +1,4 @@
-"""Vessels Endpoint."""
+"""Products Endpoint."""
 from typing import List, Union
 
 import jsons
@@ -25,8 +25,8 @@ class ProductResult(Result):
         Represent products as a `pd.DataFrame`.
 
         # Arguments
-            columns: The vessel features we want in the dataframe. Enter `columns='all'` to include all features.
-            Defaults to `columns = ['id', 'name', 'imo', 'vessel_class']`.
+            columns: The product features we want in the dataframe. Enter `columns='all'` to include all features.
+            Defaults to `columns = ['id', 'name']`.
 
 
         # Returns
