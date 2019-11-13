@@ -12,10 +12,7 @@ The below script returns:
 
 
 """
-
-from vortexa.endpoints.cargo_movements import CargoMovements
-from vortexa.endpoints.geographies import Geographies
-from vortexa.endpoints.vessels import Vessels
+from vortexa import CargoMovements, Geographies, Vessels
 
 print(f'Running {__file__}')
 

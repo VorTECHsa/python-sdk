@@ -1,12 +1,13 @@
 """Geographies Endpoint."""
 from typing import List, Union
 
-from vortexa.constants import GEOGRAPHIES_REFERENCE
+from vortexa.endpoints.endpoints import GEOGRAPHIES_REFERENCE
 from vortexa.operations import Reference, Search
 from vortexa.utils import convert_values_to_list
 
 
 class Geographies(Reference, Search):
+    """Geographies endpoint."""
 
     def __init__(self):
         Reference.__init__(self, GEOGRAPHIES_REFERENCE)
@@ -14,6 +15,7 @@ class Geographies(Reference, Search):
 
     def search(self, term: Union[str, List[str]]):
         """
+        Find all geographies matching given search terms.
 
         # Arguments
             term: The geography name (or names) we're filtering on
@@ -28,6 +30,5 @@ class Geographies(Reference, Search):
             ['Portsmouth [GB]', 'Portsmouth, NH [US]']
 
         """
-
         params = convert_values_to_list({"term": term})
         return super().search(**params)

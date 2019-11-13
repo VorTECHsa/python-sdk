@@ -5,15 +5,19 @@ from typing import List
 import requests
 from requests import Response
 
-from vortexa.api.shared_types import ID
-from vortexa.constants import API_URL
+from vortexa import ID
+from vortexa.endpoints.endpoints import API_URL
 
 
 class AbstractVortexaClient(ABC):
+    """Base client."""
+
     def get_reference(self, resource: str, id: ID) -> str:
+        """Lookup reference data."""
         raise NotImplementedError
 
     def search(self, resource: str, **data) -> List:
+        """Search."""
         raise NotImplementedError
 
 
@@ -26,11 +30,13 @@ class VortexaClient(AbstractVortexaClient):
         self.api_key = kwargs["api_key"]
 
     def get_reference(self, resource: str, id: ID) -> str:
+        """Lookup reference data."""
         url = self._create_url(f'{resource}/{id}')
         response = requests.get(url)
         return self._handle_response(response)['data']
 
     def search(self, resource: str, **data) -> List:
+        """Search using `resource` using `**data` as filter params."""
         url = self._create_url(resource)
 
         payload = {k: v for k, v in data.items() if v is not None}
@@ -77,7 +83,8 @@ class VortexaClient(AbstractVortexaClient):
 __client__ = None
 
 
-def default_client():
+def default_client() -> VortexaClient:
+    """Instantiate VortexaClient as global variable."""
     global __client__
 
     if __client__ is None:
@@ -93,5 +100,6 @@ def default_client():
 
 
 def set_client(client) -> None:
+    """Set the global client, used by all endpoints."""
     global __client__
     __client__ = client

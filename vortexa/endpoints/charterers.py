@@ -1,12 +1,13 @@
 """Charterers Endpoint."""
 from typing import List, Union
 
-from vortexa.constants import CHARTERERS_REFERENCE
+from vortexa.endpoints.endpoints import CHARTERERS_REFERENCE
 from vortexa.operations import Reference, Search
 from vortexa.utils import convert_values_to_list
 
 
 class Charterers(Reference, Search):
+    """Charterers Endpoint."""
 
     def __init__(self):
         Reference.__init__(self, CHARTERERS_REFERENCE)
@@ -14,6 +15,7 @@ class Charterers(Reference, Search):
 
     def search(self, term: Union[str, List[str]]):
         """
+        Find all Charterers matching given search terms.
 
         # Arguments
             term: The charterer name(s) we're filtering on
@@ -28,6 +30,5 @@ class Charterers(Reference, Search):
             ['Donsotank', 'Dorval SC']
 
         """
-
         params = convert_values_to_list({"term": term})
         return super().search(**params)
