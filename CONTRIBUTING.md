@@ -1,15 +1,5 @@
 # Contributing to VortexaSDK
 
-## Contributing Code
-
-A good pull request:
--  Is clear.
--  Follows the existing style of the code base (PEP-8).
--  Has comments included as needed.
--  A test case that demonstrates the previous flaw that now passes with
-   the included patch, or demonstrates the newly added feature.
--  If it adds/changes a public API, it must also include documentation
-   for those changes.
 
 ## Suggesting new features / Reporting An Issue
 
@@ -26,7 +16,7 @@ ideal report includes:
    demonstrating what's wrong. This makes the process for fixing bugs
    quicker & gets issues resolved sooner.
 
-#### Setting up your environment
+## Setting up your environment
 
 First create a new virtual environment
 ```bash
@@ -52,11 +42,21 @@ serve documentation
 ```bash
 $ ./docs/serve_docs.sh
 ```
-…and open http://localhost:8000 in your web browser.
+…and view the docs at http://localhost:8000 in your web browser.
 
 
 :tada: Now you're ready to create a new branch, add a feature or fix a bug, then send us a pull request! :tada:
 
+## Contributing Code
+
+A good pull request:
+-  Is clear.
+-  Follows the existing style of the code base (PEP-8).
+-  Has comments included as needed.
+-  A test case that demonstrates the previous flaw that now passes with
+   the included patch, or demonstrates the newly added feature.
+-  If it adds/changes a public API, it must also include documentation
+   for those changes.
 
 ## Style guide
 
