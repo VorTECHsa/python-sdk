@@ -7,7 +7,7 @@ setuptools.setup(
     name='vortexasdk',
     version='0.1.0-dev5',
     author='Vortexa Developers',
-    author_email='developers@vortexasdk.com',
+    author_email='developers@vortexa.com',
     description='Vortexa SDK',
     long_description=long_description,
     long_description_content_type="text/markdown",
