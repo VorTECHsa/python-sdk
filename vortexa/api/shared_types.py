@@ -1,14 +1,15 @@
 from abc import ABC
 from dataclasses import dataclass
-from typing import List, Tuple, Optional
+from typing import List, Optional
 
 ID = str
-Position = Tuple[float, float]
 ISODate = str
 
 
 @dataclass(frozen=True)
 class Entity:
+    """Holds commonly used properties."""
+
     id: ID
     label: str
     layer: str
@@ -16,6 +17,13 @@ class Entity:
 
 @dataclass(frozen=True)
 class EntityWithProbability(Entity):
+    """
+    Extension of `Entity`, containing additional properties.
+
+    - `probability` the probability of an entity occurring.
+    - `source` the source of this entity, (is typically one of `['model', 'external_data']`
+    """
+
     probability: float
     source: str
 
@@ -23,6 +31,7 @@ class EntityWithProbability(Entity):
 @dataclass(frozen=True)
 class IDName:
     """Tuple containing `id` and `name`."""
+
     id: ID
     name: str
 
@@ -30,6 +39,7 @@ class IDName:
 @dataclass(frozen=True)
 class IDLayer:
     """Tuple containing `id` and `layer`."""
+
     id: ID
     name: str
 
@@ -37,6 +47,7 @@ class IDLayer:
 @dataclass(frozen=True)
 class IDNameLayer:
     """Triple holding `id`, `name`, and `layer`."""
+
     id: ID
     layer: str
     name: str
@@ -49,10 +60,11 @@ class Node(ABC, IDName):
 
     # Attributes:
         ref_type: Identifies the reference type data
-        leaf: Is this node a leaf of the hierarchal tree?
+        leaf: Is this node a leaf of the hierarchical tree?
         parent: List of parents
 
     """
+
     ref_type: str
     leaf: bool
     parent: List[IDNameLayer]

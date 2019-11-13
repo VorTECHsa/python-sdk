@@ -1,59 +1,89 @@
-# Contributing to Open Source Guides
+# Contributing to VortexaSDK
 
-Thanks for checking out the Open Source Guides! We're excited to hear and learn from you. Your experiences will benefit others who read and use these guides.
 
-We've put together the following guidelines to help you figure out where you can best be helpful.
+## Suggesting new features / Reporting An Issue
 
-Interested in making a contribution? Read on!
+First, check to see if there's an existing issue/pull request for the
+bug/feature. All issues are at https://github.com/V0RT3X4/python-sdk/issues and pull reqs are at
+https://github.com/V0RT3X4/python-sdk/pulls.
 
-## How to contribute
+If there isn't an existing issue there, please file an issue. The
+ideal report includes:
 
-If you'd like to contribute, start by searching through the [Issues](https://github.com/V0RT3X4/python-sdk/issues) and [Pull Requests](https://github.com/V0RT3X4/python-sdk/pulls) to see whether someone else has raised a similar idea or question.
+-  A description of the problem/suggestion.
+-  How to recreate the bug (including the version on your python interpreter).
+-  If possible, create a pull request with a (failing) test case
+   demonstrating what's wrong. This makes the process for fixing bugs
+   quicker & gets issues resolved sooner.
 
-If you don't see your idea listed, and you think it fits into the goals of this guide, do one of the following:
-* **If your contribution is minor,** such as a typo fix, open a pull request.
-* **If your contribution is major,** such as a new guide, start by opening an issue first. That way, other people can weigh in on the discussion before you do any work.
+## Setting up your environment
 
-## Ground rules & expectations
+First, clone the repo, then `cd` into the repo.
 
-Before we get started, here are a few things we expect from you (and that you should expect from others):
+```bash
+$ git clone git@github.com:V0RT3X4/python-sdk.git
+$ cd python-sdk
+```
 
-* Be kind and thoughtful in your conversations around this project. We all come from different backgrounds and projects, which means we likely have different perspectives on "how open source is done." Try to listen to others rather than convince them that your way is correct.
-* Open Source Guides are released with a [Contributor Code of Conduct](./CODE_OF_CONDUCT.md). By participating in this project, you agree to abide by its terms.
-* If you open a pull request, please ensure that your contribution passes all tests. If there are test failures, you will need to address them before we can merge your contribution.
-* When adding content, please consider if it is widely valuable. Please don't add references or links to things you or your employer have created as others will do so if they appreciate it.
+create a new virtual environment
+```bash
+$ python3.7 -m venv venv
+```
 
+activate your environment
+```bash
+$ . venv/bin/activate
+```
+
+install the required dependencies
+```
+$ pip install -e .[tests]
+```
+
+run tests
+```
+$ python setup.py test
+```
+
+serve documentation
+```bash
+$ ./docs/serve_docs.sh
+```
+…and view the docs at http://localhost:8000 in your web browser.
+
+
+:tada: Now you're ready to create a new branch, add a feature or fix a bug, then send us a pull request! :tada:
+
+## Contributing Code
+
+A good pull request:
+-  Is clear.
+-  Follows the existing style of the code base (PEP-8).
+-  Has comments included as needed.
+-  A test case that demonstrates the previous flaw that now passes with
+   the included patch, or demonstrates the newly added feature.
+-  If it adds/changes a public API, it must also include documentation
+   for those changes.
 
 ## Style guide
 
-### Commit message formatting
+#### Commit message formatting
 We adopt the [Conventional Commits](https://www.conventionalcommits.org) convention to format commit messages.
 
 
-### Documentation
+#### Documentation
 We're using [Pydocmd](https://github.com/NiklasRosenstein/pydoc-markdown)
 to automatically generate docs.
 
 Documentation should follow the [Google Documentation Style Guide](https://developers.google.com/style/api-reference-comments)
 
-#### Setting up your environment
-
-##### Installation
-```bash
-$ pip3 install -r requirements.txt
-```
-
-##### Running
-
-Pydocmd:
-```bash
-$ ./docs/serve_docs.sh
-```
-
-…and open http://localhost:8000 in your web browser.
 
 ## Community
 
-Discussions about the VortexaSDK take place on this repository's [Issues](https://github.com/V0RT3X4/python-sdk/issues) and [Pull Requests](https://github.com/V0RT3X4/python-sdk/pulls) sections. Anybody is welcome to join these conversations.
+Discussions about the VortexaSDK take place on this repository's https://github.com/V0RT3X4/python-sdk/issues and https://github.com/V0RT3X4/python-sdk/pulls sections. Anybody is welcome to join these conversations.
 
 Wherever possible, do not take these conversations to private channels, including contacting the maintainers directly. Keeping communication public means everybody can benefit and learn from the conversation.
+
+## Code of Conduct
+
+Please see https://github.com/V0RT3X4/python-sdk/blob/master/CODE_OF_CONDUCT.md for the code of conduct.

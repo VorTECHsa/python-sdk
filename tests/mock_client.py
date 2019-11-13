@@ -4,7 +4,7 @@ import jsons
 
 from vortexa.api.shared_types import ID
 from vortexa.client import AbstractVortexaClient
-from vortexa.constants import *
+from vortexa.endpoints.endpoints import CHARTERERS_REFERENCE, VESSELS_REFERENCE
 
 
 def _read(example_file) -> List:
