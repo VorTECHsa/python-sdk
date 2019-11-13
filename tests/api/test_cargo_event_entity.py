@@ -29,8 +29,8 @@ class TestCargoEventEntity(TestCase):
                     -0.256674902984994,
                     53.74191566386998
                 ],
-                start_timestamp="2019-10-24T13:16:43+0000",
-                end_timestamp="2019-10-25T00:40:46+0000"
+                start_timestamp="2017-04-24T13:16:43+0000",
+                end_timestamp="2017-04-25T00:40:46+0000"
             )
 
             assert expected == deserialized

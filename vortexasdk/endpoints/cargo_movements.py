@@ -65,8 +65,8 @@ class CargoMovements(Search):
 
     def search(self,
                filter_activity: str = "loading_state",
-               filter_time_min: str = "2019-10-01T00:00:00.000Z",
-               filter_time_max: str = "2019-10-01T01:00:00.000Z",
+               filter_time_min: str = "2017-04-01T00:00:00.000Z",
+               filter_time_max: str = "2017-04-01T01:00:00.000Z",
                include_definition: bool = True,
                cm_unit: str = 'b',
 
@@ -123,15 +123,15 @@ class CargoMovements(Search):
 
 
         # Example
-        Let's search for all vessels that loaded from `Rotterdam [NL]` on the morning of 1st December 2018.
+        Let's search for all vessels that loaded from `Rotterdam [NL]` on the morning of 1st December 2017.
 
         ```python
 
         >>> df = CargoMovements().search(
             filter_origins=[g['id'] for g in Geographies().search("rotterdam") if 'port' in g['layer']],
             filter_activity='loading_state',
-            filter_time_min="2018-12-01T00:00:00.000Z",
-            filter_time_max="2018-12-01T12:00:00.000Z",
+            filter_time_min="2017-12-01T00:00:00.000Z",
+            filter_time_max="2017-12-01T12:00:00.000Z",
         ).to_df(columns=['product.grade.label', 'product.group.label', 'vessels.0.vessel_class', 'vessels'])
         ```
 

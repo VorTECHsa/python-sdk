@@ -34,8 +34,8 @@ class TestCargoMovementEntity(TestCase):
                                 "source": "external"
                             })
                         ],
-                        "start_timestamp": "2019-10-18T21:38:34+0000",
-                        "end_timestamp": "2019-10-25T00:40:46+0000",
+                        "start_timestamp": "2017-04-18T21:38:34+0000",
+                        "end_timestamp": "2017-04-25T00:40:46+0000",
                         "fixture_fulfilled": False,
                         "voyage_id": "401f0e74fc42401248a484aca2e9955dea885378796f7f4d0bc8e92c35ea270a",
                         "tags": [],
@@ -82,8 +82,8 @@ class TestCargoMovementEntity(TestCase):
                             4.29914090037834,
                             51.87936163368058
                         ],
-                        "start_timestamp": "2019-10-18T21:38:34+0000",
-                        "end_timestamp": "2019-10-20T16:41:49+0000"
+                        "start_timestamp": "2017-04-18T21:38:34+0000",
+                        "end_timestamp": "2017-04-20T16:41:49+0000"
                     })
                 ]
             }
