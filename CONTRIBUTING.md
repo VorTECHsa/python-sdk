@@ -18,7 +18,14 @@ ideal report includes:
 
 ## Setting up your environment
 
-First create a new virtual environment
+First, clone the repo, then `cd` into the repo.
+
+```bash
+$ git clone git@github.com:V0RT3X4/python-sdk.git
+$ cd python-sdk
+```
+
+create a new virtual environment
 ```bash
 $ python3.7 -m venv venv
 ```
