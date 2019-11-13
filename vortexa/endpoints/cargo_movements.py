@@ -6,9 +6,9 @@ import pandas as pd
 
 from vortexa.api.cargo_movement import CargoMovement
 from vortexa.api.entity_serializing import convert_cme_to_flat_dict
-from vortexa.constants import CARGO_MOVEMENTS_RESOURCE
+from vortexa.endpoints.endpoints import CARGO_MOVEMENTS_RESOURCE
 from vortexa.operations import Search
-from vortexa.search_result import Result
+from vortexa.api.search_result import Result
 
 DEFAULT_COLUMNS = [
     'events.cargo_port_load_event.0.label',

@@ -6,9 +6,9 @@ import pandas as pd
 
 from vortexa.api.shared_types import ID
 from vortexa.api.vessel import Vessel
-from vortexa.constants import VESSELS_REFERENCE
+from vortexa.endpoints.endpoints import VESSELS_REFERENCE
 from vortexa.operations import Reference, Search
-from vortexa.search_result import Result
+from vortexa.api.search_result import Result
 from vortexa.utils import convert_values_to_list
 
 
