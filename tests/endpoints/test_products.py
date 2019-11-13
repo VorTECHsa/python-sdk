@@ -1,7 +1,7 @@
 from unittest import TestCase
 from tests.mock_client import MockVortexaClient
-from vortexa.client import set_client
-from vortexa.endpoints.products import Products
+from vortexasdk.client import set_client
+from vortexasdk.endpoints.products import Products
 
 
 class TestProducts(TestCase):
