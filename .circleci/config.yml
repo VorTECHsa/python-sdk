@@ -29,10 +29,16 @@ jobs:
             - ~/.cache/pip
 
       - run:
-          name: "Run tests"
+          name: "Run local tests only "
           command: |
             . .venv/bin/activate
             export SKIP_TAGS=real; nose2
+
+      - run:
+          name: "Run all tests"
+          command: |
+            . .venv/bin/activate
+            nose2
 
       - run:
           name: "Build docs"
