@@ -101,6 +101,6 @@ def default_client() -> VortexaClient:
 
 def set_client(client) -> None:
     """Set the global client, used by all endpoints."""
-    print("Setting global __client__")
     global __client__
     __client__ = client
+    print(f'global __client__ has been set {__client__.__class__.__name__}')
