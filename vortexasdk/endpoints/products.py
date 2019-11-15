@@ -26,7 +26,7 @@ class ProductResult(Result):
 
         # Arguments
             columns: The product features we want in the dataframe. Enter `columns='all'` to include all features.
-            Defaults to `columns = ['id', 'name']`.
+            Defaults to `columns = ['id', 'name', 'parent']`.
 
 
         # Returns
@@ -34,7 +34,7 @@ class ProductResult(Result):
 
         """
         if columns is None:
-            columns = ['id', 'name']
+            columns = ['id', 'name', 'parent']
 
         df = pd.DataFrame(super().to_list())
 
@@ -45,7 +45,7 @@ class ProductResult(Result):
 
 
 class Products(Reference, Search):
-    """Not implemented yet."""
+    """Vessels endpoint."""
 
     def __init__(self):
         """Instantiate endpoint using reference endpoint."""
@@ -81,8 +81,10 @@ class Products(Reference, Search):
 
             ids: ID or IDs of products we'd like to search
 
+            product_parent: dictionary containing the 'name', 'layer', 'id' of the immediate product parent.
+
         # Returns
-        List of vessels matching the search arguments.
+        List of products matching the search arguments.
 
 
         # Examples
@@ -90,12 +92,12 @@ class Products(Reference, Search):
         Let's find all the products with 'sul' in their name, or related names.
 
         ```python
-        >>> Products().search(term='sul').to_df(columns='all')
+        >>> Products().search(term='sul').to_df()
         ```
 
-        |    | id         |     name |
-        |---:|:-------------|--------:|
-        |  0 | 'a250444936b94aadb... | Marlim Sul |
+        |    | id         |     name   |             parent                     |
+        |---:|:-----------|------------|---------------------------------------:|
+        |  0 | 'a250444...| Marlim Sul |[{'name': 'Heavy-Sour', 'layer': ['su...|
 
 
         Note the `term` search also looks for products with matching `related_names`
