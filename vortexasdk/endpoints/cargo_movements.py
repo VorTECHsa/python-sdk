@@ -1,14 +1,15 @@
 """Cargo Movements Endpoint."""
-from typing import List
+from typing import List, Union
 
 import jsons
 import pandas as pd
 
 from vortexasdk.api.cargo_movement import CargoMovement
 from vortexasdk.api.entity_serializing import convert_cme_to_flat_dict
+from vortexasdk.api.search_result import Result
 from vortexasdk.endpoints.endpoints import CARGO_MOVEMENTS_RESOURCE
 from vortexasdk.operations import Search
-from vortexasdk.api.search_result import Result
+from vortexasdk.utils import to_list
 
 DEFAULT_COLUMNS = [
     'events.cargo_port_load_event.0.label',
@@ -67,18 +68,17 @@ class CargoMovements(Search):
                filter_activity: str = "loading_state",
                filter_time_min: str = "2019-10-01T00:00:00.000Z",
                filter_time_max: str = "2019-10-01T01:00:00.000Z",
-               include_definition: bool = True,
                cm_unit: str = 'b',
 
-               filter_charterers: List[str] = None,
-               filter_destinations: List[str] = None,
-               filter_origins: List[str] = None,
-               filter_owners: List[str] = None,
-               filter_products: List[str] = None,
-               filter_vessels: List[str] = None,
-               filter_storage_locations: List[str] = None,
-               filter_ship_to_ship_locations: List[str] = None,
-               filter_waypoints: List[str] = None,
+               filter_charterers: Union[str, List[str]] = None,
+               filter_destinations: Union[str, List[str]] = None,
+               filter_origins: Union[str, List[str]] = None,
+               filter_owners: Union[str, List[str]] = None,
+               filter_products: Union[str, List[str]] = None,
+               filter_vessels: Union[str, List[str]] = None,
+               filter_storage_locations: Union[str, List[str]] = None,
+               filter_ship_to_ship_locations: Union[str, List[str]] = None,
+               filter_waypoints: Union[str, List[str]] = None,
                disable_geographic_exclusion_rules: bool = None,
                ) -> CargoMovementsResult:
         """
@@ -93,27 +93,25 @@ class CargoMovements(Search):
 
             filter_time_max: The end date of the time filter.
 
-            include_definition: A list of grade or grade group identifiers to filter by.
+            cm_unit: Unit of measurement. Enter 'b' for barrels or 't' for tonnes.
 
-            cm_unit:
+            filter_charterers: A charterer, or list of charterers to filter on.
 
-            filter_charterers:
+            filter_destinations: A geography, or list of geographies to filter on.
 
-            filter_destinations: A list of geographical identifiers to apply to the destination filter.
+            filter_origins: A geography, or list of geographies to filter on.
 
-            filter_origins: A list of geographical identifiers to apply to the origin filter.
+            filter_owners: An owner, or list of owners to filter on.
 
-            filter_owners:
+            filter_products: A product, or list of product to filter on.
 
-            filter_products:
+            filter_vessels: A vessel, or list of vessels to filter on.
 
-            filter_vessels: A list of vessel identifiers to filter by.
+            filter_storage_locations: A geography, or list of geography to filter on.
 
-            filter_storage_locations:
+            filter_ship_to_ship_locations: A geography, or list of geography to filter on.
 
-            filter_ship_to_ship_locations:
-
-            filter_waypoints: A list of geographical identifiers to apply to the waypoint filter.
+            filter_waypoints: A geography, or list of geography to filter on.
 
             disable_geographic_exclusion_rules: This controls a popular industry term "intra-movements" and determines
              the filter behaviour for cargo leaving then entering the same geographic area.
@@ -151,21 +149,20 @@ class CargoMovements(Search):
             'filter_activity': filter_activity,
             'filter_time_min': filter_time_min,
             'filter_time_max': filter_time_max,
-            'include_definition': include_definition,
             'cm_unit': cm_unit,
             'size': self._MAX_PAGE_RESULT_SIZE,
             'cm_size': self._MAX_PAGE_RESULT_SIZE,
             # cm_size is used by the api https://docs.vortexa.com/reference/POST/cargo-movements/search
 
-            "filter_charterers": filter_charterers,
-            "filter_destinations": filter_destinations,
-            "filter_origins": filter_origins,
-            "filter_owners": filter_owners,
-            "filter_products": filter_products,
-            "filter_vessels": filter_vessels,
-            "filter_storage_locations": filter_storage_locations,
-            "filter_ship_to_ship_locations": filter_ship_to_ship_locations,
-            "filter_waypoints": filter_waypoints,
+            "filter_charterers": to_list(filter_charterers),
+            "filter_destinations": to_list(filter_destinations),
+            "filter_origins": to_list(filter_origins),
+            "filter_owners": to_list(filter_owners),
+            "filter_products": to_list(filter_products),
+            "filter_vessels": to_list(filter_vessels),
+            "filter_storage_locations": to_list(filter_storage_locations),
+            "filter_ship_to_ship_locations": to_list(filter_ship_to_ship_locations),
+            "filter_waypoints": to_list(filter_waypoints),
             "disable_geographic_exclusion_rules": disable_geographic_exclusion_rules
         }
 
