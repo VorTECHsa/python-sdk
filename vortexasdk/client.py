@@ -103,4 +103,4 @@ def set_client(client) -> None:
     """Set the global client, used by all endpoints."""
     global __client__
     __client__ = client
-    print(f'global __client__ has ben set {__client__.__class__.__name__}')
+    print(f'global __client__ has been set {__client__.__class__.__name__}')
