@@ -3,11 +3,17 @@ from unittest import TestCase, skipIf
 import tabulate
 
 from tests.config import SKIP_TAGS
+from vortexasdk.client import default_client, set_client
 from vortexasdk.endpoints.cargo_movements import CargoMovements
 
 
 @skipIf('real' in SKIP_TAGS, 'Skipping tests that hit the real API server.')
 class TestCargoMovementsReal(TestCase):
+
+    @classmethod
+    def setUpClass(cls) -> None:
+        set_client(default_client())
+
     def test_defaullt_search(self):
         results = CargoMovements().search()
         print(len(results))
