@@ -5,7 +5,7 @@ from typing import List
 import requests
 from requests import Response
 
-from vortexasdk.api.shared_types import ID
+from vortexasdk.api.id import ID
 from vortexasdk.endpoints.endpoints import API_URL
 
 

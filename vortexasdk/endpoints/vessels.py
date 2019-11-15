@@ -4,7 +4,7 @@ from typing import List, Union
 import jsons
 import pandas as pd
 
-from vortexasdk.api.shared_types import ID
+from vortexasdk.api.id import ID
 from vortexasdk.api.vessel import Vessel
 from vortexasdk.endpoints.endpoints import VESSELS_REFERENCE
 from vortexasdk.operations import Reference, Search

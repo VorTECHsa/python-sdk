@@ -42,7 +42,16 @@ class TestCargoMovementsReal(TestCase):
             filter_time_max="2019-08-29T00:10:00.000Z",
         ).to_df().head(2)
 
-        print(tabulate.tabulate(df))
+        assert len(df) == 2
+
+    def test_search_single_filter_product_name(self):
+        df = CargoMovements().search(
+            filter_origins='Rotterdam',
+            filter_time_min="2019-08-29T00:00:00.000Z",
+            filter_time_max="2019-08-29T00:10:00.000Z",
+        ).to_df().head(2)
+
+        assert len(df) == 2
 
     def test_search_list_filter_id(self):
         df = CargoMovements().search(

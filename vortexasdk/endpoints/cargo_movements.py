@@ -6,8 +6,10 @@ import pandas as pd
 
 from vortexasdk.api.cargo_movement import CargoMovement
 from vortexasdk.api.entity_serializing import convert_cme_to_flat_dict
+from vortexasdk.api.id import ID, split_ids_names
 from vortexasdk.api.search_result import Result
 from vortexasdk.endpoints.endpoints import CARGO_MOVEMENTS_RESOURCE
+from vortexasdk.endpoints.geographies import _search_geography_ids
 from vortexasdk.operations import Search
 from vortexasdk.utils import to_list
 
@@ -97,7 +99,7 @@ class CargoMovements(Search):
 
             filter_charterers: A charterer, or list of charterers to filter on.
 
-            filter_destinations: A geography, or list of geographies to filter on.
+            filter_destinations: A geography, or list of geographies to filter on. Both geography names or IDs can be entered here,
 
             filter_origins: A geography, or list of geographies to filter on.
 
@@ -156,7 +158,7 @@ class CargoMovements(Search):
 
             "filter_charterers": to_list(filter_charterers),
             "filter_destinations": to_list(filter_destinations),
-            "filter_origins": to_list(filter_origins),
+            "filter_origins": _convert_to_geography_ids(to_list(filter_origins)),
             "filter_owners": to_list(filter_owners),
             "filter_products": to_list(filter_products),
             "filter_vessels": to_list(filter_vessels),
@@ -167,3 +169,8 @@ class CargoMovements(Search):
         }
 
         return CargoMovementsResult(super().search(**params))
+
+
+def _convert_to_geography_ids(ids_or_names_list: List) -> List[ID]:
+    ids, names = split_ids_names(ids_or_names_list)
+    return ids + _search_geography_ids(names)
