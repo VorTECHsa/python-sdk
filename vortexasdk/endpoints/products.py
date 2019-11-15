@@ -1,11 +1,14 @@
 """Products Endpoint."""
-import pandas as pd
 from typing import List, Union
-from vortexasdk.api.shared_types import ID
+
+import jsons as jsons
+import pandas as pd
+
 from vortexasdk.api.product import Product
+from vortexasdk.api.search_result import Result
+from vortexasdk.api.shared_types import ID
 from vortexasdk.endpoints.endpoints import PRODUCTS_REFERENCE
 from vortexasdk.operations import Reference, Search
-from vortexasdk.api.search_result import Result
 from vortexasdk.utils import convert_values_to_list
 
 
@@ -41,8 +44,7 @@ class ProductResult(Result):
             return df[columns]
 
 
-
-class Products(Reference):
+class Products(Reference, Search):
     """Not implemented yet."""
 
     def __init__(self):
@@ -69,8 +71,7 @@ class Products(Reference):
     def search(self,
                term: Union[str, List[str]] = None,
                ids: Union[str, List[str]] = None,
-               #vessel_classes: Union[str, List[str]] = None,
-               #vessel_product_types: Union[str, List[str]] = None,
+               product_parent: Union[str, List[str]] = None,
                ) -> ProductResult:
         """
         Find all products matching given search terms.
