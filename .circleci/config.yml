@@ -29,7 +29,7 @@ jobs:
             - ~/.cache/pip
 
       - run:
-          name: "Run local tests only "
+          name: "Run tests against mocked api"
           command: |
             . .venv/bin/activate
             export SKIP_TAGS=real; nose2
