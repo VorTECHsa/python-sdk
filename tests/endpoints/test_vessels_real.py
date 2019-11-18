@@ -44,3 +44,4 @@ class TestVesselsReal(TestCase):
         df = Vessels().search(ids=ids).to_df()
         assert list(df.columns) == ['id', 'name', 'imo', 'vessel_class']
         assert len(df) == 2
+

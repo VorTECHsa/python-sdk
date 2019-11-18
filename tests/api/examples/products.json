@@ -1,0 +1,50 @@
+[
+  {
+    "id": "e166e6253dd843624f6cbe4fd45e7f2cff4671e600b4d6371172dd92a0255946",
+    "name": "Abo",
+    "layer": [
+      "grade"
+    ],
+    "leaf": true,
+    "parent": [
+      {
+        "name": "Light-Sweet",
+        "layer": [
+          "subproduct_group"
+        ],
+        "id": "66a98cd9df06660555000f8d4de9bc075e651bce3b57a42fcef33d88c987fc73"
+      }
+    ],
+    "meta": {
+      "sulphur_min": 0.15,
+      "sulphur_max": 0.15,
+      "api_min": 40,
+      "api_max": 40
+    },
+    "ref_type": "product"
+  },
+  {
+    "id": "6cd99c8f9e67e61892a691237b3342a4caae5ec1c76784b1b93952afda44ae24",
+    "name": "Aboozar",
+    "layer": [
+      "grade"
+    ],
+    "leaf": true,
+    "parent": [
+      {
+        "name": "Heavy-Sour",
+        "layer": [
+          "subproduct_group"
+        ],
+        "id": "fc2e0746428ed6109045fc1195a4ee4ef2e339d55b7b6e3a0fb01ecf28efc4f7"
+      }
+    ],
+    "meta": {
+      "sulphur_min": 2.48,
+      "sulphur_max": 2.48,
+      "api_min": 27,
+      "api_max": 27
+    },
+    "ref_type": "product"
+  }
+]

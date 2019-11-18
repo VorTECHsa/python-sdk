@@ -4,7 +4,7 @@ import jsons
 
 from vortexasdk.api import ID
 from vortexasdk.client import AbstractVortexaClient
-from vortexasdk.endpoints.endpoints import CHARTERERS_REFERENCE, VESSELS_REFERENCE
+from vortexasdk.endpoints.endpoints import CHARTERERS_REFERENCE, VESSELS_REFERENCE, PRODUCTS_REFERENCE
 
 
 def _read(example_file) -> List:
@@ -14,12 +14,14 @@ def _read(example_file) -> List:
 
 example_charterers: List = _read("charterers.json")
 example_vessels: List = _read("vessels.json")
+example_products: List = _read("products.json")
 
 
 class MockVortexaClient(AbstractVortexaClient):
     _results = {
         CHARTERERS_REFERENCE: example_charterers,
-        VESSELS_REFERENCE: example_vessels
+        VESSELS_REFERENCE: example_vessels,
+        PRODUCTS_REFERENCE: example_products,
     }
 
     def get_reference(self, resource: str, id: ID) -> str:
