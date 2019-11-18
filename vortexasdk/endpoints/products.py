@@ -81,7 +81,7 @@ class Products(Reference, Search):
 
             ids: ID or IDs of products we'd like to search
 
-            product_parent: list containing the 'name', 'layer', 'id' of the immediate product parent.
+            product_parent: ID, or list of IDs of the immediate product parent. E.g. `product_parent ='12345'` will return all children of product `12345`. 
 
         # Returns
         List of products matching the search arguments.
