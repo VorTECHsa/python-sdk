@@ -18,19 +18,19 @@ class Vessel(Node):
 
     related_names: List[str]
     mmsi: int
-    call_sign: str
-
-    to_bow: str
-    to_stern: str
-    to_port: str
-    to_starboard: str
-    cubic_capacity: int
-    dead_weight: int
 
     tags: List[Tag]
     current_product_type: List
 
     vessel_class: str
+
+    dead_weight: Optional[int] = None
+    cubic_capacity: Optional[int] = None
+    to_bow: Optional[str] = None
+    to_stern: Optional[str] = None
+    to_port: Optional[str] = None
+    to_starboard: Optional[str] = None
+    call_sign: Optional[str] = None
     year: Optional[int] = None
     imo: Optional[int] = None
     gross_tonnage: Optional[int] = None
