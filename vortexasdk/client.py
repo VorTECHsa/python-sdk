@@ -41,31 +41,36 @@ class VortexaClient(AbstractVortexaClient):
 
         payload = {k: v for k, v in data.items() if v is not None}
 
-        offset = 0
-        more = True
-        responses = []
+        total = self._sent_post_request(url, payload, size=1, offset=0)['total']
 
-        while more:
-            response = self._sent_post_request(url, payload, offset)
-            offset += payload.get('size', self._DEFAULT_PAGE_LOAD_SIZE)
-            responses += response['data']
-            print(f'Adding {len(response["data"])} records to responses. len(all_responses): {len(responses)}')
+        size = data.get('size', 1000)
+        offsets = [i for i in range(0, total, size)]
 
-            if offset > response['total']:
-                print(f'Finishing. offset: {offset}, total_records: {response["total"]}')
-                more = False
+        pmap = map
+        # pmap = Pool(N_PARALLELISM * 2).map
 
-        return responses
+        send_request = lambda x: self._sent_post_request(url, payload, size, x)['data']
+
+        responses = list(pmap(send_request, offsets))
+
+        flattened = [x for y in responses for x in y]
+
+        assert len(flattened) == total
+        return flattened
 
     def _create_url(self, path: str) -> str:
         return f'{API_URL}{path}?apikey={self.api_key}'
 
-    def _sent_post_request(self, url, payload, offset):
-        print(f'Sending post request, offset: {offset}')
+    def _sent_post_request(self, url, payload, size, offset):
+        print(f'Sending post request, offset: {offset}, size: {size}')
         payload["offset"] = offset
         payload["cm_offset"] = offset
+        payload["size"] = size
+        payload["cm_size"] = size
 
         response = requests.post(url, json=payload)
+
+        print(f'Post request received {len(response.json()["data"])} items')
 
         return self._handle_response(response, payload)
 

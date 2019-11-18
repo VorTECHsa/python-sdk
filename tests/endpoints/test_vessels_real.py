@@ -1,6 +1,7 @@
 from unittest import TestCase, skipIf
 
 from tests.config import SKIP_TAGS
+from tests.timer import Timer
 from vortexasdk.client import create_client, set_client
 from vortexasdk.endpoints.vessels import Vessels
 
@@ -45,3 +46,15 @@ class TestVesselsReal(TestCase):
         assert list(df.columns) == ['id', 'name', 'imo', 'vessel_class']
         assert len(df) == 2
 
+    def test_search_load_all_vessels(self):
+        with Timer("Search"):
+            result = Vessels().search()
+
+        with Timer("Serialize"):
+            result.to_list()
+
+        with Timer("Dataframe"):
+            df = result.to_df()
+            print(df.head())
+
+        assert len(result) >= 1_000

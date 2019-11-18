@@ -1,15 +1,21 @@
 """Vessels Endpoint."""
+from multiprocessing import Pool
 from typing import List, Union
 
 import jsons
 import pandas as pd
 
 from vortexasdk.api.id import ID
+from vortexasdk.api.search_result import Result
 from vortexasdk.api.vessel import Vessel
+from vortexasdk.config import N_PARALLELISM
 from vortexasdk.endpoints.endpoints import VESSELS_REFERENCE
 from vortexasdk.operations import Reference, Search
-from vortexasdk.api.search_result import Result
 from vortexasdk.utils import convert_values_to_list
+
+
+def _serialize_vessel(dictionary: dict) -> Vessel:
+    return jsons.loads(jsons.dumps(dictionary), Vessel)
 
 
 class VesselsResult(Result):
@@ -18,7 +24,10 @@ class VesselsResult(Result):
     def to_list(self) -> List[Vessel]:
         """Represent vessels as a list."""
         list_of_dicts = super().to_list()
-        return jsons.loads(jsons.dumps(list_of_dicts), List[Vessel])
+
+        pmap = Pool(N_PARALLELISM).map
+
+        return list(pmap(_serialize_vessel, list_of_dicts))
 
     def to_df(self, columns=None) -> pd.DataFrame:
         """
