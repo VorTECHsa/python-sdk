@@ -1,4 +1,11 @@
 #!/usr/bin/env bash
+set -e
+
+TAG=$(python setup.py --version)
+
+git tag -a $TAG -m "New tag $TAG"
+git push --tags
+
 . venv/bin/activate
 rm -rf dist
 pip install wheel

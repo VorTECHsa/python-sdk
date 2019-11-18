@@ -1,7 +1,7 @@
 from unittest import TestCase, skipIf
 
 from tests.config import SKIP_TAGS
-from vortexasdk.client import default_client, set_client
+from vortexasdk.client import create_client, set_client
 from vortexasdk.endpoints.vessels import Vessels
 
 
@@ -10,7 +10,7 @@ class TestVesselsReal(TestCase):
 
     @classmethod
     def setUpClass(cls) -> None:
-        set_client(default_client())
+        set_client(create_client())
 
     def test_search_ids(self):
         ids = [
