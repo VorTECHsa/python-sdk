@@ -3,7 +3,7 @@ from unittest import TestCase, skipIf
 import tabulate
 
 from tests.config import SKIP_TAGS
-from vortexasdk.client import default_client, set_client
+from vortexasdk.client import create_client, set_client
 from vortexasdk.endpoints.cargo_movements import CargoMovements
 
 
@@ -12,7 +12,7 @@ class TestCargoMovementsReal(TestCase):
 
     @classmethod
     def setUpClass(cls) -> None:
-        set_client(default_client())
+        set_client(create_client())
 
     def test_defaullt_search(self):
         results = CargoMovements().search()

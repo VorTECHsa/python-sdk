@@ -88,19 +88,23 @@ def default_client() -> VortexaClient:
     global __client__
 
     if __client__ is None:
-
-        try:
-            api_key = os.environ["VORTEXA_API_KEY"]
-        except KeyError:
-            raise KeyError("VORTEXA_API_KEY environment variable is required to use the VortexaSDK")
-
-        __client__ = VortexaClient(api_key=api_key)
+        __client__ = create_client()
 
     return __client__
+
+
+def create_client() -> VortexaClient:
+    """Create new VortexaClient."""
+    print("Creating new VortexaClient")
+    try:
+        api_key = os.environ["VORTEXA_API_KEY"]
+    except KeyError:
+        raise KeyError("VORTEXA_API_KEY environment variable is required to use the VortexaSDK")
+    return VortexaClient(api_key=api_key)
 
 
 def set_client(client) -> None:
     """Set the global client, used by all endpoints."""
     global __client__
     __client__ = client
-    print(f'global __client__ has been set {__client__.__class__.__name__}')
+    print(f'global __client__ has been set {__client__.__class__.__name__} \n')
