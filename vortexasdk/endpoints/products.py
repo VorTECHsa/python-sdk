@@ -81,7 +81,7 @@ class Products(Reference, Search):
 
             ids: ID or IDs of products we'd like to search
 
-            product_parent: dictionary containing the 'name', 'layer', 'id' of the immediate product parent.
+            product_parent: list containing the 'name', 'layer', 'id' of the immediate product parent.
 
         # Returns
         List of products matching the search arguments.
@@ -111,6 +111,7 @@ class Products(Reference, Search):
         search_params = convert_values_to_list({
             "term": term,
             "ids": ids,
+            "product_parent": product_parent,
         })
 
         return ProductResult(super().search(**search_params))
