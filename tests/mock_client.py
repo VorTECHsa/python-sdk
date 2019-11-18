@@ -2,7 +2,7 @@ from typing import List
 
 import jsons
 
-from vortexasdk.api.shared_types import ID
+from vortexasdk.api import ID
 from vortexasdk.client import AbstractVortexaClient
 from vortexasdk.endpoints.endpoints import CHARTERERS_REFERENCE, VESSELS_REFERENCE, PRODUCTS_REFERENCE
 

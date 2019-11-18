@@ -2,7 +2,8 @@ from abc import ABC
 from dataclasses import dataclass
 from typing import List, Optional
 
-ID = str
+from vortexasdk.api.id import ID
+
 ISODate = str
 
 

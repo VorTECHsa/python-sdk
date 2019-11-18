@@ -7,6 +7,7 @@ import pandas as pd
 from vortexasdk.api.cargo_movement import CargoMovement
 from vortexasdk.api.entity_serializing import convert_cme_to_flat_dict
 from vortexasdk.api.search_result import Result
+from vortexasdk.conversions import convert_to_charterer_ids, convert_to_geography_ids, convert_to_vessel_ids
 from vortexasdk.endpoints.endpoints import CARGO_MOVEMENTS_RESOURCE
 from vortexasdk.operations import Search
 from vortexasdk.utils import to_list
@@ -97,21 +98,21 @@ class CargoMovements(Search):
 
             filter_charterers: A charterer, or list of charterers to filter on.
 
-            filter_destinations: A geography, or list of geographies to filter on.
+            filter_destinations: A geography, or list of geographies to filter on. Both geography names or IDs can be entered here.
 
-            filter_origins: A geography, or list of geographies to filter on.
+            filter_origins: A geography, or list of geographies to filter on. Both geography names or IDs can be entered here.
 
-            filter_owners: An owner, or list of owners to filter on.
+            filter_owners: An owner, or list of owners to filter on. Both charterer/owner names or IDs can be entered here.
 
             filter_products: A product, or list of product to filter on.
 
-            filter_vessels: A vessel, or list of vessels to filter on.
+            filter_vessels: A vessel, or list of vessels to filter on. Both vessel names or IDs can be entered here,
 
-            filter_storage_locations: A geography, or list of geography to filter on.
+            filter_storage_locations: A geography, or list of geography to filter on. Both geography names or IDs can be entered here.
 
-            filter_ship_to_ship_locations: A geography, or list of geography to filter on.
+            filter_ship_to_ship_locations: A geography, or list of geography to filter on. Both geography names or IDs can be entered here.
 
-            filter_waypoints: A geography, or list of geography to filter on.
+            filter_waypoints: A geography, or list of geography to filter on. Both geography names or IDs can be entered here.
 
             disable_geographic_exclusion_rules: This controls a popular industry term "intra-movements" and determines
              the filter behaviour for cargo leaving then entering the same geographic area.
@@ -126,7 +127,7 @@ class CargoMovements(Search):
         ```python
 
         >>> df = CargoMovements().search(
-            filter_origins=[g['id'] for g in Geographies().search("rotterdam") if 'port' in g['layer']],
+            filter_origins="Rotterdam",
             filter_activity='loading_state',
             filter_time_min="2018-12-01T00:00:00.000Z",
             filter_time_max="2018-12-01T12:00:00.000Z",
@@ -143,7 +144,14 @@ class CargoMovements(Search):
         |  5 | Clean products        | Chemicals                       | tiny_tanker              |
         |  6 | Clean products        | Finished Gasoline               | handymax                 |
 
+        [Cargo Movements Endpoint Further Documentation](https://docs.vortexa.com/reference/POST/cargo-movements/search)
+
+
         """
+        geog = lambda x: convert_to_geography_ids(to_list(x))
+        charterer = lambda x: convert_to_charterer_ids(to_list(x))
+        ves = lambda x: convert_to_vessel_ids(to_list(x))
+
         params = {
             # Compulsory search parameters
             'filter_activity': filter_activity,
@@ -154,15 +162,15 @@ class CargoMovements(Search):
             'cm_size': self._MAX_PAGE_RESULT_SIZE,
             # cm_size is used by the api https://docs.vortexa.com/reference/POST/cargo-movements/search
 
-            "filter_charterers": to_list(filter_charterers),
-            "filter_destinations": to_list(filter_destinations),
-            "filter_origins": to_list(filter_origins),
-            "filter_owners": to_list(filter_owners),
+            "filter_charterers": charterer(filter_charterers),
+            "filter_destinations": geog(filter_destinations),
+            "filter_origins": geog(filter_origins),
+            "filter_owners": charterer(filter_owners),
             "filter_products": to_list(filter_products),
-            "filter_vessels": to_list(filter_vessels),
-            "filter_storage_locations": to_list(filter_storage_locations),
-            "filter_ship_to_ship_locations": to_list(filter_ship_to_ship_locations),
-            "filter_waypoints": to_list(filter_waypoints),
+            "filter_vessels": ves(filter_vessels),
+            "filter_storage_locations": geog(filter_storage_locations),
+            "filter_ship_to_ship_locations": geog(filter_ship_to_ship_locations),
+            "filter_waypoints": geog(filter_waypoints),
             "disable_geographic_exclusion_rules": disable_geographic_exclusion_rules
         }
 

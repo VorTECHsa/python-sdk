@@ -3,7 +3,8 @@ from typing import List, Optional
 
 from vortexasdk.api.geography import GeographyEntity
 from vortexasdk.api.product import ProductEntity
-from vortexasdk.api.shared_types import ISODate, ID
+from vortexasdk.api.shared_types import ISODate
+from vortexasdk.api.id import ID
 from vortexasdk.api.vessel import VesselEntity
 
 
