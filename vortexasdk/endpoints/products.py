@@ -115,3 +115,5 @@ class Products(Reference, Search):
         })
 
         return ProductResult(super().search(**search_params))
+def _myfunc():
+    pass
