@@ -6,10 +6,9 @@ import pandas as pd
 
 from vortexasdk.api.cargo_movement import CargoMovement
 from vortexasdk.api.entity_serializing import convert_cme_to_flat_dict
-from vortexasdk.api.id import ID, split_ids_names
 from vortexasdk.api.search_result import Result
 from vortexasdk.endpoints.endpoints import CARGO_MOVEMENTS_RESOURCE
-from vortexasdk.endpoints.geographies import _search_geography_ids
+from vortexasdk.endpoints.geographies import _convert_to_geography_ids
 from vortexasdk.operations import Search
 from vortexasdk.utils import to_list
 
@@ -169,8 +168,3 @@ class CargoMovements(Search):
         }
 
         return CargoMovementsResult(super().search(**params))
-
-
-def _convert_to_geography_ids(ids_or_names_list: List) -> List[ID]:
-    ids, names = split_ids_names(ids_or_names_list)
-    return ids + _search_geography_ids(names)
