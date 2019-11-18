@@ -3,6 +3,7 @@ from unittest import TestCase, skipIf
 import tabulate
 
 from tests.config import SKIP_TAGS
+from tests.timer import Timer
 from vortexasdk.client import create_client, set_client
 from vortexasdk.endpoints.cargo_movements import CargoMovements
 
@@ -79,3 +80,16 @@ class TestCargoMovementsReal(TestCase):
 
         assert len(df) == 2
         print(tabulate.tabulate(df))
+
+    def test_speed(self):
+        with Timer("Search") as t:
+            cms = CargoMovements().search(
+                filter_time_min="2019-08-29T00:00:00.000Z",
+                filter_time_max="2019-08-30T00:00:00.000Z",
+            )
+
+        with Timer("to_list") as t:
+            list = cms.to_list()
+
+        with Timer("df") as t:
+            df = cms.to_df()

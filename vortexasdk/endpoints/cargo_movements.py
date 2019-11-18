@@ -1,4 +1,6 @@
 """Cargo Movements Endpoint."""
+import os
+from multiprocessing.pool import Pool
 from typing import List, Union
 
 import jsons
@@ -24,16 +26,21 @@ DEFAULT_COLUMNS = [
 ]
 
 
+def _serialize_cm(dictionary: dict) -> CargoMovement:
+    return jsons.loads(jsons.dumps(dictionary), CargoMovement)
+
+
 class CargoMovementsResult(Result):
     """Container class holdings search results returns from the cargo movements endpoint."""
 
-    def __init__(self, movements: List[dict]):
-        deserialized = jsons.loads(jsons.dumps(movements), List[CargoMovement])
-        super().__init__(deserialized)
-
     def to_list(self) -> List[CargoMovement]:
         """Represent cargo movements as a list of `CargoMovementEntity`s."""
-        return super().to_list()
+
+        list_of_dicts = super().to_list()
+
+        pmap = Pool(os.cpu_count()).map
+
+        return list(pmap(_serialize_cm, list_of_dicts))
 
     def to_df(self, columns=None) -> pd.DataFrame:
         """
@@ -60,7 +67,7 @@ class CargoMovementsResult(Result):
 class CargoMovements(Search):
     """Cargo Movements Endpoint."""
 
-    _MAX_PAGE_RESULT_SIZE = 500
+    _MAX_PAGE_RESULT_SIZE = 250
 
     def __init__(self):
         Search.__init__(self, CARGO_MOVEMENTS_RESOURCE)
@@ -100,7 +107,7 @@ class CargoMovements(Search):
 
             filter_destinations: A geography, or list of geographies to filter on. Both geography names or IDs can be entered here.
 
-            filter_origins: A geography, or list of geographies to filter on. Both geography names or IDs can be entered here.
+            filter_origins: A geography, or list of geographies to filter on. Both geography n  ames or IDs can be entered here.
 
             filter_owners: An owner, or list of owners to filter on. Both charterer/owner names or IDs can be entered here.
 
