@@ -1,7 +1,6 @@
 """Geographies Endpoint."""
 from typing import List, Union
 
-from vortexasdk.api.id import ID, split_ids_names
 from vortexasdk.endpoints.endpoints import GEOGRAPHIES_REFERENCE
 from vortexasdk.operations import Reference, Search
 from vortexasdk.utils import convert_values_to_list
@@ -39,17 +38,3 @@ class Geographies(Reference, Search):
         """
         params = convert_values_to_list({"term": term})
         return super().search(**params)
-
-
-def _search_geography_ids(names: List[str]) -> List[ID]:
-    """Find list of IDs matching names."""
-    geogs = Geographies().search(term=names)
-
-    print(f'found names: {[g["name"] for g in geogs]}')
-
-    return [g['id'] for g in geogs]
-
-
-def _convert_to_geography_ids(ids_or_names_list: List) -> List[ID]:
-    ids, names = split_ids_names(ids_or_names_list)
-    return ids + _search_geography_ids(names)

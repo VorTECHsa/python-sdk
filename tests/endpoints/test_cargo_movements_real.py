@@ -44,9 +44,26 @@ class TestCargoMovementsReal(TestCase):
 
         assert len(df) == 2
 
-    def test_search_single_filter_product_name(self):
+    def test_search_single_filter_origin_name(self):
         df = CargoMovements().search(
             filter_origins='Rotterdam',
+            filter_time_min="2019-08-29T00:00:00.000Z",
+            filter_time_max="2019-08-29T00:10:00.000Z",
+        ).to_df().head(2)
+
+        assert len(df) == 2
+
+    def test_search_single_filter_charterer_name(self):
+        df = CargoMovements().search(
+            filter_owners="DHT"
+        ).to_df().head(2)
+
+        assert len(df) == 2
+
+    def test_search_single_filter_waypoint_name(self):
+        df = CargoMovements().search(
+            filter_activity='any_activity',
+            filter_waypoints='Suez',
             filter_time_min="2019-08-29T00:00:00.000Z",
             filter_time_max="2019-08-29T00:10:00.000Z",
         ).to_df().head(2)
@@ -60,4 +77,5 @@ class TestCargoMovementsReal(TestCase):
             filter_time_max="2019-08-29T00:10:00.000Z",
         ).to_df().head(2)
 
+        assert len(df) == 2
         print(tabulate.tabulate(df))
