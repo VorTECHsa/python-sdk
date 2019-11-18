@@ -70,7 +70,23 @@
     ],
     "current_product_type": [
       {
-        "cargo_movement_id": "af347b998cb756657ef99c7dd191ca6bce132ec3cd8badc182e9ed8a2409bc5a",
+        "cargo_movement_id": "5b74c0aab0353cccb28a1bed34c04d7fa54120efb32de10f8f0429c00dd8d536",
+        "product_type": [
+          {
+            "id": "b68cbb746f8b9098c50e2ba36bcad83001a53bd362e9031fb49085d02c36659c",
+            "layer": "group",
+            "label": "Clean products"
+          },
+          {
+            "id": "cbb5acffa542aad31d26712a8cdfd9884301aa7658ac95c40f86ddb31bc29d9b",
+            "layer": "group_product",
+            "label": "Other Clean products"
+          }
+        ],
+        "active": false
+      },
+      {
+        "cargo_movement_id": "8709d0cf0d103349c6df89f4b53ac90babc89e53c966f8cbf42aa0e93be20d96",
         "product_type": [
           {
             "id": "b68cbb746f8b9098c50e2ba36bcad83001a53bd362e9031fb49085d02c36659c",
@@ -96,7 +112,7 @@
       }
     ],
     "ref_type": "vessel",
-    "vessel_status": "vessel_status_ballast",
+    "vessel_status": "vessel_status_laden_unknown",
     "corporate_entities": [],
     "leaf": true,
     "vessel_class": "tiny_tanker",
