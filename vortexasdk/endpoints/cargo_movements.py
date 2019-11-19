@@ -1,5 +1,8 @@
 """Cargo Movements Endpoint."""
-from typing import List, Union
+import functools
+import os
+from multiprocessing.pool import Pool
+from typing import Dict, List, Union
 
 import jsons
 import pandas as pd
@@ -24,16 +27,19 @@ DEFAULT_COLUMNS = [
 ]
 
 
+def _serialize_cm(dictionary: Dict) -> CargoMovement:
+    return jsons.loads(jsons.dumps(dictionary), CargoMovement)
+
+
 class CargoMovementsResult(Result):
     """Container class holdings search results returns from the cargo movements endpoint."""
 
-    def __init__(self, movements: List[dict]):
-        deserialized = jsons.loads(jsons.dumps(movements), List[CargoMovement])
-        super().__init__(deserialized)
-
     def to_list(self) -> List[CargoMovement]:
         """Represent cargo movements as a list of `CargoMovementEntity`s."""
-        return super().to_list()
+        list_of_dicts = super().to_list()
+
+        with Pool(os.cpu_count()) as pool:
+            return list(pool.map(_serialize_cm, list_of_dicts))
 
     def to_df(self, columns=None) -> pd.DataFrame:
         """
@@ -52,7 +58,8 @@ class CargoMovementsResult(Result):
         if columns is None:
             columns = DEFAULT_COLUMNS
 
-        records = [convert_cme_to_flat_dict(cm, columns) for cm in self.to_list()]
+        with Pool(os.cpu_count()) as pool:
+            records = pool.map(functools.partial(convert_cme_to_flat_dict, cols=columns), super().to_list())
 
         return pd.DataFrame(records)
 
@@ -100,7 +107,7 @@ class CargoMovements(Search):
 
             filter_destinations: A geography, or list of geographies to filter on. Both geography names or IDs can be entered here.
 
-            filter_origins: A geography, or list of geographies to filter on. Both geography names or IDs can be entered here.
+            filter_origins: A geography, or list of geographies to filter on. Both geography n  ames or IDs can be entered here.
 
             filter_owners: An owner, or list of owners to filter on. Both charterer/owner names or IDs can be entered here.
 
@@ -159,8 +166,6 @@ class CargoMovements(Search):
             'filter_time_max': filter_time_max,
             'cm_unit': cm_unit,
             'size': self._MAX_PAGE_RESULT_SIZE,
-            'cm_size': self._MAX_PAGE_RESULT_SIZE,
-            # cm_size is used by the api https://docs.vortexa.com/reference/POST/cargo-movements/search
 
             "filter_charterers": charterer(filter_charterers),
             "filter_destinations": geog(filter_destinations),
