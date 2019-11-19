@@ -36,7 +36,7 @@ class VortexaClient(AbstractVortexaClient):
         size = data.get('size', 1000)
         offsets = [i for i in range(0, total, size)]
 
-        n_threads = min(len(offsets), 50)
+        n_threads = min(len(offsets), 5)
         with ThreadPool(n_threads) as pool:
             print(f'{total} Results to retreive.'
                   f' Sending {len(offsets)}'
