@@ -3,7 +3,8 @@ set -e
 
 . venv/bin/activate
 
-gitchangelog
+sudo gem install github_changelog_generator
+github_changelog_generator -u V0RT3X4 -p python-sdk
 
 TAG=$(python setup.py --version)
 
