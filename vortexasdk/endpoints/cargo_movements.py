@@ -39,9 +39,8 @@ class CargoMovementsResult(Result):
 
         list_of_dicts = super().to_list()
 
-        pmap = Pool(os.cpu_count()).map
-
-        return list(pmap(_serialize_cm, list_of_dicts))
+        with Pool(os.cpu_count()) as pool:
+            return list(pool.map(_serialize_cm, list_of_dicts))
 
     def to_df(self, columns=None) -> pd.DataFrame:
         """
@@ -60,9 +59,8 @@ class CargoMovementsResult(Result):
         if columns is None:
             columns = DEFAULT_COLUMNS
 
-        pmap = Pool(os.cpu_count()).map
-
-        records = pmap(functools.partial(convert_cme_to_flat_dict, cols=columns), super().to_list())
+        with Pool(os.cpu_count()) as pool:
+            records = pool.map(functools.partial(convert_cme_to_flat_dict, cols=columns), super().to_list())
 
         return pd.DataFrame(records)
 

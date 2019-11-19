@@ -1,6 +1,6 @@
 import functools
 import os
-from multiprocessing.pool import Pool
+from multiprocessing.pool import ThreadPool
 from typing import List
 
 import requests
@@ -36,16 +36,19 @@ class VortexaClient(AbstractVortexaClient):
         size = data.get('size', 1000)
         offsets = [i for i in range(0, total, size)]
 
-        n_processes = os.cpu_count() * 2
-        pmap = Pool(n_processes).map
+        n_threads = min(len(offsets), 50)
+        with ThreadPool(n_threads) as pool:
+            print(f'{total} Results to retreive.'
+                  f' Sending {len(offsets)}'
+                  f' post requests in parallel using {n_threads} threads.')
 
-        print(f'{total} Results to retreive. Sending {len(offsets)} post requests in parallel using {n_processes} processes.')
-        responses = pmap(functools.partial(_send_post_request_data, url=url, payload=payload, size=size), offsets)
+            responses = pool.map(functools.partial(_send_post_request_data, url=url, payload=payload, size=size),
+                                 offsets)
 
-        flattened = [x for y in responses for x in y]
+            flattened = [x for y in responses for x in y]
 
-        assert len(flattened) == total
-        return flattened
+            assert len(flattened) == total
+            return flattened
 
     def _create_url(self, path: str) -> str:
         return f'{API_URL}{path}?apikey={self.api_key}'
