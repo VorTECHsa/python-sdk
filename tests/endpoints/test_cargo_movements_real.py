@@ -82,14 +82,20 @@ class TestCargoMovementsReal(TestCase):
         print(tabulate.tabulate(df))
 
     def test_speed(self):
-        with Timer("Search") as t:
+        with Timer("Search") as t_search:
             cms = CargoMovements().search(
                 filter_time_min="2019-08-29T00:00:00.000Z",
                 filter_time_max="2019-08-30T00:00:00.000Z",
             )
 
-        with Timer("to_list") as t:
-            list = cms.to_list()
+        with Timer("to_list") as t_to_list:
+            cms.to_list()
 
-        with Timer("df") as t:
+        with Timer("df") as t_to_df:
             df = cms.to_df()
+
+        # Check we load a reasonable number of cargo movements in a short enough period of time
+        assert len(df) > 500
+        assert t_search.interval < 5
+        assert t_to_list.interval < 5
+        assert t_to_df.interval < 5

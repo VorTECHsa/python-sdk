@@ -2,7 +2,7 @@
 import functools
 import os
 from multiprocessing.pool import Pool
-from typing import List, Union
+from typing import Dict, List, Union
 
 import jsons
 import pandas as pd
@@ -27,7 +27,7 @@ DEFAULT_COLUMNS = [
 ]
 
 
-def _serialize_cm(dictionary: dict) -> CargoMovement:
+def _serialize_cm(dictionary: Dict) -> CargoMovement:
     return jsons.loads(jsons.dumps(dictionary), CargoMovement)
 
 

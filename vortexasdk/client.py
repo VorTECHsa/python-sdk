@@ -48,7 +48,6 @@ class VortexaClient(AbstractVortexaClient):
 
             flattened = [x for y in responses for x in y]
 
-            assert len(flattened) == total, f'len(flattened) = {len(flattened)}, total = {total}'
             return flattened
 
     def _create_url(self, path: str) -> str:

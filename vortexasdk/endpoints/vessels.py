@@ -1,7 +1,7 @@
 """Vessels Endpoint."""
 import os
 from multiprocessing import Pool
-from typing import List, Union
+from typing import List, Union, Dict
 
 import jsons
 import pandas as pd
@@ -14,7 +14,7 @@ from vortexasdk.operations import Reference, Search
 from vortexasdk.utils import convert_values_to_list
 
 
-def _serialize_vessel(dictionary: dict) -> Vessel:
+def _serialize_vessel(dictionary: Dict) -> Vessel:
     return jsons.loads(jsons.dumps(dictionary), Vessel)
 
 
