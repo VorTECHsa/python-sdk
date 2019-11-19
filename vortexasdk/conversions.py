@@ -4,6 +4,7 @@ from vortexasdk.api import ID
 from vortexasdk.api.id import split_ids_names
 from vortexasdk.endpoints.charterers import Charterers
 from vortexasdk.endpoints.geographies import Geographies
+from vortexasdk.endpoints.products import Products
 from vortexasdk.endpoints.vessels import Vessels
 from vortexasdk.operations import Search
 
@@ -52,6 +53,19 @@ def convert_to_vessel_ids(ids_or_names_list: List[Union[ID, str]]) -> List[ID]:
     ```
     """
     return _convert_to_ids(ids_or_names_list, Vessels())
+
+
+def convert_to_product_ids(ids_or_names_list: List[Union[ID, str]]) -> List[ID]:
+    """
+    Convert a mixed list of names or IDs to vessel ids.
+
+    # Example
+    ```
+        >>> convert_to_product_ids(["crude"])
+    ['143a0e486ca3d2e58b61d683b563ec309f2fa3bfd0b87d91984f43d9ee5071fb',...]
+    ```
+    """
+    return _convert_to_ids(ids_or_names_list, Products())
 
 
 def _convert_to_ids(ids_or_names_list: List[Union[ID, str]], searcher: Search) -> List[ID]:

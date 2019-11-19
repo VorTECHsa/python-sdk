@@ -1,7 +1,7 @@
 """Vessels Endpoint."""
 import os
 from multiprocessing import Pool
-from typing import List, Union, Dict
+from typing import Dict, List, Union
 
 import jsons
 import pandas as pd
@@ -93,7 +93,7 @@ class Vessels(Reference, Search):
 
             vessel_classes: vessel_class (or list of vessel classes) we'd like to search. Each vessel class must be one of "tiny_tanker" | "general_purpose" | "handysize" | "handymax" | "panamax" | "aframax" | "suezmax" | "vlcc_plus" | "sgc" | "mgc" | "lgc" | "vlgc". Refer to [ VortexaAPI Vessel Entities](https://docs.vortexa.com/reference/intro-vessel-entities) for the most up-to-date list of vessel classes.
 
-            vessel_product_types: product ID (or list of product IDs), searching vessels currently (or recently) carrying these products.
+            vessel_product_types: A product, or list of products to filter on, searching vessels currently (or recently) carrying these products.
 
         # Returns
         List of vessels matching the search arguments.
