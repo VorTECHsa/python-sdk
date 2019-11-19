@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "voretexasdk"
+name = "vortexasdk"
 version = "0.2.3"
 description = "Vorexa DataScience SDK (Software Developlent Kit)"
 authors = ["Vortexa Developers <developers@vortexa.com>"]
