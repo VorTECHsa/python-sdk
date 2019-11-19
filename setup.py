@@ -28,6 +28,7 @@ setuptools.setup(
     ],
     extras_require={
         'tests': [
+            'gitchangelog==3.0.4',
             'nose2==0.9.1',
             'pre-commit==1.20.0',
             'flake8==3.7.9',
