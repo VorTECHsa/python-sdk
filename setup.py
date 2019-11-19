@@ -30,6 +30,7 @@ setuptools.setup(
         'tests': [
             'gitchangelog==3.0.4',
             'nose2==0.9.1',
+            'pystache==0.5.4',
             'pre-commit==1.20.0',
             'flake8==3.7.9',
             'pydoc-markdown==2.0.4',
