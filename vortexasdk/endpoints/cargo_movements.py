@@ -1,4 +1,5 @@
 """Cargo Movements Endpoint."""
+import functools
 import os
 from multiprocessing.pool import Pool
 from typing import List, Union
@@ -59,7 +60,9 @@ class CargoMovementsResult(Result):
         if columns is None:
             columns = DEFAULT_COLUMNS
 
-        records = [convert_cme_to_flat_dict(cm, columns) for cm in self.to_list()]
+        pmap = Pool(os.cpu_count()).map
+
+        records = pmap(functools.partial(convert_cme_to_flat_dict, cols=columns), super().to_list())
 
         return pd.DataFrame(records)
 
