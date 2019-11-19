@@ -36,7 +36,6 @@ class CargoMovementsResult(Result):
 
     def to_list(self) -> List[CargoMovement]:
         """Represent cargo movements as a list of `CargoMovementEntity`s."""
-
         list_of_dicts = super().to_list()
 
         with Pool(os.cpu_count()) as pool:
@@ -68,7 +67,7 @@ class CargoMovementsResult(Result):
 class CargoMovements(Search):
     """Cargo Movements Endpoint."""
 
-    _MAX_PAGE_RESULT_SIZE = 250
+    _MAX_PAGE_RESULT_SIZE = 500
 
     def __init__(self):
         Search.__init__(self, CARGO_MOVEMENTS_RESOURCE)
@@ -167,8 +166,6 @@ class CargoMovements(Search):
             'filter_time_max': filter_time_max,
             'cm_unit': cm_unit,
             'size': self._MAX_PAGE_RESULT_SIZE,
-            'cm_size': self._MAX_PAGE_RESULT_SIZE,
-            # cm_size is used by the api https://docs.vortexa.com/reference/POST/cargo-movements/search
 
             "filter_charterers": charterer(filter_charterers),
             "filter_destinations": geog(filter_destinations),

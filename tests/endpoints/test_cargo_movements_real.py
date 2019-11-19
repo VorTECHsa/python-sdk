@@ -93,18 +93,3 @@ class TestCargoMovementsReal(TestCase):
 
         with Timer("df") as t:
             df = cms.to_df()
-
-    # def test_speed_all_time(self):
-    #     #     with Timer("Search") as t:
-    #     #         cms = CargoMovements().search(
-    #     #             filter_time_min="2016-01-01T00:00:00.000Z",
-    #     #             filter_time_max="2019-02-01T00:00:00.000Z",
-    #     #         )
-    #     #
-    #     #     with Timer("to_list") as t:
-    #     #         list = cms.to_list()
-    #     #
-    #     #     with Timer("df") as t:
-    #     #         df = cms.to_df()
-    #     #
-    #     #     print(len(df))

@@ -2,6 +2,7 @@ import functools
 import os
 from multiprocessing.pool import ThreadPool
 from typing import List
+import copy
 
 import requests
 from requests import Response
@@ -36,7 +37,7 @@ class VortexaClient(AbstractVortexaClient):
         size = data.get('size', 1000)
         offsets = [i for i in range(0, total, size)]
 
-        n_threads = min(len(offsets), 5)
+        n_threads = 4
         with ThreadPool(n_threads) as pool:
             print(f'{total} Results to retreive.'
                   f' Sending {len(offsets)}'
@@ -47,7 +48,7 @@ class VortexaClient(AbstractVortexaClient):
 
             flattened = [x for y in responses for x in y]
 
-            assert len(flattened) == total
+            assert len(flattened) == total, f'len(flattened) = {len(flattened)}, total = {total}'
             return flattened
 
     def _create_url(self, path: str) -> str:
@@ -60,16 +61,21 @@ def _send_post_request_data(offset, url, payload, size):
 
 def _send_post_request(url, payload, size, offset):
     print(f'Sending post request, offset: {offset}, size: {size}')
-    payload["offset"] = offset
-    payload["cm_offset"] = offset
-    payload["size"] = size
-    payload["cm_size"] = size
 
-    response = requests.post(url, json=payload)
+    payload_with_offset = copy.deepcopy(payload)
 
-    print(f'Post request from offset {offset} received {len(response.json()["data"])} items')
+    payload_with_offset["offset"] = offset
+    payload_with_offset["cm_offset"] = offset
+    payload_with_offset["size"] = size
+    payload_with_offset["cm_size"] = size
 
-    return _handle_response(response, payload)
+    response = requests.post(url, json=payload_with_offset)
+
+    response = _handle_response(response, payload_with_offset)
+
+    print(f'Post request from offset {offset} received {len(response["data"])} items')
+
+    return response
 
 
 def _handle_response(response: Response, payload=None):
