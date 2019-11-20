@@ -55,8 +55,49 @@
           
             <li class="toctree-l1">
 		
+    <span class="caption-text">Endpoints</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../about-endpoints/">About Endpoints</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Cargo Movements</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#notes">Notes</a></li>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../charterers/">Charterers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../geographies/">Geographies</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../products/">Products</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../vessels/">Vessels</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
     <span class="caption-text">Entities</span>
     <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../entities/about-entities/">About Entities</a>
+                </li>
                 <li class="">
                     
     <a class="" href="../../entities/cargo_movement/">Cargo Movement</a>
@@ -83,36 +124,6 @@
             <li class="toctree-l1">
 		
     <a class="" href="../../operations/">Operations</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Endpoints</span>
-    <ul class="subnav">
-                <li class=" current">
-                    
-    <a class="current" href="./">Cargo Movements</a>
-    <ul class="subnav">
-            
-    </ul>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../charterers/">Charterers</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../geographies/">Geographies</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../products/">Products</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../vessels/">Vessels</a>
-                </li>
-    </ul>
 	    </li>
           
             <li class="toctree-l1">
@@ -168,45 +179,23 @@
                 <h1 id="vortexasdk.endpoints.cargo_movements">vortexasdk.endpoints.cargo_movements</h1>
 
 <p>Cargo Movements Endpoint.
-<h2 id="vortexasdk.endpoints.cargo_movements.CargoMovementsResult">CargoMovementsResult</h2></p>
-<pre><code class="python">CargoMovementsResult(self, _records: List) -&gt; None
-</code></pre>
-
-<p>Container class holdings search results returns from the cargo movements endpoint.
-<h3 id="vortexasdk.endpoints.cargo_movements.CargoMovementsResult.to_list">to_list</h3></p>
-<pre><code class="python">CargoMovementsResult.to_list(self) -&gt; List[vortexasdk.api.cargo_movement.CargoMovement]
-</code></pre>
-
-<p>Represent cargo movements as a list of <code>CargoMovementEntity</code>s.
-<h3 id="vortexasdk.endpoints.cargo_movements.CargoMovementsResult.to_df">to_df</h3></p>
-<pre><code class="python">CargoMovementsResult.to_df(self, columns=None) -&gt; pandas.core.frame.DataFrame
-</code></pre>
-
-<p>Represent cargo movements as a <code>pd.DataFrame</code>.</p>
-<p><strong>Arguments</strong></p>
-<ul>
-<li><strong>columns</strong>: Output columns present in the <code>pd.DataFrame</code>.
-    Enter <code>columns='all'</code> to return all available columns.
-    Enter <code>columns=None</code> to use <code>cargo_movements.DEFAULT_COLUMNS</code>.</li>
-</ul>
-<p><strong>Returns</strong></p>
-<p><code>pd.DataFrame</code>, one row per cargo movement.</p>
-<h2 id="vortexasdk.endpoints.cargo_movements.CargoMovements">CargoMovements</h2>
-
+<h2 id="vortexasdk.endpoints.cargo_movements.CargoMovements">CargoMovements</h2></p>
 <pre><code class="python">CargoMovements(self)
 </code></pre>
 
-<p>Cargo Movements Endpoint.
+<p>Cargo Movements Endpoint, use this to search through Vortexa's cargo movements.
 <h3 id="vortexasdk.endpoints.cargo_movements.CargoMovements.search">search</h3></p>
-<pre><code class="python">CargoMovements.search(self, filter_activity: str = 'loading_state', filter_time_min: str = '2019-10-01T00:00:00.000Z', filter_time_max: str = '2019-10-01T01:00:00.000Z', cm_unit: str = 'b', filter_charterers: Union[str, List[str]] = None, filter_destinations: Union[str, List[str]] = None, filter_origins: Union[str, List[str]] = None, filter_owners: Union[str, List[str]] = None, filter_products: Union[str, List[str]] = None, filter_vessels: Union[str, List[str]] = None, filter_storage_locations: Union[str, List[str]] = None, filter_ship_to_ship_locations: Union[str, List[str]] = None, filter_waypoints: Union[str, List[str]] = None, disable_geographic_exclusion_rules: bool = None) -&gt; vortexasdk.endpoints.cargo_movements.CargoMovementsResult
+<pre><code class="python">CargoMovements.search(self, filter_activity: str, filter_time_min: str = '2019-10-01T00:00:00.000Z', filter_time_max: str = '2019-10-01T01:00:00.000Z', cm_unit: str = 'b', filter_charterers: Union[str, List[str]] = None, filter_destinations: Union[str, List[str]] = None, filter_origins: Union[str, List[str]] = None, filter_owners: Union[str, List[str]] = None, filter_products: Union[str, List[str]] = None, filter_vessels: Union[str, List[str]] = None, filter_storage_locations: Union[str, List[str]] = None, filter_ship_to_ship_locations: Union[str, List[str]] = None, filter_waypoints: Union[str, List[str]] = None, disable_geographic_exclusion_rules: bool = None) -&gt; vortexasdk.endpoints.cargo_movements_result.CargoMovementsResult
 </code></pre>
 
 <p>Find CargoMovements matching the given search parameters.</p>
 <p><strong>Arguments</strong></p>
 <ul>
 <li>
-<p><strong>filter_activity</strong>: Movement activity on which to base the time filter. It can be a filter for a
-     specific timestamp, which looks for it within the specified time-frame.</p>
+<p><strong>filter_activity</strong>: Movement activity on which to base the time filter. Must be one of ['loading_state',
+     'loading_start', 'loading_end', 'identified_for_loading_state', 'unloading_state', 'unloading_start',
+      'unloading_end', 'unloaded_state', 'storing_state', 'storing_start', 'storing_end', 'transiting_state',
+       'any_state'].</p>
 </li>
 <li>
 <p><strong>filter_time_min</strong>: The start date of the time filter.</p>
@@ -250,10 +239,10 @@
 </li>
 </ul>
 <p><strong>Returns</strong></p>
-<p>List of cargo movements matching all the search parameters.</p>
+<p><code>CargoMovementsResult</code>, containing all the cargo movements matching the given search terms.</p>
 <p><strong>Example</strong></p>
 <p>Let's search for all vessels that loaded from <code>Rotterdam [NL]</code> on the morning of 1st December 2018.</p>
-<pre><code class="python">
+<pre><code class="python">&gt;&gt;&gt; from vortexasdk import CargoMovements
 &gt;&gt;&gt; df = CargoMovements().search(
     filter_origins=&quot;Rotterdam&quot;,
     filter_activity='loading_state',
@@ -317,6 +306,517 @@
 </tbody>
 </table>
 <p><a href="https://docs.vortexa.com/reference/POST/cargo-movements/search">Cargo Movements Endpoint Further Documentation</a></p>
+<h1 id="vortexasdk.endpoints.cargo_movements_result">vortexasdk.endpoints.cargo_movements_result</h1>
+
+<h2 id="vortexasdk.endpoints.cargo_movements_result.CargoMovementsResult">CargoMovementsResult</h2>
+
+<pre><code class="python">CargoMovementsResult(self, _records: List) -&gt; None
+</code></pre>
+
+<p>Container class holdings search results returns from the cargo movements endpoint.</p>
+<p>This class has two methods, <code>to_list()</code>, and <code>to_df()</code>, allowing search results to be represented as a list of <code>CargoMovements</code>,
+ or as a <code>pd.DataFrame</code> , respectively.</p>
+<h3 id="vortexasdk.endpoints.cargo_movements_result.CargoMovementsResult.to_list">to_list</h3>
+
+<pre><code class="python">CargoMovementsResult.to_list(self) -&gt; List[vortexasdk.api.cargo_movement.CargoMovement]
+</code></pre>
+
+<p>Represent cargo movements as a list of <code>CargoMovementEntity</code>s.
+<h3 id="vortexasdk.endpoints.cargo_movements_result.CargoMovementsResult.to_df">to_df</h3></p>
+<pre><code class="python">CargoMovementsResult.to_df(self, columns=None) -&gt; pandas.core.frame.DataFrame
+</code></pre>
+
+<p>Represent cargo movements as a <code>pd.DataFrame</code>.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>columns</strong>: Output columns present in the <code>pd.DataFrame</code>.
+    Enter <code>columns='all'</code> to return all available columns.
+    Enter <code>columns=None</code> to use <code>cargo_movements.DEFAULT_COLUMNS</code>.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p><code>pd.DataFrame</code>, one row per cargo movement.</p>
+<h2 id="notes">Notes</h2>
+<p>A cargo movement is a complicated, nested structure. Between it's point of loading and discharge, a cargo
+ movement may be carried by <em>N</em> or more vessels, with <em>N-1</em> associated STS events. Each of these <em>N</em> vessels
+ could have an associated corporate owner, charterer, time charterer... etc.</p>
+<p>In order to represent a cargo movement as a flat (not nested) record in a dataframe, the sdk flattens the cargo
+ movement, generating many columns in the process.</p>
+<p>The columns are logically named. Let's say that a cargo is transferred between 4 vessels en route from a load
+ in Rotterdam to a discharge in New York. This is represented as 1 <code>cargo_port_unload_event</code>, followed by
+  3 <code>cargo_sts_event</code>s, and finally 1 <code>cargo_port_unload_event</code>.</p>
+<p>In this example the name of the 1st vessel, is found in the <code>vessels.0.name</code> column (we're using zero-based
+ numbering indexes). Likewise, the imo of the second vessel is found in the <code>vessels.1.imo</code> column.</p>
+<p>To find the name of the country in which the second STS event occured, we'd use the
+ <code>events.cargo_sts_event.1.location.country.layer</code> column.</p>
+<p>Similarly, to find out when the first vessel started
+ loading the cargo from Rotterdam, we'd use the <code>events.cargo_port_load_event.0.start_timestamp</code> column.</p>
+<p>By default, the columns returned are something along the lines of.</p>
+<pre><code class="python">DEFAULT_COLUMNS = [
+    'events.cargo_port_load_event.0.label',
+    'events.cargo_port_unload_event.0.label',
+    'product.group.label',
+    'product.grade.label',
+    'quantity',
+    'vessels.0.name',
+    'events.cargo_port_load_event.0.end_timestamp',
+    'events.cargo_port_unload_event.0.start_timestamp',
+]
+</code></pre>
+
+<p>The exact default columns used can be found at <code>cargo_movements.DEFAULT_COLUMNS</code></p>
+<p>A near complete list of columns is given below</p>
+<pre><code>[
+    'cargo_movement_id',
+    'events.cargo_fso_load_event.0.end_timestamp',
+    'events.cargo_fso_load_event.0.event_type',
+    'events.cargo_fso_load_event.0.fso_vessel_id',
+    'events.cargo_fso_load_event.0.fso_vessel_name',
+    'events.cargo_fso_load_event.0.location.country.id',
+    'events.cargo_fso_load_event.0.location.country.label',
+    'events.cargo_fso_load_event.0.location.country.layer',
+    'events.cargo_fso_load_event.0.location.country.probability',
+    'events.cargo_fso_load_event.0.location.country.source',
+    'events.cargo_fso_load_event.0.location.region.id',
+    'events.cargo_fso_load_event.0.location.region.label',
+    'events.cargo_fso_load_event.0.location.region.layer',
+    'events.cargo_fso_load_event.0.location.region.probability',
+    'events.cargo_fso_load_event.0.location.region.source',
+    'events.cargo_fso_load_event.0.location.shipping_region.id',
+    'events.cargo_fso_load_event.0.location.shipping_region.label',
+    'events.cargo_fso_load_event.0.location.shipping_region.layer',
+    'events.cargo_fso_load_event.0.location.shipping_region.probability',
+    'events.cargo_fso_load_event.0.location.shipping_region.source',
+    'events.cargo_fso_load_event.0.location.sts_zone.id',
+    'events.cargo_fso_load_event.0.location.sts_zone.label',
+    'events.cargo_fso_load_event.0.location.sts_zone.layer',
+    'events.cargo_fso_load_event.0.location.sts_zone.probability',
+    'events.cargo_fso_load_event.0.location.sts_zone.source',
+    'events.cargo_fso_load_event.0.location.trading_block.id',
+    'events.cargo_fso_load_event.0.location.trading_block.label',
+    'events.cargo_fso_load_event.0.location.trading_block.layer',
+    'events.cargo_fso_load_event.0.location.trading_block.probability',
+    'events.cargo_fso_load_event.0.location.trading_block.source',
+    'events.cargo_fso_load_event.0.location.trading_region.id',
+    'events.cargo_fso_load_event.0.location.trading_region.label',
+    'events.cargo_fso_load_event.0.location.trading_region.layer',
+    'events.cargo_fso_load_event.0.location.trading_region.probability',
+    'events.cargo_fso_load_event.0.location.trading_region.source',
+    'events.cargo_fso_load_event.0.location.trading_subregion.id',
+    'events.cargo_fso_load_event.0.location.trading_subregion.label',
+    'events.cargo_fso_load_event.0.location.trading_subregion.layer',
+    'events.cargo_fso_load_event.0.location.trading_subregion.probability',
+    'events.cargo_fso_load_event.0.location.trading_subregion.source',
+    'events.cargo_fso_load_event.0.pos.0',
+    'events.cargo_fso_load_event.0.pos.1',
+    'events.cargo_fso_load_event.0.probability',
+    'events.cargo_fso_load_event.0.start_timestamp',
+    'events.cargo_fso_load_event.0.to_vessel_id',
+    'events.cargo_fso_load_event.0.to_vessel_name',
+    'events.cargo_fso_unload_event.0.end_timestamp',
+    'events.cargo_fso_unload_event.0.event_type',
+    'events.cargo_fso_unload_event.0.from_vessel_id',
+    'events.cargo_fso_unload_event.0.from_vessel_name',
+    'events.cargo_fso_unload_event.0.fso_vessel_id',
+    'events.cargo_fso_unload_event.0.fso_vessel_name',
+    'events.cargo_fso_unload_event.0.location.country.id',
+    'events.cargo_fso_unload_event.0.location.country.label',
+    'events.cargo_fso_unload_event.0.location.country.layer',
+    'events.cargo_fso_unload_event.0.location.country.probability',
+    'events.cargo_fso_unload_event.0.location.country.source',
+    'events.cargo_fso_unload_event.0.location.region.id',
+    'events.cargo_fso_unload_event.0.location.region.label',
+    'events.cargo_fso_unload_event.0.location.region.layer',
+    'events.cargo_fso_unload_event.0.location.region.probability',
+    'events.cargo_fso_unload_event.0.location.region.source',
+    'events.cargo_fso_unload_event.0.location.shipping_region.id',
+    'events.cargo_fso_unload_event.0.location.shipping_region.label',
+    'events.cargo_fso_unload_event.0.location.shipping_region.layer',
+    'events.cargo_fso_unload_event.0.location.shipping_region.probability',
+    'events.cargo_fso_unload_event.0.location.shipping_region.source',
+    'events.cargo_fso_unload_event.0.location.sts_zone.id',
+    'events.cargo_fso_unload_event.0.location.sts_zone.label',
+    'events.cargo_fso_unload_event.0.location.sts_zone.layer',
+    'events.cargo_fso_unload_event.0.location.sts_zone.probability',
+    'events.cargo_fso_unload_event.0.location.sts_zone.source',
+    'events.cargo_fso_unload_event.0.location.trading_block.id',
+    'events.cargo_fso_unload_event.0.location.trading_block.label',
+    'events.cargo_fso_unload_event.0.location.trading_block.layer',
+    'events.cargo_fso_unload_event.0.location.trading_block.probability',
+    'events.cargo_fso_unload_event.0.location.trading_block.source',
+    'events.cargo_fso_unload_event.0.location.trading_region.id',
+    'events.cargo_fso_unload_event.0.location.trading_region.label',
+    'events.cargo_fso_unload_event.0.location.trading_region.layer',
+    'events.cargo_fso_unload_event.0.location.trading_region.probability',
+    'events.cargo_fso_unload_event.0.location.trading_region.source',
+    'events.cargo_fso_unload_event.0.location.trading_subregion.id',
+    'events.cargo_fso_unload_event.0.location.trading_subregion.label',
+    'events.cargo_fso_unload_event.0.location.trading_subregion.layer',
+    'events.cargo_fso_unload_event.0.location.trading_subregion.probability',
+    'events.cargo_fso_unload_event.0.location.trading_subregion.source',
+    'events.cargo_fso_unload_event.0.pos.0',
+    'events.cargo_fso_unload_event.0.pos.1',
+    'events.cargo_fso_unload_event.0.probability',
+    'events.cargo_fso_unload_event.0.start_timestamp',
+    'events.cargo_port_load_event.0.end_timestamp',
+    'events.cargo_port_load_event.0.event_type',
+    'events.cargo_port_load_event.0.location.country.id',
+    'events.cargo_port_load_event.0.location.country.label',
+    'events.cargo_port_load_event.0.location.country.layer',
+    'events.cargo_port_load_event.0.location.country.probability',
+    'events.cargo_port_load_event.0.location.country.source',
+    'events.cargo_port_load_event.0.location.port.id',
+    'events.cargo_port_load_event.0.location.port.label',
+    'events.cargo_port_load_event.0.location.port.layer',
+    'events.cargo_port_load_event.0.location.port.probability',
+    'events.cargo_port_load_event.0.location.port.source',
+    'events.cargo_port_load_event.0.location.region.id',
+    'events.cargo_port_load_event.0.location.region.label',
+    'events.cargo_port_load_event.0.location.region.layer',
+    'events.cargo_port_load_event.0.location.region.probability',
+    'events.cargo_port_load_event.0.location.region.source',
+    'events.cargo_port_load_event.0.location.shipping_region.id',
+    'events.cargo_port_load_event.0.location.shipping_region.label',
+    'events.cargo_port_load_event.0.location.shipping_region.layer',
+    'events.cargo_port_load_event.0.location.shipping_region.probability',
+    'events.cargo_port_load_event.0.location.shipping_region.source',
+    'events.cargo_port_load_event.0.location.terminal.id',
+    'events.cargo_port_load_event.0.location.terminal.label',
+    'events.cargo_port_load_event.0.location.terminal.layer',
+    'events.cargo_port_load_event.0.location.terminal.probability',
+    'events.cargo_port_load_event.0.location.terminal.source',
+    'events.cargo_port_load_event.0.location.trading_block.id',
+    'events.cargo_port_load_event.0.location.trading_block.label',
+    'events.cargo_port_load_event.0.location.trading_block.layer',
+    'events.cargo_port_load_event.0.location.trading_block.probability',
+    'events.cargo_port_load_event.0.location.trading_block.source',
+    'events.cargo_port_load_event.0.location.trading_region.id',
+    'events.cargo_port_load_event.0.location.trading_region.label',
+    'events.cargo_port_load_event.0.location.trading_region.layer',
+    'events.cargo_port_load_event.0.location.trading_region.probability',
+    'events.cargo_port_load_event.0.location.trading_region.source',
+    'events.cargo_port_load_event.0.location.trading_subregion.id',
+    'events.cargo_port_load_event.0.location.trading_subregion.label',
+    'events.cargo_port_load_event.0.location.trading_subregion.layer',
+    'events.cargo_port_load_event.0.location.trading_subregion.probability',
+    'events.cargo_port_load_event.0.location.trading_subregion.source',
+    'events.cargo_port_load_event.0.pos.0',
+    'events.cargo_port_load_event.0.pos.1',
+    'events.cargo_port_load_event.0.probability',
+    'events.cargo_port_load_event.0.start_timestamp',
+    'events.cargo_port_unload_event.0.end_timestamp',
+    'events.cargo_port_unload_event.0.event_type',
+    'events.cargo_port_unload_event.0.location.country.id',
+    'events.cargo_port_unload_event.0.location.country.label',
+    'events.cargo_port_unload_event.0.location.country.layer',
+    'events.cargo_port_unload_event.0.location.country.probability',
+    'events.cargo_port_unload_event.0.location.country.source',
+    'events.cargo_port_unload_event.0.location.port.id',
+    'events.cargo_port_unload_event.0.location.port.label',
+    'events.cargo_port_unload_event.0.location.port.layer',
+    'events.cargo_port_unload_event.0.location.port.probability',
+    'events.cargo_port_unload_event.0.location.port.source',
+    'events.cargo_port_unload_event.0.location.region.id',
+    'events.cargo_port_unload_event.0.location.region.label',
+    'events.cargo_port_unload_event.0.location.region.layer',
+    'events.cargo_port_unload_event.0.location.region.probability',
+    'events.cargo_port_unload_event.0.location.region.source',
+    'events.cargo_port_unload_event.0.location.shipping_region.id',
+    'events.cargo_port_unload_event.0.location.shipping_region.label',
+    'events.cargo_port_unload_event.0.location.shipping_region.layer',
+    'events.cargo_port_unload_event.0.location.shipping_region.probability',
+    'events.cargo_port_unload_event.0.location.shipping_region.source',
+    'events.cargo_port_unload_event.0.location.sts_zone.id',
+    'events.cargo_port_unload_event.0.location.sts_zone.label',
+    'events.cargo_port_unload_event.0.location.sts_zone.layer',
+    'events.cargo_port_unload_event.0.location.sts_zone.probability',
+    'events.cargo_port_unload_event.0.location.sts_zone.source',
+    'events.cargo_port_unload_event.0.location.terminal.id',
+    'events.cargo_port_unload_event.0.location.terminal.label',
+    'events.cargo_port_unload_event.0.location.terminal.layer',
+    'events.cargo_port_unload_event.0.location.terminal.probability',
+    'events.cargo_port_unload_event.0.location.terminal.source',
+    'events.cargo_port_unload_event.0.location.trading_block.id',
+    'events.cargo_port_unload_event.0.location.trading_block.label',
+    'events.cargo_port_unload_event.0.location.trading_block.layer',
+    'events.cargo_port_unload_event.0.location.trading_block.probability',
+    'events.cargo_port_unload_event.0.location.trading_block.source',
+    'events.cargo_port_unload_event.0.location.trading_region.id',
+    'events.cargo_port_unload_event.0.location.trading_region.label',
+    'events.cargo_port_unload_event.0.location.trading_region.layer',
+    'events.cargo_port_unload_event.0.location.trading_region.probability',
+    'events.cargo_port_unload_event.0.location.trading_region.source',
+    'events.cargo_port_unload_event.0.location.trading_subregion.id',
+    'events.cargo_port_unload_event.0.location.trading_subregion.label',
+    'events.cargo_port_unload_event.0.location.trading_subregion.layer',
+    'events.cargo_port_unload_event.0.location.trading_subregion.probability',
+    'events.cargo_port_unload_event.0.location.trading_subregion.source',
+    'events.cargo_port_unload_event.0.pos.0',
+    'events.cargo_port_unload_event.0.pos.1',
+    'events.cargo_port_unload_event.0.probability',
+    'events.cargo_port_unload_event.0.start_timestamp',
+    'events.cargo_storage_event.0.end_timestamp',
+    'events.cargo_storage_event.0.event_type',
+    'events.cargo_storage_event.0.location.country.id',
+    'events.cargo_storage_event.0.location.country.label',
+    'events.cargo_storage_event.0.location.country.layer',
+    'events.cargo_storage_event.0.location.country.probability',
+    'events.cargo_storage_event.0.location.country.source',
+    'events.cargo_storage_event.0.location.region.id',
+    'events.cargo_storage_event.0.location.region.label',
+    'events.cargo_storage_event.0.location.region.layer',
+    'events.cargo_storage_event.0.location.region.probability',
+    'events.cargo_storage_event.0.location.region.source',
+    'events.cargo_storage_event.0.location.shipping_region.id',
+    'events.cargo_storage_event.0.location.shipping_region.label',
+    'events.cargo_storage_event.0.location.shipping_region.layer',
+    'events.cargo_storage_event.0.location.shipping_region.probability',
+    'events.cargo_storage_event.0.location.shipping_region.source',
+    'events.cargo_storage_event.0.location.trading_block.id',
+    'events.cargo_storage_event.0.location.trading_block.label',
+    'events.cargo_storage_event.0.location.trading_block.layer',
+    'events.cargo_storage_event.0.location.trading_block.probability',
+    'events.cargo_storage_event.0.location.trading_block.source',
+    'events.cargo_storage_event.0.location.trading_region.id',
+    'events.cargo_storage_event.0.location.trading_region.label',
+    'events.cargo_storage_event.0.location.trading_region.layer',
+    'events.cargo_storage_event.0.location.trading_region.probability',
+    'events.cargo_storage_event.0.location.trading_region.source',
+    'events.cargo_storage_event.0.location.trading_subregion.id',
+    'events.cargo_storage_event.0.location.trading_subregion.label',
+    'events.cargo_storage_event.0.location.trading_subregion.layer',
+    'events.cargo_storage_event.0.location.trading_subregion.probability',
+    'events.cargo_storage_event.0.location.trading_subregion.source',
+    'events.cargo_storage_event.0.pos.0',
+    'events.cargo_storage_event.0.pos.1',
+    'events.cargo_storage_event.0.start_timestamp',
+    'events.cargo_storage_event.0.vessel_id',
+    'events.cargo_sts_event.0.end_timestamp',
+    'events.cargo_sts_event.0.event_type',
+    'events.cargo_sts_event.0.from_vessel_id',
+    'events.cargo_sts_event.0.from_vessel_name',
+    'events.cargo_sts_event.0.location.country.id',
+    'events.cargo_sts_event.0.location.country.label',
+    'events.cargo_sts_event.0.location.country.layer',
+    'events.cargo_sts_event.0.location.country.probability',
+    'events.cargo_sts_event.0.location.country.source',
+    'events.cargo_sts_event.0.location.port.id',
+    'events.cargo_sts_event.0.location.port.label',
+    'events.cargo_sts_event.0.location.port.layer',
+    'events.cargo_sts_event.0.location.port.probability',
+    'events.cargo_sts_event.0.location.port.source',
+    'events.cargo_sts_event.0.location.region.id',
+    'events.cargo_sts_event.0.location.region.label',
+    'events.cargo_sts_event.0.location.region.layer',
+    'events.cargo_sts_event.0.location.region.probability',
+    'events.cargo_sts_event.0.location.region.source',
+    'events.cargo_sts_event.0.location.shipping_region.id',
+    'events.cargo_sts_event.0.location.shipping_region.label',
+    'events.cargo_sts_event.0.location.shipping_region.layer',
+    'events.cargo_sts_event.0.location.shipping_region.probability',
+    'events.cargo_sts_event.0.location.shipping_region.source',
+    'events.cargo_sts_event.0.location.sts_zone.id',
+    'events.cargo_sts_event.0.location.sts_zone.label',
+    'events.cargo_sts_event.0.location.sts_zone.layer',
+    'events.cargo_sts_event.0.location.sts_zone.probability',
+    'events.cargo_sts_event.0.location.sts_zone.source',
+    'events.cargo_sts_event.0.location.trading_block.id',
+    'events.cargo_sts_event.0.location.trading_block.label',
+    'events.cargo_sts_event.0.location.trading_block.layer',
+    'events.cargo_sts_event.0.location.trading_block.probability',
+    'events.cargo_sts_event.0.location.trading_block.source',
+    'events.cargo_sts_event.0.location.trading_region.id',
+    'events.cargo_sts_event.0.location.trading_region.label',
+    'events.cargo_sts_event.0.location.trading_region.layer',
+    'events.cargo_sts_event.0.location.trading_region.probability',
+    'events.cargo_sts_event.0.location.trading_region.source',
+    'events.cargo_sts_event.0.location.trading_subregion.id',
+    'events.cargo_sts_event.0.location.trading_subregion.label',
+    'events.cargo_sts_event.0.location.trading_subregion.layer',
+    'events.cargo_sts_event.0.location.trading_subregion.probability',
+    'events.cargo_sts_event.0.location.trading_subregion.source',
+    'events.cargo_sts_event.0.pos.0',
+    'events.cargo_sts_event.0.pos.1',
+    'events.cargo_sts_event.0.start_timestamp',
+    'events.cargo_sts_event.0.to_vessel_id',
+    'events.cargo_sts_event.0.to_vessel_name',
+    'events.cargo_sts_event.1.end_timestamp',
+    'events.cargo_sts_event.1.event_type',
+    'events.cargo_sts_event.1.from_vessel_id',
+    'events.cargo_sts_event.1.from_vessel_name',
+    'events.cargo_sts_event.1.location.country.id',
+    'events.cargo_sts_event.1.location.country.label',
+    'events.cargo_sts_event.1.location.country.layer',
+    'events.cargo_sts_event.1.location.country.probability',
+    'events.cargo_sts_event.1.location.country.source',
+    'events.cargo_sts_event.1.location.region.id',
+    'events.cargo_sts_event.1.location.region.label',
+    'events.cargo_sts_event.1.location.region.layer',
+    'events.cargo_sts_event.1.location.region.probability',
+    'events.cargo_sts_event.1.location.region.source',
+    'events.cargo_sts_event.1.location.shipping_region.id',
+    'events.cargo_sts_event.1.location.shipping_region.label',
+    'events.cargo_sts_event.1.location.shipping_region.layer',
+    'events.cargo_sts_event.1.location.shipping_region.probability',
+    'events.cargo_sts_event.1.location.shipping_region.source',
+    'events.cargo_sts_event.1.location.sts_zone.id',
+    'events.cargo_sts_event.1.location.sts_zone.label',
+    'events.cargo_sts_event.1.location.sts_zone.layer',
+    'events.cargo_sts_event.1.location.sts_zone.probability',
+    'events.cargo_sts_event.1.location.sts_zone.source',
+    'events.cargo_sts_event.1.location.trading_block.id',
+    'events.cargo_sts_event.1.location.trading_block.label',
+    'events.cargo_sts_event.1.location.trading_block.layer',
+    'events.cargo_sts_event.1.location.trading_block.probability',
+    'events.cargo_sts_event.1.location.trading_block.source',
+    'events.cargo_sts_event.1.location.trading_region.id',
+    'events.cargo_sts_event.1.location.trading_region.label',
+    'events.cargo_sts_event.1.location.trading_region.layer',
+    'events.cargo_sts_event.1.location.trading_region.probability',
+    'events.cargo_sts_event.1.location.trading_region.source',
+    'events.cargo_sts_event.1.location.trading_subregion.id',
+    'events.cargo_sts_event.1.location.trading_subregion.label',
+    'events.cargo_sts_event.1.location.trading_subregion.layer',
+    'events.cargo_sts_event.1.location.trading_subregion.probability',
+    'events.cargo_sts_event.1.location.trading_subregion.source',
+    'events.cargo_sts_event.1.pos.0',
+    'events.cargo_sts_event.1.pos.1',
+    'events.cargo_sts_event.1.start_timestamp',
+    'events.cargo_sts_event.1.to_vessel_id',
+    'events.cargo_sts_event.1.to_vessel_name',
+    'product.category.id',
+    'product.category.label',
+    'product.category.layer',
+    'product.category.probability',
+    'product.category.source',
+    'product.grade.id',
+    'product.grade.label',
+    'product.grade.layer',
+    'product.grade.probability',
+    'product.grade.source',
+    'product.group.id',
+    'product.group.label',
+    'product.group.layer',
+    'product.group.probability',
+    'product.group.source',
+    'product.group_product.id',
+    'product.group_product.label',
+    'product.group_product.layer',
+    'product.group_product.probability',
+    'product.group_product.source',
+    'quantity',
+    'status',
+    'vessels.0.corporate_entities.charterer.id',
+    'vessels.0.corporate_entities.charterer.label',
+    'vessels.0.corporate_entities.charterer.layer',
+    'vessels.0.corporate_entities.charterer.probability',
+    'vessels.0.corporate_entities.charterer.source',
+    'vessels.0.corporate_entities.commercial_owner.id',
+    'vessels.0.corporate_entities.commercial_owner.label',
+    'vessels.0.corporate_entities.commercial_owner.layer',
+    'vessels.0.corporate_entities.commercial_owner.probability',
+    'vessels.0.corporate_entities.commercial_owner.source',
+    'vessels.0.corporate_entities.time_charterer.end_timestamp',
+    'vessels.0.corporate_entities.time_charterer.id',
+    'vessels.0.corporate_entities.time_charterer.label',
+    'vessels.0.corporate_entities.time_charterer.layer',
+    'vessels.0.corporate_entities.time_charterer.probability',
+    'vessels.0.corporate_entities.time_charterer.source',
+    'vessels.0.corporate_entities.time_charterer.start_timestamp',
+    'vessels.0.cubic_capacity',
+    'vessels.0.dwt',
+    'vessels.0.end_timestamp',
+    'vessels.0.fixture_fulfilled',
+    'vessels.0.fixture_id',
+    'vessels.0.id',
+    'vessels.0.imo',
+    'vessels.0.mmsi',
+    'vessels.0.name',
+    'vessels.0.start_timestamp',
+    'vessels.0.status',
+    'vessels.0.tags.0.end_timestamp',
+    'vessels.0.tags.0.start_timestamp',
+    'vessels.0.tags.0.tag',
+    'vessels.0.vessel_class',
+    'vessels.0.voyage_id',
+    'vessels.1.corporate_entities.charterer.id',
+    'vessels.1.corporate_entities.charterer.label',
+    'vessels.1.corporate_entities.charterer.layer',
+    'vessels.1.corporate_entities.charterer.probability',
+    'vessels.1.corporate_entities.charterer.source',
+    'vessels.1.corporate_entities.commercial_owner.id',
+    'vessels.1.corporate_entities.commercial_owner.label',
+    'vessels.1.corporate_entities.commercial_owner.layer',
+    'vessels.1.corporate_entities.commercial_owner.probability',
+    'vessels.1.corporate_entities.commercial_owner.source',
+    'vessels.1.corporate_entities.time_charterer.end_timestamp',
+    'vessels.1.corporate_entities.time_charterer.id',
+    'vessels.1.corporate_entities.time_charterer.label',
+    'vessels.1.corporate_entities.time_charterer.layer',
+    'vessels.1.corporate_entities.time_charterer.probability',
+    'vessels.1.corporate_entities.time_charterer.source',
+    'vessels.1.corporate_entities.time_charterer.start_timestamp',
+    'vessels.1.cubic_capacity',
+    'vessels.1.dwt',
+    'vessels.1.end_timestamp',
+    'vessels.1.fixture_fulfilled',
+    'vessels.1.id',
+    'vessels.1.imo',
+    'vessels.1.mmsi',
+    'vessels.1.name',
+    'vessels.1.start_timestamp',
+    'vessels.1.status',
+    'vessels.1.tags.0.end_timestamp',
+    'vessels.1.tags.0.start_timestamp',
+    'vessels.1.tags.0.tag',
+    'vessels.1.vessel_class',
+    'vessels.1.voyage_id',
+    'vessels.2.corporate_entities.charterer.id',
+    'vessels.2.corporate_entities.charterer.label',
+    'vessels.2.corporate_entities.charterer.layer',
+    'vessels.2.corporate_entities.charterer.probability',
+    'vessels.2.corporate_entities.charterer.source',
+    'vessels.2.corporate_entities.commercial_owner.id',
+    'vessels.2.corporate_entities.commercial_owner.label',
+    'vessels.2.corporate_entities.commercial_owner.layer',
+    'vessels.2.corporate_entities.commercial_owner.probability',
+    'vessels.2.corporate_entities.commercial_owner.source',
+    'vessels.2.corporate_entities.time_charterer.end_timestamp',
+    'vessels.2.corporate_entities.time_charterer.id',
+    'vessels.2.corporate_entities.time_charterer.label',
+    'vessels.2.corporate_entities.time_charterer.layer',
+    'vessels.2.corporate_entities.time_charterer.probability',
+    'vessels.2.corporate_entities.time_charterer.source',
+    'vessels.2.corporate_entities.time_charterer.start_timestamp',
+    'vessels.2.cubic_capacity',
+    'vessels.2.dwt',
+    'vessels.2.end_timestamp',
+    'vessels.2.id',
+    'vessels.2.imo',
+    'vessels.2.mmsi',
+    'vessels.2.name',
+    'vessels.2.start_timestamp',
+    'vessels.2.status',
+    'vessels.2.tags.0.start_timestamp',
+    'vessels.2.tags.0.tag',
+    'vessels.2.vessel_class',
+    'vessels.2.voyage_id',
+    'vessels.3.corporate_entities.commercial_owner.id',
+    'vessels.3.corporate_entities.commercial_owner.label',
+    'vessels.3.corporate_entities.commercial_owner.layer',
+    'vessels.3.corporate_entities.commercial_owner.probability',
+    'vessels.3.corporate_entities.commercial_owner.source',
+    'vessels.3.cubic_capacity',
+    'vessels.3.dwt',
+    'vessels.3.id',
+    'vessels.3.imo',
+    'vessels.3.mmsi',
+    'vessels.3.name',
+    'vessels.3.start_timestamp',
+    'vessels.3.status',
+    'vessels.3.vessel_class',
+    'vessels.3.voyage_id',
+]
+</code></pre>
               
             </div>
           </div>
@@ -327,7 +827,7 @@
         <a href="../charterers/" class="btn btn-neutral float-right" title="Charterers">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../../operations/" class="btn btn-neutral" title="Operations"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../about-endpoints/" class="btn btn-neutral" title="About Endpoints"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -355,7 +855,7 @@
           <a href="https://github.com/V0RT3X4/python-sdk/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../../operations/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../about-endpoints/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
         <span style="margin-left: 15px"><a href="../charterers/" style="color: #fcfcfc">Next &raquo;</a></span>
