@@ -42,11 +42,24 @@ class CargoMovementsResult(Result):
         ## Notes
 
         A cargo movement is a complicated, nested structure. Between it's point of loading and discharge, a cargo
-         movement may be carried by _N_ or more vessels, with _N-1_ associated sts events. Each of these _N_ vessels
+         movement may be carried by _N_ or more vessels, with _N-1_ associated STS events. Each of these _N_ vessels
          could have an associated corporate owner, charterer, time charterer... etc.
 
          In order to represent a cargo movement as a flat (not nested) record in a dataframe, the sdk flattens the cargo
          movement, generating many columns in the process.
+
+         The columns are logically named. Let's say that a cargo is transferred between 4 vessels en route from a load
+         in Rotterdam to a discharge in New York. This is represented as 1 `cargo_port_unload_event`, followed by
+          3 `cargo_sts_event`s, and finally 1 `cargo_port_unload_event`.
+
+         In this example the name of the 1st vessel, is found in the `vessels.0.name` column (we're using zero-based
+         numbering indexes). Likewise, the imo of the second vessel is found in the `vessels.1.imo` column.
+
+         To find the name of the country in which the second STS event occured, we'd use the
+         `events.cargo_sts_event.1.location.country.layer` column.
+
+         Similarly, to find out when the first vessel started
+         loading the cargo from Rotterdam, we'd use the `events.cargo_port_load_event.0.start_timestamp` column.
 
         By default, the columns returned are something along the lines of.
         ```python
