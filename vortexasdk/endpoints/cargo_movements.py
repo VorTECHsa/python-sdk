@@ -10,8 +10,8 @@ import pandas as pd
 from vortexasdk.api.cargo_movement import CargoMovement
 from vortexasdk.api.entity_serializing import convert_cme_to_flat_dict
 from vortexasdk.api.search_result import Result
-from vortexasdk.conversions import convert_to_charterer_ids, convert_to_geography_ids, convert_to_vessel_ids, \
-    convert_to_product_ids
+from vortexasdk.conversions import convert_to_charterer_ids, convert_to_geography_ids, convert_to_product_ids
+from vortexasdk.conversions.vessels import convert_to_vessel_ids
 from vortexasdk.endpoints.endpoints import CARGO_MOVEMENTS_RESOURCE
 from vortexasdk.operations import Search
 from vortexasdk.utils import to_list
