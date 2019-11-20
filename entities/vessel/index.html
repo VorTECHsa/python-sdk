@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Vessel - VortexaSDK</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Vessel";
+    var mkdocs_page_input_path = "entities/vessel.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> VortexaSDK</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Entities</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../cargo_movement/">Cargo Movement</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../corporation/">Corporation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../geography/">Geography</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../product/">Product</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Vessel</a>
+    <ul class="subnav">
+            
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../operations/">Operations</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Endpoints</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../endpoints/cargo_movements/">Cargo Movements</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../endpoints/charterers/">Charterers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../endpoints/geographies/">Geographies</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../endpoints/products/">Products</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../endpoints/vessels/">Vessels</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Examples</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../examples/1_china/">1 China VLCC Discharges</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">VortexaSDK</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Entities &raquo;</li>
+        
+      
+    
+    <li>Vessel</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/V0RT3X4/python-sdk/edit/master/docs/entities/vessel.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="vortexasdk.api.vessel">vortexasdk.api.vessel</h1>
+
+<h2 id="vortexasdk.api.vessel.Vessel">Vessel</h2>
+
+<pre><code class="python">Vessel(self, id: str, name: str, ref_type: str, leaf: bool, parent: List[vortexasdk.api.shared_types.IDNameLayer], related_names: List[str], mmsi: int, tags: List[vortexasdk.api.shared_types.Tag], current_product_type: List, vessel_class: str, dead_weight: Union[int, NoneType] = None, cubic_capacity: Union[int, NoneType] = None, to_bow: Union[str, NoneType] = None, to_stern: Union[str, NoneType] = None, to_port: Union[str, NoneType] = None, to_starboard: Union[str, NoneType] = None, call_sign: Union[str, NoneType] = None, year: Union[int, NoneType] = None, imo: Union[int, NoneType] = None, gross_tonnage: Union[int, NoneType] = None) -&gt; None
+</code></pre>
+
+<p>Represent a Vessel reference record returned by the API.</p>
+<p><strong>Further Documentation</strong></p>
+<p>https://docs.vortexa.com/reference/GET/reference/vessels/%7Bid%7D</p>
+<h2 id="vortexasdk.api.vessel.VesselEntity">VesselEntity</h2>
+
+<pre><code class="python">VesselEntity(self, id: str, name: str, mmsi: int, imo: Union[int, NoneType], dwt: int, vessel_class: str, corporate_entities: List[vortexasdk.api.corporation.CorporateEntity], tags: List[vortexasdk.api.shared_types.Tag], status: str, start_timestamp: str, cubic_capacity: Union[int, NoneType] = None, voyage_id: Union[str, NoneType] = None, fixture_fulfilled: Union[bool, NoneType] = None, end_timestamp: Union[str, NoneType] = None, fixture_id: Union[str, NoneType] = None) -&gt; None
+</code></pre>
+
+<p>A VesselEntity represents a vessel record used in CargoMovements and VesselMovements.</p>
+<p><a href="https://docs.vortexa.com/reference/intro-vessel-entities">Vessel Entities Further Documentation</a></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../operations/" class="btn btn-neutral float-right" title="Operations">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../product/" class="btn btn-neutral" title="Product"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/V0RT3X4/python-sdk/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../product/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../operations/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

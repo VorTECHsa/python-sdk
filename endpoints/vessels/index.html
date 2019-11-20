@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Vessels - VortexaSDK</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Vessels";
+    var mkdocs_page_input_path = "endpoints/vessels.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> VortexaSDK</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Entities</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../entities/cargo_movement/">Cargo Movement</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../entities/corporation/">Corporation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../entities/geography/">Geography</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../entities/product/">Product</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../entities/vessel/">Vessel</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../operations/">Operations</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Endpoints</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../cargo_movements/">Cargo Movements</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../charterers/">Charterers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../geographies/">Geographies</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../products/">Products</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Vessels</a>
+    <ul class="subnav">
+            
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Examples</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../examples/1_china/">1 China VLCC Discharges</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">VortexaSDK</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Endpoints &raquo;</li>
+        
+      
+    
+    <li>Vessels</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/V0RT3X4/python-sdk/edit/master/docs/endpoints/vessels.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="vortexasdk.endpoints.vessels">vortexasdk.endpoints.vessels</h1>
+
+<p>Vessels Endpoint.
+<h2 id="vortexasdk.endpoints.vessels.VesselsResult">VesselsResult</h2></p>
+<pre><code class="python">VesselsResult(self, _records: List) -&gt; None
+</code></pre>
+
+<p>Container class that holds the result obtained from calling the <code>Vessels</code> endpoint.
+<h3 id="vortexasdk.endpoints.vessels.VesselsResult.to_list">to_list</h3></p>
+<pre><code class="python">VesselsResult.to_list(self) -&gt; List[vortexasdk.api.vessel.Vessel]
+</code></pre>
+
+<p>Represent vessels as a list.
+<h3 id="vortexasdk.endpoints.vessels.VesselsResult.to_df">to_df</h3></p>
+<pre><code class="python">VesselsResult.to_df(self, columns=None) -&gt; pandas.core.frame.DataFrame
+</code></pre>
+
+<p>Represent vessels as a <code>pd.DataFrame</code>.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>columns</strong>: The vessel features we want in the dataframe. Enter <code>columns='all'</code> to include all features.
+    Defaults to <code>columns = ['id', 'name', 'imo', 'vessel_class']</code>.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p><code>pd.DataFrame</code> of vessels.</p>
+<h2 id="vortexasdk.endpoints.vessels.Vessels">Vessels</h2>
+
+<pre><code class="python">Vessels(self)
+</code></pre>
+
+<p>Vessels endpoint.
+<h3 id="vortexasdk.endpoints.vessels.Vessels.reference">reference</h3></p>
+<pre><code class="python">Vessels.reference(self, id: str)
+</code></pre>
+
+<p>Perform a vessel lookup.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>id</strong>: Vessel ID to lookup</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p>Vessel record matching the ID</p>
+<p><strong>Further Documentation:</strong></p>
+<p><a href="https://docs.vortexa.com/reference/GET/reference/vessels/%7Bid%7D">VortexaAPI Vessel Reference</a></p>
+<h3 id="vortexasdk.endpoints.vessels.Vessels.search">search</h3>
+
+<pre><code class="python">Vessels.search(self, term: Union[str, List[str]] = None, ids: Union[str, List[str]] = None, vessel_classes: Union[str, List[str]] = None, vessel_product_types: Union[str, List[str]] = None) -&gt; vortexasdk.endpoints.vessels.VesselsResult
+</code></pre>
+
+<p>Find all vessels matching given search terms.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li>
+<p><strong>term</strong>: The name(s) (or partial name(s)) of a vessel we'd like to search</p>
+</li>
+<li>
+<p><strong>ids</strong>: ID or IDs of vessels we'd like to search</p>
+</li>
+<li>
+<p><strong>vessel_classes</strong>: vessel_class (or list of vessel classes) we'd like to search. Each vessel class must be one of "tiny_tanker" | "general_purpose" | "handysize" | "handymax" | "panamax" | "aframax" | "suezmax" | "vlcc_plus" | "sgc" | "mgc" | "lgc" | "vlgc". Refer to <a href="https://docs.vortexa.com/reference/intro-vessel-entities"> VortexaAPI Vessel Entities</a> for the most up-to-date list of vessel classes.</p>
+</li>
+<li>
+<p><strong>vessel_product_types</strong>: A product, or list of products to filter on, searching vessels currently carrying these products. Both product names or IDs can be entered here.</p>
+</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p>List of vessels matching the search arguments.</p>
+<p><strong>Examples</strong></p>
+<ul>
+<li>Let's find all the VLCCs with 'ocean' in their name, or related names.</li>
+</ul>
+<pre><code class="python">&gt;&gt;&gt; Vessels().search(vessel_classes='vlcc', term='ocean').to_df(columns=['name', 'imo', 'mmsi', 'related_names'])
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th align="right"></th>
+<th align="left">name</th>
+<th align="right">imo</th>
+<th align="right">mmsi</th>
+<th align="left">related_names</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">0</td>
+<td align="left">OCEANIS</td>
+<td align="right">9532757</td>
+<td align="right">241089000</td>
+<td align="left">['OCEANIS']</td>
+</tr>
+<tr>
+<td align="right">1</td>
+<td align="left">AEGEAN</td>
+<td align="right">9732553</td>
+<td align="right">205761000</td>
+<td align="left">['GENER8 OCEANUS']</td>
+</tr>
+<tr>
+<td align="right">2</td>
+<td align="left">OCEANIA</td>
+<td align="right">9246633</td>
+<td align="right">205753000</td>
+<td align="left">['OCEANIA', 'TI OCEANIA']</td>
+</tr>
+<tr>
+<td align="right">3</td>
+<td align="left">ENEOS OCEAN</td>
+<td align="right">9662875</td>
+<td align="right">432986000</td>
+<td align="left">['ENEOS OCEAN']</td>
+</tr>
+<tr>
+<td align="right">4</td>
+<td align="left">OCEAN LILY</td>
+<td align="right">9284960</td>
+<td align="right">477178100</td>
+<td align="left">['OCEAN LILY']</td>
+</tr>
+<tr>
+<td align="right">5</td>
+<td align="left">SHINYO OCEAN</td>
+<td align="right">9197868</td>
+<td align="right">636019316</td>
+<td align="left">['SHINYO OCEAN']</td>
+</tr>
+<tr>
+<td align="right">6</td>
+<td align="left">NASHA</td>
+<td align="right">9079107</td>
+<td align="right">370497000</td>
+<td align="left">['OCEANIC']</td>
+</tr>
+<tr>
+<td align="right">7</td>
+<td align="left">HUMANITY</td>
+<td align="right">9180281</td>
+<td align="right">422204700</td>
+<td align="left">['OCEAN NYMPH']</td>
+</tr>
+</tbody>
+</table>
+<p>Note the <code>term</code> search also looks for vessels with matching <code>related_names</code></p>
+<ul>
+<li>Let's find all the vessels currently carrying Crude.</li>
+</ul>
+<pre><code class="python">&gt;&gt;&gt; Vessels().search(vessel_product_types='crude').to_df()
+</code></pre>
+
+<p><strong>Further Documentation</strong></p>
+<p><a href="https://docs.vortexa.com/reference/POST/reference/vessels">VortexaAPI Vessel Reference</a></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../examples/1_china/" class="btn btn-neutral float-right" title="1 China VLCC Discharges">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../products/" class="btn btn-neutral" title="Products"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/V0RT3X4/python-sdk/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../products/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../examples/1_china/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>
