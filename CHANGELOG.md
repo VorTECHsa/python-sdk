@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.3.2](https://github.com/V0RT3X4/python-sdk/tree/0.3.2) (2019-11-20)
+
+[Full Changelog](https://github.com/V0RT3X4/python-sdk/compare/0.2.3...0.3.2)
+
+**Implemented enhancements:**
+
+- Allow for filtering by product name in vessel endpoint filters  [\#31](https://github.com/V0RT3X4/python-sdk/issues/31)
+
+**Merged pull requests:**
+
+- fix: Move to pytest, run mock setup before each test [\#52](https://github.com/V0RT3X4/python-sdk/pull/52) ([KitBurgess](https://github.com/KitBurgess))
+- ci: Add git change log [\#51](https://github.com/V0RT3X4/python-sdk/pull/51) ([KitBurgess](https://github.com/KitBurgess))
+- feat: Filter vessels using products name [\#50](https://github.com/V0RT3X4/python-sdk/pull/50) ([KitBurgess](https://github.com/KitBurgess))
+
 ## [0.2.3](https://github.com/V0RT3X4/python-sdk/tree/0.2.3) (2019-11-19)
 
 [Full Changelog](https://github.com/V0RT3X4/python-sdk/compare/0.2.2...0.2.3)
