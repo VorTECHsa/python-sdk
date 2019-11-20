@@ -105,6 +105,7 @@ class Vessels(Reference, Search):
         - Let's find all the VLCCs with 'ocean' in their name, or related names.
 
         ```python
+        >>> from vortexasdk import Vessels
         >>> Vessels().search(vessel_classes='vlcc', term='ocean').to_df(columns=['name', 'imo', 'mmsi', 'related_names'])
         ```
 

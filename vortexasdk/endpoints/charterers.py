@@ -26,9 +26,12 @@ class Charterers(Reference, Search):
 
         # Examples
 
-            >>> [x["name"] for x in Charterers().search(term="do")]
-            ['Donsotank', 'Dorval SC']
 
+        ```python
+        >>> from vortexasdk import Charterers
+        >>> [x["name"] for x in Charterers().search(term="do")]
+            ['Donsotank', 'Dorval SC']
+        ```
         """
         params = convert_values_to_list({"term": term})
         return super().search(**params)
