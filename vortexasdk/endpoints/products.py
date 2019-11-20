@@ -9,7 +9,7 @@ from vortexasdk.api.search_result import Result
 from vortexasdk.api.shared_types import ID
 from vortexasdk.endpoints.endpoints import PRODUCTS_REFERENCE
 from vortexasdk.operations import Reference, Search
-from vortexasdk.utils import convert_values_to_list
+from vortexasdk.utils import to_list
 
 
 class ProductResult(Result):
@@ -81,7 +81,7 @@ class Products(Reference, Search):
 
             ids: ID or IDs of products we'd like to search
 
-            product_parent: ID, or list of IDs of the immediate product parent. E.g. `product_parent ='12345'` will return all children of product `12345`. 
+            product_parent: ID, or list of IDs of the immediate product parent. E.g. `product_parent ='12345'` will return all children of product `12345`.
 
         # Returns
         List of products matching the search arguments.
@@ -108,10 +108,11 @@ class Products(Reference, Search):
         [VortexaAPI Vessel Reference](https://docs.vortexa.com/reference/POST/reference/products)
 
         """
-        search_params = convert_values_to_list({
-            "term": term,
-            "ids": ids,
-            "product_parent": product_parent,
-        })
+        search_params = {
+            "term": to_list(term),
+            "ids": to_list(ids),
+            "product_parent": to_list(product_parent),
+            "allowTopLevelProducts": True
+        }
 
         return ProductResult(super().search(**search_params))

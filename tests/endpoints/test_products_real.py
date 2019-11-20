@@ -23,7 +23,6 @@ class TestProductsReal(TestCase):
 
         print([x.name for x in products])
 
-
     def test_search_ids_dataframe(self):
         ids = [
             "e166e6253dd843624f6cbe4fd45e7f2cff4671e600b4d6371172dd92a0255946",
@@ -34,3 +33,16 @@ class TestProductsReal(TestCase):
         assert list(df.columns) == ['id', 'name', 'parent']
         assert len(df) == 2
 
+    def test_search_crude(self):
+        set_client(create_client())
+
+        result = [p.id for p in Products().search("Crude").to_list()]
+
+        assert "6f11b0724c9a4e85ffa7f1445bc768f054af755a090118dcf99f14745c261653" in result
+
+    def test_lookup_crude(self):
+        set_client(create_client())
+
+        result = Products().reference("6f11b0724c9a4e85ffa7f1445bc768f054af755a090118dcf99f14745c261653")
+
+        assert result[0]['name'] == 'Crude'

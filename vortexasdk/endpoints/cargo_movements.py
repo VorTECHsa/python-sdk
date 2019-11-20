@@ -10,7 +10,8 @@ import pandas as pd
 from vortexasdk.api.cargo_movement import CargoMovement
 from vortexasdk.api.entity_serializing import convert_cme_to_flat_dict
 from vortexasdk.api.search_result import Result
-from vortexasdk.conversions import convert_to_charterer_ids, convert_to_geography_ids, convert_to_vessel_ids
+from vortexasdk.conversions import convert_to_charterer_ids, convert_to_geography_ids, convert_to_product_ids
+from vortexasdk.conversions.vessels import convert_to_vessel_ids
 from vortexasdk.endpoints.endpoints import CARGO_MOVEMENTS_RESOURCE
 from vortexasdk.operations import Search
 from vortexasdk.utils import to_list
@@ -107,11 +108,11 @@ class CargoMovements(Search):
 
             filter_destinations: A geography, or list of geographies to filter on. Both geography names or IDs can be entered here.
 
-            filter_origins: A geography, or list of geographies to filter on. Both geography n  ames or IDs can be entered here.
+            filter_origins: A geography, or list of geographies to filter on. Both geography names or IDs can be entered here.
 
             filter_owners: An owner, or list of owners to filter on. Both charterer/owner names or IDs can be entered here.
 
-            filter_products: A product, or list of product to filter on.
+            filter_products: A product, or list of products to filter on. Both product names or IDs can be entered here.
 
             filter_vessels: A vessel, or list of vessels to filter on. Both vessel names or IDs can be entered here,
 
@@ -158,6 +159,7 @@ class CargoMovements(Search):
         geog = lambda x: convert_to_geography_ids(to_list(x))
         charterer = lambda x: convert_to_charterer_ids(to_list(x))
         ves = lambda x: convert_to_vessel_ids(to_list(x))
+        product = lambda x: convert_to_product_ids(to_list(x))
 
         params = {
             # Compulsory search parameters
@@ -171,7 +173,7 @@ class CargoMovements(Search):
             "filter_destinations": geog(filter_destinations),
             "filter_origins": geog(filter_origins),
             "filter_owners": charterer(filter_owners),
-            "filter_products": to_list(filter_products),
+            "filter_products": product(filter_products),
             "filter_vessels": ves(filter_vessels),
             "filter_storage_locations": geog(filter_storage_locations),
             "filter_ship_to_ship_locations": geog(filter_ship_to_ship_locations),
