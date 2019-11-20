@@ -23,11 +23,16 @@ Set your `VORTEXA_API_KEY` environment variable, that's all.
 
 ```python
 >>> from vortexasdk import CargoMovements
->>> df = CargoMovements() \
-        .search(filter_time_min="2019-08-01T00:00:00.000Z", filter_time_max="2019-08-01T00:15:00.000Z")\
+>>> df = CargoMovements()\
+        .search(filter_activity='loading_state',
+            filter_time_min='2019-08-01T00:00:00.000Z',
+            filter_time_max='2019-08-01T00:15:00.000Z')\
         .to_df()
 ```
 
+## Next Steps
+
+Learn how to call [Endpoints](https://v0rt3x4.github.io/python-sdk/endpoints/about-endpoints/)
 
 ## Documentation
 

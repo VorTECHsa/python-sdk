@@ -35,6 +35,12 @@ class TestVesselsReal(TestCase):
 
         assert actual == set(vessel_classes)
 
+    def test_search_terms_are_combined_with_AND(self):
+        aframax = set(v.id for v in Vessels().search(vessel_classes='aframax').to_list())
+        aframax_called_zhen = set(v.id for v in Vessels().search(vessel_classes='aframax', term='zhen').to_list())
+
+        assert aframax_called_zhen.issubset(aframax)
+
     def test_search_ids_dataframe(self):
         ids = [
             "6d8a8f0863ca087204dd68e5fc3b6469a879829e6262856e34856aea3ca20509",

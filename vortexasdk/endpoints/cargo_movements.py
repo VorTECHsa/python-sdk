@@ -1,72 +1,16 @@
 """Cargo Movements Endpoint."""
-import functools
-import os
-from multiprocessing.pool import Pool
-from typing import Dict, List, Union
+from typing import List, Union
 
-import jsons
-import pandas as pd
-
-from vortexasdk.api.cargo_movement import CargoMovement
-from vortexasdk.api.entity_serializing import convert_cme_to_flat_dict
-from vortexasdk.api.search_result import Result
 from vortexasdk.conversions import convert_to_charterer_ids, convert_to_geography_ids, convert_to_product_ids
 from vortexasdk.conversions.vessels import convert_to_vessel_ids
+from vortexasdk.endpoints.cargo_movements_result import CargoMovementsResult
 from vortexasdk.endpoints.endpoints import CARGO_MOVEMENTS_RESOURCE
 from vortexasdk.operations import Search
 from vortexasdk.utils import to_list
 
-DEFAULT_COLUMNS = [
-    'events.cargo_port_load_event.0.label',
-    'events.cargo_port_unload_event.0.label',
-    'product.group.label',
-    'product.grade.label',
-    'quantity',
-    'vessels.0.name',
-    'events.cargo_port_load_event.0.start_timestamp',
-    'events.cargo_port_unload_event.0.start_timestamp',
-]
-
-
-def _serialize_cm(dictionary: Dict) -> CargoMovement:
-    return jsons.loads(jsons.dumps(dictionary), CargoMovement)
-
-
-class CargoMovementsResult(Result):
-    """Container class holdings search results returns from the cargo movements endpoint."""
-
-    def to_list(self) -> List[CargoMovement]:
-        """Represent cargo movements as a list of `CargoMovementEntity`s."""
-        list_of_dicts = super().to_list()
-
-        with Pool(os.cpu_count()) as pool:
-            return list(pool.map(_serialize_cm, list_of_dicts))
-
-    def to_df(self, columns=None) -> pd.DataFrame:
-        """
-        Represent cargo movements as a `pd.DataFrame`.
-
-        # Arguments
-            columns: Output columns present in the `pd.DataFrame`.
-            Enter `columns='all'` to return all available columns.
-            Enter `columns=None` to use `cargo_movements.DEFAULT_COLUMNS`.
-
-
-        # Returns
-        `pd.DataFrame`, one row per cargo movement.
-
-        """
-        if columns is None:
-            columns = DEFAULT_COLUMNS
-
-        with Pool(os.cpu_count()) as pool:
-            records = pool.map(functools.partial(convert_cme_to_flat_dict, cols=columns), super().to_list())
-
-        return pd.DataFrame(records)
-
 
 class CargoMovements(Search):
-    """Cargo Movements Endpoint."""
+    """Cargo Movements Endpoint, use this to search through Vortexa's cargo movements."""
 
     _MAX_PAGE_RESULT_SIZE = 500
 
@@ -74,7 +18,7 @@ class CargoMovements(Search):
         Search.__init__(self, CARGO_MOVEMENTS_RESOURCE)
 
     def search(self,
-               filter_activity: str = "loading_state",
+               filter_activity: str,
                filter_time_min: str = "2019-10-01T00:00:00.000Z",
                filter_time_max: str = "2019-10-01T01:00:00.000Z",
                cm_unit: str = 'b',
@@ -95,8 +39,10 @@ class CargoMovements(Search):
         Find CargoMovements matching the given search parameters.
 
         # Arguments
-            filter_activity: Movement activity on which to base the time filter. It can be a filter for a
-             specific timestamp, which looks for it within the specified time-frame.
+            filter_activity: Movement activity on which to base the time filter. Must be one of ['loading_state',
+             'loading_start', 'loading_end', 'identified_for_loading_state', 'unloading_state', 'unloading_start',
+              'unloading_end', 'unloaded_state', 'storing_state', 'storing_start', 'storing_end', 'transiting_state',
+               'any_state'].
 
             filter_time_min: The start date of the time filter.
 
@@ -126,14 +72,14 @@ class CargoMovements(Search):
              the filter behaviour for cargo leaving then entering the same geographic area.
 
         # Returns
-        List of cargo movements matching all the search parameters.
+        `CargoMovementsResult`, containing all the cargo movements matching the given search terms.
 
 
         # Example
         Let's search for all vessels that loaded from `Rotterdam [NL]` on the morning of 1st December 2018.
 
         ```python
-
+        >>> from vortexasdk import CargoMovements
         >>> df = CargoMovements().search(
             filter_origins="Rotterdam",
             filter_activity='loading_state',

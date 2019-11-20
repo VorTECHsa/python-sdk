@@ -85,7 +85,7 @@ class Vessels(Reference, Search):
                vessel_product_types: Union[str, List[str]] = None,
                ) -> VesselsResult:
         """
-        Find all vessels matching given search terms.
+        Find all vessels matching given search arguments. Search arguments are combined in an AND manner.
 
         # Arguments
             term: The name(s) (or partial name(s)) of a vessel we'd like to search

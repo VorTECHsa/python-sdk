@@ -7,6 +7,7 @@ generate:
 
   - endpoints/cargo_movements.md:
       - vortexasdk.endpoints.cargo_movements++
+      - vortexasdk.endpoints.cargo_movements_result++
   - endpoints/charterers.md:
       - vortexasdk.endpoints.charterers++
   - endpoints/vessels.md:
@@ -28,19 +29,21 @@ generate:
       - vortexasdk.api.cargo_movement++
 pages:
   - Home: index.md << README.md
-  - Entities:
-      Vessel: entities/vessel.md
-      Product: entities/product.md
-      Geography: entities/geography.md
-      Corporation: entities/corporation.md
-      Cargo Movement: entities/cargo_movement.md
-  - Operations: operations.md
   - Endpoints:
-      Vessels: endpoints/vessels.md
-      Products: endpoints/products.md
-      Geographies: endpoints/geographies.md
+      About Endpoints: endpoints/about-endpoints.md << docs/endpoints/about-endpoints.md
       Cargo Movements: endpoints/cargo_movements.md
       Charterers: endpoints/charterers.md
+      Geographies: endpoints/geographies.md
+      Products: endpoints/products.md
+      Vessels: endpoints/vessels.md
+  - Entities:
+      About Entities: entities/about-entities.md << docs/entities/about-entities.md
+      Cargo Movement: entities/cargo_movement.md
+      Corporation: entities/corporation.md
+      Geography: entities/geography.md
+      Product: entities/product.md
+      Vessel: entities/vessel.md
+  - Operations: operations.md
   - Examples:
       1 China VLCC Discharges: examples/1_china.md
 
