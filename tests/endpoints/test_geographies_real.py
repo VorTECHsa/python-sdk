@@ -8,8 +8,7 @@ from vortexasdk.client import default_client, set_client
 @skipIf('real' in SKIP_TAGS, 'Skipping tests that hit the real API server.')
 class TestGeographiesReal(TestCase):
 
-    @classmethod
-    def setUpClass(cls) -> None:
+    def setUp(self) -> None:
         set_client(default_client())
 
     def test_search(self):

@@ -7,8 +7,7 @@ from vortexasdk.endpoints.vessels import Vessels
 
 class TestVessels(TestCase):
 
-    @classmethod
-    def setUpClass(cls) -> None:
+    def setUp(self) -> None:
         set_client(MockVortexaClient())
 
     def test_search_ids_retreives_names(self):

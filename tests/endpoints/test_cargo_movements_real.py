@@ -11,11 +11,10 @@ from vortexasdk.endpoints.cargo_movements import CargoMovements
 @skipIf('real' in SKIP_TAGS, 'Skipping tests that hit the real API server.')
 class TestCargoMovementsReal(TestCase):
 
-    @classmethod
-    def setUpClass(cls) -> None:
+    def setUp(self) -> None:
         set_client(create_client())
 
-    def test_defaullt_search(self):
+    def test_default_search(self):
         results = CargoMovements().search()
         print(len(results))
 
