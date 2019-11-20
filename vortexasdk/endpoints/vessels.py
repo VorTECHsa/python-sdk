@@ -1,7 +1,7 @@
 """Vessels Endpoint."""
 import os
 from multiprocessing import Pool
-from typing import List, Union, Dict
+from typing import Dict, List, Union
 
 import jsons
 import pandas as pd
@@ -9,9 +9,10 @@ import pandas as pd
 from vortexasdk.api.id import ID
 from vortexasdk.api.search_result import Result
 from vortexasdk.api.vessel import Vessel
+from vortexasdk.conversions import convert_to_product_ids
 from vortexasdk.endpoints.endpoints import VESSELS_REFERENCE
 from vortexasdk.operations import Reference, Search
-from vortexasdk.utils import convert_values_to_list
+from vortexasdk.utils import to_list
 
 
 def _serialize_vessel(dictionary: Dict) -> Vessel:
@@ -93,7 +94,7 @@ class Vessels(Reference, Search):
 
             vessel_classes: vessel_class (or list of vessel classes) we'd like to search. Each vessel class must be one of "tiny_tanker" | "general_purpose" | "handysize" | "handymax" | "panamax" | "aframax" | "suezmax" | "vlcc_plus" | "sgc" | "mgc" | "lgc" | "vlgc". Refer to [ VortexaAPI Vessel Entities](https://docs.vortexa.com/reference/intro-vessel-entities) for the most up-to-date list of vessel classes.
 
-            vessel_product_types: product ID (or list of product IDs), searching vessels currently (or recently) carrying these products.
+            vessel_product_types: A product, or list of products to filter on, searching vessels currently carrying these products. Both product names or IDs can be entered here.
 
         # Returns
         List of vessels matching the search arguments.
@@ -101,7 +102,7 @@ class Vessels(Reference, Search):
 
         # Examples
 
-        Let's find all the VLCCs with 'ocean' in their name, or related names.
+        - Let's find all the VLCCs with 'ocean' in their name, or related names.
 
         ```python
         >>> Vessels().search(vessel_classes='vlcc', term='ocean').to_df(columns=['name', 'imo', 'mmsi', 'related_names'])
@@ -121,16 +122,22 @@ class Vessels(Reference, Search):
         Note the `term` search also looks for vessels with matching `related_names`
 
 
+        - Let's find all the vessels currently carrying Crude.
+
+        ```python
+        >>> Vessels().search(vessel_product_types='crude').to_df()
+        ```
+
         # Further Documentation
 
         [VortexaAPI Vessel Reference](https://docs.vortexa.com/reference/POST/reference/vessels)
 
         """
-        search_params = convert_values_to_list({
-            "term": term,
-            "ids": ids,
-            "vessel_classes": vessel_classes,
-            "vessel_product_types": vessel_product_types,
-        })
+        search_params = {
+            "term": to_list(term),
+            "ids": to_list(ids),
+            "vessel_classes": to_list(vessel_classes),
+            "vessel_product_types": convert_to_product_ids(to_list(vessel_product_types)),
+        }
 
         return VesselsResult(super().search(**search_params))

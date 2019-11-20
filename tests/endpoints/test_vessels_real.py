@@ -45,6 +45,10 @@ class TestVesselsReal(TestCase):
         assert list(df.columns) == ['id', 'name', 'imo', 'vessel_class']
         assert len(df) == 2
 
+    def test_find_crude_vessels(self):
+        df = Vessels().search(vessel_product_types='crude').to_df()
+        assert len(df) > 1000
+
     def test_search_load_all_vessels(self):
         with Timer("Search"):
             result = Vessels().search()
