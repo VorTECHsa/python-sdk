@@ -193,8 +193,9 @@
 <p><strong>Returns</strong></p>
 <p>List of charterers matching <code>term</code></p>
 <p><strong>Examples</strong></p>
-<pre><code>&gt;&gt;&gt; [x["name"] for x in Charterers().search(term="do")]
-['Donsotank', 'Dorval SC']
+<pre><code class="python">&gt;&gt;&gt; from vortexasdk import Charterers
+&gt;&gt;&gt; [x[&quot;name&quot;] for x in Charterers().search(term=&quot;do&quot;)]
+    ['Donsotank', 'Dorval SC']
 </code></pre>
               
             </div>

@@ -244,7 +244,8 @@
 <ul>
 <li>Let's find all the VLCCs with 'ocean' in their name, or related names.</li>
 </ul>
-<pre><code class="python">&gt;&gt;&gt; Vessels().search(vessel_classes='vlcc', term='ocean').to_df(columns=['name', 'imo', 'mmsi', 'related_names'])
+<pre><code class="python">&gt;&gt;&gt; from vortexasdk import Vessels
+&gt;&gt;&gt; Vessels().search(vessel_classes='vlcc', term='ocean').to_df(columns=['name', 'imo', 'mmsi', 'related_names'])
 </code></pre>
 
 <table>
