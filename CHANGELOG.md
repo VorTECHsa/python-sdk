@@ -1,5 +1,33 @@
 # Changelog
 
+## [Unreleased](https://github.com/V0RT3X4/python-sdk/tree/HEAD)
+
+[Full Changelog](https://github.com/V0RT3X4/python-sdk/compare/0.3.4-alpha...HEAD)
+
+**Implemented enhancements:**
+
+- add a list of available columns in the SDK documents [\#40](https://github.com/V0RT3X4/python-sdk/issues/40)
+
+**Closed issues:**
+
+- include an explanation in the docs of the flattened cargo movement structure and how this links to the column naming convention [\#48](https://github.com/V0RT3X4/python-sdk/issues/48)
+- make 'filter\_activity' a required argument [\#43](https://github.com/V0RT3X4/python-sdk/issues/43)
+- How to serve docs isn't clear, which directory from? [\#20](https://github.com/V0RT3X4/python-sdk/issues/20)
+- unclear how to import the different endpoints [\#19](https://github.com/V0RT3X4/python-sdk/issues/19)
+
+**Merged pull requests:**
+
+- docs: Make it clearer how to import endpoints, closes \#19 [\#57](https://github.com/V0RT3X4/python-sdk/pull/57) ([KitBurgess](https://github.com/KitBurgess))
+- docs: Add about-endpoints explanation [\#55](https://github.com/V0RT3X4/python-sdk/pull/55) ([KitBurgess](https://github.com/KitBurgess))
+
+## [0.3.4-alpha](https://github.com/V0RT3X4/python-sdk/tree/0.3.4-alpha) (2019-11-20)
+
+[Full Changelog](https://github.com/V0RT3X4/python-sdk/compare/0.3.3...0.3.4-alpha)
+
+## [0.3.3](https://github.com/V0RT3X4/python-sdk/tree/0.3.3) (2019-11-20)
+
+[Full Changelog](https://github.com/V0RT3X4/python-sdk/compare/0.3.2...0.3.3)
+
 ## [0.3.2](https://github.com/V0RT3X4/python-sdk/tree/0.3.2) (2019-11-20)
 
 [Full Changelog](https://github.com/V0RT3X4/python-sdk/compare/0.2.3...0.3.2)
@@ -63,7 +91,6 @@
 
 **Merged pull requests:**
 
-- test: Fix global client state [\#28](https://github.com/V0RT3X4/python-sdk/pull/28) ([KitBurgess](https://github.com/KitBurgess))
 - Filter on name [\#27](https://github.com/V0RT3X4/python-sdk/pull/27) ([KitBurgess](https://github.com/KitBurgess))
 - Run tests against live API in circle ci [\#26](https://github.com/V0RT3X4/python-sdk/pull/26) ([KitBurgess](https://github.com/KitBurgess))
 - Revert "ci: Run live tests in circleci" [\#24](https://github.com/V0RT3X4/python-sdk/pull/24) ([KitBurgess](https://github.com/KitBurgess))
@@ -77,6 +104,7 @@
 
 **Merged pull requests:**
 
+- test: Fix global client state [\#28](https://github.com/V0RT3X4/python-sdk/pull/28) ([KitBurgess](https://github.com/KitBurgess))
 - ci: Add export packages [\#15](https://github.com/V0RT3X4/python-sdk/pull/15) ([KitBurgess](https://github.com/KitBurgess))
 - docs: Add tips to contributing docs [\#13](https://github.com/V0RT3X4/python-sdk/pull/13) ([KitBurgess](https://github.com/KitBurgess))
 - refactor: Rename root dir from vortexa to vortexasdk [\#12](https://github.com/V0RT3X4/python-sdk/pull/12) ([KitBurgess](https://github.com/KitBurgess))
