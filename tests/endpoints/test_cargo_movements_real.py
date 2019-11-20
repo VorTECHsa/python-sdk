@@ -15,11 +15,12 @@ class TestCargoMovementsReal(TestCase):
         set_client(create_client())
 
     def test_default_search(self):
-        results = CargoMovements().search()
+        results = CargoMovements().search(filter_activity='loading_state')
         print(len(results))
 
     def test_search_returns_unique_results(self):
         result = CargoMovements().search(
+            filter_activity='loading_state',
             filter_origins=['68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e'],
             filter_time_min="2019-08-29T00:00:00.000Z",
             filter_time_max="2019-10-30T00:00:00.000Z",
@@ -37,6 +38,7 @@ class TestCargoMovementsReal(TestCase):
 
     def test_search_single_filter_id(self):
         df = CargoMovements().search(
+            filter_activity='loading_state',
             filter_products='6f11b0724c9a4e85ffa7f1445bc768f054af755a090118dcf99f14745c261653',
             filter_time_min="2019-08-29T00:00:00.000Z",
             filter_time_max="2019-08-29T00:10:00.000Z",
@@ -46,6 +48,7 @@ class TestCargoMovementsReal(TestCase):
 
     def test_search_single_filter_origin_name(self):
         df = CargoMovements().search(
+            filter_activity='loading_state',
             filter_origins='Rotterdam',
             filter_time_min="2019-08-29T00:00:00.000Z",
             filter_time_max="2019-08-29T00:10:00.000Z",
@@ -55,6 +58,7 @@ class TestCargoMovementsReal(TestCase):
 
     def test_search_single_filter_charterer_name(self):
         df = CargoMovements().search(
+            filter_activity='loading_state',
             filter_owners="DHT"
         ).to_df().head(2)
 
@@ -75,6 +79,7 @@ class TestCargoMovementsReal(TestCase):
             filter_products=['6f11b0724c9a4e85ffa7f1445bc768f054af755a090118dcf99f14745c261653'],
             filter_time_min="2019-08-29T00:00:00.000Z",
             filter_time_max="2019-08-29T00:10:00.000Z",
+            filter_activity='loading_state'
         ).to_df().head(2)
 
         assert len(df) == 2
@@ -83,6 +88,7 @@ class TestCargoMovementsReal(TestCase):
     def test_speed(self):
         with Timer("Search") as t_search:
             cms = CargoMovements().search(
+                filter_activity='loading_state',
                 filter_time_min="2019-08-29T00:00:00.000Z",
                 filter_time_max="2019-08-30T00:00:00.000Z",
             )

@@ -18,7 +18,7 @@ class CargoMovements(Search):
         Search.__init__(self, CARGO_MOVEMENTS_RESOURCE)
 
     def search(self,
-               filter_activity: str = "loading_state",
+               filter_activity: str,
                filter_time_min: str = "2019-10-01T00:00:00.000Z",
                filter_time_max: str = "2019-10-01T01:00:00.000Z",
                cm_unit: str = 'b',
@@ -39,8 +39,10 @@ class CargoMovements(Search):
         Find CargoMovements matching the given search parameters.
 
         # Arguments
-            filter_activity: Movement activity on which to base the time filter. It can be a filter for a
-             specific timestamp, which looks for it within the specified time-frame.
+            filter_activity: Movement activity on which to base the time filter. Must be one of ['loading_state',
+             'loading_start', 'loading_end', 'identified_for_loading_state', 'unloading_state', 'unloading_start',
+              'unloading_end', 'unloaded_state', 'storing_state', 'storing_start', 'storing_end', 'transiting_state',
+               'any_state'].
 
             filter_time_min: The start date of the time filter.
 
