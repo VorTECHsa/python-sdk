@@ -9,8 +9,7 @@ from vortexasdk.endpoints.vessels import Vessels
 @skipIf('real' in SKIP_TAGS, 'Skipping tests that hit the real API server.')
 class TestVesselsReal(TestCase):
 
-    @classmethod
-    def setUpClass(cls) -> None:
+    def setUp(self) -> None:
         set_client(create_client())
 
     def test_search_ids(self):

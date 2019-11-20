@@ -32,7 +32,7 @@ jobs:
           name: "Run tests against mock API"
           command: |
             . .venv/bin/activate
-            export SKIP_TAGS=real; nose2 -v
+            export SKIP_TAGS=real; pytest -v
 
       - run:
           name: "Run all tests, including live API"
