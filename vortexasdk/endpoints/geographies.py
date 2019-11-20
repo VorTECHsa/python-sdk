@@ -27,14 +27,17 @@ class Geographies(Reference, Search):
         # Examples
 
         Find all geographies with `portsmouth` in the name.
-            >>> [x["name"] for x in Geographies().search(term="portsmouth")]
+        ```python
+        >>> from vortexasdk import Geographies
+        >>> [x["name"] for x in Geographies().search(term="portsmouth")]
             ['Portsmouth [GB]', 'Portsmouth, NH [US]']
-
+        ```
 
         Search multiple geography terms
-            >>> [x["name"] for x in Geographies().search(term=["Liverpool", "Southampton"])]
+        ```
+        >>> [x["name"] for x in Geographies().search(term=["Liverpool", "Southampton"])]
             ['Liverpool [GB]', 'Southampton [GB]', 'Liverpool Docks', 'Liverpool Bulk Liquids']
-
+        ```
         """
         params = convert_values_to_list({"term": term})
         return super().search(**params)

@@ -92,6 +92,7 @@ class Products(Reference, Search):
         Let's find all the products with 'sul' in their name, or related names.
 
         ```python
+        >>> from vortexasdk import Products
         >>> Products().search(term='sul').to_df()
         ```
 
