@@ -70,7 +70,7 @@ class CargoMovementsResult(Result):
             'product.grade.label',
             'quantity',
             'vessels.0.name',
-            'events.cargo_port_load_event.0.start_timestamp',
+            'events.cargo_port_load_event.0.end_timestamp',
             'events.cargo_port_unload_event.0.start_timestamp',
         ]
         ```
@@ -548,7 +548,7 @@ DEFAULT_COLUMNS = [
     'product.grade.label',
     'quantity',
     'vessels.0.name',
-    'events.cargo_port_load_event.0.start_timestamp',
+    'events.cargo_port_load_event.0.end_timestamp',
     'events.cargo_port_unload_event.0.start_timestamp',
 ]
 
