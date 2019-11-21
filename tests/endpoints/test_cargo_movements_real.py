@@ -56,7 +56,7 @@ class TestCargoMovementsReal(TestCase):
 
         assert len(df) == 2
 
-    def test_search_single_filter_charterer_name(self):
+    def test_search_single_filter_owner_name(self):
         df = CargoMovements().search(
             filter_activity='loading_state',
             filter_owners="DHT"

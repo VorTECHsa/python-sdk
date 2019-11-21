@@ -3,7 +3,7 @@ from unittest import TestCase, skipIf
 from tests.config import SKIP_TAGS
 from vortexasdk import Geographies
 from vortexasdk.client import create_client, set_client
-from vortexasdk.conversions import convert_to_charterer_ids, convert_to_geography_ids, convert_to_product_ids, \
+from vortexasdk.conversions import convert_to_corporation_ids, convert_to_geography_ids, convert_to_product_ids, \
     convert_to_vessel_ids
 
 
@@ -21,10 +21,10 @@ class TestConvert(TestCase):
         assert [rotterdam_id] == result
 
     @skipIf('real' in SKIP_TAGS, 'Skipping tests that hit the real API server.')
-    def test_convert_to_charterer_ids(self):
+    def test_convert_to_corporation_ids(self):
         set_client(create_client())
 
-        result = convert_to_charterer_ids(["DHT"])
+        result = convert_to_corporation_ids(["DHT"])
 
         assert len(result) >= 1
 
@@ -50,7 +50,7 @@ class TestConvert(TestCase):
         set_client(create_client())
 
         id = "f00e3068faf65af1345067f11dc6723b8da324a6f33c000118fccd81947deb4e"
-        charterer_result = convert_to_charterer_ids(["DHT"])
-        charterer_result_with_id = convert_to_charterer_ids(["DHT", id])
+        corporation_result = convert_to_corporation_ids(["DHT"])
+        corporation_result_with_id = convert_to_corporation_ids(["DHT", id])
 
-        assert charterer_result_with_id == [id] + charterer_result
+        assert corporation_result_with_id == [id] + corporation_result
