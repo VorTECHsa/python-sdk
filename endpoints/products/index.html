@@ -67,7 +67,7 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../charterers/">Charterers</a>
+    <a class="" href="../corporations/">Corporations</a>
                 </li>
                 <li class="">
                     
@@ -93,10 +93,6 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../entities/about-entities/">About Entities</a>
-                </li>
-                <li class="">
-                    
     <a class="" href="../../entities/cargo_movement/">Cargo Movement</a>
                 </li>
                 <li class="">
@@ -116,11 +112,6 @@
     <a class="" href="../../entities/vessel/">Vessel</a>
                 </li>
     </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../../operations/">Operations</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -176,50 +167,13 @@
                 <h1 id="vortexasdk.endpoints.products">vortexasdk.endpoints.products</h1>
 
 <p>Products Endpoint.
-<h2 id="vortexasdk.endpoints.products.ProductResult">ProductResult</h2></p>
-<pre><code class="python">ProductResult(self, _records: List) -&gt; None
-</code></pre>
-
-<p>Container class that holds the result obtained from calling the <code>Product</code> endpoint.
-<h3 id="vortexasdk.endpoints.products.ProductResult.to_list">to_list</h3></p>
-<pre><code class="python">ProductResult.to_list(self) -&gt; List[vortexasdk.api.product.Product]
-</code></pre>
-
-<p>Represent products as a list.
-<h3 id="vortexasdk.endpoints.products.ProductResult.to_df">to_df</h3></p>
-<pre><code class="python">ProductResult.to_df(self, columns=None) -&gt; pandas.core.frame.DataFrame
-</code></pre>
-
-<p>Represent products as a <code>pd.DataFrame</code>.</p>
-<p><strong>Arguments</strong></p>
-<ul>
-<li><strong>columns</strong>: The product features we want in the dataframe. Enter <code>columns='all'</code> to include all features.
-    Defaults to <code>columns = ['id', 'name', 'parent']</code>.</li>
-</ul>
-<p><strong>Returns</strong></p>
-<p><code>pd.DataFrame</code> of products.</p>
-<h2 id="vortexasdk.endpoints.products.Products">Products</h2>
-
+<h2 id="vortexasdk.endpoints.products.Products">Products</h2></p>
 <pre><code class="python">Products(self)
 </code></pre>
 
 <p>Vessels endpoint.
-<h3 id="vortexasdk.endpoints.products.Products.reference">reference</h3></p>
-<pre><code class="python">Products.reference(self, id: str)
-</code></pre>
-
-<p>Perform a product lookup.</p>
-<p><strong>Arguments</strong></p>
-<ul>
-<li><strong>id</strong>: Product ID to lookup</li>
-</ul>
-<p><strong>Returns</strong></p>
-<p>Product record matching the ID</p>
-<p><strong>Further Documentation:</strong></p>
-<p><a href="https://docs.vortexa.com/reference/POST/reference/products">VortexaAPI Product Reference</a></p>
-<h3 id="vortexasdk.endpoints.products.Products.search">search</h3>
-
-<pre><code class="python">Products.search(self, term: Union[str, List[str]] = None, ids: Union[str, List[str]] = None, product_parent: Union[str, List[str]] = None) -&gt; vortexasdk.endpoints.products.ProductResult
+<h3 id="vortexasdk.endpoints.products.Products.search">search</h3></p>
+<pre><code class="python">Products.search(self, term: Union[str, List[str]] = None, ids: Union[str, List[str]] = None, product_parent: Union[str, List[str]] = None) -&gt; vortexasdk.endpoints.products_result.ProductResult
 </code></pre>
 
 <p>Find all products matching given search terms.</p>
@@ -264,6 +218,45 @@
 <p>Note the <code>term</code> search also looks for products with matching <code>related_names</code></p>
 <p><strong>Further Documentation</strong></p>
 <p><a href="https://docs.vortexa.com/reference/POST/reference/products">VortexaAPI Vessel Reference</a></p>
+<h3 id="vortexasdk.endpoints.products.Products.reference">reference</h3>
+
+<pre><code class="python">Products.reference(self, id: str)
+</code></pre>
+
+<p>Perform a product lookup.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>id</strong>: Product ID to lookup</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p>Product record matching the ID</p>
+<p><strong>Further Documentation:</strong></p>
+<p><a href="https://docs.vortexa.com/reference/POST/reference/products">VortexaAPI Product Reference</a></p>
+<h1 id="vortexasdk.endpoints.products_result">vortexasdk.endpoints.products_result</h1>
+
+<h2 id="vortexasdk.endpoints.products_result.ProductResult">ProductResult</h2>
+
+<pre><code class="python">ProductResult(self, _records: List) -&gt; None
+</code></pre>
+
+<p>Container class that holds the result obtained from calling the <code>Product</code> endpoint.
+<h3 id="vortexasdk.endpoints.products_result.ProductResult.to_list">to_list</h3></p>
+<pre><code class="python">ProductResult.to_list(self) -&gt; List[vortexasdk.api.product.Product]
+</code></pre>
+
+<p>Represent products as a list.
+<h3 id="vortexasdk.endpoints.products_result.ProductResult.to_df">to_df</h3></p>
+<pre><code class="python">ProductResult.to_df(self, columns=None) -&gt; pandas.core.frame.DataFrame
+</code></pre>
+
+<p>Represent products as a <code>pd.DataFrame</code>.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>columns</strong>: The product features we want in the dataframe. Enter <code>columns='all'</code> to include all features.
+    Defaults to <code>columns = ['id', 'name', 'parent']</code>.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p><code>pd.DataFrame</code> of products.</p>
               
             </div>
           </div>

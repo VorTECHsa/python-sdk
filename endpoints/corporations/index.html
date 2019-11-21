@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Charterers - VortexaSDK</title>
+  <title>Corporations - VortexaSDK</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -17,8 +17,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Charterers";
-    var mkdocs_page_input_path = "endpoints/charterers.md";
+    var mkdocs_page_name = "Corporations";
+    var mkdocs_page_input_path = "endpoints/corporations.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -67,7 +67,7 @@
                 </li>
                 <li class=" current">
                     
-    <a class="current" href="./">Charterers</a>
+    <a class="current" href="./">Corporations</a>
     <ul class="subnav">
             
     </ul>
@@ -93,10 +93,6 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../entities/about-entities/">About Entities</a>
-                </li>
-                <li class="">
-                    
     <a class="" href="../../entities/cargo_movement/">Cargo Movement</a>
                 </li>
                 <li class="">
@@ -116,11 +112,6 @@
     <a class="" href="../../entities/vessel/">Vessel</a>
                 </li>
     </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../../operations/">Operations</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -160,10 +151,10 @@
         
       
     
-    <li>Charterers</li>
+    <li>Corporations</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/V0RT3X4/python-sdk/edit/master/docs/endpoints/charterers.md"
+        <a href="https://github.com/V0RT3X4/python-sdk/edit/master/docs/endpoints/corporations.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -173,29 +164,79 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="vortexasdk.endpoints.charterers">vortexasdk.endpoints.charterers</h1>
+                <h1 id="vortexasdk.endpoints.corporations">vortexasdk.endpoints.corporations</h1>
 
-<p>Charterers Endpoint.
-<h2 id="vortexasdk.endpoints.charterers.Charterers">Charterers</h2></p>
-<pre><code class="python">Charterers(self)
+<p>Corporations Endpoint.
+<h2 id="vortexasdk.endpoints.corporations.Corporations">Corporations</h2></p>
+<pre><code class="python">Corporations(self)
 </code></pre>
 
-<p>Charterers Endpoint.
-<h3 id="vortexasdk.endpoints.charterers.Charterers.search">search</h3></p>
-<pre><code class="python">Charterers.search(self, term: Union[str, List[str]])
+<p>Corporations Endpoint.
+<h3 id="vortexasdk.endpoints.corporations.Corporations.search">search</h3></p>
+<pre><code class="python">Corporations.search(self, term: Union[str, List[str]] = None) -&gt; vortexasdk.endpoints.corporations_result.CorporationsResult
 </code></pre>
 
-<p>Find all Charterers matching given search terms.</p>
+<p>Find all Corporations matching given search terms.</p>
 <p><strong>Arguments</strong></p>
 <ul>
-<li><strong>term</strong>: The charterer name(s) we're filtering on</li>
+<li><strong>term</strong>: The corporation name(s) we're filtering on</li>
 </ul>
 <p><strong>Returns</strong></p>
-<p>List of charterers matching <code>term</code></p>
+<p>List of corporation matching <code>term</code></p>
 <p><strong>Examples</strong></p>
-<pre><code class="python">&gt;&gt;&gt; from vortexasdk import Charterers
-&gt;&gt;&gt; [x[&quot;name&quot;] for x in Charterers().search(term=&quot;do&quot;)]
+<p>Let's load all corporations</p>
+<pre><code class="python">&gt;&gt;&gt; from vortexasdk import Corporations
+&gt;&gt;&gt; Corporations().search().to_df()
+</code></pre>
+
+<p>returns</p>
+<table>
+<thead>
+<tr>
+<th align="right"></th>
+<th align="left">id</th>
+<th align="left">name</th>
+<th align="left">corporate_entity_type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">0</td>
+<td align="left">04f418ee78c1e17744ad653e7815e8e28891ed9ba25a8427030e4478e5c00974</td>
+<td align="left">3J</td>
+<td align="left">['commercial_owner']</td>
+</tr>
+<tr>
+<td align="right">1</td>
+<td align="left">b6384cf17f1639a64bbff04cfd32257bf732a3a13e4b0532802a9ae84a36be34</td>
+<td align="left">5XJAPANESE</td>
+<td align="left">['commercial_owner']</td>
+</tr>
+</tbody>
+</table>
+<p>Let's find all corporations with 'do' in the name.</p>
+<pre><code class="python">&gt;&gt;&gt; [x.name for x in Corporations().search(term=&quot;do&quot;).to_list()]
     ['Donsotank', 'Dorval SC']
+</code></pre>
+
+<p><strong>Further Documentation</strong></p>
+<p><a href="https://docs.vortexa.com/reference/POST/reference/charterers">VortexaAPI Corporation Reference</a></p>
+<h3 id="vortexasdk.endpoints.corporations.Corporations.reference">reference</h3>
+
+<pre><code class="python">Corporations.reference(self, id: str)
+</code></pre>
+
+<p>Perform a corporation lookup.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>id</strong>: Corporation ID to lookup</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p>Corporation record matching the ID</p>
+<p><strong>Further Documentation:</strong></p>
+<p><a href="https://docs.vortexa.com/reference/GET/reference/charterers/%7Bid%7D">VortexaAPI Corporation Reference</a></p>
+<p><strong>Examples</strong></p>
+<pre><code>&gt;&gt;&gt; Corporations().reference(id='12345abcdef')
 </code></pre>
               
             </div>
