@@ -1,11 +1,9 @@
-from unittest import TestCase
-
-from tests.mixins import CallRealAPI
+from tests.testcases import TestCaseUsingRealAPI
 from vortexasdk.client import create_client, set_client
 from vortexasdk.endpoints.products import Products
 
 
-class TestProductsReal(CallRealAPI, TestCase):
+class TestProductsReal(TestCaseUsingRealAPI):
 
     def test_search_ids(self):
         ids = [

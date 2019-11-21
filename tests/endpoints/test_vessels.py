@@ -1,10 +1,8 @@
-from unittest import TestCase
-
-from tests.mixins import CallMockAPI
+from tests.testcases import TestCaseUsingMockAPI
 from vortexasdk.endpoints.vessels import Vessels
 
 
-class TestVessels(CallMockAPI, TestCase):
+class TestVessels(TestCaseUsingMockAPI):
 
     def test_search_ids_retreives_names(self):
         vessels = Vessels().search().to_list()

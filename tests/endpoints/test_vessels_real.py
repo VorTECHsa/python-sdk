@@ -1,11 +1,9 @@
-from unittest import TestCase
-
-from tests.mixins import CallRealAPI
+from tests.testcases import TestCaseUsingRealAPI
 from tests.timer import Timer
 from vortexasdk.endpoints.vessels import Vessels
 
 
-class TestVesselsReal(CallRealAPI, TestCase):
+class TestVesselsReal(TestCaseUsingRealAPI):
 
     def test_search_ids(self):
         ids = [

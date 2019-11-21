@@ -1,12 +1,10 @@
-from unittest import TestCase
-
-from tests.mixins import CallRealAPI
+from tests.testcases import TestCaseUsingRealAPI
 from tests.timer import Timer
 from tests.utils import to_markdown
 from vortexasdk.endpoints.cargo_movements import CargoMovements
 
 
-class TestCargoMovementsReal(CallRealAPI, TestCase):
+class TestCargoMovementsReal(TestCaseUsingRealAPI):
 
     def test_default_search(self):
         results = CargoMovements().search(filter_activity='loading_state')
