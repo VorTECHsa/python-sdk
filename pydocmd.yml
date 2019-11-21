@@ -1,10 +1,6 @@
 site_name: VortexaSDK
 repo_url: https://github.com/V0RT3X4/python-sdk
 generate:
-  - operations.md:
-      - vortexasdk.operations.Search+
-      - vortexasdk.operations.Reference+
-
   - endpoints/cargo_movements.md:
       - vortexasdk.endpoints.cargo_movements++
       - vortexasdk.endpoints.cargo_movements_result++
@@ -12,10 +8,12 @@ generate:
       - vortexasdk.endpoints.charterers++
   - endpoints/vessels.md:
       - vortexasdk.endpoints.vessels++
+      - vortexasdk.endpoints.vessels_result++
   - endpoints/geographies.md:
       - vortexasdk.endpoints.geographies++
   - endpoints/products.md:
       - vortexasdk.endpoints.products++
+      - vortexasdk.endpoints.products_result++
 
   - entities/product.md:
       - vortexasdk.api.product++
@@ -37,13 +35,12 @@ pages:
       Products: endpoints/products.md
       Vessels: endpoints/vessels.md
   - Entities:
-      About Entities: entities/about-entities.md << docs/entities/about-entities.md
+#      About Entities: entities/about-entities.md << docs/entities/about-entities.md
       Cargo Movement: entities/cargo_movement.md
       Corporation: entities/corporation.md
       Geography: entities/geography.md
       Product: entities/product.md
       Vessel: entities/vessel.md
-  - Operations: operations.md
   - Examples:
       1 China VLCC Discharges: examples/1_china.md
 

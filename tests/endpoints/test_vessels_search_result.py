@@ -3,7 +3,7 @@ from unittest import TestCase
 import pandas as pd
 
 from tests.mock_client import example_vessels
-from vortexasdk.endpoints.vessels import VesselsResult
+from vortexasdk.endpoints.vessels_result import VesselsResult
 
 
 class TestVesselsSearchResult(TestCase):
