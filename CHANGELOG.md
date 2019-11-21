@@ -1,8 +1,20 @@
 # Changelog
 
-## [Unreleased](https://github.com/V0RT3X4/python-sdk/tree/HEAD)
+## [0.5.0](https://github.com/V0RT3X4/python-sdk/tree/0.5.0) (2019-11-21)
 
-[Full Changelog](https://github.com/V0RT3X4/python-sdk/compare/0.3.4-alpha...HEAD)
+[Full Changelog](https://github.com/V0RT3X4/python-sdk/compare/0.4.3...0.5.0)
+
+**Closed issues:**
+
+- Test SDK against different python versions [\#53](https://github.com/V0RT3X4/python-sdk/issues/53)
+
+**Merged pull requests:**
+
+- Bulk out Corporations endpoint [\#60](https://github.com/V0RT3X4/python-sdk/pull/60) ([KitBurgess](https://github.com/KitBurgess))
+
+## [0.4.3](https://github.com/V0RT3X4/python-sdk/tree/0.4.3) (2019-11-20)
+
+[Full Changelog](https://github.com/V0RT3X4/python-sdk/compare/0.3.4-alpha...0.4.3)
 
 **Implemented enhancements:**
 
@@ -91,6 +103,7 @@
 
 **Merged pull requests:**
 
+- test: Fix global client state [\#28](https://github.com/V0RT3X4/python-sdk/pull/28) ([KitBurgess](https://github.com/KitBurgess))
 - Filter on name [\#27](https://github.com/V0RT3X4/python-sdk/pull/27) ([KitBurgess](https://github.com/KitBurgess))
 - Run tests against live API in circle ci [\#26](https://github.com/V0RT3X4/python-sdk/pull/26) ([KitBurgess](https://github.com/KitBurgess))
 - Revert "ci: Run live tests in circleci" [\#24](https://github.com/V0RT3X4/python-sdk/pull/24) ([KitBurgess](https://github.com/KitBurgess))
@@ -104,7 +117,6 @@
 
 **Merged pull requests:**
 
-- test: Fix global client state [\#28](https://github.com/V0RT3X4/python-sdk/pull/28) ([KitBurgess](https://github.com/KitBurgess))
 - ci: Add export packages [\#15](https://github.com/V0RT3X4/python-sdk/pull/15) ([KitBurgess](https://github.com/KitBurgess))
 - docs: Add tips to contributing docs [\#13](https://github.com/V0RT3X4/python-sdk/pull/13) ([KitBurgess](https://github.com/KitBurgess))
 - refactor: Rename root dir from vortexa to vortexasdk [\#12](https://github.com/V0RT3X4/python-sdk/pull/12) ([KitBurgess](https://github.com/KitBurgess))
