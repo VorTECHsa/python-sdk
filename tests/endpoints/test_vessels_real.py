@@ -1,16 +1,11 @@
-from unittest import TestCase, skipIf
+from unittest import TestCase
 
-from tests.config import SKIP_TAGS
+from tests.mixins import CallRealAPI
 from tests.timer import Timer
-from vortexasdk.client import create_client, set_client
 from vortexasdk.endpoints.vessels import Vessels
 
 
-@skipIf('real' in SKIP_TAGS, 'Skipping tests that hit the real API server.')
-class TestVesselsReal(TestCase):
-
-    def setUp(self) -> None:
-        set_client(create_client())
+class TestVesselsReal(CallRealAPI, TestCase):
 
     def test_search_ids(self):
         ids = [

@@ -1,17 +1,12 @@
-from unittest import TestCase, skipIf
+from unittest import TestCase
 
-from tests.config import SKIP_TAGS
+from tests.mixins import CallRealAPI
 from tests.timer import Timer
 from tests.utils import to_markdown
-from vortexasdk.client import create_client, set_client
 from vortexasdk.endpoints.cargo_movements import CargoMovements
 
 
-@skipIf('real' in SKIP_TAGS, 'Skipping tests that hit the real API server.')
-class TestCargoMovementsReal(TestCase):
-
-    def setUp(self) -> None:
-        set_client(create_client())
+class TestCargoMovementsReal(CallRealAPI, TestCase):
 
     def test_default_search(self):
         results = CargoMovements().search(filter_activity='loading_state')
