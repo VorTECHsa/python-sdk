@@ -17,22 +17,6 @@ class Vessels(Reference, Search):
         Reference.__init__(self, VESSELS_REFERENCE)
         Search.__init__(self, VESSELS_REFERENCE)
 
-    def reference(self, id: ID):
-        """
-        Perform a vessel lookup.
-
-        # Arguments
-            id: Vessel ID to lookup
-
-        # Returns
-        Vessel record matching the ID
-
-        # Further Documentation:
-        [VortexaAPI Vessel Reference](https://docs.vortexa.com/reference/GET/reference/vessels/%7Bid%7D)
-
-        """
-        return super().reference(id)
-
     def search(self,
                term: Union[str, List[str]] = None,
                ids: Union[str, List[str]] = None,
@@ -97,3 +81,19 @@ class Vessels(Reference, Search):
         }
 
         return VesselsResult(super().search(**search_params))
+
+    def reference(self, id: ID):
+        """
+        Perform a vessel lookup.
+
+        # Arguments
+            id: Vessel ID to lookup
+
+        # Returns
+        Vessel record matching the ID
+
+        # Further Documentation:
+        [VortexaAPI Vessel Reference](https://docs.vortexa.com/reference/GET/reference/vessels/%7Bid%7D)
+
+        """
+        return super().reference(id)

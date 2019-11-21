@@ -15,25 +15,6 @@ class Corporations(Reference, Search):
         Reference.__init__(self, CORPORATIONS_REFERENCE)
         Search.__init__(self, CORPORATIONS_REFERENCE)
 
-    def reference(self, id: ID):
-        """
-        Perform a corporation lookup.
-
-        # Arguments
-            id: Corporation ID to lookup
-
-        # Returns
-        Corporation record matching the ID
-
-        # Further Documentation:
-        [VortexaAPI Corporation Reference](https://docs.vortexa.com/reference/GET/reference/charterers/%7Bid%7D)
-
-        # Examples
-            >>> Corporations().reference(id='12345abcdef')
-
-        """
-        return super().reference(id)
-
     def search(self, term: Union[str, List[str]] = None) -> CorporationsResult:
         """
         Find all Corporations matching given search terms.
@@ -73,3 +54,22 @@ class Corporations(Reference, Search):
         """
         params = convert_values_to_list({"term": term})
         return CorporationsResult(super().search(**params))
+
+    def reference(self, id: ID):
+        """
+        Perform a corporation lookup.
+
+        # Arguments
+            id: Corporation ID to lookup
+
+        # Returns
+        Corporation record matching the ID
+
+        # Further Documentation:
+        [VortexaAPI Corporation Reference](https://docs.vortexa.com/reference/GET/reference/charterers/%7Bid%7D)
+
+        # Examples
+            >>> Corporations().reference(id='12345abcdef')
+
+        """
+        return super().reference(id)

@@ -16,22 +16,6 @@ class Products(Reference, Search):
         Reference.__init__(self, PRODUCTS_REFERENCE)
         Search.__init__(self, PRODUCTS_REFERENCE)
 
-    def reference(self, id: ID):
-        """
-        Perform a product lookup.
-
-        # Arguments
-            id: Product ID to lookup
-
-        # Returns
-        Product record matching the ID
-
-        # Further Documentation:
-        [VortexaAPI Product Reference](https://docs.vortexa.com/reference/POST/reference/products)
-
-        """
-        return super().reference(id)
-
     def search(self,
                term: Union[str, List[str]] = None,
                ids: Union[str, List[str]] = None,
@@ -81,3 +65,19 @@ class Products(Reference, Search):
         }
 
         return ProductResult(super().search(**search_params))
+
+    def reference(self, id: ID):
+        """
+        Perform a product lookup.
+
+        # Arguments
+            id: Product ID to lookup
+
+        # Returns
+        Product record matching the ID
+
+        # Further Documentation:
+        [VortexaAPI Product Reference](https://docs.vortexa.com/reference/POST/reference/products)
+
+        """
+        return super().reference(id)
