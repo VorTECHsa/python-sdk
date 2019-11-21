@@ -1,6 +1,7 @@
 """Corporations Endpoint."""
 from typing import List, Union
 
+from vortexasdk.api import ID
 from vortexasdk.endpoints.corporations_result import CorporationsResult
 from vortexasdk.endpoints.endpoints import CORPORATIONS_REFERENCE
 from vortexasdk.operations import Reference, Search
@@ -13,6 +14,25 @@ class Corporations(Reference, Search):
     def __init__(self):
         Reference.__init__(self, CORPORATIONS_REFERENCE)
         Search.__init__(self, CORPORATIONS_REFERENCE)
+
+    def reference(self, id: ID):
+        """
+        Perform a corporation lookup.
+
+        # Arguments
+            id: Corporation ID to lookup
+
+        # Returns
+        Corporation record matching the ID
+
+        # Further Documentation:
+        [VortexaAPI Corporation Reference](https://docs.vortexa.com/reference/GET/reference/charterers/%7Bid%7D)
+
+        # Examples
+            >>> Corporations().reference(id='12345abcdef')
+
+        """
+        return super().reference(id)
 
     def search(self, term: Union[str, List[str]] = None) -> CorporationsResult:
         """
@@ -45,6 +65,11 @@ class Corporations(Reference, Search):
         >>> [x.name for x in Corporations().search(term="do").to_list()]
             ['Donsotank', 'Dorval SC']
         ```
+
+        # Further Documentation
+
+        [VortexaAPI Corporation Reference](https://docs.vortexa.com/reference/POST/reference/charterers)
+
         """
         params = convert_values_to_list({"term": term})
         return CorporationsResult(super().search(**params))
