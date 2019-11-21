@@ -1,15 +1,9 @@
-from unittest import TestCase, skipIf
-
-from tests.config import SKIP_TAGS
+from tests.testcases import TestCaseUsingRealAPI
 from vortexasdk.client import create_client, set_client
 from vortexasdk.endpoints.products import Products
 
 
-@skipIf('real' in SKIP_TAGS, 'Skipping tests that hit the real API server.')
-class TestProductsReal(TestCase):
-
-    def setUp(self) -> None:
-        set_client(create_client())
+class TestProductsReal(TestCaseUsingRealAPI):
 
     def test_search_ids(self):
         ids = [

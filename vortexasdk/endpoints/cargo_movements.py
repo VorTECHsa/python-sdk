@@ -1,7 +1,7 @@
 """Cargo Movements Endpoint."""
 from typing import List, Union
 
-from vortexasdk.conversions import convert_to_charterer_ids, convert_to_geography_ids, convert_to_product_ids
+from vortexasdk.conversions import convert_to_corporation_ids, convert_to_geography_ids, convert_to_product_ids
 from vortexasdk.conversions.vessels import convert_to_vessel_ids
 from vortexasdk.endpoints.cargo_movements_result import CargoMovementsResult
 from vortexasdk.endpoints.endpoints import CARGO_MOVEMENTS_RESOURCE
@@ -50,7 +50,7 @@ class CargoMovements(Search):
 
             cm_unit: Unit of measurement. Enter 'b' for barrels or 't' for tonnes.
 
-            filter_charterers: A charterer, or list of charterers to filter on.
+            filter_corporations: A corporation, or list of corporations to filter on.
 
             filter_destinations: A geography, or list of geographies to filter on. Both geography names or IDs can be entered here.
 
@@ -103,7 +103,7 @@ class CargoMovements(Search):
 
         """
         geog = lambda x: convert_to_geography_ids(to_list(x))
-        charterer = lambda x: convert_to_charterer_ids(to_list(x))
+        corporation = lambda x: convert_to_corporation_ids(to_list(x))
         ves = lambda x: convert_to_vessel_ids(to_list(x))
         product = lambda x: convert_to_product_ids(to_list(x))
 
@@ -115,10 +115,10 @@ class CargoMovements(Search):
             'cm_unit': cm_unit,
             'size': self._MAX_PAGE_RESULT_SIZE,
 
-            "filter_charterers": charterer(filter_charterers),
+            "filter_charterers": corporation(filter_charterers),
             "filter_destinations": geog(filter_destinations),
             "filter_origins": geog(filter_origins),
-            "filter_owners": charterer(filter_owners),
+            "filter_owners": corporation(filter_owners),
             "filter_products": product(filter_products),
             "filter_vessels": ves(filter_vessels),
             "filter_storage_locations": geog(filter_storage_locations),

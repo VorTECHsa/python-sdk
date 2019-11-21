@@ -1,18 +1,10 @@
-from unittest import TestCase, skipIf
-
-import tabulate
-
-from tests.config import SKIP_TAGS
+from tests.testcases import TestCaseUsingRealAPI
 from tests.timer import Timer
-from vortexasdk.client import create_client, set_client
+from tests.utils import to_markdown
 from vortexasdk.endpoints.cargo_movements import CargoMovements
 
 
-@skipIf('real' in SKIP_TAGS, 'Skipping tests that hit the real API server.')
-class TestCargoMovementsReal(TestCase):
-
-    def setUp(self) -> None:
-        set_client(create_client())
+class TestCargoMovementsReal(TestCaseUsingRealAPI):
 
     def test_default_search(self):
         results = CargoMovements().search(filter_activity='loading_state')
@@ -56,7 +48,7 @@ class TestCargoMovementsReal(TestCase):
 
         assert len(df) == 2
 
-    def test_search_single_filter_charterer_name(self):
+    def test_search_single_filter_owner_name(self):
         df = CargoMovements().search(
             filter_activity='loading_state',
             filter_owners="DHT"
@@ -83,7 +75,7 @@ class TestCargoMovementsReal(TestCase):
         ).to_df().head(2)
 
         assert len(df) == 2
-        print(tabulate.tabulate(df))
+        print(to_markdown(df))
 
     def test_speed(self):
         with Timer("Search") as t_search:

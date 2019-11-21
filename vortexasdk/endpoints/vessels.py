@@ -1,57 +1,12 @@
 """Vessels Endpoint."""
-import os
-from multiprocessing import Pool
-from typing import Dict, List, Union
-
-import jsons
-import pandas as pd
+from typing import List, Union
 
 from vortexasdk.api.id import ID
-from vortexasdk.api.search_result import Result
-from vortexasdk.api.vessel import Vessel
 from vortexasdk.conversions import convert_to_product_ids
 from vortexasdk.endpoints.endpoints import VESSELS_REFERENCE
+from vortexasdk.endpoints.vessels_result import VesselsResult
 from vortexasdk.operations import Reference, Search
 from vortexasdk.utils import to_list
-
-
-def _serialize_vessel(dictionary: Dict) -> Vessel:
-    return jsons.loads(jsons.dumps(dictionary), Vessel)
-
-
-class VesselsResult(Result):
-    """Container class that holds the result obtained from calling the `Vessels` endpoint."""
-
-    def to_list(self) -> List[Vessel]:
-        """Represent vessels as a list."""
-        list_of_dicts = super().to_list()
-
-        pmap = Pool(os.cpu_count()).map
-
-        return list(pmap(_serialize_vessel, list_of_dicts))
-
-    def to_df(self, columns=None) -> pd.DataFrame:
-        """
-        Represent vessels as a `pd.DataFrame`.
-
-        # Arguments
-            columns: The vessel features we want in the dataframe. Enter `columns='all'` to include all features.
-            Defaults to `columns = ['id', 'name', 'imo', 'vessel_class']`.
-
-
-        # Returns
-        `pd.DataFrame` of vessels.
-
-        """
-        if columns is None:
-            columns = ['id', 'name', 'imo', 'vessel_class']
-
-        df = pd.DataFrame(super().to_list())
-
-        if columns == 'all':
-            return df
-        else:
-            return df[columns]
 
 
 class Vessels(Reference, Search):
@@ -61,22 +16,6 @@ class Vessels(Reference, Search):
         """Instantiate endpoint using reference endpoint."""
         Reference.__init__(self, VESSELS_REFERENCE)
         Search.__init__(self, VESSELS_REFERENCE)
-
-    def reference(self, id: ID):
-        """
-        Perform a vessel lookup.
-
-        # Arguments
-            id: Vessel ID to lookup
-
-        # Returns
-        Vessel record matching the ID
-
-        # Further Documentation:
-        [VortexaAPI Vessel Reference](https://docs.vortexa.com/reference/GET/reference/vessels/%7Bid%7D)
-
-        """
-        return super().reference(id)
 
     def search(self,
                term: Union[str, List[str]] = None,
@@ -142,3 +81,19 @@ class Vessels(Reference, Search):
         }
 
         return VesselsResult(super().search(**search_params))
+
+    def reference(self, id: ID):
+        """
+        Perform a vessel lookup.
+
+        # Arguments
+            id: Vessel ID to lookup
+
+        # Returns
+        Vessel record matching the ID
+
+        # Further Documentation:
+        [VortexaAPI Vessel Reference](https://docs.vortexa.com/reference/GET/reference/vessels/%7Bid%7D)
+
+        """
+        return super().reference(id)
