@@ -1,6 +1,7 @@
 """Corporations Endpoint."""
 from typing import List, Union
 
+from vortexasdk.endpoints.corporations_result import CorporationsResult
 from vortexasdk.endpoints.endpoints import CORPORATIONS_REFERENCE
 from vortexasdk.operations import Reference, Search
 from vortexasdk.utils import convert_values_to_list
@@ -13,7 +14,7 @@ class Corporations(Reference, Search):
         Reference.__init__(self, CORPORATIONS_REFERENCE)
         Search.__init__(self, CORPORATIONS_REFERENCE)
 
-    def search(self, term: Union[str, List[str]]):
+    def search(self, term: Union[str, List[str]] = None) -> CorporationsResult:
         """
         Find all Corporations matching given search terms.
 
@@ -26,12 +27,24 @@ class Corporations(Reference, Search):
 
         # Examples
 
-
+        Let's load all corporations
         ```python
         >>> from vortexasdk import Corporations
-        >>> [x["name"] for x in Corporations().search(term="do")]
+        >>> Corporations().search().to_df()
+        ```
+        returns
+
+        |    | id                                                               | name       | corporate_entity_type   |
+        |---:|:-----------------------------------------------------------------|:-----------|:------------------------|
+        |  0 | 04f418ee78c1e17744ad653e7815e8e28891ed9ba25a8427030e4478e5c00974 | 3J         | ['commercial_owner']    |
+        |  1 | b6384cf17f1639a64bbff04cfd32257bf732a3a13e4b0532802a9ae84a36be34 | 5XJAPANESE | ['commercial_owner']    |
+
+
+        Let's find all corporations with 'do' in the name.
+        ```python
+        >>> [x.name for x in Corporations().search(term="do").to_list()]
             ['Donsotank', 'Dorval SC']
         ```
         """
         params = convert_values_to_list({"term": term})
-        return super().search(**params)
+        return CorporationsResult(super().search(**params))
