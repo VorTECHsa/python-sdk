@@ -47,11 +47,14 @@ def convert_cme_to_flat_dict(cme: Dict, cols='all') -> Dict:
     """Convert nested `CargoMovementEntity` object to flat dictionary, keeping *cols*."""
     as_dict = _group_cme_attributes_by_layer(cme)
 
-    flat = flatten(as_dict, enumerate_types=(list,))
-
-    formatted = _format_keys(flat)
+    formatted = flatten_dictionary(as_dict)
 
     if cols == 'all':
         return formatted
     else:
         return {k: v for k, v in formatted.items() if k in cols}
+
+
+def flatten_dictionary(d: Dict) -> Dict:
+    """Flatten dictionary, then format keys."""
+    return _format_keys(flatten(d, enumerate_types=(list,)))

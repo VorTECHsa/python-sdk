@@ -37,19 +37,19 @@ class Products(Reference, Search):
 
         # Examples
 
-        Let's find all the products with 'sul' in their name, or related names.
+        Let's look for products with in one of `['diesel', 'fuel oil', 'grane']` their name, or related names.
 
         ```python
         >>> from vortexasdk import Products
-        >>> Products().search(term='sul').to_df()
+        >>> Products().search(term=['diesel', 'fuel oil', 'grane']).to_df('all')
         ```
+        Returns
 
-        |    | id         |     name   |             parent                     |
-        |---:|:-----------|------------|---------------------------------------:|
-        |  0 | 'a250444...| Marlim Sul |[{'name': 'Heavy-Sour', 'layer': ['su...|
-
-
-        Note the `term` search also looks for products with matching `related_names`
+        |    | id                 | name          | layer.0   | leaf   | parent.0.name   | parent.0.layer.0   | parent.0.id       |   meta.api_min |   meta.api_max | ref_type   |   meta.sulphur_min |   meta.sulphur_max |
+        |---:|:-------------------|:--------------|:----------|:-------|:----------------|:-------------------|:------------------|---------------:|---------------:|:-----------|-------------------:|-------------------:|
+        |  0 | 1c107b4317bc2c8... | Fuel Oil      | category  | False  | Dirty products  | product            | 5de0b00094e0fd... |        12.8878 |        12.8878 | product    |             nan    |             nan    |
+        |  1 | fddedd17e02507f... | Grane         | grade     | True   | Medium-Sour     | subproduct_group   | a7e26956fbb917... |        29.2955 |        29.2955 | product    |               0.62 |               0.62 |
+        |  2 | deda35eb9ca56b5... | Diesel/Gasoil | category  | False  | Clean products  | product            | b68cbb7746f8b9... |        35.9556 |        35.9556 | product    |             nan    |             nan    |
 
 
         # Further Documentation
