@@ -1,6 +1,7 @@
+import os
+from multiprocessing.pool import Pool
 from typing import List
 
-import jsons as jsons
 import pandas as pd
 
 from vortexasdk.api import Product
@@ -13,7 +14,9 @@ class ProductResult(Result):
     def to_list(self) -> List[Product]:
         """Represent products as a list."""
         list_of_dicts = super().to_list()
-        return jsons.loads(jsons.dumps(list_of_dicts), List[Product])
+
+        with Pool(os.cpu_count()) as pool:
+            return list(pool.map(Product.from_dict, list_of_dicts))
 
     def to_df(self, columns=None) -> pd.DataFrame:
         """

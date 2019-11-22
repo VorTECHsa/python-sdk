@@ -1,7 +1,6 @@
 from itertools import groupby
 from typing import Dict, List
 
-import jsons
 # noinspection PyProtectedMember
 from flatten_dict import flatten
 
@@ -16,11 +15,6 @@ def _format_keys(dictionary):
         nice_path = ".".join([str(i) for i in k])
         flat_with_formatted_keys[nice_path] = v
     return flat_with_formatted_keys
-
-
-def serialize(dataclass):
-    """Serialize data class attributes."""
-    return jsons.loads(jsons.dumps(dataclass))
 
 
 def _serialize_ve_layer(ve: Dict) -> Dict:

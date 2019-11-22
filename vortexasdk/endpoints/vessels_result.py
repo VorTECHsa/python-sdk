@@ -1,16 +1,11 @@
 import os
 from multiprocessing import Pool
-from typing import Dict, List
+from typing import List
 
-import jsons
 import pandas as pd
 
 from vortexasdk.api import Vessel
 from vortexasdk.api.search_result import Result
-
-
-def _serialize_vessel(dictionary: Dict) -> Vessel:
-    return jsons.loads(jsons.dumps(dictionary), Vessel)
 
 
 class VesselsResult(Result):
@@ -20,9 +15,8 @@ class VesselsResult(Result):
         """Represent vessels as a list."""
         list_of_dicts = super().to_list()
 
-        pmap = Pool(os.cpu_count()).map
-
-        return list(pmap(_serialize_vessel, list_of_dicts))
+        with Pool(os.cpu_count()) as pool:
+            return list(pool.map(Vessel.from_dict, list_of_dicts))
 
     def to_df(self, columns=None) -> pd.DataFrame:
         """

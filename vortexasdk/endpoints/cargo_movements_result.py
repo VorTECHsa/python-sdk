@@ -1,9 +1,8 @@
 import functools
 import os
 from multiprocessing.pool import Pool
-from typing import List, Dict
+from typing import List
 
-import jsons
 import pandas as pd
 
 from vortexasdk.api import CargoMovement
@@ -24,7 +23,7 @@ class CargoMovementsResult(Result):
         list_of_dicts = super().to_list()
 
         with Pool(os.cpu_count()) as pool:
-            return list(pool.map(_serialize_cm, list_of_dicts))
+            return list(pool.map(CargoMovement.from_dict, list_of_dicts))
 
     def to_df(self, columns=None) -> pd.DataFrame:
         """
@@ -551,7 +550,3 @@ DEFAULT_COLUMNS = [
     'events.cargo_port_load_event.0.end_timestamp',
     'events.cargo_port_unload_event.0.start_timestamp',
 ]
-
-
-def _serialize_cm(dictionary: Dict) -> CargoMovement:
-    return jsons.loads(jsons.dumps(dictionary), CargoMovement)

@@ -3,7 +3,8 @@ from unittest import TestCase
 import jsons
 
 from vortexasdk.api import CargoEvent, CargoMovement, CorporateEntity, GeographyEntity, ProductEntity, VesselEntity
-from vortexasdk.api.entity_serializing import convert_cme_to_flat_dict, serialize
+from vortexasdk.api.entity_serializing import convert_cme_to_flat_dict
+from vortexasdk.api.serdes import serialize
 
 
 class TestCargoMovementEntity(TestCase):

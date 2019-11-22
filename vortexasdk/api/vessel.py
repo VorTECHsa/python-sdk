@@ -3,11 +3,12 @@ from typing import List, Optional
 
 from vortexasdk.api.corporation import CorporateEntity
 from vortexasdk.api.id import ID
+from vortexasdk.api.serdes import FromDictMixin
 from vortexasdk.api.shared_types import IDName, ISODate, Node, Tag
 
 
 @dataclass(frozen=True, )
-class Vessel(Node):
+class Vessel(Node, FromDictMixin):
     """
     Represent a Vessel reference record returned by the API.
 

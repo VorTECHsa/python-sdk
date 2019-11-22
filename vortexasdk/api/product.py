@@ -1,11 +1,12 @@
 from dataclasses import dataclass
 from typing import List
 
+from vortexasdk.api.serdes import FromDictMixin
 from vortexasdk.api.shared_types import Node, EntityWithProbability
 
 
 @dataclass(frozen=True)
-class Product(Node):
+class Product(Node, FromDictMixin):
     """
     Represent a Product reference record returned by the API.
 

@@ -77,6 +77,14 @@ class TestCargoMovementsReal(TestCaseUsingRealAPI):
         assert len(df) == 2
         print(to_markdown(df))
 
+    def test_search_to_list(self):
+        CargoMovements().search(
+            filter_products=['6f11b0724c9a4e85ffa7f1445bc768f054af755a090118dcf99f14745c261653'],
+            filter_time_min="2019-08-29T00:00:00.000Z",
+            filter_time_max="2019-08-29T00:10:00.000Z",
+            filter_activity='loading_state'
+        ).to_list()
+
     def test_speed(self):
         with Timer("Search") as t_search:
             cms = CargoMovements().search(
