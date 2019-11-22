@@ -6,11 +6,13 @@ generate:
       - vortexasdk.endpoints.cargo_movements_result++
   - endpoints/corporations.md:
       - vortexasdk.endpoints.corporations++
+      - vortexasdk.endpoints.corporations_result++
   - endpoints/vessels.md:
       - vortexasdk.endpoints.vessels++
       - vortexasdk.endpoints.vessels_result++
   - endpoints/geographies.md:
       - vortexasdk.endpoints.geographies++
+      - vortexasdk.endpoints.geographies_result++
   - endpoints/products.md:
       - vortexasdk.endpoints.products++
       - vortexasdk.endpoints.products_result++
