@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name='vortexasdk',
-    version='0.5.0',
+    version='0.6.0',
     author='Vortexa Developers',
     author_email='developers@vortexa.com',
     description='Vortexa SDK',
