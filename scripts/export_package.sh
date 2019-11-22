@@ -16,7 +16,7 @@ git push --tags
 sudo gem install github_changelog_generator
 github_changelog_generator -u V0RT3X4 -p python-sdk
 git add CHANGELOG.md
-git commit -m "docs: Update changelog"
+git commit -m "docs: Update changelog with tag $TAG"
 git push
 
 

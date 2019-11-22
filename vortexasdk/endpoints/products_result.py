@@ -5,7 +5,7 @@ from typing import List
 import pandas as pd
 
 from vortexasdk.api import Product
-from vortexasdk.api.entity_serializing import flatten_dictionary
+from vortexasdk.api.entity_flattening import flatten_dictionary
 from vortexasdk.api.search_result import Result
 
 

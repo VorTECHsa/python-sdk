@@ -5,7 +5,7 @@ import jsons
 T = TypeVar('T')
 
 
-def serialize(dataclass):
+def serialize_to_dict(dataclass) -> Dict:
     """Serialize data class attributes."""
     return jsons.loads(jsons.dumps(dataclass))
 

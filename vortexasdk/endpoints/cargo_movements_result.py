@@ -6,7 +6,7 @@ from typing import List
 import pandas as pd
 
 from vortexasdk.api import CargoMovement
-from vortexasdk.api.entity_serializing import convert_cme_to_flat_dict
+from vortexasdk.api.entity_flattening import convert_cargo_movement_to_flat_dict
 from vortexasdk.api.search_result import Result
 
 
@@ -535,7 +535,7 @@ class CargoMovementsResult(Result):
             columns = DEFAULT_COLUMNS
 
         with Pool(os.cpu_count()) as pool:
-            records = pool.map(functools.partial(convert_cme_to_flat_dict, cols=columns), super().to_list())
+            records = pool.map(functools.partial(convert_cargo_movement_to_flat_dict, cols=columns), super().to_list())
 
         return pd.DataFrame(records)
 

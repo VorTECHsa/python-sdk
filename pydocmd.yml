@@ -4,6 +4,9 @@ generate:
   - endpoints/cargo_movements.md:
       - vortexasdk.endpoints.cargo_movements++
       - vortexasdk.endpoints.cargo_movements_result++
+  - endpoints/vessel_movements.md:
+      - vortexasdk.endpoints.vessel_movements++
+      - vortexasdk.endpoints.vessel_movements_result++
   - endpoints/corporations.md:
       - vortexasdk.endpoints.corporations++
       - vortexasdk.endpoints.corporations_result++
@@ -32,6 +35,7 @@ pages:
   - Endpoints:
       About Endpoints: endpoints/about-endpoints.md << docs/endpoints/about-endpoints.md
       Cargo Movements: endpoints/cargo_movements.md
+      Vessel Movements: endpoints/vessel_movements.md
       Corporations: endpoints/corporations.md
       Geographies: endpoints/geographies.md
       Products: endpoints/products.md
