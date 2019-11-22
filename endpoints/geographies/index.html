@@ -173,7 +173,7 @@
 
 <p>Geographies endpoint.
 <h3 id="vortexasdk.endpoints.geographies.Geographies.search">search</h3></p>
-<pre><code class="python">Geographies.search(self, term: Union[str, List[str]])
+<pre><code class="python">Geographies.search(self, term: Union[str, List[str]]) -&gt; vortexasdk.endpoints.geographies_result.GeographyResult
 </code></pre>
 
 <p>Find all geographies matching given search terms.</p>
@@ -191,9 +191,71 @@
 </code></pre>
 
 <p>Search multiple geography terms</p>
-<pre><code>&gt;&gt;&gt; [x[&quot;name&quot;] for x in Geographies().search(term=[&quot;Liverpool&quot;, &quot;Southampton&quot;])]
-    ['Liverpool [GB]', 'Southampton [GB]', 'Liverpool Docks', 'Liverpool Bulk Liquids']
+<pre><code class="python">&gt;&gt;&gt; df = Geographies().search(term=[&quot;Liverpool&quot;, &quot;Southampton&quot;]).to_df()
 </code></pre>
+
+<p>returns</p>
+<table>
+<thead>
+<tr>
+<th align="right"></th>
+<th align="left">id</th>
+<th align="left">name</th>
+<th align="left">layer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">0</td>
+<td align="left">b63d8f625669fd...</td>
+<td align="left">Liverpool [GB]</td>
+<td align="left">['port']</td>
+</tr>
+<tr>
+<td align="right">1</td>
+<td align="left">0cb7d4566de0f2...</td>
+<td align="left">Southampton [GB]</td>
+<td align="left">['port']</td>
+</tr>
+<tr>
+<td align="right">2</td>
+<td align="left">8b4273e3181f2d...</td>
+<td align="left">Liverpool Docks</td>
+<td align="left">['terminal']</td>
+</tr>
+<tr>
+<td align="right">3</td>
+<td align="left">98c50b0d2ee2b1...</td>
+<td align="left">Liverpool Bulk Liquids</td>
+<td align="left">['terminal']</td>
+</tr>
+</tbody>
+</table>
+<h1 id="vortexasdk.endpoints.geographies_result">vortexasdk.endpoints.geographies_result</h1>
+
+<h2 id="vortexasdk.endpoints.geographies_result.GeographyResult">GeographyResult</h2>
+
+<pre><code class="python">GeographyResult(self, _records: List) -&gt; None
+</code></pre>
+
+<p>Container class that holds the result obtained from calling the <code>Geography</code> endpoint.
+<h3 id="vortexasdk.endpoints.geographies_result.GeographyResult.to_list">to_list</h3></p>
+<pre><code class="python">GeographyResult.to_list(self) -&gt; List[vortexasdk.api.geography.Geography]
+</code></pre>
+
+<p>Represent geographies as a list.
+<h3 id="vortexasdk.endpoints.geographies_result.GeographyResult.to_df">to_df</h3></p>
+<pre><code class="python">GeographyResult.to_df(self, columns=None) -&gt; pandas.core.frame.DataFrame
+</code></pre>
+
+<p>Represent geographies as a <code>pd.DataFrame</code>.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>columns</strong>: The geography features we want in the dataframe. Enter <code>columns='all'</code> to include all features.
+    Defaults to <code>columns = ['id', 'name', 'layer']</code>.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p><code>pd.DataFrame</code> of geographies.</p>
               
             </div>
           </div>

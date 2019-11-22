@@ -238,6 +238,31 @@
 <p><strong>Examples</strong></p>
 <pre><code>&gt;&gt;&gt; Corporations().reference(id='12345abcdef')
 </code></pre>
+<h1 id="vortexasdk.endpoints.corporations_result">vortexasdk.endpoints.corporations_result</h1>
+
+<h2 id="vortexasdk.endpoints.corporations_result.CorporationsResult">CorporationsResult</h2>
+
+<pre><code class="python">CorporationsResult(self, _records: List) -&gt; None
+</code></pre>
+
+<p>Container class that holds the result obtained from calling the <code>Vessels</code> endpoint.
+<h3 id="vortexasdk.endpoints.corporations_result.CorporationsResult.to_list">to_list</h3></p>
+<pre><code class="python">CorporationsResult.to_list(self) -&gt; List[vortexasdk.api.corporation.Corporation]
+</code></pre>
+
+<p>Represent vessels as a list.
+<h3 id="vortexasdk.endpoints.corporations_result.CorporationsResult.to_df">to_df</h3></p>
+<pre><code class="python">CorporationsResult.to_df(self, columns=None) -&gt; pandas.core.frame.DataFrame
+</code></pre>
+
+<p>Represent corporations as a <code>pd.DataFrame</code>.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>columns</strong>: The corporation features we want in the dataframe. Enter <code>columns='all'</code> to include all features.
+    Defaults to <code>columns = ['id', 'name', 'corporate_entity_type']</code>.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p><code>pd.DataFrame</code> of corporations.</p>
               
             </div>
           </div>
