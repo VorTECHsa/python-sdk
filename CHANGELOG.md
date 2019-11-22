@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.6.0](https://github.com/V0RT3X4/python-sdk/tree/0.6.0) (2019-11-22)
+
+[Full Changelog](https://github.com/V0RT3X4/python-sdk/compare/0.5.0...0.6.0)
+
+**Closed issues:**
+
+- Add Charterers `to\_df` endpoint. [\#34](https://github.com/V0RT3X4/python-sdk/issues/34)
+
+**Merged pull requests:**
+
+- feat: Flatten columns in product result [\#62](https://github.com/V0RT3X4/python-sdk/pull/62) ([KitBurgess](https://github.com/KitBurgess))
+- Serde mixin [\#61](https://github.com/V0RT3X4/python-sdk/pull/61) ([KitBurgess](https://github.com/KitBurgess))
+
 ## [0.5.0](https://github.com/V0RT3X4/python-sdk/tree/0.5.0) (2019-11-21)
 
 [Full Changelog](https://github.com/V0RT3X4/python-sdk/compare/0.4.3...0.5.0)
