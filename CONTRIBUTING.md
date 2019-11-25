@@ -53,6 +53,11 @@ $ ./docs/serve_docs.sh
 ```
 …and view the docs at http://localhost:8000 in your web browser.
 
+Install the git [pre-commit-hooks](https://pre-commit.com/#3-install-the-git-hook-scripts)
+```bash
+$ pre-commit install
+```
+
 
 :tada: Now you're ready to create a new branch, add a feature or fix a bug, then send us a pull request! :tada:
 

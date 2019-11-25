@@ -1,1 +1,0 @@
-## Vortexa SDK Entities

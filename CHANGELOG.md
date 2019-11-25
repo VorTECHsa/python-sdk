@@ -1,5 +1,30 @@
 # Changelog
 
+## [0.6.1](https://github.com/V0RT3X4/python-sdk/tree/0.6.1) (2019-11-25)
+
+[Full Changelog](https://github.com/V0RT3X4/python-sdk/compare/0.6.0...0.6.1)
+
+**Implemented enhancements:**
+
+- Add DataFrame example to all endpoints [\#58](https://github.com/V0RT3X4/python-sdk/issues/58)
+
+**Fixed bugs:**
+
+- CargoMovements filter\_activity illegal state [\#71](https://github.com/V0RT3X4/python-sdk/issues/71)
+
+**Closed issues:**
+
+- Bounding box is lon/lat not lat/lon [\#88](https://github.com/V0RT3X4/python-sdk/issues/88)
+- Add instructions on how to install pre-commit hooks. [\#86](https://github.com/V0RT3X4/python-sdk/issues/86)
+- Show Dataframe result in main README example [\#78](https://github.com/V0RT3X4/python-sdk/issues/78)
+- Fix broken docs links [\#77](https://github.com/V0RT3X4/python-sdk/issues/77)
+- List available vessel classes [\#73](https://github.com/V0RT3X4/python-sdk/issues/73)
+
+**Merged pull requests:**
+
+- fix: rename IDLayer attribute [\#90](https://github.com/V0RT3X4/python-sdk/pull/90) ([cvonsteg](https://github.com/cvonsteg))
+- Incorporate features / requests from SDK battletesting [\#89](https://github.com/V0RT3X4/python-sdk/pull/89) ([KitBurgess](https://github.com/KitBurgess))
+
 ## [0.6.0](https://github.com/V0RT3X4/python-sdk/tree/0.6.0) (2019-11-22)
 
 [Full Changelog](https://github.com/V0RT3X4/python-sdk/compare/0.5.0...0.6.0)

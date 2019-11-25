@@ -19,7 +19,6 @@ generate:
   - endpoints/products.md:
       - vortexasdk.endpoints.products++
       - vortexasdk.endpoints.products_result++
-
   - entities/product.md:
       - vortexasdk.api.product++
   - entities/geography.md:
@@ -41,15 +40,14 @@ pages:
       Products: endpoints/products.md
       Vessels: endpoints/vessels.md
   - Entities:
-#      About Entities: entities/about-entities.md << docs/entities/about-entities.md
       Cargo Movement: entities/cargo_movement.md
       Corporation: entities/corporation.md
       Geography: entities/geography.md
       Product: entities/product.md
       Vessel: entities/vessel.md
+  - Config: config.md << docs/config/config.md
   - Examples:
       1 China VLCC Discharges: examples/1_china.md
-
 theme:
   name: readthedocs
   collapse_navigation: true

@@ -42,7 +42,7 @@ class IDLayer:
     """Tuple containing `id` and `layer`."""
 
     id: ID
-    name: str
+    layer: str
 
 
 @dataclass(frozen=True)

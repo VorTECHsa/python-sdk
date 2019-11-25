@@ -6,7 +6,9 @@ from typing import List
 import pandas as pd
 
 from vortexasdk.api import VesselMovement
-from vortexasdk.api.entity_flattening import convert_vessel_movement_to_flat_dict
+from vortexasdk.api.entity_flattening import (
+    convert_vessel_movement_to_flat_dict,
+)
 from vortexasdk.api.search_result import Result
 
 
@@ -328,23 +330,28 @@ class VesselMovementsResult(Result):
             columns = DEFAULT_COLUMNS
 
         with Pool(os.cpu_count()) as pool:
-            records = pool.map(functools.partial(convert_vessel_movement_to_flat_dict, cols=columns), super().to_list())
+            records = pool.map(
+                functools.partial(
+                    convert_vessel_movement_to_flat_dict, cols=columns
+                ),
+                super().to_list(),
+            )
 
         return pd.DataFrame(records)
 
 
 DEFAULT_COLUMNS = [
-    'vessel.imo',
-    'vessel.name',
-    'vessel.vessel_class',
-    'origin.location.port.label',
-    'origin.location.country.label',
-    'destination.location.port.label',
-    'destination.location.country.label',
-    'cargoes.0.product.group_product.label,'
-    'cargoes.0.product.category.label',
-    'cargoes.0.product.grade.label',
-    'cargoes.0.quantity',
-    'start_timestamp',
-    'end_timestamp',
+    "vessel.imo",
+    "vessel.name",
+    "vessel.vessel_class",
+    "origin.location.port.label",
+    "origin.location.country.label",
+    "destination.location.port.label",
+    "destination.location.country.label",
+    "cargoes.0.product.group_product.label,"
+    "cargoes.0.product.category.label",
+    "cargoes.0.product.grade.label",
+    "cargoes.0.quantity",
+    "start_timestamp",
+    "end_timestamp",
 ]

@@ -4,12 +4,16 @@ import jsons
 
 from vortexasdk.api import ID
 from vortexasdk.abstract_client import AbstractVortexaClient
-from vortexasdk.endpoints.endpoints import CORPORATIONS_REFERENCE, VESSELS_REFERENCE, PRODUCTS_REFERENCE, \
-    VESSEL_MOVEMENTS_RESOURCE
+from vortexasdk.endpoints.endpoints import (
+    CORPORATIONS_REFERENCE,
+    VESSELS_REFERENCE,
+    PRODUCTS_REFERENCE,
+    VESSEL_MOVEMENTS_RESOURCE,
+)
 
 
 def _read(example_file) -> List[Dict]:
-    with open(f'tests/api/examples/{example_file}', 'r') as f:
+    with open(f"tests/api/examples/{example_file}", "r") as f:
         return jsons.loads(f.read(), List)
 
 
@@ -25,7 +29,7 @@ class MockVortexaClient(AbstractVortexaClient):
         CORPORATIONS_REFERENCE: example_corporations,
         VESSELS_REFERENCE: example_vessels,
         PRODUCTS_REFERENCE: example_products,
-        VESSEL_MOVEMENTS_RESOURCE: example_vessel_movements
+        VESSEL_MOVEMENTS_RESOURCE: example_vessel_movements,
     }
 
     def get_reference(self, resource: str, id: ID) -> str:

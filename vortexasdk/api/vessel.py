@@ -7,14 +7,12 @@ from vortexasdk.api.serdes import FromDictMixin
 from vortexasdk.api.shared_types import IDName, ISODate, Node, Tag
 
 
-@dataclass(frozen=True, )
+@dataclass(frozen=True,)
 class Vessel(Node, FromDictMixin):
     """
     Represent a Vessel reference record returned by the API.
 
-    # Further Documentation
-
-    https://docs.vortexa.com/reference/GET/reference/vessels/%7Bid%7D
+    [Vessels Further Documentation](https://docs.vortexa.com/reference/GET/reference/vessels/%7Bid%7D)
     """
 
     related_names: List[str]
@@ -40,11 +38,9 @@ class Vessel(Node, FromDictMixin):
 @dataclass(frozen=True)
 class VesselEntity(IDName):
     """
-
     A VesselEntity represents a vessel record used in CargoMovements and VesselMovements.
 
     [Vessel Entities Further Documentation](https://docs.vortexa.com/reference/intro-vessel-entities)
-
     """
 
     id: ID
