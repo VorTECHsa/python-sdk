@@ -10,9 +10,7 @@ class Product(Node, FromDictMixin):
     """
     Represent a Product reference record returned by the API.
 
-    # Further Documentation
-
-    https://docs.vortexa.com/reference/GET/reference/products/%7Bid%7D
+    [Product Further Documentation](https://docs.vortexa.com/reference/GET/reference/products/%7Bid%7D)
     """
 
     layer: List[str]
@@ -25,8 +23,5 @@ class ProductEntity(EntityWithProbability):
 
     Represents a single product layer of a hierarchical product tree.
 
-    # Further Documentation
-        https://docs.vortexa.com/reference/intro-product-entities
-
-
+    [Further Documentation](https://docs.vortexa.com/reference/intro-product-entities)
     """

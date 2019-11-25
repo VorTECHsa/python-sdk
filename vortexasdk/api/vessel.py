@@ -12,9 +12,7 @@ class Vessel(Node, FromDictMixin):
     """
     Represent a Vessel reference record returned by the API.
 
-    # Further Documentation
-
-    https://docs.vortexa.com/reference/GET/reference/vessels/%7Bid%7D
+    [Vessels Further Documentation](https://docs.vortexa.com/reference/GET/reference/vessels/%7Bid%7D)
     """
 
     related_names: List[str]

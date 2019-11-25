@@ -55,7 +55,7 @@ class Products(Reference, Search):
 
         # Further Documentation
 
-        [VortexaAPI Vessel Reference](https://docs.vortexa.com/reference/POST/reference/products)
+        [VortexaAPI Product Reference](https://docs.vortexa.com/reference/POST/reference/products)
 
         """
         search_params = {
