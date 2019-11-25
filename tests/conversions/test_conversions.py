@@ -7,7 +7,6 @@ from vortexasdk.conversions import (
     convert_to_corporation_ids,
     convert_to_geography_ids,
     convert_to_product_ids,
-    convert_to_vessel_ids,
 )
 
 
@@ -36,16 +35,6 @@ class TestConvert(TestCase):
         result = convert_to_corporation_ids(["DHT"])
 
         assert len(result) >= 1
-
-    @skipIf(
-        "real" in SKIP_TAGS, "Skipping tests that hit the real API server."
-    )
-    def test_convert_to_vessel_ids(self):
-        set_client(create_client())
-
-        result = convert_to_vessel_ids(["OCEAN"])
-
-        assert len(result) >= 10
 
     @skipIf(
         "real" in SKIP_TAGS, "Skipping tests that hit the real API server."

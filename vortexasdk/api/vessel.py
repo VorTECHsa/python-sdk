@@ -38,11 +38,9 @@ class Vessel(Node, FromDictMixin):
 @dataclass(frozen=True)
 class VesselEntity(IDName):
     """
-
     A VesselEntity represents a vessel record used in CargoMovements and VesselMovements.
 
     [Vessel Entities Further Documentation](https://docs.vortexa.com/reference/intro-vessel-entities)
-
     """
 
     id: ID

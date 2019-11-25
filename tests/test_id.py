@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from vortexasdk.api.id import is_valid_id, split_ids_names
+from vortexasdk.api.id import is_valid_id, split_ids_other
 
 
 class TestID(TestCase):
@@ -27,7 +27,7 @@ class TestID(TestCase):
             "918018ae02695d7710bcbe5f2dc689234e8da492de32aaad41b89dfad19e5668",
         ]
 
-        ids, names = split_ids_names(mix)
+        ids, names = split_ids_other(mix)
 
         assert ids == [
             "2aaad41b89dfad19e5668918018ae02695d7710bcbe5f2dc689234e8da492de3",
