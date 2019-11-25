@@ -5,4 +5,4 @@ VESSELS_REFERENCE = "/reference/vessels"
 PRODUCTS_REFERENCE = "/reference/products"
 CORPORATIONS_REFERENCE = "/reference/charterers"
 
-API_URL = 'https://api.vortexa.com/v5'
+API_URL = "https://api.vortexa.com/v5"

@@ -17,12 +17,13 @@ class Vessels(Reference, Search):
         Reference.__init__(self, VESSELS_REFERENCE)
         Search.__init__(self, VESSELS_REFERENCE)
 
-    def search(self,
-               term: Union[str, List[str]] = None,
-               ids: Union[str, List[str]] = None,
-               vessel_classes: Union[str, List[str]] = None,
-               vessel_product_types: Union[str, List[str]] = None,
-               ) -> VesselsResult:
+    def search(
+        self,
+        term: Union[str, List[str]] = None,
+        ids: Union[str, List[str]] = None,
+        vessel_classes: Union[str, List[str]] = None,
+        vessel_product_types: Union[str, List[str]] = None,
+    ) -> VesselsResult:
         """
         Find all vessels matching given search arguments. Search arguments are combined in an AND manner.
 
@@ -77,7 +78,9 @@ class Vessels(Reference, Search):
             "term": to_list(term),
             "ids": to_list(ids),
             "vessel_classes": to_list(vessel_classes),
-            "vessel_product_types": convert_to_product_ids(to_list(vessel_product_types)),
+            "vessel_product_types": convert_to_product_ids(
+                to_list(vessel_product_types)
+            ),
         }
 
         return VesselsResult(super().search(**search_params))

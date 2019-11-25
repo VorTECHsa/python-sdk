@@ -4,11 +4,15 @@ import jsons
 
 from vortexasdk.api import ID
 from vortexasdk.abstract_client import AbstractVortexaClient
-from vortexasdk.endpoints.endpoints import CORPORATIONS_REFERENCE, VESSELS_REFERENCE, PRODUCTS_REFERENCE
+from vortexasdk.endpoints.endpoints import (
+    CORPORATIONS_REFERENCE,
+    VESSELS_REFERENCE,
+    PRODUCTS_REFERENCE,
+)
 
 
 def _read(example_file) -> List:
-    with open(f'tests/api/examples/{example_file}', 'r') as f:
+    with open(f"tests/api/examples/{example_file}", "r") as f:
         return jsons.loads(f.read(), List)
 
 

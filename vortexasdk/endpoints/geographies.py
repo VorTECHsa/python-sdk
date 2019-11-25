@@ -1,6 +1,7 @@
 """Geographies Endpoint."""
 from typing import List, Union
 
+from vortexasdk.api import ID
 from vortexasdk.endpoints.endpoints import GEOGRAPHIES_REFERENCE
 from vortexasdk.endpoints.geographies_result import GeographyResult
 from vortexasdk.operations import Reference, Search
@@ -49,3 +50,19 @@ class Geographies(Reference, Search):
         """
         params = convert_values_to_list({"term": term})
         return GeographyResult(super().search(**params))
+
+    def reference(self, id: ID):
+        """
+        Perform a geography lookup.
+
+        # Arguments
+            id: Geography ID to lookup
+
+        # Returns
+         Geography matching the ID
+
+        # Further Documentation:
+        [VortexaAPI Geography Reference](https://docs.vortexa.com/reference/GET/reference/geographies/%7Bid%7D)
+
+        """
+        return super().reference(id)

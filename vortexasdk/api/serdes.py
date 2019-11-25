@@ -2,7 +2,7 @@ from typing import Dict, TypeVar
 
 import jsons
 
-T = TypeVar('T')
+T = TypeVar("T")
 
 
 def serialize(dataclass):
