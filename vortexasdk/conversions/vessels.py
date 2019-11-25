@@ -23,7 +23,7 @@ def convert_to_vessel_ids(
     vessel_classes = []
     names_imos_mmsis = []
     for e in others:
-        if e in AVAILABLE_VESSEL_CLASSES:
+        if _is_vessel_class(e):
             vessel_classes.append(e)
         else:
             names_imos_mmsis.append(e)
@@ -44,4 +44,11 @@ def convert_to_vessel_ids(
         ids
         + vessels_matched_on_vessel_class
         + vessels_matched_on_name_imo_mmsi
+    )
+
+
+def _is_vessel_class(potential_vessel_class) -> bool:
+    return (
+        isinstance(potential_vessel_class, str)
+        and potential_vessel_class.lower() in AVAILABLE_VESSEL_CLASSES
     )
