@@ -2,7 +2,10 @@ from typing import List, Union
 
 from vortexasdk.api import ID
 from vortexasdk.api.id import split_ids_names
+from vortexasdk.logger import get_logger
 from vortexasdk.operations import Search
+
+logger = get_logger(__name__)
 
 
 def _convert_to_ids(
@@ -22,7 +25,7 @@ def _search_ids(names: List[str], searcher: Search) -> List[ID]:
 
     id_to_name = {r["id"]: r["name"] for r in results}
 
-    print(
+    logger.debug(
         f"Searched term: {names},"
         f" found {len(results)} {searcher.__class__.__name__}"
         f" : {id_to_name}"

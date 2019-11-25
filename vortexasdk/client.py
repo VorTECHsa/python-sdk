@@ -1,8 +1,8 @@
+import copy
 import functools
 import os
 from multiprocessing.pool import ThreadPool
 from typing import List
-import copy
 
 import requests
 from requests import Response
@@ -10,6 +10,9 @@ from requests import Response
 from vortexasdk.abstract_client import AbstractVortexaClient
 from vortexasdk.api.id import ID
 from vortexasdk.endpoints.endpoints import API_URL
+from vortexasdk.logger import get_logger
+
+logger = get_logger(__name__)
 
 
 class VortexaClient(AbstractVortexaClient):
@@ -39,7 +42,7 @@ class VortexaClient(AbstractVortexaClient):
 
         n_threads = 4
         with ThreadPool(n_threads) as pool:
-            print(
+            logger.debug(
                 f"{total} Results to retreive."
                 f" Sending {len(offsets)}"
                 f" post requests in parallel using {n_threads} threads."
@@ -68,7 +71,7 @@ def _send_post_request_data(offset, url, payload, size):
 
 
 def _send_post_request(url, payload, size, offset):
-    print(f"Sending post request, offset: {offset}, size: {size}")
+    logger.debug(f"Sending post request, offset: {offset}, size: {size}")
 
     payload_with_offset = copy.deepcopy(payload)
 
@@ -81,7 +84,7 @@ def _send_post_request(url, payload, size, offset):
 
     response = _handle_response(response, payload_with_offset)
 
-    print(
+    logger.debug(
         f'Post request from offset {offset} received {len(response["data"])} items'
     )
 
@@ -92,9 +95,9 @@ def _handle_response(response: Response, payload=None):
     if response.ok:
         return response.json()
     else:
-        print(response.reason)
-        print(response.json())
-        print(f"payload: {payload}")
+        logger.error(response.reason)
+        logger.error(response.json())
+        logger.error(f"payload: {payload}")
         raise Exception(response)
 
 
@@ -113,7 +116,7 @@ def default_client() -> VortexaClient:
 
 def create_client() -> VortexaClient:
     """Create new VortexaClient."""
-    print("Creating new VortexaClient")
+    logger.info("Creating new VortexaClient")
     try:
         api_key = os.environ["VORTEXA_API_KEY"]
     except KeyError:
@@ -127,4 +130,6 @@ def set_client(client) -> None:
     """Set the global client, used by all endpoints."""
     global __client__
     __client__ = client
-    print(f"global __client__ has been set {__client__.__class__.__name__} \n")
+    logger.debug(
+        f"global __client__ has been set {__client__.__class__.__name__} \n"
+    )
