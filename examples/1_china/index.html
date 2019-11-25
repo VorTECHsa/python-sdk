@@ -113,6 +113,11 @@
           
             <li class="toctree-l1">
 		
+    <a class="" href="../../config/">Config</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
     <span class="caption-text">Examples</span>
     <ul class="subnav">
                 <li class=" current">
@@ -214,17 +219,20 @@
 </table>
 <pre><code class="python">from vortexasdk import CargoMovements, Vessels
 
-print(f'Running {__file__}')
+# Search for all the VLCC vessel IDs.
+vlccs = [v[&quot;id&quot;] for v in Vessels().search(vessel_classes=&quot;vlcc&quot;)]
 
-# Search for all the VLCC vessel IDs
-vlccs = [v['id'] for v in Vessels().search(vessel_classes='vlcc')]
-
-df = CargoMovements().search(
-    filter_vessels=vlccs,
-    filter_destinations=&quot;China&quot;,
-    filter_time_min=&quot;2019-08-29T00:00:00.000Z&quot;,
-    filter_time_max=&quot;2019-10-30T00:00:00.000Z&quot;,
-).to_df()
+df = (
+    CargoMovements()
+    .search(
+        filter_activity=&quot;loading_start&quot;,
+        filter_vessels=vlccs,
+        filter_destinations=&quot;China&quot;,
+        filter_time_min=&quot;2019-08-29T00:00:00.000Z&quot;,
+        filter_time_max=&quot;2019-10-30T00:00:00.000Z&quot;,
+    )
+    .to_df()
+)
 </code></pre>
               
             </div>
@@ -234,7 +242,7 @@ df = CargoMovements().search(
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="../../entities/vessel/" class="btn btn-neutral" title="Vessel"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../config/" class="btn btn-neutral" title="Config"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -262,7 +270,7 @@ df = CargoMovements().search(
           <a href="https://github.com/V0RT3X4/python-sdk/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../../entities/vessel/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../../config/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
     </span>

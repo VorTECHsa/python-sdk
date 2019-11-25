@@ -7,23 +7,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-  <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Product - VortexaSDK</title>
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Config - VortexaSDK</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
-  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Product";
-    var mkdocs_page_input_path = "entities/product.md";
+    var mkdocs_page_name = "Config";
+    var mkdocs_page_input_path = "config.md";
     var mkdocs_page_url = null;
   </script>
   
-  <script src="../../js/jquery-2.1.1.min.js" defer></script>
-  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
   
@@ -36,9 +36,9 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href="../.." class="icon icon-home"> VortexaSDK</a>
+        <a href=".." class="icon icon-home"> VortexaSDK</a>
         <div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
@@ -50,7 +50,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../..">Home</a>
+    <a class="" href="..">Home</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -59,27 +59,27 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../endpoints/about-endpoints/">About Endpoints</a>
+    <a class="" href="../endpoints/about-endpoints/">About Endpoints</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../endpoints/cargo_movements/">Cargo Movements</a>
+    <a class="" href="../endpoints/cargo_movements/">Cargo Movements</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../endpoints/corporations/">Corporations</a>
+    <a class="" href="../endpoints/corporations/">Corporations</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../endpoints/geographies/">Geographies</a>
+    <a class="" href="../endpoints/geographies/">Geographies</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../endpoints/products/">Products</a>
+    <a class="" href="../endpoints/products/">Products</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../endpoints/vessels/">Vessels</a>
+    <a class="" href="../endpoints/vessels/">Vessels</a>
                 </li>
     </ul>
 	    </li>
@@ -90,33 +90,36 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../cargo_movement/">Cargo Movement</a>
+    <a class="" href="../entities/cargo_movement/">Cargo Movement</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../corporation/">Corporation</a>
+    <a class="" href="../entities/corporation/">Corporation</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../geography/">Geography</a>
-                </li>
-                <li class=" current">
-                    
-    <a class="current" href="./">Product</a>
-    <ul class="subnav">
-            
-    </ul>
+    <a class="" href="../entities/geography/">Geography</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../vessel/">Vessel</a>
+    <a class="" href="../entities/product/">Product</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../entities/vessel/">Vessel</a>
                 </li>
     </ul>
 	    </li>
           
-            <li class="toctree-l1">
+            <li class="toctree-l1 current">
 		
-    <a class="" href="../../config/">Config</a>
+    <a class="current" href="./">Config</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#config">Config</a></li>
+    
+
+    </ul>
 	    </li>
           
             <li class="toctree-l1">
@@ -125,7 +128,7 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../examples/1_china/">1 China VLCC Discharges</a>
+    <a class="" href="../examples/1_china/">1 China VLCC Discharges</a>
                 </li>
     </ul>
 	    </li>
@@ -140,7 +143,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../..">VortexaSDK</a>
+        <a href="..">VortexaSDK</a>
       </nav>
 
       
@@ -148,18 +151,14 @@
         <div class="rst-content">
           <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../..">Docs</a> &raquo;</li>
+    <li><a href="..">Docs</a> &raquo;</li>
     
       
-        
-          <li>Entities &raquo;</li>
-        
-      
     
-    <li>Product</li>
+    <li>Config</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/V0RT3X4/python-sdk/edit/master/docs/entities/product.md"
+        <a href="https://github.com/V0RT3X4/python-sdk/edit/master/docs/config.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -169,22 +168,34 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="vortexasdk.api.product">vortexasdk.api.product</h1>
-
-<h2 id="vortexasdk.api.product.Product">Product</h2>
-
-<pre><code class="python">Product(self, id: str, name: str, ref_type: str, leaf: bool, parent: List[vortexasdk.api.shared_types.IDNameLayer], layer: List[str], meta: dict) -&gt; None
-</code></pre>
-
-<p>Represent a Product reference record returned by the API.</p>
-<p><a href="https://docs.vortexa.com/reference/GET/reference/products/%7Bid%7D">Product Further Documentation</a></p>
-<h2 id="vortexasdk.api.product.ProductEntity">ProductEntity</h2>
-
-<pre><code class="python">ProductEntity(self, id: str, label: str, layer: str, probability: float, source: str) -&gt; None
-</code></pre>
-
-<p>Represents a single product layer of a hierarchical product tree.</p>
-<p><a href="https://docs.vortexa.com/reference/intro-product-entities">Further Documentation</a></p>
+                <h2 id="config">Config</h2>
+<p>The VortexaSDK can be configured using environment variables.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Environment Variable</th>
+<th align="left">Default</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">VORTEXA_API_KEY</td>
+<td align="left">none</td>
+<td align="left">API Key used to access the VortexaAPI. Refer to <a href="https://docs.vortexa.com/reference/intro-authentication">Vortexa API Authentication</a> for more details, including instructions on where to find your API key.</td>
+</tr>
+<tr>
+<td align="left">LOG_FILE</td>
+<td align="left">vortexasdk.log</td>
+<td align="left">Output log file</td>
+</tr>
+<tr>
+<td align="left">LOG_LEVEL</td>
+<td align="left">INFO</td>
+<td align="left">Configure the level of must be one of <code>["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]</code></td>
+</tr>
+</tbody>
+</table>
               
             </div>
           </div>
@@ -192,10 +203,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../vessel/" class="btn btn-neutral float-right" title="Vessel">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../examples/1_china/" class="btn btn-neutral float-right" title="1 China VLCC Discharges">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../geography/" class="btn btn-neutral" title="Geography"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../entities/vessel/" class="btn btn-neutral" title="Vessel"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -223,16 +234,16 @@
           <a href="https://github.com/V0RT3X4/python-sdk/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../geography/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../entities/vessel/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../vessel/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../examples/1_china/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
-    <script>var base_url = '../..';</script>
-    <script src="../../js/theme.js" defer></script>
-      <script src="../../search/main.js" defer></script>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
 
 </body>
 </html>

@@ -133,6 +133,11 @@
           
             <li class="toctree-l1">
 		
+    <a class="" href="config/">Config</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
     <span class="caption-text">Examples</span>
     <ul class="subnav">
                 <li class="">
@@ -178,7 +183,8 @@
             <div class="section">
               
                 <h1 id="vortexasdk">VortexaSDK</h1>
-<p><a href="https://circleci.com/gh/V0RT3X4/python-sdk"><img alt="CircleCI" src="https://circleci.com/gh/V0RT3X4/python-sdk.svg?style=svg" /></a></p>
+<p><a href="https://circleci.com/gh/V0RT3X4/python-sdk"><img alt="CircleCI" src="https://circleci.com/gh/V0RT3X4/python-sdk.svg?style=svg" /></a>
+<a href="https://github.com/psf/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg" /></a></p>
 <p>The VortexaSDK is Vortexa's Software Development Kit (SDK) for Python, which allows
 Data Scientists, Analysts and Developers to query <a href="https://docs.vortexa.com">Vortexa's API</a></p>
 <h2 id="quick-start">Quick Start</h2>
@@ -188,6 +194,8 @@ Data Scientists, Analysts and Developers to query <a href="https://docs.vortexa.
 
 <h5 id="authentication">Authentication</h5>
 <p>Set your <code>VORTEXA_API_KEY</code> environment variable, that's all.</p>
+<p>Refer to <a href="https://docs.vortexa.com/reference/intro-authentication">Vortexa API Authentication</a>
+ for more details, including instructions on where to find your API key.</p>
 <h5 id="example">Example</h5>
 <pre><code class="python">&gt;&gt;&gt; from vortexasdk import CargoMovements
 &gt;&gt;&gt; df = CargoMovements()\
@@ -197,6 +205,58 @@ Data Scientists, Analysts and Developers to query <a href="https://docs.vortexa.
         .to_df()
 </code></pre>
 
+<p>returns</p>
+<table>
+<thead>
+<tr>
+<th align="right"></th>
+<th align="right">quantity</th>
+<th align="left">vessels.0.name</th>
+<th align="left">product.group.label</th>
+<th align="left">product.grade.label</th>
+<th align="left">events.cargo_port_load_event.0.end_timestamp</th>
+<th align="left">events.cargo_port_unload_event.0.start_timestamp</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">0</td>
+<td align="right">1998</td>
+<td align="left">ALSIA SWAN</td>
+<td align="left">Clean products</td>
+<td align="left">Lube Oils</td>
+<td align="left">2017-08-01T06:10:45+0000</td>
+<td align="left">2017-08-27T14:38:15+0000</td>
+</tr>
+<tr>
+<td align="right">1</td>
+<td align="right">16559</td>
+<td align="left">IVER AMBITION</td>
+<td align="left">Dirty products</td>
+<td align="left">nan</td>
+<td align="left">2017-08-02T17:20:51+0000</td>
+<td align="left">2017-09-07T07:52:20+0000</td>
+</tr>
+<tr>
+<td align="right">2</td>
+<td align="right">522288</td>
+<td align="left">BLUE SUN</td>
+<td align="left">Crude</td>
+<td align="left">Gharib</td>
+<td align="left">2017-08-02T04:22:09+0000</td>
+<td align="left">2017-08-13T10:32:09+0000</td>
+</tr>
+<tr>
+<td align="right">3</td>
+<td align="right">46260</td>
+<td align="left">XINWANYU16</td>
+<td align="left">Clean products</td>
+<td align="left">Chemicals</td>
+<td align="left">2017-08-01T01:07:40+0000</td>
+<td align="left">2017-08-10T06:21:43+0000</td>
+</tr>
+</tbody>
+</table>
 <h2 id="next-steps">Next Steps</h2>
 <p>Learn how to call <a href="https://v0rt3x4.github.io/python-sdk/endpoints/about-endpoints/">Endpoints</a></p>
 <h2 id="documentation">Documentation</h2>
@@ -257,5 +317,5 @@ helping to extract powerful findings from our data.</p>
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2019-11-25 14:38:02
+Build Date UTC : 2019-11-25 14:52:34
 -->
