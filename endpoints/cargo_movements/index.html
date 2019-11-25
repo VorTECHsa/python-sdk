@@ -218,7 +218,7 @@
 <p><strong>filter_products</strong>: A product, or list of products to filter on. Both product names or IDs can be entered here.</p>
 </li>
 <li>
-<p><strong>filter_vessels</strong>: A vessel, or list of vessels to filter on. Both vessel names or IDs can be entered here,</p>
+<p><strong>filter_vessels</strong>: A vessel, or list of vessels to filter on. Vessel name, imo, mmsi, vessel class, or vessel IDs can be entered here,</p>
 </li>
 <li>
 <p><strong>filter_storage_locations</strong>: A geography, or list of geography to filter on. Both geography names or IDs can be entered here.</p>
@@ -237,14 +237,16 @@
 <p><strong>Returns</strong></p>
 <p><code>CargoMovementsResult</code>, containing all the cargo movements matching the given search terms.</p>
 <p><strong>Example</strong></p>
-<p>Let's search for all vessels that loaded from <code>Rotterdam [NL]</code> on the morning of 1st December 2018.</p>
+<ul>
+<li><em>Which cargoes were loaded from Rotterdam on the morning of 1st December 2018?</em></li>
+</ul>
 <pre><code class="python">&gt;&gt;&gt; from vortexasdk import CargoMovements
 &gt;&gt;&gt; df = CargoMovements().search(
     filter_origins=&quot;Rotterdam&quot;,
     filter_activity='loading_state',
     filter_time_min=&quot;2018-12-01T00:00:00.000Z&quot;,
     filter_time_max=&quot;2018-12-01T12:00:00.000Z&quot;,
-).to_df(columns=['product.grade.label', 'product.group.label', 'vessels.0.vessel_class', 'vessels'])
+).to_df(columns=['product.grade.label', 'product.group.label', 'vessels.0.vessel_class'])
 </code></pre>
 
 <table>
@@ -298,6 +300,118 @@
 <td align="left">Clean products</td>
 <td align="left">Finished Gasoline</td>
 <td align="left">handymax</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><em>Which VLCC cargoes passed through the Suez canal en route to China?</em></li>
+</ul>
+<p>Note here we include vessels.0..., vessels.1..., vessels.2... columns.
+This lets us view all vessels present in any STS operations.</p>
+<pre><code class="python">&gt;&gt;&gt; from vortexasdk import CargoMovements
+&gt;&gt;&gt; cols = ['vessels.0.name', 'vessels.0.vessel_class', 'vessels.1.name', 'vessels.1.vessel_class',  'vessels.2.name', 'vessels.2.vessel_class', 'product.group.label', 'quantity']
+
+&gt;&gt;&gt; df = CargoMovements().search(
+    filter_destinations=&quot;China&quot;,
+    filter_activity=&quot;loading_state&quot;,
+    filter_waypoints=&quot;suez&quot;,
+    filter_vessels=&quot;vlcc&quot;,
+    filter_time_min=&quot;2016-12-01T00:00:00.000Z&quot;,
+    filter_time_max=&quot;2018-12-01T12:00:00.000Z&quot;,
+).to_df(columns=cols)
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th align="right"></th>
+<th align="left">vessels.0.name</th>
+<th align="left">vessels.0.vessel_class</th>
+<th align="left">vessels.1.name</th>
+<th align="left">vessels.1.vessel_class</th>
+<th align="left">vessels.2.name</th>
+<th align="left">vessels.2.vessel_class</th>
+<th align="left">product.group.label</th>
+<th align="right">quantity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">0</td>
+<td align="left">MINERVA MARINA</td>
+<td align="left">suezmax</td>
+<td align="left">COSGLORY LAKE</td>
+<td align="left">vlcc_plus</td>
+<td align="left">nan</td>
+<td align="left">nan</td>
+<td align="left">Crude</td>
+<td align="right">700614</td>
+</tr>
+<tr>
+<td align="right">1</td>
+<td align="left">BUKHA</td>
+<td align="left">vlcc_plus</td>
+<td align="left">nan</td>
+<td align="left">nan</td>
+<td align="left">nan</td>
+<td align="left">nan</td>
+<td align="left">Crude</td>
+<td align="right">1896374</td>
+</tr>
+<tr>
+<td align="right">2</td>
+<td align="left">ATHENIAN FREEDOM</td>
+<td align="left">vlcc_plus</td>
+<td align="left">nan</td>
+<td align="left">nan</td>
+<td align="left">nan</td>
+<td align="left">nan</td>
+<td align="left">Crude</td>
+<td align="right">183537</td>
+</tr>
+<tr>
+<td align="right">3</td>
+<td align="left">ATINA</td>
+<td align="left">suezmax</td>
+<td align="left">DONAT</td>
+<td align="left">suezmax</td>
+<td align="left">DS VISION</td>
+<td align="left">vlcc_plus</td>
+<td align="left">Crude</td>
+<td align="right">896773</td>
+</tr>
+<tr>
+<td align="right">4</td>
+<td align="left">MINERVA MARINA</td>
+<td align="left">suezmax</td>
+<td align="left">COSGLORY LAKE</td>
+<td align="left">vlcc_plus</td>
+<td align="left">nan</td>
+<td align="left">nan</td>
+<td align="left">Crude</td>
+<td align="right">405724</td>
+</tr>
+<tr>
+<td align="right">5</td>
+<td align="left">MASAL</td>
+<td align="left">suezmax</td>
+<td align="left">EKTA</td>
+<td align="left">vlcc_plus</td>
+<td align="left">nan</td>
+<td align="left">nan</td>
+<td align="left">Crude</td>
+<td align="right">997896</td>
+</tr>
+<tr>
+<td align="right">6</td>
+<td align="left">ATHENIAN FREEDOM</td>
+<td align="left">vlcc_plus</td>
+<td align="left">nan</td>
+<td align="left">nan</td>
+<td align="left">nan</td>
+<td align="left">nan</td>
+<td align="left">Crude</td>
+<td align="right">120812</td>
 </tr>
 </tbody>
 </table>

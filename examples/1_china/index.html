@@ -217,16 +217,13 @@
 </tr>
 </tbody>
 </table>
-<pre><code class="python">from vortexasdk import CargoMovements, Vessels
-
-# Search for all the VLCC vessel IDs.
-vlccs = [v[&quot;id&quot;] for v in Vessels().search(vessel_classes=&quot;vlcc&quot;)]
+<pre><code class="python">from vortexasdk import CargoMovements
 
 df = (
     CargoMovements()
     .search(
         filter_activity=&quot;loading_start&quot;,
-        filter_vessels=vlccs,
+        filter_vessels=&quot;vlcc&quot;,
         filter_destinations=&quot;China&quot;,
         filter_time_min=&quot;2019-08-29T00:00:00.000Z&quot;,
         filter_time_max=&quot;2019-10-30T00:00:00.000Z&quot;,
