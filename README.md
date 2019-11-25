@@ -20,6 +20,9 @@ $ pip install vortexasdk
 
 Set your `VORTEXA_API_KEY` environment variable, that's all.
 
+Refer to [Vortexa API Authentication](https://docs.vortexa.com/reference/intro-authentication)
+ for more details, including instructions on where to find your API key.
+
 ##### Example
 
 ```python
