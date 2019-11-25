@@ -9,7 +9,6 @@ repos:
     hooks:
       - id: flake8
         files: ^vortexasdk/
-
   - repo: https://github.com/PyCQA/pydocstyle
     rev: 4.0.1
     hooks:

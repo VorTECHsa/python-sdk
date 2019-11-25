@@ -14,7 +14,7 @@ Position = Tuple[float, float]
 
 @dataclass(frozen=True)
 class BoundingBox:
-    """Polygon with list of bounding lat lon coords."""
+    """Polygon with list of bounding lon lat coords."""
 
     type: str
     coordinates: List[Position]
