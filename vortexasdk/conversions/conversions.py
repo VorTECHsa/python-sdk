@@ -25,7 +25,7 @@ def _search_ids(searcher: Search, **kwargs) -> List[ID]:
 
     id_to_name = {r["id"]: r["name"] for r in results}
 
-    print(
+    logger.info(
         f"Searched term: {kwargs.items()},"
         f" found {len(results)} {searcher.__class__.__name__}"
         f" : {id_to_name}"

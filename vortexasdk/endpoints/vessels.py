@@ -111,6 +111,7 @@ AVAILABLE_VESSEL_CLASSES = [
     "aframax",
     "suezmax",
     "vlcc_plus",
+    "vlcc",
     "sgc",
     "mgc",
     "lgc",
