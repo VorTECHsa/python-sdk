@@ -5,8 +5,8 @@ from vortexasdk.conversions import (
     convert_to_corporation_ids,
     convert_to_geography_ids,
     convert_to_product_ids,
+    convert_to_vessel_ids,
 )
-from vortexasdk.conversions.vessels import convert_to_vessel_ids
 from vortexasdk.endpoints.cargo_movements_result import CargoMovementsResult
 from vortexasdk.endpoints.endpoints import CARGO_MOVEMENTS_RESOURCE
 from vortexasdk.operations import Search
@@ -64,7 +64,7 @@ class CargoMovements(Search):
 
             filter_products: A product, or list of products to filter on. Both product names or IDs can be entered here.
 
-            filter_vessels: A vessel, or list of vessels to filter on. Both vessel names or IDs can be entered here,
+            filter_vessels: A vessel, or list of vessels to filter on. Vessel name, imo, mmsi, vessel class, or vessel IDs can be entered here,
 
             filter_storage_locations: A geography, or list of geography to filter on. Both geography names or IDs can be entered here.
 
