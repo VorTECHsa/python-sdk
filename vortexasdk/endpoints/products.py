@@ -16,11 +16,12 @@ class Products(Reference, Search):
         Reference.__init__(self, PRODUCTS_REFERENCE)
         Search.__init__(self, PRODUCTS_REFERENCE)
 
-    def search(self,
-               term: Union[str, List[str]] = None,
-               ids: Union[str, List[str]] = None,
-               product_parent: Union[str, List[str]] = None,
-               ) -> ProductResult:
+    def search(
+        self,
+        term: Union[str, List[str]] = None,
+        ids: Union[str, List[str]] = None,
+        product_parent: Union[str, List[str]] = None,
+    ) -> ProductResult:
         """
         Find all products matching given search terms.
 
@@ -61,7 +62,7 @@ class Products(Reference, Search):
             "term": to_list(term),
             "ids": to_list(ids),
             "product_parent": to_list(product_parent),
-            "allowTopLevelProducts": True
+            "allowTopLevelProducts": True,
         }
 
         return ProductResult(super().search(**search_params))

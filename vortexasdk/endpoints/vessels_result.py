@@ -32,11 +32,11 @@ class VesselsResult(Result):
 
         """
         if columns is None:
-            columns = ['id', 'name', 'imo', 'vessel_class']
+            columns = ["id", "name", "imo", "vessel_class"]
 
         df = pd.DataFrame(super().to_list())
 
-        if columns == 'all':
+        if columns == "all":
             return df
         else:
             return df[columns]

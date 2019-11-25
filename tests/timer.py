@@ -34,4 +34,4 @@ class Timer:
     def __exit__(self, *args):
         self.end = time.time()
         self.interval = self.end - self.start
-        print(f'Timer {self.name} took: {self.interval} seconds')
+        print(f"Timer {self.name} took: {self.interval} seconds")

@@ -6,7 +6,7 @@ from flatten_dict import flatten
 
 
 def _group_by_layer(entity_list: List[Dict]) -> Dict:
-    return {e['layer']: e for e in entity_list}
+    return {e["layer"]: e for e in entity_list}
 
 
 def _format_keys(dictionary):
@@ -23,19 +23,24 @@ def _serialize_ve_layer(ve: Dict) -> Dict:
 
 
 def _serialize_ce_layer(ce: Dict) -> Dict:
-    ce["location"] = _group_by_layer(ce['location'])
+    ce["location"] = _group_by_layer(ce["location"])
     return ce
 
 
 def _group_cme_attributes_by_layer(cme: Dict) -> Dict:
     """Group relevant CargoMovementEntity attributes by `Entity.layer`."""
-    vessels = [_serialize_ve_layer(ve) for ve in cme['vessels']]
-    products = _group_by_layer(cme['product'])
+    vessels = [_serialize_ve_layer(ve) for ve in cme["vessels"]]
+    products = _group_by_layer(cme["product"])
 
-    events = {event_type: list(g) for event_type, g in groupby(cme['events'], lambda x: x['event_type'])}
+    events = {
+        event_type: list(g)
+        for event_type, g in groupby(cme["events"], lambda x: x["event_type"])
+    }
 
-    events_attributes = {event_type: [_serialize_ce_layer(ce) for ce in es] for event_type, es in
-                         events.items()}
+    events_attributes = {
+        event_type: [_serialize_ce_layer(ce) for ce in es]
+        for event_type, es in events.items()
+    }
 
     cme["product"] = products
     cme["vessels"] = vessels
@@ -43,13 +48,13 @@ def _group_cme_attributes_by_layer(cme: Dict) -> Dict:
     return cme
 
 
-def convert_cme_to_flat_dict(cme: Dict, cols='all') -> Dict:
+def convert_cme_to_flat_dict(cme: Dict, cols="all") -> Dict:
     """Convert nested `CargoMovementEntity` object to flat dictionary, keeping *cols*."""
     as_dict = _group_cme_attributes_by_layer(cme)
 
     formatted = flatten_dictionary(as_dict)
 
-    if cols == 'all':
+    if cols == "all":
         return formatted
     else:
         return {k: v for k, v in formatted.items() if k in cols}

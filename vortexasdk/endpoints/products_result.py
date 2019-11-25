@@ -39,10 +39,10 @@ class ProductResult(Result):
 
         df = pd.DataFrame(flattened_dicts)
 
-        if columns == 'all':
+        if columns == "all":
             return df
         else:
             return df[columns]
 
 
-DEFAULT_COLUMNS = ['id', 'name', 'layer.0', 'parent.0.name']
+DEFAULT_COLUMNS = ["id", "name", "layer.0", "parent.0.name"]

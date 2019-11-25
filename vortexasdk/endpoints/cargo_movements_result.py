@@ -535,18 +535,21 @@ class CargoMovementsResult(Result):
             columns = DEFAULT_COLUMNS
 
         with Pool(os.cpu_count()) as pool:
-            records = pool.map(functools.partial(convert_cme_to_flat_dict, cols=columns), super().to_list())
+            records = pool.map(
+                functools.partial(convert_cme_to_flat_dict, cols=columns),
+                super().to_list(),
+            )
 
         return pd.DataFrame(records)
 
 
 DEFAULT_COLUMNS = [
-    'events.cargo_port_load_event.0.label',
-    'events.cargo_port_unload_event.0.label',
-    'product.group.label',
-    'product.grade.label',
-    'quantity',
-    'vessels.0.name',
-    'events.cargo_port_load_event.0.end_timestamp',
-    'events.cargo_port_unload_event.0.start_timestamp',
+    "events.cargo_port_load_event.0.label",
+    "events.cargo_port_unload_event.0.label",
+    "product.group.label",
+    "product.grade.label",
+    "quantity",
+    "vessels.0.name",
+    "events.cargo_port_load_event.0.end_timestamp",
+    "events.cargo_port_unload_event.0.start_timestamp",
 ]

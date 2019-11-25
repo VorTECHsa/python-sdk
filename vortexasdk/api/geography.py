@@ -2,7 +2,12 @@ from dataclasses import dataclass
 from typing import List, Optional, Tuple
 
 from vortexasdk.api.serdes import FromDictMixin
-from vortexasdk.api.shared_types import EntityWithProbability, IDLayer, IDNameLayer, Node
+from vortexasdk.api.shared_types import (
+    EntityWithProbability,
+    IDLayer,
+    IDNameLayer,
+    Node,
+)
 
 Position = Tuple[float, float]
 

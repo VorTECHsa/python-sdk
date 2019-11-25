@@ -14,14 +14,17 @@ The below script returns:
 """
 from vortexasdk import CargoMovements, Vessels
 
-print(f'Running {__file__}')
+# Search for all the VLCC vessel IDs.
+vlccs = [v["id"] for v in Vessels().search(vessel_classes="vlcc")]
 
-# Search for all the VLCC vessel IDs
-vlccs = [v['id'] for v in Vessels().search(vessel_classes='vlcc')]
-
-df = CargoMovements().search(
-    filter_vessels=vlccs,
-    filter_destinations="China",
-    filter_time_min="2019-08-29T00:00:00.000Z",
-    filter_time_max="2019-10-30T00:00:00.000Z",
-).to_df()
+df = (
+    CargoMovements()
+    .search(
+        filter_activity="loading_start",
+        filter_vessels=vlccs,
+        filter_destinations="China",
+        filter_time_min="2019-08-29T00:00:00.000Z",
+        filter_time_max="2019-10-30T00:00:00.000Z",
+    )
+    .to_df()
+)

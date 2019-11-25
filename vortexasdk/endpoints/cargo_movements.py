@@ -1,7 +1,11 @@
 """Cargo Movements Endpoint."""
 from typing import List, Union
 
-from vortexasdk.conversions import convert_to_corporation_ids, convert_to_geography_ids, convert_to_product_ids
+from vortexasdk.conversions import (
+    convert_to_corporation_ids,
+    convert_to_geography_ids,
+    convert_to_product_ids,
+)
 from vortexasdk.conversions.vessels import convert_to_vessel_ids
 from vortexasdk.endpoints.cargo_movements_result import CargoMovementsResult
 from vortexasdk.endpoints.endpoints import CARGO_MOVEMENTS_RESOURCE
@@ -17,23 +21,23 @@ class CargoMovements(Search):
     def __init__(self):
         Search.__init__(self, CARGO_MOVEMENTS_RESOURCE)
 
-    def search(self,
-               filter_activity: str,
-               filter_time_min: str = "2019-10-01T00:00:00.000Z",
-               filter_time_max: str = "2019-10-01T01:00:00.000Z",
-               cm_unit: str = 'b',
-
-               filter_charterers: Union[str, List[str]] = None,
-               filter_destinations: Union[str, List[str]] = None,
-               filter_origins: Union[str, List[str]] = None,
-               filter_owners: Union[str, List[str]] = None,
-               filter_products: Union[str, List[str]] = None,
-               filter_vessels: Union[str, List[str]] = None,
-               filter_storage_locations: Union[str, List[str]] = None,
-               filter_ship_to_ship_locations: Union[str, List[str]] = None,
-               filter_waypoints: Union[str, List[str]] = None,
-               disable_geographic_exclusion_rules: bool = None,
-               ) -> CargoMovementsResult:
+    def search(
+        self,
+        filter_activity: str,
+        filter_time_min: str = "2019-10-01T00:00:00.000Z",
+        filter_time_max: str = "2019-10-01T01:00:00.000Z",
+        cm_unit: str = "b",
+        filter_charterers: Union[str, List[str]] = None,
+        filter_destinations: Union[str, List[str]] = None,
+        filter_origins: Union[str, List[str]] = None,
+        filter_owners: Union[str, List[str]] = None,
+        filter_products: Union[str, List[str]] = None,
+        filter_vessels: Union[str, List[str]] = None,
+        filter_storage_locations: Union[str, List[str]] = None,
+        filter_ship_to_ship_locations: Union[str, List[str]] = None,
+        filter_waypoints: Union[str, List[str]] = None,
+        disable_geographic_exclusion_rules: bool = None,
+    ) -> CargoMovementsResult:
         """
 
         Find CargoMovements matching the given search parameters.
@@ -109,12 +113,11 @@ class CargoMovements(Search):
 
         params = {
             # Compulsory search parameters
-            'filter_activity': filter_activity,
-            'filter_time_min': filter_time_min,
-            'filter_time_max': filter_time_max,
-            'cm_unit': cm_unit,
-            'size': self._MAX_PAGE_RESULT_SIZE,
-
+            "filter_activity": filter_activity,
+            "filter_time_min": filter_time_min,
+            "filter_time_max": filter_time_max,
+            "cm_unit": cm_unit,
+            "size": self._MAX_PAGE_RESULT_SIZE,
             "filter_charterers": corporation(filter_charterers),
             "filter_destinations": geog(filter_destinations),
             "filter_origins": geog(filter_origins),
@@ -122,9 +125,11 @@ class CargoMovements(Search):
             "filter_products": product(filter_products),
             "filter_vessels": ves(filter_vessels),
             "filter_storage_locations": geog(filter_storage_locations),
-            "filter_ship_to_ship_locations": geog(filter_ship_to_ship_locations),
+            "filter_ship_to_ship_locations": geog(
+                filter_ship_to_ship_locations
+            ),
             "filter_waypoints": geog(filter_waypoints),
-            "disable_geographic_exclusion_rules": disable_geographic_exclusion_rules
+            "disable_geographic_exclusion_rules": disable_geographic_exclusion_rules,
         }
 
         return CargoMovementsResult(super().search(**params))

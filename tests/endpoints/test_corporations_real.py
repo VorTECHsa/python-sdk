@@ -4,7 +4,6 @@ from vortexasdk import Corporations
 
 
 class TestCorporationsReal(TestCaseUsingRealAPI):
-
     def test_search(self):
         df = Corporations().search().to_df()
 
