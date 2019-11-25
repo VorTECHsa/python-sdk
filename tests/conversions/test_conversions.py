@@ -1,6 +1,4 @@
-from unittest import TestCase, skipIf
-
-from tests.config import SKIP_TAGS
+from tests.testcases import TestCaseUsingRealAPI
 from vortexasdk import Geographies
 from vortexasdk.client import create_client, set_client
 from vortexasdk.conversions import (
@@ -10,10 +8,7 @@ from vortexasdk.conversions import (
 )
 
 
-class TestConvert(TestCase):
-    @skipIf(
-        "real" in SKIP_TAGS, "Skipping tests that hit the real API server."
-    )
+class TestConvert(TestCaseUsingRealAPI):
     def test_convert_to_geography_ids(self):
         set_client(create_client())
 
@@ -26,9 +21,6 @@ class TestConvert(TestCase):
 
         assert [rotterdam_id] == result
 
-    @skipIf(
-        "real" in SKIP_TAGS, "Skipping tests that hit the real API server."
-    )
     def test_convert_to_corporation_ids(self):
         set_client(create_client())
 
@@ -36,9 +28,6 @@ class TestConvert(TestCase):
 
         assert len(result) >= 1
 
-    @skipIf(
-        "real" in SKIP_TAGS, "Skipping tests that hit the real API server."
-    )
     def test_convert_to_product_ids(self):
         set_client(create_client())
 
@@ -49,9 +38,6 @@ class TestConvert(TestCase):
         )
         assert CRUDE_ID in result
 
-    @skipIf(
-        "real" in SKIP_TAGS, "Skipping tests that hit the real API server."
-    )
     def test_convert_to_ids_retains_id_argument(self):
         set_client(create_client())
 

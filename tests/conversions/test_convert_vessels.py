@@ -1,16 +1,10 @@
-from unittest import TestCase, skipIf
-
-from vortexasdk.endpoints.vessels import Vessels
-
-from tests.config import SKIP_TAGS
+from tests.testcases import TestCaseUsingRealAPI
 from vortexasdk.client import create_client, set_client
 from vortexasdk.conversions import convert_to_vessel_ids
+from vortexasdk.endpoints.vessels import Vessels
 
 
-class TestConvert(TestCase):
-    @skipIf(
-        "real" in SKIP_TAGS, "Skipping tests that hit the real API server."
-    )
+class TestConvert(TestCaseUsingRealAPI):
     def test_convert_name_to_vessel_ids(self):
         set_client(create_client())
 
@@ -18,9 +12,6 @@ class TestConvert(TestCase):
 
         assert len(result) >= 10
 
-    @skipIf(
-        "real" in SKIP_TAGS, "Skipping tests that hit the real API server."
-    )
     def test_convert_imo_to_vessel_ids(self):
         set_client(create_client())
 
@@ -29,9 +20,6 @@ class TestConvert(TestCase):
             "84a82843ec84ac6d67b65c50056eff78e0d58e6b9fc7a5ba9adc6c0442162cf4"
         ]
 
-    @skipIf(
-        "real" in SKIP_TAGS, "Skipping tests that hit the real API server."
-    )
     def test_convert_mmsi_to_vessel_ids(self):
         set_client(create_client())
 
@@ -40,9 +28,6 @@ class TestConvert(TestCase):
             "b9f5cf3e2a3b17fe2c7eed717f7ab36d481ad69290c28197c7cd00e1669ca66a"
         ]
 
-    @skipIf(
-        "real" in SKIP_TAGS, "Skipping tests that hit the real API server."
-    )
     def test_convert_class_to_vessel_ids(self):
         set_client(create_client())
 
@@ -52,9 +37,6 @@ class TestConvert(TestCase):
             v.id for v in Vessels().search(vessel_classes="panamax").to_list()
         ]
 
-    @skipIf(
-        "real" in SKIP_TAGS, "Skipping tests that hit the real API server."
-    )
     def test_convert_combination_to_vessel_ids(self):
         set_client(create_client())
 
