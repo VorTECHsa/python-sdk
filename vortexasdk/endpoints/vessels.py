@@ -49,16 +49,16 @@ class Vessels(Reference, Search):
         >>> Vessels().search(vessel_classes='vlcc', term='ocean').to_df(columns=['name', 'imo', 'mmsi', 'related_names'])
         ```
 
-        ,    , name         ,     imo ,      mmsi , related_names             ,
-        ,---:,:-------------,--------:,----------:,:--------------------------,
-        ,  0 , OCEANIS      , 9532757 , 241089000 , ['OCEANIS']               ,
-        ,  1 , AEGEAN       , 9732553 , 205761000 , ['GENER8 OCEANUS']        ,
-        ,  2 , OCEANIA      , 9246633 , 205753000 , ['OCEANIA', 'TI OCEANIA'] ,
-        ,  3 , ENEOS OCEAN  , 9662875 , 432986000 , ['ENEOS OCEAN']           ,
-        ,  4 , OCEAN LILY   , 9284960 , 477178100 , ['OCEAN LILY']            ,
-        ,  5 , SHINYO OCEAN , 9197868 , 636019316 , ['SHINYO OCEAN']          ,
-        ,  6 , NASHA        , 9079107 , 370497000 , ['OCEANIC']               ,
-        ,  7 , HUMANITY     , 9180281 , 422204700 , ['OCEAN NYMPH']           ,
+        |    | name         |     imo |      mmsi | related_names             |
+        |---:|:-------------|--------:|----------:|:--------------------------|
+        |  0 | OCEANIS      | 9532757 | 241089000 | ['OCEANIS']               |
+        |  1 | AEGEAN       | 9732553 | 205761000 | ['GENER8 OCEANUS']        |
+        |  2 | OCEANIA      | 9246633 | 205753000 | ['OCEANIA'| 'TI OCEANIA'] |
+        |  3 | ENEOS OCEAN  | 9662875 | 432986000 | ['ENEOS OCEAN']           |
+        |  4 | OCEAN LILY   | 9284960 | 477178100 | ['OCEAN LILY']            |
+        |  5 | SHINYO OCEAN | 9197868 | 636019316 | ['SHINYO OCEAN']          |
+        |  6 | NASHA        | 9079107 | 370497000 | ['OCEANIC']               |
+        |  7 | HUMANITY     | 9180281 | 422204700 | ['OCEAN NYMPH']           |
 
         Note the `term` search also looks for vessels with matching `related_names`
 
