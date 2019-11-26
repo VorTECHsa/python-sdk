@@ -16,7 +16,7 @@ class VesselMovementsResult(Result):
     """
     Container class holdings search results returns from the vessel movements endpoint.
 
-    This class has two methods, `to_list()`, and `to_df()`, allowing search results to be represented as a list of `VesselMovements`,
+    This class has two methods, `to_list()`, and `to_df()`, allowing search results to be represented as a list of `VesselMovement`s,
      or as a `pd.DataFrame` , respectively.
     """
 

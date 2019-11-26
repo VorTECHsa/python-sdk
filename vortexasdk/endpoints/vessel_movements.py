@@ -15,9 +15,11 @@ from vortexasdk.utils import to_list
 
 class VesselMovements(Search):
     """
-    Vessel Movements Endpoint, use this to search through Vortexa's vessel movements.
+    Vessel Movements Endpoint, use this to search through Vortexa's VesselMovements.
 
-    TODO WHAT IS A VESSEL MOVEMENT.
+    A VesselMovement represents a single vessel moving between two locations. The vessel may carry one cargo,
+     many cargoes (coloads), or zero cargos (ballast). The start and end locations for a VesselMovement may be on land,
+     or an STS zone.
     """
 
     _MAX_PAGE_RESULT_SIZE = 500
@@ -84,8 +86,6 @@ class VesselMovements(Search):
         |  1 | 2017-08-29T14:51:32+0000 | 2017-10-04T14:46:21+0000 |  9.64544e+06 | AEGEAN VISION | suezmax               | Netherlands                     | Rotterdam [NL]               | Singapore                            | Singapore [SG]                    |               852261 | High Sulphur                    |
 
         [Vessel Movements Endpoint Further Documentation](https://docs.vortexa.com/reference/POST/vessel-movements/search)
-
-
 
         """
         geog = lambda x: convert_to_geography_ids(to_list(x))
