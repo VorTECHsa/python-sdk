@@ -1,10 +1,16 @@
 from abc import ABC
 from dataclasses import dataclass
+from datetime import datetime
 from typing import List, Optional
 
 from vortexasdk.api.id import ID
 
 ISODate = str
+
+
+# noinspection PyPep8Naming
+def to_ISODate(utc_datetime: datetime) -> str:
+    return utc_datetime.strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3] + "Z"
 
 
 @dataclass(frozen=True)

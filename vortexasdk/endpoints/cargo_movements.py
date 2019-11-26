@@ -1,6 +1,8 @@
 """Cargo Movements Endpoint."""
+from datetime import datetime
 from typing import List, Union
 
+from vortexasdk.api.shared_types import to_ISODate
 from vortexasdk.conversions import (
     convert_to_corporation_ids,
     convert_to_geography_ids,
@@ -24,8 +26,8 @@ class CargoMovements(Search):
     def search(
         self,
         filter_activity: str,
-        filter_time_min: str = "2019-10-01T00:00:00.000Z",
-        filter_time_max: str = "2019-10-01T01:00:00.000Z",
+        filter_time_min: datetime = datetime(2019, 10, 1, 0),
+        filter_time_max: datetime = datetime(2019, 10, 1, 1),
         cm_unit: str = "b",
         filter_charterers: Union[str, List[str]] = None,
         filter_destinations: Union[str, List[str]] = None,
@@ -48,9 +50,9 @@ class CargoMovements(Search):
               'unloading_end', 'unloaded_state', 'storing_state', 'storing_start', 'storing_end', 'transiting_state',
                'any_activity'].
 
-            filter_time_min: The start date of the time filter.
+            filter_time_min: The UTC start date of the time filter.
 
-            filter_time_max: The end date of the time filter.
+            filter_time_max: The UTC end date of the time filter.
 
             cm_unit: Unit of measurement. Enter 'b' for barrels or 't' for tonnes.
 
@@ -89,8 +91,8 @@ class CargoMovements(Search):
         >>> df = CargoMovements().search(
             filter_origins="Rotterdam",
             filter_activity='loading_state',
-            filter_time_min="2018-12-01T00:00:00.000Z",
-            filter_time_max="2018-12-01T12:00:00.000Z",
+            filter_time_min=datetime(2018, 12, 1),
+            filter_time_max=datetime(2018, 12, 1, 12),
         ).to_df(columns=['product.grade.label', 'product.group.label', 'vessels.0.vessel_class'])
         ```
 
@@ -118,8 +120,8 @@ class CargoMovements(Search):
             filter_activity="loading_state",
             filter_waypoints="suez",
             filter_vessels="vlcc",
-            filter_time_min="2016-12-01T00:00:00.000Z",
-            filter_time_max="2018-12-01T12:00:00.000Z",
+            filter_time_min=datetime(2016, 12, 01),
+            filter_time_max=datetime(2018, 12, 01),
         ).to_df(columns=cols)
         ```
 
@@ -144,8 +146,8 @@ class CargoMovements(Search):
         params = {
             # Compulsory search parameters
             "filter_activity": filter_activity,
-            "filter_time_min": filter_time_min,
-            "filter_time_max": filter_time_max,
+            "filter_time_min": to_ISODate(filter_time_min),
+            "filter_time_max": to_ISODate(filter_time_max),
             "cm_unit": cm_unit,
             "size": self._MAX_PAGE_RESULT_SIZE,
             "filter_charterers": corporation(filter_charterers),
