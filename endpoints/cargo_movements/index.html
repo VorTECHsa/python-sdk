@@ -181,7 +181,7 @@
 
 <p>Cargo Movements Endpoint, use this to search through Vortexa's cargo movements.
 <h3 id="vortexasdk.endpoints.cargo_movements.CargoMovements.search">search</h3></p>
-<pre><code class="python">CargoMovements.search(self, filter_activity: str, filter_time_min: str = '2019-10-01T00:00:00.000Z', filter_time_max: str = '2019-10-01T01:00:00.000Z', cm_unit: str = 'b', filter_charterers: Union[str, List[str]] = None, filter_destinations: Union[str, List[str]] = None, filter_origins: Union[str, List[str]] = None, filter_owners: Union[str, List[str]] = None, filter_products: Union[str, List[str]] = None, filter_vessels: Union[str, List[str]] = None, filter_storage_locations: Union[str, List[str]] = None, filter_ship_to_ship_locations: Union[str, List[str]] = None, filter_waypoints: Union[str, List[str]] = None, disable_geographic_exclusion_rules: bool = None) -&gt; vortexasdk.endpoints.cargo_movements_result.CargoMovementsResult
+<pre><code class="python">CargoMovements.search(self, filter_activity: str, filter_time_min: datetime.datetime = datetime.datetime(2019, 10, 1, 0, 0), filter_time_max: datetime.datetime = datetime.datetime(2019, 10, 1, 1, 0), cm_unit: str = 'b', filter_charterers: Union[str, List[str]] = None, filter_destinations: Union[str, List[str]] = None, filter_origins: Union[str, List[str]] = None, filter_owners: Union[str, List[str]] = None, filter_products: Union[str, List[str]] = None, filter_vessels: Union[str, List[str]] = None, filter_storage_locations: Union[str, List[str]] = None, filter_ship_to_ship_locations: Union[str, List[str]] = None, filter_waypoints: Union[str, List[str]] = None, disable_geographic_exclusion_rules: bool = None) -&gt; vortexasdk.endpoints.cargo_movements_result.CargoMovementsResult
 </code></pre>
 
 <p>Find CargoMovements matching the given search parameters.</p>
@@ -194,10 +194,10 @@
        'any_activity'].</p>
 </li>
 <li>
-<p><strong>filter_time_min</strong>: The start date of the time filter.</p>
+<p><strong>filter_time_min</strong>: The UTC start date of the time filter.</p>
 </li>
 <li>
-<p><strong>filter_time_max</strong>: The end date of the time filter.</p>
+<p><strong>filter_time_max</strong>: The UTC end date of the time filter.</p>
 </li>
 <li>
 <p><strong>cm_unit</strong>: Unit of measurement. Enter 'b' for barrels or 't' for tonnes.</p>
@@ -244,8 +244,8 @@
 &gt;&gt;&gt; df = CargoMovements().search(
     filter_origins=&quot;Rotterdam&quot;,
     filter_activity='loading_state',
-    filter_time_min=&quot;2018-12-01T00:00:00.000Z&quot;,
-    filter_time_max=&quot;2018-12-01T12:00:00.000Z&quot;,
+    filter_time_min=datetime(2018, 12, 1),
+    filter_time_max=datetime(2018, 12, 1, 12),
 ).to_df(columns=['product.grade.label', 'product.group.label', 'vessels.0.vessel_class'])
 </code></pre>
 
@@ -316,8 +316,8 @@ This lets us view all vessels present in any STS operations.</p>
     filter_activity=&quot;loading_state&quot;,
     filter_waypoints=&quot;suez&quot;,
     filter_vessels=&quot;vlcc&quot;,
-    filter_time_min=&quot;2016-12-01T00:00:00.000Z&quot;,
-    filter_time_max=&quot;2018-12-01T12:00:00.000Z&quot;,
+    filter_time_min=datetime(2016, 12, 01),
+    filter_time_max=datetime(2018, 12, 01),
 ).to_df(columns=cols)
 </code></pre>
 

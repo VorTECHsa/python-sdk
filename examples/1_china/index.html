@@ -217,7 +217,9 @@
 </tr>
 </tbody>
 </table>
-<pre><code class="python">from vortexasdk import CargoMovements
+<pre><code class="python">from datetime import datetime
+
+from vortexasdk import CargoMovements
 
 df = (
     CargoMovements()
@@ -225,8 +227,8 @@ df = (
         filter_activity=&quot;loading_start&quot;,
         filter_vessels=&quot;vlcc&quot;,
         filter_destinations=&quot;China&quot;,
-        filter_time_min=&quot;2019-08-29T00:00:00.000Z&quot;,
-        filter_time_max=&quot;2019-10-30T00:00:00.000Z&quot;,
+        filter_time_min=datetime(2019, 8, 29),
+        filter_time_max=datetime(2019, 10, 30),
     )
     .to_df()
 )
