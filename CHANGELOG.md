@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.7.0](https://github.com/V0RT3X4/python-sdk/tree/0.7.0) (2019-11-26)
+
+[Full Changelog](https://github.com/V0RT3X4/python-sdk/compare/0.6.1...0.7.0)
+
+**Closed issues:**
+
+- Where do I get an API key from [\#75](https://github.com/V0RT3X4/python-sdk/issues/75)
+- change 'filter\_vessel' argument to 'filter\_vessel\_name' to make it clearer that this is filtering vessels and not vessel classes [\#38](https://github.com/V0RT3X4/python-sdk/issues/38)
+
+**Merged pull requests:**
+
+- feat: Filter cargo movements on vessel class, closes \#38 [\#91](https://github.com/V0RT3X4/python-sdk/pull/91) ([KitBurgess](https://github.com/KitBurgess))
+
 ## [0.6.1](https://github.com/V0RT3X4/python-sdk/tree/0.6.1) (2019-11-25)
 
 [Full Changelog](https://github.com/V0RT3X4/python-sdk/compare/0.6.0...0.6.1)
