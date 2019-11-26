@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Vessel Movements - VortexaSDK</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Vessel Movements";
+    var mkdocs_page_input_path = "endpoints/vessel_movements.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> VortexaSDK</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Endpoints</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../about-endpoints/">About Endpoints</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../cargo_movements/">Cargo Movements</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../corporations/">Corporations</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../geographies/">Geographies</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../products/">Products</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Vessel Movements</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#notes">Notes</a></li>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../vessels/">Vessels</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Entities</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../entities/cargo_movement/">Cargo Movement</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../entities/corporation/">Corporation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../entities/geography/">Geography</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../entities/product/">Product</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../entities/vessel/">Vessel</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../entities/vessel_movement/">Vessel Movement</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../config/">Config</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Examples</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../examples/1_china/">1 China VLCC Discharges</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">VortexaSDK</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Endpoints &raquo;</li>
+        
+      
+    
+    <li>Vessel Movements</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/V0RT3X4/python-sdk/edit/master/docs/endpoints/vessel_movements.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="vortexasdk.endpoints.vessel_movements">vortexasdk.endpoints.vessel_movements</h1>
+
+<p>Vessel Movements Endpoint.
+<h2 id="vortexasdk.endpoints.vessel_movements.VesselMovements">VesselMovements</h2></p>
+<pre><code class="python">VesselMovements(self)
+</code></pre>
+
+<p>Vessel Movements Endpoint, use this to search through Vortexa's VesselMovements.</p>
+<p>A VesselMovement represents a single vessel moving between two locations.</p>
+<ul>
+<li>The vessel may carry one cargo, many cargoes (coloads), or zero cargos (ballast).</li>
+<li>The start and end locations for a VesselMovement may be on land (loadings and discharges), they may be STS Zones
+(STS events), or they may be Floating Storage.</li>
+</ul>
+<h3 id="vortexasdk.endpoints.vessel_movements.VesselMovements.search">search</h3>
+
+<pre><code class="python">VesselMovements.search(self, filter_time_min: str = '2019-10-01T00:00:00.000Z', filter_time_max: str = '2019-10-01T01:00:00.000Z', unit: str = 'b', filter_charterers: Union[str, List[str]] = None, filter_destinations: Union[str, List[str]] = None, filter_origins: Union[str, List[str]] = None, filter_owners: Union[str, List[str]] = None, filter_products: Union[str, List[str]] = None, filter_vessels: Union[str, List[str]] = None, filter_vessel_classes: Union[str, List[str]] = None) -&gt; vortexasdk.endpoints.vessel_movements_result.VesselMovementsResult
+</code></pre>
+
+<p>Find VesselMovements matching the given search parameters.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li>
+<p><strong>filter_time_min</strong>: The start date of the time filter.</p>
+</li>
+<li>
+<p><strong>filter_time_max</strong>: The end date of the time filter.</p>
+</li>
+<li>
+<p><strong>unit</strong>: Unit of measurement. Enter 'b' for barrels or 't' for tonnes.</p>
+</li>
+<li>
+<p><strong>filter_corporations</strong>: A corporation, or list of corporations to filter on.</p>
+</li>
+<li>
+<p><strong>filter_destinations</strong>: A geography, or list of geographies to filter on. Both geography names or IDs can be entered here.</p>
+</li>
+<li>
+<p><strong>filter_origins</strong>: A geography, or list of geographies to filter on. Both geography names or IDs can be entered here.</p>
+</li>
+<li>
+<p><strong>filter_owners</strong>: An owner, or list of owners to filter on. Both charterer/owner names or IDs can be entered here.</p>
+</li>
+<li>
+<p><strong>filter_products</strong>: A product, or list of products to filter on. Both product names or IDs can be entered here.</p>
+</li>
+<li>
+<p><strong>filter_vessels</strong>: A vessel, or list of vessels to filter on. Both vessel names or IDs can be entered here,</p>
+</li>
+<li>
+<p><strong>filter_vessel_classes</strong>: A vessel class, or list of vessel classes to filter on. Both vessel names or IDs can be entered here,</p>
+</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p><code>VesselMovementsResult</code>, containing all the vessel movements matching the given search terms.</p>
+<p><strong>Example</strong></p>
+<p>Let's search for all vessels that departed from <code>Rotterdam [NL]</code> on the morning of 1st December 2018.</p>
+<pre><code class="python">&gt;&gt;&gt; from vortexasdk import VesselMovements
+&gt;&gt;&gt; df = VesselMovements().search(
+    filter_time_min=&quot;2017-10-01T00:00:00.000Z&quot;,
+    filter_time_max=&quot;2017-10-01T00:10:00.000Z&quot;,
+    filter_origins='rotterdam'
+).to_df().head(2)
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th align="right"></th>
+<th align="left">start_timestamp</th>
+<th align="left">end_timestamp</th>
+<th align="right">vessel.imo</th>
+<th align="left">vessel.name</th>
+<th align="left">vessel.vessel_class</th>
+<th align="left">origin.location.country.label</th>
+<th align="left">origin.location.port.label</th>
+<th align="left">destination.location.country.label</th>
+<th align="left">destination.location.port.label</th>
+<th align="right">cargoes.0.quantity</th>
+<th align="left">cargoes.0.product.grade.label</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">0</td>
+<td align="left">2017-09-30T15:30:27+0000</td>
+<td align="left">2017-10-03T01:46:06+0000</td>
+<td align="right">9.21091e+06</td>
+<td align="left">ADEBOMI 3</td>
+<td align="left">handysize</td>
+<td align="left">Netherlands</td>
+<td align="left">Rotterdam [NL]</td>
+<td align="left">Netherlands</td>
+<td align="left">Rotterdam [NL]</td>
+<td align="right">nan</td>
+<td align="left">nan</td>
+</tr>
+<tr>
+<td align="right">1</td>
+<td align="left">2017-08-29T14:51:32+0000</td>
+<td align="left">2017-10-04T14:46:21+0000</td>
+<td align="right">9.64544e+06</td>
+<td align="left">AEGEAN VISION</td>
+<td align="left">suezmax</td>
+<td align="left">Netherlands</td>
+<td align="left">Rotterdam [NL]</td>
+<td align="left">Singapore</td>
+<td align="left">Singapore [SG]</td>
+<td align="right">852261</td>
+<td align="left">High Sulphur</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://docs.vortexa.com/reference/POST/vessel-movements/search">Vessel Movements Endpoint Further Documentation</a></p>
+<h1 id="vortexasdk.endpoints.vessel_movements_result">vortexasdk.endpoints.vessel_movements_result</h1>
+
+<h2 id="vortexasdk.endpoints.vessel_movements_result.VesselMovementsResult">VesselMovementsResult</h2>
+
+<pre><code class="python">VesselMovementsResult(self, _records: List) -&gt; None
+</code></pre>
+
+<p>Container class holdings search results returns from the vessel movements endpoint.</p>
+<p>This class has two methods, <code>to_list()</code>, and <code>to_df()</code>, allowing search results to be represented as a list of <code>VesselMovement</code>s,
+ or as a <code>pd.DataFrame</code> , respectively.</p>
+<h3 id="vortexasdk.endpoints.vessel_movements_result.VesselMovementsResult.to_list">to_list</h3>
+
+<pre><code class="python">VesselMovementsResult.to_list(self) -&gt; List[vortexasdk.api.vessel_movement.VesselMovement]
+</code></pre>
+
+<p>Represent vessel movements as a list of <code>VesselMovementEntity</code>s.
+<h3 id="vortexasdk.endpoints.vessel_movements_result.VesselMovementsResult.to_df">to_df</h3></p>
+<pre><code class="python">VesselMovementsResult.to_df(self, columns=None) -&gt; pandas.core.frame.DataFrame
+</code></pre>
+
+<p>Represent vessel movements as a <code>pd.DataFrame</code>.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>columns</strong>: Output columns present in the <code>pd.DataFrame</code>.
+    Enter <code>columns='all'</code> to return all available columns.
+    Enter <code>columns=None</code> to use <code>vessel_movements.DEFAULT_COLUMNS</code>.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p><code>pd.DataFrame</code>, one row per <code>VesselMovement</code>.</p>
+<h2 id="notes">Notes</h2>
+<p>By default, the columns returned are something along the lines of.</p>
+<pre><code class="python">DEFAULT_COLUMNS = [
+    'vessel.imo',
+    'vessel.name',
+    'vessel.vessel_class',
+    'origin.event_type',
+    'origin.location.port.label',
+    'origin.location.country.label',
+    'destination.event_type',
+    'destination.location.port.label',
+    'destination.location.country.label',
+    'cargoes.0.product.group_product.label,'
+    'cargoes.0.product.category.label',
+    'cargoes.0.product.grade.label',
+    'cargoes.0.quantity',
+    'start_timestamp',
+    'end_timestamp',
+]
+</code></pre>
+
+<p>The exact default columns used can be found at <code>vessel_movements.DEFAULT_COLUMNS</code></p>
+<p>A near complete list of columns is given below</p>
+<pre><code>[
+    cargoes.0.cargo_movement_id,
+    cargoes.0.product.category.id,
+    cargoes.0.product.category.label,
+    cargoes.0.product.category.layer,
+    cargoes.0.product.category.probability,
+    cargoes.0.product.category.source,
+    cargoes.0.product.grade.id,
+    cargoes.0.product.grade.label,
+    cargoes.0.product.grade.layer,
+    cargoes.0.product.grade.probability,
+    cargoes.0.product.grade.source,
+    cargoes.0.product.group.id,
+    cargoes.0.product.group.label,
+    cargoes.0.product.group.layer,
+    cargoes.0.product.group.probability,
+    cargoes.0.product.group.source,
+    cargoes.0.product.group_product.id,
+    cargoes.0.product.group_product.label,
+    cargoes.0.product.group_product.layer,
+    cargoes.0.product.group_product.probability,
+    cargoes.0.product.group_product.source,
+    cargoes.0.quantity,
+    cargoes.1.cargo_movement_id,
+    cargoes.1.product.category.id,
+    cargoes.1.product.category.label,
+    cargoes.1.product.category.layer,
+    cargoes.1.product.category.probability,
+    cargoes.1.product.category.source,
+    cargoes.1.product.grade.id,
+    cargoes.1.product.grade.label,
+    cargoes.1.product.grade.layer,
+    cargoes.1.product.grade.probability,
+    cargoes.1.product.grade.source,
+    cargoes.1.product.group.id,
+    cargoes.1.product.group.label,
+    cargoes.1.product.group.layer,
+    cargoes.1.product.group.probability,
+    cargoes.1.product.group.source,
+    cargoes.1.product.group_product.id,
+    cargoes.1.product.group_product.label,
+    cargoes.1.product.group_product.layer,
+    cargoes.1.product.group_product.probability,
+    cargoes.1.product.group_product.source,
+    cargoes.1.quantity,
+    cargoes.2.cargo_movement_id,
+    cargoes.2.product.category.id,
+    cargoes.2.product.category.label,
+    cargoes.2.product.category.layer,
+    cargoes.2.product.category.probability,
+    cargoes.2.product.category.source,
+    cargoes.2.product.grade.id,
+    cargoes.2.product.grade.label,
+    cargoes.2.product.grade.layer,
+    cargoes.2.product.grade.probability,
+    cargoes.2.product.grade.source,
+    cargoes.2.product.group.id,
+    cargoes.2.product.group.label,
+    cargoes.2.product.group.layer,
+    cargoes.2.product.group.probability,
+    cargoes.2.product.group.source,
+    cargoes.2.product.group_product.id,
+    cargoes.2.product.group_product.label,
+    cargoes.2.product.group_product.layer,
+    cargoes.2.product.group_product.probability,
+    cargoes.2.product.group_product.source,
+    cargoes.2.quantity,
+    cargoes.3.cargo_movement_id,
+    cargoes.3.product.category.id,
+    cargoes.3.product.category.label,
+    cargoes.3.product.category.layer,
+    cargoes.3.product.category.probability,
+    cargoes.3.product.category.source,
+    cargoes.3.product.grade.id,
+    cargoes.3.product.grade.label,
+    cargoes.3.product.grade.layer,
+    cargoes.3.product.grade.probability,
+    cargoes.3.product.grade.source,
+    cargoes.3.product.group.id,
+    cargoes.3.product.group.label,
+    cargoes.3.product.group.layer,
+    cargoes.3.product.group.probability,
+    cargoes.3.product.group.source,
+    cargoes.3.product.group_product.id,
+    cargoes.3.product.group_product.label,
+    cargoes.3.product.group_product.layer,
+    cargoes.3.product.group_product.probability,
+    cargoes.3.product.group_product.source,
+    cargoes.3.quantity,
+    cargoes.4.cargo_movement_id,
+    cargoes.4.product.grade.id,
+    cargoes.4.product.grade.label,
+    cargoes.4.product.grade.layer,
+    cargoes.4.product.grade.probability,
+    cargoes.4.product.grade.source,
+    cargoes.4.product.group.id,
+    cargoes.4.product.group.label,
+    cargoes.4.product.group.layer,
+    cargoes.4.product.group.probability,
+    cargoes.4.product.group.source,
+    cargoes.4.product.group_product.id,
+    cargoes.4.product.group_product.label,
+    cargoes.4.product.group_product.layer,
+    cargoes.4.product.group_product.probability,
+    cargoes.4.product.group_product.source,
+    cargoes.4.quantity,
+    destination.end_timestamp,
+    destination.event_id,
+    destination.event_type,
+    destination.from_vessel.id,
+    destination.from_vessel.label,
+    destination.location.country.id,
+    destination.location.country.label,
+    destination.location.country.layer,
+    destination.location.country.probability,
+    destination.location.country.source,
+    destination.location.port.id,
+    destination.location.port.label,
+    destination.location.port.layer,
+    destination.location.port.probability,
+    destination.location.port.source,
+    destination.location.region.id,
+    destination.location.region.label,
+    destination.location.region.layer,
+    destination.location.region.probability,
+    destination.location.region.source,
+    destination.location.shipping_region.id,
+    destination.location.shipping_region.label,
+    destination.location.shipping_region.layer,
+    destination.location.shipping_region.probability,
+    destination.location.shipping_region.source,
+    destination.location.sts_zone.id,
+    destination.location.sts_zone.label,
+    destination.location.sts_zone.layer,
+    destination.location.sts_zone.probability,
+    destination.location.sts_zone.source,
+    destination.location.terminal.id,
+    destination.location.terminal.label,
+    destination.location.terminal.layer,
+    destination.location.terminal.probability,
+    destination.location.terminal.source,
+    destination.location.trading_block.id,
+    destination.location.trading_block.label,
+    destination.location.trading_block.layer,
+    destination.location.trading_block.probability,
+    destination.location.trading_block.source,
+    destination.location.trading_region.id,
+    destination.location.trading_region.label,
+    destination.location.trading_region.layer,
+    destination.location.trading_region.probability,
+    destination.location.trading_region.source,
+    destination.location.trading_subregion.id,
+    destination.location.trading_subregion.label,
+    destination.location.trading_subregion.layer,
+    destination.location.trading_subregion.probability,
+    destination.location.trading_subregion.source,
+    destination.pos.0,
+    destination.pos.1,
+    destination.start_timestamp,
+    destination.to_vessel.id,
+    destination.to_vessel.label,
+    destination.to_vessel.tags.0,
+    end_timestamp,
+    origin.end_timestamp,
+    origin.event_id,
+    origin.event_type,
+    origin.location.country.id,
+    origin.location.country.label,
+    origin.location.country.layer,
+    origin.location.country.probability,
+    origin.location.country.source,
+    origin.location.port.id,
+    origin.location.port.label,
+    origin.location.port.layer,
+    origin.location.port.probability,
+    origin.location.port.source,
+    origin.location.region.id,
+    origin.location.region.label,
+    origin.location.region.layer,
+    origin.location.region.probability,
+    origin.location.region.source,
+    origin.location.shipping_region.id,
+    origin.location.shipping_region.label,
+    origin.location.shipping_region.layer,
+    origin.location.shipping_region.probability,
+    origin.location.shipping_region.source,
+    origin.location.terminal.id,
+    origin.location.terminal.label,
+    origin.location.terminal.layer,
+    origin.location.terminal.probability,
+    origin.location.terminal.source,
+    origin.location.trading_region.id,
+    origin.location.trading_region.label,
+    origin.location.trading_region.layer,
+    origin.location.trading_region.probability,
+    origin.location.trading_region.source,
+    origin.location.trading_subregion.id,
+    origin.location.trading_subregion.label,
+    origin.location.trading_subregion.layer,
+    origin.location.trading_subregion.probability,
+    origin.location.trading_subregion.source,
+    origin.pos.0,
+    origin.pos.1,
+    origin.start_timestamp,
+    start_timestamp,
+    vessel.corporate_entities.0.id,
+    vessel.corporate_entities.0.label,
+    vessel.corporate_entities.0.layer,
+    vessel.corporate_entities.0.probability,
+    vessel.corporate_entities.0.source,
+    vessel.corporate_entities.1.end_timestamp,
+    vessel.corporate_entities.1.id,
+    vessel.corporate_entities.1.label,
+    vessel.corporate_entities.1.layer,
+    vessel.corporate_entities.1.probability,
+    vessel.corporate_entities.1.source,
+    vessel.corporate_entities.1.start_timestamp,
+    vessel.corporate_entities.2.id,
+    vessel.corporate_entities.2.label,
+    vessel.corporate_entities.2.layer,
+    vessel.corporate_entities.2.probability,
+    vessel.corporate_entities.2.source,
+    vessel.cubic_capacity,
+    vessel.dwt,
+    vessel.id,
+    vessel.imo,
+    vessel.mmsi,
+    vessel.name,
+    vessel.status,
+    vessel.vessel_class,
+    vessel_movement_id,
+    vessels.corporate_entities.charterer.id,
+    vessels.corporate_entities.charterer.label,
+    vessels.corporate_entities.charterer.layer,
+    vessels.corporate_entities.charterer.probability,
+    vessels.corporate_entities.charterer.source,
+    vessels.corporate_entities.commercial_owner.id,
+    vessels.corporate_entities.commercial_owner.label,
+    vessels.corporate_entities.commercial_owner.layer,
+    vessels.corporate_entities.commercial_owner.probability,
+    vessels.corporate_entities.commercial_owner.source,
+    vessels.corporate_entities.time_charterer.end_timestamp,
+    vessels.corporate_entities.time_charterer.id,
+    vessels.corporate_entities.time_charterer.label,
+    vessels.corporate_entities.time_charterer.layer,
+    vessels.corporate_entities.time_charterer.probability,
+    vessels.corporate_entities.time_charterer.source,
+    vessels.corporate_entities.time_charterer.start_timestamp,
+    vessels.cubic_capacity,
+    vessels.dwt,
+    vessels.id,
+    vessels.imo,
+    vessels.mmsi,
+    vessels.name,
+    vessels.status,
+    vessels.vessel_class,
+    voyage_id,
+]
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../vessels/" class="btn btn-neutral float-right" title="Vessels">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../products/" class="btn btn-neutral" title="Products"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/V0RT3X4/python-sdk/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../products/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../vessels/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>
