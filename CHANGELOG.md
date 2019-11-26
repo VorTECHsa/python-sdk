@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.8.2](https://github.com/V0RT3X4/python-sdk/tree/0.8.2) (2019-11-26)
+
+[Full Changelog](https://github.com/V0RT3X4/python-sdk/compare/0.8.1...0.8.2)
+
 ## [0.8.1](https://github.com/V0RT3X4/python-sdk/tree/0.8.1) (2019-11-26)
 
 [Full Changelog](https://github.com/V0RT3X4/python-sdk/compare/0.8.0...0.8.1)
