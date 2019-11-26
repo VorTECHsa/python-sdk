@@ -49,8 +49,10 @@ class VesselMovementsResult(Result):
             'vessel.imo',
             'vessel.name',
             'vessel.vessel_class',
+            'origin.event_type',
             'origin.location.port.label',
             'origin.location.country.label',
+            'destination.event_type',
             'destination.location.port.label',
             'destination.location.country.label',
             'cargoes.0.product.group_product.label,'
@@ -344,8 +346,10 @@ DEFAULT_COLUMNS = [
     "vessel.imo",
     "vessel.name",
     "vessel.vessel_class",
+    "origin.event_type",
     "origin.location.port.label",
     "origin.location.country.label",
+    "destination.event_type",
     "destination.location.port.label",
     "destination.location.country.label",
     "cargoes.0.product.group_product.label,"

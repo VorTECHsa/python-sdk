@@ -17,9 +17,11 @@ class VesselMovements(Search):
     """
     Vessel Movements Endpoint, use this to search through Vortexa's VesselMovements.
 
-    A VesselMovement represents a single vessel moving between two locations. The vessel may carry one cargo,
-     many cargoes (coloads), or zero cargos (ballast). The start and end locations for a VesselMovement may be on land,
-     or an STS zone.
+    A VesselMovement represents a single vessel moving between two locations.
+
+    * The vessel may carry one cargo, many cargoes (coloads), or zero cargos (ballast).
+    * The start and end locations for a VesselMovement may be on land (loadings and discharges), they may be STS Zones
+    (STS events), or they may be Floating Storage.
     """
 
     _MAX_PAGE_RESULT_SIZE = 500
