@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.8.0](https://github.com/V0RT3X4/python-sdk/tree/0.8.0) (2019-11-26)
+
+[Full Changelog](https://github.com/V0RT3X4/python-sdk/compare/0.7.0...0.8.0)
+
+**Implemented enhancements:**
+
+- filter\_time\_min and filter\_time\_max parameters should be python datetime objects [\#45](https://github.com/V0RT3X4/python-sdk/issues/45)
+
+**Merged pull requests:**
+
+- feat: Use datetime type as time argument, closes \#45 [\#92](https://github.com/V0RT3X4/python-sdk/pull/92) ([KitBurgess](https://github.com/KitBurgess))
+- feat: Add vessel movements endpoint [\#63](https://github.com/V0RT3X4/python-sdk/pull/63) ([KitBurgess](https://github.com/KitBurgess))
+
 ## [0.7.0](https://github.com/V0RT3X4/python-sdk/tree/0.7.0) (2019-11-26)
 
 [Full Changelog](https://github.com/V0RT3X4/python-sdk/compare/0.6.1...0.7.0)
