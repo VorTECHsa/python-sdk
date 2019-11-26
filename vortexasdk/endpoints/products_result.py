@@ -5,7 +5,7 @@ from typing import List
 import pandas as pd
 
 from vortexasdk.api import Product
-from vortexasdk.api.entity_serializing import flatten_dictionary
+from vortexasdk.api.entity_flattening import flatten_dictionary
 from vortexasdk.api.search_result import Result
 
 
@@ -37,12 +37,10 @@ class ProductResult(Result):
 
         flattened_dicts = [flatten_dictionary(p) for p in super().to_list()]
 
-        df = pd.DataFrame(flattened_dicts)
-
         if columns == "all":
-            return df
+            return pd.DataFrame(data=flattened_dicts)
         else:
-            return df[columns]
+            return pd.DataFrame(data=flattened_dicts, columns=columns)
 
 
 DEFAULT_COLUMNS = ["id", "name", "layer.0", "parent.0.name"]

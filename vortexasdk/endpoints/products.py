@@ -5,7 +5,7 @@ from vortexasdk.api.shared_types import ID
 from vortexasdk.endpoints.endpoints import PRODUCTS_REFERENCE
 from vortexasdk.endpoints.products_result import ProductResult
 from vortexasdk.operations import Reference, Search
-from vortexasdk.utils import to_list
+from vortexasdk.utils import convert_to_list
 
 
 class Products(Reference, Search):
@@ -59,9 +59,9 @@ class Products(Reference, Search):
 
         """
         search_params = {
-            "term": to_list(term),
-            "ids": to_list(ids),
-            "product_parent": to_list(product_parent),
+            "term": convert_to_list(term),
+            "ids": convert_to_list(ids),
+            "product_parent": convert_to_list(product_parent),
             "allowTopLevelProducts": True,
         }
 

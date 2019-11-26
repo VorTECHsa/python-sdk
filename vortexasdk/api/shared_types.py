@@ -1,9 +1,11 @@
 from abc import ABC
 from dataclasses import dataclass
 from datetime import datetime
-from typing import List, Optional
+from typing import List, Optional, Union
 
 from vortexasdk.api.id import ID
+
+IDsNames = Union[List[Union[ID, str]], str, ID]
 
 ISODate = str
 

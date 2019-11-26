@@ -1,3 +1,4 @@
+from typing import List
 from unittest import TestCase
 
 import jsons
@@ -10,11 +11,21 @@ from vortexasdk.api import (
     ProductEntity,
     VesselEntity,
 )
-from vortexasdk.api.entity_serializing import convert_cme_to_flat_dict
-from vortexasdk.api.serdes import serialize
+from vortexasdk.api.entity_flattening import (
+    convert_cargo_movement_to_flat_dict,
+)
+from vortexasdk.api.serdes import serialize_to_dict
+from vortexasdk.api import (
+    CargoEvent,
+    CargoMovement,
+    CorporateEntity,
+    GeographyEntity,
+    ProductEntity,
+    VesselEntity,
+)
 
 
-class TestCargoMovementEntity(TestCase):
+class TestCargoMovement(TestCase):
     dictionary = {
         "cargo_movement_id": "00886b05a0747522b67322f50123ee60e61e219fc9a9c6011be1a1dade65f63e",
         "quantity": 4401,
@@ -105,14 +116,14 @@ class TestCargoMovementEntity(TestCase):
     cm = CargoMovement(**dictionary)
 
     def test_serialize(self):
-        with open("tests/api/examples/cargo_movement_entity1.json", "r") as f:
+        with open("tests/api/examples/cargo_movements.json", "r") as f:
             serialized = f.read()
-            deserialized = jsons.loads(serialized, CargoMovement)
+            deserialized = jsons.loads(serialized, List[CargoMovement])
 
-            assert self.cm == deserialized
+            assert [self.cm] == deserialized
 
     def test_convert_to_flat_dict(self):
-        flat = convert_cme_to_flat_dict(serialize(self.cm))
+        flat = convert_cargo_movement_to_flat_dict(serialize_to_dict(self.cm))
 
         expected = {
             "cargo_movement_id": "00886b05a0747522b67322f50123ee60e61e219fc9a9c6011be1a1dade65f63e",

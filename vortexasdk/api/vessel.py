@@ -55,7 +55,7 @@ class VesselEntity(IDName):
     tags: List[Tag]
     status: str
 
-    start_timestamp: ISODate
+    start_timestamp: Optional[ISODate] = None
 
     cubic_capacity: Optional[int] = None
     voyage_id: Optional[str] = None

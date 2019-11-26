@@ -17,3 +17,4 @@ from vortexasdk.api.shared_types import (
     ISODate,
 )
 from vortexasdk.api.vessel import Vessel, VesselEntity
+from vortexasdk.api.vessel_movement import VesselEvent, VesselMovement

@@ -32,11 +32,12 @@ class CorporationsResult(Result):
 
         """
         if columns is None:
-            columns = ["id", "name", "corporate_entity_type"]
-
-        df = pd.DataFrame(super().to_list())
+            columns = DEFAULT_COLUMNS
 
         if columns == "all":
-            return df
+            return pd.DataFrame(super().to_list())
         else:
-            return df[columns]
+            return pd.DataFrame(super().to_list(), columns=columns)
+
+
+DEFAULT_COLUMNS = ["id", "name", "corporate_entity_type"]

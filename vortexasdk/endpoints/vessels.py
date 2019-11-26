@@ -6,7 +6,7 @@ from vortexasdk.conversions import convert_to_product_ids
 from vortexasdk.endpoints.endpoints import VESSELS_REFERENCE
 from vortexasdk.endpoints.vessels_result import VesselsResult
 from vortexasdk.operations import Reference, Search
-from vortexasdk.utils import to_list
+from vortexasdk.utils import convert_to_list
 
 
 class Vessels(Reference, Search):
@@ -75,11 +75,11 @@ class Vessels(Reference, Search):
 
         """
         search_params = {
-            "term": [str(e) for e in to_list(term)],
-            "ids": to_list(ids),
-            "vessel_classes": to_list(vessel_classes),
+            "term": [str(e) for e in convert_to_list(term)],
+            "ids": convert_to_list(ids),
+            "vessel_classes": convert_to_list(vessel_classes),
             "vessel_product_types": convert_to_product_ids(
-                to_list(vessel_product_types)
+                convert_to_list(vessel_product_types)
             ),
         }
 
