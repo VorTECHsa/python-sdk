@@ -26,11 +26,12 @@ Refer to [Vortexa API Authentication](https://docs.vortexa.com/reference/intro-a
 ##### Example
 
 ```python
+>>> from datetime import datetime
 >>> from vortexasdk import CargoMovements
 >>> df = CargoMovements()\
         .search(filter_activity='loading_state',
-            filter_time_min='2019-08-01T00:00:00.000Z',
-            filter_time_max='2019-08-01T00:15:00.000Z')\
+            filter_time_min=datetime(2017, 8, 1, 23),
+            filter_time_max=datetime(2017, 8, 1, 23))\
         .to_df()
 ```
 returns
