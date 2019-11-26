@@ -34,12 +34,10 @@ class GeographyResult(Result):
         if columns is None:
             columns = DEFAULT_COLUMNS
 
-        df = pd.DataFrame(super().to_list())
-
         if columns == "all":
-            return df
+            return pd.DataFrame(data=super().to_list())
         else:
-            return df[columns]
+            return pd.DataFrame(data=super().to_list(), columns=columns)
 
 
 DEFAULT_COLUMNS = ["id", "name", "layer"]

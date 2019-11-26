@@ -1,6 +1,7 @@
 from tests.testcases import TestCaseUsingRealAPI
 from vortexasdk.conversions import convert_to_vessel_ids
 from vortexasdk.endpoints.vessels import Vessels
+from vortexasdk.logger import get_logger
 
 
 class TestConvert(TestCaseUsingRealAPI):

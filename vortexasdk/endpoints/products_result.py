@@ -37,12 +37,10 @@ class ProductResult(Result):
 
         flattened_dicts = [flatten_dictionary(p) for p in super().to_list()]
 
-        df = pd.DataFrame(flattened_dicts)
-
         if columns == "all":
-            return df
+            return pd.DataFrame(data=flattened_dicts)
         else:
-            return df[columns]
+            return pd.DataFrame(data=flattened_dicts, columns=columns)
 
 
 DEFAULT_COLUMNS = ["id", "name", "layer.0", "parent.0.name"]

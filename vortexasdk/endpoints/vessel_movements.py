@@ -10,7 +10,7 @@ from vortexasdk.conversions import (
 from vortexasdk.endpoints.endpoints import VESSEL_MOVEMENTS_RESOURCE
 from vortexasdk.endpoints.vessel_movements_result import VesselMovementsResult
 from vortexasdk.operations import Search
-from vortexasdk.utils import to_list
+from vortexasdk.utils import convert_to_list
 
 
 class VesselMovements(Search):
@@ -90,24 +90,23 @@ class VesselMovements(Search):
         [Vessel Movements Endpoint Further Documentation](https://docs.vortexa.com/reference/POST/vessel-movements/search)
 
         """
-        geog = lambda x: convert_to_geography_ids(to_list(x))
-        corporation = lambda x: convert_to_corporation_ids(to_list(x))
-        ves = lambda x: convert_to_vessel_ids(to_list(x))
-        product = lambda x: convert_to_product_ids(to_list(x))
-
         params = {
             # Compulsory search parameters
             "filter_time_min": filter_time_min,
             "filter_time_max": filter_time_max,
             "unit": unit,
             "size": self._MAX_PAGE_RESULT_SIZE,
-            "filter_charterers": corporation(filter_charterers),
-            "filter_destinations": geog(filter_destinations),
-            "filter_origins": geog(filter_origins),
-            "filter_owners": corporation(filter_owners),
-            "filter_products": product(filter_products),
-            "filter_vessels": ves(filter_vessels),
-            "filter_vessel_classes": to_list(filter_vessel_classes),
+            "filter_charterers": convert_to_corporation_ids(filter_charterers),
+            "filter_owners": convert_to_corporation_ids(filter_owners),
+            "filter_destinations": convert_to_geography_ids(
+                filter_destinations
+            ),
+            "filter_origins": convert_to_geography_ids(filter_origins),
+            "filter_products": convert_to_product_ids(filter_products),
+            "filter_vessels": convert_to_vessel_ids(
+                convert_to_list(filter_vessels)
+            ),
+            "filter_vessel_classes": convert_to_list(filter_vessel_classes),
         }
 
         return VesselMovementsResult(super().search(**params))

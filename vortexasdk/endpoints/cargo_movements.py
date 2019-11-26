@@ -12,7 +12,6 @@ from vortexasdk.conversions import (
 from vortexasdk.endpoints.cargo_movements_result import CargoMovementsResult
 from vortexasdk.endpoints.endpoints import CARGO_MOVEMENTS_RESOURCE
 from vortexasdk.operations import Search
-from vortexasdk.utils import to_list
 
 
 class CargoMovements(Search):
@@ -138,29 +137,27 @@ class CargoMovements(Search):
         [Cargo Movements Endpoint Further Documentation](https://docs.vortexa.com/reference/POST/cargo-movements/search)
 
         """
-        geog = lambda x: convert_to_geography_ids(to_list(x))
-        corporation = lambda x: convert_to_corporation_ids(to_list(x))
-        ves = lambda x: convert_to_vessel_ids(to_list(x))
-        product = lambda x: convert_to_product_ids(to_list(x))
-
         params = {
-            # Compulsory search parameters
             "filter_activity": filter_activity,
             "filter_time_min": to_ISODate(filter_time_min),
             "filter_time_max": to_ISODate(filter_time_max),
             "cm_unit": cm_unit,
             "size": self._MAX_PAGE_RESULT_SIZE,
-            "filter_charterers": corporation(filter_charterers),
-            "filter_destinations": geog(filter_destinations),
-            "filter_origins": geog(filter_origins),
-            "filter_owners": corporation(filter_owners),
-            "filter_products": product(filter_products),
-            "filter_vessels": ves(filter_vessels),
-            "filter_storage_locations": geog(filter_storage_locations),
-            "filter_ship_to_ship_locations": geog(
+            "filter_charterers": convert_to_corporation_ids(filter_charterers),
+            "filter_owners": convert_to_corporation_ids(filter_owners),
+            "filter_products": convert_to_product_ids(filter_products),
+            "filter_vessels": convert_to_vessel_ids(filter_vessels),
+            "filter_destinations": convert_to_geography_ids(
+                filter_destinations
+            ),
+            "filter_origins": convert_to_geography_ids(filter_origins),
+            "filter_storage_locations": convert_to_geography_ids(
+                filter_storage_locations
+            ),
+            "filter_ship_to_ship_locations": convert_to_geography_ids(
                 filter_ship_to_ship_locations
             ),
-            "filter_waypoints": geog(filter_waypoints),
+            "filter_waypoints": convert_to_geography_ids(filter_waypoints),
             "disable_geographic_exclusion_rules": disable_geographic_exclusion_rules,
         }
 

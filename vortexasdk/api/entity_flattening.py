@@ -31,9 +31,9 @@ def convert_cargo_movement_to_flat_dict(cme: Dict, cols="all") -> Dict:
         return {k: v for k, v in formatted.items() if k in cols}
 
 
-def convert_vessel_movement_to_flat_dict(cme: Dict, cols="all") -> Dict:
-    """Convert nested `VesselMovement` object to flat dictionary, keeping *cols*."""
-    as_dict = _group_vessel_movement_attributes_by_layer(cme)
+def convert_vessel_movement_to_flat_dict(vm: Dict, cols="all") -> Dict:
+    """Convert nested `VesselMovement` dict to flat dictionary, keeping *cols*."""
+    as_dict = _group_vessel_movement_attributes_by_layer(vm)
 
     formatted = flatten_dictionary(as_dict)
 

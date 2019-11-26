@@ -58,9 +58,9 @@ class VortexaClient(AbstractVortexaClient):
                 offsets,
             )
 
-            flattened = [x for y in responses for x in y]
+        flattened = [x for y in responses for x in y]
 
-            return flattened
+        return flattened
 
     def _create_url(self, path: str) -> str:
         return f"{API_URL}{path}?apikey={self.api_key}"

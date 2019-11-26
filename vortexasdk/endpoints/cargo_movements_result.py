@@ -536,15 +536,14 @@ class CargoMovementsResult(Result):
         if columns is None:
             columns = DEFAULT_COLUMNS
 
-        with Pool(os.cpu_count()) as pool:
-            records = pool.map(
-                functools.partial(
-                    convert_cargo_movement_to_flat_dict, cols=columns
-                ),
-                super().to_list(),
-            )
+        flatten = functools.partial(
+            convert_cargo_movement_to_flat_dict, cols=columns
+        )
 
-        return pd.DataFrame(records)
+        with Pool(os.cpu_count()) as pool:
+            records = pool.map(flatten, super().to_list())
+
+        return pd.DataFrame(data=records, columns=columns)
 
 
 DEFAULT_COLUMNS = [
