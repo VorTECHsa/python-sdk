@@ -205,11 +205,12 @@ Data Scientists, Analysts and Developers to query <a href="https://docs.vortexa.
 <p>Refer to <a href="https://docs.vortexa.com/reference/intro-authentication">Vortexa API Authentication</a>
  for more details, including instructions on where to find your API key.</p>
 <h5 id="example">Example</h5>
-<pre><code class="python">&gt;&gt;&gt; from vortexasdk import CargoMovements
+<pre><code class="python">&gt;&gt;&gt; from datetime import datetime
+&gt;&gt;&gt; from vortexasdk import CargoMovements
 &gt;&gt;&gt; df = CargoMovements()\
         .search(filter_activity='loading_state',
-            filter_time_min='2019-08-01T00:00:00.000Z',
-            filter_time_max='2019-08-01T00:15:00.000Z')\
+            filter_time_min=datetime(2017, 8, 1, 23),
+            filter_time_max=datetime(2017, 8, 1, 23))\
         .to_df()
 </code></pre>
 
@@ -325,5 +326,5 @@ helping to extract powerful findings from our data.</p>
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2019-11-26 17:04:31
+Build Date UTC : 2019-11-26 17:29:46
 -->
