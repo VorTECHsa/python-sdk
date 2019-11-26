@@ -5,8 +5,8 @@ from vortexasdk.conversions import (
     convert_to_corporation_ids,
     convert_to_geography_ids,
     convert_to_product_ids,
+    convert_to_vessel_ids,
 )
-from vortexasdk.conversions.vessels import convert_to_vessel_ids
 from vortexasdk.endpoints.endpoints import VESSEL_MOVEMENTS_RESOURCE
 from vortexasdk.endpoints.vessel_movements_result import VesselMovementsResult
 from vortexasdk.operations import Search
