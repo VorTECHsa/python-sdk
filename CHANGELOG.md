@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.8.3](https://github.com/V0RT3X4/python-sdk/tree/0.8.3) (2019-11-27)
+
+[Full Changelog](https://github.com/V0RT3X4/python-sdk/compare/0.8.2...0.8.3)
+
+**Fixed bugs:**
+
+- IDLayer class has attributes `name` instead of `layer` [\#70](https://github.com/V0RT3X4/python-sdk/issues/70)
+
+**Closed issues:**
+
+- Geographies document reference method. [\#66](https://github.com/V0RT3X4/python-sdk/issues/66)
+- Improved logging to make sure the right entity is selected in a query \(or at least make it clear to user what entity is being used\) [\#37](https://github.com/V0RT3X4/python-sdk/issues/37)
+- Contributing to VortexaSDK: Setting up environment bug `pip install -e .\[test\]` [\#25](https://github.com/V0RT3X4/python-sdk/issues/25)
+
+**Merged pull requests:**
+
+- feat: Log searches [\#93](https://github.com/V0RT3X4/python-sdk/pull/93) ([KitBurgess](https://github.com/KitBurgess))
+
 ## [0.8.2](https://github.com/V0RT3X4/python-sdk/tree/0.8.2) (2019-11-26)
 
 [Full Changelog](https://github.com/V0RT3X4/python-sdk/compare/0.8.1...0.8.2)
