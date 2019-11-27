@@ -23,14 +23,16 @@ def _convert_to_ids(ids_or_names: IDsNames, searcher: Search) -> List[ID]:
 
 def _search_ids(searcher: Search, **kwargs) -> List[ID]:
     """Find IDs matching a given list of search terms."""
+    logger.info(
+        f"Searching {searcher.__class__.__name__} matching search terms: {kwargs}"
+    )
+
     results = searcher.search(**kwargs)
 
     id_to_name = {r["id"]: r["name"] for r in results}
 
     logger.info(
-        f"Searched term: {kwargs.items()},"
-        f" found {len(results)} {searcher.__class__.__name__}"
-        f" : {id_to_name}"
+        f"Found {len(results)} {searcher.__class__.__name__}: {id_to_name}"
     )
 
     return list(id_to_name.keys())

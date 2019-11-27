@@ -5,7 +5,7 @@ from logging.handlers import TimedRotatingFileHandler
 from vortexasdk.config import LOG_FILE, LOG_LEVEL
 
 FORMATTER = logging.Formatter(
-    "%(asctime)s — %(name)s — %(levelname)s — %(message)s"
+    "%(asctime)s %(name)s — %(levelname)s — %(message)s"
 )
 
 
