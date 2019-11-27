@@ -37,7 +37,7 @@ $ . venv/bin/activate
 
 install the required dependencies
 ```
-$ pip install -e .[tests]
+$ pip install -e '.[tests]'
 ```
 
 To run the live tests, you'll need to have the `VORTEXA_API_KEY` environment variable set.
