@@ -1,5 +1,5 @@
 # VortexaSDK
-[![All Contributors](https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-10-orange.svg?style=flat-square)](#contributors)
 
 [![CircleCI](https://circleci.com/gh/V0RT3X4/python-sdk.svg?style=svg)](https://circleci.com/gh/V0RT3X4/python-sdk)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
@@ -84,6 +84,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://github.com/rugg2"><img src="https://avatars3.githubusercontent.com/u/37453675?v=4" width="100px;" alt="Romain"/><br /><sub><b>Romain</b></sub></a><br /><a href="#userTesting-rugg2" title="User Testing">📓</a> <a href="#ideas-rugg2" title="Ideas, Planning, & Feedback">🤔</a></td>
     <td align="center"><a href="https://github.com/Natday"><img src="https://avatars3.githubusercontent.com/u/38128493?v=4" width="100px;" alt="Natday"/><br /><sub><b>Natday</b></sub></a><br /><a href="#business-Natday" title="Business development">💼</a> <a href="#ideas-Natday" title="Ideas, Planning, & Feedback">🤔</a> <a href="#userTesting-Natday" title="User Testing">📓</a></td>
+    <td align="center"><a href="https://github.com/ArthurD1"><img src="https://avatars0.githubusercontent.com/u/44548105?v=4" width="100px;" alt="ArthurD1"/><br /><sub><b>ArthurD1</b></sub></a><br /><a href="#userTesting-ArthurD1" title="User Testing">📓</a></td>
   </tr>
 </table>
 
