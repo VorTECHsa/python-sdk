@@ -1,5 +1,5 @@
 # VortexaSDK
-[![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors)
 
 [![CircleCI](https://circleci.com/gh/V0RT3X4/python-sdk.svg?style=svg)](https://circleci.com/gh/V0RT3X4/python-sdk)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
@@ -80,6 +80,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://www.vortexa.com/"><img src="https://avatars0.githubusercontent.com/u/503380?v=4" width="100px;" alt="Jakub Korzeniowski"/><br /><sub><b>Jakub Korzeniowski</b></sub></a><br /><a href="#ideas-kujon" title="Ideas, Planning, & Feedback">🤔</a></td>
     <td align="center"><a href="https://github.com/eadwright"><img src="https://avatars0.githubusercontent.com/u/17048626?v=4" width="100px;" alt="Edward Wright"/><br /><sub><b>Edward Wright</b></sub></a><br /><a href="#userTesting-eadwright" title="User Testing">📓</a></td>
     <td align="center"><a href="https://paddyroddy.github.io/"><img src="https://avatars3.githubusercontent.com/u/15052188?v=4" width="100px;" alt="Patrick Roddy"/><br /><sub><b>Patrick Roddy</b></sub></a><br /><a href="#userTesting-paddyroddy" title="User Testing">📓</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/rugg2"><img src="https://avatars3.githubusercontent.com/u/37453675?v=4" width="100px;" alt="Romain"/><br /><sub><b>Romain</b></sub></a><br /><a href="#userTesting-rugg2" title="User Testing">📓</a> <a href="#ideas-rugg2" title="Ideas, Planning, & Feedback">🤔</a></td>
   </tr>
 </table>
 
