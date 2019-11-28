@@ -51,6 +51,7 @@ pages:
   - Config: config.md << docs/config/config.md
   - Examples:
       1 China VLCC Discharges: examples/1_china.md
+      2 Laden Vessel Movements: examples/2_all_vessel_movements.md
 theme:
   name: readthedocs
   collapse_navigation: true

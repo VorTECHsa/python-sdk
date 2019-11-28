@@ -1,5 +1,5 @@
 from tests.testcases import TestCaseUsingRealAPI
-from tests.utils import to_markdown
+from docs.utils import to_markdown
 from vortexasdk import Geographies
 
 

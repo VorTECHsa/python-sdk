@@ -1,5 +1,8 @@
 """Vessel Movements Endpoint."""
+from datetime import datetime
 from typing import List, Union
+
+from vortexasdk.api.shared_types import to_ISODate
 
 from vortexasdk.conversions import (
     convert_to_corporation_ids,
@@ -31,8 +34,8 @@ class VesselMovements(Search):
 
     def search(
         self,
-        filter_time_min: str = "2019-10-01T00:00:00.000Z",
-        filter_time_max: str = "2019-10-01T01:00:00.000Z",
+        filter_time_min: datetime = datetime(2019, 10, 1, 0),
+        filter_time_max: datetime = datetime(2019, 10, 1, 1),
         unit: str = "b",
         filter_charterers: Union[str, List[str]] = None,
         filter_destinations: Union[str, List[str]] = None,
@@ -46,9 +49,9 @@ class VesselMovements(Search):
         Find VesselMovements matching the given search parameters.
 
         # Arguments
-            filter_time_min: The start date of the time filter.
+            filter_time_min: The UTC start date of the time filter.
 
-            filter_time_max: The end date of the time filter.
+            filter_time_max: The UTC end date of the time filter.
 
             unit: Unit of measurement. Enter 'b' for barrels or 't' for tonnes.
 
@@ -76,9 +79,9 @@ class VesselMovements(Search):
         ```python
         >>> from vortexasdk import VesselMovements
         >>> df = VesselMovements().search(
-            filter_time_min="2017-10-01T00:00:00.000Z",
-            filter_time_max="2017-10-01T00:10:00.000Z",
-            filter_origins='rotterdam'
+                filter_time_min=datetime(2017, 10, 1, 0, 0),
+                filter_time_max=datetime(2017, 10, 1, 0, 10),
+                filter_origins='rotterdam'
         ).to_df().head(2)
         ```
 
@@ -92,8 +95,8 @@ class VesselMovements(Search):
         """
         params = {
             # Compulsory search parameters
-            "filter_time_min": filter_time_min,
-            "filter_time_max": filter_time_max,
+            "filter_time_min": to_ISODate(filter_time_min),
+            "filter_time_max": to_ISODate(filter_time_max),
             "unit": unit,
             "size": self._MAX_PAGE_RESULT_SIZE,
             "filter_charterers": convert_to_corporation_ids(filter_charterers),
