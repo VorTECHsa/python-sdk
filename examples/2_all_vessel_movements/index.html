@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>2 Laden Vessel Movements - VortexaSDK</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "2 Laden Vessel Movements";
+    var mkdocs_page_input_path = "examples/2_all_vessel_movements.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> VortexaSDK</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Endpoints</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../endpoints/about-endpoints/">About Endpoints</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../endpoints/cargo_movements/">Cargo Movements</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../endpoints/corporations/">Corporations</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../endpoints/geographies/">Geographies</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../endpoints/products/">Products</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../endpoints/vessel_movements/">Vessel Movements</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../endpoints/vessels/">Vessels</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Entities</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../entities/cargo_movement/">Cargo Movement</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../entities/corporation/">Corporation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../entities/geography/">Geography</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../entities/product/">Product</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../entities/vessel/">Vessel</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../entities/vessel_movement/">Vessel Movement</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../config/">Config</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Examples</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../1_china/">1 China VLCC Discharges</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">2 Laden Vessel Movements</a>
+    <ul class="subnav">
+            
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">VortexaSDK</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Examples &raquo;</li>
+        
+      
+    
+    <li>2 Laden Vessel Movements</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/V0RT3X4/python-sdk/edit/master/docs/examples/2_all_vessel_movements.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p>Let's find some laden vessel movements</p>
+<p>The below script returns:</p>
+<table>
+<thead>
+<tr>
+<th align="right"></th>
+<th align="left">vessel.name</th>
+<th align="right">vessel.imo</th>
+<th align="right">vessel.mmsi</th>
+<th align="right">vessel.cubic_capacity</th>
+<th align="right">vessel.dwt</th>
+<th align="left">vessel.vessel_class</th>
+<th align="left">origin.location.port.label</th>
+<th align="right">origin.location.sts_zone.label</th>
+<th align="right">origin.from_vessel.label</th>
+<th align="right">origin.to_vessel.label</th>
+<th align="left">destination.location.port.label</th>
+<th align="right">destination.location.sts_zone.label</th>
+<th align="right">destination.from_vessel.label</th>
+<th align="right">destination.to_vessel.label</th>
+<th align="left">origin.start_timestamp</th>
+<th align="left">destination.end_timestamp</th>
+<th align="left">cargoes.0.product.group.label</th>
+<th align="left">cargoes.0.product.grade.label</th>
+<th align="right">cargoes.0.product.grade.probability</th>
+<th align="left">vessel.corporate_entities.charterer.label</th>
+<th align="right">vessel.corporate_entities.time_charterer.label</th>
+<th align="left">vessel.corporate_entities.commercial_owner.label</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">0</td>
+<td align="left">17 FEBRUARY</td>
+<td align="right">9.38089e+06</td>
+<td align="right">248896000</td>
+<td align="right">172092</td>
+<td align="right">160391</td>
+<td align="left">suezmax</td>
+<td align="left">Ras Tanura [SA]</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="left">Malacca (Melaka) [MY]</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="left">2017-09-29T18:30:01+0000</td>
+<td align="left">2017-10-16T04:06:03+0000</td>
+<td align="left">Crude</td>
+<td align="left">Arab Light</td>
+<td align="right">0.299732</td>
+<td align="left">nan</td>
+<td align="right">nan</td>
+<td align="left">CORE PETROLEUM</td>
+</tr>
+<tr>
+<td align="right">3</td>
+<td align="left">A MELODY</td>
+<td align="right">9.24931e+06</td>
+<td align="right">636019335</td>
+<td align="right">169352</td>
+<td align="right">149995</td>
+<td align="left">suezmax</td>
+<td align="left">Ras Tanura [SA]</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="left">Rayong [TH]</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="left">2017-09-20T09:15:15+0000</td>
+<td align="left">2017-10-09T20:07:28+0000</td>
+<td align="left">Crude</td>
+<td align="left">Arab Light</td>
+<td align="right">0.903729</td>
+<td align="left">THAI OIL</td>
+<td align="right">nan</td>
+<td align="left">LMCS Maritime</td>
+</tr>
+<tr>
+<td align="right">4</td>
+<td align="left">A STAR</td>
+<td align="right">9.00660e+06</td>
+<td align="right">511801000</td>
+<td align="right">333924</td>
+<td align="right">291381</td>
+<td align="left">vlcc_plus</td>
+<td align="left">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="left">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="left">nan</td>
+<td align="left">2017-10-08T14:50:01+0000</td>
+<td align="left">Crude</td>
+<td align="left">nan</td>
+<td align="right">nan</td>
+<td align="left">nan</td>
+<td align="right">nan</td>
+<td align="left">nan</td>
+</tr>
+<tr>
+<td align="right">5</td>
+<td align="left">A STAR</td>
+<td align="right">9.15982e+06</td>
+<td align="right">356206000</td>
+<td align="right">9716</td>
+<td align="right">11047</td>
+<td align="left">general_purpose</td>
+<td align="left">Shahid Rajaee Port (Bandar Abbas) [IR]</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="left">Haldia [IN]</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="left">2017-09-23T23:59:30+0000</td>
+<td align="left">2017-10-16T01:49:00+0000</td>
+<td align="left">Dirty products</td>
+<td align="left">Bitumen</td>
+<td align="right">1</td>
+<td align="left">nan</td>
+<td align="right">nan</td>
+<td align="left">nan</td>
+</tr>
+<tr>
+<td align="right">10</td>
+<td align="left">ABDIAS NASCIMENTO</td>
+<td align="right">9.4539e+06</td>
+<td align="right">710032990</td>
+<td align="right">171000</td>
+<td align="right">157055</td>
+<td align="left">suezmax</td>
+<td align="left">Marlim Sul Field [BR]</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="left">Sao Francisco Do Sul, SC [BR]</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="left">2017-09-28T18:29:45+0000</td>
+<td align="left">2017-10-04T23:05:32+0000</td>
+<td align="left">Crude</td>
+<td align="left">nan</td>
+<td align="right">nan</td>
+<td align="left">nan</td>
+<td align="right">nan</td>
+<td align="left">PETROBRAS</td>
+</tr>
+<tr>
+<td align="right">11</td>
+<td align="left">ABIOLA</td>
+<td align="right">8.61943e+06</td>
+<td align="right">657995000</td>
+<td align="right">47261</td>
+<td align="right">35644</td>
+<td align="left">handysize</td>
+<td align="left">Port Harcourt [NG]</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="left">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="left">2014-12-02T10:20:03+0000</td>
+<td align="left">nan</td>
+<td align="left">Clean products</td>
+<td align="left">Full Range</td>
+<td align="right">0.490481</td>
+<td align="left">nan</td>
+<td align="right">nan</td>
+<td align="left">nan</td>
+</tr>
+<tr>
+<td align="right">13</td>
+<td align="left">ABLIANI</td>
+<td align="right">9.69307e+06</td>
+<td align="right">256903000</td>
+<td align="right">124518</td>
+<td align="right">109999</td>
+<td align="left">aframax</td>
+<td align="left">Ceyhan [TR]</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="left">Sarroch (Porto Foxi) [IT]</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="left">2017-09-26T21:33:43+0000</td>
+<td align="left">2017-10-03T15:45:15+0000</td>
+<td align="left">Crude</td>
+<td align="left">Azeri Light</td>
+<td align="right">1</td>
+<td align="left">nan</td>
+<td align="right">nan</td>
+<td align="left">Eastern Mediterranean Maritime Ltd</td>
+</tr>
+<tr>
+<td align="right">19</td>
+<td align="left">AC-D</td>
+<td align="right">9.42844e+06</td>
+<td align="right">256934000</td>
+<td align="right">8628</td>
+<td align="right">7842</td>
+<td align="left">tiny_tanker</td>
+<td align="left">Varna [BG]</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="left">Valencia [ES]</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="left">2017-09-20T08:00:58+0000</td>
+<td align="left">2017-10-06T15:49:00+0000</td>
+<td align="left">Clean products</td>
+<td align="left">Finished Biodiesel</td>
+<td align="right">0.868073</td>
+<td align="left">nan</td>
+<td align="right">nan</td>
+<td align="left">nan</td>
+</tr>
+<tr>
+<td align="right">20</td>
+<td align="left">ACACIA</td>
+<td align="right">9.4766e+06</td>
+<td align="right">371044000</td>
+<td align="right">14570</td>
+<td align="right">13566</td>
+<td align="left">general_purpose</td>
+<td align="left">Bontang, KL [ID]</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="left">Lianyungang [CN]</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="left">2017-09-28T13:13:57+0000</td>
+<td align="left">2017-10-07T00:30:46+0000</td>
+<td align="left">Clean products</td>
+<td align="left">Chemicals</td>
+<td align="right">0.999186</td>
+<td align="left">nan</td>
+<td align="right">nan</td>
+<td align="left">KOKUKA SANGYO</td>
+</tr>
+<tr>
+<td align="right">22</td>
+<td align="left">ACACIA RUBRA</td>
+<td align="right">9.46853e+06</td>
+<td align="right">249374000</td>
+<td align="right">6000</td>
+<td align="right">6065</td>
+<td align="left">tiny_tanker</td>
+<td align="left">Mosjoen [NO]</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="left">Sigerfjord [NO]</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="right">nan</td>
+<td align="left">2017-10-01T00:01:53+0000</td>
+<td align="left">2017-10-06T10:53:20+0000</td>
+<td align="left">Dirty products</td>
+<td align="left">nan</td>
+<td align="right">nan</td>
+<td align="left">nan</td>
+<td align="right">nan</td>
+<td align="left">nan</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="python">from datetime import datetime
+
+from docs.utils import to_markdown
+
+from vortexasdk import VesselMovements
+
+required_columns = [
+    &quot;vessel.name&quot;,
+    &quot;vessel.imo&quot;,
+    &quot;vessel.mmsi&quot;,
+    &quot;vessel.cubic_capacity&quot;,
+    &quot;vessel.dwt&quot;,
+    &quot;vessel.vessel_class&quot;,
+    &quot;origin.location.port.label&quot;,
+    &quot;origin.location.sts_zone.label&quot;,
+    &quot;origin.from_vessel.label&quot;,
+    &quot;origin.to_vessel.label&quot;,
+    &quot;destination.location.port.label&quot;,
+    &quot;destination.location.sts_zone.label&quot;,
+    &quot;destination.from_vessel.label&quot;,
+    &quot;destination.to_vessel.label&quot;,
+    &quot;origin.start_timestamp&quot;,
+    &quot;destination.end_timestamp&quot;,
+    &quot;cargoes.0.product.group.label&quot;,
+    &quot;cargoes.0.product.grade.label&quot;,
+    &quot;cargoes.0.product.grade.probability&quot;,
+    &quot;vessel.corporate_entities.charterer.label&quot;,
+    &quot;vessel.corporate_entities.time_charterer.label&quot;,
+    &quot;vessel.corporate_entities.commercial_owner.label&quot;,
+]
+
+vessel_movements = (
+    VesselMovements()
+    .search(
+        filter_time_min=datetime(2017, 10, 1, 0),
+        filter_time_max=datetime(2017, 10, 1, 1),
+    )
+    .to_df(columns=required_columns)
+)
+
+# Let's find the laden vessel movements
+laden_vessel_movements = vessel_movements[
+    vessel_movements[&quot;cargoes.0.product.group.label&quot;].notna()
+]
+
+print(to_markdown(laden_vessel_movements.head(10)))
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../1_china/" class="btn btn-neutral" title="1 China VLCC Discharges"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/V0RT3X4/python-sdk/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../1_china/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>
