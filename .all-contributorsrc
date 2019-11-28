@@ -101,6 +101,15 @@
       "contributions": [
         "userTesting"
       ]
+    },
+    {
+      "login": "ChloeConnor",
+      "name": "Chloe Connor",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/42340891?v=4",
+      "profile": "https://github.com/ChloeConnor",
+      "contributions": [
+        "userTesting"
+      ]
     }
   ],
   "contributorsPerLine": 7,
