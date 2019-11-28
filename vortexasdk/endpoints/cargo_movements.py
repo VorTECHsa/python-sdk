@@ -15,7 +15,11 @@ from vortexasdk.operations import Search
 
 
 class CargoMovements(Search):
-    """Cargo Movements Endpoint, use this to search through Vortexa's cargo movements."""
+    """
+    Cargo Movements Endpoint, use this to search through Vortexa's cargo movements.
+
+    A detailed explanation of Cargo/Vessel Movements can be found [here](https://docs.vortexa.com/reference/intro-movement-difference).
+    """
 
     _MAX_PAGE_RESULT_SIZE = 500
 

@@ -25,6 +25,8 @@ class VesselMovements(Search):
     * The vessel may carry one cargo, many cargoes (coloads), or zero cargos (ballast).
     * The start and end locations for a VesselMovement may be on land (loadings and discharges), they may be STS Zones
     (STS events), or they may be Floating Storage.
+
+    A detailed explanation of Cargo/Vessel Movements can be found [here](https://docs.vortexa.com/reference/intro-movement-difference).
     """
 
     _MAX_PAGE_RESULT_SIZE = 500
