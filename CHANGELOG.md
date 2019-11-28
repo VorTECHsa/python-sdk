@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.8.4](https://github.com/V0RT3X4/python-sdk/tree/0.8.4) (2019-11-28)
+
+[Full Changelog](https://github.com/V0RT3X4/python-sdk/compare/0.8.3...0.8.4)
+
+**Closed issues:**
+
+- add 'filter\_vessel\_class' argument to cargo movements [\#39](https://github.com/V0RT3X4/python-sdk/issues/39)
+
+**Merged pull requests:**
+
+- Vessel movements bettering [\#94](https://github.com/V0RT3X4/python-sdk/pull/94) ([KitBurgess](https://github.com/KitBurgess))
+
 ## [0.8.3](https://github.com/V0RT3X4/python-sdk/tree/0.8.3) (2019-11-27)
 
 [Full Changelog](https://github.com/V0RT3X4/python-sdk/compare/0.8.2...0.8.3)
