@@ -81,6 +81,17 @@
         "userTesting",
         "ideas"
       ]
+    },
+    {
+      "login": "Natday",
+      "name": "Natday",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/38128493?v=4",
+      "profile": "https://github.com/Natday",
+      "contributions": [
+        "business",
+        "ideas",
+        "userTesting"
+      ]
     }
   ],
   "contributorsPerLine": 7,
