@@ -5,10 +5,7 @@ from urllib3 import Retry
 
 # Inspired by https://www.peterbe.com/plog/best-practice-with-retries-with-requests
 def _requests_retry_session(
-    retries=3,
-    backoff_factor=0.3,
-    status_forcelist=(500, 502, 504),
-    session=None,
+    retries=3, backoff_factor=0.3, status_forcelist=(502, 504), session=None,
 ) -> Session:
     """Instantiate a session with Retry backoff."""
     session = session or Session()
