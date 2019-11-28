@@ -67,8 +67,8 @@ class TestCargoMovementsReal(TestCaseUsingRealAPI):
             .search(
                 filter_activity="loading_state",
                 filter_owners="DHT",
-                filter_time_min=datetime(2019, 10, 1, 0),
-                filter_time_max=datetime(2019, 10, 1, 1),
+                filter_time_min=datetime(2018, 10, 1, 0),
+                filter_time_max=datetime(2018, 10, 5, 1),
             )
             .to_df()
             .head(2)
