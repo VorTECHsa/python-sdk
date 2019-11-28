@@ -10,7 +10,7 @@ from vortexasdk.abstract_client import AbstractVortexaClient
 from vortexasdk.api.id import ID
 from vortexasdk.endpoints.endpoints import API_URL
 from vortexasdk.logger import get_logger
-from vortexasdk.retry_session import requests_retry_session
+from vortexasdk.retry_session import retry_get, retry_post
 
 logger = get_logger(__name__)
 
@@ -26,7 +26,7 @@ class VortexaClient(AbstractVortexaClient):
     def get_reference(self, resource: str, id: ID) -> str:
         """Lookup reference data."""
         url = self._create_url(f"{resource}/{id}")
-        response = requests_retry_session().get(url)
+        response = retry_get(url)
         return _handle_response(response)["data"]
 
     def search(self, resource: str, **data) -> List:
@@ -80,7 +80,7 @@ def _send_post_request(url, payload, size, offset):
     payload_with_offset["size"] = size
     payload_with_offset["cm_size"] = size
 
-    response = requests_retry_session().post(url, json=payload_with_offset)
+    response = retry_post(url, json=payload_with_offset)
 
     response = _handle_response(response, payload_with_offset)
 
