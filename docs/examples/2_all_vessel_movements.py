@@ -18,6 +18,7 @@ The below script returns:
 
 
 """
+from datetime import datetime
 
 from docs.utils import to_markdown
 
@@ -51,8 +52,8 @@ required_columns = [
 vessel_movements = (
     VesselMovements()
     .search(
-        filter_time_min="2017-10-01T00:00:00.000Z",
-        filter_time_max="2017-10-01T01:00:00.000Z",
+        filter_time_min=datetime(2017, 10, 1, 0),
+        filter_time_max=datetime(2017, 10, 1, 1),
     )
     .to_df(columns=required_columns)
 )

@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from tests.testcases import TestCaseUsingRealAPI
 from vortexasdk import VesselMovements
 from vortexasdk.endpoints import vessel_movements_result
@@ -6,8 +8,8 @@ from vortexasdk.endpoints import vessel_movements_result
 class TestVesselMovementsReal(TestCaseUsingRealAPI):
     def test_search(self):
         v = VesselMovements().search(
-            filter_time_min="2019-10-01T00:00:00.000Z",
-            filter_time_max="2019-10-01T00:10:00.000Z",
+            filter_time_min=datetime(2017, 10, 1, 0, 0),
+            filter_time_max=datetime(2017, 10, 1, 0, 10),
             filter_origins="rotterdam",
         )
 
@@ -17,8 +19,8 @@ class TestVesselMovementsReal(TestCaseUsingRealAPI):
         df = (
             VesselMovements()
             .search(
-                filter_time_min="2017-10-01T00:00:00.000Z",
-                filter_time_max="2017-10-01T00:10:00.000Z",
+                filter_time_min=datetime(2017, 10, 1, 0, 0),
+                filter_time_max=datetime(2017, 10, 1, 0, 10),
                 filter_origins="rotterdam",
             )
             .to_df()
@@ -33,8 +35,8 @@ class TestVesselMovementsReal(TestCaseUsingRealAPI):
         df = (
             VesselMovements()
             .search(
-                filter_time_min="2017-10-01T00:00:00.000Z",
-                filter_time_max="2017-10-01T00:10:00.000Z",
+                filter_time_min=datetime(2017, 10, 1, 0, 0),
+                filter_time_max=datetime(2017, 10, 1, 0, 10),
                 filter_origins="rotterdam",
             )
             .to_df(columns=cols)
