@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.8.5](https://github.com/V0RT3X4/python-sdk/tree/0.8.5) (2019-11-28)
+
+[Full Changelog](https://github.com/V0RT3X4/python-sdk/compare/0.8.4...0.8.5)
+
+**Fixed bugs:**
+
+- Make client more robust [\#95](https://github.com/V0RT3X4/python-sdk/issues/95)
+
+**Merged pull requests:**
+
+- fix: Retry API calls on 502, 504 status codes, fixes \#95 [\#97](https://github.com/V0RT3X4/python-sdk/pull/97) ([KitBurgess](https://github.com/KitBurgess))
+- docs: Add link to CM/VM concepts [\#96](https://github.com/V0RT3X4/python-sdk/pull/96) ([KitBurgess](https://github.com/KitBurgess))
+
 ## [0.8.4](https://github.com/V0RT3X4/python-sdk/tree/0.8.4) (2019-11-28)
 
 [Full Changelog](https://github.com/V0RT3X4/python-sdk/compare/0.8.3...0.8.4)
