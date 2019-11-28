@@ -62,6 +62,15 @@
       "contributions": [
         "userTesting"
       ]
+    },
+    {
+      "login": "paddyroddy",
+      "name": "Patrick Roddy",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/15052188?v=4",
+      "profile": "https://paddyroddy.github.io/",
+      "contributions": [
+        "userTesting"
+      ]
     }
   ],
   "contributorsPerLine": 7,
