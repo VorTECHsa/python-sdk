@@ -1,5 +1,5 @@
 # VortexaSDK
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors)
 
 [![CircleCI](https://circleci.com/gh/V0RT3X4/python-sdk.svg?style=svg)](https://circleci.com/gh/V0RT3X4/python-sdk)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
@@ -74,6 +74,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="http://vortexa.com/"><img src="https://avatars1.githubusercontent.com/u/33626692?v=4" width="100px;" alt="Kit Burgess"/><br /><sub><b>Kit Burgess</b></sub></a><br /><a href="#design-KitBurgess" title="Design">🎨</a> <a href="https://github.com/V0RT3X4/python-sdk/commits?author=KitBurgess" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/syed1992"><img src="https://avatars2.githubusercontent.com/u/45287337?v=4" width="100px;" alt="syed"/><br /><sub><b>syed</b></sub></a><br /><a href="#review-syed1992" title="Reviewed Pull Requests">👀</a></td>
   </tr>
 </table>
 
