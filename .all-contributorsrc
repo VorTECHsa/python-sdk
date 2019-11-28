@@ -44,6 +44,15 @@
       "contributions": [
         "review"
       ]
+    },
+    {
+      "login": "kujon",
+      "name": "Jakub Korzeniowski",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/503380?v=4",
+      "profile": "https://www.vortexa.com/",
+      "contributions": [
+        "ideas"
+      ]
     }
   ],
   "contributorsPerLine": 7,
