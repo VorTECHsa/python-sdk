@@ -4,13 +4,13 @@ import os
 from multiprocessing.pool import ThreadPool
 from typing import List
 
-import requests
 from requests import Response
 
 from vortexasdk.abstract_client import AbstractVortexaClient
 from vortexasdk.api.id import ID
 from vortexasdk.endpoints.endpoints import API_URL
 from vortexasdk.logger import get_logger
+from vortexasdk.retry_session import requests_retry_session
 
 logger = get_logger(__name__)
 
@@ -26,7 +26,7 @@ class VortexaClient(AbstractVortexaClient):
     def get_reference(self, resource: str, id: ID) -> str:
         """Lookup reference data."""
         url = self._create_url(f"{resource}/{id}")
-        response = requests.get(url)
+        response = requests_retry_session().get(url)
         return _handle_response(response)["data"]
 
     def search(self, resource: str, **data) -> List:
@@ -80,7 +80,7 @@ def _send_post_request(url, payload, size, offset):
     payload_with_offset["size"] = size
     payload_with_offset["cm_size"] = size
 
-    response = requests.post(url, json=payload_with_offset)
+    response = requests_retry_session().post(url, json=payload_with_offset)
 
     response = _handle_response(response, payload_with_offset)
 
@@ -91,12 +91,18 @@ def _send_post_request(url, payload, size, offset):
     return response
 
 
-def _handle_response(response: Response, payload=None):
+def _handle_response(response: Response, payload=None) -> dict:
     if response.ok:
         return response.json()
     else:
         logger.error(response.reason)
-        logger.error(response.json())
+        logger.error(response.status_code)
+        # noinspection PyBroadException
+        try:
+            logger.error(response.json())
+        except Exception:
+            logger.error(response)
+
         logger.error(f"payload: {payload}")
         raise Exception(response)
 
