@@ -92,6 +92,15 @@
         "ideas",
         "userTesting"
       ]
+    },
+    {
+      "login": "ArthurD1",
+      "name": "ArthurD1",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/44548105?v=4",
+      "profile": "https://github.com/ArthurD1",
+      "contributions": [
+        "userTesting"
+      ]
     }
   ],
   "contributorsPerLine": 7,
