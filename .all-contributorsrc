@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "KitBurgess",
+      "name": "Kit Burgess",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/33626692?v=4",
+      "profile": "http://vortexa.com/",
+      "contributions": [
+        "design",
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "python-sdk",
+  "projectOwner": "V0RT3X4",
+  "repoType": "github",
+  "repoHost": "https://github.com"
+}
