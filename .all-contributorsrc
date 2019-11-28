@@ -110,6 +110,15 @@
       "contributions": [
         "userTesting"
       ]
+    },
+    {
+      "login": "asfakianakis",
+      "name": "Achilleas Sfakianakis",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/31421156?v=4",
+      "profile": "https://www.vortexa.com/",
+      "contributions": [
+        "userTesting"
+      ]
     }
   ],
   "contributorsPerLine": 7,
