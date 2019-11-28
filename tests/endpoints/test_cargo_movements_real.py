@@ -2,7 +2,7 @@ from datetime import datetime
 
 from tests.testcases import TestCaseUsingRealAPI
 from tests.timer import Timer
-from tests.utils import to_markdown
+from docs.utils import to_markdown
 from vortexasdk.endpoints.cargo_movements import CargoMovements
 
 
