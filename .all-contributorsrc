@@ -24,6 +24,17 @@
         "code",
         "review"
       ]
+    },
+    {
+      "login": "dstarkey23",
+      "name": "David Andrew Starkey",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/11855684?v=4",
+      "profile": "http://star-www.st-and.ac.uk/~ds207/",
+      "contributions": [
+        "code",
+        "doc",
+        "example"
+      ]
     }
   ],
   "contributorsPerLine": 7,
