@@ -2,7 +2,7 @@ import copy
 import functools
 import os
 from multiprocessing.pool import ThreadPool
-from typing import List, Dict
+from typing import Dict, List
 
 from requests import Response
 
@@ -91,7 +91,7 @@ def _send_post_request(url, payload, size, offset):
     return response
 
 
-def _handle_response(response: Response, payload=None) -> dict:
+def _handle_response(response: Response, payload=None) -> Dict:
     if response.ok:
         return response.json()
     else:

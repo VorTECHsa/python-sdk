@@ -1,4 +1,4 @@
-from typing import List
+from typing import Dict, List
 
 from vortexasdk.api.id import ID
 from vortexasdk.client import default_client
@@ -21,7 +21,7 @@ class Reference:
         """
         self._resource = resource
 
-    def reference(self, id: ID) -> dict:
+    def reference(self, id: ID) -> Dict:
         """
         Lookup reference data using ID.
 

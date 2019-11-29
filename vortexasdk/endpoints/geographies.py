@@ -1,5 +1,5 @@
 """Geographies Endpoint."""
-from typing import List, Union
+from typing import List, Union, Dict
 
 from vortexasdk.api import ID
 from vortexasdk.endpoints.endpoints import GEOGRAPHIES_REFERENCE
@@ -51,7 +51,7 @@ class Geographies(Reference, Search):
         params = convert_values_to_list({"term": term})
         return GeographyResult(super().search(**params))
 
-    def reference(self, id: ID) -> dict:
+    def reference(self, id: ID) -> Dict:
         """
         Perform a geography lookup.
 
