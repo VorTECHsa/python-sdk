@@ -55,7 +55,7 @@ class Corporations(Reference, Search):
         params = convert_values_to_list({"term": term})
         return CorporationsResult(super().search(**params))
 
-    def reference(self, id: ID):
+    def reference(self, id: ID) -> dict:
         """
         Perform a corporation lookup.
 

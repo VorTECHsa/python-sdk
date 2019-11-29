@@ -85,7 +85,7 @@ class Vessels(Reference, Search):
 
         return VesselsResult(super().search(**search_params))
 
-    def reference(self, id: ID):
+    def reference(self, id: ID) -> dict:
         """
         Perform a vessel lookup.
 

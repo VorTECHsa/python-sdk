@@ -51,7 +51,7 @@ class Geographies(Reference, Search):
         params = convert_values_to_list({"term": term})
         return GeographyResult(super().search(**params))
 
-    def reference(self, id: ID):
+    def reference(self, id: ID) -> dict:
         """
         Perform a geography lookup.
 

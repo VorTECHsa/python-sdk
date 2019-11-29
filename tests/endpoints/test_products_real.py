@@ -75,4 +75,4 @@ class TestProductsReal(TestCaseUsingRealAPI):
             "6f11b0724c9a4e85ffa7f1445bc768f054af755a090118dcf99f14745c261653"
         )
 
-        assert result[0]["name"] == "Crude"
+        assert result["name"] == "Crude"

@@ -67,7 +67,7 @@ class Products(Reference, Search):
 
         return ProductResult(super().search(**search_params))
 
-    def reference(self, id: ID):
+    def reference(self, id: ID) -> dict:
         """
         Perform a product lookup.
 
