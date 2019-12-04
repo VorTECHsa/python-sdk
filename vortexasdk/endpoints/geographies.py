@@ -15,7 +15,7 @@ class Geographies(Reference, Search):
         Reference.__init__(self, GEOGRAPHIES_REFERENCE)
         Search.__init__(self, GEOGRAPHIES_REFERENCE)
 
-    def search(self, term: Union[str, List[str]]) -> GeographyResult:
+    def search(self, term: Union[str, List[str]] = None) -> GeographyResult:
         """
         Find all geographies matching given search terms.
 

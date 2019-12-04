@@ -10,6 +10,9 @@ class TestGeographiesReal(TestCaseUsingRealAPI):
 
         assert "Liverpool [GB]" in names
 
+    def test_search_empty_args(self):
+        Geographies().search()
+
     def test_search_to_df(self):
         geographies = (
             Geographies().search(term=["Liverpool", "Southampton"]).to_df()
