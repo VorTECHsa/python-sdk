@@ -19,7 +19,7 @@ class Vessels(Reference, Search):
 
     def load_all(self) -> VesselsResult:
         """Load all vessels."""
-        return super().load_all()
+        return self.search()
 
     def search(
         self,
