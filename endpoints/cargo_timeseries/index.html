@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Products - VortexaSDK</title>
+  <title>Cargo Time Series - VortexaSDK</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -17,8 +17,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Products";
-    var mkdocs_page_input_path = "endpoints/products.md";
+    var mkdocs_page_name = "Cargo Time Series";
+    var mkdocs_page_input_path = "endpoints/cargo_timeseries.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -65,9 +65,12 @@
                     
     <a class="" href="../cargo_movements/">Cargo Movements</a>
                 </li>
-                <li class="">
+                <li class=" current">
                     
-    <a class="" href="../cargo_timeseries/">Cargo Time Series</a>
+    <a class="current" href="./">Cargo Time Series</a>
+    <ul class="subnav">
+            
+    </ul>
                 </li>
                 <li class="">
                     
@@ -77,12 +80,9 @@
                     
     <a class="" href="../geographies/">Geographies</a>
                 </li>
-                <li class=" current">
+                <li class="">
                     
-    <a class="current" href="./">Products</a>
-    <ul class="subnav">
-            
-    </ul>
+    <a class="" href="../products/">Products</a>
                 </li>
                 <li class="">
                     
@@ -172,10 +172,10 @@
         
       
     
-    <li>Products</li>
+    <li>Cargo Time Series</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/V0RT3X4/python-sdk/edit/master/docs/endpoints/products.md"
+        <a href="https://github.com/V0RT3X4/python-sdk/edit/master/docs/endpoints/cargo_timeseries.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -185,152 +185,75 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="vortexasdk.endpoints.products">vortexasdk.endpoints.products</h1>
+                <h1 id="vortexasdk.endpoints.cargo_timeseries">vortexasdk.endpoints.cargo_timeseries</h1>
 
-<p>Products Endpoint.
-<h2 id="vortexasdk.endpoints.products.Products">Products</h2></p>
-<pre><code class="python">Products(self)
+<p>Time Series Endpoint.
+<h2 id="vortexasdk.endpoints.cargo_timeseries.CargoTimeSeries">CargoTimeSeries</h2></p>
+<pre><code class="python">CargoTimeSeries(self)
 </code></pre>
 
-<p>Vessels endpoint.
-<h3 id="vortexasdk.endpoints.products.Products.load_all">load_all</h3></p>
-<pre><code class="python">Products.load_all(self) -&gt; vortexasdk.endpoints.products_result.ProductResult
+<h3 id="vortexasdk.endpoints.cargo_timeseries.CargoTimeSeries.search">search</h3>
+
+<pre><code class="python">CargoTimeSeries.search(self, filter_activity: str, filter_time_min: datetime.datetime = datetime.datetime(2019, 10, 1, 0, 0), filter_time_max: datetime.datetime = datetime.datetime(2019, 10, 1, 1, 0), cm_unit: str = 'b', filter_charterers: Union[str, List[str]] = None, filter_destinations: Union[str, List[str]] = None, filter_origins: Union[str, List[str]] = None, filter_owners: Union[str, List[str]] = None, filter_products: Union[str, List[str]] = None, filter_vessels: Union[str, List[str]] = None, filter_storage_locations: Union[str, List[str]] = None, filter_ship_to_ship_locations: Union[str, List[str]] = None, filter_waypoints: Union[str, List[str]] = None, disable_geographic_exclusion_rules: bool = None) -&gt; vortexasdk.endpoints.timeseries_result.TimeSeriesResult
 </code></pre>
 
-<p>Load all products.
-<h3 id="vortexasdk.endpoints.products.Products.search">search</h3></p>
-<pre><code class="python">Products.search(self, term: Union[str, List[str]] = None, ids: Union[str, List[str]] = None, product_parent: Union[str, List[str]] = None) -&gt; vortexasdk.endpoints.products_result.ProductResult
-</code></pre>
-
-<p>Find all products matching given search terms.</p>
+<p>Find CargoMovements matching the given search parameters.</p>
 <p><strong>Arguments</strong></p>
 <ul>
 <li>
-<p><strong>term</strong>: The name(s) (or partial name(s)) of a product we'd like to search</p>
+<p><strong>filter_activity</strong>: Movement activity on which to base the time filter. Must be one of ['loading_state',
+     'loading_start', 'loading_end', 'identified_for_loading_state', 'unloading_state', 'unloading_start',
+      'unloading_end', 'unloaded_state', 'storing_state', 'storing_start', 'storing_end', 'transiting_state',
+       'any_activity'].</p>
 </li>
 <li>
-<p><strong>ids</strong>: ID or IDs of products we'd like to search</p>
+<p><strong>filter_time_min</strong>: The UTC start date of the time filter.</p>
 </li>
 <li>
-<p><strong>product_parent</strong>: ID, or list of IDs of the immediate product parent. E.g. <code>product_parent ='12345'</code> will return all children of product <code>12345</code>.</p>
+<p><strong>filter_time_max</strong>: The UTC end date of the time filter.</p>
+</li>
+<li>
+<p><strong>cm_unit</strong>: Unit of measurement. Enter 'b' for barrels or 't' for tonnes.</p>
+</li>
+<li>
+<p><strong>filter_corporations</strong>: A corporation, or list of corporations to filter on.</p>
+</li>
+<li>
+<p><strong>filter_destinations</strong>: A geography, or list of geographies to filter on. Both geography names or IDs can be entered here.</p>
+</li>
+<li>
+<p><strong>filter_origins</strong>: A geography, or list of geographies to filter on. Both geography names or IDs can be entered here.</p>
+</li>
+<li>
+<p><strong>filter_owners</strong>: An owner, or list of owners to filter on. Both charterer/owner names or IDs can be entered here.</p>
+</li>
+<li>
+<p><strong>filter_products</strong>: A product, or list of products to filter on. Both product names or IDs can be entered here.</p>
+</li>
+<li>
+<p><strong>filter_vessels</strong>: A vessel, or list of vessels to filter on. Vessel name, imo, mmsi, vessel class, or vessel IDs can be entered here,</p>
+</li>
+<li>
+<p><strong>filter_storage_locations</strong>: A geography, or list of geography to filter on. Both geography names or IDs can be entered here.</p>
+</li>
+<li>
+<p><strong>filter_ship_to_ship_locations</strong>: A geography, or list of geography to filter on. Both geography names or IDs can be entered here.</p>
+</li>
+<li>
+<p><strong>filter_waypoints</strong>: A geography, or list of geography to filter on. Both geography names or IDs can be entered here.</p>
+</li>
+<li>
+<p><strong>disable_geographic_exclusion_rules</strong>: This controls a popular industry term "intra-movements" and determines
+     the filter behaviour for cargo leaving then entering the same geographic area.</p>
 </li>
 </ul>
 <p><strong>Returns</strong></p>
-<p>List of products matching the search arguments.</p>
-<p><strong>Examples</strong></p>
-<p>Let's look for products with in one of <code>['diesel', 'fuel oil', 'grane']</code> their name, or related names.</p>
-<pre><code class="python">&gt;&gt;&gt; from vortexasdk import Products
-&gt;&gt;&gt; Products().search(term=['diesel', 'fuel oil', 'grane']).to_df('all')
-</code></pre>
-
-<p>Returns</p>
-<table>
-<thead>
-<tr>
-<th align="right"></th>
-<th align="left">id</th>
-<th align="left">name</th>
-<th align="left">layer.0</th>
-<th align="left">leaf</th>
-<th align="left">parent.0.name</th>
-<th align="left">parent.0.layer.0</th>
-<th align="left">parent.0.id</th>
-<th align="right">meta.api_min</th>
-<th align="right">meta.api_max</th>
-<th align="left">ref_type</th>
-<th align="right">meta.sulphur_min</th>
-<th align="right">meta.sulphur_max</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="right">0</td>
-<td align="left">1c107b4317bc2c8...</td>
-<td align="left">Fuel Oil</td>
-<td align="left">category</td>
-<td align="left">False</td>
-<td align="left">Dirty products</td>
-<td align="left">product</td>
-<td align="left">5de0b00094e0fd...</td>
-<td align="right">12.8878</td>
-<td align="right">12.8878</td>
-<td align="left">product</td>
-<td align="right">nan</td>
-<td align="right">nan</td>
-</tr>
-<tr>
-<td align="right">1</td>
-<td align="left">fddedd17e02507f...</td>
-<td align="left">Grane</td>
-<td align="left">grade</td>
-<td align="left">True</td>
-<td align="left">Medium-Sour</td>
-<td align="left">subproduct_group</td>
-<td align="left">a7e26956fbb917...</td>
-<td align="right">29.2955</td>
-<td align="right">29.2955</td>
-<td align="left">product</td>
-<td align="right">0.62</td>
-<td align="right">0.62</td>
-</tr>
-<tr>
-<td align="right">2</td>
-<td align="left">deda35eb9ca56b5...</td>
-<td align="left">Diesel/Gasoil</td>
-<td align="left">category</td>
-<td align="left">False</td>
-<td align="left">Clean products</td>
-<td align="left">product</td>
-<td align="left">b68cbb7746f8b9...</td>
-<td align="right">35.9556</td>
-<td align="right">35.9556</td>
-<td align="left">product</td>
-<td align="right">nan</td>
-<td align="right">nan</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Further Documentation</strong></p>
-<p><a href="https://docs.vortexa.com/reference/POST/reference/products">VortexaAPI Product Reference</a></p>
-<h3 id="vortexasdk.endpoints.products.Products.reference">reference</h3>
-
-<pre><code class="python">Products.reference(self, id: str) -&gt; Dict
-</code></pre>
-
-<p>Perform a product lookup.</p>
-<p><strong>Arguments</strong></p>
+<p><code>CargoMovementsResult</code>, containing all the cargo movements matching the given search terms.</p>
+<p><strong>Example</strong></p>
 <ul>
-<li><strong>id</strong>: Product ID to lookup</li>
+<li><em>Which cargoes were loaded from Rotterdam on the morning of 1st December 2018?</em></li>
 </ul>
-<p><strong>Returns</strong></p>
-<p>Product record matching the ID</p>
-<p><strong>Further Documentation:</strong></p>
-<p><a href="https://docs.vortexa.com/reference/POST/reference/products">VortexaAPI Product Reference</a></p>
-<h1 id="vortexasdk.endpoints.products_result">vortexasdk.endpoints.products_result</h1>
-
-<h2 id="vortexasdk.endpoints.products_result.ProductResult">ProductResult</h2>
-
-<pre><code class="python">ProductResult(self, _records: List) -&gt; None
-</code></pre>
-
-<p>Container class that holds the result obtained from calling the <code>Product</code> endpoint.
-<h3 id="vortexasdk.endpoints.products_result.ProductResult.to_list">to_list</h3></p>
-<pre><code class="python">ProductResult.to_list(self) -&gt; List[vortexasdk.api.product.Product]
-</code></pre>
-
-<p>Represent products as a list.
-<h3 id="vortexasdk.endpoints.products_result.ProductResult.to_df">to_df</h3></p>
-<pre><code class="python">ProductResult.to_df(self, columns=None) -&gt; pandas.core.frame.DataFrame
-</code></pre>
-
-<p>Represent products as a <code>pd.DataFrame</code>.</p>
-<p><strong>Arguments</strong></p>
-<ul>
-<li><strong>columns</strong>: The product features we want in the dataframe. Enter <code>columns='all'</code> to include all features.
-    Defaults to <code>columns = ['id', 'name', 'layer.0', 'parent.0.name']</code>.</li>
-</ul>
-<p><strong>Returns</strong></p>
-<p><code>pd.DataFrame</code> of products.</p>
+<h1 id="vortexasdk.endpoints.timeseries_result">vortexasdk.endpoints.timeseries_result</h1>
               
             </div>
           </div>
@@ -338,10 +261,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../vessel_movements/" class="btn btn-neutral float-right" title="Vessel Movements">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../corporations/" class="btn btn-neutral float-right" title="Corporations">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../geographies/" class="btn btn-neutral" title="Geographies"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../cargo_movements/" class="btn btn-neutral" title="Cargo Movements"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -369,10 +292,10 @@
           <a href="https://github.com/V0RT3X4/python-sdk/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../geographies/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../cargo_movements/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../vessel_movements/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../corporations/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

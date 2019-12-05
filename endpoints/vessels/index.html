@@ -67,6 +67,10 @@
                 </li>
                 <li class="">
                     
+    <a class="" href="../cargo_timeseries/">Cargo Time Series</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../corporations/">Corporations</a>
                 </li>
                 <li class="">
@@ -189,6 +193,11 @@
 </code></pre>
 
 <p>Vessels endpoint.
+<h3 id="vortexasdk.endpoints.vessels.Vessels.load_all">load_all</h3></p>
+<pre><code class="python">Vessels.load_all(self) -&gt; vortexasdk.endpoints.vessels_result.VesselsResult
+</code></pre>
+
+<p>Load all vessels.
 <h3 id="vortexasdk.endpoints.vessels.Vessels.search">search</h3></p>
 <pre><code class="python">Vessels.search(self, term: Union[str, List[str]] = None, ids: Union[str, List[str]] = None, vessel_classes: Union[str, List[str]] = None, vessel_product_types: Union[str, List[str]] = None) -&gt; vortexasdk.endpoints.vessels_result.VesselsResult
 </code></pre>
@@ -299,7 +308,7 @@
 <p><a href="https://docs.vortexa.com/reference/POST/reference/vessels">VortexaAPI Vessel Reference</a></p>
 <h3 id="vortexasdk.endpoints.vessels.Vessels.reference">reference</h3>
 
-<pre><code class="python">Vessels.reference(self, id: str)
+<pre><code class="python">Vessels.reference(self, id: str) -&gt; Dict
 </code></pre>
 
 <p>Perform a vessel lookup.</p>

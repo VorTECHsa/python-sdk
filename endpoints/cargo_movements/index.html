@@ -73,6 +73,10 @@
                 </li>
                 <li class="">
                     
+    <a class="" href="../cargo_timeseries/">Cargo Time Series</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../corporations/">Corporations</a>
                 </li>
                 <li class="">
@@ -193,6 +197,18 @@
 
 <p>Cargo Movements Endpoint, use this to search through Vortexa's cargo movements.</p>
 <p>A detailed explanation of Cargo/Vessel Movements can be found <a href="https://docs.vortexa.com/reference/intro-movement-difference">here</a>.</p>
+<h3 id="vortexasdk.endpoints.cargo_movements.CargoMovements.load_all">load_all</h3>
+
+<pre><code class="python">CargoMovements.load_all(self) -&gt; vortexasdk.endpoints.cargo_movements_result.CargoMovementsResult
+</code></pre>
+
+<p>Load all available Cargo Movements.</p>
+<p><strong>Example</strong></p>
+<p>Let's load all cargo movements.</p>
+<pre><code class="python">&gt;&gt;&gt; from vortexasdk import CargoMovements
+&gt;&gt;&gt; df = CargoMovements().load_all().to_df()
+</code></pre>
+
 <h3 id="vortexasdk.endpoints.cargo_movements.CargoMovements.search">search</h3>
 
 <pre><code class="python">CargoMovements.search(self, filter_activity: str, filter_time_min: datetime.datetime = datetime.datetime(2019, 10, 1, 0, 0), filter_time_max: datetime.datetime = datetime.datetime(2019, 10, 1, 1, 0), cm_unit: str = 'b', filter_charterers: Union[str, List[str]] = None, filter_destinations: Union[str, List[str]] = None, filter_origins: Union[str, List[str]] = None, filter_owners: Union[str, List[str]] = None, filter_products: Union[str, List[str]] = None, filter_vessels: Union[str, List[str]] = None, filter_storage_locations: Union[str, List[str]] = None, filter_ship_to_ship_locations: Union[str, List[str]] = None, filter_waypoints: Union[str, List[str]] = None, disable_geographic_exclusion_rules: bool = None) -&gt; vortexasdk.endpoints.cargo_movements_result.CargoMovementsResult
@@ -948,7 +964,7 @@ This lets us view all vessels present in any STS operations.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../corporations/" class="btn btn-neutral float-right" title="Corporations">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../cargo_timeseries/" class="btn btn-neutral float-right" title="Cargo Time Series">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../about-endpoints/" class="btn btn-neutral" title="About Endpoints"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -982,7 +998,7 @@ This lets us view all vessels present in any STS operations.</p>
         <span><a href="../about-endpoints/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../corporations/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../cargo_timeseries/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

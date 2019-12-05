@@ -67,6 +67,10 @@
                 </li>
                 <li class="">
                     
+    <a class="" href="../cargo_timeseries/">Cargo Time Series</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../corporations/">Corporations</a>
                 </li>
                 <li class=" current">
@@ -189,8 +193,13 @@
 </code></pre>
 
 <p>Geographies endpoint.
+<h3 id="vortexasdk.endpoints.geographies.Geographies.load_all">load_all</h3></p>
+<pre><code class="python">Geographies.load_all(self) -&gt; vortexasdk.endpoints.geographies_result.GeographyResult
+</code></pre>
+
+<p>Load all geographies.
 <h3 id="vortexasdk.endpoints.geographies.Geographies.search">search</h3></p>
-<pre><code class="python">Geographies.search(self, term: Union[str, List[str]]) -&gt; vortexasdk.endpoints.geographies_result.GeographyResult
+<pre><code class="python">Geographies.search(self, term: Union[str, List[str]] = None) -&gt; vortexasdk.endpoints.geographies_result.GeographyResult
 </code></pre>
 
 <p>Find all geographies matching given search terms.</p>
@@ -250,7 +259,7 @@
 </table>
 <h3 id="vortexasdk.endpoints.geographies.Geographies.reference">reference</h3>
 
-<pre><code class="python">Geographies.reference(self, id: str)
+<pre><code class="python">Geographies.reference(self, id: str) -&gt; Dict
 </code></pre>
 
 <p>Perform a geography lookup.</p>

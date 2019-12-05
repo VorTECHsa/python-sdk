@@ -65,6 +65,10 @@
                     
     <a class="" href="../cargo_movements/">Cargo Movements</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../cargo_timeseries/">Cargo Time Series</a>
+                </li>
                 <li class=" current">
                     
     <a class="current" href="./">Corporations</a>
@@ -189,6 +193,11 @@
 </code></pre>
 
 <p>Corporations Endpoint.
+<h3 id="vortexasdk.endpoints.corporations.Corporations.load_all">load_all</h3></p>
+<pre><code class="python">Corporations.load_all(self) -&gt; vortexasdk.endpoints.corporations_result.CorporationsResult
+</code></pre>
+
+<p>Load all corporations.
 <h3 id="vortexasdk.endpoints.corporations.Corporations.search">search</h3></p>
 <pre><code class="python">Corporations.search(self, term: Union[str, List[str]] = None) -&gt; vortexasdk.endpoints.corporations_result.CorporationsResult
 </code></pre>
@@ -240,7 +249,7 @@
 <p><a href="https://docs.vortexa.com/reference/POST/reference/charterers">VortexaAPI Corporation Reference</a></p>
 <h3 id="vortexasdk.endpoints.corporations.Corporations.reference">reference</h3>
 
-<pre><code class="python">Corporations.reference(self, id: str)
+<pre><code class="python">Corporations.reference(self, id: str) -&gt; Dict
 </code></pre>
 
 <p>Perform a corporation lookup.</p>
@@ -290,7 +299,7 @@
         <a href="../geographies/" class="btn btn-neutral float-right" title="Geographies">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../cargo_movements/" class="btn btn-neutral" title="Cargo Movements"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../cargo_timeseries/" class="btn btn-neutral" title="Cargo Time Series"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -318,7 +327,7 @@
           <a href="https://github.com/V0RT3X4/python-sdk/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../cargo_movements/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../cargo_timeseries/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
         <span style="margin-left: 15px"><a href="../geographies/" style="color: #fcfcfc">Next &raquo;</a></span>

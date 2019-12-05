@@ -67,6 +67,10 @@
                 </li>
                 <li class="">
                     
+    <a class="" href="../cargo_timeseries/">Cargo Time Series</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../corporations/">Corporations</a>
                 </li>
                 <li class="">
@@ -199,6 +203,18 @@
 (STS events), or they may be Floating Storage.</li>
 </ul>
 <p>A detailed explanation of Cargo/Vessel Movements can be found <a href="https://docs.vortexa.com/reference/intro-movement-difference">here</a>.</p>
+<h3 id="vortexasdk.endpoints.vessel_movements.VesselMovements.load_all">load_all</h3>
+
+<pre><code class="python">VesselMovements.load_all(self) -&gt; vortexasdk.endpoints.vessel_movements_result.VesselMovementsResult
+</code></pre>
+
+<p>Load all available Vessel Movements.
+<strong>Example</strong></p>
+<p>Let's load all vessel movements as a <code>pd.DataFrame</code>.</p>
+<pre><code class="python">&gt;&gt;&gt; from vortexasdk import VesselMovements
+&gt;&gt;&gt; df = VesselMovements().load_all().to_df()
+</code></pre>
+
 <h3 id="vortexasdk.endpoints.vessel_movements.VesselMovements.search">search</h3>
 
 <pre><code class="python">VesselMovements.search(self, filter_time_min: datetime.datetime = datetime.datetime(2019, 10, 1, 0, 0), filter_time_max: datetime.datetime = datetime.datetime(2019, 10, 1, 1, 0), unit: str = 'b', filter_charterers: Union[str, List[str]] = None, filter_destinations: Union[str, List[str]] = None, filter_origins: Union[str, List[str]] = None, filter_owners: Union[str, List[str]] = None, filter_products: Union[str, List[str]] = None, filter_vessels: Union[str, List[str]] = None, filter_vessel_classes: Union[str, List[str]] = None) -&gt; vortexasdk.endpoints.vessel_movements_result.VesselMovementsResult
