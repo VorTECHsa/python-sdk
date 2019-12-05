@@ -15,6 +15,20 @@ class TestVesselMovementsReal(TestCaseUsingRealAPI):
 
         assert len(v) > 10
 
+    def test_to_df_all_columns(self):
+        df = (
+            VesselMovements()
+            .search(
+                filter_time_min=datetime(2017, 10, 1, 0, 0),
+                filter_time_max=datetime(2017, 10, 1, 0, 10),
+                filter_origins="rotterdam",
+            )
+            .to_df(columns="all")
+            .head(2)
+        )
+
+        assert len(df) == 2
+
     def test_search_to_dataframe(self):
         df = (
             VesselMovements()
