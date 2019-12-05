@@ -2,7 +2,7 @@ import os
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 
-LOG_LEVEL = os.getenv("LOG_LEVEL", "DEBUG")
+LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO")
 LOG_FILE = os.getenv("LOG_FILE", "vortexasdk.log")
 
 END_OF_AVAILABLE_DATA = datetime.utcnow() + relativedelta(months=6)
