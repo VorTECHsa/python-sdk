@@ -2,7 +2,7 @@ import copy
 import functools
 import os
 from multiprocessing.pool import ThreadPool
-from typing import List
+from typing import Dict, List
 
 from requests import Response
 
@@ -23,7 +23,7 @@ class VortexaClient(AbstractVortexaClient):
     def __init__(self, **kwargs):
         self.api_key = kwargs["api_key"]
 
-    def get_reference(self, resource: str, id: ID) -> str:
+    def get_reference(self, resource: str, id: ID) -> List[Dict]:
         """Lookup reference data."""
         url = self._create_url(f"{resource}/{id}")
         response = retry_get(url)
@@ -91,7 +91,7 @@ def _send_post_request(url, payload, size, offset):
     return response
 
 
-def _handle_response(response: Response, payload=None) -> dict:
+def _handle_response(response: Response, payload=None) -> Dict:
     if response.ok:
         return response.json()
     else:

@@ -1,5 +1,5 @@
 """Vessels Endpoint."""
-from typing import List, Union
+from typing import List, Union, Dict
 
 from vortexasdk.api.id import ID
 from vortexasdk.conversions import convert_to_product_ids
@@ -85,7 +85,7 @@ class Vessels(Reference, Search):
 
         return VesselsResult(super().search(**search_params))
 
-    def reference(self, id: ID):
+    def reference(self, id: ID) -> Dict:
         """
         Perform a vessel lookup.
 

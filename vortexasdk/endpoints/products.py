@@ -1,5 +1,5 @@
 """Products Endpoint."""
-from typing import List, Union
+from typing import List, Union, Dict
 
 from vortexasdk.api.shared_types import ID
 from vortexasdk.endpoints.endpoints import PRODUCTS_REFERENCE
@@ -67,7 +67,7 @@ class Products(Reference, Search):
 
         return ProductResult(super().search(**search_params))
 
-    def reference(self, id: ID):
+    def reference(self, id: ID) -> Dict:
         """
         Perform a product lookup.
 
