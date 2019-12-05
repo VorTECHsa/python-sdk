@@ -17,6 +17,10 @@ class Vessels(Reference, Search):
         Reference.__init__(self, VESSELS_REFERENCE)
         Search.__init__(self, VESSELS_REFERENCE)
 
+    def load_all(self) -> VesselsResult:
+        """Load all vessels."""
+        return self.search()
+
     def search(
         self,
         term: Union[str, List[str]] = None,

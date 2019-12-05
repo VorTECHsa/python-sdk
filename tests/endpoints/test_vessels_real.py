@@ -51,6 +51,11 @@ class TestVesselsReal(TestCaseUsingRealAPI):
         df = Vessels().search(vessel_product_types="crude").to_df()
         assert len(df) > 1000
 
+    def test_load_all(self):
+        all_products = Vessels().load_all()
+
+        assert len(all_products) > 1000
+
     def test_search_load_all_vessels(self):
         with Timer("Search"):
             result = Vessels().search()

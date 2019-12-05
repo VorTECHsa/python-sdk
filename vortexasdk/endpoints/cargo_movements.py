@@ -2,7 +2,13 @@
 from datetime import datetime
 from typing import List, Union
 
+from vortexasdk.logger import get_logger
+
 from vortexasdk.api.shared_types import to_ISODate
+from vortexasdk.config import (
+    END_OF_AVAILABLE_DATA,
+    BEGINNING_OF_AVAILABLE_DATA,
+)
 from vortexasdk.conversions import (
     convert_to_corporation_ids,
     convert_to_geography_ids,
@@ -12,6 +18,8 @@ from vortexasdk.conversions import (
 from vortexasdk.endpoints.cargo_movements_result import CargoMovementsResult
 from vortexasdk.endpoints.endpoints import CARGO_MOVEMENTS_RESOURCE
 from vortexasdk.operations import Search
+
+logger = get_logger(__name__)
 
 
 class CargoMovements(Search):
@@ -25,6 +33,30 @@ class CargoMovements(Search):
 
     def __init__(self):
         Search.__init__(self, CARGO_MOVEMENTS_RESOURCE)
+
+    def load_all(self) -> CargoMovementsResult:
+        """
+        Load all available Cargo Movements.
+
+
+        # Example
+
+        Let's load all cargo movements.
+
+        ```python
+        >>> from vortexasdk import CargoMovements
+        >>> df = CargoMovements().load_all().to_df()
+        ```
+        """
+        logger.info(
+            f"Loading all Cargo Movements between {BEGINNING_OF_AVAILABLE_DATA} and {END_OF_AVAILABLE_DATA},"
+            f" this will take 5-10mins."
+        )
+        return self.search(
+            filter_activity="loading_start",
+            filter_time_min=BEGINNING_OF_AVAILABLE_DATA,
+            filter_time_max=END_OF_AVAILABLE_DATA,
+        )
 
     def search(
         self,
