@@ -1,5 +1,43 @@
 # Changelog
 
+## [0.9.0](https://github.com/V0RT3X4/python-sdk/tree/0.9.0) (2019-12-05)
+
+[Full Changelog](https://github.com/V0RT3X4/python-sdk/compare/0.8.5...0.9.0)
+
+**Implemented enhancements:**
+
+- Add load all reference data method [\#81](https://github.com/V0RT3X4/python-sdk/issues/81)
+
+**Fixed bugs:**
+
+- CargoMovementsResult.to\_df\('all'\) blows up [\#120](https://github.com/V0RT3X4/python-sdk/issues/120)
+- Reference shouldn't return a list [\#69](https://github.com/V0RT3X4/python-sdk/issues/69)
+
+**Closed issues:**
+
+- Inconsistent search signatures across endpoints  [\#114](https://github.com/V0RT3X4/python-sdk/issues/114)
+- Consider adopting All Contributors specification [\#98](https://github.com/V0RT3X4/python-sdk/issues/98)
+- Sample notebook with charts [\#83](https://github.com/V0RT3X4/python-sdk/issues/83)
+
+**Merged pull requests:**
+
+- fix: CargoMovementsResult to\_df all columns, closes \#120 [\#121](https://github.com/V0RT3X4/python-sdk/pull/121) ([KitBurgess](https://github.com/KitBurgess))
+- Load all [\#119](https://github.com/V0RT3X4/python-sdk/pull/119) ([KitBurgess](https://github.com/KitBurgess))
+- fix: Consistent search signatures, closes \#114 [\#118](https://github.com/V0RT3X4/python-sdk/pull/118) ([KitBurgess](https://github.com/KitBurgess))
+- fix: Reference now returns dict, fixes \#69 [\#116](https://github.com/V0RT3X4/python-sdk/pull/116) ([KitBurgess](https://github.com/KitBurgess))
+- docs: add asfakianakis as a contributor [\#113](https://github.com/V0RT3X4/python-sdk/pull/113) ([allcontributors[bot]](https://github.com/apps/allcontributors))
+- docs: add ChloeConnor as a contributor [\#112](https://github.com/V0RT3X4/python-sdk/pull/112) ([allcontributors[bot]](https://github.com/apps/allcontributors))
+- docs: add ArthurD1 as a contributor [\#111](https://github.com/V0RT3X4/python-sdk/pull/111) ([allcontributors[bot]](https://github.com/apps/allcontributors))
+- docs: add Natday as a contributor [\#110](https://github.com/V0RT3X4/python-sdk/pull/110) ([allcontributors[bot]](https://github.com/apps/allcontributors))
+- docs: add rugg2 as a contributor [\#109](https://github.com/V0RT3X4/python-sdk/pull/109) ([allcontributors[bot]](https://github.com/apps/allcontributors))
+- docs: add paddyroddy as a contributor [\#108](https://github.com/V0RT3X4/python-sdk/pull/108) ([allcontributors[bot]](https://github.com/apps/allcontributors))
+- docs: add eadwright as a contributor [\#107](https://github.com/V0RT3X4/python-sdk/pull/107) ([allcontributors[bot]](https://github.com/apps/allcontributors))
+- docs: add kujon as a contributor [\#106](https://github.com/V0RT3X4/python-sdk/pull/106) ([allcontributors[bot]](https://github.com/apps/allcontributors))
+- docs: add syed1992 as a contributor [\#105](https://github.com/V0RT3X4/python-sdk/pull/105) ([allcontributors[bot]](https://github.com/apps/allcontributors))
+- docs: add dstarkey23 as a contributor [\#103](https://github.com/V0RT3X4/python-sdk/pull/103) ([allcontributors[bot]](https://github.com/apps/allcontributors))
+- docs: add cvonsteg as a contributor [\#100](https://github.com/V0RT3X4/python-sdk/pull/100) ([allcontributors[bot]](https://github.com/apps/allcontributors))
+- docs: add KitBurgess as a contributor [\#99](https://github.com/V0RT3X4/python-sdk/pull/99) ([allcontributors[bot]](https://github.com/apps/allcontributors))
+
 ## [0.8.5](https://github.com/V0RT3X4/python-sdk/tree/0.8.5) (2019-11-28)
 
 [Full Changelog](https://github.com/V0RT3X4/python-sdk/compare/0.8.4...0.8.5)
@@ -72,6 +110,7 @@
 
 - Where do I get an API key from [\#75](https://github.com/V0RT3X4/python-sdk/issues/75)
 - change 'filter\_vessel' argument to 'filter\_vessel\_name' to make it clearer that this is filtering vessels and not vessel classes [\#38](https://github.com/V0RT3X4/python-sdk/issues/38)
+- searching vessel reference database only ever gives me back 100 results [\#30](https://github.com/V0RT3X4/python-sdk/issues/30)
 
 **Merged pull requests:**
 
@@ -184,10 +223,6 @@
 **Fixed bugs:**
 
 - Tried to pull out a reference df of all vessels but only got 200 results? [\#29](https://github.com/V0RT3X4/python-sdk/issues/29)
-
-**Closed issues:**
-
-- searching vessel reference database only ever gives me back 100 results [\#30](https://github.com/V0RT3X4/python-sdk/issues/30)
 
 **Merged pull requests:**
 
