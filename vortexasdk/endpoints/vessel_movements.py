@@ -42,8 +42,16 @@ class VesselMovements(Search):
     def __init__(self):
         Search.__init__(self, VESSEL_MOVEMENTS_RESOURCE)
 
-    def load_all(self):
-        """Load all available Vessel Movements."""
+    def load_all(self) -> VesselMovementsResult:
+        """Load all available Vessel Movements.
+        # Example
+        Let's load all vessel movements as a `pd.DataFrame`.
+
+        ```python
+        >>> from vortexasdk import VesselMovements
+        >>> df = VesselMovements().load_all().to_df()
+        ```
+        """
         logger.info(
             f"Loading all Vessel Movements between {BEGINNING_OF_AVAILABLE_DATA} and {END_OF_AVAILABLE_DATA},"
             f" this will take 5-10mins."

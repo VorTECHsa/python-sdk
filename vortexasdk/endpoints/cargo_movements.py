@@ -34,8 +34,20 @@ class CargoMovements(Search):
     def __init__(self):
         Search.__init__(self, CARGO_MOVEMENTS_RESOURCE)
 
-    def load_all(self):
-        """Load all available Cargo Movements."""
+    def load_all(self) -> CargoMovementsResult:
+        """
+        Load all available Cargo Movements.
+
+
+        # Example
+
+        Let's load all cargo movements.
+
+        ```python
+        >>> from vortexasdk import CargoMovements
+        >>> df = CargoMovements().load_all().to_df()
+        ```
+        """
         logger.info(
             f"Loading all Cargo Movements between {BEGINNING_OF_AVAILABLE_DATA} and {END_OF_AVAILABLE_DATA},"
             f" this will take 5-10mins."
