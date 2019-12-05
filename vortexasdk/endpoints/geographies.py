@@ -17,9 +17,9 @@ class Geographies(Reference, Search):
 
     def load_all(self) -> GeographyResult:
         """Load all geographies."""
-        return self.search(term=[])
+        return self.search()
 
-    def search(self, term: Union[str, List[str]]) -> GeographyResult:
+    def search(self, term: Union[str, List[str]] = None) -> GeographyResult:
         """
         Find all geographies matching given search terms.
 

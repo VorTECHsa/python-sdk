@@ -15,6 +15,9 @@ class TestGeographiesReal(TestCaseUsingRealAPI):
 
         assert len(all_geogs) > 1000
 
+    def test_search_empty_args(self):
+        Geographies().search()
+
     def test_search_to_df(self):
         geographies = (
             Geographies().search(term=["Liverpool", "Southampton"]).to_df()
