@@ -46,6 +46,11 @@ class TestProductsReal(TestCaseUsingRealAPI):
             in result
         )
 
+    def test_load_all(self):
+        all_products = Products().load_all()
+
+        assert len(all_products) > 100
+
     def test_search_multiple_terms_to_dataframe(self):
         df = (
             Products()

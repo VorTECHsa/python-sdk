@@ -15,6 +15,10 @@ class Corporations(Reference, Search):
         Reference.__init__(self, CORPORATIONS_REFERENCE)
         Search.__init__(self, CORPORATIONS_REFERENCE)
 
+    def load_all(self) -> CorporationsResult:
+        """Load all corporations."""
+        return self.search()
+
     def search(self, term: Union[str, List[str]] = None) -> CorporationsResult:
         """
         Find all Corporations matching given search terms.

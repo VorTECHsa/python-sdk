@@ -16,6 +16,10 @@ class Products(Reference, Search):
         Reference.__init__(self, PRODUCTS_REFERENCE)
         Search.__init__(self, PRODUCTS_REFERENCE)
 
+    def load_all(self) -> ProductResult:
+        """Load all products."""
+        return self.search()
+
     def search(
         self,
         term: Union[str, List[str]] = None,
