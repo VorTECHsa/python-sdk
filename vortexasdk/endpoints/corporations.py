@@ -1,5 +1,5 @@
 """Corporations Endpoint."""
-from typing import List, Union
+from typing import List, Union, Dict
 
 from vortexasdk.api import ID
 from vortexasdk.endpoints.corporations_result import CorporationsResult
@@ -59,7 +59,7 @@ class Corporations(Reference, Search):
         params = convert_values_to_list({"term": term})
         return CorporationsResult(super().search(**params))
 
-    def reference(self, id: ID):
+    def reference(self, id: ID) -> Dict:
         """
         Perform a corporation lookup.
 
