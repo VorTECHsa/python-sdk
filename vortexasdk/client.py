@@ -35,7 +35,10 @@ class VortexaClient(AbstractVortexaClient):
 
         payload = {k: v for k, v in data.items() if v is not None}
 
-        total = _send_post_request(url, payload, size=1, offset=0)["total"]
+        try:
+            total = _send_post_request(url, payload, size=1, offset=0)["total"]
+        except KeyError:
+            total = 1
 
         size = data.get("size", 1000)
         offsets = [i for i in range(0, total, size)]

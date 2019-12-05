@@ -1,5 +1,8 @@
+CARGO_TIMESERIES_RESOURCE = "/time-series"
+
 CARGO_MOVEMENTS_RESOURCE = "/cargo-movements/search"
 VESSEL_MOVEMENTS_RESOURCE = "/vessel-movements/search"
+
 GEOGRAPHIES_REFERENCE = "/reference/geographies"
 VESSELS_REFERENCE = "/reference/vessels"
 PRODUCTS_REFERENCE = "/reference/products"
