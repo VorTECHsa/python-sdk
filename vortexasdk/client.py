@@ -5,6 +5,7 @@ from multiprocessing.pool import ThreadPool
 from typing import Dict, List
 
 from requests import Response
+from tqdm import tqdm
 
 from vortexasdk.abstract_client import AbstractVortexaClient
 from vortexasdk.api.id import ID
@@ -19,6 +20,7 @@ class VortexaClient(AbstractVortexaClient):
     """The API client responsible for calling Vortexa's Public API."""
 
     _DEFAULT_PAGE_LOAD_SIZE = 10000
+    _N_THREADS = 4
 
     def __init__(self, **kwargs):
         self.api_key = kwargs["api_key"]
@@ -32,31 +34,28 @@ class VortexaClient(AbstractVortexaClient):
     def search(self, resource: str, **data) -> List:
         """Search using `resource` using `**data` as filter params."""
         url = self._create_url(resource)
-
         payload = {k: v for k, v in data.items() if v is not None}
-
         total = _send_post_request(url, payload, size=1, offset=0)["total"]
-
         size = data.get("size", 1000)
-        offsets = [i for i in range(0, total, size)]
+        offsets = range(0, total, size)
 
-        n_threads = 4
-        with ThreadPool(n_threads) as pool:
-            logger.debug(
-                f"{total} Results to retreive."
-                f" Sending {len(offsets)}"
-                f" post requests in parallel using {n_threads} threads."
-            )
+        with tqdm(total=total, desc="Loading from API") as pbar:
+            with ThreadPool(self._N_THREADS) as pool:
+                logger.debug(
+                    f"{total} Results to retreive."
+                    f" Sending {len(offsets)}"
+                    f" post requests in parallel using {self._N_THREADS} threads."
+                )
 
-            responses = pool.map(
-                functools.partial(
+                func = functools.partial(
                     _send_post_request_data,
                     url=url,
                     payload=payload,
                     size=size,
-                ),
-                offsets,
-            )
+                    progress_bar=pbar,
+                )
+
+                responses = pool.map(func, offsets)
 
         flattened = [x for y in responses for x in y]
 
@@ -66,7 +65,13 @@ class VortexaClient(AbstractVortexaClient):
         return f"{API_URL}{path}?apikey={self.api_key}"
 
 
-def _send_post_request_data(offset, url, payload, size):
+def _send_post_request_data(offset, url, payload, size, progress_bar: tqdm):
+    # noinspection PyBroadException
+    try:
+        progress_bar.update(size)
+    except Exception:
+        logger.warn("Could not update progress bar")
+
     return _send_post_request(url, payload, size, offset)["data"]
 
 
