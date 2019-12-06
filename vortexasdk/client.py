@@ -39,7 +39,9 @@ class VortexaClient(AbstractVortexaClient):
         size = data.get("size", 1000)
         offsets = range(0, total, size)
 
-        with tqdm(total=total, desc="Loading from API") as pbar:
+        with tqdm(
+            total=total, desc="Loading from API", disable=(len(offsets) == 1)
+        ) as pbar:
             with ThreadPool(self._N_THREADS) as pool:
                 logger.debug(
                     f"{total} Results to retreive."
