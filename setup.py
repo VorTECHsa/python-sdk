@@ -25,6 +25,7 @@ setuptools.setup(
         "requests==2.22.0",
         "jsons==1.0.0",
         "flatten-dict==0.2.0",
+        "tqdm==4.38.0",
     ],
     extras_require={
         "tests": [
