@@ -67,17 +67,21 @@ class VortexaClient(AbstractVortexaClient):
         return f"{API_URL}{path}?apikey={self.api_key}"
 
 
-def _send_post_request_data(offset, url, payload, size, progress_bar: tqdm):
+def _send_post_request_data(
+    offset, url, payload, size, progress_bar: tqdm
+) -> List:
     # noinspection PyBroadException
     try:
         progress_bar.update(size)
     except Exception:
         logger.warn("Could not update progress bar")
 
-    return _send_post_request(url, payload, size, offset)["data"]
+    dict_response = _send_post_request(url, payload, size, offset)
+
+    return dict_response.get("data", [])
 
 
-def _send_post_request(url, payload, size, offset):
+def _send_post_request(url, payload, size, offset) -> Dict:
     logger.debug(f"Sending post request, offset: {offset}, size: {size}")
 
     payload_with_offset = copy.deepcopy(payload)
@@ -89,29 +93,24 @@ def _send_post_request(url, payload, size, offset):
 
     response = retry_post(url, json=payload_with_offset)
 
-    response = _handle_response(response, payload_with_offset)
-
-    logger.debug(
-        f'Post request from offset {offset} received {len(response["data"])} items'
-    )
-
-    return response
+    return _handle_response(response, payload_with_offset)
 
 
-def _handle_response(response: Response, payload=None) -> Dict:
-    if response.ok:
-        return response.json()
-    else:
+def _handle_response(response: Response, payload: Dict = None) -> Dict:
+    try:
+        json = response.json()
+    except Exception as e:
+        logger.error("Could not decode response", e)
+        json = {}
+
+    if not response.ok:
         logger.error(response.reason)
         logger.error(response.status_code)
-        # noinspection PyBroadException
-        try:
-            logger.error(response.json())
-        except Exception:
-            logger.error(response)
-
+        logger.error(response)
+        logger.error(json)
         logger.error(f"payload: {payload}")
-        raise Exception(response)
+
+    return json
 
 
 __client__ = None

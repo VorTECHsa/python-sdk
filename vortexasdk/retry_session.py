@@ -1,4 +1,4 @@
-from requests import Session
+from requests import Session, Response
 from requests.adapters import HTTPAdapter
 from urllib3 import Retry
 
@@ -24,11 +24,11 @@ def _requests_retry_session(
     return session
 
 
-def retry_get(*args, **kwargs):
+def retry_get(*args, **kwargs) -> Response:
     with _requests_retry_session() as s:
         return s.get(*args, **kwargs)
 
 
-def retry_post(*args, **kwargs):
+def retry_post(*args, **kwargs) -> Response:
     with _requests_retry_session() as s:
         return s.post(*args, **kwargs)
