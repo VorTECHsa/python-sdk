@@ -1,6 +1,7 @@
 import copy
 import functools
 import os
+from json import JSONDecodeError
 from multiprocessing.pool import ThreadPool
 from typing import Dict, List
 
@@ -11,7 +12,10 @@ from vortexasdk.abstract_client import AbstractVortexaClient
 from vortexasdk.api.id import ID
 from vortexasdk.endpoints.endpoints import API_URL
 from vortexasdk.logger import get_logger
-from vortexasdk.retry_session import retry_get, retry_post
+from vortexasdk.retry_session import (
+    retry_get,
+    retry_post,
+)
 
 logger = get_logger(__name__)
 
@@ -97,18 +101,28 @@ def _send_post_request(url, payload, size, offset) -> Dict:
 
 
 def _handle_response(response: Response, payload: Dict = None) -> Dict:
-    try:
-        json = response.json()
-    except Exception as e:
-        logger.error("Could not decode response", e)
-        json = {}
-
     if not response.ok:
         logger.error(response.reason)
         logger.error(response.status_code)
         logger.error(response)
-        logger.error(json)
+
+        # noinspection PyBroadException
+        try:
+            logger.error(response.json())
+        except Exception:
+            pass
+
         logger.error(f"payload: {payload}")
+        json = {}
+    else:
+        try:
+            json = response.json()
+        except JSONDecodeError:
+            logger.error("Could not decode response")
+            json = {}
+        except Exception as e:
+            logger.error(e)
+            json = {}
 
     return json
 
