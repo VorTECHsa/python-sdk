@@ -1,16 +1,23 @@
-from requests import Session
+from requests import Session, Response
 from requests.adapters import HTTPAdapter
 from urllib3 import Retry
 
 
 # Inspired by https://www.peterbe.com/plog/best-practice-with-retries-with-requests
 def _requests_retry_session(
-    retries=3, backoff_factor=0.5, status_forcelist=(502, 504), session=None,
+    retries=6,
+    backoff_factor=1,
+    status_forcelist=(500, 502, 504),
+    session=None,
 ) -> Session:
     """Instantiate a session with Retry backoff."""
     session = session or Session()
 
     retry = Retry(
+        raise_on_redirect=False,
+        raise_on_status=False,
+        method_whitelist=["POST", "GET"],
+        status=retries,
         total=retries,
         read=retries,
         connect=retries,
@@ -24,11 +31,11 @@ def _requests_retry_session(
     return session
 
 
-def retry_get(*args, **kwargs):
+def retry_get(*args, **kwargs) -> Response:
     with _requests_retry_session() as s:
         return s.get(*args, **kwargs)
 
 
-def retry_post(*args, **kwargs):
+def retry_post(*args, **kwargs) -> Response:
     with _requests_retry_session() as s:
         return s.post(*args, **kwargs)

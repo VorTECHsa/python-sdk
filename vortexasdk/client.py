@@ -1,6 +1,7 @@
 import copy
 import functools
 import os
+from json import JSONDecodeError
 from multiprocessing.pool import ThreadPool
 from typing import Dict, List
 
@@ -11,7 +12,10 @@ from vortexasdk.abstract_client import AbstractVortexaClient
 from vortexasdk.api.id import ID
 from vortexasdk.endpoints.endpoints import API_URL
 from vortexasdk.logger import get_logger
-from vortexasdk.retry_session import retry_get, retry_post
+from vortexasdk.retry_session import (
+    retry_get,
+    retry_post,
+)
 
 logger = get_logger(__name__)
 
@@ -67,17 +71,21 @@ class VortexaClient(AbstractVortexaClient):
         return f"{API_URL}{path}?apikey={self.api_key}"
 
 
-def _send_post_request_data(offset, url, payload, size, progress_bar: tqdm):
+def _send_post_request_data(
+    offset, url, payload, size, progress_bar: tqdm
+) -> List:
     # noinspection PyBroadException
     try:
         progress_bar.update(size)
     except Exception:
         logger.warn("Could not update progress bar")
 
-    return _send_post_request(url, payload, size, offset)["data"]
+    dict_response = _send_post_request(url, payload, size, offset)
+
+    return dict_response.get("data", [])
 
 
-def _send_post_request(url, payload, size, offset):
+def _send_post_request(url, payload, size, offset) -> Dict:
     logger.debug(f"Sending post request, offset: {offset}, size: {size}")
 
     payload_with_offset = copy.deepcopy(payload)
@@ -89,29 +97,34 @@ def _send_post_request(url, payload, size, offset):
 
     response = retry_post(url, json=payload_with_offset)
 
-    response = _handle_response(response, payload_with_offset)
-
-    logger.debug(
-        f'Post request from offset {offset} received {len(response["data"])} items'
-    )
-
-    return response
+    return _handle_response(response, payload_with_offset)
 
 
-def _handle_response(response: Response, payload=None) -> Dict:
-    if response.ok:
-        return response.json()
-    else:
+def _handle_response(response: Response, payload: Dict = None) -> Dict:
+    if not response.ok:
         logger.error(response.reason)
         logger.error(response.status_code)
+        logger.error(response)
+
         # noinspection PyBroadException
         try:
             logger.error(response.json())
         except Exception:
-            logger.error(response)
+            pass
 
         logger.error(f"payload: {payload}")
-        raise Exception(response)
+        json = {}
+    else:
+        try:
+            json = response.json()
+        except JSONDecodeError:
+            logger.error("Could not decode response")
+            json = {}
+        except Exception as e:
+            logger.error(e)
+            json = {}
+
+    return json
 
 
 __client__ = None

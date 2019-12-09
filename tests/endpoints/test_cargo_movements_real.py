@@ -1,9 +1,8 @@
 from datetime import datetime
 
+from docs.utils import to_markdown
 from tests.testcases import TestCaseUsingRealAPI
 from tests.timer import Timer
-from docs.utils import to_markdown
-from vortexasdk import VesselMovements
 from vortexasdk.endpoints.cargo_movements import CargoMovements
 
 
