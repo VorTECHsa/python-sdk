@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.9.1](https://github.com/V0RT3X4/python-sdk/tree/0.9.1) (2019-12-09)
+
+[Full Changelog](https://github.com/V0RT3X4/python-sdk/compare/0.9.0...0.9.1)
+
+**Implemented enhancements:**
+
+- Show loading progress bar [\#123](https://github.com/V0RT3X4/python-sdk/issues/123)
+
+**Merged pull requests:**
+
+- fix: Handle API failures in VortexaClient [\#130](https://github.com/V0RT3X4/python-sdk/pull/130) ([KitBurgess](https://github.com/KitBurgess))
+- feat: Add progressbar [\#129](https://github.com/V0RT3X4/python-sdk/pull/129) ([KitBurgess](https://github.com/KitBurgess))
+
 ## [0.9.0](https://github.com/V0RT3X4/python-sdk/tree/0.9.0) (2019-12-05)
 
 [Full Changelog](https://github.com/V0RT3X4/python-sdk/compare/0.8.5...0.9.0)
@@ -110,7 +123,6 @@
 
 - Where do I get an API key from [\#75](https://github.com/V0RT3X4/python-sdk/issues/75)
 - change 'filter\_vessel' argument to 'filter\_vessel\_name' to make it clearer that this is filtering vessels and not vessel classes [\#38](https://github.com/V0RT3X4/python-sdk/issues/38)
-- searching vessel reference database only ever gives me back 100 results [\#30](https://github.com/V0RT3X4/python-sdk/issues/30)
 
 **Merged pull requests:**
 
@@ -223,6 +235,10 @@
 **Fixed bugs:**
 
 - Tried to pull out a reference df of all vessels but only got 200 results? [\#29](https://github.com/V0RT3X4/python-sdk/issues/29)
+
+**Closed issues:**
+
+- searching vessel reference database only ever gives me back 100 results [\#30](https://github.com/V0RT3X4/python-sdk/issues/30)
 
 **Merged pull requests:**
 
