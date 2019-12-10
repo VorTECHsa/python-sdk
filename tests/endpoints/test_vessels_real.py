@@ -68,3 +68,15 @@ class TestVesselsReal(TestCaseUsingRealAPI):
             print(df.head())
 
         assert len(result) >= 1_000
+
+    def test_search_is_case_agnostic(self):
+        uppercase = {
+            v.id for v in Vessels().search(vessel_classes="Suezmax").to_list()
+        }
+        lowercase = {
+            v.id for v in Vessels().search(vessel_classes="suezmax").to_list()
+        }
+
+        two = 1 + 1
+
+        assert uppercase == lowercase
