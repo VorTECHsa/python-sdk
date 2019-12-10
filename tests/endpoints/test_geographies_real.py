@@ -1,15 +1,9 @@
-from tests.testcases import TestCaseUsingRealAPI
 from docs.utils import to_markdown
+from tests.testcases import TestCaseUsingRealAPI
 from vortexasdk import Geographies
 
 
 class TestGeographiesReal(TestCaseUsingRealAPI):
-    def test_search(self):
-        geographies = Geographies().search(term=["Liverpool", "Southampton"])
-        names = [g["name"] for g in geographies]
-
-        assert "Liverpool [GB]" in names
-
     def test_load_all(self):
         all_geogs = Geographies().load_all()
 
@@ -24,3 +18,10 @@ class TestGeographiesReal(TestCaseUsingRealAPI):
         )
 
         print(to_markdown(geographies))
+
+    def test_search_to_list(self):
+        geographies = (
+            Geographies().search(term=["Liverpool", "Southampton"]).to_list()
+        )
+        names = [g.name for g in geographies]
+        assert "Liverpool [GB]" in names

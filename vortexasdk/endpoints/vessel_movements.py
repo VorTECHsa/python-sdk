@@ -54,7 +54,6 @@ class VesselMovements(Search):
         """
         logger.info(
             f"Loading all Vessel Movements between {BEGINNING_OF_AVAILABLE_DATA} and {END_OF_AVAILABLE_DATA},"
-            f" this will take 5-10mins."
         )
 
         return self.search(

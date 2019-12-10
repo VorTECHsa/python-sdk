@@ -35,7 +35,7 @@ class Geographies(Reference, Search):
         Find all geographies with `portsmouth` in the name.
         ```python
         >>> from vortexasdk import Geographies
-        >>> [x["name"] for x in Geographies().search(term="portsmouth")]
+        >>> [g.name for g in Geographies().search(term="portsmouth").to_list()]
             ['Portsmouth [GB]', 'Portsmouth, NH [US]']
         ```
 
