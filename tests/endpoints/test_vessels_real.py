@@ -77,5 +77,4 @@ class TestVesselsReal(TestCaseUsingRealAPI):
             v.id for v in Vessels().search(vessel_classes="suezmax").to_list()
         }
 
-
         assert uppercase == lowercase
