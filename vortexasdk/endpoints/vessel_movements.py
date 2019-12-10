@@ -2,22 +2,14 @@
 from datetime import datetime
 from typing import List, Union
 
-from vortexasdk.logger import get_logger
-
 from vortexasdk.api.shared_types import to_ISODate
 from vortexasdk.config import (
     BEGINNING_OF_AVAILABLE_DATA,
     END_OF_AVAILABLE_DATA,
 )
-
-from vortexasdk.conversions import (
-    convert_to_corporation_ids,
-    convert_to_geography_ids,
-    convert_to_product_ids,
-    convert_to_vessel_ids,
-)
 from vortexasdk.endpoints.endpoints import VESSEL_MOVEMENTS_RESOURCE
 from vortexasdk.endpoints.vessel_movements_result import VesselMovementsResult
+from vortexasdk.logger import get_logger
 from vortexasdk.operations import Search
 from vortexasdk.utils import convert_to_list
 
@@ -49,7 +41,8 @@ class VesselMovements(Search):
 
         ```python
         >>> from vortexasdk import VesselMovements
-        >>> df = VesselMovements().load_all().to_df()
+        >>> df = VesselMovements().load_all().to_df() # doctest:+SKIP
+
         ```
         """
         logger.info(
@@ -84,19 +77,19 @@ class VesselMovements(Search):
 
             unit: Unit of measurement. Enter 'b' for barrels or 't' for tonnes.
 
-            filter_corporations: A corporation, or list of corporations to filter on.
+            filter_corporations: A corporation ID, or list of corporation IDs to filter on.
 
-            filter_destinations: A geography, or list of geographies to filter on. Both geography names or IDs can be entered here.
+            filter_destinations: A geography ID, or list of geography IDs to filter on.
 
-            filter_origins: A geography, or list of geographies to filter on. Both geography names or IDs can be entered here.
+            filter_origins: A geography ID, or list of geography IDs to filter on.
 
-            filter_owners: An owner, or list of owners to filter on. Both charterer/owner names or IDs can be entered here.
+            filter_owners: An corporation ID, or list of corporation IDs to filter on.
 
-            filter_products: A product, or list of products to filter on. Both product names or IDs can be entered here.
+            filter_products: A product ID, or list of product IDs to filter on.
 
-            filter_vessels: A vessel, or list of vessels to filter on. Both vessel names or IDs can be entered here,
+            filter_vessels: A vessel ID, or list of vessel IDs to filter on.
 
-            filter_vessel_classes: A vessel class, or list of vessel classes to filter on. Both vessel names or IDs can be entered here,
+            filter_vessel_classes: A vessel class, or list of vessel classes to filter on.
 
         # Returns
         `VesselMovementsResult`, containing all the vessel movements matching the given search terms.
@@ -106,12 +99,14 @@ class VesselMovements(Search):
         Let's search for all vessels that departed from `Rotterdam [NL]` on the morning of 1st December 2018.
 
         ```python
-        >>> from vortexasdk import VesselMovements
+        >>> from vortexasdk import VesselMovements, Geographies
+        >>> rotterdam = [g.id for g in Geographies().search("rotterdam").to_list() if "port" in g.layer]
         >>> df = VesselMovements().search(
-                filter_time_min=datetime(2017, 10, 1, 0, 0),
-                filter_time_max=datetime(2017, 10, 1, 0, 10),
-                filter_origins='rotterdam'
-        ).to_df().head(2)
+        ...        filter_time_min=datetime(2017, 10, 1, 0, 0),
+        ...        filter_time_max=datetime(2017, 10, 1, 0, 10),
+        ...        filter_origins=rotterdam
+        ... ).to_df().head(2)
+
         ```
 
         |    | start_timestamp          | end_timestamp            |   vessel.imo | vessel.name   | vessel.vessel_class   | origin.location.country.label   | origin.location.port.label   | destination.location.country.label   | destination.location.port.label   |   cargoes.0.quantity | cargoes.0.product.grade.label   |
@@ -123,21 +118,16 @@ class VesselMovements(Search):
 
         """
         params = {
-            # Compulsory search parameters
             "filter_time_min": to_ISODate(filter_time_min),
             "filter_time_max": to_ISODate(filter_time_max),
             "unit": unit,
             "size": self._MAX_PAGE_RESULT_SIZE,
-            "filter_charterers": convert_to_corporation_ids(filter_charterers),
-            "filter_owners": convert_to_corporation_ids(filter_owners),
-            "filter_destinations": convert_to_geography_ids(
-                filter_destinations
-            ),
-            "filter_origins": convert_to_geography_ids(filter_origins),
-            "filter_products": convert_to_product_ids(filter_products),
-            "filter_vessels": convert_to_vessel_ids(
-                convert_to_list(filter_vessels)
-            ),
+            "filter_charterers": convert_to_list(filter_charterers),
+            "filter_owners": convert_to_list(filter_owners),
+            "filter_destinations": convert_to_list(filter_destinations),
+            "filter_origins": convert_to_list(filter_origins),
+            "filter_products": convert_to_list(filter_products),
+            "filter_vessels": convert_to_list(filter_vessels),
             "filter_vessel_classes": convert_to_list(filter_vessel_classes),
         }
 

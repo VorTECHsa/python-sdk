@@ -2,7 +2,6 @@
 from typing import List, Union, Dict
 
 from vortexasdk.api.id import ID
-from vortexasdk.conversions import convert_to_product_ids
 from vortexasdk.endpoints.endpoints import VESSELS_REFERENCE
 from vortexasdk.endpoints.vessels_result import VesselsResult
 from vortexasdk.operations import Reference, Search
@@ -51,8 +50,8 @@ class Vessels(Reference, Search):
         ```python
         >>> from vortexasdk import Vessels
         >>> Vessels().search(vessel_classes='vlcc', term='ocean').to_df(columns=['name', 'imo', 'mmsi', 'related_names'])
+        ...
         ```
-
         |    | name         |     imo |      mmsi | related_names             |
         |---:|:-------------|--------:|----------:|:--------------------------|
         |  0 | OCEANIS      | 9532757 | 241089000 | ['OCEANIS']               |
@@ -70,7 +69,9 @@ class Vessels(Reference, Search):
         - Let's find all the vessels currently carrying Crude.
 
         ```python
-        >>> Vessels().search(vessel_product_types='crude').to_df()
+        >>> from vortexasdk import Vessels, Products
+        >>> crude = [p.id for p in Products().search(term="crude").to_list() if 'group' in p.layer]
+        >>> Vessels().search(vessel_product_types=crude).to_df()
         ```
 
         # Further Documentation
@@ -82,9 +83,7 @@ class Vessels(Reference, Search):
             "term": [str(e) for e in convert_to_list(term)],
             "ids": convert_to_list(ids),
             "vessel_classes": convert_to_list(vessel_classes),
-            "vessel_product_types": convert_to_product_ids(
-                convert_to_list(vessel_product_types)
-            ),
+            "vessel_product_types": convert_to_list(vessel_product_types),
         }
 
         return VesselsResult(super().search(**search_params))

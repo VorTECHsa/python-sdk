@@ -85,23 +85,23 @@ class CargoMovements(Search):
 
             cm_unit: Unit of measurement. Enter 'b' for barrels or 't' for tonnes.
 
-            filter_corporations: A corporation ID, or list of corporations to filter on.
+            filter_corporations: A corporation ID, or list of corporation IDs to filter on.
 
-            filter_destinations: A geography ID, or list of geographies to filter on.
+            filter_destinations: A geography ID, or list of geography IDs to filter on.
 
-            filter_origins: A geography ID, or list of geographies to filter on.
+            filter_origins: A geography ID, or list of geography IDs to filter on.
 
-            filter_owners: An owner ID, or list of owners to filter on.
+            filter_owners: An owner ID, or list of owner IDs to filter on.
 
-            filter_products: A product ID, or list of products to filter on.
+            filter_products: A product ID, or list of product IDs to filter on.
 
-            filter_vessels: A vessel ID, or list of vessels to filter on.
+            filter_vessels: A vessel ID, or list of vessel IDs to filter on.
 
-            filter_storage_locations: A geography ID, or list of geography to filter on.
+            filter_storage_locations: A geography ID, or list of geography IDs to filter on.
 
-            filter_ship_to_ship_locations: A geography ID, or list of geography to filter on.
+            filter_ship_to_ship_locations: A geography ID, or list of geography IDs to filter on.
 
-            filter_waypoints: A geography ID, or list of geography to filter on.
+            filter_waypoints: A geography ID, or list of geography IDs to filter on.
 
             disable_geographic_exclusion_rules: This controls a popular industry term "intra-movements" and determines
              the filter behaviour for cargo leaving then entering the same geographic area.
