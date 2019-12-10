@@ -28,7 +28,7 @@ class Geography(Node, IDNameLayer, FromDictMixin):
     centre_point: Optional[Position]
     exclusion_rule: List[IDNameLayer]
     hierarchy: List[IDLayer]
-    location: Position
+    location: Optional[Position]
 
 
 @dataclass(frozen=True)
