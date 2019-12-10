@@ -41,6 +41,13 @@ jobs:
             pytest -v
 
       - run:
+          name: "Run doctests"
+          command: |
+            . .venv/bin/activate
+            export LOG_LEVEL='ERROR'
+            python -m doctest -o ELLIPSIS -o FAIL_FAST vortexasdk/*/*.py
+
+      - run:
           name: "Build docs"
           command: |
             . .venv/bin/activate

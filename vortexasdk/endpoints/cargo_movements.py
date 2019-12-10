@@ -40,7 +40,7 @@ class CargoMovements(Search):
 
         ```python
         >>> from vortexasdk import CargoMovements
-        >>> df = CargoMovements().load_all().to_df()
+        >>> df = CargoMovements().load_all().to_df() # doctest: +SKIP
         ```
         """
         logger.info(
@@ -116,16 +116,16 @@ class CargoMovements(Search):
 
 
         ```python
-        >>> from vortexasdk import CargoMovements, Geographies
+        >>> from vortexasdk import CargoMovements
         >>> rotterdam = [g.id for g in Geographies().search("rotterdam").to_list() if "port" in g.layer]
-        >>> df = CargoMovements().search(
-            filter_origins=rotterdam,
-            filter_activity='loading_state',
-            filter_time_min=datetime(2018, 12, 1),
-            filter_time_max=datetime(2018, 12, 1, 12),
-        ).to_df(columns=['product.grade.label', 'product.group.label', 'vessels.0.vessel_class'])
-        ```
+        >>> search_result = CargoMovements().search(
+        ...    filter_origins=rotterdam,
+        ...    filter_activity='loading_state',
+        ...    filter_time_min=datetime(2018, 12, 1),
+        ...    filter_time_max=datetime(2018, 12, 1, 12))
+        >>> df = search_result.to_df(columns=['product.grade.label', 'product.group.label', 'vessels.0.vessel_class'])
 
+        ```
         |    | product.group.label   | product.grade.label             | vessels.0.vessel_class   |
         |---:|:----------------------|:--------------------------------|:-------------------------|
         |  0 | Clean products        | Pygas                           | general_purpose          |
@@ -146,16 +146,16 @@ class CargoMovements(Search):
         >>> suez = [g.id for g in Geographies().search("suez").to_list()]
         >>> china = [g.id for g in Geographies().search("china").to_list() if "country" in g.layer]
         >>> vlccs = [v.id for v in Vessels().search(vessel_classes="vlcc_plus")]
+        >>> cargo_movement_search_result = CargoMovements().search(
+        ...    filter_destinations=china,
+        ...    filter_activity="loading_state",
+        ...    filter_waypoints=suez,
+        ...    filter_vessels=vlccs,
+        ...    filter_time_min=datetime(2018, 12, 1),
+        ...    filter_time_max=datetime(2018, 12, 1))
         >>> cols = ['vessels.0.name', 'vessels.0.vessel_class', 'vessels.1.name', 'vessels.1.vessel_class',  'vessels.2.name', 'vessels.2.vessel_class', 'product.group.label', 'quantity']
+        >>> cargo_movements_df = cargo_movement_search_result.to_df(columns=cols)
 
-        >>> df = CargoMovements().search(
-            filter_destinations=china,
-            filter_activity="loading_state",
-            filter_waypoints=suez,
-            filter_vessels=vlccs,
-            filter_time_min=datetime(2016, 12, 01),
-            filter_time_max=datetime(2018, 12, 01),
-        ).to_df(columns=cols)
         ```
 
         |    | vessels.0.name   | vessels.0.vessel_class   | vessels.1.name   | vessels.1.vessel_class   | vessels.2.name   | vessels.2.vessel_class   | product.group.label   |   quantity |

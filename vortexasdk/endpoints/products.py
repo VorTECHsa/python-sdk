@@ -46,7 +46,8 @@ class Products(Reference, Search):
 
         ```python
         >>> from vortexasdk import Products
-        >>> Products().search(term=['diesel', 'fuel oil', 'grane']).to_df('all')
+        >>> df = Products().search(term=['diesel', 'fuel oil', 'grane']).to_df('all')
+
         ```
         Returns
 

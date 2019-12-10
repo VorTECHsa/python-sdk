@@ -41,7 +41,7 @@ class VesselMovements(Search):
 
         ```python
         >>> from vortexasdk import VesselMovements
-        >>> df = VesselMovements().load_all().to_df() # doctest:+SKIP
+        >>> df = VesselMovements().load_all().to_df() # doctest: +SKIP
 
         ```
         """

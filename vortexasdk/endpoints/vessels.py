@@ -49,8 +49,8 @@ class Vessels(Reference, Search):
 
         ```python
         >>> from vortexasdk import Vessels
-        >>> Vessels().search(vessel_classes='vlcc', term='ocean').to_df(columns=['name', 'imo', 'mmsi', 'related_names'])
-        ...
+        >>> vessels_df = Vessels().search(vessel_classes='vlcc', term='ocean').to_df(columns=['name', 'imo', 'mmsi', 'related_names'])
+
         ```
         |    | name         |     imo |      mmsi | related_names             |
         |---:|:-------------|--------:|----------:|:--------------------------|
@@ -71,7 +71,8 @@ class Vessels(Reference, Search):
         ```python
         >>> from vortexasdk import Vessels, Products
         >>> crude = [p.id for p in Products().search(term="crude").to_list() if 'group' in p.layer]
-        >>> Vessels().search(vessel_product_types=crude).to_df()
+        >>> vessels_df = Vessels().search(vessel_product_types=crude).to_df()
+
         ```
 
         # Further Documentation
