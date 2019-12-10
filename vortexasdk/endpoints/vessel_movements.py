@@ -49,7 +49,7 @@ class VesselMovements(Search):
 
         ```python
         >>> from vortexasdk import VesselMovements
-        >>> df = VesselMovements().load_all().to_df()
+        >>> df = VesselMovements().load_all().to_df() # doctest: +SKIP
         ```
         """
         logger.info(
@@ -108,11 +108,12 @@ class VesselMovements(Search):
 
         ```python
         >>> from vortexasdk import VesselMovements
-        >>> df = VesselMovements().search(
-                filter_time_min=datetime(2017, 10, 1, 0, 0),
-                filter_time_max=datetime(2017, 10, 1, 0, 10),
-                filter_origins='rotterdam'
-        ).to_df().head(2)
+        >>> search_result = VesselMovements().search(
+        ...        filter_time_min=datetime(2017, 10, 1, 0, 0),
+        ...        filter_time_max=datetime(2017, 10, 1, 0, 10),
+        ...        filter_origins='rotterdam')
+        >>> df = search_result.to_df().head(2)
+
         ```
 
         |    | start_timestamp          | end_timestamp            |   vessel.imo | vessel.name   | vessel.vessel_class   | origin.location.country.label   | origin.location.port.label   | destination.location.country.label   | destination.location.port.label   |   cargoes.0.quantity | cargoes.0.product.grade.label   |
