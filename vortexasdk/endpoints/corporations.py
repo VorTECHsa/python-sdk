@@ -35,7 +35,8 @@ class Corporations(Reference, Search):
         Let's load all corporations
         ```python
         >>> from vortexasdk import Corporations
-        >>> Corporations().search().to_df()
+        >>> df = Corporations().search().to_df()
+
         ```
         returns
 
@@ -48,7 +49,8 @@ class Corporations(Reference, Search):
         Let's find all corporations with 'do' in the name.
         ```python
         >>> [x.name for x in Corporations().search(term="do").to_list()]
-            ['Donsotank', 'Dorval SC']
+        [...]
+
         ```
 
         # Further Documentation
@@ -73,7 +75,7 @@ class Corporations(Reference, Search):
         [VortexaAPI Corporation Reference](https://docs.vortexa.com/reference/GET/reference/charterers/%7Bid%7D)
 
         # Examples
-            >>> Corporations().reference(id='12345abcdef')
+        >>> Corporations().reference(id='12345abcdef') # doctest: +SKIP
 
         """
         return super().reference(id)

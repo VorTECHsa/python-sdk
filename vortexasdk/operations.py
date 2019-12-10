@@ -33,7 +33,7 @@ class Reference:
 
         # Examples
 
-            >>> Reference("/reference/geographies").reference(id='cfb8c4ef76585c3a37792b643791a0f4ff6d5656d5508927d8017319e21f2fca')
+        >>> Reference("/reference/geographies").reference(id='cfb8c4ef76585c3a37792b643791a0f4ff6d5656d5508927d8017319e21f2fca') # doctest: +SKIP
 
         """
         logger.info(
@@ -76,7 +76,7 @@ class Search:
 
         # Examples
 
-            >>> Search("/reference/vessels").search(term="DHT")
+        >>> Search("/reference/vessels").search(term="DHT") # doctest: +SKIP
 
         """
         logger.info(
