@@ -24,7 +24,7 @@ china = [
 ]
 
 # Find the ID of all VLCCs
-vlccs = [v.id for v in Vessels().search(vessel_classes="vlcc_plus")]
+vlccs = [v.id for v in Vessels().search(vessel_classes="vlcc_plus").to_list()]
 
 # Query API
 search_result = CargoMovements().search(

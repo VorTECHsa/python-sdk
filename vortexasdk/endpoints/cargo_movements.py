@@ -116,7 +116,7 @@ class CargoMovements(Search):
 
 
         ```python
-        >>> from vortexasdk import CargoMovements
+        >>> from vortexasdk import CargoMovements, Geographies
         >>> rotterdam = [g.id for g in Geographies().search("rotterdam").to_list() if "port" in g.layer]
         >>> search_result = CargoMovements().search(
         ...    filter_origins=rotterdam,
@@ -145,7 +145,7 @@ class CargoMovements(Search):
         >>> from vortexasdk import CargoMovements, Geographies, Vessels
         >>> suez = [g.id for g in Geographies().search("suez").to_list()]
         >>> china = [g.id for g in Geographies().search("china").to_list() if "country" in g.layer]
-        >>> vlccs = [v.id for v in Vessels().search(vessel_classes="vlcc_plus")]
+        >>> vlccs = [v.id for v in Vessels().search(vessel_classes="vlcc_plus").to_list()]
         >>> cargo_movement_search_result = CargoMovements().search(
         ...    filter_destinations=china,
         ...    filter_activity="loading_state",
