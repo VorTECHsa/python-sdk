@@ -197,18 +197,6 @@
 
 <p>Cargo Movements Endpoint, use this to search through Vortexa's cargo movements.</p>
 <p>A detailed explanation of Cargo/Vessel Movements can be found <a href="https://docs.vortexa.com/reference/intro-movement-difference">here</a>.</p>
-<h3 id="vortexasdk.endpoints.cargo_movements.CargoMovements.load_all">load_all</h3>
-
-<pre><code class="python">CargoMovements.load_all(self) -&gt; vortexasdk.endpoints.cargo_movements_result.CargoMovementsResult
-</code></pre>
-
-<p>Load all available Cargo Movements.</p>
-<p><strong>Example</strong></p>
-<p>Let's load all cargo movements.</p>
-<pre><code class="python">&gt;&gt;&gt; from vortexasdk import CargoMovements
-&gt;&gt;&gt; df = CargoMovements().load_all().to_df() # doctest: +SKIP
-</code></pre>
-
 <h3 id="vortexasdk.endpoints.cargo_movements.CargoMovements.search">search</h3>
 
 <pre><code class="python">CargoMovements.search(self, filter_activity: str, filter_time_min: datetime.datetime = datetime.datetime(2019, 10, 1, 0, 0), filter_time_max: datetime.datetime = datetime.datetime(2019, 10, 1, 1, 0), cm_unit: str = 'b', filter_charterers: Union[str, List[str]] = None, filter_destinations: Union[str, List[str]] = None, filter_origins: Union[str, List[str]] = None, filter_owners: Union[str, List[str]] = None, filter_products: Union[str, List[str]] = None, filter_vessels: Union[str, List[str]] = None, filter_storage_locations: Union[str, List[str]] = None, filter_ship_to_ship_locations: Union[str, List[str]] = None, filter_waypoints: Union[str, List[str]] = None, disable_geographic_exclusion_rules: bool = None) -&gt; vortexasdk.endpoints.cargo_movements_result.CargoMovementsResult
