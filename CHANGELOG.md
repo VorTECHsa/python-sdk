@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.10.0](https://github.com/V0RT3X4/python-sdk/tree/0.10.0) (2019-12-11)
+
+[Full Changelog](https://github.com/V0RT3X4/python-sdk/compare/0.9.2...0.10.0)
+
+**Merged pull requests:**
+
+- Remove fuzzy search [\#134](https://github.com/V0RT3X4/python-sdk/pull/134) ([KitBurgess](https://github.com/KitBurgess))
+
 ## [0.9.2](https://github.com/V0RT3X4/python-sdk/tree/0.9.2) (2019-12-11)
 
 [Full Changelog](https://github.com/V0RT3X4/python-sdk/compare/0.9.1...0.9.2)
