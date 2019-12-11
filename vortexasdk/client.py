@@ -3,6 +3,7 @@ import functools
 import os
 from json import JSONDecodeError
 from multiprocessing.pool import ThreadPool
+from random import shuffle
 from typing import Dict, List
 
 from requests import Response
@@ -24,7 +25,7 @@ class VortexaClient(AbstractVortexaClient):
     """The API client responsible for calling Vortexa's Public API."""
 
     _DEFAULT_PAGE_LOAD_SIZE = 10000
-    _N_THREADS = 4
+    _N_THREADS = 6
 
     def __init__(self, **kwargs):
         self.api_key = kwargs["api_key"]
@@ -41,7 +42,8 @@ class VortexaClient(AbstractVortexaClient):
         payload = {k: v for k, v in data.items() if v is not None}
         total = _send_post_request(url, payload, size=1, offset=0)["total"]
         size = data.get("size", 1000)
-        offsets = range(0, total, size)
+        offsets = list(range(0, total, size))
+        shuffle(offsets)
 
         with tqdm(
             total=total, desc="Loading from API", disable=(len(offsets) == 1)
