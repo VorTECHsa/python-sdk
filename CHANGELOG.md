@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.11.0](https://github.com/V0RT3X4/python-sdk/tree/0.11.0) (2019-12-11)
+
+[Full Changelog](https://github.com/V0RT3X4/python-sdk/compare/0.10.0...0.11.0)
+
+**Merged pull requests:**
+
+- Remove load all [\#139](https://github.com/V0RT3X4/python-sdk/pull/139) ([KitBurgess](https://github.com/KitBurgess))
+- perf: Failfast if \> 1e6 records returned from API in single call [\#138](https://github.com/V0RT3X4/python-sdk/pull/138) ([KitBurgess](https://github.com/KitBurgess))
+
 ## [0.10.0](https://github.com/V0RT3X4/python-sdk/tree/0.10.0) (2019-12-11)
 
 [Full Changelog](https://github.com/V0RT3X4/python-sdk/compare/0.9.2...0.10.0)
