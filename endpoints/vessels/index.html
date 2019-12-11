@@ -215,7 +215,7 @@
 <p><strong>vessel_classes</strong>: vessel_class (or list of vessel classes) we'd like to search. Each vessel class must be one of "tiny_tanker" , "general_purpose" , "handysize" , "handymax" , "panamax" , "aframax" , "suezmax" , "vlcc_plus" , "sgc" , "mgc" , "lgc" , "vlgc". Refer to <a href="https://docs.vortexa.com/reference/intro-vessel-entities"> VortexaAPI Vessel Entities</a> for the most up-to-date list of vessel classes.</p>
 </li>
 <li>
-<p><strong>vessel_product_types</strong>: A product, or list of products to filter on, searching vessels currently carrying these products. Both product names or IDs can be entered here.</p>
+<p><strong>vessel_product_types</strong>: A product ID, or list of product IDs to filter on, searching vessels currently carrying these products.</p>
 </li>
 </ul>
 <p><strong>Returns</strong></p>
@@ -302,7 +302,9 @@
 <ul>
 <li>Let's find all the vessels currently carrying Crude.</li>
 </ul>
-<pre><code class="python">&gt;&gt;&gt; vessels_df = Vessels().search(vessel_product_types='crude').to_df()
+<pre><code class="python">&gt;&gt;&gt; from vortexasdk import Vessels, Products
+&gt;&gt;&gt; crude = [p.id for p in Products().search(term=&quot;crude&quot;).to_list() if 'group' in p.layer]
+&gt;&gt;&gt; vessels_df = Vessels().search(vessel_product_types=crude).to_df()
 
 </code></pre>
 

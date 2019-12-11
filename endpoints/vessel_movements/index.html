@@ -213,6 +213,7 @@
 <p>Let's load all vessel movements as a <code>pd.DataFrame</code>.</p>
 <pre><code class="python">&gt;&gt;&gt; from vortexasdk import VesselMovements
 &gt;&gt;&gt; df = VesselMovements().load_all().to_df() # doctest: +SKIP
+
 </code></pre>
 
 <h3 id="vortexasdk.endpoints.vessel_movements.VesselMovements.search">search</h3>
@@ -233,37 +234,38 @@
 <p><strong>unit</strong>: Unit of measurement. Enter 'b' for barrels or 't' for tonnes.</p>
 </li>
 <li>
-<p><strong>filter_corporations</strong>: A corporation, or list of corporations to filter on.</p>
+<p><strong>filter_corporations</strong>: A corporation ID, or list of corporation IDs to filter on.</p>
 </li>
 <li>
-<p><strong>filter_destinations</strong>: A geography, or list of geographies to filter on. Both geography names or IDs can be entered here.</p>
+<p><strong>filter_destinations</strong>: A geography ID, or list of geography IDs to filter on.</p>
 </li>
 <li>
-<p><strong>filter_origins</strong>: A geography, or list of geographies to filter on. Both geography names or IDs can be entered here.</p>
+<p><strong>filter_origins</strong>: A geography ID, or list of geography IDs to filter on.</p>
 </li>
 <li>
-<p><strong>filter_owners</strong>: An owner, or list of owners to filter on. Both charterer/owner names or IDs can be entered here.</p>
+<p><strong>filter_owners</strong>: An corporation ID, or list of corporation IDs to filter on.</p>
 </li>
 <li>
-<p><strong>filter_products</strong>: A product, or list of products to filter on. Both product names or IDs can be entered here.</p>
+<p><strong>filter_products</strong>: A product ID, or list of product IDs to filter on.</p>
 </li>
 <li>
-<p><strong>filter_vessels</strong>: A vessel, or list of vessels to filter on. Both vessel names or IDs can be entered here,</p>
+<p><strong>filter_vessels</strong>: A vessel ID, or list of vessel IDs to filter on.</p>
 </li>
 <li>
-<p><strong>filter_vessel_classes</strong>: A vessel class, or list of vessel classes to filter on. Both vessel names or IDs can be entered here,</p>
+<p><strong>filter_vessel_classes</strong>: A vessel class, or list of vessel classes to filter on.</p>
 </li>
 </ul>
 <p><strong>Returns</strong></p>
 <p><code>VesselMovementsResult</code>, containing all the vessel movements matching the given search terms.</p>
 <p><strong>Example</strong></p>
 <p>Let's search for all vessels that departed from <code>Rotterdam [NL]</code> on the morning of 1st December 2018.</p>
-<pre><code class="python">&gt;&gt;&gt; from vortexasdk import VesselMovements
-&gt;&gt;&gt; search_result = VesselMovements().search(
+<pre><code class="python">&gt;&gt;&gt; from vortexasdk import VesselMovements, Geographies
+&gt;&gt;&gt; rotterdam = [g.id for g in Geographies().search(&quot;rotterdam&quot;).to_list() if &quot;port&quot; in g.layer]
+&gt;&gt;&gt; df = VesselMovements().search(
 ...        filter_time_min=datetime(2017, 10, 1, 0, 0),
 ...        filter_time_max=datetime(2017, 10, 1, 0, 10),
-...        filter_origins='rotterdam')
-&gt;&gt;&gt; df = search_result.to_df().head(2)
+...        filter_origins=rotterdam
+... ).to_df().head(2)
 
 </code></pre>
 

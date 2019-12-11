@@ -233,31 +233,31 @@
 <p><strong>cm_unit</strong>: Unit of measurement. Enter 'b' for barrels or 't' for tonnes.</p>
 </li>
 <li>
-<p><strong>filter_corporations</strong>: A corporation, or list of corporations to filter on.</p>
+<p><strong>filter_corporations</strong>: A corporation ID, or list of corporation IDs to filter on.</p>
 </li>
 <li>
-<p><strong>filter_destinations</strong>: A geography, or list of geographies to filter on. Both geography names or IDs can be entered here.</p>
+<p><strong>filter_destinations</strong>: A geography ID, or list of geography IDs to filter on.</p>
 </li>
 <li>
-<p><strong>filter_origins</strong>: A geography, or list of geographies to filter on. Both geography names or IDs can be entered here.</p>
+<p><strong>filter_origins</strong>: A geography ID, or list of geography IDs to filter on.</p>
 </li>
 <li>
-<p><strong>filter_owners</strong>: An owner, or list of owners to filter on. Both charterer/owner names or IDs can be entered here.</p>
+<p><strong>filter_owners</strong>: An owner ID, or list of owner IDs to filter on.</p>
 </li>
 <li>
-<p><strong>filter_products</strong>: A product, or list of products to filter on. Both product names or IDs can be entered here.</p>
+<p><strong>filter_products</strong>: A product ID, or list of product IDs to filter on.</p>
 </li>
 <li>
-<p><strong>filter_vessels</strong>: A vessel, or list of vessels to filter on. Vessel name, imo, mmsi, vessel class, or vessel IDs can be entered here,</p>
+<p><strong>filter_vessels</strong>: A vessel ID, or list of vessel IDs to filter on.</p>
 </li>
 <li>
-<p><strong>filter_storage_locations</strong>: A geography, or list of geography to filter on. Both geography names or IDs can be entered here.</p>
+<p><strong>filter_storage_locations</strong>: A geography ID, or list of geography IDs to filter on.</p>
 </li>
 <li>
-<p><strong>filter_ship_to_ship_locations</strong>: A geography, or list of geography to filter on. Both geography names or IDs can be entered here.</p>
+<p><strong>filter_ship_to_ship_locations</strong>: A geography ID, or list of geography IDs to filter on.</p>
 </li>
 <li>
-<p><strong>filter_waypoints</strong>: A geography, or list of geography to filter on. Both geography names or IDs can be entered here.</p>
+<p><strong>filter_waypoints</strong>: A geography ID, or list of geography IDs to filter on.</p>
 </li>
 <li>
 <p><strong>disable_geographic_exclusion_rules</strong>: This controls a popular industry term "intra-movements" and determines
@@ -270,13 +270,13 @@
 <ul>
 <li><em>Which cargoes were loaded from Rotterdam on the morning of 1st December 2018?</em></li>
 </ul>
-<pre><code class="python">&gt;&gt;&gt; from vortexasdk import CargoMovements
+<pre><code class="python">&gt;&gt;&gt; from vortexasdk import CargoMovements, Geographies
+&gt;&gt;&gt; rotterdam = [g.id for g in Geographies().search(&quot;rotterdam&quot;).to_list() if &quot;port&quot; in g.layer]
 &gt;&gt;&gt; search_result = CargoMovements().search(
-...    filter_origins=&quot;Rotterdam&quot;,
+...    filter_origins=rotterdam,
 ...    filter_activity='loading_state',
 ...    filter_time_min=datetime(2018, 12, 1),
 ...    filter_time_max=datetime(2018, 12, 1, 12))
-
 &gt;&gt;&gt; df = search_result.to_df(columns=['product.grade.label', 'product.group.label', 'vessels.0.vessel_class'])
 
 </code></pre>
@@ -340,12 +340,15 @@
 </ul>
 <p>Note here we include vessels.0..., vessels.1..., vessels.2... columns.
 This lets us view all vessels present in any STS operations.</p>
-<pre><code class="python">&gt;&gt;&gt; from vortexasdk import CargoMovements
+<pre><code class="python">&gt;&gt;&gt; from vortexasdk import CargoMovements, Geographies, Vessels
+&gt;&gt;&gt; suez = [g.id for g in Geographies().search(&quot;suez&quot;).to_list()]
+&gt;&gt;&gt; china = [g.id for g in Geographies().search(&quot;china&quot;).to_list() if &quot;country&quot; in g.layer]
+&gt;&gt;&gt; vlccs = [v.id for v in Vessels().search(vessel_classes=&quot;vlcc_plus&quot;).to_list()]
 &gt;&gt;&gt; cargo_movement_search_result = CargoMovements().search(
-...    filter_destinations=&quot;China&quot;,
+...    filter_destinations=china,
 ...    filter_activity=&quot;loading_state&quot;,
-...    filter_waypoints=&quot;suez&quot;,
-...    filter_vessels=&quot;vlcc&quot;,
+...    filter_waypoints=suez,
+...    filter_vessels=vlccs,
 ...    filter_time_min=datetime(2018, 12, 1),
 ...    filter_time_max=datetime(2018, 12, 1))
 &gt;&gt;&gt; cols = ['vessels.0.name', 'vessels.0.vessel_class', 'vessels.1.name', 'vessels.1.vessel_class',  'vessels.2.name', 'vessels.2.vessel_class', 'product.group.label', 'quantity']
