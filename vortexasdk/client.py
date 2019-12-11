@@ -24,8 +24,9 @@ logger = get_logger(__name__)
 class VortexaClient(AbstractVortexaClient):
     """The API client responsible for calling Vortexa's Public API."""
 
-    _DEFAULT_PAGE_LOAD_SIZE = 10000
+    _DEFAULT_PAGE_LOAD_SIZE = int(1e4)
     _N_THREADS = 6
+    _MAX_ALLOWED_TOTAL = int(1e6)
 
     def __init__(self, **kwargs):
         self.api_key = kwargs["api_key"]
@@ -41,6 +42,13 @@ class VortexaClient(AbstractVortexaClient):
         url = self._create_url(resource)
         payload = {k: v for k, v in data.items() if v is not None}
         total = _send_post_request(url, payload, size=1, offset=0)["total"]
+
+        if total > self._MAX_ALLOWED_TOTAL:
+            raise Exception(
+                f"Attempting to query too many records at once. Attempted records: {total}, Max allowed records: {self._MAX_ALLOWED_TOTAL} . "
+                f"Try reducing the date range to return fewer records."
+            )
+
         size = data.get("size", 1000)
         offsets = list(range(0, total, size))
         shuffle(offsets)
@@ -49,7 +57,7 @@ class VortexaClient(AbstractVortexaClient):
             total=total, desc="Loading from API", disable=(len(offsets) == 1)
         ) as pbar:
             with ThreadPool(self._N_THREADS) as pool:
-                logger.debug(
+                logger.info(
                     f"{total} Results to retreive."
                     f" Sending {len(offsets)}"
                     f" post requests in parallel using {self._N_THREADS} threads."
