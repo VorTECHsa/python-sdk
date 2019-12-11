@@ -3,6 +3,7 @@ from datetime import datetime
 from docs.utils import to_markdown
 from tests.testcases import TestCaseUsingRealAPI
 from tests.timer import Timer
+from vortexasdk import Geographies, Corporations
 from vortexasdk.endpoints.cargo_movements import CargoMovements
 
 
@@ -66,7 +67,11 @@ class TestCargoMovementsReal(TestCaseUsingRealAPI):
             CargoMovements()
             .search(
                 filter_activity="loading_state",
-                filter_origins="Rotterdam",
+                filter_origins=[
+                    g.id
+                    for g in Geographies().search(term="rotterdam").to_list()
+                    if "port" in g.layer
+                ],
                 filter_time_min=datetime(2019, 8, 29),
                 filter_time_max=datetime(2019, 8, 29, 0, 10),
             )
@@ -81,7 +86,9 @@ class TestCargoMovementsReal(TestCaseUsingRealAPI):
             CargoMovements()
             .search(
                 filter_activity="loading_state",
-                filter_owners="DHT",
+                filter_owners=[
+                    c.id for c in Corporations().search(term="DHT").to_list()
+                ],
                 filter_time_min=datetime(2018, 10, 1, 0),
                 filter_time_max=datetime(2018, 10, 5, 1),
             )
@@ -95,7 +102,9 @@ class TestCargoMovementsReal(TestCaseUsingRealAPI):
             CargoMovements()
             .search(
                 filter_activity="any_activity",
-                filter_waypoints="Suez",
+                filter_waypoints=[
+                    g.id for g in Geographies().search(term="suez").to_list()
+                ],
                 filter_time_min=datetime(2019, 8, 29),
                 filter_time_max=datetime(2019, 8, 29, 0, 10),
             )

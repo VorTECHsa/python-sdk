@@ -2,7 +2,6 @@
 from typing import List, Union, Dict
 
 from vortexasdk.api.id import ID
-from vortexasdk.conversions import convert_to_product_ids
 from vortexasdk.endpoints.endpoints import VESSELS_REFERENCE
 from vortexasdk.endpoints.vessels_result import VesselsResult
 from vortexasdk.operations import Reference, Search
@@ -26,7 +25,7 @@ class Vessels(Reference, Search):
         term: Union[str, List[str]] = None,
         ids: Union[str, List[str]] = None,
         vessel_classes: Union[str, List[str]] = None,
-        vessel_product_types: Union[str, List[str]] = None,
+        vessel_product_types: Union[ID, List[ID]] = None,
     ) -> VesselsResult:
         """
         Find all vessels matching given search arguments. Search arguments are combined in an AND manner.
@@ -38,7 +37,7 @@ class Vessels(Reference, Search):
 
             vessel_classes: vessel_class (or list of vessel classes) we'd like to search. Each vessel class must be one of "tiny_tanker" , "general_purpose" , "handysize" , "handymax" , "panamax" , "aframax" , "suezmax" , "vlcc_plus" , "sgc" , "mgc" , "lgc" , "vlgc". Refer to [ VortexaAPI Vessel Entities](https://docs.vortexa.com/reference/intro-vessel-entities) for the most up-to-date list of vessel classes.
 
-            vessel_product_types: A product, or list of products to filter on, searching vessels currently carrying these products. Both product names or IDs can be entered here.
+            vessel_product_types: A product ID, or list of product IDs to filter on, searching vessels currently carrying these products.
 
         # Returns
         List of vessels matching the search arguments.
@@ -53,7 +52,6 @@ class Vessels(Reference, Search):
         >>> vessels_df = Vessels().search(vessel_classes='vlcc', term='ocean').to_df(columns=['name', 'imo', 'mmsi', 'related_names'])
 
         ```
-
         |    | name         |     imo |      mmsi | related_names             |
         |---:|:-------------|--------:|----------:|:--------------------------|
         |  0 | OCEANIS      | 9532757 | 241089000 | ['OCEANIS']               |
@@ -71,7 +69,9 @@ class Vessels(Reference, Search):
         - Let's find all the vessels currently carrying Crude.
 
         ```python
-        >>> vessels_df = Vessels().search(vessel_product_types='crude').to_df()
+        >>> from vortexasdk import Vessels, Products
+        >>> crude = [p.id for p in Products().search(term="crude").to_list() if 'group' in p.layer]
+        >>> vessels_df = Vessels().search(vessel_product_types=crude).to_df()
 
         ```
 
@@ -83,12 +83,10 @@ class Vessels(Reference, Search):
         search_params = {
             "term": [str(e) for e in convert_to_list(term)],
             "ids": convert_to_list(ids),
+            "vessel_product_types": convert_to_list(vessel_product_types),
             "vessel_classes": [
                 v.lower() for v in (convert_to_list(vessel_classes))
             ],
-            "vessel_product_types": convert_to_product_ids(
-                convert_to_list(vessel_product_types)
-            ),
         }
 
         return VesselsResult(super().search(**search_params))

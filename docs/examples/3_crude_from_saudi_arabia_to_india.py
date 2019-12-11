@@ -6,20 +6,45 @@ The below script returns a `pd.DataFrame`, similar to the table given in the mov
 
 """
 from datetime import datetime
+
 from dateutil.relativedelta import relativedelta
 
 from docs.utils import to_markdown
-from vortexasdk import CargoMovements
+from vortexasdk import CargoMovements, Geographies, Products
 
 now = datetime.utcnow()
 one_month_ago = now - relativedelta(months=1)
 
+# First we find the ID for the country India. Note that when searching geographies with the term 'india', we'll
+# retreive all geographies with india in the name, ie Indiana, British Indian Ocean Territory...
+all_geogs_with_india_in_the_name = Geographies().search("india").to_list()
+
+# We're only interested in the country India here
+india = [g.id for g in all_geogs_with_india_in_the_name if g.name == "India"]
+# Check we've only got one ID for India
+assert len(india) == 1
+
+saudi_arabia = [
+    g.id
+    for g in Geographies().search("saudi arabia").to_list()
+    if "country" in g.layer
+]
+# Check we've only got one ID for Saudi Arabia
+assert len(saudi_arabia) == 1
+
+# Let's find the Crude ID
+crude = [
+    p.id for p in Products().search("crude").to_list() if p.name == "Crude"
+]
+# Check we've only got one Crude ID
+assert len(crude) == 1
+
 # Query the API.
 search_result = CargoMovements().search(
     filter_activity="loading_end",
-    filter_origins="Saudi Arabia",
-    filter_destinations="India",
-    filter_products="Crude",
+    filter_origins=saudi_arabia,
+    filter_destinations=india,
+    filter_products=crude,
     filter_time_min=one_month_ago,
     filter_time_max=now,
 )
