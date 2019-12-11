@@ -3,10 +3,6 @@ from datetime import datetime
 from typing import List, Union
 
 from vortexasdk.api.shared_types import to_ISODate
-from vortexasdk.config import (
-    BEGINNING_OF_AVAILABLE_DATA,
-    END_OF_AVAILABLE_DATA,
-)
 from vortexasdk.endpoints.endpoints import VESSEL_MOVEMENTS_RESOURCE
 from vortexasdk.endpoints.vessel_movements_result import VesselMovementsResult
 from vortexasdk.logger import get_logger
@@ -33,26 +29,6 @@ class VesselMovements(Search):
 
     def __init__(self):
         Search.__init__(self, VESSEL_MOVEMENTS_RESOURCE)
-
-    def load_all(self) -> VesselMovementsResult:
-        """Load all available Vessel Movements.
-        # Example
-        Let's load all vessel movements as a `pd.DataFrame`.
-
-        ```python
-        >>> from vortexasdk import VesselMovements
-        >>> df = VesselMovements().load_all().to_df() # doctest: +SKIP
-
-        ```
-        """
-        logger.info(
-            f"Loading all Vessel Movements between {BEGINNING_OF_AVAILABLE_DATA} and {END_OF_AVAILABLE_DATA},"
-        )
-
-        return self.search(
-            filter_time_min=BEGINNING_OF_AVAILABLE_DATA,
-            filter_time_max=END_OF_AVAILABLE_DATA,
-        )
 
     def search(
         self,
