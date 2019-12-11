@@ -1,5 +1,6 @@
 from tests.testcases import TestCaseUsingRealAPI
 from tests.timer import Timer
+from vortexasdk import Products
 from vortexasdk.endpoints.vessels import Vessels
 
 
@@ -31,8 +32,8 @@ class TestVesselsReal(TestCaseUsingRealAPI):
         aframax_called_zhen = set(
             v.id
             for v in Vessels()
-            .search(vessel_classes="aframax", term="zhen")
-            .to_list()
+                .search(vessel_classes="aframax", term="zhen")
+                .to_list()
         )
 
         assert aframax_called_zhen.issubset(aframax)
@@ -48,7 +49,8 @@ class TestVesselsReal(TestCaseUsingRealAPI):
         assert len(df) == 2
 
     def test_find_crude_vessels(self):
-        df = Vessels().search(vessel_product_types="crude").to_df()
+        crude = [p.id for p in Products().search("crude").to_list() if "group" in p.layer]
+        df = Vessels().search(vessel_product_types=crude).to_df()
         assert len(df) > 1000
 
     def test_load_all(self):

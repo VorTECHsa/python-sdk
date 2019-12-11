@@ -25,7 +25,7 @@ class Vessels(Reference, Search):
         term: Union[str, List[str]] = None,
         ids: Union[str, List[str]] = None,
         vessel_classes: Union[str, List[str]] = None,
-        vessel_product_types: Union[str, List[str]] = None,
+        vessel_product_types: Union[ID, List[ID]] = None,
     ) -> VesselsResult:
         """
         Find all vessels matching given search arguments. Search arguments are combined in an AND manner.
@@ -37,7 +37,7 @@ class Vessels(Reference, Search):
 
             vessel_classes: vessel_class (or list of vessel classes) we'd like to search. Each vessel class must be one of "tiny_tanker" , "general_purpose" , "handysize" , "handymax" , "panamax" , "aframax" , "suezmax" , "vlcc_plus" , "sgc" , "mgc" , "lgc" , "vlgc". Refer to [ VortexaAPI Vessel Entities](https://docs.vortexa.com/reference/intro-vessel-entities) for the most up-to-date list of vessel classes.
 
-            vessel_product_types: A product, or list of products to filter on, searching vessels currently carrying these products. Both product names or IDs can be entered here.
+            vessel_product_types: A product ID, or list of product IDs to filter on, searching vessels currently carrying these products.
 
         # Returns
         List of vessels matching the search arguments.
