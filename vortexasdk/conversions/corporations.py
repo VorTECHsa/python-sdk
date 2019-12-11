@@ -13,7 +13,7 @@ def convert_to_corporation_ids(
 
     # Example
     ```
-        >>> convert_to_corporation_ids(["Exon"])
+    >>> convert_to_corporation_ids(["Exon"])
     [...]
 
     ```

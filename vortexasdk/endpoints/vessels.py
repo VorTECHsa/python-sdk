@@ -83,8 +83,10 @@ class Vessels(Reference, Search):
         search_params = {
             "term": [str(e) for e in convert_to_list(term)],
             "ids": convert_to_list(ids),
-            "vessel_classes": convert_to_list(vessel_classes),
             "vessel_product_types": convert_to_list(vessel_product_types),
+            "vessel_classes": [
+                v.lower() for v in (convert_to_list(vessel_classes))
+            ],
         }
 
         return VesselsResult(super().search(**search_params))

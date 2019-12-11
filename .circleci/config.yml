@@ -38,14 +38,7 @@ jobs:
           name: "Run all tests, including live API"
           command: |
             . .venv/bin/activate
-            pytest -v
-
-      - run:
-          name: "Run doctests"
-          command: |
-            . .venv/bin/activate
-            export LOG_LEVEL='ERROR'
-            python -m doctest -o ELLIPSIS -o FAIL_FAST vortexasdk/*/*.py
+            pytest -v --doctest-modules
 
       - run:
           name: "Build docs"
