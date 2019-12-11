@@ -32,8 +32,8 @@ class TestVesselsReal(TestCaseUsingRealAPI):
         aframax_called_zhen = set(
             v.id
             for v in Vessels()
-                .search(vessel_classes="aframax", term="zhen")
-                .to_list()
+            .search(vessel_classes="aframax", term="zhen")
+            .to_list()
         )
 
         assert aframax_called_zhen.issubset(aframax)
@@ -49,7 +49,11 @@ class TestVesselsReal(TestCaseUsingRealAPI):
         assert len(df) == 2
 
     def test_find_crude_vessels(self):
-        crude = [p.id for p in Products().search("crude").to_list() if "group" in p.layer]
+        crude = [
+            p.id
+            for p in Products().search("crude").to_list()
+            if "group" in p.layer
+        ]
         df = Vessels().search(vessel_product_types=crude).to_df()
         assert len(df) > 1000
 

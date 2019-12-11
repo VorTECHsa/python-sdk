@@ -43,11 +43,12 @@ required_columns = [
     "vessel.corporate_entities.charterer.label",
     "vessel.corporate_entities.time_charterer.label",
     "vessel.corporate_entities.commercial_owner.label",
-    # Show the p
+    # Show the port, sts_zone, or vessel at the start of the vessel movement
     "origin.location.port.label",
     "origin.location.sts_zone.label",
     "origin.from_vessel.label",
     "origin.to_vessel.label",
+    # Show the port, sts_zone, or vessel at the end of the vessel movement
     "destination.location.port.label",
     "destination.location.sts_zone.label",
     "destination.from_vessel.label",
