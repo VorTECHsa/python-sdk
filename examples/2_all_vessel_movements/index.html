@@ -139,6 +139,10 @@
             
     </ul>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../3_crude_from_saudi_arabia_to_india/">3 Crude movements from Saudi Arabia to India</a>
+                </li>
     </ul>
 	    </li>
           
@@ -467,16 +471,29 @@
 <pre><code class="python">from datetime import datetime
 
 from docs.utils import to_markdown
-
 from vortexasdk import VesselMovements
 
+# Query the API
+search_result = VesselMovements().search(
+    filter_time_min=datetime(2017, 10, 1, 0),
+    filter_time_max=datetime(2017, 10, 1, 1),
+)
+
+# A complete list of available columns can be found at https://v0rt3x4.github.io/python-sdk/endpoints/vessel_movements/#notes
+# We only require a subset of available columns here
 required_columns = [
+    # Show metadata about the vessel
     &quot;vessel.name&quot;,
     &quot;vessel.imo&quot;,
     &quot;vessel.mmsi&quot;,
     &quot;vessel.cubic_capacity&quot;,
     &quot;vessel.dwt&quot;,
     &quot;vessel.vessel_class&quot;,
+    # Show any corporate information associated with the vessel
+    &quot;vessel.corporate_entities.charterer.label&quot;,
+    &quot;vessel.corporate_entities.time_charterer.label&quot;,
+    &quot;vessel.corporate_entities.commercial_owner.label&quot;,
+    # Show the p
     &quot;origin.location.port.label&quot;,
     &quot;origin.location.sts_zone.label&quot;,
     &quot;origin.from_vessel.label&quot;,
@@ -485,29 +502,24 @@ required_columns = [
     &quot;destination.location.sts_zone.label&quot;,
     &quot;destination.from_vessel.label&quot;,
     &quot;destination.to_vessel.label&quot;,
+    # The start and end timestamps of the movement
     &quot;origin.start_timestamp&quot;,
     &quot;destination.end_timestamp&quot;,
+    # The cargo (if any), onboard the vessel during the vessel movement.
+    # If the vessel was balast, then the cargo will be empty.
     &quot;cargoes.0.product.group.label&quot;,
     &quot;cargoes.0.product.grade.label&quot;,
     &quot;cargoes.0.product.grade.probability&quot;,
-    &quot;vessel.corporate_entities.charterer.label&quot;,
-    &quot;vessel.corporate_entities.time_charterer.label&quot;,
-    &quot;vessel.corporate_entities.commercial_owner.label&quot;,
 ]
 
-vessel_movements = (
-    VesselMovements()
-    .search(
-        filter_time_min=datetime(2017, 10, 1, 0),
-        filter_time_max=datetime(2017, 10, 1, 1),
-    )
-    .to_df(columns=required_columns)
-)
+# Convert the search result to a dataframe
+vessel_movements = search_result.to_df(columns=required_columns)
 
-# Let's find the laden vessel movements
-laden_vessel_movements = vessel_movements[
-    vessel_movements[&quot;cargoes.0.product.group.label&quot;].notna()
-]
+# Laden vessel movements are movements with a cargo (unlike ballast movements, where the vessel isn't carrying any cargo).
+is_laden_mask = vessel_movements[&quot;cargoes.0.product.group.label&quot;].notna()
+
+# Let's find the laden vessel movements.
+laden_vessel_movements = vessel_movements[is_laden_mask]
 
 print(to_markdown(laden_vessel_movements.head(10)))
 </code></pre>
@@ -517,6 +529,8 @@ print(to_markdown(laden_vessel_movements.head(10)))
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../3_crude_from_saudi_arabia_to_india/" class="btn btn-neutral float-right" title="3 Crude movements from Saudi Arabia to India">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../1_china/" class="btn btn-neutral" title="1 China VLCC Discharges"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -549,6 +563,8 @@ print(to_markdown(laden_vessel_movements.head(10)))
       
         <span><a href="../1_china/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
+      
+        <span style="margin-left: 15px"><a href="../3_crude_from_saudi_arabia_to_india/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

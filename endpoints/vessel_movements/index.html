@@ -142,6 +142,10 @@
                     
     <a class="" href="../../examples/2_all_vessel_movements/">2 Laden Vessel Movements</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../examples/3_crude_from_saudi_arabia_to_india/">3 Crude movements from Saudi Arabia to India</a>
+                </li>
     </ul>
 	    </li>
           
@@ -208,7 +212,7 @@
 <strong>Example</strong></p>
 <p>Let's load all vessel movements as a <code>pd.DataFrame</code>.</p>
 <pre><code class="python">&gt;&gt;&gt; from vortexasdk import VesselMovements
-&gt;&gt;&gt; df = VesselMovements().load_all().to_df()
+&gt;&gt;&gt; df = VesselMovements().load_all().to_df() # doctest: +SKIP
 </code></pre>
 
 <h3 id="vortexasdk.endpoints.vessel_movements.VesselMovements.search">search</h3>
@@ -255,11 +259,12 @@
 <p><strong>Example</strong></p>
 <p>Let's search for all vessels that departed from <code>Rotterdam [NL]</code> on the morning of 1st December 2018.</p>
 <pre><code class="python">&gt;&gt;&gt; from vortexasdk import VesselMovements
-&gt;&gt;&gt; df = VesselMovements().search(
-        filter_time_min=datetime(2017, 10, 1, 0, 0),
-        filter_time_max=datetime(2017, 10, 1, 0, 10),
-        filter_origins='rotterdam'
-).to_df().head(2)
+&gt;&gt;&gt; search_result = VesselMovements().search(
+...        filter_time_min=datetime(2017, 10, 1, 0, 0),
+...        filter_time_max=datetime(2017, 10, 1, 0, 10),
+...        filter_origins='rotterdam')
+&gt;&gt;&gt; df = search_result.to_df().head(2)
+
 </code></pre>
 
 <table>

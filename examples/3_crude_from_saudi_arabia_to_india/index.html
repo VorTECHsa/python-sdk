@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Geography - VortexaSDK</title>
+  <title>3 Crude movements from Saudi Arabia to India - VortexaSDK</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -17,8 +17,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Geography";
-    var mkdocs_page_input_path = "entities/geography.md";
+    var mkdocs_page_name = "3 Crude movements from Saudi Arabia to India";
+    var mkdocs_page_input_path = "examples/3_crude_from_saudi_arabia_to_india.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -94,30 +94,27 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../cargo_movement/">Cargo Movement</a>
+    <a class="" href="../../entities/cargo_movement/">Cargo Movement</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../corporation/">Corporation</a>
-                </li>
-                <li class=" current">
-                    
-    <a class="current" href="./">Geography</a>
-    <ul class="subnav">
-            
-    </ul>
+    <a class="" href="../../entities/corporation/">Corporation</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../product/">Product</a>
+    <a class="" href="../../entities/geography/">Geography</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../vessel/">Vessel</a>
+    <a class="" href="../../entities/product/">Product</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../vessel_movement/">Vessel Movement</a>
+    <a class="" href="../../entities/vessel/">Vessel</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../entities/vessel_movement/">Vessel Movement</a>
                 </li>
     </ul>
 	    </li>
@@ -133,15 +130,18 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../examples/1_china/">1 China VLCC Discharges</a>
+    <a class="" href="../1_china/">1 China VLCC Discharges</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../examples/2_all_vessel_movements/">2 Laden Vessel Movements</a>
+    <a class="" href="../2_all_vessel_movements/">2 Laden Vessel Movements</a>
                 </li>
-                <li class="">
+                <li class=" current">
                     
-    <a class="" href="../../examples/3_crude_from_saudi_arabia_to_india/">3 Crude movements from Saudi Arabia to India</a>
+    <a class="current" href="./">3 Crude movements from Saudi Arabia to India</a>
+    <ul class="subnav">
+            
+    </ul>
                 </li>
     </ul>
 	    </li>
@@ -168,14 +168,14 @@
     
       
         
-          <li>Entities &raquo;</li>
+          <li>Examples &raquo;</li>
         
       
     
-    <li>Geography</li>
+    <li>3 Crude movements from Saudi Arabia to India</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/V0RT3X4/python-sdk/edit/master/docs/entities/geography.md"
+        <a href="https://github.com/V0RT3X4/python-sdk/edit/master/docs/examples/3_crude_from_saudi_arabia_to_india.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -185,25 +185,62 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="vortexasdk.api.geography">vortexasdk.api.geography</h1>
+                <p>Let's find all crude cargo movements from Saudi Arabia to India that loaded in the last month.</p>
+<p>The below script returns a <code>pd.DataFrame</code>, similar to the table given in the movements tab of <code>https://analytics.vortexa.com</code>,
+ filtering on <code>Products: Crude</code> with <code>Origin: Saudi Arabia</code>, <code>Destination: India</code> and <code>Date Range: Departures in the last Month</code>.</p>
+<pre><code class="python">from datetime import datetime
+from dateutil.relativedelta import relativedelta
 
-<h2 id="vortexasdk.api.geography.BoundingBox">BoundingBox</h2>
+from docs.utils import to_markdown
+from vortexasdk import CargoMovements
 
-<pre><code class="python">BoundingBox(self, type: str, coordinates: List[Tuple[float, float]]) -&gt; None
+now = datetime.utcnow()
+one_month_ago = now - relativedelta(months=1)
+
+# Query the API.
+search_result = CargoMovements().search(
+    filter_activity=&quot;loading_end&quot;,
+    filter_origins=&quot;Saudi Arabia&quot;,
+    filter_destinations=&quot;India&quot;,
+    filter_products=&quot;Crude&quot;,
+    filter_time_min=one_month_ago,
+    filter_time_max=now,
+)
+
+# A complete list of available columns can be found at https://v0rt3x4.github.io/python-sdk/endpoints/cargo_movements/#notes
+# We only require a subset of available columns here
+required_columns = [
+    # A cargo movement can be carried by multiple vessels across various STS transfers. You can find all the vessels that
+    # the cargo was onboard by inspecting the 'vessels.0', 'vessels.1' columns etc.
+    # The 'vessels.0' columns shows the primary vessel associated with the cargo movement
+    &quot;vessels.0.name&quot;,
+    &quot;vessels.0.vessel_class&quot;,
+    # Here we show any corporate information associated with the primary vessel
+    &quot;vessels.0.corporate_entities.charterer.label&quot;,
+    &quot;vessels.0.corporate_entities.time_charterer.label&quot;,
+    &quot;vessels.0.corporate_entities.commercial_owner.label&quot;,
+    # Show the product information and quantity
+    &quot;product.group.label&quot;,
+    &quot;product.grade.label&quot;,
+    &quot;quantity&quot;,
+    # Is the vessel in transit, has it already discharged, or is it in floating storage?
+    &quot;status&quot;,
+    # Show the loading Port name, and the loading timestamp
+    &quot;events.cargo_port_load_event.0.location.port.label&quot;,
+    &quot;events.cargo_port_load_event.0.end_timestamp&quot;,
+    # Show the discharge Port name, and the discharge timestamp
+    &quot;events.cargo_port_unload_event.0.location.port.label&quot;,
+    &quot;events.cargo_port_unload_event.0.end_timestamp&quot;,
+]
+
+# Convert the search result to a dataframe
+df = search_result.to_df(columns=required_columns)
+
+# Sort the dataframe by loading timestamp
+df = df.sort_values(by=[&quot;events.cargo_port_load_event.0.end_timestamp&quot;])
+
+print(to_markdown(df))
 </code></pre>
-
-<p>Polygon with list of bounding lon lat coords.
-<h2 id="vortexasdk.api.geography.Geography">Geography</h2></p>
-<pre><code class="python">Geography(self, id: str, layer: str, name: str, ref_type: str, leaf: bool, parent: List[vortexasdk.api.shared_types.IDNameLayer], bounding_box: Union[vortexasdk.api.geography.BoundingBox, NoneType], centre_point: Union[Tuple[float, float], NoneType], exclusion_rule: List[vortexasdk.api.shared_types.IDNameLayer], hierarchy: List[vortexasdk.api.shared_types.IDLayer], location: Union[Tuple[float, float], NoneType]) -&gt; None
-</code></pre>
-
-<p>Represent a Geography reference record returned by the API.
-<h2 id="vortexasdk.api.geography.GeographyEntity">GeographyEntity</h2></p>
-<pre><code class="python">GeographyEntity(self, id: str, label: str, layer: str, probability: float, source: str) -&gt; None
-</code></pre>
-
-<p>Represents a hierarchy tree of locational data.</p>
-<p><a href="https://docs.vortexa.com/reference/intro-geography-entries">Geography Entities Further Documentation</a></p>
               
             </div>
           </div>
@@ -211,10 +248,8 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../product/" class="btn btn-neutral float-right" title="Product">Next <span class="icon icon-circle-arrow-right"></span></a>
       
-      
-        <a href="../corporation/" class="btn btn-neutral" title="Corporation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../2_all_vessel_movements/" class="btn btn-neutral" title="2 Laden Vessel Movements"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -242,10 +277,8 @@
           <a href="https://github.com/V0RT3X4/python-sdk/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../corporation/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../2_all_vessel_movements/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
-      
-        <span style="margin-left: 15px"><a href="../product/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

@@ -139,6 +139,10 @@
                     
     <a class="" href="../../examples/2_all_vessel_movements/">2 Laden Vessel Movements</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../examples/3_crude_from_saudi_arabia_to_india/">3 Crude movements from Saudi Arabia to India</a>
+                </li>
     </ul>
 	    </li>
           
@@ -221,7 +225,8 @@
 <li>Let's find all the VLCCs with 'ocean' in their name, or related names.</li>
 </ul>
 <pre><code class="python">&gt;&gt;&gt; from vortexasdk import Vessels
-&gt;&gt;&gt; Vessels().search(vessel_classes='vlcc', term='ocean').to_df(columns=['name', 'imo', 'mmsi', 'related_names'])
+&gt;&gt;&gt; vessels_df = Vessels().search(vessel_classes='vlcc', term='ocean').to_df(columns=['name', 'imo', 'mmsi', 'related_names'])
+
 </code></pre>
 
 <table>
@@ -297,7 +302,8 @@
 <ul>
 <li>Let's find all the vessels currently carrying Crude.</li>
 </ul>
-<pre><code class="python">&gt;&gt;&gt; Vessels().search(vessel_product_types='crude').to_df()
+<pre><code class="python">&gt;&gt;&gt; vessels_df = Vessels().search(vessel_product_types='crude').to_df()
+
 </code></pre>
 
 <p><strong>Further Documentation</strong></p>

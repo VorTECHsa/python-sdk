@@ -139,6 +139,10 @@
                     
     <a class="" href="../../examples/2_all_vessel_movements/">2 Laden Vessel Movements</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../examples/3_crude_from_saudi_arabia_to_india/">3 Crude movements from Saudi Arabia to India</a>
+                </li>
     </ul>
 	    </li>
           
@@ -208,7 +212,8 @@
 <p><strong>Examples</strong></p>
 <p>Let's load all corporations</p>
 <pre><code class="python">&gt;&gt;&gt; from vortexasdk import Corporations
-&gt;&gt;&gt; Corporations().search().to_df()
+&gt;&gt;&gt; df = Corporations().search().to_df()
+
 </code></pre>
 
 <p>returns</p>
@@ -238,7 +243,8 @@
 </table>
 <p>Let's find all corporations with 'do' in the name.</p>
 <pre><code class="python">&gt;&gt;&gt; [x.name for x in Corporations().search(term=&quot;do&quot;).to_list()]
-    ['Donsotank', 'Dorval SC']
+[...]
+
 </code></pre>
 
 <p><strong>Further Documentation</strong></p>
@@ -258,8 +264,13 @@
 <p><strong>Further Documentation:</strong></p>
 <p><a href="https://docs.vortexa.com/reference/GET/reference/charterers/%7Bid%7D">VortexaAPI Corporation Reference</a></p>
 <p><strong>Examples</strong></p>
-<pre><code>&gt;&gt;&gt; Corporations().reference(id='12345abcdef')
-</code></pre>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>Corporations().reference(id='12345abcdef') # doctest: +SKIP</p>
+</blockquote>
+</blockquote>
+</blockquote>
 <h1 id="vortexasdk.endpoints.corporations_result">vortexasdk.endpoints.corporations_result</h1>
 
 <h2 id="vortexasdk.endpoints.corporations_result.CorporationsResult">CorporationsResult</h2>

@@ -139,6 +139,10 @@
                     
     <a class="" href="../../examples/2_all_vessel_movements/">2 Laden Vessel Movements</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../examples/3_crude_from_saudi_arabia_to_india/">3 Crude movements from Saudi Arabia to India</a>
+                </li>
     </ul>
 	    </li>
           
@@ -208,12 +212,14 @@
 <p><strong>Examples</strong></p>
 <p>Find all geographies with <code>portsmouth</code> in the name.</p>
 <pre><code class="python">&gt;&gt;&gt; from vortexasdk import Geographies
-&gt;&gt;&gt; [x[&quot;name&quot;] for x in Geographies().search(term=&quot;portsmouth&quot;)]
-    ['Portsmouth [GB]', 'Portsmouth, NH [US]']
+&gt;&gt;&gt; [x.name for x in Geographies().search(term=&quot;portsmouth&quot;).to_list()]
+['Portsmouth [GB]', 'Portsmouth, NH [US]']
+
 </code></pre>
 
 <p>Search multiple geography terms</p>
 <pre><code class="python">&gt;&gt;&gt; df = Geographies().search(term=[&quot;Liverpool&quot;, &quot;Southampton&quot;]).to_df()
+
 </code></pre>
 
 <p>returns</p>

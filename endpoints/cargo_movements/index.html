@@ -142,6 +142,10 @@
                     
     <a class="" href="../../examples/2_all_vessel_movements/">2 Laden Vessel Movements</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../examples/3_crude_from_saudi_arabia_to_india/">3 Crude movements from Saudi Arabia to India</a>
+                </li>
     </ul>
 	    </li>
           
@@ -202,7 +206,7 @@
 <p><strong>Example</strong></p>
 <p>Let's load all cargo movements.</p>
 <pre><code class="python">&gt;&gt;&gt; from vortexasdk import CargoMovements
-&gt;&gt;&gt; df = CargoMovements().load_all().to_df()
+&gt;&gt;&gt; df = CargoMovements().load_all().to_df() # doctest: +SKIP
 </code></pre>
 
 <h3 id="vortexasdk.endpoints.cargo_movements.CargoMovements.search">search</h3>
@@ -267,12 +271,14 @@
 <li><em>Which cargoes were loaded from Rotterdam on the morning of 1st December 2018?</em></li>
 </ul>
 <pre><code class="python">&gt;&gt;&gt; from vortexasdk import CargoMovements
-&gt;&gt;&gt; df = CargoMovements().search(
-    filter_origins=&quot;Rotterdam&quot;,
-    filter_activity='loading_state',
-    filter_time_min=datetime(2018, 12, 1),
-    filter_time_max=datetime(2018, 12, 1, 12),
-).to_df(columns=['product.grade.label', 'product.group.label', 'vessels.0.vessel_class'])
+&gt;&gt;&gt; search_result = CargoMovements().search(
+...    filter_origins=&quot;Rotterdam&quot;,
+...    filter_activity='loading_state',
+...    filter_time_min=datetime(2018, 12, 1),
+...    filter_time_max=datetime(2018, 12, 1, 12))
+
+&gt;&gt;&gt; df = search_result.to_df(columns=['product.grade.label', 'product.group.label', 'vessels.0.vessel_class'])
+
 </code></pre>
 
 <table>
@@ -335,16 +341,16 @@
 <p>Note here we include vessels.0..., vessels.1..., vessels.2... columns.
 This lets us view all vessels present in any STS operations.</p>
 <pre><code class="python">&gt;&gt;&gt; from vortexasdk import CargoMovements
+&gt;&gt;&gt; cargo_movement_search_result = CargoMovements().search(
+...    filter_destinations=&quot;China&quot;,
+...    filter_activity=&quot;loading_state&quot;,
+...    filter_waypoints=&quot;suez&quot;,
+...    filter_vessels=&quot;vlcc&quot;,
+...    filter_time_min=datetime(2018, 12, 1),
+...    filter_time_max=datetime(2018, 12, 1))
 &gt;&gt;&gt; cols = ['vessels.0.name', 'vessels.0.vessel_class', 'vessels.1.name', 'vessels.1.vessel_class',  'vessels.2.name', 'vessels.2.vessel_class', 'product.group.label', 'quantity']
+&gt;&gt;&gt; cargo_movements_df = cargo_movement_search_result.to_df(columns=cols)
 
-&gt;&gt;&gt; df = CargoMovements().search(
-    filter_destinations=&quot;China&quot;,
-    filter_activity=&quot;loading_state&quot;,
-    filter_waypoints=&quot;suez&quot;,
-    filter_vessels=&quot;vlcc&quot;,
-    filter_time_min=datetime(2016, 12, 01),
-    filter_time_max=datetime(2018, 12, 01),
-).to_df(columns=cols)
 </code></pre>
 
 <table>
