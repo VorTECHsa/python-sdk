@@ -1,5 +1,52 @@
 # Changelog
 
+## [0.11.0](https://github.com/V0RT3X4/python-sdk/tree/0.11.0) (2019-12-11)
+
+[Full Changelog](https://github.com/V0RT3X4/python-sdk/compare/0.10.0...0.11.0)
+
+**Merged pull requests:**
+
+- Remove load all [\#139](https://github.com/V0RT3X4/python-sdk/pull/139) ([KitBurgess](https://github.com/KitBurgess))
+- perf: Failfast if \> 1e6 records returned from API in single call [\#138](https://github.com/V0RT3X4/python-sdk/pull/138) ([KitBurgess](https://github.com/KitBurgess))
+
+## [0.10.0](https://github.com/V0RT3X4/python-sdk/tree/0.10.0) (2019-12-11)
+
+[Full Changelog](https://github.com/V0RT3X4/python-sdk/compare/0.9.2...0.10.0)
+
+**Merged pull requests:**
+
+- Remove fuzzy search [\#134](https://github.com/V0RT3X4/python-sdk/pull/134) ([KitBurgess](https://github.com/KitBurgess))
+
+## [0.9.2](https://github.com/V0RT3X4/python-sdk/tree/0.9.2) (2019-12-11)
+
+[Full Changelog](https://github.com/V0RT3X4/python-sdk/compare/0.9.1...0.9.2)
+
+**Fixed bugs:**
+
+- Fix SDK Stability issues [\#127](https://github.com/V0RT3X4/python-sdk/issues/127)
+
+**Merged pull requests:**
+
+- refactor: Call doctests using pytest [\#137](https://github.com/V0RT3X4/python-sdk/pull/137) ([KitBurgess](https://github.com/KitBurgess))
+- test: Actually run doctest on all files [\#136](https://github.com/V0RT3X4/python-sdk/pull/136) ([KitBurgess](https://github.com/KitBurgess))
+- fix: search on vessel class is case insensitive [\#135](https://github.com/V0RT3X4/python-sdk/pull/135) ([Natday](https://github.com/Natday))
+- docs: Check doctests are valid code [\#133](https://github.com/V0RT3X4/python-sdk/pull/133) ([KitBurgess](https://github.com/KitBurgess))
+- docs: Add crude from saudi arabia to india example [\#132](https://github.com/V0RT3X4/python-sdk/pull/132) ([KitBurgess](https://github.com/KitBurgess))
+- perf: Shuffle offsets inplace for more accurate progress ETA, increas… [\#131](https://github.com/V0RT3X4/python-sdk/pull/131) ([KitBurgess](https://github.com/KitBurgess))
+
+## [0.9.1](https://github.com/V0RT3X4/python-sdk/tree/0.9.1) (2019-12-09)
+
+[Full Changelog](https://github.com/V0RT3X4/python-sdk/compare/0.9.0...0.9.1)
+
+**Implemented enhancements:**
+
+- Show loading progress bar [\#123](https://github.com/V0RT3X4/python-sdk/issues/123)
+
+**Merged pull requests:**
+
+- fix: Handle API failures in VortexaClient [\#130](https://github.com/V0RT3X4/python-sdk/pull/130) ([KitBurgess](https://github.com/KitBurgess))
+- feat: Add progressbar [\#129](https://github.com/V0RT3X4/python-sdk/pull/129) ([KitBurgess](https://github.com/KitBurgess))
+
 ## [0.9.0](https://github.com/V0RT3X4/python-sdk/tree/0.9.0) (2019-12-05)
 
 [Full Changelog](https://github.com/V0RT3X4/python-sdk/compare/0.8.5...0.9.0)
@@ -110,7 +157,6 @@
 
 - Where do I get an API key from [\#75](https://github.com/V0RT3X4/python-sdk/issues/75)
 - change 'filter\_vessel' argument to 'filter\_vessel\_name' to make it clearer that this is filtering vessels and not vessel classes [\#38](https://github.com/V0RT3X4/python-sdk/issues/38)
-- searching vessel reference database only ever gives me back 100 results [\#30](https://github.com/V0RT3X4/python-sdk/issues/30)
 
 **Merged pull requests:**
 
@@ -223,6 +269,10 @@
 **Fixed bugs:**
 
 - Tried to pull out a reference df of all vessels but only got 200 results? [\#29](https://github.com/V0RT3X4/python-sdk/issues/29)
+
+**Closed issues:**
+
+- searching vessel reference database only ever gives me back 100 results [\#30](https://github.com/V0RT3X4/python-sdk/issues/30)
 
 **Merged pull requests:**
 

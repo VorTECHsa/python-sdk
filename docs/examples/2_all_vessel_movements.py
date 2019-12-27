@@ -21,46 +21,55 @@ The below script returns:
 from datetime import datetime
 
 from docs.utils import to_markdown
-
 from vortexasdk import VesselMovements
 
+# Query the API
+search_result = VesselMovements().search(
+    filter_time_min=datetime(2017, 10, 1, 0),
+    filter_time_max=datetime(2017, 10, 1, 1),
+)
+
+# A complete list of available columns can be found at https://v0rt3x4.github.io/python-sdk/endpoints/vessel_movements/#notes
+# We only require a subset of available columns here
 required_columns = [
+    # Show metadata about the vessel
     "vessel.name",
     "vessel.imo",
     "vessel.mmsi",
     "vessel.cubic_capacity",
     "vessel.dwt",
     "vessel.vessel_class",
+    # Show any corporate information associated with the vessel
+    "vessel.corporate_entities.charterer.label",
+    "vessel.corporate_entities.time_charterer.label",
+    "vessel.corporate_entities.commercial_owner.label",
+    # Show the port, sts_zone, or vessel at the start of the vessel movement
     "origin.location.port.label",
     "origin.location.sts_zone.label",
     "origin.from_vessel.label",
     "origin.to_vessel.label",
+    # Show the port, sts_zone, or vessel at the end of the vessel movement
     "destination.location.port.label",
     "destination.location.sts_zone.label",
     "destination.from_vessel.label",
     "destination.to_vessel.label",
+    # The start and end timestamps of the movement
     "origin.start_timestamp",
     "destination.end_timestamp",
+    # The cargo (if any), onboard the vessel during the vessel movement.
+    # If the vessel was balast, then the cargo will be empty.
     "cargoes.0.product.group.label",
     "cargoes.0.product.grade.label",
     "cargoes.0.product.grade.probability",
-    "vessel.corporate_entities.charterer.label",
-    "vessel.corporate_entities.time_charterer.label",
-    "vessel.corporate_entities.commercial_owner.label",
 ]
 
-vessel_movements = (
-    VesselMovements()
-    .search(
-        filter_time_min=datetime(2017, 10, 1, 0),
-        filter_time_max=datetime(2017, 10, 1, 1),
-    )
-    .to_df(columns=required_columns)
-)
+# Convert the search result to a dataframe
+vessel_movements = search_result.to_df(columns=required_columns)
 
-# Let's find the laden vessel movements
-laden_vessel_movements = vessel_movements[
-    vessel_movements["cargoes.0.product.group.label"].notna()
-]
+# Laden vessel movements are movements with a cargo (unlike ballast movements, where the vessel isn't carrying any cargo).
+is_laden_mask = vessel_movements["cargoes.0.product.group.label"].notna()
+
+# Let's find the laden vessel movements.
+laden_vessel_movements = vessel_movements[is_laden_mask]
 
 print(to_markdown(laden_vessel_movements.head(10)))
