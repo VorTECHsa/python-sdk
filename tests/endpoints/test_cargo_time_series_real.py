@@ -1,10 +1,10 @@
 from datetime import datetime
 
-from tests.testcases import TestCaseUsingMockAPI
+from tests.testcases import TestCaseUsingRealAPI
 from vortexasdk.endpoints.cargo_timeseries import CargoTimeSeries
 
 
-class TestCargoTimeSeries(TestCaseUsingMockAPI):
+class TestCargoTimeSeries(TestCaseUsingRealAPI):
     def test_search_returns_all_days(self):
         start = datetime(2018, 10, 1)
         end = datetime(2019, 11, 1)
@@ -19,4 +19,6 @@ class TestCargoTimeSeries(TestCaseUsingMockAPI):
                 .to_df()
         )
 
-        assert len(df) == 3
+        n_days = (end - start).days + 1
+
+        assert n_days == len(df)

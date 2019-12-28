@@ -23,7 +23,7 @@ example_vessels: List[Dict] = _read("vessels.json")
 example_products: List[Dict] = _read("products.json")
 example_vessel_movements: List[Dict] = _read("vessel_movements.json")
 example_cargo_movements: List[Dict] = _read("vessel_movements.json")
-example_time_series = _read("time_series.json")
+example_time_series = _read("cargo_time_series.json")
 
 
 class MockVortexaClient(AbstractVortexaClient):
