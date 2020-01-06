@@ -29,7 +29,7 @@ search_result = VesselMovements().search(
     filter_time_max=datetime(2017, 10, 1, 1),
 )
 
-# A complete list of available columns can be found at https://v0rt3x4.github.io/python-sdk/endpoints/vessel_movements/#notes
+# A complete list of available columns can be found at https://vortechsa.github.io/python-sdk/endpoints/vessel_movements/#notes
 # We only require a subset of available columns here
 required_columns = [
     # Show metadata about the vessel

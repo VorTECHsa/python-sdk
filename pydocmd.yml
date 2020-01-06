@@ -1,5 +1,5 @@
 site_name: VortexaSDK
-repo_url: https://github.com/V0RT3X4/python-sdk
+repo_url: https://github.com/vortechsa/python-sdk
 generate:
   - endpoints/cargo_movements.md:
       - vortexasdk.endpoints.cargo_movements++
