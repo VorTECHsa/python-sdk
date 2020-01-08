@@ -49,7 +49,7 @@ search_result = CargoMovements().search(
     filter_time_max=now,
 )
 
-# A complete list of available columns can be found at https://v0rt3x4.github.io/python-sdk/endpoints/cargo_movements/#notes
+# A complete list of available columns can be found at https://vortechsa.github.io/python-sdk/endpoints/cargo_movements/#notes
 # We only require a subset of available columns here
 required_columns = [
     # A cargo movement can be carried by multiple vessels across various STS transfers. You can find all the vessels that

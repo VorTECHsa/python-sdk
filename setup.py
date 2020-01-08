@@ -12,7 +12,7 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     packages=setuptools.find_packages(),
-    url="https://github.com/V0RT3X4/python-sdk",
+    url="https://github.com/vortechsa/python-sdk",
     license="Apache License 2.0",
     classifiers=[
         "Programming Language :: Python :: 3.7",
