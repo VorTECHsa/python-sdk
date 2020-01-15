@@ -1,7 +1,8 @@
 # VortexaSDK
 [![All Contributors](https://img.shields.io/badge/all_contributors-12-orange.svg?style=flat-square)](#contributors)
 
-[![CircleCI](https://circleci.com/gh/vortechsa/python-sdk.svg?style=svg)](https://circleci.com/gh/vortechsa/python-sdk)
+[![CircleCI](https://circleci.com/gh/VorTECHsa/python-sdk.svg?style=svg)](https://circleci.com/gh/VorTECHsa/python-sdk)
+
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 The VortexaSDK is Vortexa's Software Development Kit (SDK) for Python, which allows
