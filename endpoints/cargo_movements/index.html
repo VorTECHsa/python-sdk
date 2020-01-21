@@ -485,8 +485,8 @@ This lets us view all vessels present in any STS operations.</p>
  loading the cargo from Rotterdam, we'd use the <code>events.cargo_port_load_event.0.start_timestamp</code> column.</p>
 <p>By default, the columns returned are something along the lines of.</p>
 <pre><code class="python">DEFAULT_COLUMNS = [
-    'events.cargo_port_load_event.0.label',
-    'events.cargo_port_unload_event.0.label',
+    'events.cargo_port_load_event.0.location.port.label',
+    'events.cargo_port_unload_event.0.location.port.label',
     'product.group.label',
     'product.grade.label',
     'quantity',
