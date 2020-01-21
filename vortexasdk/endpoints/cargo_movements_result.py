@@ -550,8 +550,8 @@ class CargoMovementsResult(Result):
 
 
 DEFAULT_COLUMNS = [
-    "events.cargo_port_load_event.0.label",
-    "events.cargo_port_unload_event.0.label",
+    "events.cargo_port_load_event.0.location.port.label",
+    "events.cargo_port_unload_event.0.location.port.label",
     "product.group.label",
     "product.grade.label",
     "quantity",
