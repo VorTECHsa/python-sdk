@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.11.2](https://github.com/vortechsa/python-sdk/tree/0.11.2) (2020-01-21)
+
+[Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.11.1...0.11.2)
+
+**Merged pull requests:**
+
+- feat: Only log to file if log file is present in config [\#148](https://github.com/VorTECHsa/python-sdk/pull/148) ([KitBurgess](https://github.com/KitBurgess))
+- docs: Add correct default cols to docs [\#147](https://github.com/VorTECHsa/python-sdk/pull/147) ([KitBurgess](https://github.com/KitBurgess))
+
 ## [0.11.1](https://github.com/vortechsa/python-sdk/tree/0.11.1) (2020-01-21)
 
 [Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.11.0...0.11.1)
@@ -11,7 +20,6 @@
 **Merged pull requests:**
 
 - Merge pull request \#146 from VorTECHsa/loading-label [\#146](https://github.com/VorTECHsa/python-sdk/pull/146) ([KitBurgess](https://github.com/KitBurgess))
-- Docs: Add Singapore Fuel Oil Example [\#145](https://github.com/VorTECHsa/python-sdk/pull/145) ([KitBurgess](https://github.com/KitBurgess))
 - fix CircleCI - capitalisation seems crucial [\#144](https://github.com/VorTECHsa/python-sdk/pull/144) ([paddyroddy](https://github.com/paddyroddy))
 - Find & replace V0RT3X4 with vortechsa [\#142](https://github.com/VorTECHsa/python-sdk/pull/142) ([KitBurgess](https://github.com/KitBurgess))
 
@@ -42,6 +50,7 @@
 
 **Merged pull requests:**
 
+- Docs: Add Singapore Fuel Oil Example [\#145](https://github.com/VorTECHsa/python-sdk/pull/145) ([KitBurgess](https://github.com/KitBurgess))
 - refactor: Call doctests using pytest [\#137](https://github.com/VorTECHsa/python-sdk/pull/137) ([KitBurgess](https://github.com/KitBurgess))
 - test: Actually run doctest on all files [\#136](https://github.com/VorTECHsa/python-sdk/pull/136) ([KitBurgess](https://github.com/KitBurgess))
 - fix: search on vessel class is case insensitive [\#135](https://github.com/VorTECHsa/python-sdk/pull/135) ([Natday](https://github.com/Natday))
