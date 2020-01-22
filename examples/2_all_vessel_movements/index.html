@@ -130,6 +130,10 @@
     <ul class="subnav">
                 <li class="">
                     
+    <a class="" href="../0_sample_load_cargo_movements/">0 Simple Load Cargo Movements</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../1_china/">1 China VLCC Discharges</a>
                 </li>
                 <li class=" current">
@@ -473,56 +477,57 @@
 from docs.utils import to_markdown
 from vortexasdk import VesselMovements
 
-# Query the API
-search_result = VesselMovements().search(
-    filter_time_min=datetime(2017, 10, 1, 0),
-    filter_time_max=datetime(2017, 10, 1, 1),
-)
+if __name__ == &quot;__main__&quot;:
+    # Query the API
+    search_result = VesselMovements().search(
+        filter_time_min=datetime(2017, 10, 1, 0),
+        filter_time_max=datetime(2017, 10, 1, 1),
+    )
 
-# A complete list of available columns can be found at https://vortechsa.github.io/python-sdk/endpoints/vessel_movements/#notes
-# We only require a subset of available columns here
-required_columns = [
-    # Show metadata about the vessel
-    &quot;vessel.name&quot;,
-    &quot;vessel.imo&quot;,
-    &quot;vessel.mmsi&quot;,
-    &quot;vessel.cubic_capacity&quot;,
-    &quot;vessel.dwt&quot;,
-    &quot;vessel.vessel_class&quot;,
-    # Show any corporate information associated with the vessel
-    &quot;vessel.corporate_entities.charterer.label&quot;,
-    &quot;vessel.corporate_entities.time_charterer.label&quot;,
-    &quot;vessel.corporate_entities.commercial_owner.label&quot;,
-    # Show the port, sts_zone, or vessel at the start of the vessel movement
-    &quot;origin.location.port.label&quot;,
-    &quot;origin.location.sts_zone.label&quot;,
-    &quot;origin.from_vessel.label&quot;,
-    &quot;origin.to_vessel.label&quot;,
-    # Show the port, sts_zone, or vessel at the end of the vessel movement
-    &quot;destination.location.port.label&quot;,
-    &quot;destination.location.sts_zone.label&quot;,
-    &quot;destination.from_vessel.label&quot;,
-    &quot;destination.to_vessel.label&quot;,
-    # The start and end timestamps of the movement
-    &quot;origin.start_timestamp&quot;,
-    &quot;destination.end_timestamp&quot;,
-    # The cargo (if any), onboard the vessel during the vessel movement.
-    # If the vessel was balast, then the cargo will be empty.
-    &quot;cargoes.0.product.group.label&quot;,
-    &quot;cargoes.0.product.grade.label&quot;,
-    &quot;cargoes.0.product.grade.probability&quot;,
-]
+    # A complete list of available columns can be found at https://vortechsa.github.io/python-sdk/endpoints/vessel_movements/#notes
+    # We only require a subset of available columns here
+    required_columns = [
+        # Show metadata about the vessel
+        &quot;vessel.name&quot;,
+        &quot;vessel.imo&quot;,
+        &quot;vessel.mmsi&quot;,
+        &quot;vessel.cubic_capacity&quot;,
+        &quot;vessel.dwt&quot;,
+        &quot;vessel.vessel_class&quot;,
+        # Show any corporate information associated with the vessel
+        &quot;vessel.corporate_entities.charterer.label&quot;,
+        &quot;vessel.corporate_entities.time_charterer.label&quot;,
+        &quot;vessel.corporate_entities.commercial_owner.label&quot;,
+        # Show the port, sts_zone, or vessel at the start of the vessel movement
+        &quot;origin.location.port.label&quot;,
+        &quot;origin.location.sts_zone.label&quot;,
+        &quot;origin.from_vessel.label&quot;,
+        &quot;origin.to_vessel.label&quot;,
+        # Show the port, sts_zone, or vessel at the end of the vessel movement
+        &quot;destination.location.port.label&quot;,
+        &quot;destination.location.sts_zone.label&quot;,
+        &quot;destination.from_vessel.label&quot;,
+        &quot;destination.to_vessel.label&quot;,
+        # The start and end timestamps of the movement
+        &quot;origin.start_timestamp&quot;,
+        &quot;destination.end_timestamp&quot;,
+        # The cargo (if any), onboard the vessel during the vessel movement.
+        # If the vessel was balast, then the cargo will be empty.
+        &quot;cargoes.0.product.group.label&quot;,
+        &quot;cargoes.0.product.grade.label&quot;,
+        &quot;cargoes.0.product.grade.probability&quot;,
+    ]
 
-# Convert the search result to a dataframe
-vessel_movements = search_result.to_df(columns=required_columns)
+    # Convert the search result to a dataframe
+    vessel_movements = search_result.to_df(columns=required_columns)
 
-# Laden vessel movements are movements with a cargo (unlike ballast movements, where the vessel isn't carrying any cargo).
-is_laden_mask = vessel_movements[&quot;cargoes.0.product.group.label&quot;].notna()
+    # Laden vessel movements are movements with a cargo (unlike ballast movements, where the vessel isn't carrying any cargo).
+    is_laden_mask = vessel_movements[&quot;cargoes.0.product.group.label&quot;].notna()
 
-# Let's find the laden vessel movements.
-laden_vessel_movements = vessel_movements[is_laden_mask]
+    # Let's find the laden vessel movements.
+    laden_vessel_movements = vessel_movements[is_laden_mask]
 
-print(to_markdown(laden_vessel_movements.head(10)))
+    print(to_markdown(laden_vessel_movements.head(10)))
 </code></pre>
               
             </div>

@@ -152,6 +152,10 @@
     <ul class="subnav">
                 <li class="">
                     
+    <a class="" href="examples/0_sample_load_cargo_movements/">0 Simple Load Cargo Movements</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="examples/1_china/">1 China VLCC Discharges</a>
                 </li>
                 <li class="">
@@ -211,11 +215,13 @@ Data Scientists, Analysts and Developers to query <a href="https://docs.vortexa.
 <pre><code class="bash">$ pip install vortexasdk
 </code></pre>
 
+<p>Windows users can refer to a more detailed guide here: <a href="https://github.com/VorTECHsa/python-sdk/tree/master/docs/examples">How to install the VortexaSDK on Windows</a></p>
 <h5 id="authentication">Authentication</h5>
 <p>Set your <code>VORTEXA_API_KEY</code> environment variable, that's all.</p>
 <p>Refer to <a href="https://docs.vortexa.com/reference/intro-authentication">Vortexa API Authentication</a>
  for more details, including instructions on where to find your API key.</p>
 <h5 id="example">Example</h5>
+<p>In an interactive python console, run:</p>
 <pre><code class="python">&gt;&gt;&gt; from datetime import datetime
 &gt;&gt;&gt; from vortexasdk import CargoMovements
 &gt;&gt;&gt; df = CargoMovements()\
@@ -277,6 +283,8 @@ Data Scientists, Analysts and Developers to query <a href="https://docs.vortexa.
 </tr>
 </tbody>
 </table>
+<p>Alternatively, you can copy the contents of <a href="https://github.com/VorTECHsa/python-sdk/blob/master/docs/examples/0_sample_load_cargo_movements.py">example_load_cargo_movements.py</a>
+ into a file named <code>example.py</code> and run <code>python example.py</code> from your terminal or powershell console.</p>
 <h2 id="next-steps">Next Steps</h2>
 <p>Learn how to call <a href="https://vortechsa.github.io/python-sdk/endpoints/about-endpoints/">Endpoints</a></p>
 <h2 id="documentation">Documentation</h2>
@@ -365,5 +373,5 @@ helping to extract powerful findings from our data.</p>
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2020-01-21 16:15:23
+Build Date UTC : 2020-01-22 13:51:31
 -->
