@@ -25,6 +25,9 @@ Refer to [Vortexa API Authentication](https://docs.vortexa.com/reference/intro-a
 
 ##### Example
 
+In an interactive python console, run:
+
+
 ```python
 >>> from datetime import datetime
 >>> from vortexasdk import CargoMovements
@@ -42,6 +45,10 @@ returns
 |  1 |      16559 | IVER AMBITION    | Dirty products        | nan                   | 2017-08-02T17:20:51+0000                       | 2017-09-07T07:52:20+0000                           |
 |  2 |     522288 | BLUE SUN         | Crude                 | Gharib                | 2017-08-02T04:22:09+0000                       | 2017-08-13T10:32:09+0000                           |
 |  3 |      46260 | XINWANYU16       | Clean products        | Chemicals             | 2017-08-01T01:07:40+0000                       | 2017-08-10T06:21:43+0000                           |
+
+
+Alternatively, you can copy the contents of [example_load_cargo_movements.py](https://github.com/VorTECHsa/python-sdk/blob/master/docs/examples/0_sample_load_cargo_movements.py)
+ into a file named `example.py` and run `python example.py` from your terminal or powershell console.
 
 
 ## Next Steps
