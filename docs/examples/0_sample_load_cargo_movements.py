@@ -1,5 +1,5 @@
 """
-Let's retrieve some sample cargo movements in a dataframe.
+Simple example to retrieving some sample cargo movements in a dataframe.
 
 The below script returns something similar to:
 

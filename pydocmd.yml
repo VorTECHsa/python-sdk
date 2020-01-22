@@ -50,6 +50,7 @@ pages:
       Vessel Movement: entities/vessel_movement.md
   - Config: config.md << docs/config/config.md
   - Examples:
+      0 Simple Load Cargo Movements: examples/0_sample_load_cargo_movements.md
       1 China VLCC Discharges: examples/1_china.md
       2 Laden Vessel Movements: examples/2_all_vessel_movements.md
       3 Crude movements from Saudi Arabia to India: examples/3_crude_from_saudi_arabia_to_india.md
