@@ -16,6 +16,8 @@ Data Scientists, Analysts and Developers to query [Vortexa's API](https://docs.v
 $ pip install vortexasdk
 ```
 
+Windows users can refer to a more detailed guide here: [How to install the VortexaSDK on Windows](https://github.com/VorTECHsa/python-sdk/tree/master/docs/examples)
+
 ##### Authentication
 
 Set your `VORTEXA_API_KEY` environment variable, that's all.
