@@ -1,7 +1,7 @@
 """
-Let's retrieve all the VLCCs that have discharged into China in the last 3 months.
+Let's retrieve some sample cargo movements in a dataframe.
 
-The below script returns:
+The below script returns something similar to:
 
 |    | events.cargo_port_unload_event.0.start_timestamp   | product.group.label   | product.grade.label   |   quantity | vessels.0.name   |
 |---:|:---------------------------------------------------|:----------------------|:----------------------|-----------:|:-----------------|
@@ -14,27 +14,18 @@ The below script returns:
 """
 from datetime import datetime
 
-from vortexasdk import CargoMovements, Geographies, Vessels
+from vortexasdk import CargoMovements
 
 if __name__ == "__main__":
-    # Find china ID
-    china = [
-        g.id
-        for g in Geographies().search(term="china").to_list()
-        if "country" in g.layer
-    ]
-
-    # Find the ID of all VLCCs
-    vlccs = [v.id for v in Vessels().search(vessel_classes="vlcc_plus").to_list()]
-
-    # Query API
+    # Query API to find all vessels that were loading on the 1st of Aug 2019
     search_result = CargoMovements().search(
         filter_activity="loading_start",
-        filter_vessels=vlccs,
-        filter_destinations=china,
-        filter_time_min=datetime(2019, 8, 29),
-        filter_time_max=datetime(2019, 10, 30),
+        filter_time_min=datetime(2019, 8, 1),
+        filter_time_max=datetime(2019, 8, 1),
     )
+    print("Cargo movements successfully loaded")
 
     # Convert search result to dataframe
     df = search_result.to_df()
+
+    print(df.head())
