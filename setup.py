@@ -32,7 +32,7 @@ setuptools.setup(
             "pytest==5.2.4",
             "pre-commit==1.20.0",
             "flake8==3.7.9",
-            "pydoc-markdown==2.0.4",
+            "pydoc-markdown==2.0.5",
             "tabulate==0.8.5",
             "six==1.12.0",
         ]

@@ -49,7 +49,7 @@ $ python setup.py test
 
 serve documentation
 ```bash
-$ ./docs/serve_docs.sh
+$ ./docs/scripts/serve_docs.sh
 ```
 …and view the docs at http://localhost:8000 in your web browser.
 

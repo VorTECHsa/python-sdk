@@ -44,4 +44,4 @@ jobs:
           name: "Build docs"
           command: |
             . .venv/bin/activate
-            ./docs/build_docs.sh
+            ./docs/scripts/build_docs.sh
