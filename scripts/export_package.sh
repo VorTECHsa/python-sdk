@@ -28,4 +28,4 @@ python3 setup.py sdist bdist_wheel
 python3 -m twine upload -u $TWINE_USERNAME -p $TWINE_PASSWORD dist/*
 
 # Deploy Docs
-./docs/deploy_docs.sh
+./docs/scripts/deploy_docs.sh
