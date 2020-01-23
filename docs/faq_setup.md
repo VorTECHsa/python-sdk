@@ -38,9 +38,15 @@ $ pip install vortexasdk
 ![add_env_var.png](img/add_env_var.png)
 
 
+#### Where is my API Key?
+Refer to [Vortexa API Authentication](https://docs.vortexa.com/reference/intro-authentication)
+ for details, including instructions on where to find your API key.
 
 #### How do I request an API Key?
 You can email *support@vortexa.com* for an API key.
+
+
+
 More details are given in [docs.vortexa.com](https://docs.vortexa.com/reference/intro-authentication).
 
 If you don't have login details, please get in touch at [www.vortexa.com](https://www.vortexa.com/).

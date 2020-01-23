@@ -10,6 +10,7 @@ For example: Tanker X loads 1mn bl of crude from Houston and discharges onto ano
 The cargo movement is for 1mn bl of crude oil from Houston to Singapore.
 The vessel movement for tanker X is Houston to US Gulf, while for tanker Y it is US Gulf to Singapore. When there is no STS transfer, a cargo movement and vessel movement is equivalent.
 
+A more detailed explanation can be found [here](https://docs.vortexa.com/reference/intro-cargo-movement)
 
 #### Where can I find a list of products?
 Check out the Vortexa Glossary, which can be downloaded from [here](https://docs.vortexa.com/reference/intro-introduction)

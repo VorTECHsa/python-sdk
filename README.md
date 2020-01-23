@@ -3,27 +3,30 @@
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![All Contributors](https://img.shields.io/badge/all_contributors-12-orange.svg?style=flat-square)](#contributors)
 
-The VortexaSDK is Vortexa's Software Development Kit (SDK) for Python, which allows
-Data Scientists, Analysts and Developers to query [Vortexa's API](https://docs.vortexa.com)
+Welcome to Vortexa's Python Software Development Kit (SDK)!
+We built the SDK to provide fast, interactive, programmatic exploration of our data.
+The tool lets Data Scientists, Analysts and Developers efficiently explore the
+world’s waterborne oil movements, and to build custom models & reports with minimum setup cost.
 
+The SDK sits as a thin python wrapper around [Vortexa's API](https://docs.vortexa.com),
+giving you immediate access to pandas DataFrames.
 
 
 ## Quick Start
 
 ##### Installation
+The SDK requires Python version 3.7 or above.
 
 ```bash
 $ pip install vortexasdk
 ```
 
-Windows users can refer to a more detailed guide here: [How to install the VortexaSDK on Windows](https://github.com/VorTECHsa/python-sdk/tree/master/docs/examples)
+Check the [Setup FAQ](https://vortechsa.github.io/python-sdk/faq_setup/) page for more details
 
 ##### Authentication
 
-Set your `VORTEXA_API_KEY` environment variable, that's all.
+Set your `VORTEXA_API_KEY` environment variable, that's all. Check the [Setup FAQ](https://vortechsa.github.io/python-sdk/faq_setup/) page for more details
 
-Refer to [Vortexa API Authentication](https://docs.vortexa.com/reference/intro-authentication)
- for more details, including instructions on where to find your API key.
 
 ##### Example
 
@@ -57,6 +60,12 @@ Alternatively, you can copy the contents of [example_load_cargo_movements.py](ht
 
 Learn how to call [Endpoints](https://vortechsa.github.io/python-sdk/endpoints/about-endpoints/)
 
+## Glossary
+
+The Glossary can be found at [Vortexa API Documentation](https://docs.vortexa.com). The Glossary outlines key terms, functions and assumptions aimed at
+helping to extract powerful findings from our data.
+
+
 ## Documentation
 
 Read the documentation at [VortexaSDK Docs](https://vortechsa.github.io/python-sdk/)
@@ -65,17 +74,7 @@ Read the documentation at [VortexaSDK Docs](https://vortechsa.github.io/python-s
 
 We welcome contributions! Please read our [Contributing Guide](https://github.com/vortechsa/python-sdk/blob/master/CONTRIBUTING.md) for ways to offer feedback and contributions.
 
-## Glossary
-
-The Glossary can be found at [Vortexa API Documentation](https://docs.vortexa.com)
-
-This outlines key terms, functions and assumptions aimed at
-helping to extract powerful findings from our data.
-
-
-## Contributors ✨
-
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+Thanks goes to these wonderful contributors ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
