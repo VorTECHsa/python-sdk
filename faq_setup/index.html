@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Config - VortexaSDK</title>
+  <title>Setup - VortexaSDK</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,8 +17,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Config";
-    var mkdocs_page_input_path = "config.md";
+    var mkdocs_page_name = "Setup";
+    var mkdocs_page_input_path = "faq_setup.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -119,15 +119,9 @@
     </ul>
 	    </li>
           
-            <li class="toctree-l1 current">
+            <li class="toctree-l1">
 		
-    <a class="current" href="./">Config</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l2"><a href="#config">Config</a></li>
-    
-
-    </ul>
+    <a class="" href="../config/">Config</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -138,9 +132,30 @@
                     
     <a class="" href="../faq/">General</a>
                 </li>
-                <li class="">
+                <li class=" current">
                     
-    <a class="" href="../faq_setup/">Setup</a>
+    <a class="current" href="./">Setup</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#how-to-install-python-on-windows-using-anaconda">How to install Python on Windows using Anaconda</a></li>
+    
+
+    <li class="toctree-l3"><a href="#how-do-i-install-the-sdk-on-windows">How do I install the SDK on Windows?</a></li>
+    
+
+    <li class="toctree-l3"><a href="#how-do-i-install-the-sdk-on-mac-linux">How do I install the SDK on Mac / Linux?</a></li>
+    
+
+    <li class="toctree-l3"><a href="#how-do-i-add-an-environment-variable-on-windows">How do I add an environment variable on Windows?</a></li>
+    
+
+    <li class="toctree-l3"><a href="#where-is-my-api-key">Where is my API Key?</a></li>
+    
+
+    <li class="toctree-l3"><a href="#how-do-i-request-an-api-key">How do I request an API Key?</a></li>
+    
+
+    </ul>
                 </li>
     </ul>
 	    </li>
@@ -189,11 +204,15 @@
     <li><a href="..">Docs</a> &raquo;</li>
     
       
+        
+          <li>FAQ &raquo;</li>
+        
+      
     
-    <li>Config</li>
+    <li>Setup</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/vortechsa/python-sdk/edit/master/docs/config.md"
+        <a href="https://github.com/vortechsa/python-sdk/edit/master/docs/faq_setup.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -203,34 +222,44 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="config">Config</h2>
-<p>The VortexaSDK can be configured using environment variables.</p>
-<table>
-<thead>
-<tr>
-<th align="left">Environment Variable</th>
-<th align="left">Default</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">VORTEXA_API_KEY</td>
-<td align="left">none</td>
-<td align="left">API Key used to access the VortexaAPI. Refer to <a href="https://docs.vortexa.com/reference/intro-authentication">Vortexa API Authentication</a> for more details, including instructions on where to find your API key.</td>
-</tr>
-<tr>
-<td align="left">LOG_FILE</td>
-<td align="left">none</td>
-<td align="left">Output log file</td>
-</tr>
-<tr>
-<td align="left">LOG_LEVEL</td>
-<td align="left">INFO</td>
-<td align="left">Configure the level of must be one of <code>["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]</code></td>
-</tr>
-</tbody>
-</table>
+                <h4 id="how-to-install-python-on-windows-using-anaconda">How to install Python on Windows using Anaconda</h4>
+<ul>
+<li>Download the Python3.7 Graphical installer from the <a href="https://www.anaconda.com/distribution/">anaconda website</a></li>
+<li>Follow the conda installation instructions</li>
+</ul>
+<h4 id="how-do-i-install-the-sdk-on-windows">How do I install the SDK on Windows?</h4>
+<ul>
+<li>First, open up an Anaconda Prompt. Hit the start button and type anaconda prompt.</li>
+</ul>
+<p><img alt="Anaconda prompt" src="../img/anaconda_prompt.png" /></p>
+<ul>
+<li>Use pip to install the sdk</li>
+</ul>
+<p>Run <code>pip install --user vortexasdk</code> in the anaconda command prompt</p>
+<p><img alt="pip_install.png" src="../img/pip_install.png" /></p>
+<p>You're done! The VortexaSDK has now been installed.</p>
+<h4 id="how-do-i-install-the-sdk-on-mac-linux">How do I install the SDK on Mac / Linux?</h4>
+<p>Type the following into a bash terminal</p>
+<pre><code class="bash">$ pip install vortexasdk
+</code></pre>
+
+<h4 id="how-do-i-add-an-environment-variable-on-windows">How do I add an environment variable on Windows?</h4>
+<ul>
+<li>Hit the windows key, then type "environment" to open up a control panel settings page titled "Edit the system environment variables"</li>
+</ul>
+<p><img alt="edit_system_env_vars.png" src="../img/edit_system_env_vars.png" /></p>
+<ul>
+<li>In the System Properties window, click on the Advanced tab, then click the Environment Variables button near the bottom of that tab.</li>
+<li>Add a new user variable</li>
+</ul>
+<p><img alt="add_env_var.png" src="../img/add_env_var.png" /></p>
+<h4 id="where-is-my-api-key">Where is my API Key?</h4>
+<p>Refer to <a href="https://docs.vortexa.com/reference/intro-authentication">Vortexa API Authentication</a>
+ for details, including instructions on where to find your API key.</p>
+<h4 id="how-do-i-request-an-api-key">How do I request an API Key?</h4>
+<p>You can email <em>support@vortexa.com</em> for an API key.</p>
+<p>More details are given in <a href="https://docs.vortexa.com/reference/intro-authentication">docs.vortexa.com</a>.</p>
+<p>If you don't have login details, please get in touch at <a href="https://www.vortexa.com/">www.vortexa.com</a>.</p>
               
             </div>
           </div>
@@ -238,10 +267,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../faq/" class="btn btn-neutral float-right" title="General">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../examples/0_sample_load_cargo_movements/" class="btn btn-neutral float-right" title="0 Simple Load Cargo Movements">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../entities/vessel_movement/" class="btn btn-neutral" title="Vessel Movement"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../faq/" class="btn btn-neutral" title="General"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -269,10 +298,10 @@
           <a href="https://github.com/vortechsa/python-sdk/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../entities/vessel_movement/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../faq/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../faq/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../examples/0_sample_load_cargo_movements/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

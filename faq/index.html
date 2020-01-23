@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Config - VortexaSDK</title>
+  <title>General - VortexaSDK</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,8 +17,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Config";
-    var mkdocs_page_input_path = "config.md";
+    var mkdocs_page_name = "General";
+    var mkdocs_page_input_path = "faq.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -119,24 +119,33 @@
     </ul>
 	    </li>
           
-            <li class="toctree-l1 current">
+            <li class="toctree-l1">
 		
-    <a class="current" href="./">Config</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l2"><a href="#config">Config</a></li>
-    
-
-    </ul>
+    <a class="" href="../config/">Config</a>
 	    </li>
           
             <li class="toctree-l1">
 		
     <span class="caption-text">FAQ</span>
     <ul class="subnav">
-                <li class="">
+                <li class=" current">
                     
-    <a class="" href="../faq/">General</a>
+    <a class="current" href="./">General</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#why-do-my-requests-hang-or-run-in-an-infinite-loop">Why do my requests hang or run in an infinite loop?</a></li>
+    
+
+    <li class="toctree-l3"><a href="#whats-the-difference-between-a-cargo-movement-and-a-vessel-movement">What's the difference between a cargo movement and a vessel movement?</a></li>
+    
+
+    <li class="toctree-l3"><a href="#where-can-i-find-a-list-of-products">Where can I find a list of products?</a></li>
+    
+
+    <li class="toctree-l3"><a href="#whats-the-difference-in-a-trading-region-and-a-geographic-region">What's the difference in a trading region and a geographic region?</a></li>
+    
+
+    </ul>
                 </li>
                 <li class="">
                     
@@ -189,11 +198,15 @@
     <li><a href="..">Docs</a> &raquo;</li>
     
       
+        
+          <li>FAQ &raquo;</li>
+        
+      
     
-    <li>Config</li>
+    <li>General</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/vortechsa/python-sdk/edit/master/docs/config.md"
+        <a href="https://github.com/vortechsa/python-sdk/edit/master/docs/faq.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -203,34 +216,24 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="config">Config</h2>
-<p>The VortexaSDK can be configured using environment variables.</p>
-<table>
-<thead>
-<tr>
-<th align="left">Environment Variable</th>
-<th align="left">Default</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">VORTEXA_API_KEY</td>
-<td align="left">none</td>
-<td align="left">API Key used to access the VortexaAPI. Refer to <a href="https://docs.vortexa.com/reference/intro-authentication">Vortexa API Authentication</a> for more details, including instructions on where to find your API key.</td>
-</tr>
-<tr>
-<td align="left">LOG_FILE</td>
-<td align="left">none</td>
-<td align="left">Output log file</td>
-</tr>
-<tr>
-<td align="left">LOG_LEVEL</td>
-<td align="left">INFO</td>
-<td align="left">Configure the level of must be one of <code>["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]</code></td>
-</tr>
-</tbody>
-</table>
+                <h4 id="why-do-my-requests-hang-or-run-in-an-infinite-loop">Why do my requests hang or run in an infinite loop?</h4>
+<p>On Windows, it may be that your script doesn't check <code>if __name__ == "__main__":</code>
+before calling the SDK. Your script should contain this check, just like in <a href="https://vortechsa.github.io/python-sdk/examples/0_sample_load_cargo_movements/">this example</a>
+For more details on why <code>if __name__ == "__main__":</code> is required, check out this interesting <a href="https://stackoverflow.com/questions/20360686/compulsory-usage-of-if-name-main-in-windows-while-using-multiprocessi">stack overflow post</a> on Windows multiprocessing.</p>
+<h4 id="whats-the-difference-between-a-cargo-movement-and-a-vessel-movement">What's the difference between a cargo movement and a vessel movement?</h4>
+<p>A cargo movement is defined as the complete journey of a quantity of oil from its origin terminal to its destination terminal, including all ship to ship (STS) transfers in-between.
+For example: Tanker X loads 1mn bl of crude from Houston and discharges onto another tanker Y offshore the US Gulf, which then discharges in Singapore.
+The cargo movement is for 1mn bl of crude oil from Houston to Singapore.
+The vessel movement for tanker X is Houston to US Gulf, while for tanker Y it is US Gulf to Singapore. When there is no STS transfer, a cargo movement and vessel movement is equivalent.</p>
+<p>A more detailed explanation can be found <a href="https://docs.vortexa.com/reference/intro-cargo-movement">here</a></p>
+<h4 id="where-can-i-find-a-list-of-products">Where can I find a list of products?</h4>
+<p>Check out the Vortexa Glossary, which can be downloaded from <a href="https://docs.vortexa.com/reference/intro-introduction">here</a></p>
+<h4 id="whats-the-difference-in-a-trading-region-and-a-geographic-region">What's the difference in a trading region and a geographic region?</h4>
+<p>Trading regions have been designed by Vortexa to try and group terminals,
+ports and countries around oil market conventions
+(e.g. northwest Europe, west Africa, etc) whereas geographic regions
+are much wider in scope (e.g. North America, Asia, Africa).
+Trading regions are more granular than geographic regions.</p>
               
             </div>
           </div>
@@ -238,10 +241,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../faq/" class="btn btn-neutral float-right" title="General">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../faq_setup/" class="btn btn-neutral float-right" title="Setup">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../entities/vessel_movement/" class="btn btn-neutral" title="Vessel Movement"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../config/" class="btn btn-neutral" title="Config"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -269,10 +272,10 @@
           <a href="https://github.com/vortechsa/python-sdk/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../entities/vessel_movement/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../config/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../faq/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../faq_setup/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

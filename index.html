@@ -61,13 +61,11 @@
         
             <li><a class="toctree-l3" href="#next-steps">Next Steps</a></li>
         
+            <li><a class="toctree-l3" href="#glossary">Glossary</a></li>
+        
             <li><a class="toctree-l3" href="#documentation">Documentation</a></li>
         
             <li><a class="toctree-l3" href="#contributing">Contributing</a></li>
-        
-            <li><a class="toctree-l3" href="#glossary">Glossary</a></li>
-        
-            <li><a class="toctree-l3" href="#contributors">Contributors ✨</a></li>
         
         </ul>
     
@@ -148,6 +146,21 @@
           
             <li class="toctree-l1">
 		
+    <span class="caption-text">FAQ</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="faq/">General</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="faq_setup/">Setup</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
     <span class="caption-text">Examples</span>
     <ul class="subnav">
                 <li class="">
@@ -208,18 +221,21 @@
 <p><a href="https://circleci.com/gh/VorTECHsa/python-sdk"><img alt="CircleCI" src="https://circleci.com/gh/VorTECHsa/python-sdk.svg?style=svg" /></a>
 <a href="https://github.com/psf/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg" /></a>
 <a href="#contributors"><img alt="All Contributors" src="https://img.shields.io/badge/all_contributors-12-orange.svg?style=flat-square" /></a></p>
-<p>The VortexaSDK is Vortexa's Software Development Kit (SDK) for Python, which allows
-Data Scientists, Analysts and Developers to query <a href="https://docs.vortexa.com">Vortexa's API</a></p>
+<p>Welcome to Vortexa's Python Software Development Kit (SDK)!
+We built the SDK to provide fast, interactive, programmatic exploration of our data.
+The tool lets Data Scientists, Analysts and Developers efficiently explore the
+world’s waterborne oil movements, and to build custom models &amp; reports with minimum setup cost.</p>
+<p>The SDK sits as a thin python wrapper around <a href="https://docs.vortexa.com">Vortexa's API</a>,
+giving you immediate access to pandas DataFrames.</p>
 <h2 id="quick-start">Quick Start</h2>
 <h5 id="installation">Installation</h5>
+<p>The SDK requires Python version 3.7 or above.</p>
 <pre><code class="bash">$ pip install vortexasdk
 </code></pre>
 
-<p>Windows users can refer to a more detailed guide here: <a href="https://github.com/VorTECHsa/python-sdk/tree/master/docs/examples">How to install the VortexaSDK on Windows</a></p>
+<p>Check the <a href="https://vortechsa.github.io/python-sdk/faq_setup/">Setup FAQ</a> page for more details</p>
 <h5 id="authentication">Authentication</h5>
-<p>Set your <code>VORTEXA_API_KEY</code> environment variable, that's all.</p>
-<p>Refer to <a href="https://docs.vortexa.com/reference/intro-authentication">Vortexa API Authentication</a>
- for more details, including instructions on where to find your API key.</p>
+<p>Set your <code>VORTEXA_API_KEY</code> environment variable, that's all. Check the <a href="https://vortechsa.github.io/python-sdk/faq_setup/">Setup FAQ</a> page for more details</p>
 <h5 id="example">Example</h5>
 <p>In an interactive python console, run:</p>
 <pre><code class="python">&gt;&gt;&gt; from datetime import datetime
@@ -287,16 +303,14 @@ Data Scientists, Analysts and Developers to query <a href="https://docs.vortexa.
  into a file named <code>example.py</code> and run <code>python example.py</code> from your terminal or powershell console.</p>
 <h2 id="next-steps">Next Steps</h2>
 <p>Learn how to call <a href="https://vortechsa.github.io/python-sdk/endpoints/about-endpoints/">Endpoints</a></p>
+<h2 id="glossary">Glossary</h2>
+<p>The Glossary can be found at <a href="https://docs.vortexa.com">Vortexa API Documentation</a>. The Glossary outlines key terms, functions and assumptions aimed at
+helping to extract powerful findings from our data.</p>
 <h2 id="documentation">Documentation</h2>
 <p>Read the documentation at <a href="https://vortechsa.github.io/python-sdk/">VortexaSDK Docs</a></p>
 <h2 id="contributing">Contributing</h2>
 <p>We welcome contributions! Please read our <a href="https://github.com/vortechsa/python-sdk/blob/master/CONTRIBUTING.md">Contributing Guide</a> for ways to offer feedback and contributions.</p>
-<h2 id="glossary">Glossary</h2>
-<p>The Glossary can be found at <a href="https://docs.vortexa.com">Vortexa API Documentation</a></p>
-<p>This outlines key terms, functions and assumptions aimed at
-helping to extract powerful findings from our data.</p>
-<h2 id="contributors">Contributors ✨</h2>
-<p>Thanks goes to these wonderful people (<a href="https://allcontributors.org/docs/en/emoji-key">emoji key</a>):</p>
+<p>Thanks goes to these wonderful contributors (<a href="https://allcontributors.org/docs/en/emoji-key">emoji key</a>):</p>
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 
 <!-- prettier-ignore -->
@@ -373,5 +387,5 @@ helping to extract powerful findings from our data.</p>
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2020-01-22 13:51:31
+Build Date UTC : 2020-01-23 15:23:34
 -->
