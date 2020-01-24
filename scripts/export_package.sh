@@ -14,7 +14,7 @@ git push --tags
 
 # Generate changelog
 #gem install github_changelog_generator
-github_changelog_generator -u V0RT3X4 -p python-sdk -t $GITHUB_CHANGELOG_TOKEN
+github_changelog_generator -u vortechsa -p python-sdk -t $GITHUB_CHANGELOG_TOKEN
 git add CHANGELOG.md
 git commit -m "docs: Update changelog with tag $TAG"
 git push
@@ -28,4 +28,4 @@ python3 setup.py sdist bdist_wheel
 python3 -m twine upload -u $TWINE_USERNAME -p $TWINE_PASSWORD dist/*
 
 # Deploy Docs
-./docs/deploy_docs.sh
+./docs/scripts/deploy_docs.sh

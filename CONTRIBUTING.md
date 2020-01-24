@@ -4,8 +4,8 @@
 ## Suggesting new features / Reporting An Issue
 
 First, check to see if there's an existing issue/pull request for the
-bug/feature. All issues are at https://github.com/V0RT3X4/python-sdk/issues and pull reqs are at
-https://github.com/V0RT3X4/python-sdk/pulls.
+bug/feature. All issues are at https://github.com/vortechsa/python-sdk/issues and pull reqs are at
+https://github.com/vortechsa/python-sdk/pulls.
 
 If there isn't an existing issue there, please file an issue. The
 ideal report includes:
@@ -21,7 +21,7 @@ ideal report includes:
 First, clone the repo, then `cd` into the repo.
 
 ```bash
-$ git clone git@github.com:V0RT3X4/python-sdk.git
+$ git clone git@github.com:vortechsa/python-sdk.git
 $ cd python-sdk
 ```
 
@@ -49,7 +49,7 @@ $ python setup.py test
 
 serve documentation
 ```bash
-$ ./docs/serve_docs.sh
+$ ./docs/scripts/serve_docs.sh
 ```
 …and view the docs at http://localhost:8000 in your web browser.
 
@@ -91,10 +91,10 @@ Documentation should follow the [Google Documentation Style Guide](https://devel
 
 ## Community
 
-Discussions about the VortexaSDK take place on this repository's https://github.com/V0RT3X4/python-sdk/issues and https://github.com/V0RT3X4/python-sdk/pulls sections. Anybody is welcome to join these conversations.
+Discussions about the VortexaSDK take place on this repository's https://github.com/vortechsa/python-sdk/issues and https://github.com/vortechsa/python-sdk/pulls sections. Anybody is welcome to join these conversations.
 
 Wherever possible, do not take these conversations to private channels, including contacting the maintainers directly. Keeping communication public means everybody can benefit and learn from the conversation.
 
 ## Code of Conduct
 
-Please see https://github.com/V0RT3X4/python-sdk/blob/master/CODE_OF_CONDUCT.md for the code of conduct.
+Please see https://github.com/vortechsa/python-sdk/blob/master/CODE_OF_CONDUCT.md for the code of conduct.

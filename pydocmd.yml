@@ -1,5 +1,6 @@
 site_name: VortexaSDK
-repo_url: https://github.com/V0RT3X4/python-sdk
+docs_dir: docs/
+repo_url: https://github.com/vortechsa/python-sdk
 generate:
   - endpoints/cargo_movements.md:
       - vortexasdk.endpoints.cargo_movements++
@@ -53,7 +54,11 @@ pages:
       Vessel: entities/vessel.md
       Vessel Movement: entities/vessel_movement.md
   - Config: config.md << docs/config/config.md
+  - FAQ:
+      Setup: faq_setup.md << docs/faq_setup.md
+      General: faq.md << docs/faq.md
   - Examples:
+      0 Simple Load Cargo Movements: examples/0_sample_load_cargo_movements.md
       1 China VLCC Discharges: examples/1_china.md
       2 Laden Vessel Movements: examples/2_all_vessel_movements.md
       3 Crude movements from Saudi Arabia to India: examples/3_crude_from_saudi_arabia_to_india.md
