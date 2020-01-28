@@ -3,15 +3,10 @@ from datetime import datetime
 from typing import List, Union
 
 from vortexasdk.api.shared_types import to_ISODate
-from vortexasdk.conversions import (
-    convert_to_corporation_ids,
-    convert_to_geography_ids,
-    convert_to_product_ids,
-    convert_to_vessel_ids,
-)
 from vortexasdk.endpoints.endpoints import CARGO_TIMESERIES_RESOURCE
 from vortexasdk.endpoints.timeseries_result import TimeSeriesResult
 from vortexasdk.operations import Search
+from vortexasdk.utils import convert_to_list
 
 
 class CargoTimeSeries(Search):
@@ -93,21 +88,15 @@ class CargoTimeSeries(Search):
             "filter_time_max": to_ISODate(filter_time_max),
             "cm_unit": cm_unit,
             "size": self._MAX_PAGE_RESULT_SIZE,
-            "filter_charterers": convert_to_corporation_ids(filter_charterers),
-            "filter_owners": convert_to_corporation_ids(filter_owners),
-            "filter_products": convert_to_product_ids(filter_products),
-            "filter_vessels": convert_to_vessel_ids(filter_vessels),
-            "filter_destinations": convert_to_geography_ids(
-                filter_destinations
-            ),
-            "filter_origins": convert_to_geography_ids(filter_origins),
-            "filter_storage_locations": convert_to_geography_ids(
-                filter_storage_locations
-            ),
-            "filter_ship_to_ship_locations": convert_to_geography_ids(
-                filter_ship_to_ship_locations
-            ),
-            "filter_waypoints": convert_to_geography_ids(filter_waypoints),
+            "filter_charterers": convert_to_list(filter_charterers),
+            "filter_owners": convert_to_list(filter_owners),
+            "filter_products": convert_to_list(filter_products),
+            "filter_vessels": convert_to_list(filter_vessels),
+            "filter_destinations": convert_to_list(filter_destinations),
+            "filter_origins": convert_to_list(filter_origins),
+            "filter_storage_locations": convert_to_list(filter_storage_locations),
+            "filter_ship_to_ship_locations": convert_to_list(filter_ship_to_ship_locations),
+            "filter_waypoints": convert_to_list(filter_waypoints),
             "disable_geographic_exclusion_rules": disable_geographic_exclusion_rules,
         }
 
