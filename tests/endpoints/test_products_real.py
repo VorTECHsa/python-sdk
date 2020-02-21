@@ -36,12 +36,9 @@ class TestProductsReal(TestCaseUsingRealAPI):
         assert len(df) == 2
 
     def test_search_crude(self):
-        result = [p.id for p in Products().search("Crude").to_list()]
+        result = [p.id for p in Products().search("Crude").to_list()][0]
 
-        assert (
-                "6f11b0724c9a4e85ffa7f1445bc768f054af755a090118dcf99f14745c261653"
-                in result
-        )
+        assert result == "6f11b0724c9a4e85ffa7f1445bc768f054af755a090118dcf99f14745c261653"
 
     def test_load_all(self):
         all_products = Products().load_all()
@@ -50,9 +47,7 @@ class TestProductsReal(TestCaseUsingRealAPI):
 
     def test_search_multiple_terms_to_dataframe(self):
         df = (
-            Products()
-                .search(term=["diesel", "fuel oil", "grane"])
-                .to_df("all")
+            Products().search(term=["diesel", "fuel oil", "grane"]).to_df("all")
         )
 
         expected_columns = {

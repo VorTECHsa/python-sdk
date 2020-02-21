@@ -1,5 +1,5 @@
-from api import Product
 from tests.testcases import TestCaseUsingMockAPI
+from vortexasdk.api import Product
 from vortexasdk.endpoints.products import Products
 
 
