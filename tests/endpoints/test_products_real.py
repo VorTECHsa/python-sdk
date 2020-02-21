@@ -1,5 +1,4 @@
 from tests.testcases import TestCaseUsingRealAPI
-from vortexasdk.client import create_client, set_client
 from vortexasdk.endpoints.products import Products
 from vortexasdk.endpoints.products_result import DEFAULT_COLUMNS
 
@@ -37,13 +36,11 @@ class TestProductsReal(TestCaseUsingRealAPI):
         assert len(df) == 2
 
     def test_search_crude(self):
-        set_client(create_client())
-
         result = [p.id for p in Products().search("Crude").to_list()]
 
         assert (
-            "6f11b0724c9a4e85ffa7f1445bc768f054af755a090118dcf99f14745c261653"
-            in result
+                "6f11b0724c9a4e85ffa7f1445bc768f054af755a090118dcf99f14745c261653"
+                in result
         )
 
     def test_load_all(self):
@@ -54,11 +51,11 @@ class TestProductsReal(TestCaseUsingRealAPI):
     def test_search_multiple_terms_to_dataframe(self):
         df = (
             Products()
-            .search(term=["diesel", "fuel oil", "grane"])
-            .to_df("all")
+                .search(term=["diesel", "fuel oil", "grane"])
+                .to_df("all")
         )
 
-        assert set(df.columns) == {
+        expected_columns = {
             "id",
             "name",
             "layer.0",
@@ -70,12 +67,12 @@ class TestProductsReal(TestCaseUsingRealAPI):
             "meta.api_max",
             "ref_type",
             "meta.sulphur_min",
-            "meta.sulphur_max",
+            "meta.sulphur_max"
         }
 
-    def test_lookup_crude(self):
-        set_client(create_client())
+        assert expected_columns.issubset(set(df.columns))
 
+    def test_lookup_crude(self):
         result = Products().reference(
             "6f11b0724c9a4e85ffa7f1445bc768f054af755a090118dcf99f14745c261653"
         )
