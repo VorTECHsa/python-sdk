@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Corporation - VortexaSDK</title>
+  <title>4 Ballast Movements - VortexaSDK</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -17,8 +17,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Corporation";
-    var mkdocs_page_input_path = "entities/corporation.md";
+    var mkdocs_page_name = "4 Ballast Movements";
+    var mkdocs_page_input_path = "examples/4_ballast_movements.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -94,30 +94,27 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../cargo_movement/">Cargo Movement</a>
-                </li>
-                <li class=" current">
-                    
-    <a class="current" href="./">Corporation</a>
-    <ul class="subnav">
-            
-    </ul>
+    <a class="" href="../../entities/cargo_movement/">Cargo Movement</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../geography/">Geography</a>
+    <a class="" href="../../entities/corporation/">Corporation</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../product/">Product</a>
+    <a class="" href="../../entities/geography/">Geography</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../vessel/">Vessel</a>
+    <a class="" href="../../entities/product/">Product</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../vessel_movement/">Vessel Movement</a>
+    <a class="" href="../../entities/vessel/">Vessel</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../entities/vessel_movement/">Vessel Movement</a>
                 </li>
     </ul>
 	    </li>
@@ -148,23 +145,26 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../examples/0_sample_load_cargo_movements/">0 Simple Load Cargo Movements</a>
+    <a class="" href="../0_sample_load_cargo_movements/">0 Simple Load Cargo Movements</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../examples/1_china/">1 China VLCC Discharges</a>
+    <a class="" href="../1_china/">1 China VLCC Discharges</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../examples/2_all_vessel_movements/">2 Laden Vessel Movements</a>
+    <a class="" href="../2_all_vessel_movements/">2 Laden Vessel Movements</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../examples/3_crude_from_saudi_arabia_to_india/">3 Crude movements from Saudi Arabia to India</a>
+    <a class="" href="../3_crude_from_saudi_arabia_to_india/">3 Crude movements from Saudi Arabia to India</a>
                 </li>
-                <li class="">
+                <li class=" current">
                     
-    <a class="" href="../../examples/4_ballast_movements/">4 Ballast Movements</a>
+    <a class="current" href="./">4 Ballast Movements</a>
+    <ul class="subnav">
+            
+    </ul>
                 </li>
     </ul>
 	    </li>
@@ -191,14 +191,14 @@
     
       
         
-          <li>Entities &raquo;</li>
+          <li>Examples &raquo;</li>
         
       
     
-    <li>Corporation</li>
+    <li>4 Ballast Movements</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/vortechsa/python-sdk/edit/master/docs/entities/corporation.md"
+        <a href="https://github.com/vortechsa/python-sdk/edit/master/docs/examples/4_ballast_movements.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -208,20 +208,27 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="vortexasdk.api.corporation">vortexasdk.api.corporation</h1>
+                <p>Let's find some ballast movements</p>
+<pre><code class="python">from datetime import datetime
 
-<h2 id="vortexasdk.api.corporation.Corporation">Corporation</h2>
+from docs.utils import to_markdown
+from vortexasdk import VesselMovements
 
-<pre><code class="python">Corporation(self, id: str, name: str, corporate_entity_type: List[str], ref_type: str, leaf: bool, parent: List[str]) -&gt; None
+if __name__ == &quot;__main__&quot;:
+    # Query the API
+    search_result = VesselMovements().search(
+        filter_time_min=datetime(2017, 10, 1, 0),
+        filter_time_max=datetime(2017, 10, 1, 1),
+    )
+
+    # Convert the search result to a dataframe
+    vessel_movements = search_result.to_df()
+
+    # Ballast movements are movements without a cargo.
+    is_ballast_mask = vessel_movements[&quot;cargoes.0.product.group.label&quot;].isna()
+
+    ballast_movements = vessel_movements[is_ballast_mask]
 </code></pre>
-
-<p>Represent a Corporation reference record returned by the API.
-<h2 id="vortexasdk.api.corporation.CorporateEntity">CorporateEntity</h2></p>
-<pre><code class="python">CorporateEntity(self, id: str, label: str, layer: str, probability: float, source: str) -&gt; None
-</code></pre>
-
-<p>Represents a relationship between a corporation and another entity like a vessel.</p>
-<p><a href="https://docs.vortexa.com/reference/intro-corporate-entities">Corporate Entity Further Documentation</a></p>
               
             </div>
           </div>
@@ -229,10 +236,8 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../geography/" class="btn btn-neutral float-right" title="Geography">Next <span class="icon icon-circle-arrow-right"></span></a>
       
-      
-        <a href="../cargo_movement/" class="btn btn-neutral" title="Cargo Movement"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../3_crude_from_saudi_arabia_to_india/" class="btn btn-neutral" title="3 Crude movements from Saudi Arabia to India"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -260,10 +265,8 @@
           <a href="https://github.com/vortechsa/python-sdk/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../cargo_movement/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../3_crude_from_saudi_arabia_to_india/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
-      
-        <span style="margin-left: 15px"><a href="../geography/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
