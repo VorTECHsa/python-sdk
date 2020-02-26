@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from typing import List
 
 from vortexasdk.api.serdes import FromDictMixin
-from vortexasdk.api.shared_types import Node, EntityWithProbability
+from vortexasdk.api.shared_types import Entity, EntityWithProbability, Node
 
 
 @dataclass(frozen=True)
@@ -15,6 +15,7 @@ class Product(Node, FromDictMixin):
 
     layer: List[str]
     meta: dict
+    hierarchy: List[Entity]
 
 
 @dataclass(frozen=True)
