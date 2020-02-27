@@ -215,7 +215,6 @@
 
 from dateutil.relativedelta import relativedelta
 
-from docs.utils import to_markdown
 from vortexasdk import CargoMovements, Geographies, Products
 
 if __name__ == &quot;__main__&quot;:
@@ -287,8 +286,6 @@ if __name__ == &quot;__main__&quot;:
 
     # Sort the dataframe by loading timestamp
     df = df.sort_values(by=[&quot;events.cargo_port_load_event.0.end_timestamp&quot;])
-
-    print(to_markdown(df))
 </code></pre>
               
             </div>

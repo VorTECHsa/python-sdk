@@ -20,7 +20,6 @@ The below script returns:
 """
 from datetime import datetime
 
-from docs.utils import to_markdown
 from vortexasdk import VesselMovements
 
 if __name__ == "__main__":
@@ -72,5 +71,3 @@ if __name__ == "__main__":
 
     # Let's find the laden vessel movements.
     laden_vessel_movements = vessel_movements[is_laden_mask]
-
-    print(to_markdown(laden_vessel_movements.head(10)))
