@@ -3,7 +3,6 @@ Let's find some ballast movements
 """
 from datetime import datetime
 
-from docs.utils import to_markdown
 from vortexasdk import VesselMovements
 
 if __name__ == "__main__":
