@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.12.1](https://github.com/vortechsa/python-sdk/tree/0.12.1) (2020-03-03)
+
+[Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.12.0...0.12.1)
+
+**Merged pull requests:**
+
+- feat: Check the number of records returned by API is what we'd expect [\#158](https://github.com/VorTECHsa/python-sdk/pull/158) ([KitBurgess](https://github.com/KitBurgess))
+- chore: Remove to\_markdown imports [\#157](https://github.com/VorTECHsa/python-sdk/pull/157) ([KitBurgess](https://github.com/KitBurgess))
+- Aws event example [\#156](https://github.com/VorTECHsa/python-sdk/pull/156) ([asfakianakis](https://github.com/asfakianakis))
+
 ## [0.12.0](https://github.com/vortechsa/python-sdk/tree/0.12.0) (2020-02-26)
 
 [Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.11.2...0.12.0)
