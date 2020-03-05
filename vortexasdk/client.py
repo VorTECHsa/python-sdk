@@ -41,19 +41,35 @@ class VortexaClient(AbstractVortexaClient):
         """Search using `resource` using `**data` as filter params."""
         url = self._create_url(resource)
         payload = {k: v for k, v in data.items() if v is not None}
-
-        try:
-            request = _send_post_request(url, payload, size=1, offset=0)
-            total = request["total"]
-        except KeyError:
-            total = 1
+        probe_response = _send_post_request(url, payload, size=1, offset=0)
+        total = self._calculate_total(probe_response)
 
         if total > self._MAX_ALLOWED_TOTAL:
             raise Exception(
                 f"Attempting to query too many records at once. Attempted records: {total}, Max allowed records: {self._MAX_ALLOWED_TOTAL} . "
                 f"Try reducing the date range to return fewer records."
             )
+        elif total == 1:
+            # Only one page response, no need to send another request, so return flattened response
+            return self._flatten_response(probe_response)
+        else:
+            # Multiple pages available, create offsets and fetch all responses
+            responses = self._process_multiple_pages(
+                total=total, url=url, payload=payload, data=data
+            )
+            flattened = self._flatten_response(responses)
+            assert len(flattened) == total, (
+                f"Incorrect number of records returned from API. "
+                f"Actual: {len(flattened)}, expected: {total}"
+            )
+            return flattened
 
+    def _create_url(self, path: str) -> str:
+        return f"{API_URL}{path}?apikey={self.api_key}"
+
+    def _process_multiple_pages(
+        self, total: int, url: str, payload: Dict, data: Dict
+    ) -> List:
         size = data.get("size", 1000)
         offsets = list(range(0, total, size))
         shuffle(offsets)
@@ -76,20 +92,16 @@ class VortexaClient(AbstractVortexaClient):
                     progress_bar=pbar,
                 )
 
-                responses = pool.map(func, offsets)
+                return pool.map(func, offsets)
 
-        flattened = [x for y in responses for x in y]
+    @staticmethod
+    def _calculate_total(response) -> int:
+        """ Get total number of pages, if total key does not exist, return 1 """
+        return response.get("total", 1)
 
-        if total != 1:
-            assert len(flattened) == total, (
-                f"Incorrect number of records returned from API. "
-                f"Actual: {len(flattened)}, expected: {total}"
-            )
-
-        return flattened
-
-    def _create_url(self, path: str) -> str:
-        return f"{API_URL}{path}?apikey={self.api_key}"
+    @staticmethod
+    def _flatten_response(response) -> List:
+        return [x for y in response for x in y]
 
 
 def _send_post_request_data(
