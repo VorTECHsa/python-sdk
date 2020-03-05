@@ -79,6 +79,11 @@ class VortexaClient(AbstractVortexaClient):
 
         flattened = [x for y in responses for x in y]
 
+        assert len(flattened) == total, (
+            f"Incorrect number of records returned from API. "
+            f"Actual: {len(flattened)}, expected: {total}"
+        )
+
         return flattened
 
     def _create_url(self, path: str) -> str:
