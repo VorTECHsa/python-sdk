@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.13.1](https://github.com/vortechsa/python-sdk/tree/0.13.1) (2020-03-05)
+
+[Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.13.0...0.13.1)
+
+**Merged pull requests:**
+
+- Client probe request [\#160](https://github.com/VorTECHsa/python-sdk/pull/160) ([cvonsteg](https://github.com/cvonsteg))
+- chore: Set Content-Type as application/json in requests [\#159](https://github.com/VorTECHsa/python-sdk/pull/159) ([KitBurgess](https://github.com/KitBurgess))
+
 ## [0.13.0](https://github.com/vortechsa/python-sdk/tree/0.13.0) (2020-03-05)
 
 [Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.12.1...0.13.0)
@@ -114,6 +123,7 @@
 **Fixed bugs:**
 
 - CargoMovementsResult.to\_df\('all'\) blows up [\#120](https://github.com/VorTECHsa/python-sdk/issues/120)
+- CargoMovements filter\_activity illegal state [\#71](https://github.com/VorTECHsa/python-sdk/issues/71)
 - Reference shouldn't return a list [\#69](https://github.com/VorTECHsa/python-sdk/issues/69)
 
 **Closed issues:**
@@ -196,10 +206,6 @@
 
 [Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.7.0...0.8.0)
 
-**Implemented enhancements:**
-
-- filter\_time\_min and filter\_time\_max parameters should be python datetime objects [\#45](https://github.com/VorTECHsa/python-sdk/issues/45)
-
 **Merged pull requests:**
 
 - feat: Use datetime type as time argument, closes \#45 [\#92](https://github.com/VorTECHsa/python-sdk/pull/92) ([KitBurgess](https://github.com/KitBurgess))
@@ -208,6 +214,10 @@
 ## [0.7.0](https://github.com/vortechsa/python-sdk/tree/0.7.0) (2019-11-26)
 
 [Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.6.1...0.7.0)
+
+**Implemented enhancements:**
+
+- filter\_time\_min and filter\_time\_max parameters should be python datetime objects [\#45](https://github.com/VorTECHsa/python-sdk/issues/45)
 
 **Closed issues:**
 
@@ -225,10 +235,6 @@
 **Implemented enhancements:**
 
 - Add DataFrame example to all endpoints [\#58](https://github.com/VorTECHsa/python-sdk/issues/58)
-
-**Fixed bugs:**
-
-- CargoMovements filter\_activity illegal state [\#71](https://github.com/VorTECHsa/python-sdk/issues/71)
 
 **Closed issues:**
 
