@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.13.0](https://github.com/vortechsa/python-sdk/tree/0.13.0) (2020-03-05)
+
+[Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.12.1...0.13.0)
+
+**Merged pull requests:**
+
+- feat: Add timeseries endpoint, closes \#124 [\#125](https://github.com/VorTECHsa/python-sdk/pull/125) ([KitBurgess](https://github.com/KitBurgess))
+
 ## [0.12.1](https://github.com/vortechsa/python-sdk/tree/0.12.1) (2020-03-03)
 
 [Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.12.0...0.12.1)
@@ -100,6 +108,7 @@
 
 **Implemented enhancements:**
 
+- Add timeseries endpoint [\#124](https://github.com/VorTECHsa/python-sdk/issues/124)
 - Add load all reference data method [\#81](https://github.com/VorTECHsa/python-sdk/issues/81)
 
 **Fixed bugs:**
