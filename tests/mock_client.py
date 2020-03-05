@@ -9,7 +9,7 @@ from vortexasdk.endpoints.endpoints import (
     VESSELS_REFERENCE,
     PRODUCTS_REFERENCE,
     VESSEL_MOVEMENTS_RESOURCE,
-    CARGO_TIMESERIES_RESOURCE
+    CARGO_TIMESERIES_RESOURCE,
 )
 
 
@@ -32,7 +32,7 @@ class MockVortexaClient(AbstractVortexaClient):
         VESSELS_REFERENCE: example_vessels,
         PRODUCTS_REFERENCE: example_products,
         VESSEL_MOVEMENTS_RESOURCE: example_vessel_movements,
-        CARGO_TIMESERIES_RESOURCE: example_time_series
+        CARGO_TIMESERIES_RESOURCE: example_time_series,
     }
 
     def get_reference(self, resource: str, id: ID) -> List[Dict]:
