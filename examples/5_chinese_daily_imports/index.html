@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Config - VortexaSDK</title>
+  <title>5 Chinese Daily Crude Imports - VortexaSDK</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -17,8 +17,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Config";
-    var mkdocs_page_input_path = "config/config.md";
+    var mkdocs_page_name = "5 Chinese Daily Crude Imports";
+    var mkdocs_page_input_path = "examples/5_chinese_daily_imports.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -125,7 +125,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../">Config</a>
+    <a class="" href="../../config/">Config</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -149,27 +149,30 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../examples/0_sample_load_cargo_movements/">0 Simple Load Cargo Movements</a>
+    <a class="" href="../0_sample_load_cargo_movements/">0 Simple Load Cargo Movements</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../examples/1_china/">1 China VLCC Discharges</a>
+    <a class="" href="../1_china/">1 China VLCC Discharges</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../examples/2_all_vessel_movements/">2 Laden Vessel Movements</a>
+    <a class="" href="../2_all_vessel_movements/">2 Laden Vessel Movements</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../examples/3_crude_from_saudi_arabia_to_india/">3 Crude movements from Saudi Arabia to India</a>
+    <a class="" href="../3_crude_from_saudi_arabia_to_india/">3 Crude movements from Saudi Arabia to India</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../examples/4_ballast_movements/">4 Ballast Movements</a>
+    <a class="" href="../4_ballast_movements/">4 Ballast Movements</a>
                 </li>
-                <li class="">
+                <li class=" current">
                     
-    <a class="" href="../../examples/5_chinese_daily_imports/">5 Chinese Daily Crude Imports</a>
+    <a class="current" href="./">5 Chinese Daily Crude Imports</a>
+    <ul class="subnav">
+            
+    </ul>
                 </li>
     </ul>
 	    </li>
@@ -195,11 +198,15 @@
     <li><a href="../..">Docs</a> &raquo;</li>
     
       
+        
+          <li>Examples &raquo;</li>
+        
+      
     
-    <li>Config</li>
+    <li>5 Chinese Daily Crude Imports</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/vortechsa/python-sdk/edit/master/docs/config/config.md"
+        <a href="https://github.com/vortechsa/python-sdk/edit/master/docs/examples/5_chinese_daily_imports.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -209,38 +216,105 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="config">Config</h2>
-<p>The VortexaSDK can be configured using environment variables.</p>
+                <p>Let's retrieve the daily sum of Chinese Crude/Condensate imports, over the last year.</p>
+<p>The below script returns:</p>
 <table>
 <thead>
 <tr>
-<th align="left">Environment Variable</th>
-<th align="left">Default</th>
-<th align="left">Description</th>
+<th align="right"></th>
+<th align="left">key</th>
+<th align="right">value</th>
+<th align="right">count</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">VORTEXA_API_KEY</td>
-<td align="left">none</td>
-<td align="left">API Key used to access the VortexaAPI. Refer to <a href="https://docs.vortexa.com/reference/intro-authentication">Vortexa API Authentication</a> for more details, including instructions on where to find your API key.</td>
+<td align="right">0</td>
+<td align="left">2019-01-01T00:00:00.000Z</td>
+<td align="right">1237381</td>
+<td align="right">9</td>
 </tr>
 <tr>
-<td align="left">LOG_FILE</td>
-<td align="left">none</td>
-<td align="left">Output log file</td>
+<td align="right">1</td>
+<td align="left">2019-01-02T00:00:00.000Z</td>
+<td align="right">6548127</td>
+<td align="right">23</td>
 </tr>
 <tr>
-<td align="left">LOG_LEVEL</td>
-<td align="left">INFO</td>
-<td align="left">Configure the level of must be one of <code>["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]</code></td>
+<td align="right">2</td>
+<td align="left">2019-01-03T00:00:00.000Z</td>
+<td align="right">45457617</td>
+<td align="right">23</td>
+</tr>
+<tr>
+<td align="right">3</td>
+<td align="left">2019-01-04T00:00:00.000Z</td>
+<td align="right">6467759</td>
+<td align="right">43</td>
+</tr>
+<tr>
+<td align="right">4</td>
+<td align="left">2019-01-05T00:00:00.000Z</td>
+<td align="right">7777144</td>
+<td align="right">4</td>
+</tr>
+<tr>
+<td align="right">...</td>
+<td align="left"></td>
+<td align="right"></td>
+<td align="right"></td>
 </tr>
 </tbody>
 </table>
+<pre><code class="python">from datetime import datetime
+
+from vortexasdk import CargoTimeSeries, Geographies, Products
+
+if __name__ == &quot;__main__&quot;:
+    # Find china ID
+    china = [
+        g.id
+        for g in Geographies().search(term=&quot;china&quot;).to_list()
+        if &quot;country&quot; in g.layer
+    ]
+
+    # Find Crude/Condensates ID
+    crude_condensates = [
+        p.id
+        for p in Products().search(term=&quot;Crude/Condensates&quot;).to_list()
+        if p.name == &quot;Crude/Condensates&quot;
+    ]
+
+    # Query API
+    search_result = CargoTimeSeries().search(
+        # We're only interested in movements into China
+        filter_destinations=china,
+        # We're looking at daily imports
+        timeseries_frequency=&quot;day&quot;,
+        # We want 'b' for barrels here
+        timeseries_unit=&quot;b&quot;,
+        # We're only interested in Crude/Condensates
+        filter_products=crude_condensates,
+        # We want all cargo movements that unloaded in 2019 to be included
+        filter_activity=&quot;unloading_start&quot;,
+        filter_time_min=datetime(2019, 1, 1),
+        filter_time_max=datetime(2019, 12, 31),
+    )
+
+    # Convert search result to dataframe
+    df = search_result.to_df()
+</code></pre>
               
             </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../4_ballast_movements/" class="btn btn-neutral" title="4 Ballast Movements"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -265,6 +339,8 @@
       
           <a href="https://github.com/vortechsa/python-sdk/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
+      
+        <span><a href="../4_ballast_movements/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
     </span>
