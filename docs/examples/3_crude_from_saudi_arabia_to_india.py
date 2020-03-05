@@ -20,7 +20,9 @@ if __name__ == "__main__":
     all_geogs_with_india_in_the_name = Geographies().search("india").to_list()
 
     # We're only interested in the country India here
-    india = [g.id for g in all_geogs_with_india_in_the_name if g.name == "India"]
+    india = [
+        g.id for g in all_geogs_with_india_in_the_name if g.name == "India"
+    ]
     # Check we've only got one ID for India
     assert len(india) == 1
 

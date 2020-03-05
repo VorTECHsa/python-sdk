@@ -43,7 +43,8 @@ class VortexaClient(AbstractVortexaClient):
         payload = {k: v for k, v in data.items() if v is not None}
 
         try:
-            total = _send_post_request(url, payload, size=1, offset=0)["total"]
+            request = _send_post_request(url, payload, size=1, offset=0)
+            total = request["total"]
         except KeyError:
             total = 1
 
@@ -79,10 +80,11 @@ class VortexaClient(AbstractVortexaClient):
 
         flattened = [x for y in responses for x in y]
 
-        # assert len(flattened) == total, (
-        #     f"Incorrect number of records returned from API. "
-        #     f"Actual: {len(flattened)}, expected: {total}"
-        # )
+        if total != 1:
+            assert len(flattened) == total, (
+                f"Incorrect number of records returned from API. "
+                f"Actual: {len(flattened)}, expected: {total}"
+            )
 
         return flattened
 
