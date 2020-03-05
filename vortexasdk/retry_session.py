@@ -1,14 +1,16 @@
-from requests import Session, Response
+from requests import Response, Session
 from requests.adapters import HTTPAdapter
 from urllib3 import Retry
+
+_HEADERS = {"Content-Type": "application/json"}
 
 
 # Inspired by https://www.peterbe.com/plog/best-practice-with-retries-with-requests
 def _requests_retry_session(
-    retries=6,
-    backoff_factor=1,
-    status_forcelist=(500, 502, 504),
-    session=None,
+        retries=6,
+        backoff_factor=1,
+        status_forcelist=(500, 502, 504),
+        session=None,
 ) -> Session:
     """Instantiate a session with Retry backoff."""
     session = session or Session()
@@ -33,9 +35,9 @@ def _requests_retry_session(
 
 def retry_get(*args, **kwargs) -> Response:
     with _requests_retry_session() as s:
-        return s.get(*args, **kwargs)
+        return s.get(headers=_HEADERS, *args, **kwargs)
 
 
 def retry_post(*args, **kwargs) -> Response:
     with _requests_retry_session() as s:
-        return s.post(*args, **kwargs)
+        return s.post(headers=_HEADERS, *args, **kwargs)
