@@ -38,12 +38,12 @@ class TestCargoTimeSeries(TestCaseUsingRealAPI):
 
         df = (
             CargoTimeSeries()
-                .search(
+            .search(
                 filter_activity="loading_state",
                 filter_time_min=start,
                 filter_time_max=end,
             )
-                .to_df()
+            .to_df()
         )
 
         print(to_markdown(df.head()))
@@ -59,12 +59,12 @@ class TestCargoTimeSeries(TestCaseUsingRealAPI):
 
         time_series_list = (
             CargoTimeSeries()
-                .search(
+            .search(
                 filter_activity="loading_state",
                 filter_time_min=start,
                 filter_time_max=end,
             )
-                .to_list()
+            .to_list()
         )
 
         n_days = (end - start).days + 1
@@ -80,11 +80,15 @@ class TestCargoTimeSeries(TestCaseUsingRealAPI):
             for g in Geographies().search(term="rotterdam").to_list()
             if "port" in g.layer
         ]
-        crude = [p.id for p in Products().search("crude").to_list() if "Crude" == p.name]
+        crude = [
+            p.id
+            for p in Products().search("crude").to_list()
+            if "Crude" == p.name
+        ]
 
         rotterdam_crude_timeseries = (
             CargoTimeSeries()
-                .search(
+            .search(
                 filter_activity="loading_state",
                 timeseries_unit="bpd",
                 timeseries_frequency="month",
@@ -93,12 +97,12 @@ class TestCargoTimeSeries(TestCaseUsingRealAPI):
                 filter_origins=rotterdam,
                 filter_products=crude,
             )
-                .to_df()
+            .to_df()
         )
 
         rotterdam_all_products_timeseries = (
             CargoTimeSeries()
-                .search(
+            .search(
                 filter_activity="loading_state",
                 timeseries_unit="bpd",
                 timeseries_frequency="month",
@@ -106,12 +110,12 @@ class TestCargoTimeSeries(TestCaseUsingRealAPI):
                 filter_time_max=end,
                 filter_origins=rotterdam,
             )
-                .to_df()
+            .to_df()
         )
 
         assert (
-                rotterdam_all_products_timeseries["value"].sum()
-                > rotterdam_crude_timeseries["value"].sum()
+            rotterdam_all_products_timeseries["value"].sum()
+            > rotterdam_crude_timeseries["value"].sum()
         )
 
         print(rotterdam_crude_timeseries.head())

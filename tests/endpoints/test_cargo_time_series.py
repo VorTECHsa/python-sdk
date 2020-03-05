@@ -11,12 +11,12 @@ class TestCargoTimeSeries(TestCaseUsingMockAPI):
 
         df = (
             CargoTimeSeries()
-                .search(
+            .search(
                 filter_activity="loading_state",
                 filter_time_min=start,
                 filter_time_max=end,
             )
-                .to_df()
+            .to_df()
         )
 
         assert len(df) == 3
