@@ -8,6 +8,9 @@ generate:
   - endpoints/vessel_movements.md:
       - vortexasdk.endpoints.vessel_movements++
       - vortexasdk.endpoints.vessel_movements_result++
+  - endpoints/cargo_timeseries.md:
+      - vortexasdk.endpoints.cargo_timeseries++
+      - vortexasdk.endpoints.timeseries_result++
   - endpoints/corporations.md:
       - vortexasdk.endpoints.corporations++
       - vortexasdk.endpoints.corporations_result++
@@ -37,6 +40,7 @@ pages:
   - Endpoints:
       About Endpoints: endpoints/about-endpoints.md << docs/endpoints/about-endpoints.md
       Cargo Movements: endpoints/cargo_movements.md
+      Cargo Time Series: endpoints/cargo_timeseries.md
       Vessel Movements: endpoints/vessel_movements.md
       Corporations: endpoints/corporations.md
       Geographies: endpoints/geographies.md
@@ -59,6 +63,7 @@ pages:
       2 Laden Vessel Movements: examples/2_all_vessel_movements.md
       3 Crude movements from Saudi Arabia to India: examples/3_crude_from_saudi_arabia_to_india.md
       4 Ballast Movements: examples/4_ballast_movements.md
+      5 Chinese Daily Crude Imports: examples/5_chinese_daily_imports.md
 theme:
   name: readthedocs
   collapse_navigation: true

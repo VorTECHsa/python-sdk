@@ -41,7 +41,12 @@ class VortexaClient(AbstractVortexaClient):
         """Search using `resource` using `**data` as filter params."""
         url = self._create_url(resource)
         payload = {k: v for k, v in data.items() if v is not None}
-        total = _send_post_request(url, payload, size=1, offset=0)["total"]
+
+        try:
+            request = _send_post_request(url, payload, size=1, offset=0)
+            total = request["total"]
+        except KeyError:
+            total = 1
 
         if total > self._MAX_ALLOWED_TOTAL:
             raise Exception(
@@ -75,10 +80,11 @@ class VortexaClient(AbstractVortexaClient):
 
         flattened = [x for y in responses for x in y]
 
-        assert len(flattened) == total, (
-            f"Incorrect number of records returned from API. "
-            f"Actual: {len(flattened)}, expected: {total}"
-        )
+        if total != 1:
+            assert len(flattened) == total, (
+                f"Incorrect number of records returned from API. "
+                f"Actual: {len(flattened)}, expected: {total}"
+            )
 
         return flattened
 
