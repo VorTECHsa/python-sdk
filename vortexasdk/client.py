@@ -51,7 +51,7 @@ class VortexaClient(AbstractVortexaClient):
             )
         elif total == 1:
             # Only one page response, no need to send another request, so return flattened response
-            return self._flatten_response([probe_response])
+            return probe_response["data"]
         else:
             # Multiple pages available, create offsets and fetch all responses
             responses = self._process_multiple_pages(
