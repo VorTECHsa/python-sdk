@@ -2,6 +2,8 @@ from requests import Response, Session
 from requests.adapters import HTTPAdapter
 from urllib3 import Retry
 
+_HEADERS = {"Content-Type": "application/json"}
+
 
 # Inspired by https://www.peterbe.com/plog/best-practice-with-retries-with-requests
 def _requests_retry_session(
@@ -31,14 +33,11 @@ def _requests_retry_session(
     return session
 
 
-_headers = {"Content-Type": "application/json"}
-
-
 def retry_get(*args, **kwargs) -> Response:
     with _requests_retry_session() as s:
-        return s.get(headers=_headers, *args, **kwargs)
+        return s.get(headers=_HEADERS, *args, **kwargs)
 
 
 def retry_post(*args, **kwargs) -> Response:
     with _requests_retry_session() as s:
-        return s.post(headers=_headers, *args, **kwargs)
+        return s.post(headers=_HEADERS, *args, **kwargs)
