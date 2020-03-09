@@ -64,6 +64,7 @@ pages:
       3 Crude movements from Saudi Arabia to India: examples/3_crude_from_saudi_arabia_to_india.md
       4 Ballast Movements: examples/4_ballast_movements.md
       5 Chinese Daily Crude Imports: examples/5_chinese_daily_imports.md
+      6 Floating Storage Medium Sour Crude: examples/6_medium_sour_floating_storage.md
 theme:
   name: readthedocs
   collapse_navigation: true

@@ -32,6 +32,8 @@ class CargoTimeSeries(Search):
         filter_ship_to_ship_locations: Union[str, List[str]] = None,
         filter_waypoints: Union[str, List[str]] = None,
         disable_geographic_exclusion_rules: bool = None,
+        timeseries_activity_time_span_min: int = None,
+        timeseries_activity_time_span_max: int = None,
     ) -> TimeSeriesResult:
         """
 
@@ -41,6 +43,7 @@ class CargoTimeSeries(Search):
 
         * _How many Crude/Condensate barrels have been imported into China each day over the last year?_
         * _How many tonnes of Fuel Oil has company X exported from the United States each week over the last 2 years?_
+        * _How have long-term Medium-Sour floating storage levels changed over time?_
 
         # Arguments
             filter_activity: Movement activity on which to base the time filter. Must be one of ['loading_state',
@@ -84,6 +87,18 @@ class CargoTimeSeries(Search):
 
             disable_geographic_exclusion_rules: This controls a popular industry term "intra-movements" and determines
              the filter behaviour for cargo leaving then entering the same geographic area.
+
+            timeseries_activity_time_span_min: The minimum amount of time in milliseconds accounted for in a time series
+             activity. Can be used to request long-term floating storage. For example, to only return floating storage
+             movements that occured for _more_ than 14 days enter
+             `timeseries_activity_time_span_min=1000 * 60 * 60 * 24 * 14` in conjunction with
+             `filter_activity='storing_state'`.
+
+            timeseries_activity_time_span_max: The maximum amount of time in milliseconds accounted for in a time series
+             activity. Can be used to request short-term floating storage. For example, to only return floating storage
+             movements that occured for _less_ than 14 days enter
+             `timeseries_activity_time_span_max=1000 * 60 * 60 * 24 * 14`
+             in conjunction with `filter_activity='storing_state'`.
 
         # Returns
         `TimeSeriesResult`
@@ -149,6 +164,8 @@ class CargoTimeSeries(Search):
             ),
             "filter_waypoints": convert_to_list(filter_waypoints),
             "disable_geographic_exclusion_rules": disable_geographic_exclusion_rules,
+            "timeseries_activity_time_span_min": timeseries_activity_time_span_min,
+            "timeseries_activity_time_span_max": timeseries_activity_time_span_max,
         }
 
         return TimeSeriesResult(super().search(**params))
