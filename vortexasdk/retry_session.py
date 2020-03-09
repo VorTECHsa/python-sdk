@@ -7,10 +7,10 @@ _HEADERS = {"Content-Type": "application/json"}
 
 # Inspired by https://www.peterbe.com/plog/best-practice-with-retries-with-requests
 def _requests_retry_session(
-        retries=6,
-        backoff_factor=1,
-        status_forcelist=(500, 502, 504),
-        session=None,
+    retries=6,
+    backoff_factor=1,
+    status_forcelist=(500, 502, 504),
+    session=None,
 ) -> Session:
     """Instantiate a session with Retry backoff."""
     session = session or Session()

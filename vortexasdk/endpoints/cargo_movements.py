@@ -41,6 +41,8 @@ class CargoMovements(Search):
         filter_ship_to_ship_locations: Union[ID, List[ID]] = None,
         filter_waypoints: Union[ID, List[ID]] = None,
         disable_geographic_exclusion_rules: bool = None,
+        timeseries_activity_time_span_min: int = None,
+        timeseries_activity_time_span_max: int = None,
     ) -> CargoMovementsResult:
         """
 
@@ -78,6 +80,18 @@ class CargoMovements(Search):
 
             disable_geographic_exclusion_rules: This controls a popular industry term "intra-movements" and determines
              the filter behaviour for cargo leaving then entering the same geographic area.
+
+            timeseries_activity_time_span_min: The minimum amount of time in milliseconds accounted for in a time series
+             activity. Can be used to request long-term floating storage. For example, to only return floating storage
+             movements that occured for _more_ than 14 days enter
+             `timeseries_activity_time_span_min=1000 * 60 * 60 * 24 * 14` in conjunction with
+             `filter_activity='storing_state'`.
+
+            timeseries_activity_time_span_max: The maximum amount of time in milliseconds accounted for in a time series
+             activity. Can be used to request short-term floating storage. For example, to only return floating storage
+             movements that occured for _less_ than 14 days enter
+             `timeseries_activity_time_span_max=1000 * 60 * 60 * 24 * 14`
+             in conjunction with `filter_activity='storing_state'`.
 
         # Returns
         `CargoMovementsResult`, containing all the cargo movements matching the given search terms.
@@ -164,6 +178,8 @@ class CargoMovements(Search):
             ),
             "filter_waypoints": convert_to_list(filter_waypoints),
             "disable_geographic_exclusion_rules": disable_geographic_exclusion_rules,
+            "timeseries_activity_time_span_min": timeseries_activity_time_span_min,
+            "timeseries_activity_time_span_max": timeseries_activity_time_span_max,
         }
 
         return CargoMovementsResult(super().search(**params))
