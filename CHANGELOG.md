@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.14.0](https://github.com/vortechsa/python-sdk/tree/0.14.0) (2020-03-09)
+
+[Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.13.1...0.14.0)
+
+**Merged pull requests:**
+
+- Add timeseries\_activity\_min\_span filter argument & floating storage example. [\#162](https://github.com/VorTECHsa/python-sdk/pull/162) ([KitBurgess](https://github.com/KitBurgess))
+
 ## [0.13.1](https://github.com/vortechsa/python-sdk/tree/0.13.1) (2020-03-05)
 
 [Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.13.0...0.13.1)
@@ -123,7 +131,6 @@
 **Fixed bugs:**
 
 - CargoMovementsResult.to\_df\('all'\) blows up [\#120](https://github.com/VorTECHsa/python-sdk/issues/120)
-- CargoMovements filter\_activity illegal state [\#71](https://github.com/VorTECHsa/python-sdk/issues/71)
 - Reference shouldn't return a list [\#69](https://github.com/VorTECHsa/python-sdk/issues/69)
 
 **Closed issues:**
@@ -206,6 +213,11 @@
 
 [Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.7.0...0.8.0)
 
+**Implemented enhancements:**
+
+- filter\_time\_min and filter\_time\_max parameters should be python datetime objects [\#45](https://github.com/VorTECHsa/python-sdk/issues/45)
+- add a list of available columns in the SDK documents [\#40](https://github.com/VorTECHsa/python-sdk/issues/40)
+
 **Merged pull requests:**
 
 - feat: Use datetime type as time argument, closes \#45 [\#92](https://github.com/VorTECHsa/python-sdk/pull/92) ([KitBurgess](https://github.com/KitBurgess))
@@ -214,10 +226,6 @@
 ## [0.7.0](https://github.com/vortechsa/python-sdk/tree/0.7.0) (2019-11-26)
 
 [Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.6.1...0.7.0)
-
-**Implemented enhancements:**
-
-- filter\_time\_min and filter\_time\_max parameters should be python datetime objects [\#45](https://github.com/VorTECHsa/python-sdk/issues/45)
 
 **Closed issues:**
 
@@ -235,6 +243,10 @@
 **Implemented enhancements:**
 
 - Add DataFrame example to all endpoints [\#58](https://github.com/VorTECHsa/python-sdk/issues/58)
+
+**Fixed bugs:**
+
+- CargoMovements filter\_activity illegal state [\#71](https://github.com/VorTECHsa/python-sdk/issues/71)
 
 **Closed issues:**
 
@@ -277,10 +289,6 @@
 ## [0.4.3](https://github.com/vortechsa/python-sdk/tree/0.4.3) (2019-11-20)
 
 [Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.3.4-alpha...0.4.3)
-
-**Implemented enhancements:**
-
-- add a list of available columns in the SDK documents [\#40](https://github.com/VorTECHsa/python-sdk/issues/40)
 
 **Closed issues:**
 
