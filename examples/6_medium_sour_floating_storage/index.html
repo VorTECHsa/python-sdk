@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Cargo Movement - VortexaSDK</title>
+  <title>6 Floating Storage Medium Sour Crude - VortexaSDK</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -17,8 +17,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Cargo Movement";
-    var mkdocs_page_input_path = "entities/cargo_movement.md";
+    var mkdocs_page_name = "6 Floating Storage Medium Sour Crude";
+    var mkdocs_page_input_path = "examples/6_medium_sour_floating_storage.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -96,32 +96,29 @@
 		
     <span class="caption-text">Entities</span>
     <ul class="subnav">
-                <li class=" current">
+                <li class="">
                     
-    <a class="current" href="./">Cargo Movement</a>
-    <ul class="subnav">
-            
-    </ul>
+    <a class="" href="../../entities/cargo_movement/">Cargo Movement</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../corporation/">Corporation</a>
+    <a class="" href="../../entities/corporation/">Corporation</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../geography/">Geography</a>
+    <a class="" href="../../entities/geography/">Geography</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../product/">Product</a>
+    <a class="" href="../../entities/product/">Product</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../vessel/">Vessel</a>
+    <a class="" href="../../entities/vessel/">Vessel</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../vessel_movement/">Vessel Movement</a>
+    <a class="" href="../../entities/vessel_movement/">Vessel Movement</a>
                 </li>
     </ul>
 	    </li>
@@ -152,31 +149,34 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../examples/0_sample_load_cargo_movements/">0 Simple Load Cargo Movements</a>
+    <a class="" href="../0_sample_load_cargo_movements/">0 Simple Load Cargo Movements</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../examples/1_china/">1 China VLCC Discharges</a>
+    <a class="" href="../1_china/">1 China VLCC Discharges</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../examples/2_all_vessel_movements/">2 Laden Vessel Movements</a>
+    <a class="" href="../2_all_vessel_movements/">2 Laden Vessel Movements</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../examples/3_crude_from_saudi_arabia_to_india/">3 Crude movements from Saudi Arabia to India</a>
+    <a class="" href="../3_crude_from_saudi_arabia_to_india/">3 Crude movements from Saudi Arabia to India</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../examples/4_ballast_movements/">4 Ballast Movements</a>
+    <a class="" href="../4_ballast_movements/">4 Ballast Movements</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../examples/5_chinese_daily_imports/">5 Chinese Daily Crude Imports</a>
+    <a class="" href="../5_chinese_daily_imports/">5 Chinese Daily Crude Imports</a>
                 </li>
-                <li class="">
+                <li class=" current">
                     
-    <a class="" href="../../examples/6_medium_sour_floating_storage/">6 Floating Storage Medium Sour Crude</a>
+    <a class="current" href="./">6 Floating Storage Medium Sour Crude</a>
+    <ul class="subnav">
+            
+    </ul>
                 </li>
     </ul>
 	    </li>
@@ -203,14 +203,14 @@
     
       
         
-          <li>Entities &raquo;</li>
+          <li>Examples &raquo;</li>
         
       
     
-    <li>Cargo Movement</li>
+    <li>6 Floating Storage Medium Sour Crude</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/vortechsa/python-sdk/edit/master/docs/entities/cargo_movement.md"
+        <a href="https://github.com/vortechsa/python-sdk/edit/master/docs/examples/6_medium_sour_floating_storage.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -220,23 +220,93 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="vortexasdk.api.cargo_movement">vortexasdk.api.cargo_movement</h1>
+                <p>Let's see how much Medium-Sour Crude is in long term floating storage.</p>
+<p>The below script returns:</p>
+<table>
+<thead>
+<tr>
+<th align="right"></th>
+<th align="left">key</th>
+<th align="right">value</th>
+<th align="right">count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">0</td>
+<td align="left">2019-01-01T00:00:00.000Z</td>
+<td align="right">7381</td>
+<td align="right">9</td>
+</tr>
+<tr>
+<td align="right">1</td>
+<td align="left">2019-01-02T00:00:00.000Z</td>
+<td align="right">8127</td>
+<td align="right">23</td>
+</tr>
+<tr>
+<td align="right">2</td>
+<td align="left">2019-01-03T00:00:00.000Z</td>
+<td align="right">2333</td>
+<td align="right">32</td>
+</tr>
+<tr>
+<td align="right">3</td>
+<td align="left">2019-01-04T00:00:00.000Z</td>
+<td align="right">447759</td>
+<td align="right">43</td>
+</tr>
+<tr>
+<td align="right">4</td>
+<td align="left">2019-01-05T00:00:00.000Z</td>
+<td align="right">7777144</td>
+<td align="right">4</td>
+</tr>
+<tr>
+<td align="right">...</td>
+<td align="left"></td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+</tbody>
+</table>
+<pre><code class="python">from datetime import datetime
 
-<h2 id="vortexasdk.api.cargo_movement.CargoEvent">CargoEvent</h2>
+from docs.utils import to_markdown
+from vortexasdk import CargoTimeSeries, Geographies, Products
 
-<pre><code class="python">CargoEvent(self, event_type: str, location: List[vortexasdk.api.geography.GeographyEntity], probability: Union[float, NoneType] = None, pos: Union[List[float], NoneType] = None, vessel_id: Union[str, NoneType] = None, start_timestamp: Union[str, NoneType] = None, end_timestamp: Union[str, NoneType] = None) -&gt; None
+if __name__ == &quot;__main__&quot;:
+    # Find Medium Sour ID
+    medium_sour = [
+        p.id
+        for p in Products().search(term=&quot;Medium-Sour&quot;).to_list()
+        if p.name == &quot;Medium-Sour&quot;
+    ]
+    # Check we've only got one ID
+    assert len(medium_sour) == 1
+
+    # Query API
+    search_result = CargoTimeSeries().search(
+        # We're looking at daily storage levels
+        timeseries_frequency=&quot;day&quot;,
+        # We want 'b' for barrels here
+        timeseries_unit=&quot;b&quot;,
+        # We're only interested in storage of Medium-Sour Crude
+        filter_products=medium_sour,
+        # We're only included in cargo's that were in floating storage
+        filter_activity=&quot;storing_state&quot;,
+        # We're only interested in floating storage that lasted longer than 24 days
+        timeseries_activity_time_span_min=1000 * 60 * 60 * 24,
+        # Let's limit the search to 2019 storage events
+        filter_time_min=datetime(2019, 1, 1),
+        filter_time_max=datetime(2019, 12, 31),
+    )
+
+    # Convert search result to dataframe
+    df = search_result.to_df()
+
+    print(to_markdown(df.head()))
 </code></pre>
-
-<p>A CargoEvent represents an event that occurred to a cargo during a cargo movement.</p>
-<p><a href="https://docs.vortexa.com/reference/intro-cargo-events">Cargo Event Entities Further Documentation</a></p>
-<h2 id="vortexasdk.api.cargo_movement.CargoMovement">CargoMovement</h2>
-
-<pre><code class="python">CargoMovement(self, cargo_movement_id: str, quantity: int, status: str, vessels: List[vortexasdk.api.vessel.VesselEntity], product: List[vortexasdk.api.product.ProductEntity], events: List[vortexasdk.api.cargo_movement.CargoEvent]) -&gt; None
-</code></pre>
-
-<p>Cargo movements are the base data set the Vortexa API is centred around.</p>
-<p>Each movement represents a journey of a certain quantity of a product between places.</p>
-<p><a href="https://docs.vortexa.com/reference/intro-cargo-movement">Cargo Movement Further Documentation</a></p>
               
             </div>
           </div>
@@ -244,10 +314,8 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../corporation/" class="btn btn-neutral float-right" title="Corporation">Next <span class="icon icon-circle-arrow-right"></span></a>
       
-      
-        <a href="../../endpoints/vessels/" class="btn btn-neutral" title="Vessels"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../5_chinese_daily_imports/" class="btn btn-neutral" title="5 Chinese Daily Crude Imports"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -275,10 +343,8 @@
           <a href="https://github.com/vortechsa/python-sdk/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../../endpoints/vessels/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../5_chinese_daily_imports/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
-      
-        <span style="margin-left: 15px"><a href="../corporation/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
