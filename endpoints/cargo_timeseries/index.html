@@ -229,7 +229,7 @@
 
 <h3 id="vortexasdk.endpoints.cargo_timeseries.CargoTimeSeries.search">search</h3>
 
-<pre><code class="python">CargoTimeSeries.search(self, filter_activity: str, timeseries_frequency: str = 'day', timeseries_unit: str = 'b', filter_time_min: datetime.datetime = datetime.datetime(2019, 10, 1, 0, 0), filter_time_max: datetime.datetime = datetime.datetime(2019, 10, 1, 1, 0), filter_charterers: Union[str, List[str]] = None, filter_destinations: Union[str, List[str]] = None, filter_origins: Union[str, List[str]] = None, filter_owners: Union[str, List[str]] = None, filter_products: Union[str, List[str]] = None, filter_vessels: Union[str, List[str]] = None, filter_storage_locations: Union[str, List[str]] = None, filter_ship_to_ship_locations: Union[str, List[str]] = None, filter_waypoints: Union[str, List[str]] = None, disable_geographic_exclusion_rules: bool = None, timeseries_activity_time_span_min: int = None, timeseries_activity_time_span_max: int = None) -&gt; vortexasdk.endpoints.timeseries_result.TimeSeriesResult
+<pre><code class="python">CargoTimeSeries.search(self, filter_activity: str, timeseries_activity: str = None, timeseries_frequency: str = 'day', timeseries_unit: str = 'b', filter_time_min: datetime.datetime = datetime.datetime(2019, 10, 1, 0, 0), filter_time_max: datetime.datetime = datetime.datetime(2019, 10, 1, 1, 0), filter_charterers: Union[str, List[str]] = None, filter_destinations: Union[str, List[str]] = None, filter_origins: Union[str, List[str]] = None, filter_owners: Union[str, List[str]] = None, filter_products: Union[str, List[str]] = None, filter_vessels: Union[str, List[str]] = None, filter_storage_locations: Union[str, List[str]] = None, filter_ship_to_ship_locations: Union[str, List[str]] = None, filter_waypoints: Union[str, List[str]] = None, disable_geographic_exclusion_rules: bool = None, timeseries_activity_time_span_min: int = None, timeseries_activity_time_span_max: int = None) -&gt; vortexasdk.endpoints.timeseries_result.TimeSeriesResult
 </code></pre>
 
 <p>Find Aggregate flows between regions, for various products, for various vessels, or various corporations.</p>
@@ -242,33 +242,16 @@
 <p><strong>Arguments</strong></p>
 <ul>
 <li>
-<p><strong>filter_activity</strong>: Movement activity on which to base the time filter. Must be one of ['loading_state',
+<p><strong>filter_activity</strong>: Cargo movement activity on which to base the time filter. The endpoint only includes cargo
+    movements matching that match this filter in the aggregations. Must be one of ['loading_state',
      'loading_start', 'loading_end', 'identified_for_loading_state', 'unloading_state', 'unloading_start',
       'unloading_end', 'storing_state', 'storing_start', 'storing_end', 'transiting_state'].</p>
 </li>
 <li>
-<p><strong>timeseries_frequency</strong>: Frequency denoting the granularity of the time series. Must be one of ['day', 'week',
-     'doe_week', 'month', 'quarter', 'year']</p>
-</li>
-<li>
 <p><strong>filter_time_min</strong>: The UTC start date of the time filter.</p>
 </li>
 <li>
 <p><strong>filter_time_max</strong>: The UTC end date of the time filter.</p>
-</li>
-<li>
-<p><strong>timeseries_unit</strong>: A numeric metric to be calculated for each time bucket. Must be one of ['b', 'bpd', 't',
-     'tpd', 'c', 'cpd'], corresponding to barrels, barrels per day, metric tonnes, metric tonnes per day,
-      cargo movement count, cargo movement count per day, respectively.</p>
-</li>
-<li>
-<p><strong>filter_time_min</strong>: The UTC start date of the time filter.</p>
-</li>
-<li>
-<p><strong>filter_time_max</strong>: The UTC end date of the time filter.</p>
-</li>
-<li>
-<p><strong>cm_unit</strong>: Unit of measurement. Enter 'b' for barrels or 't' for tonnes.</p>
 </li>
 <li>
 <p><strong>filter_corporations</strong>: A corporation ID, or list of corporation IDs to filter on.</p>
@@ -302,18 +285,37 @@
      the filter behaviour for cargo leaving then entering the same geographic area.</p>
 </li>
 <li>
+<p><strong>timeseries_activity</strong>: The cargo movement activity we want to aggregate on. This param defaults to
+    <code>filter_activity</code> if left blank. For example, Let's say we want to aggregate the unloading timestamps of
+     all cargo movements that loaded in 2019, then we'd use <code>filter_time_min</code> and <code>filter_time_max</code> to specify
+     1st Jan 2019 and 31st Dec 2019 respectively, we'd set <code>filter_activity='loading_state'</code> and
+     <code>timeseries_activity='unloading_state'</code> to filter on loadings but aggregate on unloadings.
+      <code>filter_activity</code> Must be one of ['loading_state',
+     'loading_start', 'loading_end', 'identified_for_loading_state', 'unloading_state', 'unloading_start',
+      'unloading_end', 'storing_state', 'storing_start', 'storing_end', 'transiting_state'].</p>
+</li>
+<li>
+<p><strong>timeseries_frequency</strong>: Frequency denoting the granularity of the time series. Must be one of ['day', 'week',
+     'doe_week', 'month', 'quarter', 'year']</p>
+</li>
+<li>
+<p><strong>timeseries_unit</strong>: A numeric metric to be calculated for each time bucket. Must be one of ['b', 'bpd', 't',
+     'tpd', 'c', 'cpd'], corresponding to barrels, barrels per day, metric tonnes, metric tonnes per day,
+      cargo movement count, cargo movement count per day, respectively.</p>
+</li>
+<li>
 <p><strong>timeseries_activity_time_span_min</strong>: The minimum amount of time in milliseconds accounted for in a time series
      activity. Can be used to request long-term floating storage. For example, to only return floating storage
-     movements that occured for <em>more</em> than 14 days enter
+     movements that occurred for <em>more</em> than 14 days enter
      <code>timeseries_activity_time_span_min=1000 * 60 * 60 * 24 * 14</code> in conjunction with
      <code>filter_activity='storing_state'</code>.</p>
 </li>
 <li>
 <p><strong>timeseries_activity_time_span_max</strong>: The maximum amount of time in milliseconds accounted for in a time series
      activity. Can be used to request short-term floating storage. For example, to only return floating storage
-     movements that occured for <em>less</em> than 14 days enter
-     <code>timeseries_activity_time_span_max=1000 * 60 * 60 * 24 * 14</code>
-     in conjunction with <code>filter_activity='storing_state'</code>.</p>
+     movements that occurred for <em>less</em> than 14 days enter
+     <code>timeseries_activity_time_span_max=1000 * 60 * 60 * 24 * 14</code> in conjunction with
+     <code>filter_activity='storing_state'</code>.</p>
 </li>
 </ul>
 <p><strong>Returns</strong></p>
