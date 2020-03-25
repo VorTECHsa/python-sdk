@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.14.1](https://github.com/vortechsa/python-sdk/tree/0.14.1) (2020-03-25)
+
+[Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.14.0...0.14.1)
+
+**Closed issues:**
+
+- Check linting in all examples/\*.py files as part of CI. [\#65](https://github.com/VorTECHsa/python-sdk/issues/65)
+
+**Merged pull requests:**
+
+- Lint examples as part of CI [\#164](https://github.com/VorTECHsa/python-sdk/pull/164) ([KitBurgess](https://github.com/KitBurgess))
+- feat: Add option to aggregate by timeseries\_activity [\#163](https://github.com/VorTECHsa/python-sdk/pull/163) ([KitBurgess](https://github.com/KitBurgess))
+
 ## [0.14.0](https://github.com/vortechsa/python-sdk/tree/0.14.0) (2020-03-09)
 
 [Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.13.1...0.14.0)
@@ -216,7 +229,6 @@
 **Implemented enhancements:**
 
 - filter\_time\_min and filter\_time\_max parameters should be python datetime objects [\#45](https://github.com/VorTECHsa/python-sdk/issues/45)
-- add a list of available columns in the SDK documents [\#40](https://github.com/VorTECHsa/python-sdk/issues/40)
 
 **Merged pull requests:**
 
@@ -290,6 +302,10 @@
 
 [Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.3.4-alpha...0.4.3)
 
+**Implemented enhancements:**
+
+- add a list of available columns in the SDK documents [\#40](https://github.com/VorTECHsa/python-sdk/issues/40)
+
 **Closed issues:**
 
 - include an explanation in the docs of the flattened cargo movement structure and how this links to the column naming convention [\#48](https://github.com/VorTECHsa/python-sdk/issues/48)
@@ -301,6 +317,7 @@
 
 - docs: Make it clearer how to import endpoints, closes \#19 [\#57](https://github.com/VorTECHsa/python-sdk/pull/57) ([KitBurgess](https://github.com/KitBurgess))
 - docs: Add about-endpoints explanation [\#55](https://github.com/VorTECHsa/python-sdk/pull/55) ([KitBurgess](https://github.com/KitBurgess))
+- test: Fix global client state [\#28](https://github.com/VorTECHsa/python-sdk/pull/28) ([KitBurgess](https://github.com/KitBurgess))
 
 ## [0.3.4-alpha](https://github.com/vortechsa/python-sdk/tree/0.3.4-alpha) (2019-11-20)
 
@@ -373,7 +390,6 @@
 
 **Merged pull requests:**
 
-- test: Fix global client state [\#28](https://github.com/VorTECHsa/python-sdk/pull/28) ([KitBurgess](https://github.com/KitBurgess))
 - Filter on name [\#27](https://github.com/VorTECHsa/python-sdk/pull/27) ([KitBurgess](https://github.com/KitBurgess))
 - Run tests against live API in circle ci [\#26](https://github.com/VorTECHsa/python-sdk/pull/26) ([KitBurgess](https://github.com/KitBurgess))
 - Revert "ci: Run live tests in circleci" [\#24](https://github.com/VorTECHsa/python-sdk/pull/24) ([KitBurgess](https://github.com/KitBurgess))
