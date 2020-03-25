@@ -135,3 +135,60 @@ class TestCargoTimeSeries(TestCaseUsingRealAPI):
         )
 
         assert len(df) == 2
+
+    def test_endpoint_respects_difference_between_timeseries_activity_and_filter_activity(
+        self,
+    ):
+        min_ts = datetime(2019, 8, 1)
+        max_ts = datetime(2019, 8, 31)
+
+        unloading_activity = (
+            CargoTimeSeries()
+            .search(
+                filter_activity="loading_state",
+                timeseries_activity="unloading_state",
+                filter_time_min=min_ts,
+                filter_time_max=max_ts,
+            )
+            .to_list()
+        )
+
+        loading_activity = (
+            CargoTimeSeries()
+            .search(
+                filter_activity="loading_state",
+                timeseries_activity="loading_state",
+                filter_time_min=min_ts,
+                filter_time_max=max_ts,
+            )
+            .to_list()
+        )
+
+        assert loading_activity != unloading_activity
+
+    def test_timeseries_activity_defaults_to_filter_activity(self):
+        min_ts = datetime(2019, 8, 1)
+        max_ts = datetime(2019, 8, 31)
+
+        loading_activity_default = (
+            CargoTimeSeries()
+            .search(
+                filter_activity="loading_state",
+                filter_time_min=min_ts,
+                filter_time_max=max_ts,
+            )
+            .to_list()
+        )
+
+        loading_activity = (
+            CargoTimeSeries()
+            .search(
+                filter_activity="loading_state",
+                timeseries_activity="loading_state",
+                filter_time_min=min_ts,
+                filter_time_max=max_ts,
+            )
+            .to_list()
+        )
+
+        assert loading_activity == loading_activity_default

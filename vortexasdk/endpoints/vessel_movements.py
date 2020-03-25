@@ -97,7 +97,6 @@ class VesselMovements(Search):
             "filter_time_min": to_ISODate(filter_time_min),
             "filter_time_max": to_ISODate(filter_time_max),
             "unit": unit,
-            "size": self._MAX_PAGE_RESULT_SIZE,
             "filter_charterers": convert_to_list(filter_charterers),
             "filter_owners": convert_to_list(filter_owners),
             "filter_destinations": convert_to_list(filter_destinations),
@@ -105,6 +104,7 @@ class VesselMovements(Search):
             "filter_products": convert_to_list(filter_products),
             "filter_vessels": convert_to_list(filter_vessels),
             "filter_vessel_classes": convert_to_list(filter_vessel_classes),
+            "size": self._MAX_PAGE_RESULT_SIZE,
         }
 
         return VesselMovementsResult(super().search(**params))

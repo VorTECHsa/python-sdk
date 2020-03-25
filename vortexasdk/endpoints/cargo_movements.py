@@ -162,8 +162,9 @@ class CargoMovements(Search):
             "filter_activity": filter_activity,
             "filter_time_min": to_ISODate(filter_time_min),
             "filter_time_max": to_ISODate(filter_time_max),
+            "timeseries_activity_time_span_min": timeseries_activity_time_span_min,
+            "timeseries_activity_time_span_max": timeseries_activity_time_span_max,
             "cm_unit": cm_unit,
-            "size": self._MAX_PAGE_RESULT_SIZE,
             "filter_charterers": convert_to_list(filter_charterers),
             "filter_owners": convert_to_list(filter_owners),
             "filter_products": convert_to_list(filter_products),
@@ -178,8 +179,7 @@ class CargoMovements(Search):
             ),
             "filter_waypoints": convert_to_list(filter_waypoints),
             "disable_geographic_exclusion_rules": disable_geographic_exclusion_rules,
-            "timeseries_activity_time_span_min": timeseries_activity_time_span_min,
-            "timeseries_activity_time_span_max": timeseries_activity_time_span_max,
+            "size": self._MAX_PAGE_RESULT_SIZE,
         }
 
         return CargoMovementsResult(super().search(**params))
