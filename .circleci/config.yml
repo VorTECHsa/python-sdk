@@ -29,6 +29,12 @@ jobs:
             - ~/.cache/pip
 
       - run:
+          name: "Check Linting"
+          command: |
+            . .venv/bin/activate
+            mypy docs/examples
+
+      - run:
           name: "Run tests against mock API"
           command: |
             . .venv/bin/activate
