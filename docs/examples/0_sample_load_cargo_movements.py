@@ -19,7 +19,6 @@ from vortexasdk import CargoMovements
 if __name__ == "__main__":
     # Query API to find all vessels that were loading on the 1st of Aug 2019
     search_result = CargoMovements().search(
-        filter_activity="loading_start",
         filter_time_min=datetime(2019, 8, 1),
         filter_time_max=datetime(2019, 8, 1),
     )
