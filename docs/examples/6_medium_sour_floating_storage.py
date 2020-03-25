@@ -16,7 +16,7 @@ The below script returns:
 from datetime import datetime
 
 from docs.utils import to_markdown
-from vortexasdk import CargoTimeSeries, Geographies, Products
+from vortexasdk import CargoTimeSeries, Products
 
 if __name__ == "__main__":
     # Find Medium Sour ID
