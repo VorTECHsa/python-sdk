@@ -15,9 +15,11 @@ class CargoTimeSeries(Search):
     def __init__(self):
         Search.__init__(self, CARGO_TIMESERIES_RESOURCE)
 
+    # noinspection PyUnresolvedReferences
     def search(
         self,
         filter_activity: str,
+        timeseries_activity: str = None,
         timeseries_frequency: str = "day",
         timeseries_unit: str = "b",
         filter_time_min: datetime = datetime(2019, 10, 1, 0),
@@ -46,26 +48,14 @@ class CargoTimeSeries(Search):
         * _How have long-term Medium-Sour floating storage levels changed over time?_
 
         # Arguments
-            filter_activity: Movement activity on which to base the time filter. Must be one of ['loading_state',
+            filter_activity: Cargo movement activity on which to base the time filter. The endpoint only includes cargo
+            movements matching that match this filter in the aggregations. Must be one of ['loading_state',
              'loading_start', 'loading_end', 'identified_for_loading_state', 'unloading_state', 'unloading_start',
               'unloading_end', 'storing_state', 'storing_start', 'storing_end', 'transiting_state'].
 
-            timeseries_frequency: Frequency denoting the granularity of the time series. Must be one of ['day', 'week',
-             'doe_week', 'month', 'quarter', 'year']
-
             filter_time_min: The UTC start date of the time filter.
 
             filter_time_max: The UTC end date of the time filter.
-
-            timeseries_unit: A numeric metric to be calculated for each time bucket. Must be one of ['b', 'bpd', 't',
-             'tpd', 'c', 'cpd'], corresponding to barrels, barrels per day, metric tonnes, metric tonnes per day,
-              cargo movement count, cargo movement count per day, respectively.
-
-            filter_time_min: The UTC start date of the time filter.
-
-            filter_time_max: The UTC end date of the time filter.
-
-            cm_unit: Unit of measurement. Enter 'b' for barrels or 't' for tonnes.
 
             filter_corporations: A corporation ID, or list of corporation IDs to filter on.
 
@@ -88,17 +78,33 @@ class CargoTimeSeries(Search):
             disable_geographic_exclusion_rules: This controls a popular industry term "intra-movements" and determines
              the filter behaviour for cargo leaving then entering the same geographic area.
 
+            timeseries_activity: The cargo movement activity we want to aggregate on. This param defaults to
+            `filter_activity` if left blank. For example, Let's say we want to aggregate the unloading timestamps of
+             all cargo movements that loaded in 2019, then we'd use `filter_time_min` and `filter_time_max` to specify
+             1st Jan 2019 and 31st Dec 2019 respectively, we'd set `filter_activity='loading_state'` and
+             `timeseries_activity='unloading_state'` to filter on loadings but aggregate on unloadings.
+              `filter_activity` Must be one of ['loading_state',
+             'loading_start', 'loading_end', 'identified_for_loading_state', 'unloading_state', 'unloading_start',
+              'unloading_end', 'storing_state', 'storing_start', 'storing_end', 'transiting_state'].
+
+            timeseries_frequency: Frequency denoting the granularity of the time series. Must be one of ['day', 'week',
+             'doe_week', 'month', 'quarter', 'year']
+
+            timeseries_unit: A numeric metric to be calculated for each time bucket. Must be one of ['b', 'bpd', 't',
+             'tpd', 'c', 'cpd'], corresponding to barrels, barrels per day, metric tonnes, metric tonnes per day,
+              cargo movement count, cargo movement count per day, respectively.
+
             timeseries_activity_time_span_min: The minimum amount of time in milliseconds accounted for in a time series
              activity. Can be used to request long-term floating storage. For example, to only return floating storage
-             movements that occured for _more_ than 14 days enter
+             movements that occurred for _more_ than 14 days enter
              `timeseries_activity_time_span_min=1000 * 60 * 60 * 24 * 14` in conjunction with
              `filter_activity='storing_state'`.
 
             timeseries_activity_time_span_max: The maximum amount of time in milliseconds accounted for in a time series
              activity. Can be used to request short-term floating storage. For example, to only return floating storage
-             movements that occured for _less_ than 14 days enter
-             `timeseries_activity_time_span_max=1000 * 60 * 60 * 24 * 14`
-             in conjunction with `filter_activity='storing_state'`.
+             movements that occurred for _less_ than 14 days enter
+             `timeseries_activity_time_span_max=1000 * 60 * 60 * 24 * 14` in conjunction with
+             `filter_activity='storing_state'`.
 
         # Returns
         `TimeSeriesResult`
@@ -143,13 +149,11 @@ class CargoTimeSeries(Search):
 
         """
         params = {
-            "timeseries_frequency": timeseries_frequency,
-            "timeseries_unit": timeseries_unit,
-            "timeseries_activity": filter_activity,
             "filter_activity": filter_activity,
             "filter_time_min": to_ISODate(filter_time_min),
             "filter_time_max": to_ISODate(filter_time_max),
-            "size": self._MAX_PAGE_RESULT_SIZE,
+            "timeseries_activity_time_span_min": timeseries_activity_time_span_min,
+            "timeseries_activity_time_span_max": timeseries_activity_time_span_max,
             "filter_charterers": convert_to_list(filter_charterers),
             "filter_owners": convert_to_list(filter_owners),
             "filter_products": convert_to_list(filter_products),
@@ -164,8 +168,10 @@ class CargoTimeSeries(Search):
             ),
             "filter_waypoints": convert_to_list(filter_waypoints),
             "disable_geographic_exclusion_rules": disable_geographic_exclusion_rules,
-            "timeseries_activity_time_span_min": timeseries_activity_time_span_min,
-            "timeseries_activity_time_span_max": timeseries_activity_time_span_max,
+            "timeseries_frequency": timeseries_frequency,
+            "timeseries_unit": timeseries_unit,
+            "timeseries_activity": timeseries_activity or filter_activity,
+            "size": self._MAX_PAGE_RESULT_SIZE,
         }
 
         return TimeSeriesResult(super().search(**params))
