@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.14.2](https://github.com/vortechsa/python-sdk/tree/0.14.2) (2020-04-08)
+
+[Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.14.1...0.14.2)
+
+**Merged pull requests:**
+
+- chore: Fix example typo [\#165](https://github.com/VorTECHsa/python-sdk/pull/165) ([KitBurgess](https://github.com/KitBurgess))
+
 ## [0.14.1](https://github.com/vortechsa/python-sdk/tree/0.14.1) (2020-03-25)
 
 [Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.14.0...0.14.1)
@@ -317,7 +325,6 @@
 
 - docs: Make it clearer how to import endpoints, closes \#19 [\#57](https://github.com/VorTECHsa/python-sdk/pull/57) ([KitBurgess](https://github.com/KitBurgess))
 - docs: Add about-endpoints explanation [\#55](https://github.com/VorTECHsa/python-sdk/pull/55) ([KitBurgess](https://github.com/KitBurgess))
-- test: Fix global client state [\#28](https://github.com/VorTECHsa/python-sdk/pull/28) ([KitBurgess](https://github.com/KitBurgess))
 
 ## [0.3.4-alpha](https://github.com/vortechsa/python-sdk/tree/0.3.4-alpha) (2019-11-20)
 
@@ -390,6 +397,7 @@
 
 **Merged pull requests:**
 
+- test: Fix global client state [\#28](https://github.com/VorTECHsa/python-sdk/pull/28) ([KitBurgess](https://github.com/KitBurgess))
 - Filter on name [\#27](https://github.com/VorTECHsa/python-sdk/pull/27) ([KitBurgess](https://github.com/KitBurgess))
 - Run tests against live API in circle ci [\#26](https://github.com/VorTECHsa/python-sdk/pull/26) ([KitBurgess](https://github.com/KitBurgess))
 - Revert "ci: Run live tests in circleci" [\#24](https://github.com/VorTECHsa/python-sdk/pull/24) ([KitBurgess](https://github.com/KitBurgess))
