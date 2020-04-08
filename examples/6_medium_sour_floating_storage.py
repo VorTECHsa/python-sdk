@@ -38,8 +38,8 @@ if __name__ == "__main__":
         filter_products=medium_sour,
         # We're only included in cargo's that were in floating storage
         filter_activity="storing_state",
-        # We're only interested in floating storage that lasted longer than 24 days
-        timeseries_activity_time_span_min=1000 * 60 * 60 * 24,
+        # We're only interested in floating storage that lasted longer than 14 days
+        timeseries_activity_time_span_min=1000 * 60 * 60 * 24 * 14,
         # Let's limit the search to 2019 storage events
         filter_time_min=datetime(2019, 1, 1),
         filter_time_max=datetime(2019, 12, 31),
