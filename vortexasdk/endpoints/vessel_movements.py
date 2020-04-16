@@ -42,7 +42,7 @@ class VesselMovements(Search):
         filter_products: Union[str, List[str]] = None,
         filter_vessels: Union[str, List[str]] = None,
         filter_vessel_classes: Union[str, List[str]] = None,
-        filter_vessel_status: str = "vessel_status_ballast",
+        filter_vessel_status: str = None,
     ) -> VesselMovementsResult:
         """
         Find VesselMovements matching the given search parameters.
