@@ -77,7 +77,7 @@ Tips:
 
 ### Contributing Jupyter Notebooks
 
-Please include the version of the SDK used to generate the Jupyter Notebook at the start of the notebook. This helps others to reproduce your results in the future.
+Please include the version of the SDK and any other packages used to generate the Jupyter Notebook at the start of the notebook. This helps others to reproduce your results in the future.
 
 ## Style guide
 
