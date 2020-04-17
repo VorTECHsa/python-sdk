@@ -75,6 +75,9 @@ A good pull request:
 Tips:
 - If you're adding a new endpoint, adapt and use `./docs/generate_stubs.sh` to generate sample json data used for tests.
 
+### Contributing Jupyter Notebooks
+
+Please include the version of the SDK used to generate the Jupyter Notebook at the start of the notebook. This helps others to reproduce your results in the future.
 
 ## Style guide
 
