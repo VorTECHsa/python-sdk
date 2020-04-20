@@ -240,7 +240,7 @@
 <p>A detailed explanation of Cargo/Vessel Movements can be found <a href="https://docs.vortexa.com/reference/intro-movement-difference">here</a>.</p>
 <h3 id="vortexasdk.endpoints.vessel_movements.VesselMovements.search">search</h3>
 
-<pre><code class="python">VesselMovements.search(self, filter_time_min: datetime.datetime = datetime.datetime(2019, 10, 1, 0, 0), filter_time_max: datetime.datetime = datetime.datetime(2019, 10, 1, 1, 0), unit: str = 'b', filter_charterers: Union[str, List[str]] = None, filter_destinations: Union[str, List[str]] = None, filter_origins: Union[str, List[str]] = None, filter_owners: Union[str, List[str]] = None, filter_products: Union[str, List[str]] = None, filter_vessels: Union[str, List[str]] = None, filter_vessel_classes: Union[str, List[str]] = None) -&gt; vortexasdk.endpoints.vessel_movements_result.VesselMovementsResult
+<pre><code class="python">VesselMovements.search(self, filter_time_min: datetime.datetime = datetime.datetime(2019, 10, 1, 0, 0), filter_time_max: datetime.datetime = datetime.datetime(2019, 10, 1, 1, 0), unit: str = 'b', filter_charterers: Union[str, List[str]] = None, filter_destinations: Union[str, List[str]] = None, filter_origins: Union[str, List[str]] = None, filter_owners: Union[str, List[str]] = None, filter_products: Union[str, List[str]] = None, filter_vessels: Union[str, List[str]] = None, filter_vessel_classes: Union[str, List[str]] = None, filter_vessel_status: str = None) -&gt; vortexasdk.endpoints.vessel_movements_result.VesselMovementsResult
 </code></pre>
 
 <p>Find VesselMovements matching the given search parameters.</p>
@@ -275,6 +275,9 @@
 </li>
 <li>
 <p><strong>filter_vessel_classes</strong>: A vessel class, or list of vessel classes to filter on.</p>
+</li>
+<li>
+<p><strong>filter_vessel_status</strong>: The vessel status on which to base the filter. Enter 'vessel_status_ballast' for ballast vessels, 'vessel_status_laden_known' for laden vessels with known cargo (i.e. a type of cargo that Vortexa currently tracks) or 'vessel_status_laden_unknown' for laden vessels with unknown cargo (i.e. a type of cargo that Vortexa currently does not track).</p>
 </li>
 </ul>
 <p><strong>Returns</strong></p>

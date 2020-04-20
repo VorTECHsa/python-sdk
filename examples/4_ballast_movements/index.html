@@ -230,15 +230,11 @@ if __name__ == &quot;__main__&quot;:
     search_result = VesselMovements().search(
         filter_time_min=datetime(2017, 10, 1, 0),
         filter_time_max=datetime(2017, 10, 1, 1),
+        filter_vessel_status=&quot;vessel_status_ballast&quot;,
     )
 
     # Convert the search result to a dataframe
-    vessel_movements = search_result.to_df()
-
-    # Ballast movements are movements without a cargo.
-    is_ballast_mask = vessel_movements[&quot;cargoes.0.product.group.label&quot;].isna()
-
-    ballast_movements = vessel_movements[is_ballast_mask]
+    ballast_movements = search_result.to_df()
 </code></pre>
               
             </div>
