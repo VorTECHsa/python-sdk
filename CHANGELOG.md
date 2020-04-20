@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.15.0](https://github.com/vortechsa/python-sdk/tree/0.15.0) (2020-04-20)
+
+[Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.14.2...0.15.0)
+
+**Implemented enhancements:**
+
+- Add vessel status filter to vessel movements endpoint [\#167](https://github.com/VorTECHsa/python-sdk/issues/167)
+
+**Merged pull requests:**
+
+- Update CONTRIBUTING.md [\#173](https://github.com/VorTECHsa/python-sdk/pull/173) ([KitBurgess](https://github.com/KitBurgess))
+- examples: notebook with crude floating storage analysis [\#171](https://github.com/VorTECHsa/python-sdk/pull/171) ([gssantos](https://github.com/gssantos))
+- Feat/vm add ves status filter [\#170](https://github.com/VorTECHsa/python-sdk/pull/170) ([asfakianakis](https://github.com/asfakianakis))
+- examples: add notebook with China Flows analysis [\#169](https://github.com/VorTECHsa/python-sdk/pull/169) ([asfakianakis](https://github.com/asfakianakis))
+
 ## [0.14.2](https://github.com/vortechsa/python-sdk/tree/0.14.2) (2020-04-08)
 
 [Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.14.1...0.14.2)
