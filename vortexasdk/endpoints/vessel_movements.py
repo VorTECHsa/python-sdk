@@ -42,6 +42,7 @@ class VesselMovements(Search):
         filter_products: Union[str, List[str]] = None,
         filter_vessels: Union[str, List[str]] = None,
         filter_vessel_classes: Union[str, List[str]] = None,
+        filter_vessel_status: str = None,
     ) -> VesselMovementsResult:
         """
         Find VesselMovements matching the given search parameters.
@@ -66,6 +67,8 @@ class VesselMovements(Search):
             filter_vessels: A vessel ID, or list of vessel IDs to filter on.
 
             filter_vessel_classes: A vessel class, or list of vessel classes to filter on.
+
+            filter_vessel_status: The vessel status on which to base the filter. Enter 'vessel_status_ballast' for ballast vessels, 'vessel_status_laden_known' for laden vessels with known cargo (i.e. a type of cargo that Vortexa currently tracks) or 'vessel_status_laden_unknown' for laden vessels with unknown cargo (i.e. a type of cargo that Vortexa currently does not track).
 
         # Returns
         `VesselMovementsResult`, containing all the vessel movements matching the given search terms.
@@ -104,6 +107,7 @@ class VesselMovements(Search):
             "filter_products": convert_to_list(filter_products),
             "filter_vessels": convert_to_list(filter_vessels),
             "filter_vessel_classes": convert_to_list(filter_vessel_classes),
+            "filter_vessel_status": filter_vessel_status,
             "size": self._MAX_PAGE_RESULT_SIZE,
         }
 
