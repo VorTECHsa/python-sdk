@@ -25,7 +25,7 @@ Check the [Setup FAQ](https://vortechsa.github.io/python-sdk/faq_setup/) page fo
 
 ##### Authentication
 
-Set your `VORTEXA_API_KEY` environment variable, that's all. Check the [Setup FAQ](https://vortechsa.github.io/python-sdk/faq_setup/) page for more details
+Set your `VORTEXA_API_KEY` environment variable, that's all. To experiment with Vortexa's data, you can [request a demo here](https://www.vortexa.com/request-demo-sdk). Check the [Setup FAQ](https://vortechsa.github.io/python-sdk/faq_setup/) page for more details.
 
 
 ##### Example
