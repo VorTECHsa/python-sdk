@@ -43,10 +43,8 @@ Refer to [Vortexa API Authentication](https://docs.vortexa.com/reference/intro-a
  for details, including instructions on where to find your API key.
 
 #### How do I request an API Key?
-You can email *support@vortexa.com* for an API key.
-
-
+You can [request a demo here](https://www.vortexa.com/request-demo-sdk).
 
 More details are given in [docs.vortexa.com](https://docs.vortexa.com/reference/intro-authentication).
 
-If you don't have login details, please get in touch at [www.vortexa.com](https://www.vortexa.com/).
+Alternatively, please get in touch at [www.vortexa.com](https://www.vortexa.com/).
