@@ -40,7 +40,9 @@ class VortexaClient(AbstractVortexaClient):
     def search(self, resource: str, **data) -> List:
         """Search using `resource` using `**data` as filter params."""
         url = self._create_url(resource)
-        payload = {k: v for k, v in data.items() if v is not None}
+        payload = self._cleanse_payload(data)
+        logger.info(f"Payload: {payload}")
+
         probe_response = _send_post_request(url, payload, size=1, offset=0)
         total = self._calculate_total(probe_response)
 
@@ -95,7 +97,14 @@ class VortexaClient(AbstractVortexaClient):
                 return pool.map(func, offsets)
 
     @staticmethod
-    def _calculate_total(response) -> int:
+    def _cleanse_payload(payload: Dict) -> Dict:
+        filtered = {
+            k: v for k, v in payload.items() if not (v is None or v == [])
+        }
+        return dict(sorted(filtered.items()))
+
+    @staticmethod
+    def _calculate_total(response: Dict) -> int:
         """ Get total number of pages, if total key does not exist, return 1 """
         return response.get("total", 1)
 
