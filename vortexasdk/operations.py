@@ -79,7 +79,5 @@ class Search:
         >>> Search("/reference/vessels").search(term="DHT") # doctest: +SKIP
 
         """
-        logger.info(
-            f"Searching {self.__class__.__name__} with params: {params}"
-        )
+        logger.info(f"Searching {self.__class__.__name__}")
         return default_client().search(self._resource, **params)
