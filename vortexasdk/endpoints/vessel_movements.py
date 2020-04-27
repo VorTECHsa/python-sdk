@@ -1,13 +1,13 @@
 """Vessel Movements Endpoint."""
 from datetime import datetime
-from typing import List, Union
+from typing import List, Union, Dict
 
 from vortexasdk.api.shared_types import to_ISODate
 from vortexasdk.endpoints.endpoints import VESSEL_MOVEMENTS_RESOURCE
 from vortexasdk.endpoints.vessel_movements_result import VesselMovementsResult
 from vortexasdk.logger import get_logger
 from vortexasdk.operations import Search
-from vortexasdk.utils import convert_to_list
+from vortexasdk.utils import convert_to_list, convert_values_to_list_abstract
 
 logger = get_logger(__name__)
 
@@ -43,6 +43,7 @@ class VesselMovements(Search):
         filter_vessels: Union[str, List[str]] = None,
         filter_vessel_classes: Union[str, List[str]] = None,
         filter_vessel_status: str = None,
+        exclude: Dict[str, Union[str, List[str]]] = None,
     ) -> VesselMovementsResult:
         """
         Find VesselMovements matching the given search parameters.
@@ -54,7 +55,7 @@ class VesselMovements(Search):
 
             unit: Unit of measurement. Enter 'b' for barrels or 't' for tonnes.
 
-            filter_corporations: A corporation ID, or list of corporation IDs to filter on.
+            filter_charterers: A charterer ID, or list of charterer IDs to filter on.
 
             filter_destinations: A geography ID, or list of geography IDs to filter on.
 
@@ -69,6 +70,11 @@ class VesselMovements(Search):
             filter_vessel_classes: A vessel class, or list of vessel classes to filter on.
 
             filter_vessel_status: The vessel status on which to base the filter. Enter 'vessel_status_ballast' for ballast vessels, 'vessel_status_laden_known' for laden vessels with known cargo (i.e. a type of cargo that Vortexa currently tracks) or 'vessel_status_laden_unknown' for laden vessels with unknown cargo (i.e. a type of cargo that Vortexa currently does not track).
+
+            exclude: A dictionary where keys are strings that represent the parameter to implement exclusions on and
+                values are IDs or list of IDs that correspond to the entities to be exluded. Dictionary keys must be one of
+                ['filter_origins', 'filter_destinations', 'filter_products', 'filter_vessels', 'filter_charterers', 'filter_owners']
+
 
         # Returns
         `VesselMovementsResult`, containing all the vessel movements matching the given search terms.
@@ -108,6 +114,7 @@ class VesselMovements(Search):
             "filter_vessels": convert_to_list(filter_vessels),
             "filter_vessel_classes": convert_to_list(filter_vessel_classes),
             "filter_vessel_status": filter_vessel_status,
+            "exclude": convert_values_to_list_abstract(exclude),
             "size": self._MAX_PAGE_RESULT_SIZE,
         }
 
