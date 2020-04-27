@@ -73,7 +73,7 @@ class VesselMovements(Search):
 
             exclude: A dictionary where keys are strings that represent the parameter to implement exclusions on and
                 values are IDs or list of IDs that correspond to the entities to be exluded. Dictionary keys must be one of
-                ['filter_origins', 'filter_destinations', 'filter_products', 'filter_vessels', 'filter_charterers', 'filter_owners']
+                ['filter_origins', 'filter_destinations', 'filter_products', 'filter_vessels', 'filter_vessel_classes', 'filter_charterers', 'filter_owners']
 
 
         # Returns
