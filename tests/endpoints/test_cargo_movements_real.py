@@ -92,7 +92,7 @@ class TestCargoMovementsReal(TestCaseUsingRealAPI):
                 ],
                 filter_origins=meg,
                 exclude={
-                    "filter_origins": iraq,
+                    "filter_origins": iraq[0],
                     "filter_products": arab_medium,
                 },
                 filter_time_min=datetime(2019, 10, 1),

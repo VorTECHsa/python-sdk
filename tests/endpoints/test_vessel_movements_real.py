@@ -61,7 +61,10 @@ class TestVesselMovementsReal(TestCaseUsingRealAPI):
             VesselMovements()
             .search(
                 filter_origins=meg,
-                exclude={"filter_origins": iraq, "filter_charterers": bahri},
+                exclude={
+                    "filter_origins": iraq,
+                    "filter_charterers": bahri[0],
+                },
                 filter_time_min=datetime(2019, 10, 15),
                 filter_time_max=datetime(2019, 11, 1),
             )
