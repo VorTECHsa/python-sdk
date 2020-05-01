@@ -50,10 +50,14 @@ More details are given in [docs.vortexa.com](https://docs.vortexa.com/reference/
 Alternatively, please get in touch at [www.vortexa.com](https://www.vortexa.com/).
 
 
-#### How can I check the VortexaSDK is setup correctly?
+#### How can I check the SDK is setup correctly?
 
-You can run the `check_setup.py` file from your IDE, or from a bash console:
+Run the following in from a bash console:
 
-```
+```bash
 $ python -m vortexasdk check-setup 
 ```
+
+A successful setup looks like this:
+
+![check_setup.png](img/check_setup.png)
