@@ -55,7 +55,7 @@ Alternatively, please get in touch at [www.vortexa.com](https://www.vortexa.com/
 Run the following in from a bash console:
 
 ```bash
-$ python -m vortexasdk check-setup 
+$ python -m vortexasdk.check_setup
 ```
 
 A successful setup looks like this:
