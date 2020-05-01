@@ -35,7 +35,6 @@ class VortexaClient(AbstractVortexaClient):
     def get_reference(self, resource: str, id: ID) -> List[Dict]:
         """Lookup reference data."""
         url = self._create_url(f"{resource}/{id}")
-        print(url)
         response = retry_get(url)
         return _handle_response(response)["data"]
 

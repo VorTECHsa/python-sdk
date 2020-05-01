@@ -9,3 +9,6 @@ from vortexasdk.endpoints import (
     VesselMovements,
     Vessels,
 )
+
+# noinspection PyUnresolvedReferences
+from vortexasdk.version import __version__
