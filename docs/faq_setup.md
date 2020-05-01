@@ -48,3 +48,12 @@ You can [request a demo here](https://www.vortexa.com/request-demo-sdk).
 More details are given in [docs.vortexa.com](https://docs.vortexa.com/reference/intro-authentication).
 
 Alternatively, please get in touch at [www.vortexa.com](https://www.vortexa.com/).
+
+
+#### How can I check the VortexaSDK is setup correctly?
+
+You can run the `check_setup.py` file from your IDE, or from a bash console:
+
+```
+python check_setup.py
+```

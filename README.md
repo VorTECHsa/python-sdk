@@ -21,12 +21,18 @@ The SDK requires Python version 3.7 or above.
 $ pip install vortexasdk
 ```
 
-Check the [Setup FAQ](https://vortechsa.github.io/python-sdk/faq_setup/) page for more details
+See the [Setup FAQ](https://vortechsa.github.io/python-sdk/faq_setup/) page for more details
 
 ##### Authentication
 
 Set your `VORTEXA_API_KEY` environment variable, that's all. To experiment with Vortexa's data, you can [request a demo here](https://www.vortexa.com/request-demo-sdk). Check the [Setup FAQ](https://vortechsa.github.io/python-sdk/faq_setup/) page for more details.
 
+##### Check everything is setup correctly
+
+Run the following in a terminal:  
+```bash
+$ python vortexasdk check-setup
+```
 
 ##### Example
 
