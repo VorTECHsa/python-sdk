@@ -4,7 +4,7 @@ set -e
 # Tag the current commit
 TAG=$(python setup.py --version)
 
-git add setup.py
+git add ./vortexasdk/version.py
 git commit -m "chore: New tag $TAG"
 git push
 

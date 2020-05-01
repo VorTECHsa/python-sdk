@@ -42,7 +42,6 @@ class VortexaClient(AbstractVortexaClient):
     def search(self, resource: str, **data) -> List:
         """Search using `resource` using `**data` as filter params."""
         url = self._create_url(resource)
-        print(url)
         payload = self._cleanse_payload(data)
         logger.info(f"Payload: {payload}")
 
