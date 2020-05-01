@@ -17,6 +17,7 @@ from vortexasdk.retry_session import (
     retry_get,
     retry_post,
 )
+from vortexasdk.version import __version__
 
 logger = get_logger(__name__)
 
@@ -34,12 +35,14 @@ class VortexaClient(AbstractVortexaClient):
     def get_reference(self, resource: str, id: ID) -> List[Dict]:
         """Lookup reference data."""
         url = self._create_url(f"{resource}/{id}")
+        print(url)
         response = retry_get(url)
         return _handle_response(response)["data"]
 
     def search(self, resource: str, **data) -> List:
         """Search using `resource` using `**data` as filter params."""
         url = self._create_url(resource)
+        print(url)
         payload = self._cleanse_payload(data)
         logger.info(f"Payload: {payload}")
 
@@ -67,7 +70,9 @@ class VortexaClient(AbstractVortexaClient):
             return flattened
 
     def _create_url(self, path: str) -> str:
-        return f"{API_URL}{path}?apikey={self.api_key}"
+        return (
+            f"{API_URL}{path}?_sdk=python_v{__version__}&apikey={self.api_key}"
+        )
 
     def _process_multiple_pages(
         self, total: int, url: str, payload: Dict, data: Dict

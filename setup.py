@@ -1,11 +1,12 @@
 import setuptools
+from vortexasdk.version import __version__
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
     name="vortexasdk",
-    version="0.15.2",
+    version=__version__,
     author="Vortexa Developers",
     author_email="developers@vortexa.com",
     description="Vortexa SDK",
