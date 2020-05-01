@@ -7,6 +7,6 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     if 'check-setup' in args:
-        from check_setup import run_all_checks
+        from vortexasdk.check_setup import run_all_checks
 
         run_all_checks()

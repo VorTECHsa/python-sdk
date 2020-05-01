@@ -31,7 +31,7 @@ Set your `VORTEXA_API_KEY` environment variable, that's all. To experiment with 
 
 Run the following in a terminal:  
 ```bash
-$ python vortexasdk check-setup
+$ python -m vortexasdk check-setup
 ```
 
 ##### Example

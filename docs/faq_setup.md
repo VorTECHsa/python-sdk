@@ -55,5 +55,5 @@ Alternatively, please get in touch at [www.vortexa.com](https://www.vortexa.com/
 You can run the `check_setup.py` file from your IDE, or from a bash console:
 
 ```
-python check_setup.py
+$ python -m vortexasdk check-setup 
 ```
