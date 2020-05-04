@@ -57,6 +57,8 @@
     
         <ul>
         
+            <li><a class="toctree-l3" href="#example">Example</a></li>
+        
             <li><a class="toctree-l3" href="#quick-start">Quick Start</a></li>
         
             <li><a class="toctree-l3" href="#next-steps">Next Steps</a></li>
@@ -238,33 +240,22 @@
 <a href="https://github.com/psf/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg" /></a>
 <a href="#contributors"><img alt="All Contributors" src="https://img.shields.io/badge/all_contributors-12-orange.svg?style=flat-square" /></a></p>
 <p>Welcome to Vortexa's Python Software Development Kit (SDK)!
-We built the SDK to provide fast, interactive, programmatic exploration of our data.
-The tool lets Data Scientists, Analysts and Developers efficiently explore the
+We built the SDK to provide fast, interactive, programmatic exploration of our data. The tool lets Data Scientists, Analysts and Developers efficiently explore the
 world’s waterborne oil movements, and to build custom models &amp; reports with minimum setup cost.</p>
 <p>The SDK sits as a thin python wrapper around <a href="https://docs.vortexa.com">Vortexa's API</a>,
 giving you immediate access to pandas DataFrames.</p>
-<h2 id="quick-start">Quick Start</h2>
-<h5 id="installation">Installation</h5>
-<p>The SDK requires Python version 3.7 or above.</p>
-<pre><code class="bash">$ pip install vortexasdk
-</code></pre>
-
-<p>See the <a href="https://vortechsa.github.io/python-sdk/faq_setup/">setup FAQ</a> page for more details,
- including instructions to check the SDK is setup correctly.</p>
-<h5 id="authentication">Authentication</h5>
-<p>Set your <code>VORTEXA_API_KEY</code> environment variable, that's all. To experiment with Vortexa's data, you can <a href="https://www.vortexa.com/request-demo-sdk">request a demo here</a>. Check the <a href="https://vortechsa.github.io/python-sdk/faq_setup/">Setup FAQ</a> page for more details.</p>
 <h5 id="example">Example</h5>
-<p>In an interactive python console, run:</p>
+<p>In an interactive Python console, run:</p>
 <pre><code class="python">&gt;&gt;&gt; from datetime import datetime
 &gt;&gt;&gt; from vortexasdk import CargoMovements
 &gt;&gt;&gt; df = CargoMovements()\
         .search(filter_activity='loading_state',
-            filter_time_min=datetime(2017, 8, 1, 23),
-            filter_time_max=datetime(2017, 8, 1, 23))\
+            filter_time_min=datetime(2017, 8, 1),
+            filter_time_max=datetime(2017, 8, 1))\
         .to_df()
 </code></pre>
 
-<p>returns</p>
+<p>returns:</p>
 <table>
 <thead>
 <tr>
@@ -290,7 +281,7 @@ giving you immediate access to pandas DataFrames.</p>
 <tr>
 <td align="right">1</td>
 <td align="right">16559</td>
-<td align="left">IVER AMBITION</td>
+<td align="left">IVER</td>
 <td align="left">Dirty products</td>
 <td align="left">nan</td>
 <td align="left">2017-08-02T17:20:51+0000</td>
@@ -305,19 +296,23 @@ giving you immediate access to pandas DataFrames.</p>
 <td align="left">2017-08-02T04:22:09+0000</td>
 <td align="left">2017-08-13T10:32:09+0000</td>
 </tr>
-<tr>
-<td align="right">3</td>
-<td align="right">46260</td>
-<td align="left">XINWANYU16</td>
-<td align="left">Clean products</td>
-<td align="left">Chemicals</td>
-<td align="left">2017-08-01T01:07:40+0000</td>
-<td align="left">2017-08-10T06:21:43+0000</td>
-</tr>
 </tbody>
 </table>
-<p>Alternatively, you can copy the contents of <a href="https://github.com/VorTECHsa/python-sdk/blob/master/docs/examples/0_sample_load_cargo_movements.py">example_load_cargo_movements.py</a>
- into a file named <code>example.py</code> and run <code>python example.py</code> from your terminal or powershell console.</p>
+<h2 id="quick-start">Quick Start</h2>
+<h5 id="installation">Installation</h5>
+<pre><code class="bash">$ pip install vortexasdk
+</code></pre>
+
+<p>The SDK requires Python version 3.7 or above, see <a href="https://vortechsa.github.io/python-sdk/faq_setup/">Setup FAQ</a> for more details.</p>
+<h5 id="authentication">Authentication</h5>
+<p>Set your <code>VORTEXA_API_KEY</code> environment variable, that's all. To experiment with Vortexa's data, you can <a href="https://www.vortexa.com/request-demo-sdk">request a demo here</a>.</p>
+<h5 id="check-setup">Check Setup</h5>
+<p>To check the SDK is setup correctly, run the following in a bash console:</p>
+<pre><code class="bash">$ python -m vortexasdk.check_setup
+</code></pre>
+
+<p>A successful setup looks like this:</p>
+<p><img alt="check_setup.png" src="https://raw.githubusercontent.com/VorTECHsa/python-sdk/master/docs/img/check_setup.png" /></p>
 <h2 id="next-steps">Next Steps</h2>
 <p>Learn how to call <a href="https://vortechsa.github.io/python-sdk/endpoints/about-endpoints/">Endpoints</a></p>
 <h2 id="glossary">Glossary</h2>
@@ -404,5 +399,5 @@ helping to extract powerful findings from our data.</p>
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2020-05-04 11:06:02
+Build Date UTC : 2020-05-04 11:39:26
 -->
