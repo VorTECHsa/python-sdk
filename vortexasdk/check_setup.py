@@ -12,7 +12,9 @@ def check_api_key_present():
         all_tests_pass = False
         print("❌ Environment variable VORTEXA_API_KEY is not set.")
         print("         Please set this environment variable.")
-        print("         You may need to restart your python interpreter / bash terminal for this to be ingested.")
+        print(
+            "         You may need to restart your python interpreter / bash terminal for this to be ingested."
+        )
     else:
         print("✅ Environment variable VORTEXA_API_KEY is set correctly.")
 
@@ -20,7 +22,7 @@ def check_api_key_present():
 def check_can_connect_to_internet():
     global all_tests_pass
     # noinspection PyBroadException
-    url = 'https://api.github.com'
+    url = "https://api.github.com"
 
     try:
         status_code = requests.get(url).status_code
@@ -61,6 +63,7 @@ def check_can_import_vortexasdk():
 
     try:
         import vortexasdk
+
         print("✅ Python successfully imported vortexasdk")
     except ImportError:
         all_tests_pass = False
@@ -73,10 +76,15 @@ def check_can_retrieve_products():
     # noinspection PyBroadException
     try:
         from vortexasdk import Products
-        crude_id = "6f11b0724c9a4e85ffa7f1445bc768f054af755a090118dcf99f14745c261653"
+
+        crude_id = (
+            "6f11b0724c9a4e85ffa7f1445bc768f054af755a090118dcf99f14745c261653"
+        )
         product = Products().reference(crude_id)
-        assert product['id'] == crude_id
-        print("✅ Python successfully retrieved a sample piece of reference data")
+        assert product["id"] == crude_id
+        print(
+            "✅ Python successfully retrieved a sample piece of reference data"
+        )
     except Exception:
         all_tests_pass = False
         print("❌ Python unable to retrieve a sample piece of reference data")

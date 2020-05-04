@@ -136,3 +136,18 @@ class TestVesselMovementsReal(TestCaseUsingRealAPI):
 
         assert list(df.columns) == cols
         assert len(df) == 2
+
+    def test_filter_activity(self):
+        df = (
+            VesselMovements()
+            .search(
+                filter_activity="storing_state",
+                filter_time_min=datetime(2017, 10, 1),
+                filter_time_max=datetime(2017, 10, 1),
+            )
+            .to_df()
+            .head(2)
+        )
+
+        print(df.head())
+        assert len(df) == 2

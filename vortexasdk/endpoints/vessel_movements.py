@@ -35,6 +35,7 @@ class VesselMovements(Search):
         filter_time_min: datetime = datetime(2019, 10, 1, 0),
         filter_time_max: datetime = datetime(2019, 10, 1, 1),
         unit: str = "b",
+        filter_activity: str = None,
         filter_charterers: Union[str, List[str]] = None,
         filter_destinations: Union[str, List[str]] = None,
         filter_origins: Union[str, List[str]] = None,
@@ -129,6 +130,7 @@ class VesselMovements(Search):
         }
 
         params = {
+            "filter_activity": filter_activity,
             "filter_time_min": to_ISODate(filter_time_min),
             "filter_time_max": to_ISODate(filter_time_max),
             "unit": unit,
