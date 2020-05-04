@@ -14,3 +14,9 @@ def convert_to_list(a) -> List:
 def convert_values_to_list(data: Dict) -> Dict:
     """Convert each value to a list."""
     return {k: convert_to_list(v) for k, v in data.items()}
+
+
+def filter_empty_values(data: Dict) -> Dict:
+    return {
+        k: v for k, v in data.items() if not (v is None or v == [] or v == {})
+    }
