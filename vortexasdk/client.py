@@ -17,6 +17,7 @@ from vortexasdk.retry_session import (
     retry_get,
     retry_post,
 )
+from vortexasdk.utils import filter_empty_values
 
 logger = get_logger(__name__)
 
@@ -98,10 +99,10 @@ class VortexaClient(AbstractVortexaClient):
 
     @staticmethod
     def _cleanse_payload(payload: Dict) -> Dict:
-        filtered = {
-            k: v for k, v in payload.items() if not (v is None or v == [])
-        }
-        return dict(sorted(filtered.items()))
+        exclude_params = payload.get("exclude", {})
+        payload["exclude"] = filter_empty_values(exclude_params)
+
+        return filter_empty_values(payload)
 
     @staticmethod
     def _calculate_total(response: Dict) -> int:
