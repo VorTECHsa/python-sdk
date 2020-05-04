@@ -18,6 +18,7 @@ from vortexasdk.retry_session import (
     retry_post,
 )
 from vortexasdk.utils import filter_empty_values
+from vortexasdk.version import __version__
 
 logger = get_logger(__name__)
 
@@ -68,7 +69,9 @@ class VortexaClient(AbstractVortexaClient):
             return flattened
 
     def _create_url(self, path: str) -> str:
-        return f"{API_URL}{path}?apikey={self.api_key}"
+        return (
+            f"{API_URL}{path}?_sdk=python_v{__version__}&apikey={self.api_key}"
+        )
 
     def _process_multiple_pages(
         self, total: int, url: str, payload: Dict, data: Dict
