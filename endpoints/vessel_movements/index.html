@@ -240,12 +240,18 @@
 <p>A detailed explanation of Cargo/Vessel Movements can be found <a href="https://docs.vortexa.com/reference/intro-movement-difference">here</a>.</p>
 <h3 id="vortexasdk.endpoints.vessel_movements.VesselMovements.search">search</h3>
 
-<pre><code class="python">VesselMovements.search(self, filter_time_min: datetime.datetime = datetime.datetime(2019, 10, 1, 0, 0), filter_time_max: datetime.datetime = datetime.datetime(2019, 10, 1, 1, 0), unit: str = 'b', filter_charterers: Union[str, List[str]] = None, filter_destinations: Union[str, List[str]] = None, filter_origins: Union[str, List[str]] = None, filter_owners: Union[str, List[str]] = None, filter_products: Union[str, List[str]] = None, filter_vessels: Union[str, List[str]] = None, filter_vessel_classes: Union[str, List[str]] = None, filter_vessel_status: str = None, exclude_origins: Union[str, List[str]] = None, exclude_destinations: Union[str, List[str]] = None, exclude_products: Union[str, List[str]] = None, exclude_vessels: Union[str, List[str]] = None, exclude_vessel_classes: Union[str, List[str]] = None, exclude_charterers: Union[str, List[str]] = None, exclude_owners: Union[str, List[str]] = None) -&gt; vortexasdk.endpoints.vessel_movements_result.VesselMovementsResult
+<pre><code class="python">VesselMovements.search(self, filter_time_min: datetime.datetime = datetime.datetime(2019, 10, 1, 0, 0), filter_time_max: datetime.datetime = datetime.datetime(2019, 10, 1, 1, 0), unit: str = 'b', filter_activity: str = None, filter_charterers: Union[str, List[str]] = None, filter_destinations: Union[str, List[str]] = None, filter_origins: Union[str, List[str]] = None, filter_owners: Union[str, List[str]] = None, filter_products: Union[str, List[str]] = None, filter_vessels: Union[str, List[str]] = None, filter_vessel_classes: Union[str, List[str]] = None, filter_vessel_status: str = None, exclude_origins: Union[str, List[str]] = None, exclude_destinations: Union[str, List[str]] = None, exclude_products: Union[str, List[str]] = None, exclude_vessels: Union[str, List[str]] = None, exclude_vessel_classes: Union[str, List[str]] = None, exclude_charterers: Union[str, List[str]] = None, exclude_owners: Union[str, List[str]] = None) -&gt; vortexasdk.endpoints.vessel_movements_result.VesselMovementsResult
 </code></pre>
 
 <p>Find VesselMovements matching the given search parameters.</p>
 <p><strong>Arguments</strong></p>
 <ul>
+<li>
+<p><strong>filter_activity</strong>: Movement activity on which to base the time filter. Must be one of ['loading_state',
+     'loading_start', 'loading_end', 'identified_for_loading_state', 'unloading_state', 'unloading_start',
+      'unloading_end', 'unloaded_state', 'storing_state', 'storing_start', 'storing_end', 'transiting_state',
+       'any_activity'].</p>
+</li>
 <li>
 <p><strong>filter_time_min</strong>: The UTC start date of the time filter.</p>
 </li>
