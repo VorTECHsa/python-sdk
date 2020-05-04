@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.18.0](https://github.com/vortechsa/python-sdk/tree/0.18.0) (2020-05-04)
+
+[Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.17.2...0.18.0)
+
+**Closed issues:**
+
+- Add connectivity / healthcheck script. [\#180](https://github.com/VorTECHsa/python-sdk/issues/180)
+
+**Merged pull requests:**
+
+- feat: Check setup [\#181](https://github.com/VorTECHsa/python-sdk/pull/181) ([KitBurgess](https://github.com/KitBurgess))
+
 ## [0.17.2](https://github.com/vortechsa/python-sdk/tree/0.17.2) (2020-05-04)
 
 [Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.17.1...0.17.2)
