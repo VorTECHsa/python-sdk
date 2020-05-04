@@ -35,6 +35,7 @@ class VesselMovements(Search):
         filter_time_min: datetime = datetime(2019, 10, 1, 0),
         filter_time_max: datetime = datetime(2019, 10, 1, 1),
         unit: str = "b",
+        filter_activity: str = None,
         filter_charterers: Union[str, List[str]] = None,
         filter_destinations: Union[str, List[str]] = None,
         filter_origins: Union[str, List[str]] = None,
@@ -55,6 +56,11 @@ class VesselMovements(Search):
         Find VesselMovements matching the given search parameters.
 
         # Arguments
+            filter_activity: Movement activity on which to base the time filter. Must be one of ['loading_state',
+             'loading_start', 'loading_end', 'identified_for_loading_state', 'unloading_state', 'unloading_start',
+              'unloading_end', 'unloaded_state', 'storing_state', 'storing_start', 'storing_end', 'transiting_state',
+               'any_activity'].
+
             filter_time_min: The UTC start date of the time filter.
 
             filter_time_max: The UTC end date of the time filter.
@@ -129,6 +135,7 @@ class VesselMovements(Search):
         }
 
         params = {
+            "filter_activity": filter_activity,
             "filter_time_min": to_ISODate(filter_time_min),
             "filter_time_max": to_ISODate(filter_time_max),
             "unit": unit,
