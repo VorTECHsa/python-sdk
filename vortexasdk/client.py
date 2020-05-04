@@ -84,7 +84,7 @@ class VortexaClient(AbstractVortexaClient):
         ) as pbar:
             with ThreadPool(self._N_THREADS) as pool:
                 logger.info(
-                    f"{total} Results to retreive."
+                    f"{total} Results to retrieve."
                     f" Sending {len(offsets)}"
                     f" post requests in parallel using {self._N_THREADS} threads."
                 )

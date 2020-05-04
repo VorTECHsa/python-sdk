@@ -3,7 +3,7 @@ from datetime import datetime
 from docs.utils import to_markdown
 from tests.testcases import TestCaseUsingRealAPI
 from tests.timer import Timer
-from vortexasdk import Geographies, Corporations
+from vortexasdk import Geographies, Corporations, Products
 from vortexasdk.endpoints.cargo_movements import CargoMovements
 
 
@@ -46,6 +46,69 @@ class TestCargoMovementsReal(TestCaseUsingRealAPI):
         )
 
         assert len(df) == 2
+
+    def test_exlusion_filter(self):
+        crude = [
+            p.id
+            for p in Products().search("Crude/Condensates").to_list()
+            if p.layer == ["group"]
+        ]
+        arab_medium = [
+            p.id
+            for p in Products().search("Arab Medium").to_list()
+            if p.layer == ["grade"]
+        ]
+        meg = [
+            g.id
+            for g in Geographies().search("MEG/AG").to_list()
+            if "trading_region" in g.layer
+        ]
+        iraq = [
+            g.id
+            for g in Geographies().search("Iraq").to_list()
+            if "country" in g.layer
+        ]
+
+        cols = [
+            "cargo_movement_id",
+            "vessels.0.name",
+            "events.cargo_port_load_event.0.location.port.id",
+            "events.cargo_port_load_event.0.location.port.label",
+            "events.cargo_port_load_event.0.location.country.id",
+            "events.cargo_port_load_event.0.location.country.label",
+            "events.cargo_port_load_event.0.start_timestamp",
+            "events.cargo_port_load_event.0.end_timestamp",
+            "product.grade.id",
+            "product.grade.label",
+            "product.group_product.label",
+        ]
+
+        df = (
+            CargoMovements()
+            .search(
+                filter_activity="loading_end",
+                filter_products=[
+                    "54af755a090118dcf9b0724c9a4e9f14745c26165385ffa7f1445bc768f06f11"
+                ],
+                filter_origins=meg,
+                exclude_origins=iraq[0],
+                exclude_products=arab_medium,
+                filter_time_min=datetime(2019, 10, 1),
+                filter_time_max=datetime(2019, 11, 1),
+                cm_unit="b",
+            )
+            .to_df(columns=cols)
+        )
+
+        df_excl = df.loc[
+            (
+                df["events.cargo_port_load_event.0.location.country.id"]
+                == iraq[0]
+            )
+            | (df["product.grade.id"] == arab_medium[0])
+        ]
+
+        assert df_excl.empty
 
     def test_to_df_all_columns(self):
         df = (
