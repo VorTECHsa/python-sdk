@@ -1,4 +1,5 @@
 """Vortexa Python SDK."""
+# noinspection PyUnresolvedReferences
 from vortexasdk.endpoints import (
     CargoMovements,
     CargoTimeSeries,
@@ -8,3 +9,6 @@ from vortexasdk.endpoints import (
     VesselMovements,
     Vessels,
 )
+
+# noinspection PyUnresolvedReferences
+from vortexasdk.version import __version__
