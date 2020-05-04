@@ -16,7 +16,7 @@ if __name__ == "__main__":
     one_month_ago = now - relativedelta(months=1)
 
     # First we find the ID for the country India. Note that when searching geographies with the term 'india', we'll
-    # retreive all geographies with india in the name, ie Indiana, British Indian Ocean Territory...
+    # retrieve all geographies with india in the name, ie Indiana, British Indian Ocean Territory...
     all_geogs_with_india_in_the_name = Geographies().search("india").to_list()
 
     # We're only interested in the country India here
