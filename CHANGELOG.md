@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.19.0](https://github.com/vortechsa/python-sdk/tree/0.19.0) (2020-05-04)
+
+[Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.18.0...0.19.0)
+
+**Merged pull requests:**
+
+- feat: Add filter\_activity to vessels endpoint [\#187](https://github.com/VorTECHsa/python-sdk/pull/187) ([KitBurgess](https://github.com/KitBurgess))
+- docs: Show setup on mainpage [\#186](https://github.com/VorTECHsa/python-sdk/pull/186) ([KitBurgess](https://github.com/KitBurgess))
+
 ## [0.18.0](https://github.com/vortechsa/python-sdk/tree/0.18.0) (2020-05-04)
 
 [Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.17.2...0.18.0)
