@@ -4,56 +4,61 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-12-orange.svg?style=flat-square)](#contributors)
 
 Welcome to Vortexa's Python Software Development Kit (SDK)!
-We built the SDK to provide fast, interactive, programmatic exploration of our data.
-The tool lets Data Scientists, Analysts and Developers efficiently explore the
+We built the SDK to provide fast, interactive, programmatic exploration of our data. The tool lets Data Scientists, Analysts and Developers efficiently explore the
 world’s waterborne oil movements, and to build custom models & reports with minimum setup cost.
 
 The SDK sits as a thin python wrapper around [Vortexa's API](https://docs.vortexa.com),
 giving you immediate access to pandas DataFrames.
 
 
-## Quick Start
-
-##### Installation
-The SDK requires Python version 3.7 or above.
-
-```bash
-$ pip install vortexasdk
-```
-
-See the [setup FAQ](https://vortechsa.github.io/python-sdk/faq_setup/) page for more details,
- including instructions to check the SDK is setup correctly.
-
-##### Authentication
-
-Set your `VORTEXA_API_KEY` environment variable, that's all. To experiment with Vortexa's data, you can [request a demo here](https://www.vortexa.com/request-demo-sdk). Check the [Setup FAQ](https://vortechsa.github.io/python-sdk/faq_setup/) page for more details.
-
 ##### Example
 
-In an interactive python console, run:
-
+In an interactive Python console, run:
 
 ```python
 >>> from datetime import datetime
 >>> from vortexasdk import CargoMovements
 >>> df = CargoMovements()\
         .search(filter_activity='loading_state',
-            filter_time_min=datetime(2017, 8, 1, 23),
-            filter_time_max=datetime(2017, 8, 1, 23))\
+            filter_time_min=datetime(2017, 8, 1),
+            filter_time_max=datetime(2017, 8, 1))\
         .to_df()
 ```
-returns
+returns:
 
 |    |   quantity | vessels.0.name   | product.group.label   | product.grade.label   | events.cargo_port_load_event.0.end_timestamp   | events.cargo_port_unload_event.0.start_timestamp   |
 |---:|-----------:|:-----------------|:----------------------|:----------------------|:-----------------------------------------------|:---------------------------------------------------|
 |  0 |       1998 | ALSIA SWAN       | Clean products        | Lube Oils             | 2017-08-01T06:10:45+0000                       | 2017-08-27T14:38:15+0000                           |
-|  1 |      16559 | IVER AMBITION    | Dirty products        | nan                   | 2017-08-02T17:20:51+0000                       | 2017-09-07T07:52:20+0000                           |
+|  1 |      16559 | IVER             | Dirty products        | nan                   | 2017-08-02T17:20:51+0000                       | 2017-09-07T07:52:20+0000                           |
 |  2 |     522288 | BLUE SUN         | Crude                 | Gharib                | 2017-08-02T04:22:09+0000                       | 2017-08-13T10:32:09+0000                           |
-|  3 |      46260 | XINWANYU16       | Clean products        | Chemicals             | 2017-08-01T01:07:40+0000                       | 2017-08-10T06:21:43+0000                           |
 
 
-Alternatively, you can copy the contents of [example_load_cargo_movements.py](https://github.com/VorTECHsa/python-sdk/blob/master/docs/examples/0_sample_load_cargo_movements.py)
- into a file named `example.py` and run `python example.py` from your terminal or powershell console.
+## Quick Start
+
+##### Installation
+
+```bash
+$ pip install vortexasdk
+```
+
+The SDK requires Python version 3.7 or above, see [Setup FAQ](https://vortechsa.github.io/python-sdk/faq_setup/) for more details.
+
+##### Authentication
+
+Set your `VORTEXA_API_KEY` environment variable, that's all. To experiment with Vortexa's data, you can [request a demo here](https://www.vortexa.com/request-demo-sdk).
+
+
+##### Check Setup
+
+To check the SDK is setup correctly, run the following in a bash console:
+
+```bash
+$ python -m vortexasdk.check_setup
+```
+
+A successful setup looks like this:
+
+![check_setup.png](https://raw.githubusercontent.com/VorTECHsa/python-sdk/master/docs/img/check_setup.png)
 
 
 ## Next Steps
