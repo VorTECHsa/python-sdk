@@ -1,6 +1,9 @@
 from unittest import TestCase
 
-from vortexasdk.utils import convert_to_list, convert_values_to_list
+from vortexasdk.utils import (
+    convert_to_list,
+    convert_values_to_list,
+)
 
 
 class TestUtils(TestCase):
