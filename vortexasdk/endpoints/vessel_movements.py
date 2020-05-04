@@ -43,6 +43,13 @@ class VesselMovements(Search):
         filter_vessels: Union[str, List[str]] = None,
         filter_vessel_classes: Union[str, List[str]] = None,
         filter_vessel_status: str = None,
+        exclude_origins: Union[str, List[str]] = None,
+        exclude_destinations: Union[str, List[str]] = None,
+        exclude_products: Union[str, List[str]] = None,
+        exclude_vessels: Union[str, List[str]] = None,
+        exclude_vessel_classes: Union[str, List[str]] = None,
+        exclude_charterers: Union[str, List[str]] = None,
+        exclude_owners: Union[str, List[str]] = None,
     ) -> VesselMovementsResult:
         """
         Find VesselMovements matching the given search parameters.
@@ -54,7 +61,7 @@ class VesselMovements(Search):
 
             unit: Unit of measurement. Enter 'b' for barrels or 't' for tonnes.
 
-            filter_corporations: A corporation ID, or list of corporation IDs to filter on.
+            filter_charterers: A charterer ID, or list of charterer IDs to filter on.
 
             filter_destinations: A geography ID, or list of geography IDs to filter on.
 
@@ -69,6 +76,21 @@ class VesselMovements(Search):
             filter_vessel_classes: A vessel class, or list of vessel classes to filter on.
 
             filter_vessel_status: The vessel status on which to base the filter. Enter 'vessel_status_ballast' for ballast vessels, 'vessel_status_laden_known' for laden vessels with known cargo (i.e. a type of cargo that Vortexa currently tracks) or 'vessel_status_laden_unknown' for laden vessels with unknown cargo (i.e. a type of cargo that Vortexa currently does not track).
+
+            exclude_origins: A geography ID, or list of geography IDs to exclude.
+
+            exclude_destinations: A geography ID, or list of geography IDs to exclude.
+
+            exclude_products: A product ID, or list of product IDs to exclude.
+
+            exclude_vessels: A vessel ID, or list of vessel IDs to exclude.
+
+            exclude_vessel_classes: A vessel class, or list of vessel classes to exclude.
+
+            exclude_charterers: A charterer ID, or list of charterer IDs to exclude.
+
+            exclude_owners: An owner ID, or list of owner IDs to exclude.
+
 
         # Returns
         `VesselMovementsResult`, containing all the vessel movements matching the given search terms.
@@ -96,6 +118,16 @@ class VesselMovements(Search):
         [Vessel Movements Endpoint Further Documentation](https://docs.vortexa.com/reference/POST/vessel-movements/search)
 
         """
+        exclude_params = {
+            "filter_origins": convert_to_list(exclude_origins),
+            "filter_destinations": convert_to_list(exclude_destinations),
+            "filter_products": convert_to_list(exclude_products),
+            "filter_vessels": convert_to_list(exclude_vessels),
+            "filter_vessel_classes": convert_to_list(exclude_vessel_classes),
+            "filter_charterers": convert_to_list(exclude_charterers),
+            "filter_owners": convert_to_list(exclude_owners),
+        }
+
         params = {
             "filter_time_min": to_ISODate(filter_time_min),
             "filter_time_max": to_ISODate(filter_time_max),
@@ -108,6 +140,7 @@ class VesselMovements(Search):
             "filter_vessels": convert_to_list(filter_vessels),
             "filter_vessel_classes": convert_to_list(filter_vessel_classes),
             "filter_vessel_status": filter_vessel_status,
+            "exclude": exclude_params,
             "size": self._MAX_PAGE_RESULT_SIZE,
         }
 

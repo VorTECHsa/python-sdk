@@ -40,6 +40,12 @@ class CargoMovements(Search):
         filter_storage_locations: Union[ID, List[ID]] = None,
         filter_ship_to_ship_locations: Union[ID, List[ID]] = None,
         filter_waypoints: Union[ID, List[ID]] = None,
+        exclude_origins: Union[ID, List[ID]] = None,
+        exclude_destinations: Union[ID, List[ID]] = None,
+        exclude_products: Union[ID, List[ID]] = None,
+        exclude_vessels: Union[ID, List[ID]] = None,
+        exclude_charterers: Union[ID, List[ID]] = None,
+        exclude_owners: Union[ID, List[ID]] = None,
         disable_geographic_exclusion_rules: bool = None,
         timeseries_activity_time_span_min: int = None,
         timeseries_activity_time_span_max: int = None,
@@ -60,7 +66,7 @@ class CargoMovements(Search):
 
             cm_unit: Unit of measurement. Enter 'b' for barrels or 't' for tonnes.
 
-            filter_corporations: A corporation ID, or list of corporation IDs to filter on.
+            filter_charterers: A charterer ID, or list of charterer IDs to filter on.
 
             filter_destinations: A geography ID, or list of geography IDs to filter on.
 
@@ -77,6 +83,18 @@ class CargoMovements(Search):
             filter_ship_to_ship_locations: A geography ID, or list of geography IDs to filter on.
 
             filter_waypoints: A geography ID, or list of geography IDs to filter on.
+
+            exclude_origins: A geography ID, or list of geography IDs to exclude.
+
+            exclude_destinations: A geography ID, or list of geography IDs to exclude.
+
+            exclude_products: A product ID, or list of product IDs to exclude.
+
+            exclude_vessels: A vessel ID, or list of vessel IDs to exclude.
+
+            exclude_charterers: A charterer ID, or list of charterer IDs to exclude.
+
+            exclude_owners: An owner ID, or list of owner IDs to exclude.
 
             disable_geographic_exclusion_rules: This controls a popular industry term "intra-movements" and determines
              the filter behaviour for cargo leaving then entering the same geographic area.
@@ -158,6 +176,15 @@ class CargoMovements(Search):
         [Cargo Movements Endpoint Further Documentation](https://docs.vortexa.com/reference/POST/cargo-movements/search)
 
         """
+        exclude_params = {
+            "filter_origins": convert_to_list(exclude_origins),
+            "filter_destinations": convert_to_list(exclude_destinations),
+            "filter_products": convert_to_list(exclude_products),
+            "filter_vessels": convert_to_list(exclude_vessels),
+            "filter_charterers": convert_to_list(exclude_charterers),
+            "filter_owners": convert_to_list(exclude_owners),
+        }
+
         params = {
             "filter_activity": filter_activity,
             "filter_time_min": to_ISODate(filter_time_min),
@@ -178,6 +205,7 @@ class CargoMovements(Search):
                 filter_ship_to_ship_locations
             ),
             "filter_waypoints": convert_to_list(filter_waypoints),
+            "exclude": exclude_params,
             "disable_geographic_exclusion_rules": disable_geographic_exclusion_rules,
             "size": self._MAX_PAGE_RESULT_SIZE,
         }
