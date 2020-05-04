@@ -1,5 +1,34 @@
 # Changelog
 
+## [0.16.0](https://github.com/vortechsa/python-sdk/tree/0.16.0) (2020-05-04)
+
+[Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.16.0a4...0.16.0)
+
+**Implemented enhancements:**
+
+- Add exclude geographies to cargo movements and vessel movements endpoint [\#168](https://github.com/VorTECHsa/python-sdk/issues/168)
+- Feat/origin dest exclusion filters [\#178](https://github.com/VorTECHsa/python-sdk/pull/178) ([asfakianakis](https://github.com/asfakianakis))
+
+**Closed issues:**
+
+- How to set env key? [\#76](https://github.com/VorTECHsa/python-sdk/issues/76)
+
+**Merged pull requests:**
+
+- fix: Remove exclude empties from payload [\#185](https://github.com/VorTECHsa/python-sdk/pull/185) ([KitBurgess](https://github.com/KitBurgess))
+
+## [0.16.0a4](https://github.com/vortechsa/python-sdk/tree/0.16.0a4) (2020-05-01)
+
+[Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.16.0a3...0.16.0a4)
+
+## [0.16.0a3](https://github.com/vortechsa/python-sdk/tree/0.16.0a3) (2020-05-01)
+
+[Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.16.0a1...0.16.0a3)
+
+## [0.16.0a1](https://github.com/vortechsa/python-sdk/tree/0.16.0a1) (2020-05-01)
+
+[Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.15.2...0.16.0a1)
+
 ## [0.15.2](https://github.com/vortechsa/python-sdk/tree/0.15.2) (2020-04-22)
 
 [Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.15.1...0.15.2)
