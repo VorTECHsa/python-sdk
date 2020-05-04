@@ -12,7 +12,7 @@ def check_api_key_present():
         all_tests_pass = False
         print("❌ Environment variable VORTEXA_API_KEY is not set.")
         print("         Please set this environment variable.")
-        print("         You may need to restart your python interpreter for this to be ingested.")
+        print("         You may need to restart your python interpreter / bash terminal for this to be ingested.")
     else:
         print("✅ Environment variable VORTEXA_API_KEY is set correctly.")
 

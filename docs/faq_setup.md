@@ -52,7 +52,7 @@ Alternatively, please get in touch at [www.vortexa.com](https://www.vortexa.com/
 
 #### How can I check the SDK is setup correctly?
 
-Run the following in from a bash console:
+Run the following in a bash console:
 
 ```bash
 $ python -m vortexasdk.check_setup
