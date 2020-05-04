@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.17.2](https://github.com/vortechsa/python-sdk/tree/0.17.2) (2020-05-04)
+
+[Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.17.1...0.17.2)
+
+## [0.17.1](https://github.com/vortechsa/python-sdk/tree/0.17.1) (2020-05-04)
+
+[Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.17.0...0.17.1)
+
 ## [0.17.0](https://github.com/vortechsa/python-sdk/tree/0.17.0) (2020-05-04)
 
 [Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.16.0...0.17.0)
