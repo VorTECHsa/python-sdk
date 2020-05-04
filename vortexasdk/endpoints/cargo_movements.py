@@ -1,6 +1,6 @@
 """Cargo Movements Endpoint."""
 from datetime import datetime
-from typing import List, Union, Dict
+from typing import List, Union
 
 from vortexasdk.api import ID
 from vortexasdk.api.shared_types import to_ISODate
@@ -8,7 +8,7 @@ from vortexasdk.endpoints.cargo_movements_result import CargoMovementsResult
 from vortexasdk.endpoints.endpoints import CARGO_MOVEMENTS_RESOURCE
 from vortexasdk.logger import get_logger
 from vortexasdk.operations import Search
-from vortexasdk.utils import convert_to_list, convert_values_to_list_abstract
+from vortexasdk.utils import convert_to_list
 
 logger = get_logger(__name__)
 
@@ -40,7 +40,12 @@ class CargoMovements(Search):
         filter_storage_locations: Union[ID, List[ID]] = None,
         filter_ship_to_ship_locations: Union[ID, List[ID]] = None,
         filter_waypoints: Union[ID, List[ID]] = None,
-        exclude: Dict[ID, Union[ID, List[ID]]] = None,
+        exclude_origins: Union[ID, List[ID]] = None,
+        exclude_destinations: Union[ID, List[ID]] = None,
+        exclude_products: Union[ID, List[ID]] = None,
+        exclude_vessels: Union[ID, List[ID]] = None,
+        exclude_charterers: Union[ID, List[ID]] = None,
+        exclude_owners: Union[ID, List[ID]] = None,
         disable_geographic_exclusion_rules: bool = None,
         timeseries_activity_time_span_min: int = None,
         timeseries_activity_time_span_max: int = None,
@@ -79,9 +84,17 @@ class CargoMovements(Search):
 
             filter_waypoints: A geography ID, or list of geography IDs to filter on.
 
-            exclude: A dictionary where keys are strings that represent the parameter to implement exclusions on and
-                values are IDs or list of IDs that correspond to the entities to be exluded. Dictionary keys must be one of
-                ['filter_origins', 'filter_destinations', 'filter_products', 'filter_vessels', 'filter_charterers', 'filter_owners']
+            exclude_origins: A geography ID, or list of geography IDs to exclude.
+
+            exclude_destinations: A geography ID, or list of geography IDs to exclude.
+
+            exclude_products: A product ID, or list of product IDs to exclude.
+
+            exclude_vessels: A vessel ID, or list of vessel IDs to exclude.
+
+            exclude_charterers: A charterer ID, or list of charterer IDs to exclude.
+
+            exclude_owners: An owner ID, or list of owner IDs to exclude.
 
             disable_geographic_exclusion_rules: This controls a popular industry term "intra-movements" and determines
              the filter behaviour for cargo leaving then entering the same geographic area.
@@ -163,6 +176,15 @@ class CargoMovements(Search):
         [Cargo Movements Endpoint Further Documentation](https://docs.vortexa.com/reference/POST/cargo-movements/search)
 
         """
+        exclude_params = {
+            "filter_origins": convert_to_list(exclude_origins),
+            "filter_destinations": convert_to_list(exclude_destinations),
+            "filter_products": convert_to_list(exclude_products),
+            "filter_vessels": convert_to_list(exclude_vessels),
+            "filter_charterers": convert_to_list(exclude_charterers),
+            "filter_owners": convert_to_list(exclude_owners),
+        }
+
         params = {
             "filter_activity": filter_activity,
             "filter_time_min": to_ISODate(filter_time_min),
@@ -183,7 +205,7 @@ class CargoMovements(Search):
                 filter_ship_to_ship_locations
             ),
             "filter_waypoints": convert_to_list(filter_waypoints),
-            "exclude": convert_values_to_list_abstract(exclude),
+            "exclude": exclude_params,
             "disable_geographic_exclusion_rules": disable_geographic_exclusion_rules,
             "size": self._MAX_PAGE_RESULT_SIZE,
         }
