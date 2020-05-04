@@ -14,14 +14,3 @@ def convert_to_list(a) -> List:
 def convert_values_to_list(data: Dict) -> Dict:
     """Convert each value to a list."""
     return {k: convert_to_list(v) for k, v in data.items()}
-
-
-def convert_values_to_list_abstract(a) -> Dict:
-    """ If element is None returns empty dict else converts each value to list if it isn't a list already."""
-    if isinstance(a, dict):
-        for k, v in a.items():
-            if not isinstance(v, list):
-                a[k] = convert_to_list(v)
-        return a
-    else:
-        return {}
