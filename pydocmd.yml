@@ -45,13 +45,12 @@ pages:
       Cargo Movements: endpoints/cargo_movements.md
       Cargo Time Series: endpoints/cargo_timeseries.md
       Vessel Movements: endpoints/vessel_movements.md
+      Attributes: endpoints/attributes.md
       Corporations: endpoints/corporations.md
       Geographies: endpoints/geographies.md
       Products: endpoints/products.md
       Vessels: endpoints/vessels.md
-      Attributes: endpoints/attributes.md
   - Entities:
-      Attributes: endpoints/attributes.md
       Cargo Movement: entities/cargo_movement.md
       Corporation: entities/corporation.md
       Geography: entities/geography.md

@@ -7,16 +7,51 @@ from vortexasdk.utils import convert_to_list
 
 
 class Attributes(Reference, Search):
-    """Attributes endpoint."""
+    """
+        Attributes endpoint.
+
+        An Attribute is a reference value that corresponds to an ID associated with other entities.
+
+        For example, a vessel object from the Vessel reference endpoint may have the following keys:
+
+        ```json
+        {
+            "ice_class": "b09ed4e2bd6904dd",
+            "propulsion": "3ace0e050724707b"
+        }
+        ```
+
+        These IDs represent attributes which can be found via the Attributes reference endpoint.
+
+        When the attributes endpoint is searched with those ids as parameters:
+
+        ```python
+            >>> from vortexasdk import Attributes
+            >>> df = Attributes(ids=["b09ed4e2bd6904dd", "3ace0e050724707b"]).search().to_df()
+
+        ```
+
+        Returns
+
+        |    | id               | type       | label    |
+        |---:|:-----------------|:-----------|:---------|
+        |  0 | b09ed4e2bd6904dd | ice_class  | UNKNOWN  |
+        |  1 | 3ace0e050724707b | propulsion | DFDE     |
+
+
+    """
 
     def __init__(self):
         Reference.__init__(self, ATTRIBUTES_REFERENCE)
         Search.__init__(self, ATTRIBUTES_REFERENCE)
 
     def load_all(self) -> AttributeResult:
-        """Load all attributes."""
+        """
+            Load all attributes.
+        """
         return self.search()
 
+    # noinspection PyShadowingBuiltins
     def search(
         self,
         type: str = None,
@@ -38,10 +73,10 @@ class Attributes(Reference, Search):
         Find all attributes with a type of `ice_class`.
         ```python
         >>> from vortexasdk import Attributes
-        >>> df = Attributes().search(type="ice_class").to_df()
+        >>> df = Attributes().search(type="scrubber").to_df()
 
         ```
-         returns
+        returns
 
         |    | id               | name       | type        |
         |---:|:-----------------|:-----------|:------------|
