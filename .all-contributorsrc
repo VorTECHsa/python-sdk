@@ -119,11 +119,22 @@
       "contributions": [
         "userTesting"
       ]
+    },
+    {
+      "login": "SeanBarry",
+      "name": "Sean Barry",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/7374449?v=4",
+      "profile": "https://seanbarry.dev",
+      "contributions": [
+        "code",
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
   "projectName": "python-sdk",
-  "projectOwner": "vortechsa",
+  "projectOwner": "VorTECHsa",
   "repoType": "github",
-  "repoHost": "https://github.com"
+  "repoHost": "https://github.com",
+  "skipCi": true
 }
