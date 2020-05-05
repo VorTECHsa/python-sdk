@@ -103,7 +103,7 @@ class Flag:
 
     Represents a property that is associated with a vessel's flag.
 
-    -`flag` key will be a Geography Entity ID.
+    - `flag` key will be a Geography Entity ID.
     - `flag_country` key will be the ISO code for the country
 
     [Geography Entity Further Documentation](https://docs.vortexa.com/reference/intro-geography-entries)
