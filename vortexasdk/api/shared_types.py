@@ -2,6 +2,7 @@ from abc import ABC
 from dataclasses import dataclass
 from datetime import datetime
 from typing import List, Optional, Union
+from vortexasdk.enums import VesselAttributesEnum
 
 from vortexasdk.api.id import ID
 
@@ -94,3 +95,39 @@ class Tag:
     tag: str
     start_timestamp: Optional[ISODate] = None
     end_timestamp: Optional[ISODate] = None
+
+
+@dataclass(frozen=True)
+class Flag:
+    """
+
+    Represents a property that is associated with a vessel's flag.
+
+    -`flag` key will be a Geography Entity ID.
+    - `flag_country` key will be the ISO code for the country
+
+    [Geography Entity Further Documentation](https://docs.vortexa.com/reference/intro-geography-entries)
+
+    """
+
+    tag: VesselAttributesEnum.FlagTag
+    flag: str
+    flag_country: str
+
+
+@dataclass(frozen=True)
+class Scrubber:
+    """
+
+    Represents information about scrubbers fitted to a vessel.
+
+    - `scrubber` key will be the type of scrubber.
+    - `planned` key is if this scrubber has not yet been fitted but is planned.
+
+    An empty `scrubber` List may mean the scrubber status is unknown or a vessel has none fitted.
+
+    """
+
+    tag: VesselAttributesEnum.ScrubberTag
+    scrubber: str
+    planned: bool
