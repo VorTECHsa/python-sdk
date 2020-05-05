@@ -27,7 +27,7 @@ class Attributes(Reference, Search):
 
         ```python
             >>> from vortexasdk import Attributes
-            >>> df = Attributes(ids=["b09ed4e2bd6904dd", "3ace0e050724707b"]).search().to_df()
+            >>> df = Attributes().search(ids=["b09ed4e2bd6904dd", "3ace0e050724707b"]).to_df()
 
         ```
 
