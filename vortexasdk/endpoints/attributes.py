@@ -39,6 +39,7 @@ class Attributes(Reference, Search):
         ```python
         >>> from vortexasdk import Attributes
         >>> df = Attributes().search(type="ice_class").to_df()
+
         ```
          returns
 
