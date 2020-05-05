@@ -2,12 +2,14 @@
 from datetime import datetime
 from typing import List, Union
 
+from vortexasdk.api import ID
 from vortexasdk.api.shared_types import to_ISODate
 from vortexasdk.endpoints.endpoints import VESSEL_MOVEMENTS_RESOURCE
 from vortexasdk.endpoints.vessel_movements_result import VesselMovementsResult
 from vortexasdk.logger import get_logger
 from vortexasdk.operations import Search
 from vortexasdk.utils import convert_to_list
+from vortexasdk.enums import ScrubbersFittedEnum
 
 logger = get_logger(__name__)
 
@@ -36,21 +38,30 @@ class VesselMovements(Search):
         filter_time_max: datetime = datetime(2019, 10, 1, 1),
         unit: str = "b",
         filter_activity: str = None,
-        filter_charterers: Union[str, List[str]] = None,
-        filter_destinations: Union[str, List[str]] = None,
-        filter_origins: Union[str, List[str]] = None,
-        filter_owners: Union[str, List[str]] = None,
-        filter_products: Union[str, List[str]] = None,
-        filter_vessels: Union[str, List[str]] = None,
-        filter_vessel_classes: Union[str, List[str]] = None,
+        filter_charterers: Union[ID, List[ID]] = None,
+        filter_destinations: Union[ID, List[ID]] = None,
+        filter_origins: Union[ID, List[ID]] = None,
+        filter_owners: Union[ID, List[ID]] = None,
+        filter_products: Union[ID, List[ID]] = None,
+        filter_vessels: Union[ID, List[ID]] = None,
+        filter_vessel_classes: Union[ID, List[ID]] = None,
         filter_vessel_status: str = None,
-        exclude_origins: Union[str, List[str]] = None,
-        exclude_destinations: Union[str, List[str]] = None,
-        exclude_products: Union[str, List[str]] = None,
-        exclude_vessels: Union[str, List[str]] = None,
-        exclude_vessel_classes: Union[str, List[str]] = None,
-        exclude_charterers: Union[str, List[str]] = None,
-        exclude_owners: Union[str, List[str]] = None,
+        filter_vessel_age_min: int = None,
+        filter_vessel_age_max: int = None,
+        filter_vessel_scrubbers: ScrubbersFittedEnum = None,
+        filter_vessel_flags: Union[ID, List[ID]] = None,
+        filter_vessel_ice_class: Union[ID, List[ID]] = None,
+        filter_vessel_propulsion: Union[ID, List[ID]] = None,
+        exclude_origins: Union[ID, List[ID]] = None,
+        exclude_destinations: Union[ID, List[ID]] = None,
+        exclude_products: Union[ID, List[ID]] = None,
+        exclude_vessels: Union[ID, List[ID]] = None,
+        exclude_vessel_classes: Union[ID, List[ID]] = None,
+        exclude_charterers: Union[ID, List[ID]] = None,
+        exclude_owners: Union[ID, List[ID]] = None,
+        exclude_vessel_flags: Union[ID, List[ID]] = None,
+        exclude_vessel_ice_class: Union[ID, List[ID]] = None,
+        exclude_vessel_propulsion: Union[ID, List[ID]] = None,
     ) -> VesselMovementsResult:
         """
         Find VesselMovements matching the given search parameters.
@@ -83,6 +94,18 @@ class VesselMovements(Search):
 
             filter_vessel_status: The vessel status on which to base the filter. Enter 'vessel_status_ballast' for ballast vessels, 'vessel_status_laden_known' for laden vessels with known cargo (i.e. a type of cargo that Vortexa currently tracks) or 'vessel_status_laden_unknown' for laden vessels with unknown cargo (i.e. a type of cargo that Vortexa currently does not track).
 
+            filter_vessel_age_min: A number between 1 and 100 (representing years).
+
+            filter_vessel_age_max: A number between 1 and 100 (representing years).
+
+            filter_vessel_scrubbers: Either inactive 'off', or included 'inc' or excluded 'exc'.
+
+            filter_vessel_flags: A geography ID, or list of geography IDs to filter on.
+
+            filter_vessel_ice_class: An attribute ID, or list of attribute IDs to filter on.
+
+            filter_vessel_propulsion: An attribute ID, or list of attribute IDs to filter on.
+
             exclude_origins: A geography ID, or list of geography IDs to exclude.
 
             exclude_destinations: A geography ID, or list of geography IDs to exclude.
@@ -96,6 +119,12 @@ class VesselMovements(Search):
             exclude_charterers: A charterer ID, or list of charterer IDs to exclude.
 
             exclude_owners: An owner ID, or list of owner IDs to exclude.
+
+            exclude_vessel_flags: A geography ID, or list of geography IDs to exclude.
+
+            exclude_vessel_ice_class: An attribute ID, or list of attribute IDs to exclude.
+
+            exclude_vessel_propulsion: An attribute ID, or list of attribute IDs to exclude.
 
 
         # Returns
@@ -132,6 +161,13 @@ class VesselMovements(Search):
             "filter_vessel_classes": convert_to_list(exclude_vessel_classes),
             "filter_charterers": convert_to_list(exclude_charterers),
             "filter_owners": convert_to_list(exclude_owners),
+            "filter_vessel_flags": convert_to_list(exclude_vessel_flags),
+            "filter_vessel_ice_class": convert_to_list(
+                exclude_vessel_ice_class
+            ),
+            "filter_vessel_propulsion": convert_to_list(
+                exclude_vessel_propulsion
+            ),
         }
 
         params = {
@@ -147,6 +183,16 @@ class VesselMovements(Search):
             "filter_vessels": convert_to_list(filter_vessels),
             "filter_vessel_classes": convert_to_list(filter_vessel_classes),
             "filter_vessel_status": filter_vessel_status,
+            "filter_vessel_age_min": filter_vessel_age_min,
+            "filter_vessel_age_max": filter_vessel_age_max,
+            "filter_vessel_scrubbers": filter_vessel_scrubbers,
+            "filter_vessel_flags": convert_to_list(filter_vessel_flags),
+            "filter_vessel_ice_class": convert_to_list(
+                filter_vessel_ice_class
+            ),
+            "filter_vessel_propulsion": convert_to_list(
+                filter_vessel_propulsion
+            ),
             "exclude": exclude_params,
             "size": self._MAX_PAGE_RESULT_SIZE,
         }
