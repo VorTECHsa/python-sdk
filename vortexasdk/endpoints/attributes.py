@@ -4,6 +4,7 @@ from vortexasdk.endpoints.endpoints import ATTRIBUTES_REFERENCE
 from vortexasdk.endpoints.attributes_result import AttributeResult
 from vortexasdk.operations import Reference, Search
 from vortexasdk.utils import convert_to_list
+from vortexasdk.enums import AttributesTypesEnum
 
 
 class Attributes(Reference, Search):
@@ -54,7 +55,7 @@ class Attributes(Reference, Search):
     # noinspection PyShadowingBuiltins
     def search(
         self,
-        type: str = None,
+        type: AttributesTypesEnum = None,
         term: Union[str, List[str]] = None,
         ids: Union[str, List[str]] = None,
     ) -> AttributeResult:
