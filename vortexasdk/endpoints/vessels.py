@@ -40,7 +40,7 @@ class Vessels(Reference, Search):
 
             vessel_product_types: A product ID, or list of product IDs to filter on, searching vessels currently carrying these products.
 
-            vessel_scrubbers: Either inactive 'off', included 'inc' or excluded 'exc'.
+            vessel_scrubbers: Either inactive 'disabled', included 'inc' or excluded 'exc'.
 
         # Returns
         List of vessels matching the search arguments.

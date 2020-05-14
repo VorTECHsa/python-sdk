@@ -97,7 +97,7 @@ class VesselMovements(Search):
 
             filter_vessel_age_max: A number between 1 and 100 (representing years).
 
-            filter_vessel_scrubbers: Either inactive 'off', or included 'inc' or excluded 'exc'.
+            filter_vessel_scrubbers: Either inactive 'disabled', or included 'inc' or excluded 'exc'.
 
             filter_vessel_flags: A geography ID, or list of geography IDs to filter on.
 
