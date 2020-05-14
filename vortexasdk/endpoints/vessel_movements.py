@@ -9,7 +9,6 @@ from vortexasdk.endpoints.vessel_movements_result import VesselMovementsResult
 from vortexasdk.logger import get_logger
 from vortexasdk.operations import Search
 from vortexasdk.utils import convert_to_list
-from vortexasdk.enums import ScrubbersFittedEnum
 
 logger = get_logger(__name__)
 
@@ -48,7 +47,7 @@ class VesselMovements(Search):
         filter_vessel_status: str = None,
         filter_vessel_age_min: int = None,
         filter_vessel_age_max: int = None,
-        filter_vessel_scrubbers: ScrubbersFittedEnum = None,
+        filter_vessel_scrubbers: str = "disabled",
         filter_vessel_flags: Union[ID, List[ID]] = None,
         filter_vessel_ice_class: Union[ID, List[ID]] = None,
         filter_vessel_propulsion: Union[ID, List[ID]] = None,

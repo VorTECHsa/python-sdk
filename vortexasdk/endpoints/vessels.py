@@ -6,7 +6,6 @@ from vortexasdk.endpoints.endpoints import VESSELS_REFERENCE
 from vortexasdk.endpoints.vessels_result import VesselsResult
 from vortexasdk.operations import Reference, Search
 from vortexasdk.utils import convert_to_list
-from vortexasdk.enums import ScrubbersFittedEnum
 
 
 class Vessels(Reference, Search):
@@ -27,7 +26,7 @@ class Vessels(Reference, Search):
         ids: Union[str, List[str]] = None,
         vessel_classes: Union[str, List[str]] = None,
         vessel_product_types: Union[ID, List[ID]] = None,
-        vessel_scrubbers: ScrubbersFittedEnum = None,
+        vessel_scrubbers: str = "disabled",
     ) -> VesselsResult:
         """
         Find all vessels matching given search arguments. Search arguments are combined in an AND manner.

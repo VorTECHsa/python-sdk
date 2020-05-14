@@ -2,7 +2,6 @@ from abc import ABC
 from dataclasses import dataclass
 from datetime import datetime
 from typing import List, Optional, Union
-from vortexasdk.enums import VesselAttributesEnum
 
 from vortexasdk.api.id import ID
 
@@ -110,7 +109,7 @@ class Flag:
 
     """
 
-    tag: VesselAttributesEnum.FlagTag
+    tag: str
     flag: str
     flag_country: str
 
@@ -128,6 +127,6 @@ class Scrubber:
 
     """
 
-    tag: VesselAttributesEnum.ScrubberTag
+    tag: str
     scrubber: str
     planned: bool
