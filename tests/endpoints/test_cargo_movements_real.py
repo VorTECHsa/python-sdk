@@ -3,7 +3,7 @@ from datetime import datetime
 from docs.utils import to_markdown
 from tests.testcases import TestCaseUsingRealAPI
 from tests.timer import Timer
-from vortexasdk import Geographies, Corporations, Products, Attributes
+from vortexasdk import Geographies, Corporations, Products
 from vortexasdk.endpoints.cargo_movements import CargoMovements
 
 
