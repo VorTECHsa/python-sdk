@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from tests.testcases import TestCaseUsingRealAPI
-from vortexasdk import VesselMovements, Geographies, Corporations
+from vortexasdk import VesselMovements, Geographies, Corporations, Attributes
 from vortexasdk.endpoints import vessel_movements_result
 
 
@@ -142,6 +142,54 @@ class TestVesselMovementsReal(TestCaseUsingRealAPI):
             VesselMovements()
             .search(
                 filter_activity="storing_state",
+                filter_time_min=datetime(2017, 10, 1),
+                filter_time_max=datetime(2017, 10, 1),
+            )
+            .to_df()
+            .head(2)
+        )
+
+        print(df.head())
+        assert len(df) == 2
+
+    def test_age_flag_scrubbers_filters(self):
+        panama = [
+            g.id
+            for g in Geographies().search("panama").to_list()
+            if "country" in g.layer
+        ]
+
+        df = (
+            VesselMovements()
+            .search(
+                filter_vessel_scrubbers="inc",
+                filter_vessel_age_min=2,
+                filter_vessel_age_max=15,
+                filter_vessel_flags=panama,
+                filter_time_min=datetime(2017, 10, 1),
+                filter_time_max=datetime(2017, 10, 1),
+            )
+            .to_df()
+            .head(2)
+        )
+
+        print(df.head())
+        assert len(df) == 2
+
+    def test_ice_class_filters(self):
+        ice_classes = [
+            g.id for g in Attributes().search(type="ice_class").to_list()
+        ]
+
+        propulsion = [
+            g.id for g in Attributes().search(type="propulsion").to_list()
+        ]
+
+        df = (
+            VesselMovements()
+            .search(
+                filter_vessel_ice_class=ice_classes,
+                filter_vessel_propulsion=propulsion,
                 filter_time_min=datetime(2017, 10, 1),
                 filter_time_max=datetime(2017, 10, 1),
             )
