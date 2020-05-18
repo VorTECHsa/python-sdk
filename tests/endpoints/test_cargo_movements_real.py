@@ -3,7 +3,7 @@ from datetime import datetime
 from docs.utils import to_markdown
 from tests.testcases import TestCaseUsingRealAPI
 from tests.timer import Timer
-from vortexasdk import Geographies, Corporations, Products
+from vortexasdk import Geographies, Corporations, Products, Attributes
 from vortexasdk.endpoints.cargo_movements import CargoMovements
 
 
@@ -48,11 +48,6 @@ class TestCargoMovementsReal(TestCaseUsingRealAPI):
         assert len(df) == 2
 
     def test_exlusion_filter(self):
-        crude = [
-            p.id
-            for p in Products().search("Crude/Condensates").to_list()
-            if p.layer == ["group"]
-        ]
         arab_medium = [
             p.id
             for p in Products().search("Arab Medium").to_list()
