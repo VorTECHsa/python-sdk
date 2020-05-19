@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.20.0](https://github.com/vortechsa/python-sdk/tree/0.20.0) (2020-05-19)
+
+[Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.19.0...0.20.0)
+
+**Implemented enhancements:**
+
+- Add attributes reference endpoint [\#189](https://github.com/VorTECHsa/python-sdk/issues/189)
+
+**Merged pull requests:**
+
+- Feat attribute endpoint [\#197](https://github.com/VorTECHsa/python-sdk/pull/197) ([KitBurgess](https://github.com/KitBurgess))
+- Feat new filters [\#193](https://github.com/VorTECHsa/python-sdk/pull/193) ([SeanBarry](https://github.com/SeanBarry))
+- docs: add SeanBarry as a contributor [\#192](https://github.com/VorTECHsa/python-sdk/pull/192) ([allcontributors[bot]](https://github.com/apps/allcontributors))
+- Feat attribute endpoint  [\#190](https://github.com/VorTECHsa/python-sdk/pull/190) ([SeanBarry](https://github.com/SeanBarry))
+- fix: Correct commant in check setup image [\#188](https://github.com/VorTECHsa/python-sdk/pull/188) ([KitBurgess](https://github.com/KitBurgess))
+
 ## [0.19.0](https://github.com/vortechsa/python-sdk/tree/0.19.0) (2020-05-04)
 
 [Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.18.0...0.19.0)
