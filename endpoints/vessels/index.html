@@ -63,6 +63,10 @@
                 </li>
                 <li class="">
                     
+    <a class="" href="../attributes/">Attributes</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../cargo_movements/">Cargo Movements</a>
                 </li>
                 <li class="">
@@ -234,7 +238,7 @@
 
 <p>Load all vessels.
 <h3 id="vortexasdk.endpoints.vessels.Vessels.search">search</h3></p>
-<pre><code class="python">Vessels.search(self, term: Union[str, List[str]] = None, ids: Union[str, List[str]] = None, vessel_classes: Union[str, List[str]] = None, vessel_product_types: Union[str, List[str]] = None) -&gt; vortexasdk.endpoints.vessels_result.VesselsResult
+<pre><code class="python">Vessels.search(self, term: Union[str, List[str]] = None, ids: Union[str, List[str]] = None, vessel_classes: Union[str, List[str]] = None, vessel_product_types: Union[str, List[str]] = None, vessel_scrubbers: str = 'disabled') -&gt; vortexasdk.endpoints.vessels_result.VesselsResult
 </code></pre>
 
 <p>Find all vessels matching given search arguments. Search arguments are combined in an AND manner.</p>
@@ -251,6 +255,9 @@
 </li>
 <li>
 <p><strong>vessel_product_types</strong>: A product ID, or list of product IDs to filter on, searching vessels currently carrying these products.</p>
+</li>
+<li>
+<p><strong>vessel_scrubbers</strong>: Either inactive 'disabled', included 'inc' or excluded 'exc'.</p>
 </li>
 </ul>
 <p><strong>Returns</strong></p>

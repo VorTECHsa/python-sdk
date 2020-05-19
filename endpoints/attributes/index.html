@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>6 Floating Storage Medium Sour Crude - VortexaSDK</title>
+  <title>Attributes - VortexaSDK</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -17,8 +17,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "6 Floating Storage Medium Sour Crude";
-    var mkdocs_page_input_path = "examples/6_medium_sour_floating_storage.md";
+    var mkdocs_page_name = "Attributes";
+    var mkdocs_page_input_path = "endpoints/attributes.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -59,39 +59,42 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../endpoints/about-endpoints/">About Endpoints</a>
+    <a class="" href="../about-endpoints/">About Endpoints</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Attributes</a>
+    <ul class="subnav">
+            
+    </ul>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../endpoints/attributes/">Attributes</a>
+    <a class="" href="../cargo_movements/">Cargo Movements</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../endpoints/cargo_movements/">Cargo Movements</a>
+    <a class="" href="../cargo_timeseries/">Cargo Time Series</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../endpoints/cargo_timeseries/">Cargo Time Series</a>
+    <a class="" href="../corporations/">Corporations</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../endpoints/corporations/">Corporations</a>
+    <a class="" href="../geographies/">Geographies</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../endpoints/geographies/">Geographies</a>
+    <a class="" href="../products/">Products</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../endpoints/products/">Products</a>
+    <a class="" href="../vessel_movements/">Vessel Movements</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../endpoints/vessel_movements/">Vessel Movements</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../endpoints/vessels/">Vessels</a>
+    <a class="" href="../vessels/">Vessels</a>
                 </li>
     </ul>
 	    </li>
@@ -153,34 +156,31 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../0_sample_load_cargo_movements/">0 Simple Load Cargo Movements</a>
+    <a class="" href="../../examples/0_sample_load_cargo_movements/">0 Simple Load Cargo Movements</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../1_china/">1 China VLCC Discharges</a>
+    <a class="" href="../../examples/1_china/">1 China VLCC Discharges</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../2_all_vessel_movements/">2 Laden Vessel Movements</a>
+    <a class="" href="../../examples/2_all_vessel_movements/">2 Laden Vessel Movements</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../3_crude_from_saudi_arabia_to_india/">3 Crude movements from Saudi Arabia to India</a>
+    <a class="" href="../../examples/3_crude_from_saudi_arabia_to_india/">3 Crude movements from Saudi Arabia to India</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../4_ballast_movements/">4 Ballast Movements</a>
+    <a class="" href="../../examples/4_ballast_movements/">4 Ballast Movements</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../5_chinese_daily_imports/">5 Chinese Daily Crude Imports</a>
+    <a class="" href="../../examples/5_chinese_daily_imports/">5 Chinese Daily Crude Imports</a>
                 </li>
-                <li class=" current">
+                <li class="">
                     
-    <a class="current" href="./">6 Floating Storage Medium Sour Crude</a>
-    <ul class="subnav">
-            
-    </ul>
+    <a class="" href="../../examples/6_medium_sour_floating_storage/">6 Floating Storage Medium Sour Crude</a>
                 </li>
     </ul>
 	    </li>
@@ -207,14 +207,14 @@
     
       
         
-          <li>Examples &raquo;</li>
+          <li>Endpoints &raquo;</li>
         
       
     
-    <li>6 Floating Storage Medium Sour Crude</li>
+    <li>Attributes</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/vortechsa/python-sdk/edit/master/docs/examples/6_medium_sour_floating_storage.md"
+        <a href="https://github.com/vortechsa/python-sdk/edit/master/docs/endpoints/attributes.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -224,93 +224,129 @@
           <div role="main">
             <div class="section">
               
-                <p>Let's see how much Medium-Sour Crude is in long term floating storage.</p>
-<p>The below script returns:</p>
+                <h1 id="vortexasdk.endpoints.attributes">vortexasdk.endpoints.attributes</h1>
+
+<p>Attributes Endpoint.
+<h2 id="vortexasdk.endpoints.attributes.Attributes">Attributes</h2></p>
+<pre><code class="python">Attributes(self)
+</code></pre>
+
+<p>Attributes endpoint.</p>
+<p>An Attribute is a reference value that corresponds to an ID associated with other entities.</p>
+<p>For example, a vessel object from the Vessel reference endpoint may have the following keys:</p>
+<pre><code class="json">{
+    &quot;ice_class&quot;: &quot;b09ed4e2bd6904dd&quot;,
+    &quot;propulsion&quot;: &quot;3ace0e050724707b&quot;
+}
+</code></pre>
+
+<p>These IDs represent attributes which can be found via the Attributes reference endpoint.</p>
+<p>When the attributes endpoint is searched with those ids as parameters:</p>
+<pre><code class="python">    &gt;&gt;&gt; from vortexasdk import Attributes
+    &gt;&gt;&gt; df = Attributes().search(ids=[&quot;b09ed4e2bd6904dd&quot;, &quot;3ace0e050724707b&quot;]).to_df()
+
+</code></pre>
+
+<p>Returns</p>
 <table>
 <thead>
 <tr>
 <th align="right"></th>
-<th align="left">key</th>
-<th align="right">value</th>
-<th align="right">count</th>
+<th align="left">id</th>
+<th align="left">type</th>
+<th align="left">label</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td align="right">0</td>
-<td align="left">2019-01-01T00:00:00.000Z</td>
-<td align="right">7381</td>
-<td align="right">9</td>
+<td align="left">b09ed4e2bd6904dd</td>
+<td align="left">ice_class</td>
+<td align="left">UNKNOWN</td>
 </tr>
 <tr>
 <td align="right">1</td>
-<td align="left">2019-01-02T00:00:00.000Z</td>
-<td align="right">8127</td>
-<td align="right">23</td>
-</tr>
-<tr>
-<td align="right">2</td>
-<td align="left">2019-01-03T00:00:00.000Z</td>
-<td align="right">2333</td>
-<td align="right">32</td>
-</tr>
-<tr>
-<td align="right">3</td>
-<td align="left">2019-01-04T00:00:00.000Z</td>
-<td align="right">447759</td>
-<td align="right">43</td>
-</tr>
-<tr>
-<td align="right">4</td>
-<td align="left">2019-01-05T00:00:00.000Z</td>
-<td align="right">7777144</td>
-<td align="right">4</td>
-</tr>
-<tr>
-<td align="right">...</td>
-<td align="left"></td>
-<td align="right"></td>
-<td align="right"></td>
+<td align="left">3ace0e050724707b</td>
+<td align="left">propulsion</td>
+<td align="left">DFDE</td>
 </tr>
 </tbody>
 </table>
-<pre><code class="python">from datetime import datetime
+<h3 id="vortexasdk.endpoints.attributes.Attributes.load_all">load_all</h3>
 
-from docs.utils import to_markdown
-from vortexasdk import CargoTimeSeries, Products
-
-if __name__ == &quot;__main__&quot;:
-    # Find Medium Sour ID
-    medium_sour = [
-        p.id
-        for p in Products().search(term=&quot;Medium-Sour&quot;).to_list()
-        if p.name == &quot;Medium-Sour&quot;
-    ]
-    # Check we've only got one ID
-    assert len(medium_sour) == 1
-
-    # Query API
-    search_result = CargoTimeSeries().search(
-        # We're looking at daily storage levels
-        timeseries_frequency=&quot;day&quot;,
-        # We want 'b' for barrels here
-        timeseries_unit=&quot;b&quot;,
-        # We're only interested in storage of Medium-Sour Crude
-        filter_products=medium_sour,
-        # We're only included in cargo's that were in floating storage
-        filter_activity=&quot;storing_state&quot;,
-        # We're only interested in floating storage that lasted longer than 14 days
-        timeseries_activity_time_span_min=1000 * 60 * 60 * 24 * 14,
-        # Let's limit the search to 2019 storage events
-        filter_time_min=datetime(2019, 1, 1),
-        filter_time_max=datetime(2019, 12, 31),
-    )
-
-    # Convert search result to dataframe
-    df = search_result.to_df()
-
-    print(to_markdown(df.head()))
+<pre><code class="python">Attributes.load_all(self) -&gt; vortexasdk.endpoints.attributes_result.AttributeResult
 </code></pre>
+
+<p>Load all attributes.</p>
+<h3 id="vortexasdk.endpoints.attributes.Attributes.search">search</h3>
+
+<pre><code class="python">Attributes.search(self, type: str = None, term: Union[str, List[str]] = None, ids: Union[str, List[str]] = None) -&gt; vortexasdk.endpoints.attributes_result.AttributeResult
+</code></pre>
+
+<p>Find all attributes matching given type.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>type</strong>: The type of attribute we're filtering on. Type can be: <code>ice_class</code>, <code>propulsion</code>, <code>scrubber</code></li>
+</ul>
+<p><strong>Returns</strong></p>
+<p>List of attributes matching <code>type</code></p>
+<p><strong>Examples</strong></p>
+<p>Find all attributes with a type of <code>ice_class</code>.</p>
+<pre><code class="python">&gt;&gt;&gt; from vortexasdk import Attributes
+&gt;&gt;&gt; df = Attributes().search(type=&quot;scrubber&quot;).to_df()
+
+</code></pre>
+
+<p>returns</p>
+<table>
+<thead>
+<tr>
+<th align="right"></th>
+<th align="left">id</th>
+<th align="left">name</th>
+<th align="left">type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">0</td>
+<td align="left">14c7b073809eb565</td>
+<td align="left">Open Loop</td>
+<td align="left">scrubber</td>
+</tr>
+<tr>
+<td align="right">1</td>
+<td align="left">478fca39000c49d6</td>
+<td align="left">Unkown</td>
+<td align="left">scrubber</td>
+</tr>
+</tbody>
+</table>
+<h1 id="vortexasdk.endpoints.attributes_result">vortexasdk.endpoints.attributes_result</h1>
+
+<h2 id="vortexasdk.endpoints.attributes_result.AttributeResult">AttributeResult</h2>
+
+<pre><code class="python">AttributeResult(self, _records: List) -&gt; None
+</code></pre>
+
+<p>Container class that holds the result obtained from calling the <code>Attributes</code> endpoint.
+<h3 id="vortexasdk.endpoints.attributes_result.AttributeResult.to_list">to_list</h3></p>
+<pre><code class="python">AttributeResult.to_list(self) -&gt; List[vortexasdk.api.attribute.Attribute]
+</code></pre>
+
+<p>Represent attributes as a list.
+<h3 id="vortexasdk.endpoints.attributes_result.AttributeResult.to_df">to_df</h3></p>
+<pre><code class="python">AttributeResult.to_df(self, columns=None) -&gt; pandas.core.frame.DataFrame
+</code></pre>
+
+<p>Represent attributes as a <code>pd.DataFrame</code>.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>columns</strong>: The attributes features we want in the dataframe. Enter <code>columns='all'</code> to include all features.
+    Defaults to <code>columns = ['id', 'name', 'type']</code>.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p><code>pd.DataFrame</code> of attributes.</p>
               
             </div>
           </div>
@@ -318,8 +354,10 @@ if __name__ == &quot;__main__&quot;:
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="../cargo_movements/" class="btn btn-neutral float-right" title="Cargo Movements">Next <span class="icon icon-circle-arrow-right"></span></a>
       
-        <a href="../5_chinese_daily_imports/" class="btn btn-neutral" title="5 Chinese Daily Crude Imports"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+        <a href="../about-endpoints/" class="btn btn-neutral" title="About Endpoints"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -347,8 +385,10 @@ if __name__ == &quot;__main__&quot;:
           <a href="https://github.com/vortechsa/python-sdk/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../5_chinese_daily_imports/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../about-endpoints/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
+      
+        <span style="margin-left: 15px"><a href="../cargo_movements/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

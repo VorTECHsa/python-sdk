@@ -61,6 +61,10 @@
                     
     <a class="" href="../about-endpoints/">About Endpoints</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../attributes/">Attributes</a>
+                </li>
                 <li class=" current">
                     
     <a class="current" href="./">Cargo Movements</a>
@@ -234,7 +238,7 @@
 <p>A detailed explanation of Cargo/Vessel Movements can be found <a href="https://docs.vortexa.com/reference/intro-movement-difference">here</a>.</p>
 <h3 id="vortexasdk.endpoints.cargo_movements.CargoMovements.search">search</h3>
 
-<pre><code class="python">CargoMovements.search(self, filter_activity: str, filter_time_min: datetime.datetime = datetime.datetime(2019, 10, 1, 0, 0), filter_time_max: datetime.datetime = datetime.datetime(2019, 10, 1, 1, 0), cm_unit: str = 'b', filter_charterers: Union[str, List[str]] = None, filter_destinations: Union[str, List[str]] = None, filter_origins: Union[str, List[str]] = None, filter_owners: Union[str, List[str]] = None, filter_products: Union[str, List[str]] = None, filter_vessels: Union[str, List[str]] = None, filter_storage_locations: Union[str, List[str]] = None, filter_ship_to_ship_locations: Union[str, List[str]] = None, filter_waypoints: Union[str, List[str]] = None, exclude_origins: Union[str, List[str]] = None, exclude_destinations: Union[str, List[str]] = None, exclude_products: Union[str, List[str]] = None, exclude_vessels: Union[str, List[str]] = None, exclude_charterers: Union[str, List[str]] = None, exclude_owners: Union[str, List[str]] = None, disable_geographic_exclusion_rules: bool = None, timeseries_activity_time_span_min: int = None, timeseries_activity_time_span_max: int = None) -&gt; vortexasdk.endpoints.cargo_movements_result.CargoMovementsResult
+<pre><code class="python">CargoMovements.search(self, filter_activity: str, filter_time_min: datetime.datetime = datetime.datetime(2019, 10, 1, 0, 0), filter_time_max: datetime.datetime = datetime.datetime(2019, 10, 1, 1, 0), cm_unit: str = 'b', filter_charterers: Union[str, List[str]] = None, filter_destinations: Union[str, List[str]] = None, filter_origins: Union[str, List[str]] = None, filter_owners: Union[str, List[str]] = None, filter_products: Union[str, List[str]] = None, filter_vessels: Union[str, List[str]] = None, filter_storage_locations: Union[str, List[str]] = None, filter_ship_to_ship_locations: Union[str, List[str]] = None, filter_waypoints: Union[str, List[str]] = None, filter_vessel_age_min: int = None, filter_vessel_age_max: int = None, filter_vessel_scrubbers: str = 'disabled', filter_vessel_flags: Union[str, List[str]] = None, filter_vessel_ice_class: Union[str, List[str]] = None, filter_vessel_propulsion: Union[str, List[str]] = None, exclude_origins: Union[str, List[str]] = None, exclude_destinations: Union[str, List[str]] = None, exclude_products: Union[str, List[str]] = None, exclude_vessels: Union[str, List[str]] = None, exclude_charterers: Union[str, List[str]] = None, exclude_owners: Union[str, List[str]] = None, exclude_vessel_flags: Union[str, List[str]] = None, exclude_vessel_ice_class: Union[str, List[str]] = None, exclude_vessel_propulsion: Union[str, List[str]] = None, disable_geographic_exclusion_rules: bool = None, timeseries_activity_time_span_min: int = None, timeseries_activity_time_span_max: int = None) -&gt; vortexasdk.endpoints.cargo_movements_result.CargoMovementsResult
 </code></pre>
 
 <p>Find CargoMovements matching the given search parameters.</p>
@@ -283,6 +287,24 @@
 <p><strong>filter_waypoints</strong>: A geography ID, or list of geography IDs to filter on.</p>
 </li>
 <li>
+<p><strong>filter_vessel_age_min</strong>: A number between 1 and 100 (representing years).</p>
+</li>
+<li>
+<p><strong>filter_vessel_age_max</strong>: A number between 1 and 100 (representing years).</p>
+</li>
+<li>
+<p><strong>filter_vessel_scrubbers</strong>: Either inactive 'disabled', or included 'inc' or excluded 'exc'.</p>
+</li>
+<li>
+<p><strong>filter_vessel_flags</strong>: A geography ID, or list of geography IDs to filter on.</p>
+</li>
+<li>
+<p><strong>filter_vessel_ice_class</strong>: An attribute ID, or list of attribute IDs to filter on.</p>
+</li>
+<li>
+<p><strong>filter_vessel_propulsion</strong>: An attribute ID, or list of attribute IDs to filter on.</p>
+</li>
+<li>
 <p><strong>exclude_origins</strong>: A geography ID, or list of geography IDs to exclude.</p>
 </li>
 <li>
@@ -299,6 +321,15 @@
 </li>
 <li>
 <p><strong>exclude_owners</strong>: An owner ID, or list of owner IDs to exclude.</p>
+</li>
+<li>
+<p><strong>exclude_vessel_flags</strong>: A geography ID, or list of geography IDs to exclude.</p>
+</li>
+<li>
+<p><strong>exclude_vessel_ice_class</strong>: An attribute ID, or list of attribute IDs to exclude.</p>
+</li>
+<li>
+<p><strong>exclude_vessel_propulsion</strong>: An attribute ID, or list of attribute IDs to exclude.</p>
 </li>
 <li>
 <p><strong>disable_geographic_exclusion_rules</strong>: This controls a popular industry term "intra-movements" and determines
@@ -1027,7 +1058,7 @@ This lets us view all vessels present in any STS operations.</p>
         <a href="../cargo_timeseries/" class="btn btn-neutral float-right" title="Cargo Time Series">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../about-endpoints/" class="btn btn-neutral" title="About Endpoints"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../attributes/" class="btn btn-neutral" title="Attributes"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -1055,7 +1086,7 @@ This lets us view all vessels present in any STS operations.</p>
           <a href="https://github.com/vortechsa/python-sdk/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../about-endpoints/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../attributes/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
         <span style="margin-left: 15px"><a href="../cargo_timeseries/" style="color: #fcfcfc">Next &raquo;</a></span>
