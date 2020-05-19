@@ -1,6 +1,7 @@
 """Vortexa Python SDK."""
 # noinspection PyUnresolvedReferences
 from vortexasdk.endpoints import (
+    Attributes,
     CargoMovements,
     CargoTimeSeries,
     Corporations,

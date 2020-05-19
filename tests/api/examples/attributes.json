@@ -1,0 +1,26 @@
+[
+  {
+    "id": "14c7b073809eb565",
+    "name": "Open Loop",
+    "type": "scrubber",
+    "ref_type": "attribute",
+    "leaf": true,
+    "parent": []
+  },
+  {
+    "id": "478fca39000c49d6",
+    "name": "Unknown",
+    "type": "scrubber",
+    "ref_type": "attribute",
+    "leaf": true,
+    "parent": []
+  },
+  {
+    "id": "3ace0e050724707b",
+    "name": "DFDE",
+    "type": "propulsion",
+    "ref_type": "attribute",
+    "leaf": true,
+    "parent": []
+  }
+]
