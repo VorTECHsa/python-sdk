@@ -48,11 +48,6 @@ class TestCargoMovementsReal(TestCaseUsingRealAPI):
         assert len(df) == 2
 
     def test_exlusion_filter(self):
-        crude = [
-            p.id
-            for p in Products().search("Crude/Condensates").to_list()
-            if p.layer == ["group"]
-        ]
         arab_medium = [
             p.id
             for p in Products().search("Arab Medium").to_list()
