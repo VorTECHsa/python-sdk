@@ -357,6 +357,11 @@ class TestVesselMovement(TestCase):
             "vessel.status": "vessel_status_ballast",
             "vessel.vessel_class": "suezmax",
             "vessel.voyage_id": None,
+            "vessel.year": None,
+            "vessel.flag": None,
+            "vessel.scrubber": None,
+            "vessel.ice_class": None,
+            "vessel.propulsion": None,
         }
 
         assert expected == flat

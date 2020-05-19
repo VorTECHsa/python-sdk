@@ -40,12 +40,21 @@ class CargoMovements(Search):
         filter_storage_locations: Union[ID, List[ID]] = None,
         filter_ship_to_ship_locations: Union[ID, List[ID]] = None,
         filter_waypoints: Union[ID, List[ID]] = None,
+        filter_vessel_age_min: int = None,
+        filter_vessel_age_max: int = None,
+        filter_vessel_scrubbers: str = "disabled",
+        filter_vessel_flags: Union[ID, List[ID]] = None,
+        filter_vessel_ice_class: Union[ID, List[ID]] = None,
+        filter_vessel_propulsion: Union[ID, List[ID]] = None,
         exclude_origins: Union[ID, List[ID]] = None,
         exclude_destinations: Union[ID, List[ID]] = None,
         exclude_products: Union[ID, List[ID]] = None,
         exclude_vessels: Union[ID, List[ID]] = None,
         exclude_charterers: Union[ID, List[ID]] = None,
         exclude_owners: Union[ID, List[ID]] = None,
+        exclude_vessel_flags: Union[ID, List[ID]] = None,
+        exclude_vessel_ice_class: Union[ID, List[ID]] = None,
+        exclude_vessel_propulsion: Union[ID, List[ID]] = None,
         disable_geographic_exclusion_rules: bool = None,
         timeseries_activity_time_span_min: int = None,
         timeseries_activity_time_span_max: int = None,
@@ -84,6 +93,18 @@ class CargoMovements(Search):
 
             filter_waypoints: A geography ID, or list of geography IDs to filter on.
 
+            filter_vessel_age_min: A number between 1 and 100 (representing years).
+
+            filter_vessel_age_max: A number between 1 and 100 (representing years).
+
+            filter_vessel_scrubbers: Either inactive 'disabled', or included 'inc' or excluded 'exc'.
+
+            filter_vessel_flags: A geography ID, or list of geography IDs to filter on.
+
+            filter_vessel_ice_class: An attribute ID, or list of attribute IDs to filter on.
+
+            filter_vessel_propulsion: An attribute ID, or list of attribute IDs to filter on.
+
             exclude_origins: A geography ID, or list of geography IDs to exclude.
 
             exclude_destinations: A geography ID, or list of geography IDs to exclude.
@@ -95,6 +116,12 @@ class CargoMovements(Search):
             exclude_charterers: A charterer ID, or list of charterer IDs to exclude.
 
             exclude_owners: An owner ID, or list of owner IDs to exclude.
+
+            exclude_vessel_flags: A geography ID, or list of geography IDs to exclude.
+
+            exclude_vessel_ice_class: An attribute ID, or list of attribute IDs to exclude.
+
+            exclude_vessel_propulsion: An attribute ID, or list of attribute IDs to exclude.
 
             disable_geographic_exclusion_rules: This controls a popular industry term "intra-movements" and determines
              the filter behaviour for cargo leaving then entering the same geographic area.
@@ -183,6 +210,13 @@ class CargoMovements(Search):
             "filter_vessels": convert_to_list(exclude_vessels),
             "filter_charterers": convert_to_list(exclude_charterers),
             "filter_owners": convert_to_list(exclude_owners),
+            "filter_vessel_flags": convert_to_list(exclude_vessel_flags),
+            "filter_vessel_ice_class": convert_to_list(
+                exclude_vessel_ice_class
+            ),
+            "filter_vessel_propulsion": convert_to_list(
+                exclude_vessel_propulsion
+            ),
         }
 
         params = {
@@ -205,6 +239,16 @@ class CargoMovements(Search):
                 filter_ship_to_ship_locations
             ),
             "filter_waypoints": convert_to_list(filter_waypoints),
+            "filter_vessel_age_min": filter_vessel_age_min,
+            "filter_vessel_age_max": filter_vessel_age_max,
+            "filter_vessel_scrubbers": filter_vessel_scrubbers,
+            "filter_vessel_flags": convert_to_list(filter_vessel_flags),
+            "filter_vessel_ice_class": convert_to_list(
+                filter_vessel_ice_class
+            ),
+            "filter_vessel_propulsion": convert_to_list(
+                filter_vessel_propulsion
+            ),
             "exclude": exclude_params,
             "disable_geographic_exclusion_rules": disable_geographic_exclusion_rules,
             "size": self._MAX_PAGE_RESULT_SIZE,
