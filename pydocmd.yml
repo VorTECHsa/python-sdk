@@ -23,6 +23,9 @@ generate:
   - endpoints/products.md:
       - vortexasdk.endpoints.products++
       - vortexasdk.endpoints.products_result++
+  - endpoints/attributes.md:
+      - vortexasdk.endpoints.attributes++
+      - vortexasdk.endpoints.attributes_result++
   - entities/product.md:
       - vortexasdk.api.product++
   - entities/geography.md:
@@ -42,6 +45,7 @@ pages:
       Cargo Movements: endpoints/cargo_movements.md
       Cargo Time Series: endpoints/cargo_timeseries.md
       Vessel Movements: endpoints/vessel_movements.md
+      Attributes: endpoints/attributes.md
       Corporations: endpoints/corporations.md
       Geographies: endpoints/geographies.md
       Products: endpoints/products.md

@@ -4,7 +4,14 @@ from typing import List, Optional
 from vortexasdk.api.corporation import CorporateEntity
 from vortexasdk.api.id import ID
 from vortexasdk.api.serdes import FromDictMixin
-from vortexasdk.api.shared_types import IDName, ISODate, Node, Tag
+from vortexasdk.api.shared_types import (
+    IDName,
+    ISODate,
+    Node,
+    Tag,
+    Scrubber,
+    Flag,
+)
 
 
 @dataclass(frozen=True,)
@@ -34,6 +41,11 @@ class Vessel(Node, FromDictMixin):
     imo: Optional[int] = None
     gross_tonnage: Optional[int] = None
 
+    scrubber: Optional[Scrubber] = None
+    flag: Optional[Flag] = None
+    ice_class: Optional[str] = None
+    propulsion: Optional[str] = None
+
 
 @dataclass(frozen=True)
 class VesselEntity(IDName):
@@ -54,6 +66,7 @@ class VesselEntity(IDName):
     corporate_entities: List[CorporateEntity]
     tags: List[Tag]
     status: str
+    year: Optional[int] = None
 
     start_timestamp: Optional[ISODate] = None
 
@@ -62,3 +75,8 @@ class VesselEntity(IDName):
     fixture_fulfilled: Optional[bool] = None
     end_timestamp: Optional[ISODate] = None
     fixture_id: Optional[str] = None
+
+    scrubber: Optional[Scrubber] = None
+    flag: Optional[Flag] = None
+    ice_class: Optional[str] = None
+    propulsion: Optional[str] = None
