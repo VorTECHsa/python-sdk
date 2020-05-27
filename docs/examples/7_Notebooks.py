@@ -8,8 +8,8 @@ Created on Wed May 27 18:58:44 2020
 
 """
 Under the [examples section](https://github.com/VorTECHsa/python-sdk/tree/master/docs/examples) in the vortexasdk GitHub repository,
-users can find a variety of Jupyter Notebooks that illustrate some real-life use-cases of how the SDK can be used to answer 
-interesting industry questions, identify emerging patterns and trends and assist forecasting models. 
+users can find a variety of Jupyter Notebooks that illustrate some real-life use-cases of how the SDK can be used to answer
+interesting industry questions, identify emerging patterns and trends and assist forecasting models.
 Those notebooks include:
 
    1. [US Crude Exports Exploration & Forecasting](https://github.com/VorTECHsa/python-sdk/blob/master/docs/examples/US_Crude_Exports.ipynb)
