@@ -17,8 +17,10 @@ from vortexasdk.retry_session import (
     retry_get,
     retry_post,
 )
-from vortexasdk.utils import filter_empty_values
+from vortexasdk.utils import filter_empty_values, get_latest_package_version
 from vortexasdk.version import __version__
+from vortexasdk import __name__ as pkg_name
+from distutils.version import StrictVersion, LooseVersion
 
 logger = get_logger(__name__)
 
@@ -194,6 +196,23 @@ def create_client() -> VortexaClient:
     except KeyError:
         raise KeyError(
             "VORTEXA_API_KEY environment variable is required to use the VortexaSDK"
+        )
+    latest_version, _ = get_latest_package_version(pkg_name)
+    try:
+        version_mask = StrictVersion(__version__) < StrictVersion(
+            latest_version
+        )
+    except ValueError as e:
+        if "invalid version number" in str(e):
+            version_mask = LooseVersion(__version__) < LooseVersion(
+                latest_version
+            )
+        else:
+            raise e
+    if version_mask:
+        logger.warning(
+            f"You are using vortexasdk version {__version__}, however version {latest_version} is available.\n"
+            f"You should consider upgrading via the 'pip install vortexasdk --upgrade' command."
         )
     return VortexaClient(api_key=api_key)
 
