@@ -1,10 +1,10 @@
 from unittest import TestCase
-from distutils.version import StrictVersion
+from distutils.version import LooseVersion
 
 from vortexasdk.utils import (
     convert_to_list,
     convert_values_to_list,
-    get_latest_package_version,
+    get_latest_sdk_version,
 )
 
 
@@ -24,8 +24,8 @@ class TestUtils(TestCase):
         assert convert_values_to_list(d) == expected
 
     def test_get_latest_package_version(self):
-        pd_old_version = "0.25.3"
+        sdk_old_version = "0.18.0"
 
-        lv, _ = get_latest_package_version("pandas")
+        lv = get_latest_sdk_version()
 
-        assert lv > StrictVersion(pd_old_version)
+        assert lv > LooseVersion(sdk_old_version)
