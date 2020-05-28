@@ -23,7 +23,7 @@ class TestUtils(TestCase):
 
         assert convert_values_to_list(d) == expected
 
-    def test_get_latest_package_version(self):
+    def test_get_latest_sdk_version(self):
         sdk_old_version = "0.18.0"
 
         lv = get_latest_sdk_version()
