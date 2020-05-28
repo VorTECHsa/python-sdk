@@ -15,7 +15,7 @@ The VortexaSDK currently contains 5 different endpoints:
 Each endpoint offers either one, or both, of two different functionalities:
 
 
-1. **Lookup by ID**. Retreive an object matching a certain id. In sql speak this is the equivalent of `SELECT * FROM vessels WHERE id = 12345;`
+1. **Lookup by ID**. Retrieve an object matching a certain id. In sql speak this is the equivalent of `SELECT * FROM vessels WHERE id = 12345;`
 2. **Search**. Retrieve a number of objects matching given search parameters. In sql speak this is the equivalent of `SELECT * FROM vessels WHERE name ~* 'ocean' AND vessel_class = 'vlcc';`
 
 
