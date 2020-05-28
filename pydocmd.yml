@@ -69,6 +69,7 @@ pages:
       4 Ballast Movements: examples/4_ballast_movements.md
       5 Chinese Daily Crude Imports: examples/5_chinese_daily_imports.md
       6 Floating Storage Medium Sour Crude: examples/6_medium_sour_floating_storage.md
+      7 Notebooks: examples/7_Notebooks.md
 theme:
   name: readthedocs
   collapse_navigation: true
