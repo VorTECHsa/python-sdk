@@ -17,10 +17,9 @@ from vortexasdk.retry_session import (
     retry_get,
     retry_post,
 )
-from vortexasdk.utils import filter_empty_values, get_latest_package_version
+from vortexasdk.utils import filter_empty_values, is_sdk_version_outdated
 from vortexasdk.version import __version__
-from vortexasdk import __name__ as pkg_name
-from distutils.version import StrictVersion, LooseVersion
+from vortexasdk import __name__ as sdk_pkg_name
 
 logger = get_logger(__name__)
 
@@ -197,23 +196,8 @@ def create_client() -> VortexaClient:
         raise KeyError(
             "VORTEXA_API_KEY environment variable is required to use the VortexaSDK"
         )
-    latest_version, _ = get_latest_package_version(pkg_name)
-    try:
-        version_mask = StrictVersion(__version__) < StrictVersion(
-            latest_version
-        )
-    except ValueError as e:
-        if "invalid version number" in str(e):
-            version_mask = LooseVersion(__version__) < LooseVersion(
-                latest_version
-            )
-        else:
-            raise e
-    if version_mask:
-        logger.warning(
-            f"You are using vortexasdk version {__version__}, however version {latest_version} is available.\n"
-            f"You should consider upgrading via the 'pip install vortexasdk --upgrade' command."
-        )
+    _ = warn_user_if_sdk_version_outdated()
+
     return VortexaClient(api_key=api_key)
 
 
@@ -224,3 +208,19 @@ def set_client(client) -> None:
     logger.debug(
         f"global __client__ has been set {__client__.__class__.__name__} \n"
     )
+
+
+def warn_user_if_sdk_version_outdated() -> None:
+    """Warn users if their SDK version is outdated"""
+    try:
+        latest_sdk_version, sdk_outdated_check = is_sdk_version_outdated()
+        if sdk_outdated_check:
+            logger.warning(
+                f"You are using {sdk_pkg_name} version {__version__}, however version {latest_sdk_version} is available.\n"
+                f"You should consider upgrading via the 'pip install {sdk_pkg_name} --upgrade' command."
+            )
+    except Exception as e:
+        logger.warning(
+            f"Outdated SDK version check could not be completed. \n"
+            f"Got an exception: {e}"
+        )

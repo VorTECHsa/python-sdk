@@ -1,7 +1,9 @@
 from typing import Dict, List
 import json
 from urllib.request import urlopen
-from distutils.version import StrictVersion, LooseVersion
+from distutils.version import LooseVersion
+from vortexasdk import __name__ as sdk_pkg_name
+from vortexasdk.version import __version__
 
 
 def convert_to_list(a) -> List:
@@ -25,27 +27,23 @@ def filter_empty_values(data: Dict) -> Dict:
     }
 
 
-def get_latest_package_version(package_name: str):
-    """
-    Retrieves the latest SDK version from PyPI and compares with the currently installed SDK version.
-    """
-    url = f"https://pypi.python.org/pypi/{package_name}/json"
+def get_latest_sdk_version() -> str:
+    """Retrieves the latest SDK version from PyPI."""
+    url = f"https://pypi.python.org/pypi/{sdk_pkg_name}/json"
     with urlopen(url) as u:
         data = json.loads(u.read())
 
-    try:
-        versions = data["releases"].keys()
-    except KeyError:
-        raise KeyError("No version related key found in PyPI")
+    versions = data["releases"].keys()
+    sorted_versions = sorted(versions, key=LooseVersion)
+    latest_version = sorted_versions[-1]
 
-    try:
-        versions = sorted(versions, key=StrictVersion)
-    except ValueError as e:
-        if "invalid version number" in str(e):
-            versions = sorted(versions, key=LooseVersion)
-        else:
-            raise e
+    return latest_version
 
-    latest_version = versions[-1]
 
-    return latest_version, versions
+def is_sdk_version_outdated():
+    """Checks whether SDK version is outdated."""
+    latest_version = get_latest_sdk_version()
+    if LooseVersion(__version__) < latest_version:
+        return latest_version, True
+    else:
+        return latest_version, False
