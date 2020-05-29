@@ -196,7 +196,7 @@ def create_client() -> VortexaClient:
         raise KeyError(
             "VORTEXA_API_KEY environment variable is required to use the VortexaSDK"
         )
-    _ = warn_user_if_sdk_version_outdated()
+    warn_user_if_sdk_version_outdated()
 
     return VortexaClient(api_key=api_key)
 
