@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>4 Ballast Movements - VortexaSDK</title>
+  <title>7 Notebooks - VortexaSDK</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -17,8 +17,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "4 Ballast Movements";
-    var mkdocs_page_input_path = "examples/4_ballast_movements.md";
+    var mkdocs_page_name = "7 Notebooks";
+    var mkdocs_page_input_path = "examples/7_Notebooks.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -167,12 +167,9 @@
                     
     <a class="" href="../3_crude_from_saudi_arabia_to_india/">3 Crude movements from Saudi Arabia to India</a>
                 </li>
-                <li class=" current">
+                <li class="">
                     
-    <a class="current" href="./">4 Ballast Movements</a>
-    <ul class="subnav">
-            
-    </ul>
+    <a class="" href="../4_ballast_movements/">4 Ballast Movements</a>
                 </li>
                 <li class="">
                     
@@ -182,9 +179,12 @@
                     
     <a class="" href="../6_medium_sour_floating_storage/">6 Floating Storage Medium Sour Crude</a>
                 </li>
-                <li class="">
+                <li class=" current">
                     
-    <a class="" href="../7_Notebooks/">7 Notebooks</a>
+    <a class="current" href="./">7 Notebooks</a>
+    <ul class="subnav">
+            
+    </ul>
                 </li>
     </ul>
 	    </li>
@@ -215,10 +215,10 @@
         
       
     
-    <li>4 Ballast Movements</li>
+    <li>7 Notebooks</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/vortechsa/python-sdk/edit/master/docs/examples/4_ballast_movements.md"
+        <a href="https://github.com/vortechsa/python-sdk/edit/master/docs/examples/7_Notebooks.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -228,21 +228,19 @@
           <div role="main">
             <div class="section">
               
-                <p>Let's find some ballast movements</p>
-<pre><code class="python">from datetime import datetime
+                <p>Created on Wed May 27 18:58:44 2020</p>
+<p>@author: achilleas</p>
+<pre><code class="python">&quot;&quot;&quot;
+Under the [examples section](https://github.com/VorTECHsa/python-sdk/tree/master/docs/examples) in the vortexasdk GitHub repository,
+users can find a variety of Jupyter Notebooks that illustrate some real-life use-cases of how the SDK can be used to answer
+interesting industry questions, identify emerging patterns and trends and assist forecasting models.
+Those notebooks include:
 
-from vortexasdk import VesselMovements
+   1. [US Crude Exports Exploration &amp; Forecasting](https://github.com/VorTECHsa/python-sdk/blob/master/docs/examples/US_Crude_Exports.ipynb)
+   2. [China Oil Flows during the Covid-19 Outbreak](https://github.com/VorTECHsa/python-sdk/blob/master/docs/examples/China_Flows.ipynb)
+   3. [Crude Floating Storage and its relation to Prices](https://github.com/VorTECHsa/python-sdk/blob/master/docs/examples/Crude_Floating_Storage.ipynb)
 
-if __name__ == &quot;__main__&quot;:
-    # Query the API
-    search_result = VesselMovements().search(
-        filter_time_min=datetime(2017, 10, 1, 0),
-        filter_time_max=datetime(2017, 10, 1, 1),
-        filter_vessel_status=&quot;vessel_status_ballast&quot;,
-    )
-
-    # Convert the search result to a dataframe
-    ballast_movements = search_result.to_df()
+&quot;&quot;&quot;
 </code></pre>
               
             </div>
@@ -251,10 +249,8 @@ if __name__ == &quot;__main__&quot;:
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../5_chinese_daily_imports/" class="btn btn-neutral float-right" title="5 Chinese Daily Crude Imports">Next <span class="icon icon-circle-arrow-right"></span></a>
       
-      
-        <a href="../3_crude_from_saudi_arabia_to_india/" class="btn btn-neutral" title="3 Crude movements from Saudi Arabia to India"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../6_medium_sour_floating_storage/" class="btn btn-neutral" title="6 Floating Storage Medium Sour Crude"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -282,10 +278,8 @@ if __name__ == &quot;__main__&quot;:
           <a href="https://github.com/vortechsa/python-sdk/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../3_crude_from_saudi_arabia_to_india/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../6_medium_sour_floating_storage/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
-      
-        <span style="margin-left: 15px"><a href="../5_chinese_daily_imports/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
