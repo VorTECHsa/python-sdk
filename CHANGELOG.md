@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.21.0](https://github.com/vortechsa/python-sdk/tree/0.21.0) (2020-06-01)
+
+[Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.20.0...0.21.0)
+
+**Closed issues:**
+
+- Alert users of SDK if they're using an outdated version [\#126](https://github.com/VorTECHsa/python-sdk/issues/126)
+
+**Merged pull requests:**
+
+- Fix typo in docs/endpoints/about-endpoints.md [\#200](https://github.com/VorTECHsa/python-sdk/pull/200) ([pgrimaud](https://github.com/pgrimaud))
+- Feat/version notification [\#198](https://github.com/VorTECHsa/python-sdk/pull/198) ([asfakianakis](https://github.com/asfakianakis))
+
 ## [0.20.0](https://github.com/vortechsa/python-sdk/tree/0.20.0) (2020-05-19)
 
 [Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.19.0...0.20.0)
@@ -244,6 +257,7 @@
 - docs: Check doctests are valid code [\#133](https://github.com/VorTECHsa/python-sdk/pull/133) ([KitBurgess](https://github.com/KitBurgess))
 - docs: Add crude from saudi arabia to india example [\#132](https://github.com/VorTECHsa/python-sdk/pull/132) ([KitBurgess](https://github.com/KitBurgess))
 - perf: Shuffle offsets inplace for more accurate progress ETA, increas… [\#131](https://github.com/VorTECHsa/python-sdk/pull/131) ([KitBurgess](https://github.com/KitBurgess))
+- fix: Handle API failures in VortexaClient [\#130](https://github.com/VorTECHsa/python-sdk/pull/130) ([KitBurgess](https://github.com/KitBurgess))
 
 ## [0.9.1](https://github.com/vortechsa/python-sdk/tree/0.9.1) (2019-12-09)
 
@@ -255,7 +269,6 @@
 
 **Merged pull requests:**
 
-- fix: Handle API failures in VortexaClient [\#130](https://github.com/VorTECHsa/python-sdk/pull/130) ([KitBurgess](https://github.com/KitBurgess))
 - feat: Add progressbar [\#129](https://github.com/VorTECHsa/python-sdk/pull/129) ([KitBurgess](https://github.com/KitBurgess))
 
 ## [0.9.0](https://github.com/vortechsa/python-sdk/tree/0.9.0) (2019-12-05)
