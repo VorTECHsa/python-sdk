@@ -1,8 +1,10 @@
 from unittest import TestCase
+from distutils.version import LooseVersion
 
 from vortexasdk.utils import (
     convert_to_list,
     convert_values_to_list,
+    get_latest_sdk_version,
 )
 
 
@@ -20,3 +22,10 @@ class TestUtils(TestCase):
         expected = {1: [], 2: ["b"], 3: ["c"]}
 
         assert convert_values_to_list(d) == expected
+
+    def test_get_latest_sdk_version(self):
+        sdk_old_version = "0.18.0"
+
+        lv = get_latest_sdk_version()
+
+        assert lv > LooseVersion(sdk_old_version)
