@@ -1,6 +1,7 @@
 site_name: VortexaSDK
 docs_dir: docs/
 repo_url: https://github.com/vortechsa/python-sdk
+google_analytics: ['UA-153895438-1', 'vortechsa.github.io/python-sdk']
 generate:
   - endpoints/cargo_movements.md:
       - vortexasdk.endpoints.cargo_movements++
