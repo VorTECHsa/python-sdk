@@ -70,18 +70,18 @@ def check_can_import_vortexasdk():
         print("❌ Python unable to import vortexasdk")
 
 
-def check_can_retrieve_products():
+def check_can_retrieve_geographies():
     global all_tests_pass
 
     # noinspection PyBroadException
     try:
-        from vortexasdk import Products
+        from vortexasdk import Geographies
 
-        crude_id = (
-            "6f11b0724c9a4e85ffa7f1445bc768f054af755a090118dcf99f14745c261653"
+        europe = (
+            "f39d455f5d38907394d6da3a91da4e391f9a34bd6a17e826d6042761067e88f4"
         )
-        product = Products().reference(crude_id)
-        assert product["id"] == crude_id
+        geography = Geographies().reference(europe)
+        assert geography["id"] == europe
         print(
             "✅ Python successfully retrieved a sample piece of reference data"
         )
@@ -96,7 +96,7 @@ def run_all_checks():
     check_can_connect_to_internet()
     check_can_connect_to_vortexa_api()
     check_can_import_vortexasdk()
-    check_can_retrieve_products()
+    check_can_retrieve_geographies()
 
     if all_tests_pass:
         print("✅ All tests passed, the SDK is correctly setup!")

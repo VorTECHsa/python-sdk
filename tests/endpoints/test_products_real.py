@@ -4,54 +4,33 @@ from vortexasdk.endpoints.products_result import DEFAULT_COLUMNS
 
 
 class TestProductsReal(TestCaseUsingRealAPI):
-    def test_search_ids(self):
-        ids = [
-            "e166e6253dd843624f6cbe4fd45e7f2cff4671e600b4d6371172dd92a0255946",
-            "6cd99c8f9e67e61892a691237b3342a4caae5ec1c76784b1b93952afda44ae24",
-        ]
+    def test_search(self):
+        products = Products().search().to_list()
+        assert len(products) > 0
 
-        products = Products().search(ids=ids).to_list()
-        assert len(products) == 2
+        print([x.name for x in products[:5]])
 
-        print([x.name for x in products])
-
-    def test_search_ids_dataframe(self):
-        ids = [
-            "e166e6253dd843624f6cbe4fd45e7f2cff4671e600b4d6371172dd92a0255946",
-            "6cd99c8f9e67e61892a691237b3342a4caae5ec1c76784b1b93952afda44ae24",
-        ]
-
-        df = Products().search(ids=ids).to_df()
+    def test_search_dataframe(self):
+        df = Products().search().to_df()
         assert list(df.columns) == DEFAULT_COLUMNS
-        assert len(df) == 2
+        assert len(df) > 0
 
-    def test_search_ids_dataframe_subset_of_cols(self):
-        ids = [
-            "e166e6253dd843624f6cbe4fd45e7f2cff4671e600b4d6371172dd92a0255946",
-            "6cd99c8f9e67e61892a691237b3342a4caae5ec1c76784b1b93952afda44ae24",
-        ]
-
-        df = Products().search(ids=ids).to_df(columns=["name", "id"])
+    def test_search_dataframe_subset_of_cols(self):
+        df = Products().search().to_df(columns=["name", "id"])
         assert list(df.columns) == ["name", "id"]
-        assert len(df) == 2
-
-    def test_search_crude(self):
-        result = [p.id for p in Products().search("Crude").to_list()][0]
-
-        assert (
-            result
-            == "6f11b0724c9a4e85ffa7f1445bc768f054af755a090118dcf99f14745c261653"
-        )
+        assert len(df) > 0
 
     def test_load_all(self):
         all_products = Products().load_all()
 
-        assert len(all_products) > 100
+        assert len(all_products) > 20
 
     def test_search_multiple_terms_to_dataframe(self):
         df = (
             Products()
-            .search(term=["diesel", "fuel oil", "grane"])
+            .search(
+                term=["diesel", "fuel oil", "grane", "lng", "lpg", "crude"]
+            )
             .to_df("all")
         )
 
@@ -71,10 +50,3 @@ class TestProductsReal(TestCaseUsingRealAPI):
         }
 
         assert expected_columns.issubset(set(df.columns))
-
-    def test_lookup_crude(self):
-        result = Products().reference(
-            "6f11b0724c9a4e85ffa7f1445bc768f054af755a090118dcf99f14745c261653"
-        )
-
-        assert result["name"] == "Crude"
