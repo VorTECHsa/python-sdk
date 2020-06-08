@@ -74,3 +74,4 @@ theme:
   name: readthedocs
   collapse_navigation: true
   search_index_only: false
+  custom_dir: custom_theme/ # https://github.com/mkdocs/mkdocs/issues/1671#issuecomment-543252346:
