@@ -16,7 +16,6 @@ pydocmd serve & sleep 5
 cp mkdocs.yml mkdocs.yml.backup
 
 #   3. append to the backed up file
-echo "  custom_dir: custom_theme/" >> mkdocs.yml.backup
 echo "google_analytics: ['UA-153895438-1', 'vortechsa.github.io']" >> mkdocs.yml.backup
 
 #   4. deploy to github pages using our backup file
