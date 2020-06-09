@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.21.1](https://github.com/vortechsa/python-sdk/tree/0.21.1) (2020-06-08)
+
+[Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.21.0...0.21.1)
+
+**Fixed bugs:**
+
+- Check\_setup script uses crude product ID which may be blocked by permissions [\#201](https://github.com/VorTECHsa/python-sdk/issues/201)
+
+**Merged pull requests:**
+
+- fix: remove tests that query specific products [\#205](https://github.com/VorTECHsa/python-sdk/pull/205) ([SeanBarry](https://github.com/SeanBarry))
+
 ## [0.21.0](https://github.com/vortechsa/python-sdk/tree/0.21.0) (2020-06-01)
 
 [Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.20.0...0.21.0)
@@ -257,7 +269,6 @@
 - docs: Check doctests are valid code [\#133](https://github.com/VorTECHsa/python-sdk/pull/133) ([KitBurgess](https://github.com/KitBurgess))
 - docs: Add crude from saudi arabia to india example [\#132](https://github.com/VorTECHsa/python-sdk/pull/132) ([KitBurgess](https://github.com/KitBurgess))
 - perf: Shuffle offsets inplace for more accurate progress ETA, increas… [\#131](https://github.com/VorTECHsa/python-sdk/pull/131) ([KitBurgess](https://github.com/KitBurgess))
-- fix: Handle API failures in VortexaClient [\#130](https://github.com/VorTECHsa/python-sdk/pull/130) ([KitBurgess](https://github.com/KitBurgess))
 
 ## [0.9.1](https://github.com/vortechsa/python-sdk/tree/0.9.1) (2019-12-09)
 
@@ -269,6 +280,7 @@
 
 **Merged pull requests:**
 
+- fix: Handle API failures in VortexaClient [\#130](https://github.com/VorTECHsa/python-sdk/pull/130) ([KitBurgess](https://github.com/KitBurgess))
 - feat: Add progressbar [\#129](https://github.com/VorTECHsa/python-sdk/pull/129) ([KitBurgess](https://github.com/KitBurgess))
 
 ## [0.9.0](https://github.com/vortechsa/python-sdk/tree/0.9.0) (2019-12-05)
