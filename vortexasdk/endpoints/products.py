@@ -9,7 +9,7 @@ from vortexasdk.utils import convert_to_list
 
 
 class Products(Reference, Search):
-    """Vessels endpoint."""
+    """Products endpoint."""
 
     def __init__(self):
         """Instantiate endpoint using reference endpoint."""
