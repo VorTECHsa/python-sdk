@@ -38,7 +38,7 @@ def convert_to_corporation_ids(corporation_name: str) -> List[ID]:
     corporations_with_encapsulating_names = Corporations().search(corporation_name).to_list()
 
     # In this case we're only interested in corporations with an exact name match.
-    return [c.id for c in corporations_with_encapsulating_names if c.name.upper() == corporation_name]
+    return [c.id for c in corporations_with_encapsulating_names if c.name.upper() == corporation_name.upper()]
 
     # We could have chosen to keep the other corporations (with similar, but not exact names) like so:
     # return [c.id for c in corporations_with_encapsulating_names]
