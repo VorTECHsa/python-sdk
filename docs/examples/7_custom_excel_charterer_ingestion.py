@@ -2,8 +2,9 @@
 
 Here we find all vessel movements chartered by specific corporations stored in a excel sheet.
 
-First we we ingest an Excel spreadsheet containing a custom list of charterers, then convert these charter names to IDs,
-then we search the Vortexa VesselMovements endpoint to find all recent vessel movements charterered by these firms.
+First we we ingest an Excel spreadsheet [(which can be viewed here)](https://github.com/VorTECHsa/python-sdk/tree/master/docs/examples/resources/my_charterers.xlsx)
+containing a custom list of charterers. We then convert these charter names to IDs, and search the VesselMovements
+endpoint to find all recent vessel movements charterered by these firms.
 
 The below script returns:
 
@@ -13,9 +14,6 @@ The below script returns:
 |  1 | ALEXTA YLOR   |      9245611 |     335608000 |                   89123 |        53000 | handymax              | Houston, TX [US]             | Veracruz [MX]                     |                                   nan | 2020-06-06T21:10:16+0000 | 2020-06-08T09:19:40+0000    | Clean Petroleum Products        | KOCH                                        |                                              nan | KOCH                                               |
 
 (The above data has been anonymised in this example)
-
-The spreadsheet used for this analysis can be found [here](https://github.com/VorTECHsa/python-sdk/tree/third-party-charterer/docs/examples/resources/my_charterers.xlsx)
-
 """
 from datetime import datetime, timedelta
 from typing import List
