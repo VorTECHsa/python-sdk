@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Geographies - VortexaSDK</title>
+  <title>7 Ingest Custom Excel Charterers - VortexaSDK</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -17,8 +17,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Geographies";
-    var mkdocs_page_input_path = "endpoints/geographies.md";
+    var mkdocs_page_name = "7 Ingest Custom Excel Charterers";
+    var mkdocs_page_input_path = "examples/7_custom_excel_charterer_ingestion.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -69,42 +69,39 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../about-endpoints/">About Endpoints</a>
+    <a class="" href="../../endpoints/about-endpoints/">About Endpoints</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../attributes/">Attributes</a>
+    <a class="" href="../../endpoints/attributes/">Attributes</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../cargo_movements/">Cargo Movements</a>
+    <a class="" href="../../endpoints/cargo_movements/">Cargo Movements</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../cargo_timeseries/">Cargo Time Series</a>
+    <a class="" href="../../endpoints/cargo_timeseries/">Cargo Time Series</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../corporations/">Corporations</a>
-                </li>
-                <li class=" current">
-                    
-    <a class="current" href="./">Geographies</a>
-    <ul class="subnav">
-            
-    </ul>
+    <a class="" href="../../endpoints/corporations/">Corporations</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../products/">Products</a>
+    <a class="" href="../../endpoints/geographies/">Geographies</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../vessel_movements/">Vessel Movements</a>
+    <a class="" href="../../endpoints/products/">Products</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../vessels/">Vessels</a>
+    <a class="" href="../../endpoints/vessel_movements/">Vessel Movements</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../endpoints/vessels/">Vessels</a>
                 </li>
     </ul>
 	    </li>
@@ -166,35 +163,38 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../examples/0_sample_load_cargo_movements/">0 Simple Load Cargo Movements</a>
+    <a class="" href="../0_sample_load_cargo_movements/">0 Simple Load Cargo Movements</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../examples/1_china/">1 China VLCC Discharges</a>
+    <a class="" href="../1_china/">1 China VLCC Discharges</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../examples/2_all_vessel_movements/">2 Laden Vessel Movements</a>
+    <a class="" href="../2_all_vessel_movements/">2 Laden Vessel Movements</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../examples/3_crude_from_saudi_arabia_to_india/">3 Crude movements from Saudi Arabia to India</a>
+    <a class="" href="../3_crude_from_saudi_arabia_to_india/">3 Crude movements from Saudi Arabia to India</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../examples/4_ballast_movements/">4 Ballast Movements</a>
+    <a class="" href="../4_ballast_movements/">4 Ballast Movements</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../examples/5_chinese_daily_imports/">5 Chinese Daily Crude Imports</a>
+    <a class="" href="../5_chinese_daily_imports/">5 Chinese Daily Crude Imports</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../examples/6_medium_sour_floating_storage/">6 Floating Storage Medium Sour Crude</a>
+    <a class="" href="../6_medium_sour_floating_storage/">6 Floating Storage Medium Sour Crude</a>
                 </li>
-                <li class="">
+                <li class=" current">
                     
-    <a class="" href="../../examples/7_custom_excel_charterer_ingestion/">7 Ingest Custom Excel Charterers</a>
+    <a class="current" href="./">7 Ingest Custom Excel Charterers</a>
+    <ul class="subnav">
+            
+    </ul>
                 </li>
     </ul>
 	    </li>
@@ -221,14 +221,14 @@
     
       
         
-          <li>Endpoints &raquo;</li>
+          <li>Examples &raquo;</li>
         
       
     
-    <li>Geographies</li>
+    <li>7 Ingest Custom Excel Charterers</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/vortechsa/python-sdk/edit/master/docs/endpoints/geographies.md"
+        <a href="https://github.com/vortechsa/python-sdk/edit/master/docs/examples/7_custom_excel_charterer_ingestion.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -238,119 +238,118 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="vortexasdk.endpoints.geographies">vortexasdk.endpoints.geographies</h1>
-
-<p>Geographies Endpoint.
-<h2 id="vortexasdk.endpoints.geographies.Geographies">Geographies</h2></p>
-<pre><code class="python">Geographies(self)
-</code></pre>
-
-<p>Geographies endpoint.
-<h3 id="vortexasdk.endpoints.geographies.Geographies.load_all">load_all</h3></p>
-<pre><code class="python">Geographies.load_all(self) -&gt; vortexasdk.endpoints.geographies_result.GeographyResult
-</code></pre>
-
-<p>Load all geographies.
-<h3 id="vortexasdk.endpoints.geographies.Geographies.search">search</h3></p>
-<pre><code class="python">Geographies.search(self, term: Union[str, List[str]] = None) -&gt; vortexasdk.endpoints.geographies_result.GeographyResult
-</code></pre>
-
-<p>Find all geographies matching given search terms.</p>
-<p><strong>Arguments</strong></p>
-<ul>
-<li><strong>term</strong>: The geography name (or names) we're filtering on</li>
-</ul>
-<p><strong>Returns</strong></p>
-<p>List of geographies matching <code>term</code></p>
-<p><strong>Examples</strong></p>
-<p>Find all geographies with <code>portsmouth</code> in the name.</p>
-<pre><code class="python">&gt;&gt;&gt; from vortexasdk import Geographies
-&gt;&gt;&gt; [x.name for x in Geographies().search(term=&quot;portsmouth&quot;).to_list()]
-['Portsmouth [GB]', 'Portsmouth, NH [US]']
-
-</code></pre>
-
-<p>Search multiple geography terms</p>
-<pre><code class="python">&gt;&gt;&gt; df = Geographies().search(term=[&quot;Liverpool&quot;, &quot;Southampton&quot;]).to_df()
-
-</code></pre>
-
-<p>returns</p>
+                <p>Here we find all vessel movements chartered by specific corporations stored in a excel sheet.</p>
+<p>First we we ingest an Excel spreadsheet <a href="https://github.com/VorTECHsa/python-sdk/tree/master/docs/examples/resources/my_charterers.xlsx">(which can be viewed here)</a>
+containing a custom list of charterers. We then convert these charter names to IDs, and search the VesselMovements
+endpoint to find all recent vessel movements charterered by these firms.</p>
+<p>The below script returns:</p>
 <table>
 <thead>
 <tr>
 <th align="right"></th>
-<th align="left">id</th>
-<th align="left">name</th>
-<th align="left">layer</th>
+<th align="left">vessel.name</th>
+<th align="right">vessel.imo</th>
+<th align="right">vessel.mmsi</th>
+<th align="right">vessel.cubic_capacity</th>
+<th align="right">vessel.dwt</th>
+<th align="left">vessel.vessel_class</th>
+<th align="left">origin.location.port.label</th>
+<th align="left">destination.location.port.label</th>
+<th align="left">destination.location.sts_zone.label</th>
+<th align="left">origin.start_timestamp</th>
+<th align="left">destination.end_timestamp</th>
+<th align="left">cargoes.0.product.group.label</th>
+<th align="left">vessel.corporate_entities.charterer.label</th>
+<th align="right">vessel.corporate_entities.time_charterer.label</th>
+<th align="left">vessel.corporate_entities.commercial_owner.label</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td align="right">0</td>
-<td align="left">b63d8f625669fd...</td>
-<td align="left">Liverpool [GB]</td>
-<td align="left">['port']</td>
+<td align="left">OLKA G LUCK</td>
+<td align="right">9235469</td>
+<td align="right">248575000</td>
+<td align="right">89803</td>
+<td align="right">50199</td>
+<td align="left">handymax</td>
+<td align="left">Amsterdam [NL]</td>
+<td align="left">Tianjin [CN]</td>
+<td align="left">nan</td>
+<td align="left">2020-05-22T15:00:34+0000</td>
+<td align="left">nan</td>
+<td align="left">Clean Petroleum Products</td>
+<td align="left">KOLMAR</td>
+<td align="right">nan</td>
+<td align="left">BoatBr S Shipping</td>
 </tr>
 <tr>
 <td align="right">1</td>
-<td align="left">0cb7d4566de0f2...</td>
-<td align="left">Southampton [GB]</td>
-<td align="left">['port']</td>
-</tr>
-<tr>
-<td align="right">2</td>
-<td align="left">8b4273e3181f2d...</td>
-<td align="left">Liverpool Docks</td>
-<td align="left">['terminal']</td>
-</tr>
-<tr>
-<td align="right">3</td>
-<td align="left">98c50b0d2ee2b1...</td>
-<td align="left">Liverpool Bulk Liquids</td>
-<td align="left">['terminal']</td>
+<td align="left">ALEXTA YLOR</td>
+<td align="right">9245611</td>
+<td align="right">335608000</td>
+<td align="right">89123</td>
+<td align="right">53000</td>
+<td align="left">handymax</td>
+<td align="left">Houston, TX [US]</td>
+<td align="left">Veracruz [MX]</td>
+<td align="left">nan</td>
+<td align="left">2020-06-06T21:10:16+0000</td>
+<td align="left">2020-06-08T09:19:40+0000</td>
+<td align="left">Clean Petroleum Products</td>
+<td align="left">KOCH</td>
+<td align="right">nan</td>
+<td align="left">KOCH</td>
 </tr>
 </tbody>
 </table>
-<h3 id="vortexasdk.endpoints.geographies.Geographies.reference">reference</h3>
+<p>(The above data has been anonymised in this example)</p>
+<pre><code class="python">from datetime import datetime, timedelta
+from typing import List
 
-<pre><code class="python">Geographies.reference(self, id: str) -&gt; Dict
+import pandas as pd
+
+from vortexasdk import Corporations, VesselMovements
+from vortexasdk.api import ID
+
+
+def convert_to_corporation_ids(corporation_name: str) -&gt; List[ID]:
+    &quot;&quot;&quot;
+    Returns a list of all corporation IDs with the name `corporation_name`.
+    This function returns a list, instead of a single ID. This is because some charterers may share the same name.
+
+    :param corporation_name: The name of the corporation we'd like to look up
+    :return: A list of IDs of corporations with a matching name
+    &quot;&quot;&quot;
+
+    # The search returns all corporations with similar names.
+    # For example, searching ADN would return both ADNOC and ADNATCO
+    corporations_with_encapsulating_names = Corporations().search(corporation_name).to_list()
+
+    # In this case we're only interested in corporations with an exact name match.
+    return [c.id for c in corporations_with_encapsulating_names if c.name.upper() == corporation_name.upper()]
+
+    # We could have chosen to keep the other corporations (with similar, but not exact names) like so:
+    # return [c.id for c in corporations_with_encapsulating_names]
+
+
+if __name__ == &quot;__main__&quot;:
+    # Read our excel sheet of charterers into a dataframe
+    charterers_df = pd.read_excel(&quot;./resources/my_charterers.xlsx&quot;)
+
+    # Convert the charterer names into ids
+    charterers_list_of_lists = charterers_df['charterers'].apply(convert_to_corporation_ids).to_list()
+    charterers = [item for sublist in charterers_list_of_lists for item in sublist]
+
+    # Query API
+    df = VesselMovements().search(
+        filter_charterers=charterers,
+        filter_time_min=datetime.now() - timedelta(weeks=1),
+        filter_time_max=datetime.now(),
+    ).to_df()
+
+    print(df)
 </code></pre>
-
-<p>Perform a geography lookup.</p>
-<p><strong>Arguments</strong></p>
-<ul>
-<li><strong>id</strong>: Geography ID to lookup</li>
-</ul>
-<p><strong>Returns</strong></p>
-<p>Geography matching the ID</p>
-<p><strong>Further Documentation:</strong></p>
-<p><a href="https://docs.vortexa.com/reference/GET/reference/geographies/%7Bid%7D">VortexaAPI Geography Reference</a></p>
-<h1 id="vortexasdk.endpoints.geographies_result">vortexasdk.endpoints.geographies_result</h1>
-
-<h2 id="vortexasdk.endpoints.geographies_result.GeographyResult">GeographyResult</h2>
-
-<pre><code class="python">GeographyResult(self, _records: List) -&gt; None
-</code></pre>
-
-<p>Container class that holds the result obtained from calling the <code>Geography</code> endpoint.
-<h3 id="vortexasdk.endpoints.geographies_result.GeographyResult.to_list">to_list</h3></p>
-<pre><code class="python">GeographyResult.to_list(self) -&gt; List[vortexasdk.api.geography.Geography]
-</code></pre>
-
-<p>Represent geographies as a list.
-<h3 id="vortexasdk.endpoints.geographies_result.GeographyResult.to_df">to_df</h3></p>
-<pre><code class="python">GeographyResult.to_df(self, columns=None) -&gt; pandas.core.frame.DataFrame
-</code></pre>
-
-<p>Represent geographies as a <code>pd.DataFrame</code>.</p>
-<p><strong>Arguments</strong></p>
-<ul>
-<li><strong>columns</strong>: The geography features we want in the dataframe. Enter <code>columns='all'</code> to include all features.
-    Defaults to <code>columns = ['id', 'name', 'layer']</code>.</li>
-</ul>
-<p><strong>Returns</strong></p>
-<p><code>pd.DataFrame</code> of geographies.</p>
               
             </div>
           </div>
@@ -358,10 +357,8 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../products/" class="btn btn-neutral float-right" title="Products">Next <span class="icon icon-circle-arrow-right"></span></a>
       
-      
-        <a href="../corporations/" class="btn btn-neutral" title="Corporations"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../6_medium_sour_floating_storage/" class="btn btn-neutral" title="6 Floating Storage Medium Sour Crude"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -389,10 +386,8 @@
           <a href="https://github.com/vortechsa/python-sdk/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../corporations/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../6_medium_sour_floating_storage/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
-      
-        <span style="margin-left: 15px"><a href="../products/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
