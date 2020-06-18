@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 set -e
 
+# Convert notebooks to html
+jupyter nbconvert --to html ./docs/examples/*.ipynb
+git add ./docs/examples/*.html
+
+
 # Tag the current commit
 TAG=$(python setup.py --version)
 
