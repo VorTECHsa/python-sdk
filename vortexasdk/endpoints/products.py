@@ -1,11 +1,11 @@
 """Products Endpoint."""
-from typing import List, Union, Dict
+from typing import Dict, List, Union
 
 from vortexasdk.api.shared_types import ID
 from vortexasdk.endpoints.endpoints import PRODUCTS_REFERENCE
 from vortexasdk.endpoints.products_result import ProductResult
 from vortexasdk.operations import Reference, Search
-from vortexasdk.utils import convert_to_list
+from vortexasdk.utils import convert_to_list, filter_exact_match
 
 
 class Products(Reference, Search):
@@ -25,6 +25,7 @@ class Products(Reference, Search):
         term: Union[str, List[str]] = None,
         ids: Union[str, List[str]] = None,
         product_parent: Union[str, List[str]] = None,
+        exact_term_match: bool = False,
     ) -> ProductResult:
         """
         Find all products matching given search terms.
@@ -35,6 +36,10 @@ class Products(Reference, Search):
             ids: ID or IDs of products we'd like to search
 
             product_parent: ID, or list of IDs of the immediate product parent. E.g. `product_parent ='12345'` will return all children of product `12345`.
+
+            exact_term_match: By default, the SDK returns all products which name _includes_ the search term. For example, searching for "Gasoil" will return
+                results including "Gasoil", "Gasoil 0.4pc", "Gasoil 500ppm" etc. Setting `exact_search_match` to true ensure that only exact term matches are
+                returned, ie just "Gasoil" in this case.
 
         # Returns
         List of products matching the search arguments.
@@ -70,7 +75,12 @@ class Products(Reference, Search):
             "allowTopLevelProducts": True,
         }
 
-        return ProductResult(super().search(**search_params))
+        search_result = super().search(**search_params)
+
+        if exact_term_match:
+            return ProductResult(filter_exact_match(term, search_result))
+        else:
+            return ProductResult(search_result)
 
     def reference(self, id: ID) -> Dict:
         """
