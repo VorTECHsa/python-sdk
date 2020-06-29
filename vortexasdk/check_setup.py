@@ -7,7 +7,7 @@ all_tests_pass = True
 
 def check_api_key_present():
     global all_tests_pass
-    api_key = os.getenv("VRTEXA_API_KEY")
+    api_key = os.getenv("VORTEXA_API_KEY")
     if api_key is None:
         print("🔸 Environment variable VORTEXA_API_KEY is not set.")
         print(
