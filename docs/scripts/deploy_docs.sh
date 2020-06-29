@@ -9,6 +9,12 @@ python docs/autogen.py
 # when pydocmd stops 'serving'.
 # To get around this we:
 
+# Kill the old process on port 8000 if it exists
+process_on_our_port=$(sudo lsof -t -i:8000)
+if [[ $process_on_our_port ]]; then
+  sudo kill $process_on_our_port
+fi
+
 #   1. serve the docs locally
 pydocmd serve & sleep 5
 
