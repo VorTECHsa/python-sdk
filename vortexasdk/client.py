@@ -1,5 +1,6 @@
 import copy
 import functools
+import getpass
 import os
 from json import JSONDecodeError
 from multiprocessing.pool import ThreadPool
@@ -193,9 +194,8 @@ def create_client() -> VortexaClient:
     try:
         api_key = os.environ["VORTEXA_API_KEY"]
     except KeyError:
-        raise KeyError(
-            "VORTEXA_API_KEY environment variable is required to use the VortexaSDK"
-        )
+        api_key = getpass.getpass()
+
     warn_user_if_sdk_version_outdated()
 
     return VortexaClient(api_key=api_key)
