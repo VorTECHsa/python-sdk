@@ -5,7 +5,7 @@ from vortexasdk.api import ID
 from vortexasdk.endpoints.endpoints import GEOGRAPHIES_REFERENCE
 from vortexasdk.endpoints.geographies_result import GeographyResult
 from vortexasdk.operations import Reference, Search
-from vortexasdk.utils import convert_values_to_list
+from vortexasdk.utils import convert_values_to_list, filter_exact_match
 
 
 class Geographies(Reference, Search):
@@ -19,12 +19,22 @@ class Geographies(Reference, Search):
         """Load all geographies."""
         return self.search()
 
-    def search(self, term: Union[str, List[str]] = None) -> GeographyResult:
+    def search(
+        self,
+        term: Union[str, List[str]] = None,
+        exact_term_match: bool = False,
+    ) -> GeographyResult:
         """
         Find all geographies matching given search terms.
 
         # Arguments
             term: The geography name (or names) we're filtering on
+
+            exact_term_match: Search on only exact term matches, or allow similar matches.
+                e.g. When searching for "China" with `exact_term_match=False`, then the SDK will yield geographies named
+                ['China', 'South China', 'China Energy Services Ningbo'...] etc. When `exact_term_match=True`,
+                the SDK will only yield the geography named `China`.
+
 
         # Returns
         List of geographies matching `term`
@@ -55,7 +65,13 @@ class Geographies(Reference, Search):
         |  3 | 98c50b0d2ee2b1... | Liverpool Bulk Liquids | ['terminal'] |
         """
         params = convert_values_to_list({"term": term})
-        return GeographyResult(super().search(**params))
+
+        search_result = super().search(**params)
+
+        if exact_term_match:
+            return GeographyResult(filter_exact_match(term, search_result))
+        else:
+            return GeographyResult(search_result)
 
     def reference(self, id: ID) -> Dict:
         """

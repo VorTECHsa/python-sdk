@@ -5,7 +5,7 @@ from vortexasdk.api.id import ID
 from vortexasdk.endpoints.endpoints import VESSELS_REFERENCE
 from vortexasdk.endpoints.vessels_result import VesselsResult
 from vortexasdk.operations import Reference, Search
-from vortexasdk.utils import convert_to_list
+from vortexasdk.utils import convert_to_list, filter_exact_match
 
 
 class Vessels(Reference, Search):
@@ -27,6 +27,7 @@ class Vessels(Reference, Search):
         vessel_classes: Union[str, List[str]] = None,
         vessel_product_types: Union[ID, List[ID]] = None,
         vessel_scrubbers: str = "disabled",
+        exact_term_match: bool = False,
     ) -> VesselsResult:
         """
         Find all vessels matching given search arguments. Search arguments are combined in an AND manner.
@@ -36,11 +37,21 @@ class Vessels(Reference, Search):
 
             ids: ID or IDs of vessels we'd like to search
 
-            vessel_classes: vessel_class (or list of vessel classes) we'd like to search. Each vessel class must be one of "tiny_tanker" , "general_purpose" , "handysize" , "handymax" , "panamax" , "aframax" , "suezmax" , "vlcc_plus" , "sgc" , "mgc" , "lgc" , "vlgc". Refer to [ VortexaAPI Vessel Entities](https://docs.vortexa.com/reference/intro-vessel-entities) for the most up-to-date list of vessel classes.
+            vessel_classes: vessel_class (or list of vessel classes) we'd like to search.
+              Each vessel class must be one of "tiny_tanker" , "general_purpose" , "handysize" , "handymax" , "panamax" , "aframax" , "suezmax" , "vlcc_plus" , "sgc" , "mgc" , "lgc" , "vlgc". Refer to [ VortexaAPI Vessel Entities](https://docs.vortexa.com/reference/intro-vessel-entities) for the most up-to-date list of vessel classes.
 
-            vessel_product_types: A product ID, or list of product IDs to filter on, searching vessels currently carrying these products.
+            vessel_product_types: A product ID, or list of product IDs to filter on, searching vessels _currently_ carrying these products.
 
-            vessel_scrubbers: Either inactive 'disabled', included 'inc' or excluded 'exc'.
+            vessel_scrubbers: An optional filter to filter on vessels with or without scrubbers.
+             To disable the filter (the default behaviour), enter 'disabled'.
+             To only include vessels with scrubbers, enter 'inc'.
+             To exclude vessels with scrubbers, enter 'exc'.
+
+             exact_term_match: Search on only exact term matches, or allow similar matches.
+                 e.g. When searching for "Ocean" with `exact_term_match=False`, then the SDK will yield vessels named
+                ['Ocean', 'Ocean Wisdom', ...] etc. When `exact_term_match=True`,
+                the SDK will only yield the vessel named `Ocean`.
+
 
         # Returns
         List of vessels matching the search arguments.
@@ -88,12 +99,17 @@ class Vessels(Reference, Search):
             "ids": convert_to_list(ids),
             "vessel_product_types": convert_to_list(vessel_product_types),
             "vessel_classes": [
-                v.lower() for v in (convert_to_list(vessel_classes))
+                v.lower() for v in convert_to_list(vessel_classes)
             ],
             "vessel_scrubbers": vessel_scrubbers,
         }
 
-        return VesselsResult(super().search(**search_params))
+        search_result = super().search(**search_params)
+
+        if exact_term_match:
+            return VesselsResult(filter_exact_match(term, search_result))
+        else:
+            return VesselsResult(search_result)
 
     def reference(self, id: ID) -> Dict:
         """
