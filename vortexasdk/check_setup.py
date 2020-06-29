@@ -85,8 +85,9 @@ def check_can_retrieve_geographies():
         print(
             "✅ Python successfully retrieved a sample piece of reference data"
         )
-    except Exception:
+    except Exception as e:
         all_tests_pass = False
+        print(e)
         print("❌ Python unable to retrieve a sample piece of reference data")
 
 
