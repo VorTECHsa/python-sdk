@@ -1,11 +1,11 @@
 """Vessels Endpoint."""
-from typing import List, Union, Dict
+from typing import Dict, List, Union
 
 from vortexasdk.api.id import ID
 from vortexasdk.endpoints.endpoints import VESSELS_REFERENCE
 from vortexasdk.endpoints.vessels_result import VesselsResult
 from vortexasdk.operations import Reference, Search
-from vortexasdk.utils import convert_to_list, filter_exact_match
+from vortexasdk.utils import convert_to_list
 
 
 class Vessels(Reference, Search):
@@ -94,7 +94,7 @@ class Vessels(Reference, Search):
         [VortexaAPI Vessel Reference](https://docs.vortexa.com/reference/POST/reference/vessels)
 
         """
-        search_params = {
+        api_params = {
             "term": [str(e) for e in convert_to_list(term)],
             "ids": convert_to_list(ids),
             "vessel_product_types": convert_to_list(vessel_product_types),
@@ -104,12 +104,9 @@ class Vessels(Reference, Search):
             "vessel_scrubbers": vessel_scrubbers,
         }
 
-        search_result = super().search(**search_params)
-
-        if exact_term_match:
-            return VesselsResult(filter_exact_match(term, search_result))
-        else:
-            return VesselsResult(search_result)
+        return VesselsResult(
+            super().search(exact_term_match=exact_term_match, **api_params)
+        )
 
     def reference(self, id: ID) -> Dict:
         """

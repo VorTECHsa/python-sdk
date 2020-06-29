@@ -1,11 +1,11 @@
 """Geographies Endpoint."""
-from typing import List, Union, Dict
+from typing import Dict, List, Union
 
 from vortexasdk.api import ID
 from vortexasdk.endpoints.endpoints import GEOGRAPHIES_REFERENCE
 from vortexasdk.endpoints.geographies_result import GeographyResult
 from vortexasdk.operations import Reference, Search
-from vortexasdk.utils import convert_values_to_list, filter_exact_match
+from vortexasdk.utils import convert_values_to_list
 
 
 class Geographies(Reference, Search):
@@ -64,14 +64,11 @@ class Geographies(Reference, Search):
         |  2 | 8b4273e3181f2d... | Liverpool Docks        | ['terminal'] |
         |  3 | 98c50b0d2ee2b1... | Liverpool Bulk Liquids | ['terminal'] |
         """
-        params = convert_values_to_list({"term": term})
+        api_params = convert_values_to_list({"term": term})
 
-        search_result = super().search(**params)
-
-        if exact_term_match:
-            return GeographyResult(filter_exact_match(term, search_result))
-        else:
-            return GeographyResult(search_result)
+        return GeographyResult(
+            super().search(exact_term_match=exact_term_match, **api_params)
+        )
 
     def reference(self, id: ID) -> Dict:
         """

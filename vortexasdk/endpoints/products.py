@@ -5,7 +5,7 @@ from vortexasdk.api.shared_types import ID
 from vortexasdk.endpoints.endpoints import PRODUCTS_REFERENCE
 from vortexasdk.endpoints.products_result import ProductResult
 from vortexasdk.operations import Reference, Search
-from vortexasdk.utils import convert_to_list, filter_exact_match
+from vortexasdk.utils import convert_to_list
 
 
 class Products(Reference, Search):
@@ -68,19 +68,16 @@ class Products(Reference, Search):
         [VortexaAPI Product Reference](https://docs.vortexa.com/reference/POST/reference/products)
 
         """
-        search_params = {
+        api_params = {
             "term": convert_to_list(term),
             "ids": convert_to_list(ids),
             "product_parent": convert_to_list(product_parent),
             "allowTopLevelProducts": True,
         }
 
-        search_result = super().search(**search_params)
-
-        if exact_term_match:
-            return ProductResult(filter_exact_match(term, search_result))
-        else:
-            return ProductResult(search_result)
+        return ProductResult(
+            super().search(exact_term_match=exact_term_match, **api_params)
+        )
 
     def reference(self, id: ID) -> Dict:
         """
