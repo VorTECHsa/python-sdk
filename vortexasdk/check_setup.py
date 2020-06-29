@@ -7,13 +7,13 @@ all_tests_pass = True
 
 def check_api_key_present():
     global all_tests_pass
-    api_key = os.getenv("VORTEXA_API_KEY")
+    api_key = os.getenv("VRTEXA_API_KEY")
     if api_key is None:
-        all_tests_pass = False
-        print("❌ Environment variable VORTEXA_API_KEY is not set.")
-        print("         Please set this environment variable.")
+        print("🔸 Environment variable VORTEXA_API_KEY is not set.")
         print(
-            "         You may need to restart your python interpreter / bash terminal for this to be ingested."
+            "         Please set this environment variable, this is the recommended way to authenticate with the SDK."
+            "\n         You may need to restart your python interpreter / bash terminal for the API Key to be ingested."
+            "\n         Note: The SDK will work without an environment variable, you'll be prompted to interactively enter your password."
         )
     else:
         print("✅ Environment variable VORTEXA_API_KEY is set correctly.")
