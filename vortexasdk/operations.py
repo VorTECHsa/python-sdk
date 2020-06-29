@@ -1,10 +1,10 @@
 from typing import Dict, List
 
-from utils import filter_exact_match
 from vortexasdk.api.id import ID
 from vortexasdk.client import default_client
 from vortexasdk.exceptions import InvalidAPIDataResponseException
 from vortexasdk.logger import get_logger
+from vortexasdk.utils import filter_exact_match
 
 logger = get_logger(__name__)
 
