@@ -17,11 +17,11 @@ class TestUtils(TestCase):
         self.assertCountEqual(convert_to_list(["a", "b"]), ["a", "b"])
 
     def test_convert_values_to_list(self):
-        actual = convert_to_list({1: None, 2: "b", 3: ["c"]})
+        actual = convert_values_to_list({1: None, 2: "b", 3: ["c"]})
 
         expected = {1: [], 2: ["b"], 3: ["c"]}
 
-        assert self.assertCountEqual(actual, expected)
+        assert actual == expected
 
     def test_get_latest_sdk_version(self):
         sdk_old_version = "0.18.0"
