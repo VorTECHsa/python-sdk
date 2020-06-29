@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.22.0](https://github.com/vortechsa/python-sdk/tree/0.22.0) (2020-06-29)
+
+[Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.21.1...0.22.0)
+
+**Implemented enhancements:**
+
+- Filter vessel movements and cargo movements with attributes, age, flag & scrubbers. [\#191](https://github.com/VorTECHsa/python-sdk/issues/191)
+- Add waypoints column to cargo movements df [\#117](https://github.com/VorTECHsa/python-sdk/issues/117)
+
+**Merged pull requests:**
+
+- Allow users to interactively enter API key [\#213](https://github.com/VorTECHsa/python-sdk/pull/213) ([KitBurgess](https://github.com/KitBurgess))
+- feat: Exact term match [\#212](https://github.com/VorTECHsa/python-sdk/pull/212) ([KitBurgess](https://github.com/KitBurgess))
+- chore: Allow users to set lowercase log level [\#211](https://github.com/VorTECHsa/python-sdk/pull/211) ([KitBurgess](https://github.com/KitBurgess))
+- docs: Add loading external data example [\#209](https://github.com/VorTECHsa/python-sdk/pull/209) ([KitBurgess](https://github.com/KitBurgess))
+- docs: typo in products endpoint [\#208](https://github.com/VorTECHsa/python-sdk/pull/208) ([Natday](https://github.com/Natday))
+- Webinar10jun [\#207](https://github.com/VorTECHsa/python-sdk/pull/207) ([KitBurgess](https://github.com/KitBurgess))
+- Google analytics [\#206](https://github.com/VorTECHsa/python-sdk/pull/206) ([KitBurgess](https://github.com/KitBurgess))
+
 ## [0.21.1](https://github.com/vortechsa/python-sdk/tree/0.21.1) (2020-06-08)
 
 [Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.21.0...0.21.1)
@@ -185,10 +204,6 @@
 
 [Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.12.1...0.13.0)
 
-**Merged pull requests:**
-
-- feat: Add timeseries endpoint, closes \#124 [\#125](https://github.com/VorTECHsa/python-sdk/pull/125) ([KitBurgess](https://github.com/KitBurgess))
-
 ## [0.12.1](https://github.com/vortechsa/python-sdk/tree/0.12.1) (2020-03-03)
 
 [Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.12.0...0.12.1)
@@ -305,6 +320,7 @@
 
 **Merged pull requests:**
 
+- feat: Add timeseries endpoint, closes \#124 [\#125](https://github.com/VorTECHsa/python-sdk/pull/125) ([KitBurgess](https://github.com/KitBurgess))
 - fix: CargoMovementsResult to\_df all columns, closes \#120 [\#121](https://github.com/VorTECHsa/python-sdk/pull/121) ([KitBurgess](https://github.com/KitBurgess))
 - Load all [\#119](https://github.com/VorTECHsa/python-sdk/pull/119) ([KitBurgess](https://github.com/KitBurgess))
 - fix: Consistent search signatures, closes \#114 [\#118](https://github.com/VorTECHsa/python-sdk/pull/118) ([KitBurgess](https://github.com/KitBurgess))
