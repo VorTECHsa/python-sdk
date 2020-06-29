@@ -6,6 +6,7 @@ from json import JSONDecodeError
 from multiprocessing.pool import ThreadPool
 from random import shuffle
 from typing import Dict, List
+import uuid
 
 from requests import Response
 from tqdm import tqdm
@@ -191,12 +192,10 @@ def default_client() -> VortexaClient:
 def create_client() -> VortexaClient:
     """Create new VortexaClient."""
     logger.info("Creating new VortexaClient")
-    try:
-        api_key = os.environ["VORTEXA_API_KEY"]
-    except KeyError:
-        api_key = getpass.getpass()
 
-    warn_user_if_sdk_version_outdated()
+    api_key = _load_api_key()
+    verify_api_key_format(api_key)
+    _warn_user_if_sdk_version_outdated()
 
     return VortexaClient(api_key=api_key)
 
@@ -210,7 +209,7 @@ def set_client(client) -> None:
     )
 
 
-def warn_user_if_sdk_version_outdated() -> None:
+def _warn_user_if_sdk_version_outdated() -> None:
     """Warn users if their SDK version is outdated"""
     try:
         latest_sdk_version, sdk_outdated_check = is_sdk_version_outdated()
@@ -223,4 +222,28 @@ def warn_user_if_sdk_version_outdated() -> None:
         logger.warning(
             f"Outdated SDK version check could not be completed. \n"
             f"Got an exception: {e}"
+        )
+
+
+def _load_api_key():
+    """Read API Key from environment variables else user input"""
+    try:
+        return os.environ["VORTEXA_API_KEY"]
+    except KeyError:
+        return getpass.getpass("Vortexa API Key: ")
+    except Exception:
+        raise KeyError(
+            "You must either set the VORTEXA_API_KEY environment variable, or interactively enter your Vortexa API key."
+            " Your API key can be found at https://docs.vortexa.com"
+        )
+
+
+def verify_api_key_format(api_key: str) -> None:
+    """Verify that the api_key is a valid UUID string"""
+    try:
+        uuid.UUID(api_key)
+    except ValueError:
+        raise ValueError(
+            "Incorrect API key set. The Vortexa API key must be of the form xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx "
+            " Your API key can be found at https://docs.vortexa.com"
         )
