@@ -10,7 +10,7 @@ python docs/autogen.py
 # To get around this we:
 
 #   1. serve the docs locally
-pydocmd serve & sleep 5
+#pydocmd serve & sleep 5
 
 #   2. backup the generated mkdocs.yml file
 cp mkdocs.yml mkdocs.yml.backup
