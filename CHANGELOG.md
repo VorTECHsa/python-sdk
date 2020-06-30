@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.23.0](https://github.com/vortechsa/python-sdk/tree/0.23.0) (2020-06-30)
+
+[Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.22.1...0.23.0)
+
+**Implemented enhancements:**
+
+- Better interface for retrieving IDs [\#166](https://github.com/VorTECHsa/python-sdk/issues/166)
+
+**Closed issues:**
+
+- Warn users if their API key isn't uuidv4 [\#203](https://github.com/VorTECHsa/python-sdk/issues/203)
+
+**Merged pull requests:**
+
+- ci: Kill process on old docs if it exists [\#215](https://github.com/VorTECHsa/python-sdk/pull/215) ([KitBurgess](https://github.com/KitBurgess))
+- feat: Add exact match filter to geogs, vessels, corporations [\#214](https://github.com/VorTECHsa/python-sdk/pull/214) ([KitBurgess](https://github.com/KitBurgess))
+
 ## [0.22.1](https://github.com/vortechsa/python-sdk/tree/0.22.1) (2020-06-30)
 
 [Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.22.0...0.22.1)
@@ -15,6 +32,7 @@
 **Implemented enhancements:**
 
 - Filter vessel movements and cargo movements with attributes, age, flag & scrubbers. [\#191](https://github.com/VorTECHsa/python-sdk/issues/191)
+- Add waypoints column to cargo movements df [\#117](https://github.com/VorTECHsa/python-sdk/issues/117)
 
 **Merged pull requests:**
 
@@ -50,6 +68,7 @@
 
 - Fix typo in docs/endpoints/about-endpoints.md [\#200](https://github.com/VorTECHsa/python-sdk/pull/200) ([pgrimaud](https://github.com/pgrimaud))
 - Feat/version notification [\#198](https://github.com/VorTECHsa/python-sdk/pull/198) ([asfakianakis](https://github.com/asfakianakis))
+- Feat attribute endpoint  [\#190](https://github.com/VorTECHsa/python-sdk/pull/190) ([SeanBarry](https://github.com/SeanBarry))
 
 ## [0.20.0](https://github.com/vortechsa/python-sdk/tree/0.20.0) (2020-05-19)
 
@@ -64,7 +83,6 @@
 - Feat attribute endpoint [\#197](https://github.com/VorTECHsa/python-sdk/pull/197) ([KitBurgess](https://github.com/KitBurgess))
 - Feat new filters [\#193](https://github.com/VorTECHsa/python-sdk/pull/193) ([SeanBarry](https://github.com/SeanBarry))
 - docs: add SeanBarry as a contributor [\#192](https://github.com/VorTECHsa/python-sdk/pull/192) ([allcontributors[bot]](https://github.com/apps/allcontributors))
-- Feat attribute endpoint  [\#190](https://github.com/VorTECHsa/python-sdk/pull/190) ([SeanBarry](https://github.com/SeanBarry))
 - fix: Correct commant in check setup image [\#188](https://github.com/VorTECHsa/python-sdk/pull/188) ([KitBurgess](https://github.com/KitBurgess))
 
 ## [0.19.0](https://github.com/vortechsa/python-sdk/tree/0.19.0) (2020-05-04)
@@ -316,7 +334,6 @@
 **Implemented enhancements:**
 
 - Add timeseries endpoint [\#124](https://github.com/VorTECHsa/python-sdk/issues/124)
-- Add waypoints column to cargo movements df [\#117](https://github.com/VorTECHsa/python-sdk/issues/117)
 - Add load all reference data method [\#81](https://github.com/VorTECHsa/python-sdk/issues/81)
 
 **Fixed bugs:**
@@ -326,6 +343,7 @@
 
 **Closed issues:**
 
+- Inconsistent search signatures across endpoints  [\#114](https://github.com/VorTECHsa/python-sdk/issues/114)
 - Consider adopting All Contributors specification [\#98](https://github.com/VorTECHsa/python-sdk/issues/98)
 - Sample notebook with charts [\#83](https://github.com/VorTECHsa/python-sdk/issues/83)
 
@@ -355,10 +373,6 @@
 **Fixed bugs:**
 
 - Make client more robust [\#95](https://github.com/VorTECHsa/python-sdk/issues/95)
-
-**Closed issues:**
-
-- Inconsistent search signatures across endpoints  [\#114](https://github.com/VorTECHsa/python-sdk/issues/114)
 
 **Merged pull requests:**
 
@@ -390,7 +404,6 @@
 - Geographies document reference method. [\#66](https://github.com/VorTECHsa/python-sdk/issues/66)
 - Improved logging to make sure the right entity is selected in a query \(or at least make it clear to user what entity is being used\) [\#37](https://github.com/VorTECHsa/python-sdk/issues/37)
 - Contributing to VortexaSDK: Setting up environment bug `pip install -e .\[test\]` [\#25](https://github.com/VorTECHsa/python-sdk/issues/25)
-- unclear how to import the different endpoints [\#19](https://github.com/VorTECHsa/python-sdk/issues/19)
 
 **Merged pull requests:**
 
@@ -493,6 +506,7 @@
 - include an explanation in the docs of the flattened cargo movement structure and how this links to the column naming convention [\#48](https://github.com/VorTECHsa/python-sdk/issues/48)
 - make 'filter\_activity' a required argument [\#43](https://github.com/VorTECHsa/python-sdk/issues/43)
 - How to serve docs isn't clear, which directory from? [\#20](https://github.com/VorTECHsa/python-sdk/issues/20)
+- unclear how to import the different endpoints [\#19](https://github.com/VorTECHsa/python-sdk/issues/19)
 
 **Merged pull requests:**
 
@@ -515,6 +529,10 @@
 
 - Allow for filtering by product name in vessel endpoint filters  [\#31](https://github.com/VorTECHsa/python-sdk/issues/31)
 
+**Fixed bugs:**
+
+- Tried to pull out a reference df of all vessels but only got 200 results? [\#29](https://github.com/VorTECHsa/python-sdk/issues/29)
+
 **Merged pull requests:**
 
 - fix: Move to pytest, run mock setup before each test [\#52](https://github.com/VorTECHsa/python-sdk/pull/52) ([KitBurgess](https://github.com/KitBurgess))
@@ -532,10 +550,6 @@
 **Implemented enhancements:**
 
 - Create Products endpoint [\#7](https://github.com/VorTECHsa/python-sdk/issues/7)
-
-**Fixed bugs:**
-
-- Tried to pull out a reference df of all vessels but only got 200 results? [\#29](https://github.com/VorTECHsa/python-sdk/issues/29)
 
 **Closed issues:**
 
