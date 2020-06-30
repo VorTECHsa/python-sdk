@@ -22,7 +22,7 @@ def check_api_key_present():
 def check_can_connect_to_internet():
     global all_tests_pass
     # noinspection PyBroadException
-    url = "https://api.github.com"
+    url = "https://httpstat.us/200"
 
     try:
         status_code = requests.get(url).status_code

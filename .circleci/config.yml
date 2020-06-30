@@ -47,6 +47,12 @@ jobs:
             pytest -v --doctest-modules
 
       - run:
+          name: "Confirm that the check_setup script works"
+          command: |
+            . .venv/bin/activate
+            python -m vortexasdk.check_setup
+
+      - run:
           name: "Build docs"
           command: |
             . .venv/bin/activate
