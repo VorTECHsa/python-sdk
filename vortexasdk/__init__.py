@@ -13,3 +13,6 @@ from vortexasdk.endpoints import (
 
 # noinspection PyUnresolvedReferences
 from vortexasdk.version import __version__
+
+# noinspection PyUnresolvedReferences
+from vortexasdk.check_setup import run_all_checks
