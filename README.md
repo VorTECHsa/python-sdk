@@ -45,7 +45,10 @@ The SDK requires Python version 3.7 or above, see [Setup FAQ](https://vortechsa.
 
 ##### Authentication
 
-Set your `VORTEXA_API_KEY` environment variable, that's all. To experiment with Vortexa's data, you can [request a demo here](https://www.vortexa.com/request-demo-sdk).
+Set your `VORTEXA_API_KEY` environment variable, that's all.
+Alternatively, the SDK prompts to you enter your API Key when running a script interactively.
+ 
+ To get an API key and experiment with Vortexa's data, you can [request a demo here](https://www.vortexa.com/request-demo-sdk).
 
 
 ##### Check Setup
