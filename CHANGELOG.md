@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.22.1](https://github.com/vortechsa/python-sdk/tree/0.22.1) (2020-06-30)
+
+[Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.22.0...0.22.1)
+
+**Merged pull requests:**
+
+- Password docs [\#216](https://github.com/VorTECHsa/python-sdk/pull/216) ([KitBurgess](https://github.com/KitBurgess))
+
 ## [0.22.0](https://github.com/vortechsa/python-sdk/tree/0.22.0) (2020-06-29)
 
 [Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.21.1...0.22.0)
@@ -7,7 +15,6 @@
 **Implemented enhancements:**
 
 - Filter vessel movements and cargo movements with attributes, age, flag & scrubbers. [\#191](https://github.com/VorTECHsa/python-sdk/issues/191)
-- Add waypoints column to cargo movements df [\#117](https://github.com/VorTECHsa/python-sdk/issues/117)
 
 **Merged pull requests:**
 
@@ -204,6 +211,10 @@
 
 [Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.12.1...0.13.0)
 
+**Merged pull requests:**
+
+- feat: Add timeseries endpoint, closes \#124 [\#125](https://github.com/VorTECHsa/python-sdk/pull/125) ([KitBurgess](https://github.com/KitBurgess))
+
 ## [0.12.1](https://github.com/vortechsa/python-sdk/tree/0.12.1) (2020-03-03)
 
 [Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.12.0...0.12.1)
@@ -305,6 +316,7 @@
 **Implemented enhancements:**
 
 - Add timeseries endpoint [\#124](https://github.com/VorTECHsa/python-sdk/issues/124)
+- Add waypoints column to cargo movements df [\#117](https://github.com/VorTECHsa/python-sdk/issues/117)
 - Add load all reference data method [\#81](https://github.com/VorTECHsa/python-sdk/issues/81)
 
 **Fixed bugs:**
@@ -314,13 +326,11 @@
 
 **Closed issues:**
 
-- Inconsistent search signatures across endpoints  [\#114](https://github.com/VorTECHsa/python-sdk/issues/114)
 - Consider adopting All Contributors specification [\#98](https://github.com/VorTECHsa/python-sdk/issues/98)
 - Sample notebook with charts [\#83](https://github.com/VorTECHsa/python-sdk/issues/83)
 
 **Merged pull requests:**
 
-- feat: Add timeseries endpoint, closes \#124 [\#125](https://github.com/VorTECHsa/python-sdk/pull/125) ([KitBurgess](https://github.com/KitBurgess))
 - fix: CargoMovementsResult to\_df all columns, closes \#120 [\#121](https://github.com/VorTECHsa/python-sdk/pull/121) ([KitBurgess](https://github.com/KitBurgess))
 - Load all [\#119](https://github.com/VorTECHsa/python-sdk/pull/119) ([KitBurgess](https://github.com/KitBurgess))
 - fix: Consistent search signatures, closes \#114 [\#118](https://github.com/VorTECHsa/python-sdk/pull/118) ([KitBurgess](https://github.com/KitBurgess))
@@ -345,6 +355,10 @@
 **Fixed bugs:**
 
 - Make client more robust [\#95](https://github.com/VorTECHsa/python-sdk/issues/95)
+
+**Closed issues:**
+
+- Inconsistent search signatures across endpoints  [\#114](https://github.com/VorTECHsa/python-sdk/issues/114)
 
 **Merged pull requests:**
 
@@ -376,6 +390,7 @@
 - Geographies document reference method. [\#66](https://github.com/VorTECHsa/python-sdk/issues/66)
 - Improved logging to make sure the right entity is selected in a query \(or at least make it clear to user what entity is being used\) [\#37](https://github.com/VorTECHsa/python-sdk/issues/37)
 - Contributing to VortexaSDK: Setting up environment bug `pip install -e .\[test\]` [\#25](https://github.com/VorTECHsa/python-sdk/issues/25)
+- unclear how to import the different endpoints [\#19](https://github.com/VorTECHsa/python-sdk/issues/19)
 
 **Merged pull requests:**
 
@@ -478,7 +493,6 @@
 - include an explanation in the docs of the flattened cargo movement structure and how this links to the column naming convention [\#48](https://github.com/VorTECHsa/python-sdk/issues/48)
 - make 'filter\_activity' a required argument [\#43](https://github.com/VorTECHsa/python-sdk/issues/43)
 - How to serve docs isn't clear, which directory from? [\#20](https://github.com/VorTECHsa/python-sdk/issues/20)
-- unclear how to import the different endpoints [\#19](https://github.com/VorTECHsa/python-sdk/issues/19)
 
 **Merged pull requests:**
 
