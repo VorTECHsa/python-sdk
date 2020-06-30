@@ -13,11 +13,7 @@ python docs/autogen.py
 #   1. serve the docs locally
 
 # Kill the any process running on port 8000 if it exists, this is the port that pydocmd serves on.
-process_on_our_port=$(sudo lsof -t -i:8000)
-if [[ $process_on_our_port ]]; then
-  sudo kill $process_on_our_port
-fi
-
+process_on_our_port=$(sudo lsof -t -i:8000) && sudo kill $process_on_our_port
 pydocmd serve & sleep 5
 
 #   2. backup the generated mkdocs.yml file
