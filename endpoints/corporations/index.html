@@ -252,13 +252,21 @@
 
 <p>Load all corporations.
 <h3 id="vortexasdk.endpoints.corporations.Corporations.search">search</h3></p>
-<pre><code class="python">Corporations.search(self, term: Union[str, List[str]] = None) -&gt; vortexasdk.endpoints.corporations_result.CorporationsResult
+<pre><code class="python">Corporations.search(self, term: Union[str, List[str]] = None, exact_term_match: bool = False) -&gt; vortexasdk.endpoints.corporations_result.CorporationsResult
 </code></pre>
 
 <p>Find all Corporations matching given search terms.</p>
 <p><strong>Arguments</strong></p>
 <ul>
-<li><strong>term</strong>: The corporation name(s) we're filtering on</li>
+<li>
+<p><strong>term</strong>: The corporation name(s) we're filtering on</p>
+</li>
+<li>
+<p><strong>exact_term_match</strong>: Search on only exact term matches, or allow similar matches.
+      e.g. When searching for "COS" with <code>exact_term_match=False</code>, then the SDK will yield corporations named
+      ['COSCO', 'COSMO OIL'] etc. When <code>exact_term_match=True</code>,
+      the SDK won't yield any results, because no corporations have the exact name "COS".</p>
+</li>
 </ul>
 <p><strong>Returns</strong></p>
 <p>List of corporation matching <code>term</code></p>

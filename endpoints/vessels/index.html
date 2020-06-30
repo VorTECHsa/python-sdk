@@ -252,7 +252,7 @@
 
 <p>Load all vessels.
 <h3 id="vortexasdk.endpoints.vessels.Vessels.search">search</h3></p>
-<pre><code class="python">Vessels.search(self, term: Union[str, List[str]] = None, ids: Union[str, List[str]] = None, vessel_classes: Union[str, List[str]] = None, vessel_product_types: Union[str, List[str]] = None, vessel_scrubbers: str = 'disabled') -&gt; vortexasdk.endpoints.vessels_result.VesselsResult
+<pre><code class="python">Vessels.search(self, term: Union[str, List[str]] = None, ids: Union[str, List[str]] = None, vessel_classes: Union[str, List[str]] = None, vessel_product_types: Union[str, List[str]] = None, vessel_scrubbers: str = 'disabled', exact_term_match: bool = False) -&gt; vortexasdk.endpoints.vessels_result.VesselsResult
 </code></pre>
 
 <p>Find all vessels matching given search arguments. Search arguments are combined in an AND manner.</p>
@@ -265,13 +265,25 @@
 <p><strong>ids</strong>: ID or IDs of vessels we'd like to search</p>
 </li>
 <li>
-<p><strong>vessel_classes</strong>: vessel_class (or list of vessel classes) we'd like to search. Each vessel class must be one of "tiny_tanker" , "general_purpose" , "handysize" , "handymax" , "panamax" , "aframax" , "suezmax" , "vlcc_plus" , "sgc" , "mgc" , "lgc" , "vlgc". Refer to <a href="https://docs.vortexa.com/reference/intro-vessel-entities"> VortexaAPI Vessel Entities</a> for the most up-to-date list of vessel classes.</p>
+<p><strong>vessel_classes</strong>: vessel_class (or list of vessel classes) we'd like to search.</p>
 </li>
 <li>
-<p><strong>vessel_product_types</strong>: A product ID, or list of product IDs to filter on, searching vessels currently carrying these products.</p>
+<p>__Each vessel class must be one of "tiny_tanker" , "general_purpose" , "handysize" , "handymax" , "panamax" , "aframax" , "suezmax" , "vlcc_plus" , "sgc" , "mgc" , "lgc" , "vlgc". Refer to <a href="https__://docs.vortexa.com/reference/intro-vessel-entities"> VortexaAPI Vessel Entities</a> for the most up-to-date list of vessel classes.</p>
 </li>
 <li>
-<p><strong>vessel_scrubbers</strong>: Either inactive 'disabled', included 'inc' or excluded 'exc'.</p>
+<p><strong>vessel_product_types</strong>: A product ID, or list of product IDs to filter on, searching vessels <em>currently</em> carrying these products.</p>
+</li>
+<li>
+<p><strong>vessel_scrubbers</strong>: An optional filter to filter on vessels with or without scrubbers.
+     To disable the filter (the default behaviour), enter 'disabled'.
+     To only include vessels with scrubbers, enter 'inc'.
+     To exclude vessels with scrubbers, enter 'exc'.</p>
+</li>
+<li>
+<p><strong>exact_term_match</strong>: Search on only exact term matches, or allow similar matches.
+         e.g. When searching for "Ocean" with <code>exact_term_match=False</code>, then the SDK will yield vessels named
+        ['Ocean', 'Ocean Wisdom', ...] etc. When <code>exact_term_match=True</code>,
+        the SDK will only yield the vessel named <code>Ocean</code>.</p>
 </li>
 </ul>
 <p><strong>Returns</strong></p>
