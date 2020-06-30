@@ -30,6 +30,11 @@ class TestUtils(TestCase):
 
         assert lv > LooseVersion(sdk_old_version)
 
+    def test_filter_doesn_not_match_part_name(self):
+        search_result = [{"name": "China"}, {"name": "South China"}]
+
+        self.assertEqual(filter_exact_match("Chi", search_result), [])
+
     def test_filter_exact_match_single_name(self):
         search_result = [{"name": "China"}, {"name": "South China"}]
 
