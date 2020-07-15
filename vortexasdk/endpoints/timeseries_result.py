@@ -6,6 +6,9 @@ import pandas as pd
 
 from vortexasdk.api.search_result import Result
 from vortexasdk.api.timeseries_item import TimeSeriesItem
+from vortexasdk.logger import get_logger
+
+logger = get_logger(__name__)
 
 
 class TimeSeriesResult(Result):
@@ -15,6 +18,7 @@ class TimeSeriesResult(Result):
         """Represents time series as a list."""
         list_of_dicts = super().to_list()
         with Pool(os.cpu_count()) as pool:
+            logger.debug(f"Converting dictionary to TimeSeries using {os.cpu_count()} processes")
             return list(pool.map(TimeSeriesItem.from_dict, list_of_dicts))
 
     def to_df(self, columns=None) -> pd.DataFrame:

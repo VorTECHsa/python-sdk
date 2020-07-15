@@ -19,7 +19,7 @@ class VesselsResult(Result):
         list_of_dicts = super().to_list()
 
         with Pool(os.cpu_count()) as pool:
-            logger.debug(f"Serializing Vessels using {os.cpu_count()} processes")
+            logger.debug(f"Converting dictionary to Vessels using {os.cpu_count()} processes")
             return list(pool.map(Vessel.from_dict, list_of_dicts))
 
     def to_df(self, columns=None) -> pd.DataFrame:

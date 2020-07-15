@@ -6,6 +6,9 @@ import pandas as pd
 
 from vortexasdk.api import Attribute
 from vortexasdk.api.search_result import Result
+from vortexasdk.logger import get_logger
+
+logger = get_logger(__name__)
 
 
 class AttributeResult(Result):
@@ -16,6 +19,7 @@ class AttributeResult(Result):
         list_of_dicts = super().to_list()
 
         with Pool(os.cpu_count()) as pool:
+            logger.debug(f"Converting dictionary to AttributeResult using {os.cpu_count()} processes")
             return list(pool.map(Attribute.from_dict, list_of_dicts))
 
     def to_df(self, columns=None) -> pd.DataFrame:
