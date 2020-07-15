@@ -10,6 +10,9 @@ from vortexasdk.api.entity_flattening import (
     convert_vessel_movement_to_flat_dict,
 )
 from vortexasdk.api.search_result import Result
+from vortexasdk.logger import get_logger
+
+logger = get_logger(__name__)
 
 
 class VesselMovementsResult(Result):
@@ -468,6 +471,8 @@ class VesselMovementsResult(Result):
         ```
 
         """
+        logger.debug(f"Creating DataFrame of VesselMovements")
+
         if columns is None:
             columns = DEFAULT_COLUMNS
 

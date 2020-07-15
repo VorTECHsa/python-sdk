@@ -7,6 +7,9 @@ import pandas as pd
 from vortexasdk.api import Product
 from vortexasdk.api.entity_flattening import flatten_dictionary
 from vortexasdk.api.search_result import Result
+from vortexasdk.logger import get_logger
+
+logger = get_logger(__name__)
 
 
 class ProductResult(Result):
@@ -17,6 +20,7 @@ class ProductResult(Result):
         list_of_dicts = super().to_list()
 
         with Pool(os.cpu_count()) as pool:
+            logger.debug(f"Serializing Products using {os.cpu_count()} processes")
             return list(pool.map(Product.from_dict, list_of_dicts))
 
     def to_df(self, columns=None) -> pd.DataFrame:
@@ -32,6 +36,8 @@ class ProductResult(Result):
         `pd.DataFrame` of products.
 
         """
+        logger.debug(f"Creating DataFrame of Products")
+
         if columns is None:
             columns = DEFAULT_COLUMNS
 

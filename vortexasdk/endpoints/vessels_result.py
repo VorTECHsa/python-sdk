@@ -4,8 +4,11 @@ from typing import List
 
 import pandas as pd
 
+from vortexasdk.logger import get_logger
 from vortexasdk.api import Vessel
 from vortexasdk.api.search_result import Result
+
+logger = get_logger(__name__)
 
 
 class VesselsResult(Result):
@@ -16,6 +19,7 @@ class VesselsResult(Result):
         list_of_dicts = super().to_list()
 
         with Pool(os.cpu_count()) as pool:
+            logger.debug(f"Serializing Vessels using {os.cpu_count()} processes")
             return list(pool.map(Vessel.from_dict, list_of_dicts))
 
     def to_df(self, columns=None) -> pd.DataFrame:
@@ -31,6 +35,8 @@ class VesselsResult(Result):
         `pd.DataFrame` of vessels.
 
         """
+        logger.debug(f"Creating DataFrame of Vessels")
+
         if columns is None:
             columns = DEFAULT_COLUMNS
 

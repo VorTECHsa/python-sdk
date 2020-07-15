@@ -4,8 +4,11 @@ from typing import List
 
 import pandas as pd
 
+from vortexasdk.logger import get_logger
 from vortexasdk.api import Geography
 from vortexasdk.api.search_result import Result
+
+logger = get_logger(__name__)
 
 
 class GeographyResult(Result):
@@ -16,6 +19,7 @@ class GeographyResult(Result):
         list_of_dicts = super().to_list()
 
         with Pool(os.cpu_count()) as pool:
+            logger.debug(f"Serializing Geographies using {os.cpu_count()} processes")
             return list(pool.map(Geography.from_dict, list_of_dicts))
 
     def to_df(self, columns=None) -> pd.DataFrame:
@@ -31,6 +35,8 @@ class GeographyResult(Result):
         `pd.DataFrame` of geographies.
 
         """
+        logger.debug(f"Creating DataFrame of Geographies")
+
         if columns is None:
             columns = DEFAULT_COLUMNS
 

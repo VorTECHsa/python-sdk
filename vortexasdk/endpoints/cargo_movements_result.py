@@ -10,6 +10,9 @@ from vortexasdk.api.entity_flattening import (
     convert_cargo_movement_to_flat_dict,
 )
 from vortexasdk.api.search_result import Result
+from vortexasdk.logger import get_logger
+
+logger = get_logger(__name__)
 
 
 class CargoMovementsResult(Result):
@@ -533,6 +536,8 @@ class CargoMovementsResult(Result):
         ```
 
         """
+        logger.debug(f"Creating DataFrame of CargoMovements")
+
         if columns is None:
             columns = DEFAULT_COLUMNS
 
