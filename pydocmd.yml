@@ -69,7 +69,9 @@ pages:
       4 Ballast Movements: examples/4_ballast_movements.md
       5 Chinese Daily Crude Imports: examples/5_chinese_daily_imports.md
       6 Floating Storage Medium Sour Crude: examples/6_medium_sour_floating_storage.md
+      7 Ingest Custom Excel Charterers: examples/7_custom_excel_charterer_ingestion.md
 theme:
   name: readthedocs
   collapse_navigation: true
   search_index_only: false
+  custom_dir: custom_theme/ # https://github.com/mkdocs/mkdocs/issues/1671#issuecomment-543252346:

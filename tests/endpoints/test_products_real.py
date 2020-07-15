@@ -20,6 +20,22 @@ class TestProductsReal(TestCaseUsingRealAPI):
         assert list(df.columns) == ["name", "id"]
         assert len(df) > 0
 
+    def test_search_exact_match(self):
+        search_term = "Gasoil"
+
+        # Confirm that searching our search term does indeed yield more than one result
+        products = Products().search(search_term).to_list()
+        if len(products) <= 1:
+            raise Exception(
+                f"Unable to perform exact match test on {search_term}."
+            )
+
+        products_exact = (
+            Products().search(search_term, exact_term_match=True).to_list()
+        )
+
+        assert {p.name for p in products_exact} == {search_term}
+
     def test_load_all(self):
         all_products = Products().load_all()
 

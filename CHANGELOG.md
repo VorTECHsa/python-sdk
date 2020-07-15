@@ -1,5 +1,62 @@
 # Changelog
 
+## [0.23.1](https://github.com/vortechsa/python-sdk/tree/0.23.1) (2020-07-15)
+
+[Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.23.0...0.23.1)
+
+**Implemented enhancements:**
+
+- Loading all cargo movements in \<5mins. [\#128](https://github.com/VorTECHsa/python-sdk/issues/128)
+
+**Merged pull requests:**
+
+- docs: Add how-to paste windows key [\#220](https://github.com/VorTECHsa/python-sdk/pull/220) ([KitBurgess](https://github.com/KitBurgess))
+- fix: Check httpstat site, rather than github as github can impose rat… [\#217](https://github.com/VorTECHsa/python-sdk/pull/217) ([KitBurgess](https://github.com/KitBurgess))
+
+## [0.23.0](https://github.com/vortechsa/python-sdk/tree/0.23.0) (2020-06-30)
+
+[Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.22.1...0.23.0)
+
+**Implemented enhancements:**
+
+- Better interface for retrieving IDs [\#166](https://github.com/VorTECHsa/python-sdk/issues/166)
+
+**Closed issues:**
+
+- Warn users if their API key isn't uuidv4 [\#203](https://github.com/VorTECHsa/python-sdk/issues/203)
+
+**Merged pull requests:**
+
+- ci: Kill process on old docs if it exists [\#215](https://github.com/VorTECHsa/python-sdk/pull/215) ([KitBurgess](https://github.com/KitBurgess))
+- feat: Add exact match filter to geogs, vessels, corporations [\#214](https://github.com/VorTECHsa/python-sdk/pull/214) ([KitBurgess](https://github.com/KitBurgess))
+
+## [0.22.1](https://github.com/vortechsa/python-sdk/tree/0.22.1) (2020-06-30)
+
+[Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.22.0...0.22.1)
+
+**Merged pull requests:**
+
+- Password docs [\#216](https://github.com/VorTECHsa/python-sdk/pull/216) ([KitBurgess](https://github.com/KitBurgess))
+
+## [0.22.0](https://github.com/vortechsa/python-sdk/tree/0.22.0) (2020-06-29)
+
+[Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.21.1...0.22.0)
+
+**Implemented enhancements:**
+
+- Filter vessel movements and cargo movements with attributes, age, flag & scrubbers. [\#191](https://github.com/VorTECHsa/python-sdk/issues/191)
+- Add waypoints column to cargo movements df [\#117](https://github.com/VorTECHsa/python-sdk/issues/117)
+
+**Merged pull requests:**
+
+- Allow users to interactively enter API key [\#213](https://github.com/VorTECHsa/python-sdk/pull/213) ([KitBurgess](https://github.com/KitBurgess))
+- feat: Exact term match [\#212](https://github.com/VorTECHsa/python-sdk/pull/212) ([KitBurgess](https://github.com/KitBurgess))
+- chore: Allow users to set lowercase log level [\#211](https://github.com/VorTECHsa/python-sdk/pull/211) ([KitBurgess](https://github.com/KitBurgess))
+- docs: Add loading external data example [\#209](https://github.com/VorTECHsa/python-sdk/pull/209) ([KitBurgess](https://github.com/KitBurgess))
+- docs: typo in products endpoint [\#208](https://github.com/VorTECHsa/python-sdk/pull/208) ([Natday](https://github.com/Natday))
+- Webinar10jun [\#207](https://github.com/VorTECHsa/python-sdk/pull/207) ([KitBurgess](https://github.com/KitBurgess))
+- Google analytics [\#206](https://github.com/VorTECHsa/python-sdk/pull/206) ([KitBurgess](https://github.com/KitBurgess))
+
 ## [0.21.1](https://github.com/vortechsa/python-sdk/tree/0.21.1) (2020-06-08)
 
 [Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.21.0...0.21.1)
