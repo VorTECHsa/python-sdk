@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.23.1](https://github.com/vortechsa/python-sdk/tree/0.23.1) (2020-07-15)
+
+[Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.23.0...0.23.1)
+
+**Implemented enhancements:**
+
+- Loading all cargo movements in \<5mins. [\#128](https://github.com/VorTECHsa/python-sdk/issues/128)
+
+**Merged pull requests:**
+
+- docs: Add how-to paste windows key [\#220](https://github.com/VorTECHsa/python-sdk/pull/220) ([KitBurgess](https://github.com/KitBurgess))
+- fix: Check httpstat site, rather than github as github can impose rat… [\#217](https://github.com/VorTECHsa/python-sdk/pull/217) ([KitBurgess](https://github.com/KitBurgess))
+
 ## [0.23.0](https://github.com/vortechsa/python-sdk/tree/0.23.0) (2020-06-30)
 
 [Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.22.1...0.23.0)
@@ -68,7 +81,6 @@
 
 - Fix typo in docs/endpoints/about-endpoints.md [\#200](https://github.com/VorTECHsa/python-sdk/pull/200) ([pgrimaud](https://github.com/pgrimaud))
 - Feat/version notification [\#198](https://github.com/VorTECHsa/python-sdk/pull/198) ([asfakianakis](https://github.com/asfakianakis))
-- Feat attribute endpoint  [\#190](https://github.com/VorTECHsa/python-sdk/pull/190) ([SeanBarry](https://github.com/SeanBarry))
 
 ## [0.20.0](https://github.com/vortechsa/python-sdk/tree/0.20.0) (2020-05-19)
 
@@ -83,6 +95,7 @@
 - Feat attribute endpoint [\#197](https://github.com/VorTECHsa/python-sdk/pull/197) ([KitBurgess](https://github.com/KitBurgess))
 - Feat new filters [\#193](https://github.com/VorTECHsa/python-sdk/pull/193) ([SeanBarry](https://github.com/SeanBarry))
 - docs: add SeanBarry as a contributor [\#192](https://github.com/VorTECHsa/python-sdk/pull/192) ([allcontributors[bot]](https://github.com/apps/allcontributors))
+- Feat attribute endpoint  [\#190](https://github.com/VorTECHsa/python-sdk/pull/190) ([SeanBarry](https://github.com/SeanBarry))
 - fix: Correct commant in check setup image [\#188](https://github.com/VorTECHsa/python-sdk/pull/188) ([KitBurgess](https://github.com/KitBurgess))
 
 ## [0.19.0](https://github.com/vortechsa/python-sdk/tree/0.19.0) (2020-05-04)
@@ -529,10 +542,6 @@
 
 - Allow for filtering by product name in vessel endpoint filters  [\#31](https://github.com/VorTECHsa/python-sdk/issues/31)
 
-**Fixed bugs:**
-
-- Tried to pull out a reference df of all vessels but only got 200 results? [\#29](https://github.com/VorTECHsa/python-sdk/issues/29)
-
 **Merged pull requests:**
 
 - fix: Move to pytest, run mock setup before each test [\#52](https://github.com/VorTECHsa/python-sdk/pull/52) ([KitBurgess](https://github.com/KitBurgess))
@@ -550,6 +559,10 @@
 **Implemented enhancements:**
 
 - Create Products endpoint [\#7](https://github.com/VorTECHsa/python-sdk/issues/7)
+
+**Fixed bugs:**
+
+- Tried to pull out a reference df of all vessels but only got 200 results? [\#29](https://github.com/VorTECHsa/python-sdk/issues/29)
 
 **Closed issues:**
 
