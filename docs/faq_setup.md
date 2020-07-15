@@ -64,7 +64,7 @@ A successful setup looks like this:
 
 
 
-On Windows, you'll need to paste the API key by right click the console menu, like so:
+On Windows, you'll need to paste the API key by right clicking the console menu, like so:
 
 
 Hitting Ctrl+V won't paste the API key, this is due to a [known python windows bug](https://bugs.python.org/issue37426)
