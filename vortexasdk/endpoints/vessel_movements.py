@@ -169,7 +169,7 @@ class VesselMovements(Search):
             ),
         }
 
-        params = {
+        api_params = {
             "filter_activity": filter_activity,
             "filter_time_min": to_ISODate(filter_time_min),
             "filter_time_max": to_ISODate(filter_time_max),
@@ -196,4 +196,4 @@ class VesselMovements(Search):
             "size": self._MAX_PAGE_RESULT_SIZE,
         }
 
-        return VesselMovementsResult(super().search(**params))
+        return VesselMovementsResult(super().search(**api_params))

@@ -148,7 +148,7 @@ class CargoTimeSeries(Search):
 
 
         """
-        params = {
+        api_params = {
             "filter_activity": filter_activity,
             "filter_time_min": to_ISODate(filter_time_min),
             "filter_time_max": to_ISODate(filter_time_max),
@@ -174,4 +174,4 @@ class CargoTimeSeries(Search):
             "size": self._MAX_PAGE_RESULT_SIZE,
         }
 
-        return TimeSeriesResult(super().search(**params))
+        return TimeSeriesResult(super().search(**api_params))

@@ -219,7 +219,7 @@ class CargoMovements(Search):
             ),
         }
 
-        params = {
+        api_params = {
             "filter_activity": filter_activity,
             "filter_time_min": to_ISODate(filter_time_min),
             "filter_time_max": to_ISODate(filter_time_max),
@@ -254,4 +254,4 @@ class CargoMovements(Search):
             "size": self._MAX_PAGE_RESULT_SIZE,
         }
 
-        return CargoMovementsResult(super().search(**params))
+        return CargoMovementsResult(super().search(**api_params))
