@@ -1,5 +1,4 @@
 import os
-from multiprocessing.pool import Pool
 from typing import List
 
 import pandas as pd
@@ -17,9 +16,8 @@ class TimeSeriesResult(Result):
     def to_list(self) -> List[TimeSeriesItem]:
         """Represents time series as a list."""
         list_of_dicts = super().to_list()
-        with Pool(os.cpu_count()) as pool:
-            logger.debug(f"Converting dictionary to TimeSeries using {os.cpu_count()} processes")
-            return list(pool.map(TimeSeriesItem.from_dict, list_of_dicts))
+        logger.debug(f"Converting dictionary to TimeSeries using {os.cpu_count()} processes")
+        return list(map(TimeSeriesItem.from_dict, list_of_dicts))
 
     def to_df(self, columns=None) -> pd.DataFrame:
         """Represents the timeseries as a dataframe.

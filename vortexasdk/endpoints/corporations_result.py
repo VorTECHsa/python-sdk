@@ -1,5 +1,4 @@
 import os
-from multiprocessing import Pool
 from typing import List
 
 import pandas as pd
@@ -18,9 +17,8 @@ class CorporationsResult(Result):
         """Represent vessels as a list."""
         list_of_dicts = super().to_list()
 
-        with Pool(os.cpu_count()) as pool:
-            logger.debug(f"Converting dictionary to Corporations using {os.cpu_count()} processes")
-            return list(pool.map(Corporation.from_dict, list_of_dicts))
+        logger.debug(f"Converting dictionary to Corporations using {os.cpu_count()} processes")
+        return list(map(Corporation.from_dict, list_of_dicts))
 
     def to_df(self, columns=None) -> pd.DataFrame:
         """

@@ -1,5 +1,4 @@
 import os
-from multiprocessing.pool import Pool
 from typing import List
 
 import pandas as pd
@@ -18,9 +17,8 @@ class AttributeResult(Result):
         """Represent attributes as a list."""
         list_of_dicts = super().to_list()
 
-        with Pool(os.cpu_count()) as pool:
-            logger.debug(f"Converting dictionary to AttributeResult using {os.cpu_count()} processes")
-            return list(pool.map(Attribute.from_dict, list_of_dicts))
+        logger.debug(f"Converting dictionary to AttributeResult using {os.cpu_count()} processes")
+        return list(map(Attribute.from_dict, list_of_dicts))
 
     def to_df(self, columns=None) -> pd.DataFrame:
         """
