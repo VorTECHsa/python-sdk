@@ -85,8 +85,12 @@ class Search:
         """
         logger.info(f"Searching {self.__class__.__name__}")
         api_result = default_client().search(self._resource, **api_params)
+        logger.debug(
+            f"{len(api_result)} results received from {self._resource}"
+        )
 
         if exact_term_match:
+            logger.debug("Filtering results on exact term match")
             return filter_exact_match(api_params["term"], api_result)
         else:
             return api_result
