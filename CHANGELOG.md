@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.23.2](https://github.com/vortechsa/python-sdk/tree/0.23.2) (2020-07-16)
+
+[Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.23.1...0.23.2)
+
+**Fixed bugs:**
+
+- SDK Sometimes freezes when converting dicts to class types on Windows  [\#224](https://github.com/VorTECHsa/python-sdk/issues/224)
+
+**Merged pull requests:**
+
+- Consolidate list [\#223](https://github.com/VorTECHsa/python-sdk/pull/223) ([KitBurgess](https://github.com/KitBurgess))
+- chore: Add more detailed debug log messages [\#221](https://github.com/VorTECHsa/python-sdk/pull/221) ([KitBurgess](https://github.com/KitBurgess))
+- feat: Floating storage beginner notebook [\#219](https://github.com/VorTECHsa/python-sdk/pull/219) ([Natday](https://github.com/Natday))
+- Update issue templates [\#218](https://github.com/VorTECHsa/python-sdk/pull/218) ([KitBurgess](https://github.com/KitBurgess))
+
 ## [0.23.1](https://github.com/vortechsa/python-sdk/tree/0.23.1) (2020-07-15)
 
 [Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.23.0...0.23.1)
