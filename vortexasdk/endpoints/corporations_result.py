@@ -7,6 +7,7 @@ import pandas as pd
 from vortexasdk.api import Corporation
 from vortexasdk.api.search_result import Result
 from vortexasdk.logger import get_logger
+from vortexasdk.create_dataframe import create_dataframe
 
 logger = get_logger(__name__)
 
@@ -19,7 +20,9 @@ class CorporationsResult(Result):
         list_of_dicts = super().to_list()
 
         with Pool(os.cpu_count()) as pool:
-            logger.debug(f"Converting dictionary to Corporations using {os.cpu_count()} processes")
+            logger.debug(
+                f"Converting dictionary to Corporations using {os.cpu_count()} processes"
+            )
             return list(pool.map(Corporation.from_dict, list_of_dicts))
 
     def to_df(self, columns=None) -> pd.DataFrame:
@@ -35,15 +38,12 @@ class CorporationsResult(Result):
         `pd.DataFrame` of corporations.
 
         """
-        logger.debug(f"Creating DataFrame of Vessels")
-
-        if columns is None:
-            columns = DEFAULT_COLUMNS
-
-        if columns == "all":
-            return pd.DataFrame(super().to_list())
-        else:
-            return pd.DataFrame(super().to_list(), columns=columns)
+        return create_dataframe(
+            columns=columns,
+            default_columns=DEFAULT_COLUMNS,
+            data=super().to_list(),
+            logger_description="Corporations",
+        )
 
 
 DEFAULT_COLUMNS = ["id", "name", "corporate_entity_type"]

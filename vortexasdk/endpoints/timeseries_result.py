@@ -7,6 +7,7 @@ import pandas as pd
 from vortexasdk.api.search_result import Result
 from vortexasdk.api.timeseries_item import TimeSeriesItem
 from vortexasdk.logger import get_logger
+from vortexasdk.create_dataframe import create_dataframe
 
 logger = get_logger(__name__)
 
@@ -18,7 +19,9 @@ class TimeSeriesResult(Result):
         """Represents time series as a list."""
         list_of_dicts = super().to_list()
         with Pool(os.cpu_count()) as pool:
-            logger.debug(f"Converting dictionary to TimeSeries using {os.cpu_count()} processes")
+            logger.debug(
+                f"Converting dictionary to TimeSeries using {os.cpu_count()} processes"
+            )
             return list(pool.map(TimeSeriesItem.from_dict, list_of_dicts))
 
     def to_df(self, columns=None) -> pd.DataFrame:
@@ -36,4 +39,12 @@ class TimeSeriesResult(Result):
         the number of cargo movements contributing towards this day's tonnage.
 
         """
-        return pd.DataFrame(data=super().to_list())
+        return create_dataframe(
+            columns=columns,
+            default_columns=DEFAULT_COLUMNS,
+            data=super().to_list(),
+            logger_description="TimeSeries",
+        )
+
+
+DEFAULT_COLUMNS = ["key", "value", "count"]

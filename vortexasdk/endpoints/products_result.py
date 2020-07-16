@@ -7,6 +7,7 @@ import pandas as pd
 from vortexasdk.api import Product
 from vortexasdk.api.entity_flattening import flatten_dictionary
 from vortexasdk.api.search_result import Result
+from vortexasdk.create_dataframe import create_dataframe
 from vortexasdk.logger import get_logger
 
 logger = get_logger(__name__)
@@ -20,7 +21,9 @@ class ProductResult(Result):
         list_of_dicts = super().to_list()
 
         with Pool(os.cpu_count()) as pool:
-            logger.debug(f"Converting dictionary to Products using {os.cpu_count()} processes")
+            logger.debug(
+                f"Converting dictionary to Products using {os.cpu_count()} processes"
+            )
             return list(pool.map(Product.from_dict, list_of_dicts))
 
     def to_df(self, columns=None) -> pd.DataFrame:
@@ -36,17 +39,14 @@ class ProductResult(Result):
         `pd.DataFrame` of products.
 
         """
-        logger.debug(f"Creating DataFrame of Products")
-
-        if columns is None:
-            columns = DEFAULT_COLUMNS
-
         flattened_dicts = [flatten_dictionary(p) for p in super().to_list()]
 
-        if columns == "all":
-            return pd.DataFrame(data=flattened_dicts)
-        else:
-            return pd.DataFrame(data=flattened_dicts, columns=columns)
+        return create_dataframe(
+            columns=columns,
+            default_columns=DEFAULT_COLUMNS,
+            data=flattened_dicts,
+            logger_description="Products",
+        )
 
 
 DEFAULT_COLUMNS = ["id", "name", "layer.0", "parent.0.name"]

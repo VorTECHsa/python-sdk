@@ -1,14 +1,11 @@
 """Geographies Endpoint."""
 from typing import Dict, List, Union
 
-from vortexasdk.logger import get_logger
 from vortexasdk.api import ID
 from vortexasdk.endpoints.endpoints import GEOGRAPHIES_REFERENCE
 from vortexasdk.endpoints.geographies_result import GeographyResult
 from vortexasdk.operations import Reference, Search
 from vortexasdk.utils import convert_values_to_list
-
-logger = get_logger(__name__)
 
 
 class Geographies(Reference, Search):

@@ -4,9 +4,10 @@ from typing import List
 
 import pandas as pd
 
-from vortexasdk.logger import get_logger
 from vortexasdk.api import Geography
 from vortexasdk.api.search_result import Result
+from vortexasdk.create_dataframe import create_dataframe
+from vortexasdk.logger import get_logger
 
 logger = get_logger(__name__)
 
@@ -19,7 +20,9 @@ class GeographyResult(Result):
         list_of_dicts = super().to_list()
 
         with Pool(os.cpu_count()) as pool:
-            logger.debug(f"Converting dictionary to Geographies using {os.cpu_count()} processes")
+            logger.debug(
+                f"Converting dictionary to Geographies using {os.cpu_count()} processes"
+            )
             return list(pool.map(Geography.from_dict, list_of_dicts))
 
     def to_df(self, columns=None) -> pd.DataFrame:
@@ -35,15 +38,12 @@ class GeographyResult(Result):
         `pd.DataFrame` of geographies.
 
         """
-        logger.debug(f"Creating DataFrame of Geographies")
-
-        if columns is None:
-            columns = DEFAULT_COLUMNS
-
-        if columns == "all":
-            return pd.DataFrame(data=super().to_list())
-        else:
-            return pd.DataFrame(data=super().to_list(), columns=columns)
+        return create_dataframe(
+            data=super().to_list(),
+            columns=columns,
+            default_columns=DEFAULT_COLUMNS,
+            logger_description="Geographies",
+        )
 
 
 DEFAULT_COLUMNS = ["id", "name", "layer"]
