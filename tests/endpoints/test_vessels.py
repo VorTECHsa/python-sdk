@@ -9,3 +9,7 @@ class TestVessels(TestCaseUsingMockAPI):
         names = [x.name for x in vessels]
 
         assert names == ["0", "058"]
+
+    def test_convert_to_df(self):
+        df = Vessels().search().to_df()
+        assert len(df) > 0

@@ -1,10 +1,17 @@
 from typing import Union, List
 
+from vortexasdk.api.serdes import FromDictMixin
 from vortexasdk.logger import get_logger
 
 import pandas as pd
 
 logger = get_logger(__name__)
+
+
+def create_list(list_of_dicts, output_class: FromDictMixin) -> List:
+    """Convert each list element into an instance of the output class."""
+    logger.debug(f"Converting list of dictionaries to list of {output_class}")
+    return [output_class.from_dict(d) for d in list_of_dicts]
 
 
 def create_dataframe(

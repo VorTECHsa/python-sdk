@@ -1,5 +1,3 @@
-import os
-from multiprocessing.pool import Pool
 from typing import List
 
 import pandas as pd
@@ -7,8 +5,8 @@ import pandas as pd
 from vortexasdk.api import Product
 from vortexasdk.api.entity_flattening import flatten_dictionary
 from vortexasdk.api.search_result import Result
-from vortexasdk.create_dataframe import create_dataframe
 from vortexasdk.logger import get_logger
+from vortexasdk.result_conversions import create_dataframe, create_list
 
 logger = get_logger(__name__)
 
@@ -18,13 +16,8 @@ class ProductResult(Result):
 
     def to_list(self) -> List[Product]:
         """Represent products as a list."""
-        list_of_dicts = super().to_list()
-
-        with Pool(os.cpu_count()) as pool:
-            logger.debug(
-                f"Converting dictionary to Products using {os.cpu_count()} processes"
-            )
-            return list(pool.map(Product.from_dict, list_of_dicts))
+        # noinspection PyTypeChecker
+        return create_list(super().to_list(), Product)
 
     def to_df(self, columns=None) -> pd.DataFrame:
         """

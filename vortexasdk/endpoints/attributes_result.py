@@ -1,12 +1,10 @@
-import os
-from multiprocessing.pool import Pool
 from typing import List
 
 import pandas as pd
 
 from vortexasdk.api import Attribute
 from vortexasdk.api.search_result import Result
-from vortexasdk.create_dataframe import create_dataframe
+from vortexasdk.result_conversions import create_dataframe, create_list
 from vortexasdk.logger import get_logger
 
 logger = get_logger(__name__)
@@ -17,13 +15,8 @@ class AttributeResult(Result):
 
     def to_list(self) -> List[Attribute]:
         """Represent attributes as a list."""
-        list_of_dicts = super().to_list()
-
-        with Pool(os.cpu_count()) as pool:
-            logger.debug(
-                f"Converting dictionary to AttributeResult using {os.cpu_count()} processes"
-            )
-            return list(pool.map(Attribute.from_dict, list_of_dicts))
+        # noinspection PyTypeChecker
+        return create_list(super().to_list(), Attribute)
 
     def to_df(self, columns=None) -> pd.DataFrame:
         """
