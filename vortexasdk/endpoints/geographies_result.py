@@ -6,7 +6,7 @@ import pandas as pd
 
 from vortexasdk.api import Geography
 from vortexasdk.api.search_result import Result
-from vortexasdk.create_dataframe import create_dataframe
+from vortexasdk.result_conversions import create_dataframe, create_list
 from vortexasdk.logger import get_logger
 
 logger = get_logger(__name__)
@@ -17,13 +17,8 @@ class GeographyResult(Result):
 
     def to_list(self) -> List[Geography]:
         """Represent geographies as a list."""
-        list_of_dicts = super().to_list()
-
-        with Pool(os.cpu_count()) as pool:
-            logger.debug(
-                f"Converting dictionary to Geographies using {os.cpu_count()} processes"
-            )
-            return list(pool.map(Geography.from_dict, list_of_dicts))
+        # noinspection PyTypeChecker
+        return create_list(super().to_list(), Geography)
 
     def to_df(self, columns=None) -> pd.DataFrame:
         """
