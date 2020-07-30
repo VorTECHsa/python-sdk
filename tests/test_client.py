@@ -38,7 +38,7 @@ class TestClient(TestCase):
         sample_valid_key = "123e4567-e89b-12d3-a456-426614174000"
         verify_api_key_format(sample_valid_key)
 
-    def test__raised_error_for_response_error(self):
+    def test_raised_error_for_response_error(self):
         badResponse = Response()
         badResponse.code = "bad request"
         badResponse.reason = "bad request"
