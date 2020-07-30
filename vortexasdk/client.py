@@ -158,11 +158,16 @@ def _handle_response(response: Response, payload: Dict = None) -> Dict:
         # noinspection PyBroadException
         try:
             logger.error(response.json())
+            message = response.json()["message"]
         except Exception:
+            message = ""
             pass
 
         logger.error(f"payload: {payload}")
-        json = {}
+        error = f"[{response.status_code} {response.reason}]"
+
+        raise ValueError(f"{error} {message}")
+
     else:
         try:
             json = response.json()
