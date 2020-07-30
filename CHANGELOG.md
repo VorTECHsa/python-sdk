@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.24.0](https://github.com/vortechsa/python-sdk/tree/0.24.0) (2020-07-30)
+
+[Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.23.2...0.24.0)
+
+**Implemented enhancements:**
+
+- Show correct exceptions to clients [\#195](https://github.com/VorTECHsa/python-sdk/issues/195)
+
+**Merged pull requests:**
+
+- \[FEAT\] Raise value error on server response error [\#225](https://github.com/VorTECHsa/python-sdk/pull/225) ([laurence-ashdown](https://github.com/laurence-ashdown))
+
 ## [0.23.2](https://github.com/vortechsa/python-sdk/tree/0.23.2) (2020-07-16)
 
 [Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.23.1...0.23.2)
@@ -130,10 +142,6 @@
 
 - Add connectivity / healthcheck script. [\#180](https://github.com/VorTECHsa/python-sdk/issues/180)
 
-**Merged pull requests:**
-
-- feat: Check setup [\#181](https://github.com/VorTECHsa/python-sdk/pull/181) ([KitBurgess](https://github.com/KitBurgess))
-
 ## [0.17.2](https://github.com/vortechsa/python-sdk/tree/0.17.2) (2020-05-04)
 
 [Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.17.1...0.17.2)
@@ -170,6 +178,7 @@
 **Merged pull requests:**
 
 - fix: Remove exclude empties from payload [\#185](https://github.com/VorTECHsa/python-sdk/pull/185) ([KitBurgess](https://github.com/KitBurgess))
+- feat: Check setup [\#181](https://github.com/VorTECHsa/python-sdk/pull/181) ([KitBurgess](https://github.com/KitBurgess))
 
 ## [0.16.0a4](https://github.com/vortechsa/python-sdk/tree/0.16.0a4) (2020-05-01)
 
