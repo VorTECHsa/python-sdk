@@ -3,6 +3,8 @@ CARGO_TIMESERIES_RESOURCE = "/time-series"
 CARGO_MOVEMENTS_RESOURCE = "/cargo-movements/search"
 VESSEL_MOVEMENTS_RESOURCE = "/vessel-movements/search"
 
+VESSEL_DIVERSIONS_RESOURCE = "/search/vessel-diversions"
+
 ATTRIBUTES_REFERENCE = "/reference/attributes"
 GEOGRAPHIES_REFERENCE = "/reference/geographies"
 VESSELS_REFERENCE = "/reference/vessels"

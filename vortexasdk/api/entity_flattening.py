@@ -19,6 +19,10 @@ def _format_keys(dictionary):
     return flat_with_formatted_keys
 
 
+def convert_vessel_diversion_to_flat_dict(vd: Dict, cols="all") -> Dict:
+    """Convert nested `VesselDiversion` dict to flat dictionary, keeping *cols*."""
+
+
 def convert_cargo_movement_to_flat_dict(cme: Dict, cols="all") -> Dict:
     """Convert nested `CargoMovement` object to flat dictionary, keeping *cols*."""
     as_dict = _group_cargo_movement_attributes_by_layer(cme)

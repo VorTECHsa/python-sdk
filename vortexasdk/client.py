@@ -108,7 +108,7 @@ class VortexaClient(AbstractVortexaClient):
         exclude_params = payload.get("exclude", {})
         payload["exclude"] = filter_empty_values(exclude_params)
 
-        return filter_empty_values(payload)
+        return payload
 
     @staticmethod
     def _calculate_total(response: Dict) -> int:
@@ -139,10 +139,10 @@ def _send_post_request(url, payload, size, offset) -> Dict:
 
     payload_with_offset = copy.deepcopy(payload)
 
-    payload_with_offset["offset"] = offset
-    payload_with_offset["cm_offset"] = offset
-    payload_with_offset["size"] = size
-    payload_with_offset["cm_size"] = size
+    # payload_with_offset["offset"] = offset
+    # payload_with_offset["cm_offset"] = offset
+    # payload_with_offset["size"] = size
+    # payload_with_offset["cm_size"] = size
 
     response = retry_post(url, json=payload_with_offset)
 

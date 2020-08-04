@@ -7,6 +7,7 @@ from vortexasdk.endpoints import (
     Corporations,
     Geographies,
     Products,
+    VesselDiversions,
     VesselMovements,
     Vessels,
 )

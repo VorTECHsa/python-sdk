@@ -1,0 +1,362 @@
+[
+  {
+    "id": "40fda5cdec443c02d9e699ca04f99b8f40fda5cdec443c02d9e699ca04f99b8f",
+    "prev_destination": [
+      {
+        "id": "e316e58e56a661b2d5320b143fca3a3295e6690475f62bc4caf10a645ed46a43",
+        "layer": "country",
+        "label": "Mauritania"
+      },
+      {
+        "id": "83721a9f179522d7532170e28b57cc79f58e2346012ed977849ebad9f7153b46",
+        "layer": "port",
+        "label": "Nouadhibou [MR]"
+      },
+      {
+        "id": "c4a371acd7c3df8bd70e49805e76cb39b1309ccac3d0f4289120079a9ad68bcd",
+        "layer": "region",
+        "label": "Africa"
+      },
+      {
+        "id": "5e0cb0b66780a00576309aecff1b65934fc580d775bab29ac2a79397d8544e04",
+        "layer": "shipping_region",
+        "label": "West Africa"
+      },
+      {
+        "id": "5e0cb0b66780a00576309aecff1b65934fc580d775bab29ac2a79397d8544e04",
+        "layer": "trading_region",
+        "label": "West Africa"
+      },
+      {
+        "id": "e316e58e56a661b2d5320b143fca3a3295e6690475f62bc4caf10a645ed46a43",
+        "layer": "trading_subregion",
+        "label": "Mauritania"
+      }
+    ],
+    "prev_eta": "2020-07-29T06:00:00.000Z",
+    "prev_declared_destination": "NOUADHIBOU",
+    "next_eta": "2020-07-31T01:00:00.000Z",
+    "next_destination": [
+      {
+        "id": "8798b848ede7e47c72ce197a3b94c43b10815cdf2f0e3fbad8a857d66846cb72",
+        "layer": "country",
+        "label": "Senegal"
+      },
+      {
+        "id": "954bd50d3d040e9a6b27ce944511939813bdf5c08c78aa28032f18e4fef73705",
+        "layer": "port",
+        "label": "Dakar [SN]"
+      },
+      {
+        "id": "c4a371acd7c3df8bd70e49805e76cb39b1309ccac3d0f4289120079a9ad68bcd",
+        "layer": "region",
+        "label": "Africa"
+      },
+      {
+        "id": "5e0cb0b66780a00576309aecff1b65934fc580d775bab29ac2a79397d8544e04",
+        "layer": "shipping_region",
+        "label": "West Africa"
+      },
+      {
+        "id": "5e0cb0b66780a00576309aecff1b65934fc580d775bab29ac2a79397d8544e04",
+        "layer": "trading_region",
+        "label": "West Africa"
+      },
+      {
+        "id": "8798b848ede7e47c72ce197a3b94c43b10815cdf2f0e3fbad8a857d66846cb72",
+        "layer": "trading_subregion",
+        "label": "Senegal"
+      }
+    ],
+    "cargoes": [
+      {
+        "product_hierarchy": [
+          {
+            "id": "b68cbb746f8b9098c50e2ba36bcad83001a53bd362e9031fb49085d02c36659c",
+            "layer": "group",
+            "probability": 1,
+            "source": "external",
+            "label": "Clean Petroleum Products"
+          },
+          {
+            "id": "deda35eb9ca56b54e74f0ff370423f9a8c61cf6a3796fcb18eaeeb32a8c290bb",
+            "layer": "group_product",
+            "probability": 1,
+            "source": "external",
+            "label": "Diesel/Gasoil"
+          },
+          {
+            "id": "b2034f1ad3a4ac269e962f00b9914d6b909923cf904d9938f641a0853a4eee68",
+            "layer": "category",
+            "probability": 1,
+            "source": "external",
+            "label": "Gasoil"
+          }
+        ],
+        "quantity": 91799
+      }
+    ],
+    "timestamp": "2020-07-28T16:02:14.000Z",
+    "next_declared_destination": "DAKAR",
+    "origin": [
+      {
+        "id": "c1698979b983b265490545013156924518af07faf7f25905a78a1813054860d8",
+        "layer": "country",
+        "probability": 1,
+        "source": "model",
+        "label": "Spain"
+      },
+      {
+        "id": "a3b6e8606bd3688bd6b2ccc115b2e856c30a904af19746e8f734c53006d27d3c",
+        "layer": "port",
+        "probability": 1,
+        "source": "model",
+        "label": "Las Palmas [ES]"
+      },
+      {
+        "id": "c4a371acd7c3df8bd70e49805e76cb39b1309ccac3d0f4289120079a9ad68bcd",
+        "layer": "region",
+        "probability": 1,
+        "source": "model",
+        "label": "Africa"
+      },
+      {
+        "id": "f39d455f5d38907394d6da3a91da4e391f9a34bd6a17e826d6042761067e88f4",
+        "layer": "region",
+        "probability": 1,
+        "source": "model",
+        "label": "Europe"
+      },
+      {
+        "id": "676c3cff1dffd971ae51cd350f231394eeb0ab94eff981432f6ee55c5219b913",
+        "layer": "shipping_region",
+        "probability": 1,
+        "source": "model",
+        "label": "UKC-Med region"
+      },
+      {
+        "id": "b30fcbd6cb0ff81c3361218e31a75b825770aa2015faeabc7e370d89c2f5781e",
+        "layer": "shipping_region",
+        "probability": 1,
+        "source": "model",
+        "label": "North Africa"
+      },
+      {
+        "id": "6aa9a4fb76ca378e75eff85f458c90f7fd42778c26c957c417490c097161a3c5",
+        "layer": "trading_region",
+        "probability": 1,
+        "source": "model",
+        "label": "Mediterranean (incl. North Africa)"
+      },
+      {
+        "id": "ba1c9704a00c9ddc3e0639e0ff301e08e3f895b29a0ad6bfb88f7918baa8bdb9",
+        "layer": "trading_subregion",
+        "probability": 1,
+        "source": "model",
+        "label": "Canary Islands"
+      },
+      {
+        "id": "704f8619e3c969e11ca8d3c63c84f713860b034054bb32c285ebb539a24b2674",
+        "layer": "terminal",
+        "probability": 1,
+        "source": "model",
+        "label": "Oryx Iberia (S.A.U) Terminal"
+      }
+    ],
+    "next_destination_timestamp": "2020-07-31T01:00:00.000Z",
+    "vessel_id": "52a40e17e22a1947c5c9f59a09ee445c612ba3dbc0a8fb2989effcc06a397280",
+    "vessel_name": "OCEAN MARINER",
+    "vessel_class": "general_purpose",
+    "vessel_imo": 9328340,
+    "vessel_corporate_entities": [
+      {
+        "id": "043c42534f06710bcd4e1861a4bfc5bc777999cbc3257f4d39e790c98c817a64",
+        "label": "Protank Management",
+        "layer": "commercial_owner",
+        "probability": 1,
+        "source": "external"
+      }
+    ],
+    "is_considered_waypoint": false
+  },
+  {
+    "id": "023f37db4e097ab5219e0e3f787071ce023f37db4e097ab5219e0e3f787071ce",
+    "prev_destination": [
+      {
+        "id": "5078bca8d0b0f7f9d30f3c1883e2b42f6d616761d312331a6ca7dd5776d590a8",
+        "layer": "country",
+        "label": "Togo"
+      },
+      {
+        "id": "b27e9bff3433ca46d087bc1cc2ac7c686cfd5b58c8f11658c3894c0ccd6742c2",
+        "layer": "port",
+        "label": "Lome [TG]"
+      },
+      {
+        "id": "c4a371acd7c3df8bd70e49805e76cb39b1309ccac3d0f4289120079a9ad68bcd",
+        "layer": "region",
+        "label": "Africa"
+      },
+      {
+        "id": "5e0cb0b66780a00576309aecff1b65934fc580d775bab29ac2a79397d8544e04",
+        "layer": "shipping_region",
+        "label": "West Africa"
+      },
+      {
+        "id": "5e0cb0b66780a00576309aecff1b65934fc580d775bab29ac2a79397d8544e04",
+        "layer": "trading_region",
+        "label": "West Africa"
+      },
+      {
+        "id": "5078bca8d0b0f7f9d30f3c1883e2b42f6d616761d312331a6ca7dd5776d590a8",
+        "layer": "trading_subregion",
+        "label": "Togo"
+      }
+    ],
+    "prev_eta": "2020-08-04T11:12:33.000Z",
+    "prev_declared_destination": "ES LPA>TG LFW",
+    "next_eta": "2020-07-30T06:12:59.000Z",
+    "next_destination": [
+      {
+        "id": "8798b848ede7e47c72ce197a3b94c43b10815cdf2f0e3fbad8a857d66846cb72",
+        "layer": "country",
+        "label": "Senegal"
+      },
+      {
+        "id": "954bd50d3d040e9a6b27ce944511939813bdf5c08c78aa28032f18e4fef73705",
+        "layer": "port",
+        "label": "Dakar [SN]"
+      },
+      {
+        "id": "c4a371acd7c3df8bd70e49805e76cb39b1309ccac3d0f4289120079a9ad68bcd",
+        "layer": "region",
+        "label": "Africa"
+      },
+      {
+        "id": "5e0cb0b66780a00576309aecff1b65934fc580d775bab29ac2a79397d8544e04",
+        "layer": "shipping_region",
+        "label": "West Africa"
+      },
+      {
+        "id": "5e0cb0b66780a00576309aecff1b65934fc580d775bab29ac2a79397d8544e04",
+        "layer": "trading_region",
+        "label": "West Africa"
+      },
+      {
+        "id": "8798b848ede7e47c72ce197a3b94c43b10815cdf2f0e3fbad8a857d66846cb72",
+        "layer": "trading_subregion",
+        "label": "Senegal"
+      }
+    ],
+    "cargoes": [
+      {
+        "product_hierarchy": [
+          {
+            "id": "b68cbb746f8b9098c50e2ba36bcad83001a53bd362e9031fb49085d02c36659c",
+            "layer": "group",
+            "probability": 0.7067096,
+            "source": "model",
+            "label": "Clean Petroleum Products"
+          },
+          {
+            "id": "9256907ba7e4ed11ff03aa297a7e62e14484ce5a85c8118c7495b9120ad0e268",
+            "layer": "group_product",
+            "probability": 0.7067096,
+            "source": "model",
+            "label": "Gasoline/Blending Components"
+          },
+          {
+            "id": "c76d43ed46524d628a16be1b63019719631a5c2dcbf54af5a94e90ebe2c37a4f",
+            "layer": "category",
+            "probability": 0.7067096,
+            "source": "model",
+            "label": "Finished Gasoline"
+          }
+        ],
+        "quantity": 762003
+      }
+    ],
+    "timestamp": "2020-07-28T16:12:59.000Z",
+    "next_declared_destination": "ES LPA>SN DKR",
+    "origin": [
+      {
+        "id": "b563622dd5a266e6a022036c867c746bef712c2b06fb6f73402af43548fe94ac",
+        "layer": "country",
+        "probability": 1,
+        "source": "model",
+        "label": "Belgium"
+      },
+      {
+        "id": "abddd9f9105fb7eff9c4b93162ad3b2c0192c730dc2e9ef6074651adb2d2956f",
+        "layer": "port",
+        "probability": 1,
+        "source": "model",
+        "label": "Antwerp [BE]"
+      },
+      {
+        "id": "f39d455f5d38907394d6da3a91da4e391f9a34bd6a17e826d6042761067e88f4",
+        "layer": "region",
+        "probability": 1,
+        "source": "model",
+        "label": "Europe"
+      },
+      {
+        "id": "44d51c1b1892351a9d444cc138ce7623a3771f84e513145e14c763fc5c2aea10",
+        "layer": "shipping_region",
+        "probability": 1,
+        "source": "model",
+        "label": "North West Europe"
+      },
+      {
+        "id": "676c3cff1dffd971ae51cd350f231394eeb0ab94eff981432f6ee55c5219b913",
+        "layer": "shipping_region",
+        "probability": 1,
+        "source": "model",
+        "label": "UKC-Med region"
+      },
+      {
+        "id": "bade4c581eb9acde289ed9c321af6357878b7765079260b5facaa071d29d8d93",
+        "layer": "shipping_region",
+        "probability": 1,
+        "source": "model",
+        "label": "UKC"
+      },
+      {
+        "id": "a50f4a476665d3d507f54398b1a1aed1746c5469619c83c3398716724f8dda27",
+        "layer": "trading_region",
+        "probability": 1,
+        "source": "model",
+        "label": "ARA Region"
+      },
+      {
+        "id": "b563622dd5a266e6a022036c867c746bef712c2b06fb6f73402af43548fe94ac",
+        "layer": "trading_subregion",
+        "probability": 1,
+        "source": "model",
+        "label": "Belgium"
+      },
+      {
+        "id": "072b480a6adb40b9fd3eba542cc419b08b6e07c3d97bcf5bc10e7a97fe6d22fd",
+        "layer": "terminal",
+        "probability": 1,
+        "source": "model",
+        "label": "Sea-Tank Terminal Antwerp (Quay 254-316)"
+      }
+    ],
+    "next_destination_timestamp": "2020-07-30T06:12:59.000Z",
+    "vessel_id": "08256f9755e9ea4dae9871ce0a14f0bd58c38d7f694b0814caf0ed2c0f096693",
+    "vessel_name": "ARETEA",
+    "vessel_class": "aframax",
+    "vessel_imo": 9711456,
+    "vessel_corporate_entities": [
+      {
+        "id": "de82461cc91f1057a849c48824f9debdbd1eaef6263c45436de5509faf1221bf",
+        "label": "TOTAL",
+        "layer": "commercial_owner",
+        "probability": 1,
+        "source": "external"
+      }
+    ],
+    "is_considered_waypoint": false
+  }
+]
