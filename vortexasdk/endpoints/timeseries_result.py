@@ -33,12 +33,16 @@ class TimeSeriesResult(Result):
         the number of cargo movements contributing towards this day's tonnage.
 
         """
-        return create_dataframe(
+        df = create_dataframe(
             columns=columns,
             default_columns=DEFAULT_COLUMNS,
             data=super().to_list(),
             logger_description="TimeSeries",
         )
+
+        df["key"] = pd.to_datetime(df["key"])
+
+        return df
 
 
 DEFAULT_COLUMNS = ["key", "value", "count"]
