@@ -17,9 +17,6 @@ from datetime import datetime
 from vortexasdk import CargoMovements, Geographies, Vessels
 
 if __name__ == "__main__":
-
-    raise ImportError("This should fail ci")
-
     # Find china ID
     china = [
         g.id
