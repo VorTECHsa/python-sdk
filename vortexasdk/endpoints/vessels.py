@@ -37,8 +37,7 @@ class Vessels(Reference, Search):
 
             ids: ID or IDs of vessels we'd like to search
 
-            vessel_classes: vessel_class (or list of vessel classes) we'd like to search.
-              Each vessel class must be one of "tiny_tanker" , "general_purpose" , "handysize" , "handymax" , "panamax" , "aframax" , "suezmax" , "vlcc_plus" , "sgc" , "mgc" , "lgc" , "vlgc". Refer to [ VortexaAPI Vessel Entities](https://docs.vortexa.com/reference/intro-vessel-entities) for the most up-to-date list of vessel classes.
+            vessel_classes: vessel_class (or list of vessel classes) we'd like to search. Each vessel class must be one of `"tiny_tanker" , "general_purpose" , "handysize" , "handymax" , "panamax", "aframax" , "suezmax" , "vlcc_plus" , "sgc" , "mgc" , "lgc" , "vlgc"`. Refer to [VortexaAPI Vessel Entities](https://docs.vortexa.com/reference/intro-vessel-entities) for the most up-to-date list of vessel classes.
 
             vessel_product_types: A product ID, or list of product IDs to filter on, searching vessels _currently_ carrying these products.
 
