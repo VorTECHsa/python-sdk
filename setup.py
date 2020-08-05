@@ -25,7 +25,7 @@ setuptools.setup(
     ],
     python_requires=">=3.7",
     install_requires=[
-        "pandas==0.25.2",
+        "pandas>=0.25.2",
         "requests==2.22.0",
         "jsons==1.0.0",
         "flatten-dict==0.2.0",
