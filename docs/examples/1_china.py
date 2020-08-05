@@ -18,11 +18,7 @@ from vortexasdk import CargoMovements, Geographies, Vessels
 
 if __name__ == "__main__":
     # Find china ID
-    china = [
-        g.id
-        for g in Geographies().search(term="china").to_list()
-        if "country" in g.layer
-    ]
+    china = Geographies().search(term="China", exact_term_match=True).to_list()[0].id
 
     # Find the ID of all VLCCs
     vlccs = [

@@ -18,19 +18,12 @@ from datetime import datetime
 from vortexasdk import CargoTimeSeries, Geographies, Products
 
 if __name__ == "__main__":
-    # Find china ID
-    china = [
-        g.id
-        for g in Geographies().search(term="china").to_list()
-        if "country" in g.layer
-    ]
+    # Find china ID, here we're only looking for geographies with the exact name China, so we set exact_term_match=True
+    china = Geographies().search(term="China", exact_term_match=True).to_list()[0].id
 
-    # Find Crude/Condensates ID
-    crude_condensates = [
-        p.id
-        for p in Products().search(term="Crude/Condensates").to_list()
-        if p.name == "Crude/Condensates"
-    ]
+    # Find Crude/Condensates ID.
+    # Again, we know the exact name of the product we're searching for, so we set exact_term_match=True
+    crude_condensates = Products().search(term="Crude/Condensates", exact_term_match=True)[0].id
 
     # Query API
     search_result = CargoTimeSeries().search(
