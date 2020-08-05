@@ -14,6 +14,15 @@ def create_list(list_of_dicts, output_class: FromDictMixin) -> List:
     return [output_class.from_dict(d) for d in list_of_dicts]
 
 
+def format_datatypes(df: pd.DataFrame) -> pd.DataFrame:
+    """Format the relevant columns with sensible datatypes"""
+    timestamp_cols = [c for c in df.columns if "timestamp" in c]
+
+    df[timestamp_cols] = df[timestamp_cols].apply(pd.to_datetime)
+
+    return df
+
+
 def create_dataframe(
     columns: Union[None, List[str]],
     default_columns: List[str],
@@ -30,8 +39,10 @@ def create_dataframe(
     logger.debug(f"Creating DataFrame of {logger_description}")
 
     if columns is None:
-        return pd.DataFrame(data=data, columns=default_columns)
+        df = pd.DataFrame(data=data, columns=default_columns)
     elif columns == "all":
-        return pd.DataFrame(data=data)
+        df = pd.DataFrame(data=data)
     else:
-        return pd.DataFrame(data=data, columns=columns)
+        df = pd.DataFrame(data=data, columns=columns)
+
+    return format_datatypes(df)
