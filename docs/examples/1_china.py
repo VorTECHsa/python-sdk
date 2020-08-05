@@ -12,16 +12,31 @@ The below script returns:
 
 
 """
-from vortexasdk import CargoMovements, Vessels
+from datetime import datetime
 
-print(f'Running {__file__}')
+from vortexasdk import CargoMovements, Geographies, Vessels
 
-# Search for all the VLCC vessel IDs
-vlccs = [v['id'] for v in Vessels().search(vessel_classes='vlcc')]
+if __name__ == "__main__":
+    # Find china ID
+    china = [
+        g.id
+        for g in Geographies().search(term="china").to_list()
+        if "country" in g.layer
+    ]
 
-df = CargoMovements().search(
-    filter_vessels=vlccs,
-    filter_destinations="China",
-    filter_time_min="2019-08-29T00:00:00.000Z",
-    filter_time_max="2019-10-30T00:00:00.000Z",
-).to_df()
+    # Find the ID of all VLCCs
+    vlccs = [
+        v.id for v in Vessels().search(vessel_classes="vlcc_plus").to_list()
+    ]
+
+    # Query API
+    search_result = CargoMovements().search(
+        filter_activity="loading_start",
+        filter_vessels=vlccs,
+        filter_destinations=china,
+        filter_time_min=datetime(2019, 9, 29),
+        filter_time_max=datetime(2019, 10, 30),
+    )
+
+    # Convert search result to dataframe
+    df = search_result.to_df()

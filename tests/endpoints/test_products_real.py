@@ -1,47 +1,68 @@
-from unittest import TestCase, skipIf
-
-from tests.config import SKIP_TAGS
-from vortexasdk.client import create_client, set_client
+from tests.testcases import TestCaseUsingRealAPI
 from vortexasdk.endpoints.products import Products
+from vortexasdk.endpoints.products_result import DEFAULT_COLUMNS
 
 
-@skipIf('real' in SKIP_TAGS, 'Skipping tests that hit the real API server.')
-class TestProductsReal(TestCase):
+class TestProductsReal(TestCaseUsingRealAPI):
+    def test_search(self):
+        products = Products().search().to_list()
+        assert len(products) > 0
 
-    def setUp(self) -> None:
-        set_client(create_client())
+        print([x.name for x in products[:5]])
 
-    def test_search_ids(self):
-        ids = [
-            "e166e6253dd843624f6cbe4fd45e7f2cff4671e600b4d6371172dd92a0255946",
-            "6cd99c8f9e67e61892a691237b3342a4caae5ec1c76784b1b93952afda44ae24"
-        ]
+    def test_search_dataframe(self):
+        df = Products().search().to_df()
+        assert list(df.columns) == DEFAULT_COLUMNS
+        assert len(df) > 0
 
-        products = Products().search(ids=ids).to_list()
-        assert len(products) == 2
+    def test_search_dataframe_subset_of_cols(self):
+        df = Products().search().to_df(columns=["name", "id"])
+        assert list(df.columns) == ["name", "id"]
+        assert len(df) > 0
 
-        print([x.name for x in products])
+    def test_search_exact_match(self):
+        search_term = "Gasoil"
 
-    def test_search_ids_dataframe(self):
-        ids = [
-            "e166e6253dd843624f6cbe4fd45e7f2cff4671e600b4d6371172dd92a0255946",
-            "6cd99c8f9e67e61892a691237b3342a4caae5ec1c76784b1b93952afda44ae24"
-        ]
+        # Confirm that searching our search term does indeed yield more than one result
+        products = Products().search(search_term).to_list()
+        if len(products) <= 1:
+            raise Exception(
+                f"Unable to perform exact match test on {search_term}."
+            )
 
-        df = Products().search(ids=ids).to_df()
-        assert list(df.columns) == ['id', 'name', 'parent']
-        assert len(df) == 2
+        products_exact = (
+            Products().search(search_term, exact_term_match=True).to_list()
+        )
 
-    def test_search_crude(self):
-        set_client(create_client())
+        assert {p.name for p in products_exact} == {search_term}
 
-        result = [p.id for p in Products().search("Crude").to_list()]
+    def test_load_all(self):
+        all_products = Products().load_all()
 
-        assert "6f11b0724c9a4e85ffa7f1445bc768f054af755a090118dcf99f14745c261653" in result
+        assert len(all_products) > 20
 
-    def test_lookup_crude(self):
-        set_client(create_client())
+    def test_search_multiple_terms_to_dataframe(self):
+        df = (
+            Products()
+            .search(
+                term=["diesel", "fuel oil", "grane", "lng", "lpg", "crude"]
+            )
+            .to_df("all")
+        )
 
-        result = Products().reference("6f11b0724c9a4e85ffa7f1445bc768f054af755a090118dcf99f14745c261653")
+        expected_columns = {
+            "id",
+            "name",
+            "layer.0",
+            "leaf",
+            "parent.0.name",
+            "parent.0.layer.0",
+            "parent.0.id",
+            "meta.api_min",
+            "meta.api_max",
+            "ref_type",
+            "meta.sulphur_min",
+            "meta.sulphur_max",
+        }
 
-        assert result[0]['name'] == 'Crude'
+        assert expected_columns.issubset(set(df.columns))

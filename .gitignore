@@ -68,6 +68,7 @@ coverage.xml
 
 # Django stuff:
 *.log
+*.log.*
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
@@ -126,6 +127,7 @@ venv.bak/
 
 # mkdocs documentation
 /site
+mkdocs.yml.backup
 
 # mypy
 .mypy_cache/

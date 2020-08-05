@@ -3,17 +3,23 @@ from typing import List, Optional
 
 from vortexasdk.api.corporation import CorporateEntity
 from vortexasdk.api.id import ID
-from vortexasdk.api.shared_types import IDName, ISODate, Node, Tag
+from vortexasdk.api.serdes import FromDictMixin
+from vortexasdk.api.shared_types import (
+    IDName,
+    ISODate,
+    Node,
+    Tag,
+    Scrubber,
+    Flag,
+)
 
 
-@dataclass(frozen=True, )
-class Vessel(Node):
+@dataclass(frozen=True,)
+class Vessel(Node, FromDictMixin):
     """
     Represent a Vessel reference record returned by the API.
 
-    # Further Documentation
-
-    https://docs.vortexa.com/reference/GET/reference/vessels/%7Bid%7D
+    [Vessels Further Documentation](https://docs.vortexa.com/reference/GET/reference/vessels/%7Bid%7D)
     """
 
     related_names: List[str]
@@ -35,15 +41,18 @@ class Vessel(Node):
     imo: Optional[int] = None
     gross_tonnage: Optional[int] = None
 
+    scrubber: Optional[Scrubber] = None
+    flag: Optional[Flag] = None
+    ice_class: Optional[str] = None
+    propulsion: Optional[str] = None
+
 
 @dataclass(frozen=True)
 class VesselEntity(IDName):
     """
-
     A VesselEntity represents a vessel record used in CargoMovements and VesselMovements.
 
     [Vessel Entities Further Documentation](https://docs.vortexa.com/reference/intro-vessel-entities)
-
     """
 
     id: ID
@@ -57,11 +66,17 @@ class VesselEntity(IDName):
     corporate_entities: List[CorporateEntity]
     tags: List[Tag]
     status: str
+    year: Optional[int] = None
 
-    start_timestamp: ISODate
+    start_timestamp: Optional[ISODate] = None
 
     cubic_capacity: Optional[int] = None
     voyage_id: Optional[str] = None
     fixture_fulfilled: Optional[bool] = None
     end_timestamp: Optional[ISODate] = None
     fixture_id: Optional[str] = None
+
+    scrubber: Optional[Scrubber] = None
+    flag: Optional[Flag] = None
+    ice_class: Optional[str] = None
+    propulsion: Optional[str] = None

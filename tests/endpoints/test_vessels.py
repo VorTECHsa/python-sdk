@@ -1,18 +1,15 @@
-from unittest import TestCase
-
-from tests.mock_client import MockVortexaClient
-from vortexasdk.client import set_client
+from tests.testcases import TestCaseUsingMockAPI
 from vortexasdk.endpoints.vessels import Vessels
 
 
-class TestVessels(TestCase):
-
-    def setUp(self) -> None:
-        set_client(MockVortexaClient())
-
+class TestVessels(TestCaseUsingMockAPI):
     def test_search_ids_retreives_names(self):
         vessels = Vessels().search().to_list()
 
         names = [x.name for x in vessels]
 
-        assert names == ['0', '058']
+        assert names == ["0", "058"]
+
+    def test_convert_to_df(self):
+        df = Vessels().search().to_df()
+        assert len(df) > 0

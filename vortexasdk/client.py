@@ -1,65 +1,141 @@
-import functools
-import os
-from multiprocessing.pool import ThreadPool
-from typing import List
 import copy
+import functools
+import getpass
+import os
+from json import JSONDecodeError
+from multiprocessing.pool import ThreadPool
+from random import shuffle
+from typing import Dict, List
+import uuid
 
-import requests
 from requests import Response
+from tqdm import tqdm
 
 from vortexasdk.abstract_client import AbstractVortexaClient
 from vortexasdk.api.id import ID
 from vortexasdk.endpoints.endpoints import API_URL
+from vortexasdk.logger import get_logger
+from vortexasdk.retry_session import (
+    retry_get,
+    retry_post,
+)
+from vortexasdk.utils import filter_empty_values, is_sdk_version_outdated
+from vortexasdk.version import __version__
+from vortexasdk import __name__ as sdk_pkg_name
+
+logger = get_logger(__name__)
 
 
 class VortexaClient(AbstractVortexaClient):
     """The API client responsible for calling Vortexa's Public API."""
 
-    _DEFAULT_PAGE_LOAD_SIZE = 10000
+    _DEFAULT_PAGE_LOAD_SIZE = int(1e4)
+    _N_THREADS = 6
+    _MAX_ALLOWED_TOTAL = int(1e6)
 
     def __init__(self, **kwargs):
         self.api_key = kwargs["api_key"]
 
-    def get_reference(self, resource: str, id: ID) -> str:
+    def get_reference(self, resource: str, id: ID) -> List[Dict]:
         """Lookup reference data."""
-        url = self._create_url(f'{resource}/{id}')
-        response = requests.get(url)
-        return _handle_response(response)['data']
+        url = self._create_url(f"{resource}/{id}")
+        response = retry_get(url)
+        return _handle_response(response)["data"]
 
     def search(self, resource: str, **data) -> List:
         """Search using `resource` using `**data` as filter params."""
         url = self._create_url(resource)
+        payload = self._cleanse_payload(data)
+        logger.info(f"Payload: {payload}")
 
-        payload = {k: v for k, v in data.items() if v is not None}
+        probe_response = _send_post_request(url, payload, size=1, offset=0)
+        total = self._calculate_total(probe_response)
 
-        total = _send_post_request(url, payload, size=1, offset=0)['total']
-
-        size = data.get('size', 1000)
-        offsets = [i for i in range(0, total, size)]
-
-        n_threads = 4
-        with ThreadPool(n_threads) as pool:
-            print(f'{total} Results to retreive.'
-                  f' Sending {len(offsets)}'
-                  f' post requests in parallel using {n_threads} threads.')
-
-            responses = pool.map(functools.partial(_send_post_request_data, url=url, payload=payload, size=size),
-                                 offsets)
-
-            flattened = [x for y in responses for x in y]
-
+        if total > self._MAX_ALLOWED_TOTAL:
+            raise Exception(
+                f"Attempting to query too many records at once. Attempted records: {total}, Max allowed records: {self._MAX_ALLOWED_TOTAL} . "
+                f"Try reducing the date range to return fewer records."
+            )
+        elif total == 1:
+            # Only one page response, no need to send another request, so return flattened response
+            return probe_response["data"]
+        else:
+            # Multiple pages available, create offsets and fetch all responses
+            responses = self._process_multiple_pages(
+                total=total, url=url, payload=payload, data=data
+            )
+            flattened = self._flatten_response(responses)
+            assert len(flattened) == total, (
+                f"Incorrect number of records returned from API. "
+                f"Actual: {len(flattened)}, expected: {total}"
+            )
             return flattened
 
     def _create_url(self, path: str) -> str:
-        return f'{API_URL}{path}?apikey={self.api_key}'
+        return (
+            f"{API_URL}{path}?_sdk=python_v{__version__}&apikey={self.api_key}"
+        )
+
+    def _process_multiple_pages(
+        self, total: int, url: str, payload: Dict, data: Dict
+    ) -> List:
+        size = data.get("size", 1000)
+        offsets = list(range(0, total, size))
+        shuffle(offsets)
+
+        with tqdm(
+            total=total, desc="Loading from API", disable=(len(offsets) == 1)
+        ) as pbar:
+            with ThreadPool(self._N_THREADS) as pool:
+                logger.info(
+                    f"{total} Results to retrieve."
+                    f" Sending {len(offsets)}"
+                    f" post requests in parallel using {self._N_THREADS} threads."
+                )
+
+                func = functools.partial(
+                    _send_post_request_data,
+                    url=url,
+                    payload=payload,
+                    size=size,
+                    progress_bar=pbar,
+                )
+
+                return pool.map(func, offsets)
+
+    @staticmethod
+    def _cleanse_payload(payload: Dict) -> Dict:
+        exclude_params = payload.get("exclude", {})
+        payload["exclude"] = filter_empty_values(exclude_params)
+
+        return filter_empty_values(payload)
+
+    @staticmethod
+    def _calculate_total(response: Dict) -> int:
+        """ Get total number of pages, if total key does not exist, return 1 """
+        return response.get("total", 1)
+
+    @staticmethod
+    def _flatten_response(response) -> List:
+        return [x for y in response for x in y]
 
 
-def _send_post_request_data(offset, url, payload, size):
-    return _send_post_request(url, payload, size, offset)['data']
+def _send_post_request_data(
+    offset, url, payload, size, progress_bar: tqdm
+) -> List:
+    # noinspection PyBroadException
+    try:
+        progress_bar.update(size)
+    except Exception:
+        logger.warn("Could not update progress bar")
+
+    dict_response = _send_post_request(url, payload, size, offset)
+
+    return dict_response.get("data", [])
 
 
-def _send_post_request(url, payload, size, offset):
-    print(f'Sending post request, offset: {offset}, size: {size}')
+def _send_post_request(url, payload, size, offset) -> Dict:
+    logger.debug(f"Sending post request, offset: {offset}, size: {size}")
 
     payload_with_offset = copy.deepcopy(payload)
 
@@ -68,23 +144,41 @@ def _send_post_request(url, payload, size, offset):
     payload_with_offset["size"] = size
     payload_with_offset["cm_size"] = size
 
-    response = requests.post(url, json=payload_with_offset)
+    response = retry_post(url, json=payload_with_offset)
 
-    response = _handle_response(response, payload_with_offset)
-
-    print(f'Post request from offset {offset} received {len(response["data"])} items')
-
-    return response
+    return _handle_response(response, payload_with_offset)
 
 
-def _handle_response(response: Response, payload=None):
-    if response.ok:
-        return response.json()
+def _handle_response(response: Response, payload: Dict = None) -> Dict:
+    if not response.ok:
+        logger.error(response.reason)
+        logger.error(response.status_code)
+        logger.error(response)
+
+        # noinspection PyBroadException
+        try:
+            logger.error(response.json())
+            message = response.json()["message"]
+        except Exception:
+            message = ""
+            pass
+
+        logger.error(f"payload: {payload}")
+        error = f"[{response.status_code} {response.reason}]"
+
+        raise ValueError(f"{error} {message}")
+
     else:
-        print(response.reason)
-        print(response.json())
-        print(f'payload: {payload}')
-        raise Exception(response)
+        try:
+            json = response.json()
+        except JSONDecodeError:
+            logger.error("Could not decode response")
+            json = {}
+        except Exception as e:
+            logger.error(e)
+            json = {}
+
+    return json
 
 
 __client__ = None
@@ -102,11 +196,12 @@ def default_client() -> VortexaClient:
 
 def create_client() -> VortexaClient:
     """Create new VortexaClient."""
-    print("Creating new VortexaClient")
-    try:
-        api_key = os.environ["VORTEXA_API_KEY"]
-    except KeyError:
-        raise KeyError("VORTEXA_API_KEY environment variable is required to use the VortexaSDK")
+    logger.info("Creating new VortexaClient")
+
+    api_key = _load_api_key()
+    verify_api_key_format(api_key)
+    _warn_user_if_sdk_version_outdated()
+
     return VortexaClient(api_key=api_key)
 
 
@@ -114,4 +209,46 @@ def set_client(client) -> None:
     """Set the global client, used by all endpoints."""
     global __client__
     __client__ = client
-    print(f'global __client__ has been set {__client__.__class__.__name__} \n')
+    logger.debug(
+        f"global __client__ has been set {__client__.__class__.__name__} \n"
+    )
+
+
+def _warn_user_if_sdk_version_outdated() -> None:
+    """Warn users if their SDK version is outdated"""
+    try:
+        latest_sdk_version, sdk_outdated_check = is_sdk_version_outdated()
+        if sdk_outdated_check:
+            logger.warning(
+                f"You are using {sdk_pkg_name} version {__version__}, however version {latest_sdk_version} is available.\n"
+                f"You should consider upgrading via the 'pip install {sdk_pkg_name} --upgrade' command."
+            )
+    except Exception as e:
+        logger.warning(
+            f"Outdated SDK version check could not be completed. \n"
+            f"Got an exception: {e}"
+        )
+
+
+def _load_api_key():
+    """Read API Key from environment variables else user input"""
+    try:
+        return os.environ["VORTEXA_API_KEY"]
+    except KeyError:
+        return getpass.getpass("Vortexa API Key: ")
+    except Exception:
+        raise KeyError(
+            "You must either set the VORTEXA_API_KEY environment variable, or interactively enter your Vortexa API key."
+            " Your API key can be found at https://docs.vortexa.com"
+        )
+
+
+def verify_api_key_format(api_key: str) -> None:
+    """Verify that the api_key is a valid UUID string"""
+    try:
+        uuid.UUID(api_key)
+    except ValueError:
+        raise ValueError(
+            "Incorrect API key set. The Vortexa API key must be of the form xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx "
+            " Your API key can be found at https://docs.vortexa.com"
+        )

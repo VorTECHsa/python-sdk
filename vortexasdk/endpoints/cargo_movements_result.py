@@ -1,14 +1,19 @@
 import functools
 import os
 from multiprocessing.pool import Pool
-from typing import List, Dict
+from typing import List
 
-import jsons
 import pandas as pd
 
 from vortexasdk.api import CargoMovement
-from vortexasdk.api.entity_serializing import convert_cme_to_flat_dict
+from vortexasdk.api.entity_flattening import (
+    convert_cargo_movement_to_flat_dict,
+)
 from vortexasdk.api.search_result import Result
+from vortexasdk.result_conversions import create_dataframe, create_list
+from vortexasdk.logger import get_logger
+
+logger = get_logger(__name__)
 
 
 class CargoMovementsResult(Result):
@@ -21,10 +26,8 @@ class CargoMovementsResult(Result):
 
     def to_list(self) -> List[CargoMovement]:
         """Represent cargo movements as a list of `CargoMovementEntity`s."""
-        list_of_dicts = super().to_list()
-
-        with Pool(os.cpu_count()) as pool:
-            return list(pool.map(_serialize_cm, list_of_dicts))
+        # noinspection PyTypeChecker
+        return create_list(super().to_list(), CargoMovement)
 
     def to_df(self, columns=None) -> pd.DataFrame:
         """
@@ -64,8 +67,8 @@ class CargoMovementsResult(Result):
         By default, the columns returned are something along the lines of.
         ```python
         DEFAULT_COLUMNS = [
-            'events.cargo_port_load_event.0.label',
-            'events.cargo_port_unload_event.0.label',
+            'events.cargo_port_load_event.0.location.port.label',
+            'events.cargo_port_unload_event.0.location.port.label',
             'product.group.label',
             'product.grade.label',
             'quantity',
@@ -535,23 +538,29 @@ class CargoMovementsResult(Result):
         if columns is None:
             columns = DEFAULT_COLUMNS
 
-        with Pool(os.cpu_count()) as pool:
-            records = pool.map(functools.partial(convert_cme_to_flat_dict, cols=columns), super().to_list())
+        flatten = functools.partial(
+            convert_cargo_movement_to_flat_dict, cols=columns
+        )
 
-        return pd.DataFrame(records)
+        logger.debug("Converting each CargoMovement to a flat dictionary")
+        with Pool(os.cpu_count()) as pool:
+            records = pool.map(flatten, super().to_list())
+
+        return create_dataframe(
+            columns=columns,
+            default_columns=DEFAULT_COLUMNS,
+            data=records,
+            logger_description="CargoMovements",
+        )
 
 
 DEFAULT_COLUMNS = [
-    'events.cargo_port_load_event.0.label',
-    'events.cargo_port_unload_event.0.label',
-    'product.group.label',
-    'product.grade.label',
-    'quantity',
-    'vessels.0.name',
-    'events.cargo_port_load_event.0.end_timestamp',
-    'events.cargo_port_unload_event.0.start_timestamp',
+    "events.cargo_port_load_event.0.location.port.label",
+    "events.cargo_port_unload_event.0.location.port.label",
+    "product.group.label",
+    "product.grade.label",
+    "quantity",
+    "vessels.0.name",
+    "events.cargo_port_load_event.0.end_timestamp",
+    "events.cargo_port_unload_event.0.start_timestamp",
 ]
-
-
-def _serialize_cm(dictionary: Dict) -> CargoMovement:
-    return jsons.loads(jsons.dumps(dictionary), CargoMovement)

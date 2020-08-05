@@ -4,8 +4,8 @@
 ## Suggesting new features / Reporting An Issue
 
 First, check to see if there's an existing issue/pull request for the
-bug/feature. All issues are at https://github.com/V0RT3X4/python-sdk/issues and pull reqs are at
-https://github.com/V0RT3X4/python-sdk/pulls.
+bug/feature. All issues are at https://github.com/vortechsa/python-sdk/issues and pull reqs are at
+https://github.com/vortechsa/python-sdk/pulls.
 
 If there isn't an existing issue there, please file an issue. The
 ideal report includes:
@@ -21,7 +21,7 @@ ideal report includes:
 First, clone the repo, then `cd` into the repo.
 
 ```bash
-$ git clone git@github.com:V0RT3X4/python-sdk.git
+$ git clone git@github.com:vortechsa/python-sdk.git
 $ cd python-sdk
 ```
 
@@ -37,7 +37,7 @@ $ . venv/bin/activate
 
 install the required dependencies
 ```
-$ pip install -e .[tests]
+$ pip install -e '.[tests]'
 ```
 
 To run the live tests, you'll need to have the `VORTEXA_API_KEY` environment variable set.
@@ -49,9 +49,14 @@ $ python setup.py test
 
 serve documentation
 ```bash
-$ ./docs/serve_docs.sh
+$ ./docs/scripts/serve_docs.sh
 ```
 …and view the docs at http://localhost:8000 in your web browser.
+
+Install the git [pre-commit-hooks](https://pre-commit.com/#3-install-the-git-hook-scripts)
+```bash
+$ pre-commit install
+```
 
 
 :tada: Now you're ready to create a new branch, add a feature or fix a bug, then send us a pull request! :tada:
@@ -70,6 +75,9 @@ A good pull request:
 Tips:
 - If you're adding a new endpoint, adapt and use `./docs/generate_stubs.sh` to generate sample json data used for tests.
 
+### Contributing Jupyter Notebooks
+
+Please include the version of the SDK and any other packages used to generate the Jupyter Notebook at the start of the notebook. This helps others to reproduce your results in the future.
 
 ## Style guide
 
@@ -86,10 +94,10 @@ Documentation should follow the [Google Documentation Style Guide](https://devel
 
 ## Community
 
-Discussions about the VortexaSDK take place on this repository's https://github.com/V0RT3X4/python-sdk/issues and https://github.com/V0RT3X4/python-sdk/pulls sections. Anybody is welcome to join these conversations.
+Discussions about the VortexaSDK take place on this repository's https://github.com/vortechsa/python-sdk/issues and https://github.com/vortechsa/python-sdk/pulls sections. Anybody is welcome to join these conversations.
 
 Wherever possible, do not take these conversations to private channels, including contacting the maintainers directly. Keeping communication public means everybody can benefit and learn from the conversation.
 
 ## Code of Conduct
 
-Please see https://github.com/V0RT3X4/python-sdk/blob/master/CODE_OF_CONDUCT.md for the code of conduct.
+Please see https://github.com/vortechsa/python-sdk/blob/master/CODE_OF_CONDUCT.md for the code of conduct.

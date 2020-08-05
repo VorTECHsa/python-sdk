@@ -29,6 +29,12 @@ jobs:
             - ~/.cache/pip
 
       - run:
+          name: "Check Linting"
+          command: |
+            . .venv/bin/activate
+            mypy docs/examples
+
+      - run:
           name: "Run tests against mock API"
           command: |
             . .venv/bin/activate
@@ -38,18 +44,16 @@ jobs:
           name: "Run all tests, including live API"
           command: |
             . .venv/bin/activate
-            pytest -v
+            pytest -v --doctest-modules
+
+      - run:
+          name: "Confirm that the check_setup script works"
+          command: |
+            . .venv/bin/activate
+            python -m vortexasdk.check_setup
 
       - run:
           name: "Build docs"
           command: |
             . .venv/bin/activate
-            ./docs/build_docs.sh
-
-      - run:
-          name: "Deploy docs to gihub pages if master"
-          command: |
-            if [[ ${CIRCLE_BRANCH} == "master" ]]; then
-              . .venv/bin/activate
-              ./docs/deploy_docs.sh
-            fi
+            ./docs/scripts/build_docs.sh
