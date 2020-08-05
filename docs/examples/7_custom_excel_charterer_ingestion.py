@@ -25,23 +25,8 @@ from vortexasdk.api import ID
 
 
 def convert_to_corporation_ids(corporation_name: str) -> List[ID]:
-    """
-    Returns a list of all corporation IDs with the name `corporation_name`.
-    This function returns a list, instead of a single ID. This is because some charterers may share the same name.
-
-    :param corporation_name: The name of the corporation we'd like to look up
-    :return: A list of IDs of corporations with a matching name
-    """
-
-    # The search returns all corporations with similar names.
-    # For example, searching ADN would return both ADNOC and ADNATCO
-    corporations_with_encapsulating_names = Corporations().search(corporation_name).to_list()
-
-    # In this case we're only interested in corporations with an exact name match.
-    return [c.id for c in corporations_with_encapsulating_names if c.name.upper() == corporation_name.upper()]
-
-    # We could have chosen to keep the other corporations (with similar, but not exact names) like so:
-    # return [c.id for c in corporations_with_encapsulating_names]
+    # The search returns all corporations with exactly the same name.
+    return [c.id for c in Corporations().search(corporation_name, exact_term_match=True).to_list()]
 
 
 if __name__ == "__main__":
