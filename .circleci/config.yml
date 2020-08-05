@@ -35,16 +35,11 @@ jobs:
             mypy docs/examples
 
       - run:
-          name: "Run tests against mock API"
+          name: "Run all tests"
           command: |
             . .venv/bin/activate
-            export SKIP_TAGS=real; pytest -v
-
-      - run:
-          name: "Run all tests, including live API"
-          command: |
-            . .venv/bin/activate
-            pytest -v --doctest-modules
+            pip install tox
+            tox --verbose
 
       - run:
           name: "Confirm that the check_setup script works"
