@@ -49,10 +49,11 @@ jobs:
       - run:
           name: "Run all examples"
           command: |
+            set -xe
             . .venv/bin/activate
             for f in docs/examples/*.py; do cp -v -- "$f" "$f-example.py"; done
             cp docs/examples/*-example.py .
-            for f in *-example.py; do echo python "$f"; done
+            for f in *-example.py; do python "$f"; done
             rm docs/examples/*-example.py
             rm *-example.py
 
