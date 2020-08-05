@@ -2,7 +2,7 @@
 
 The endpoints module allows you to query Vortexa's data.
 
-The VortexaSDK currently contains 5 different endpoints:
+The VortexaSDK currently contains the following endpoints:
 
 1. Cargo Movements
 2. Vessel Movements
