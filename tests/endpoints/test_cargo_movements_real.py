@@ -120,6 +120,22 @@ class TestCargoMovementsReal(TestCaseUsingRealAPI):
 
         assert len(df) == 2
 
+    def test_timestamp_columns(self):
+        df = (
+            CargoMovements()
+            .search(
+                filter_activity="loading_state",
+                filter_products="6f11b0724c9a4e85ffa7f1445bc768f054af755a090118dcf99f14745c261653",
+                filter_time_min=datetime(2019, 8, 29),
+                filter_time_max=datetime(2019, 8, 29, 0, 10),
+            )
+            .to_df(columns="all")
+            .head(2)
+        )
+
+        self.assertEqual(str(df['events.cargo_port_load_event.0.end_timestamp'].dtypes), 'datetime64[ns, UTC]')
+        self.assertEqual(str(df['events.cargo_port_unload_event.0.end_timestamp'].dtypes), 'datetime64[ns, UTC]')
+
     def test_search_single_filter_origin_name(self):
         df = (
             CargoMovements()
@@ -233,5 +249,5 @@ class TestCargoMovementsReal(TestCaseUsingRealAPI):
         # Check we load a reasonable number of cargo movements in a short enough period of time
         assert len(df) > 500
         assert t_search.interval < 10
-        assert t_to_list.interval < 5
+        assert t_to_list.interval < 10
         assert t_to_df.interval < 5
