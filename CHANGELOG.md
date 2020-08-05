@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.25.0](https://github.com/vortechsa/python-sdk/tree/0.25.0) (2020-08-05)
+
+[Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.24.0...0.25.0)
+
+**Implemented enhancements:**
+
+- Dataframe timestamp columns in datetime format [\#49](https://github.com/VorTECHsa/python-sdk/issues/49)
+
+**Merged pull requests:**
+
+- ci: Test SDK against multiple pandas versions [\#234](https://github.com/VorTECHsa/python-sdk/pull/234) ([KitBurgess](https://github.com/KitBurgess))
+- ci: Run examples as part of ci [\#233](https://github.com/VorTECHsa/python-sdk/pull/233) ([KitBurgess](https://github.com/KitBurgess))
+- docs: Add exact term match to examples [\#232](https://github.com/VorTECHsa/python-sdk/pull/232) ([KitBurgess](https://github.com/KitBurgess))
+- docs: Fix url [\#231](https://github.com/VorTECHsa/python-sdk/pull/231) ([KitBurgess](https://github.com/KitBurgess))
+- feat: Format timestamps as timestamps [\#230](https://github.com/VorTECHsa/python-sdk/pull/230) ([KitBurgess](https://github.com/KitBurgess))
+- docs: Restrict example scripts to shorter time duration [\#229](https://github.com/VorTECHsa/python-sdk/pull/229) ([KitBurgess](https://github.com/KitBurgess))
+- Chore: Set default log level to WARNING [\#228](https://github.com/VorTECHsa/python-sdk/pull/228) ([KitBurgess](https://github.com/KitBurgess))
+- Update about-endpoints.md [\#226](https://github.com/VorTECHsa/python-sdk/pull/226) ([laurence-ashdown](https://github.com/laurence-ashdown))
+
 ## [0.24.0](https://github.com/vortechsa/python-sdk/tree/0.24.0) (2020-07-30)
 
 [Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.23.2...0.24.0)
@@ -81,7 +100,6 @@
 - chore: Allow users to set lowercase log level [\#211](https://github.com/VorTECHsa/python-sdk/pull/211) ([KitBurgess](https://github.com/KitBurgess))
 - docs: Add loading external data example [\#209](https://github.com/VorTECHsa/python-sdk/pull/209) ([KitBurgess](https://github.com/KitBurgess))
 - docs: typo in products endpoint [\#208](https://github.com/VorTECHsa/python-sdk/pull/208) ([Natday](https://github.com/Natday))
-- Webinar10jun [\#207](https://github.com/VorTECHsa/python-sdk/pull/207) ([KitBurgess](https://github.com/KitBurgess))
 - Google analytics [\#206](https://github.com/VorTECHsa/python-sdk/pull/206) ([KitBurgess](https://github.com/KitBurgess))
 
 ## [0.21.1](https://github.com/vortechsa/python-sdk/tree/0.21.1) (2020-06-08)
@@ -119,6 +137,7 @@
 
 **Merged pull requests:**
 
+- Webinar10jun [\#207](https://github.com/VorTECHsa/python-sdk/pull/207) ([KitBurgess](https://github.com/KitBurgess))
 - Feat attribute endpoint [\#197](https://github.com/VorTECHsa/python-sdk/pull/197) ([KitBurgess](https://github.com/KitBurgess))
 - Feat new filters [\#193](https://github.com/VorTECHsa/python-sdk/pull/193) ([SeanBarry](https://github.com/SeanBarry))
 - docs: add SeanBarry as a contributor [\#192](https://github.com/VorTECHsa/python-sdk/pull/192) ([allcontributors[bot]](https://github.com/apps/allcontributors))
@@ -141,6 +160,10 @@
 **Closed issues:**
 
 - Add connectivity / healthcheck script. [\#180](https://github.com/VorTECHsa/python-sdk/issues/180)
+
+**Merged pull requests:**
+
+- feat: Check setup [\#181](https://github.com/VorTECHsa/python-sdk/pull/181) ([KitBurgess](https://github.com/KitBurgess))
 
 ## [0.17.2](https://github.com/vortechsa/python-sdk/tree/0.17.2) (2020-05-04)
 
@@ -178,7 +201,6 @@
 **Merged pull requests:**
 
 - fix: Remove exclude empties from payload [\#185](https://github.com/VorTECHsa/python-sdk/pull/185) ([KitBurgess](https://github.com/KitBurgess))
-- feat: Check setup [\#181](https://github.com/VorTECHsa/python-sdk/pull/181) ([KitBurgess](https://github.com/KitBurgess))
 
 ## [0.16.0a4](https://github.com/vortechsa/python-sdk/tree/0.16.0a4) (2020-05-01)
 
