@@ -23,7 +23,7 @@ if __name__ == "__main__":
 
     # Find Crude/Condensates ID.
     # Again, we know the exact name of the product we're searching for, so we set exact_term_match=True
-    crude_condensates = Products().search(term="Crude/Condensates", exact_term_match=True)[0].id
+    crude_condensates = Products().search(term="Crude/Condensates", exact_term_match=True).to_list()[0].id
 
     # Query API
     search_result = CargoTimeSeries().search(
