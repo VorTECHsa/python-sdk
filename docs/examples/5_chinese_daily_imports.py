@@ -1,5 +1,5 @@
 """
-Let's retrieve the daily sum of Chinese Crude/Condensate imports, over the last year.
+Let's retrieve the daily sum of Chinese Crude/Condensate imports, across January 2019.
 
 The below script returns:
 
@@ -42,10 +42,10 @@ if __name__ == "__main__":
         timeseries_unit="b",
         # We're only interested in Crude/Condensates
         filter_products=crude_condensates,
-        # We want all cargo movements that unloaded in 2019 to be included
+        # We want all cargo movements that unloaded in January 2019 to be included
         filter_activity="unloading_start",
         filter_time_min=datetime(2019, 1, 1),
-        filter_time_max=datetime(2019, 12, 31),
+        filter_time_max=datetime(2019, 2, 1),
     )
 
     # Convert search result to dataframe
