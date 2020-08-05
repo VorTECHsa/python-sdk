@@ -47,6 +47,16 @@ jobs:
             pytest -v --doctest-modules
 
       - run:
+          name: "Run all examples"
+          command: |
+            . .venv/bin/activate
+            for f in docs/examples/*.py; do cp -v -- "$f" "$f-example.py"; done
+            cp docs/examples/*-example.py .
+            for f in *-example.py; do echo python "$f"; done
+            rm docs/examples/*-example.py
+            rm *-example.py
+
+      - run:
           name: "Confirm that the check_setup script works"
           command: |
             . .venv/bin/activate
