@@ -15,9 +15,21 @@ if __name__ == "__main__":
     now = datetime.utcnow()
     one_month_ago = now - relativedelta(months=1)
 
+    # For this analysis we need the geography ID for India, and the geography ID for Saudi Arabia. We're going to
+    # show 2 ways to retrieve geography IDs. You'll want to chose method 1 or 2 depending on your use case.
+
+    # Option 1. We look up a geography with an exact matching name
+    saudi_arabia = Geographies().search("Saudi Arabia", exact_term_match=True).to_list()[0].id
+
+    # Option 2. We search for geographies with similar names, then pick the one we're looking for
+
     # First we find the ID for the country India. Note that when searching geographies with the term 'india', we'll
     # retrieve all geographies with india in the name, ie Indiana, British Indian Ocean Territory...
     all_geogs_with_india_in_the_name = Geographies().search("india").to_list()
+
+    # If running interactively, you may want to print all the names here to inspect them for yourself
+    for g in all_geogs_with_india_in_the_name:
+        print(g.name)
 
     # We're only interested in the country India here
     india = [
@@ -26,20 +38,9 @@ if __name__ == "__main__":
     # Check we've only got one ID for India
     assert len(india) == 1
 
-    saudi_arabia = [
-        g.id
-        for g in Geographies().search("saudi arabia").to_list()
-        if "country" in g.layer
-    ]
-    # Check we've only got one ID for Saudi Arabia
-    assert len(saudi_arabia) == 1
-
-    # Let's find the Crude ID
-    crude = [
-        p.id for p in Products().search("crude").to_list() if p.name == "Crude"
-    ]
-    # Check we've only got one Crude ID
-    assert len(crude) == 1
+    # Let's find the Crude ID,
+    # here we know the exact name of the product we're looking for so we set exact_term_match=True
+    crude = Products().search("Crude", exact_term_match=True).to_list()[0].id
 
     # Query the API.
     search_result = CargoMovements().search(
