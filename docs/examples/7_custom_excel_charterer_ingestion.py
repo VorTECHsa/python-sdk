@@ -46,7 +46,7 @@ def convert_to_corporation_ids(corporation_name: str) -> List[ID]:
 
 if __name__ == "__main__":
     # Read our excel sheet of charterers into a dataframe
-    charterers_df = pd.read_excel("./resources/my_charterers.xlsx")
+    charterers_df = pd.read_excel("./docs/examples/resources/my_charterers.xlsx")
 
     # Convert the charterer names into ids
     charterers_list_of_lists = charterers_df['charterers'].apply(convert_to_corporation_ids).to_list()
