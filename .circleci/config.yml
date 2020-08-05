@@ -15,7 +15,7 @@ jobs:
             - v1-{{ .Branch }}-
 
       - run:
-          name: "Install requirements.txt"
+          name: "Install setup.py"
           command: |
             python3.7 -m venv .venv;
             . .venv/bin/activate
@@ -33,6 +33,13 @@ jobs:
           command: |
             . .venv/bin/activate
             mypy docs/examples
+
+      - run:
+          name: "Run doctests"
+          command: |
+            . .venv/bin/activate
+            # This should be done in tox, but i can't work out how to run doctests in tox hence we're also running it here for now.
+            pytest -v --doctest-modules
 
       - run:
           name: "Run all tests"
