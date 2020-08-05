@@ -249,5 +249,5 @@ class TestCargoMovementsReal(TestCaseUsingRealAPI):
         # Check we load a reasonable number of cargo movements in a short enough period of time
         assert len(df) > 500
         assert t_search.interval < 10
-        assert t_to_list.interval < 5
+        assert t_to_list.interval < 10
         assert t_to_df.interval < 5
