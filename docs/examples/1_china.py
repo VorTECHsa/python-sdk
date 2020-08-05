@@ -34,7 +34,7 @@ if __name__ == "__main__":
         filter_activity="loading_start",
         filter_vessels=vlccs,
         filter_destinations=china,
-        filter_time_min=datetime(2019, 8, 29),
+        filter_time_min=datetime(2019, 9, 29),
         filter_time_max=datetime(2019, 10, 30),
     )
 
