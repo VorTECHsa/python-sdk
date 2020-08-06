@@ -22,6 +22,35 @@ def _format_keys(dictionary):
 def convert_vessel_diversion_to_flat_dict(vd: Dict, cols="all") -> Dict:
     """Convert nested `VesselDiversion` dict to flat dictionary, keeping *cols*."""
 
+    as_dict = _group_vessel_diversion_attributed_by_layer(vd)
+
+    formatted = flatten_dictionary(as_dict)
+
+    if cols == "all":
+        return formatted
+    else:
+        return {k: v for k, v in formatted.items() if k in cols}
+
+
+def _group_vessel_diversion_attributed_by_layer(vd):
+    if "cargoes" in vd.keys():
+        flat_cargoes = [
+            _flatten_attributes(cargo, "product_hierarchy") for cargo in vd["cargoes"]
+        ]
+        vd["cargoes"] = flat_cargoes
+
+    group_by_layer_fields = [
+        "prev_destination",
+        "next_destination",
+        "origin",
+        "vessel_corporate_entities",
+    ]
+    for field in group_by_layer_fields:
+        if field in vd.keys():
+            vd[field] = _group_by_layer(vd[field])
+
+    return vd
+
 
 def convert_cargo_movement_to_flat_dict(cme: Dict, cols="all") -> Dict:
     """Convert nested `CargoMovement` object to flat dictionary, keeping *cols*."""

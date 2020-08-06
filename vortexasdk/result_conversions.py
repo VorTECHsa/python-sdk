@@ -16,7 +16,7 @@ def create_list(list_of_dicts, output_class: FromDictMixin) -> List:
 
 def format_datatypes(df: pd.DataFrame) -> pd.DataFrame:
     """Format the relevant columns with sensible datatypes"""
-    timestamp_cols = [col for col in df.columns if "timestamp" in col]
+    timestamp_cols = [col for col in df.columns if "timestamp" in col or "next_eta" in col or "prev_eta" in col]
 
     for col in timestamp_cols:
         df[col] = pd.to_datetime(df[col])

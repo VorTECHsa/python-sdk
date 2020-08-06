@@ -27,6 +27,7 @@ class VesselDiversion(FromDictMixin):
     next_destination: List[Entity]
     next_eta: ISODate
     next_declared_destination: str
+    next_destination_timestamp: ISODate
 
     vessel_id: ID
     vessel_name: str

@@ -6,13 +6,11 @@ from typing import List
 import pandas as pd
 
 from api.vessel_diversion import VesselDiversion
-from vortexasdk.api import CargoMovement
 from vortexasdk.api.entity_flattening import (
-    convert_cargo_movement_to_flat_dict,
-)
+    convert_vessel_diversion_to_flat_dict)
 from vortexasdk.api.search_result import Result
-from vortexasdk.result_conversions import create_dataframe, create_list
 from vortexasdk.logger import get_logger
+from vortexasdk.result_conversions import create_dataframe, create_list
 
 logger = get_logger(__name__)
 
@@ -51,7 +49,7 @@ class VesselDiversionsResult(Result):
             columns = DEFAULT_COLUMNS
 
         flatten = functools.partial(
-            convert_cargo_movement_to_flat_dict, cols=columns
+            convert_vessel_diversion_to_flat_dict, cols=columns
         )
 
         logger.debug("Converting each CargoMovement to a flat dictionary")
@@ -67,12 +65,25 @@ class VesselDiversionsResult(Result):
 
 
 DEFAULT_COLUMNS = [
-    "events.cargo_port_load_event.0.location.port.label",
-    "events.cargo_port_unload_event.0.location.port.label",
-    "product.group.label",
-    "product.grade.label",
-    "quantity",
-    "vessels.0.name",
-    "events.cargo_port_load_event.0.end_timestamp",
-    "events.cargo_port_unload_event.0.start_timestamp",
+    "vessel_name",
+
+    "origin.port.label",
+    "origin.country.label",
+
+    "timestamp",
+
+    "prev_destination.port.label",
+    "next_destination.port.label",
+
+    "prev_destination.country.label",
+    "next_destination.country.label",
+
+    "prev_declared_destination",
+    "next_declared_destination",
+
+    "prev_eta",
+    "next_eta",
+
+    "cargoes.0.product_hierarchy.group.label",
+    "is_considered_waypoint"
 ]
