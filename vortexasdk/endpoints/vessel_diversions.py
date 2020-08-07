@@ -33,7 +33,7 @@ class VesselDiversions(Search):
             filter_vessels: Union[ID, List[ID]] = None,
             filter_vessel_classes: Union[str, List[str]] = None,
             filter_vessel_flags: Union[str, List[str]] = None,
-            filter_scrubbers_fitted: str = "disabled",
+            filter_vessel_scrubbers: str = "disabled",
             unit: str = "b",
             include_waypoints="true",
             exclude_vessel_classes: Union[str, List[str]] = None,
@@ -49,6 +49,39 @@ class VesselDiversions(Search):
         Find vessel diversions matching the given search parameters.
 
         # Arguments
+            behaviour: The type of diversion to search for.
+              These can be country diversions (where the vessel has diverted to a new country),
+              regional diversions (where the vessel has diverted to a new region),
+              or any diversions (include both country and regional diversions).
+              behaviour must be one of the following: `["country_diversion", "regional_diversion", "any"]`
+
+            filter_locations: A geography ID, or list of geography IDs to filter on.
+
+            filter_products: A product ID, or list of product IDs to filter on.
+
+            filter_vessels: A vessel ID, or list of vessel IDs to filter on.
+
+            filter_vessel_classes: A vessel class, or list of vessel classes to filter on.
+
+            filter_vessel_flags: A vessel flag, or list of vessels to filter on.
+
+            filter_vessel_scrubbers: Either inactive 'disabled', or included 'inc' or excluded 'exc'.
+
+            unit: Unit of measurement. Enter 'b' for barrels or 't' for tonnes.
+
+            include_waypoints: Include diversions to/from waypoints, or not.
+
+            exclude_vessel_classes: A vessel class, or list of vessel classes to exclude.
+
+            exclude_vessel_flags: A vessel flag, or list of vessels to exclude.
+
+            exclude_locations: A geography ID, or list of geography IDs to exclude.
+
+            exclude_products: A product ID, or list of product IDs to exclude.
+
+            exclude_vessels: A vessel ID, or list of vessel IDs to exclude.
+
+
 
         # Returns
         `VesselDiversionsResult`, containing all the diversions matching the given search terms.
@@ -61,7 +94,7 @@ class VesselDiversions(Search):
             "locationExcluded": convert_to_list(exclude_locations),
             "products": convert_to_list(filter_products),
             "productsExcluded": convert_to_list(exclude_products),
-            "scrubbersFitted": filter_scrubbers_fitted,
+            "scrubbersFitted": filter_vessel_scrubbers  ,
             "startTimestamp": to_ISODate(filter_time_min),
             "unit": unit,
             "vesselClasses": convert_to_list(filter_vessel_classes),
