@@ -2,15 +2,17 @@ import copy
 import functools
 import getpass
 import os
+import uuid
 from json import JSONDecodeError
 from multiprocessing.pool import ThreadPool
 from random import shuffle
 from typing import Dict, List
-import uuid
 
+from pandas.core.common import flatten
 from requests import Response
 from tqdm import tqdm
 
+from vortexasdk import __name__ as sdk_pkg_name
 from vortexasdk.abstract_client import AbstractVortexaClient
 from vortexasdk.api.id import ID
 from vortexasdk.endpoints.endpoints import API_URL
@@ -21,7 +23,6 @@ from vortexasdk.retry_session import (
 )
 from vortexasdk.utils import filter_empty_values, is_sdk_version_outdated
 from vortexasdk.version import __version__
-from vortexasdk import __name__ as sdk_pkg_name
 
 logger = get_logger(__name__)
 
@@ -64,7 +65,7 @@ class VortexaClient(AbstractVortexaClient):
             responses = self._process_multiple_pages(
                 total=total, url=url, payload=payload, data=data
             )
-            flattened = self._flatten_response(responses)
+            flattened = list(flatten(responses))
             assert len(flattened) == total, (
                 f"Incorrect number of records returned from API. "
                 f"Actual: {len(flattened)}, expected: {total}"
@@ -114,10 +115,6 @@ class VortexaClient(AbstractVortexaClient):
     def _calculate_total(response: Dict) -> int:
         """ Get total number of pages, if total key does not exist, return 1 """
         return response.get("total", 1)
-
-    @staticmethod
-    def _flatten_response(response) -> List:
-        return [x for y in response for x in y]
 
 
 def _send_post_request_data(
