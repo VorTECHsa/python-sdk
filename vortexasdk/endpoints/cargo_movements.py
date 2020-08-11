@@ -99,7 +99,7 @@ class CargoMovements(Search):
 
             filter_vessel_scrubbers: Either inactive 'disabled', or included 'inc' or excluded 'exc'.
 
-            filter_vessel_flags: A geography ID, or list of geography IDs to filter on.
+            filter_vessel_flags: A vessel flag, or list of vessel flags to filter on.
 
             filter_vessel_ice_class: An attribute ID, or list of attribute IDs to filter on.
 
