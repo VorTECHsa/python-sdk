@@ -70,6 +70,7 @@ pages:
       5 Chinese Daily Crude Imports: examples/5_chinese_daily_imports.md
       6 Floating Storage Medium Sour Crude: examples/6_medium_sour_floating_storage.md
       7 Ingest Custom Excel Charterers: examples/7_custom_excel_charterer_ingestion.md
+      Jupyter Notebooks: examples/jupyter_notebooks.md
 theme:
   name: readthedocs
   collapse_navigation: true
