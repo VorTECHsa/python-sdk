@@ -108,7 +108,7 @@ class VortexaClient(AbstractVortexaClient):
         exclude_params = payload.get("exclude", {})
         payload["exclude"] = filter_empty_values(exclude_params)
 
-        return payload
+        return filter_empty_values(payload)
 
     @staticmethod
     def _calculate_total(response: Dict) -> int:
