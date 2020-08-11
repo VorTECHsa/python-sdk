@@ -15,7 +15,7 @@ logger = get_logger(__name__)
 
 class VesselDiversions(Search):
     """
-    Vessel Diversions Endpoint, use this to search through Vortexa's vessel diversions.
+    Use this endpoint to search through Vortexa's realtime vessel diversions.
     """
 
     _MAX_PAGE_RESULT_SIZE = 500

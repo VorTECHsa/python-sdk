@@ -8,6 +8,9 @@ generate:
   - endpoints/vessel_movements.md:
       - vortexasdk.endpoints.vessel_movements++
       - vortexasdk.endpoints.vessel_movements_result++
+  - endpoints/vessel_diversions.md:
+      - vortexasdk.endpoints.vessel_diversions++
+      - vortexasdk.endpoints.vessel_diversions_result++
   - endpoints/cargo_timeseries.md:
       - vortexasdk.endpoints.cargo_timeseries++
       - vortexasdk.endpoints.timeseries_result++
@@ -38,12 +41,15 @@ generate:
       - vortexasdk.api.cargo_movement++
   - entities/vessel_movement.md:
       - vortexasdk.api.vessel_movement++
+  - entities/vessel_diversion.md:
+      - vortexasdk.api.vessel_diversion++
 pages:
   - Home: index.md << README.md
   - Endpoints:
       About Endpoints: endpoints/about-endpoints.md << docs/endpoints/about-endpoints.md
       Cargo Movements: endpoints/cargo_movements.md
       Cargo Time Series: endpoints/cargo_timeseries.md
+      Vessel Diversions: endpoints/vessel_diversions.md
       Vessel Movements: endpoints/vessel_movements.md
       Attributes: endpoints/attributes.md
       Corporations: endpoints/corporations.md
@@ -56,6 +62,7 @@ pages:
       Geography: entities/geography.md
       Product: entities/product.md
       Vessel: entities/vessel.md
+      Vessel Diversion: entities/vessel_diversion.md
       Vessel Movement: entities/vessel_movement.md
   - Config: config.md << docs/config/config.md
   - FAQ:

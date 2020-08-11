@@ -5,7 +5,7 @@ from typing import List
 
 import pandas as pd
 
-from api.vessel_diversion import VesselDiversion
+from vortexasdk.api.vessel_diversion import VesselDiversion
 from vortexasdk.api.entity_flattening import (
     convert_vessel_diversion_to_flat_dict)
 from vortexasdk.api.search_result import Result
@@ -52,7 +52,7 @@ class VesselDiversionsResult(Result):
             convert_vessel_diversion_to_flat_dict, cols=columns
         )
 
-        logger.debug("Converting each CargoMovement to a flat dictionary")
+        logger.debug("Converting each Vessel Diversion to a flat dictionary")
         with Pool(os.cpu_count()) as pool:
             records = pool.map(flatten, super().to_list())
 
@@ -60,7 +60,7 @@ class VesselDiversionsResult(Result):
             columns=columns,
             default_columns=DEFAULT_COLUMNS,
             data=records,
-            logger_description="CargoMovements",
+            logger_description="VesselDiversions",
         )
 
 

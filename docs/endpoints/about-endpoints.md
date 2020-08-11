@@ -10,6 +10,7 @@ The VortexaSDK currently contains the following endpoints:
 4. Geographies
 5. Products
 6. Vessels
+6. Vessel Diversions
 
 
 Each endpoint offers either one, or both, of two different functionalities:

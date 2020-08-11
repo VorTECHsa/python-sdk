@@ -1,19 +1,20 @@
 from dataclasses import dataclass
 from typing import List, Optional
 
-from api import ProductEntity, GeographyEntity, CorporateEntity
-from vortexasdk.api import ID, Entity, ISODate
+from vortexasdk.api import ID, Entity, ISODate, ProductEntity, GeographyEntity, CorporateEntity
 from vortexasdk.api.serdes import FromDictMixin
 
 
 @dataclass(frozen=True)
 class DiversionCargo(FromDictMixin):
+    """A cargo on board a diverted vessel"""
     product_hierarchy: List[ProductEntity]
     quantity: float
 
 
 @dataclass(frozen=True)
 class VesselDiversion(FromDictMixin):
+    """A vessel diverting from one predicted destination to the next predicted destination"""
     id: ID
     timestamp: ISODate
     cargoes: List[DiversionCargo]
