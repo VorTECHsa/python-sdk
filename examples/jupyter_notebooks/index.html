@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Config - VortexaSDK</title>
+  <title>Jupyter Notebooks - VortexaSDK</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -17,8 +17,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Config";
-    var mkdocs_page_input_path = "config/config.md";
+    var mkdocs_page_name = "Jupyter Notebooks";
+    var mkdocs_page_input_path = "examples/jupyter_notebooks.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -139,7 +139,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../">Config</a>
+    <a class="" href="../../config/">Config</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -163,39 +163,45 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../examples/0_sample_load_cargo_movements/">0 Simple Load Cargo Movements</a>
+    <a class="" href="../0_sample_load_cargo_movements/">0 Simple Load Cargo Movements</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../examples/1_china/">1 China VLCC Discharges</a>
+    <a class="" href="../1_china/">1 China VLCC Discharges</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../examples/2_all_vessel_movements/">2 Laden Vessel Movements</a>
+    <a class="" href="../2_all_vessel_movements/">2 Laden Vessel Movements</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../examples/3_crude_from_saudi_arabia_to_india/">3 Crude movements from Saudi Arabia to India</a>
+    <a class="" href="../3_crude_from_saudi_arabia_to_india/">3 Crude movements from Saudi Arabia to India</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../examples/4_ballast_movements/">4 Ballast Movements</a>
+    <a class="" href="../4_ballast_movements/">4 Ballast Movements</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../examples/5_chinese_daily_imports/">5 Chinese Daily Crude Imports</a>
+    <a class="" href="../5_chinese_daily_imports/">5 Chinese Daily Crude Imports</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../examples/6_medium_sour_floating_storage/">6 Floating Storage Medium Sour Crude</a>
+    <a class="" href="../6_medium_sour_floating_storage/">6 Floating Storage Medium Sour Crude</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../examples/7_custom_excel_charterer_ingestion/">7 Ingest Custom Excel Charterers</a>
+    <a class="" href="../7_custom_excel_charterer_ingestion/">7 Ingest Custom Excel Charterers</a>
                 </li>
-                <li class="">
+                <li class=" current">
                     
-    <a class="" href="../../examples/jupyter_notebooks/">Jupyter Notebooks</a>
+    <a class="current" href="./">Jupyter Notebooks</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#example-jupyter-notebooks">Example Jupyter Notebooks</a></li>
+    
+
+    </ul>
                 </li>
     </ul>
 	    </li>
@@ -221,11 +227,15 @@
     <li><a href="../..">Docs</a> &raquo;</li>
     
       
+        
+          <li>Examples &raquo;</li>
+        
+      
     
-    <li>Config</li>
+    <li>Jupyter Notebooks</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/vortechsa/python-sdk/edit/master/docs/config/config.md"
+        <a href="https://github.com/vortechsa/python-sdk/edit/master/docs/examples/jupyter_notebooks.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -235,38 +245,28 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="config">Config</h2>
-<p>The VortexaSDK can be configured using environment variables.</p>
-<table>
-<thead>
-<tr>
-<th align="left">Environment Variable</th>
-<th align="left">Default</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">VORTEXA_API_KEY</td>
-<td align="left">none</td>
-<td align="left">API Key used to access the VortexaAPI. Refer to <a href="https://docs.vortexa.com/reference/intro-authentication">Vortexa API Authentication</a> for more details, including instructions on where to find your API key.</td>
-</tr>
-<tr>
-<td align="left">LOG_FILE</td>
-<td align="left">none</td>
-<td align="left">Output log file</td>
-</tr>
-<tr>
-<td align="left">LOG_LEVEL</td>
-<td align="left">INFO</td>
-<td align="left">Configure the level of must be one of <code>["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]</code></td>
-</tr>
-</tbody>
-</table>
+                <h1 id="example-jupyter-notebooks">Example Jupyter Notebooks</h1>
+<p><a href="https://github.com/VorTECHsa/python-sdk/tree/master/docs/examples">The examples section</a> of the vortexasdk
+GitHub repository, hosts a variety of Jupyter Notebooks that illustrate some real-life use-cases of how the
+SDK can be used to answer interesting industry questions, identify emerging patterns &amp; trends and assist
+forecasting models. Those notebooks include:</p>
+<ol>
+<li><a href="https://github.com/VorTECHsa/python-sdk/blob/master/docs/examples/New%20to%20Python%20-%20Crude%20and%20condensates%20in%20China%20Floating%20storage.ipynb">New to Python - Crude and Condensates in Floating Storage</a></li>
+<li><a href="https://github.com/VorTECHsa/python-sdk/blob/master/docs/examples/US_Crude_Exports.ipynb">US Crude Exports Exploration &amp; Forecasting</a></li>
+<li><a href="https://github.com/VorTECHsa/python-sdk/blob/master/docs/examples/China_Flows.ipynb">China Oil Flows during the Covid-19 Outbreak</a></li>
+<li><a href="https://github.com/VorTECHsa/python-sdk/blob/master/docs/examples/Crude_Floating_Storage.ipynb">Crude Floating Storage and its relation to Prices</a></li>
+</ol>
               
             </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../7_custom_excel_charterer_ingestion/" class="btn btn-neutral" title="7 Ingest Custom Excel Charterers"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -291,6 +291,8 @@
       
           <a href="https://github.com/vortechsa/python-sdk/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
+      
+        <span><a href="../7_custom_excel_charterer_ingestion/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
     </span>
