@@ -1,4 +1,4 @@
-from typing import Dict, List
+from typing import Dict, List, Union
 import json
 from urllib.request import urlopen
 from distutils.version import LooseVersion
@@ -19,6 +19,21 @@ def convert_to_list(a) -> List:
 def convert_values_to_list(data: Dict) -> Dict:
     """Convert each value to a list."""
     return {k: convert_to_list(v) for k, v in data.items()}
+
+
+def filter_exact_match(
+    allowed_name: Union[str, List[str]], search_result: List[Dict]
+) -> List[Dict]:
+    """
+    Filter search results on items with exact matching names.
+
+    # Arguments
+        allowed_name: An allowed name, or list of allowed names
+        search_result: A list of dictionaries. Each dictionary must contain the key "name".
+
+    """
+    allowed_names_list = convert_to_list(allowed_name)
+    return [s for s in search_result if s["name"] in allowed_names_list]
 
 
 def filter_empty_values(data: Dict) -> Dict:

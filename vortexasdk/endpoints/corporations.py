@@ -1,5 +1,5 @@
 """Corporations Endpoint."""
-from typing import List, Union, Dict
+from typing import Dict, List, Union
 
 from vortexasdk.api import ID
 from vortexasdk.endpoints.corporations_result import CorporationsResult
@@ -19,12 +19,21 @@ class Corporations(Reference, Search):
         """Load all corporations."""
         return self.search()
 
-    def search(self, term: Union[str, List[str]] = None) -> CorporationsResult:
+    def search(
+        self,
+        term: Union[str, List[str]] = None,
+        exact_term_match: bool = False,
+    ) -> CorporationsResult:
         """
         Find all Corporations matching given search terms.
 
         # Arguments
             term: The corporation name(s) we're filtering on
+
+             exact_term_match: Search on only exact term matches, or allow similar matches.
+              e.g. When searching for "COS" with `exact_term_match=False`, then the SDK will yield corporations named
+              ['COSCO', 'COSMO OIL'] etc. When `exact_term_match=True`,
+              the SDK won't yield any results, because no corporations have the exact name "COS".
 
         # Returns
         List of corporation matching `term`
@@ -58,8 +67,11 @@ class Corporations(Reference, Search):
         [VortexaAPI Corporation Reference](https://docs.vortexa.com/reference/POST/reference/charterers)
 
         """
-        params = convert_values_to_list({"term": term})
-        return CorporationsResult(super().search(**params))
+        api_params = convert_values_to_list({"term": term})
+
+        return CorporationsResult(
+            super().search(exact_term_match=exact_term_match, **api_params)
+        )
 
     def reference(self, id: ID) -> Dict:
         """

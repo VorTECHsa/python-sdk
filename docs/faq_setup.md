@@ -52,7 +52,7 @@ Alternatively, please get in touch at [www.vortexa.com](https://www.vortexa.com/
 
 #### How can I check the SDK is setup correctly?
 
-Run the following in a bash console:
+Run the following in a bash console on Mac/Linux, or command prompt on Windows:
 
 ```bash
 $ python -m vortexasdk.check_setup
@@ -61,3 +61,11 @@ $ python -m vortexasdk.check_setup
 A successful setup looks like this:
 
 ![check_setup.png](img/check_setup.png)
+
+
+
+On Windows, you'll need to paste the API key by right clicking the console menu, like so:
+
+
+Hitting Ctrl+V won't paste the API key, this is due to a [known python windows bug](https://bugs.python.org/issue37426)
+![get_pass.png](img/get_pass_windows.png)

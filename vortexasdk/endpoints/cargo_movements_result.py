@@ -10,6 +10,10 @@ from vortexasdk.api.entity_flattening import (
     convert_cargo_movement_to_flat_dict,
 )
 from vortexasdk.api.search_result import Result
+from vortexasdk.result_conversions import create_dataframe, create_list
+from vortexasdk.logger import get_logger
+
+logger = get_logger(__name__)
 
 
 class CargoMovementsResult(Result):
@@ -22,10 +26,8 @@ class CargoMovementsResult(Result):
 
     def to_list(self) -> List[CargoMovement]:
         """Represent cargo movements as a list of `CargoMovementEntity`s."""
-        list_of_dicts = super().to_list()
-
-        with Pool(os.cpu_count()) as pool:
-            return list(pool.map(CargoMovement.from_dict, list_of_dicts))
+        # noinspection PyTypeChecker
+        return create_list(super().to_list(), CargoMovement)
 
     def to_df(self, columns=None) -> pd.DataFrame:
         """
@@ -540,13 +542,16 @@ class CargoMovementsResult(Result):
             convert_cargo_movement_to_flat_dict, cols=columns
         )
 
+        logger.debug("Converting each CargoMovement to a flat dictionary")
         with Pool(os.cpu_count()) as pool:
             records = pool.map(flatten, super().to_list())
 
-        if columns == "all":
-            return pd.DataFrame(data=records)
-        else:
-            return pd.DataFrame(data=records, columns=columns)
+        return create_dataframe(
+            columns=columns,
+            default_columns=DEFAULT_COLUMNS,
+            data=records,
+            logger_description="CargoMovements",
+        )
 
 
 DEFAULT_COLUMNS = [

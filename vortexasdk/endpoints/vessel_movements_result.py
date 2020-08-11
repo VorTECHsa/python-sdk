@@ -10,6 +10,10 @@ from vortexasdk.api.entity_flattening import (
     convert_vessel_movement_to_flat_dict,
 )
 from vortexasdk.api.search_result import Result
+from vortexasdk.result_conversions import create_dataframe, create_list
+from vortexasdk.logger import get_logger
+
+logger = get_logger(__name__)
 
 
 class VesselMovementsResult(Result):
@@ -22,10 +26,8 @@ class VesselMovementsResult(Result):
 
     def to_list(self) -> List[VesselMovement]:
         """Represent vessel movements as a list of `VesselMovementEntity`s."""
-        list_of_dicts = super().to_list()
-
-        with Pool(os.cpu_count()) as pool:
-            return list(pool.map(VesselMovement.from_dict, list_of_dicts))
+        # noinspection PyTypeChecker
+        return create_list(super().to_list(), VesselMovement)
 
     def to_df(self, columns=None) -> pd.DataFrame:
         """
@@ -471,6 +473,7 @@ class VesselMovementsResult(Result):
         if columns is None:
             columns = DEFAULT_COLUMNS
 
+        logger.debug("Converting each VesselMovement to a flat dictionary")
         flatten = functools.partial(
             convert_vessel_movement_to_flat_dict, cols=columns
         )
@@ -478,10 +481,12 @@ class VesselMovementsResult(Result):
         with Pool(os.cpu_count()) as pool:
             records = pool.map(flatten, super().to_list())
 
-        if columns == "all":
-            return pd.DataFrame(data=records)
-        else:
-            return pd.DataFrame(data=records, columns=columns)
+        return create_dataframe(
+            columns=columns,
+            default_columns=DEFAULT_COLUMNS,
+            data=records,
+            logger_description="VesselMovements",
+        )
 
 
 DEFAULT_COLUMNS = [

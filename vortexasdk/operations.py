@@ -4,6 +4,7 @@ from vortexasdk.api.id import ID
 from vortexasdk.client import default_client
 from vortexasdk.exceptions import InvalidAPIDataResponseException
 from vortexasdk.logger import get_logger
+from vortexasdk.utils import filter_exact_match
 
 logger = get_logger(__name__)
 
@@ -64,12 +65,15 @@ class Search:
         """
         self._resource = resource
 
-    def search(self, **params) -> List[dict]:
+    def search(
+        self, exact_term_match: bool = None, **api_params
+    ) -> List[dict]:
         """
         Search Reference data filtering on `params`.
 
         # Arguments
-            params: Search parameters
+            exact_term_match: Optional argument to filter names on exact matches
+            api_params: Search parameters to be passed on to the API
 
         # Returns
         Result of VortexaAPI call from hitting querying the `resource` endpoint filtering with `params`.
@@ -80,4 +84,13 @@ class Search:
 
         """
         logger.info(f"Searching {self.__class__.__name__}")
-        return default_client().search(self._resource, **params)
+        api_result = default_client().search(self._resource, **api_params)
+        logger.debug(
+            f"{len(api_result)} results received from {self._resource}"
+        )
+
+        if exact_term_match:
+            logger.debug("Filtering results on exact term match")
+            return filter_exact_match(api_params["term"], api_result)
+        else:
+            return api_result

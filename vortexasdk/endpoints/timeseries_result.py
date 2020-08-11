@@ -1,11 +1,13 @@
-import os
-from multiprocessing.pool import Pool
 from typing import List
 
 import pandas as pd
 
 from vortexasdk.api.search_result import Result
 from vortexasdk.api.timeseries_item import TimeSeriesItem
+from vortexasdk.logger import get_logger
+from vortexasdk.result_conversions import create_dataframe, create_list
+
+logger = get_logger(__name__)
 
 
 class TimeSeriesResult(Result):
@@ -13,9 +15,8 @@ class TimeSeriesResult(Result):
 
     def to_list(self) -> List[TimeSeriesItem]:
         """Represents time series as a list."""
-        list_of_dicts = super().to_list()
-        with Pool(os.cpu_count()) as pool:
-            return list(pool.map(TimeSeriesItem.from_dict, list_of_dicts))
+        # noinspection PyTypeChecker
+        return create_list(super().to_list(), TimeSeriesItem)
 
     def to_df(self, columns=None) -> pd.DataFrame:
         """Represents the timeseries as a dataframe.
@@ -32,4 +33,16 @@ class TimeSeriesResult(Result):
         the number of cargo movements contributing towards this day's tonnage.
 
         """
-        return pd.DataFrame(data=super().to_list())
+        df = create_dataframe(
+            columns=columns,
+            default_columns=DEFAULT_COLUMNS,
+            data=super().to_list(),
+            logger_description="TimeSeries",
+        )
+
+        df["key"] = pd.to_datetime(df["key"])
+
+        return df
+
+
+DEFAULT_COLUMNS = ["key", "value", "count"]

@@ -10,7 +10,7 @@
       {
         "name": "Light-Sweet",
         "layer": [
-          "subproduct_group"
+          "category"
         ],
         "id": "66a98cd9df06660555000f8d4de9bc075e651bce3b57a42fcef33d88c987fc73"
       }
@@ -21,30 +21,28 @@
       "api_min": 40,
       "api_max": 40
     },
-    "ref_type": "product"
-  },
-  {
-    "id": "6cd99c8f9e67e61892a691237b3342a4caae5ec1c76784b1b93952afda44ae24",
-    "name": "Aboozar",
-    "layer": [
-      "grade"
-    ],
-    "leaf": true,
-    "parent": [
+    "ref_type": "product",
+    "hierarchy": [
       {
-        "name": "Heavy-Sour",
-        "layer": [
-          "subproduct_group"
-        ],
-        "id": "fc2e0746428ed6109045fc1195a4ee4ef2e339d55b7b6e3a0fb01ecf28efc4f7"
+        "id": "54af755a090118dcf9b0724c9a4e9f14745c26165385ffa7f1445bc768f06f11",
+        "layer": "group",
+        "label": "Crude/Condensates"
+      },
+      {
+        "id": "6f11b0724c9a4e85ffa7f1445bc768f054af755a090118dcf99f14745c261653",
+        "layer": "group_product",
+        "label": "Crude"
+      },
+      {
+        "id": "66a98cd9df06660555000f8d4de9bc075e651bce3b57a42fcef33d88c987fc73",
+        "layer": "category",
+        "label": "Light-Sweet"
+      },
+      {
+        "id": "e166e6253dd843624f6cbe4fd45e7f2cff4671e600b4d6371172dd92a0255946",
+        "layer": "grade",
+        "label": "Abo"
       }
-    ],
-    "meta": {
-      "sulphur_min": 2.48,
-      "sulphur_max": 2.48,
-      "api_min": 27,
-      "api_max": 27
-    },
-    "ref_type": "product"
+    ]
   }
 ]

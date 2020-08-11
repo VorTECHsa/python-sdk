@@ -1,5 +1,5 @@
 """
-Let's see how much Medium-Sour Crude is in long term floating storage.
+Let's see how much Medium-Sour Crude is in long term floating storage, in January 2019.
 
 The below script returns:
 
@@ -40,9 +40,9 @@ if __name__ == "__main__":
         filter_activity="storing_state",
         # We're only interested in floating storage that lasted longer than 14 days
         timeseries_activity_time_span_min=1000 * 60 * 60 * 24 * 14,
-        # Let's limit the search to 2019 storage events
+        # Let's limit the search to January 2019 storage events
         filter_time_min=datetime(2019, 1, 1),
-        filter_time_max=datetime(2019, 12, 31),
+        filter_time_max=datetime(2019, 2, 1),
     )
 
     # Convert search result to dataframe

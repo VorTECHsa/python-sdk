@@ -27,3 +27,6 @@ class TestProducts(TestCaseUsingMockAPI):
     def test_search_ids_retreives_names(self):
         products = Products().search().to_df()
         assert len(products) > 0
+
+    def test_to_list(self):
+        Products().search().to_list()

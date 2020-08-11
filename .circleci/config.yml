@@ -15,7 +15,7 @@ jobs:
             - v1-{{ .Branch }}-
 
       - run:
-          name: "Install requirements.txt"
+          name: "Install setup.py"
           command: |
             python3.7 -m venv .venv;
             . .venv/bin/activate
@@ -35,16 +35,35 @@ jobs:
             mypy docs/examples
 
       - run:
-          name: "Run tests against mock API"
+          name: "Run doctests"
           command: |
             . .venv/bin/activate
-            export SKIP_TAGS=real; pytest -v
+            # This should be done in tox, but i can't work out how to run doctests in tox hence we're also running it here for now.
+            pytest -v --doctest-modules
 
       - run:
-          name: "Run all tests, including live API"
+          name: "Run all tests"
           command: |
             . .venv/bin/activate
-            pytest -v --doctest-modules
+            pip install tox
+            tox --verbose
+
+      - run:
+          name: "Run all examples"
+          command: |
+            set -xe
+            . .venv/bin/activate
+            for f in docs/examples/*.py; do cp -v -- "$f" "$f-example.py"; done
+            cp docs/examples/*-example.py .
+            for f in *-example.py; do python "$f"; done
+            rm docs/examples/*-example.py
+            rm *-example.py
+
+      - run:
+          name: "Confirm that the check_setup script works"
+          command: |
+            . .venv/bin/activate
+            python -m vortexasdk.check_setup
 
       - run:
           name: "Build docs"
