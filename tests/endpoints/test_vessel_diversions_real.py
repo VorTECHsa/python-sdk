@@ -23,15 +23,18 @@ class TestVesselDiversions(TestCaseUsingRealAPI):
 
         self.assertRaises(ValueError, lambda: VesselDiversions().search(filter_time_min=too_old_date))
 
-    def test_search_to_df_runs(self):
-        port = Geographies().search("Singapore", exact_term_match=True).to_list()[0].id
+    def test_search_to_df_default_runs(self):
+        df = VesselDiversions().search().to_df()
 
-        df = VesselDiversions().search(
-            filter_time_min=datetime.now() - timedelta(days=10),
-            filter_locations=port,
-            include_waypoints=True,
-            unit='t'
-        ).to_df()
+        self.assertEqual(df.columns, VesselDiversions())
 
-        print(df)
+    def test_search_to_df_all_runs(self):
+        VesselDiversions().search().to_df("all")
+
+    def test_df_timestamp_columns_are_datetimes(self):
+        df = VesselDiversions().search().to_df()
+
+        self.assertEqual(str(df['timestamp'].dtypes), 'datetime64[ns, UTC]')
+        self.assertEqual(str(df['prev_eta'].dtypes), 'datetime64[ns, UTC]')
+        self.assertEqual(str(df['next_eta'].dtypes), 'datetime64[ns, UTC]')
 
