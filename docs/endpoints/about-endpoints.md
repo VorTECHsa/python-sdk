@@ -4,13 +4,13 @@ The endpoints module allows you to query Vortexa's data.
 
 The VortexaSDK currently contains the following endpoints:
 
-1. Cargo Movements
-2. Vessel Movements
-3. Charterers
-4. Geographies
-5. Products
-6. Vessels
-6. Vessel Diversions
+- Cargo Movements
+- Vessel Movements
+- Vessel Diversions
+- Charterers
+- Geographies
+- Products
+- Vessels
 
 
 Each endpoint offers either one, or both, of two different functionalities:
