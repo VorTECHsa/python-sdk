@@ -30,7 +30,7 @@ def check_can_connect_to_vortexa_api():
     except Exception:
         reason, status_code = None, None
 
-    if status_code is not None and status_code == 200:
+    if status_code == 200:
         print(f"✅ Python successfully connected to {url}")
     else:
         all_tests_pass = False
