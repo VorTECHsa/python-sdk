@@ -78,6 +78,7 @@ pages:
       6 Floating Storage Medium Sour Crude: examples/6_medium_sour_floating_storage.md
       7 Ingest Custom Excel Charterers: examples/7_custom_excel_charterer_ingestion.md
       8 USA Vessel Diversions: exmaples/8_usa_diversions.md
+      Jupyter Notebooks: examples/jupyter_notebooks.md
 theme:
   name: readthedocs
   collapse_navigation: true
