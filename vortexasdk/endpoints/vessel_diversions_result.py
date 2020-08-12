@@ -35,26 +35,15 @@ class VesselDiversionsResult(Result):
         # Arguments
             columns: Output columns present in the `pd.DataFrame`.
             Enter `columns='all'` to return all available columns.
-            Enter `columns=None` to use `cargo_movements.DEFAULT_COLUMNS`.
+            Enter `columns=None` to return the default columns.
 
         # Returns
-        `pd.DataFrame`, one row per cargo movement.
-
-
-        ## Notes
-
-
+        `pd.DataFrame`, one row per diversion.
         """
-        if columns is None:
-            columns = DEFAULT_COLUMNS
-
-        flatten = functools.partial(
-            convert_vessel_diversion_to_flat_dict, cols=columns
-        )
 
         logger.debug("Converting each Vessel Diversion to a flat dictionary")
         with Pool(os.cpu_count()) as pool:
-            records = pool.map(flatten, super().to_list())
+            records = pool.map(convert_vessel_diversion_to_flat_dict, super().to_list())
 
         return create_dataframe(
             columns=columns,
@@ -85,5 +74,8 @@ DEFAULT_COLUMNS = [
     "next_eta",
 
     "cargoes.0.product_hierarchy.group.label",
+    "cargoes.0.product_hierarchy.group_product.label",
+    "cargoes.0.product_hierarchy.category.label",
+    "cargoes.0.product_hierarchy.grade.label",
     "is_considered_waypoint"
 ]

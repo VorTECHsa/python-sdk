@@ -5,16 +5,33 @@ from datetime import datetime, timedelta
 
 
 class TestVesselDiversions(TestCaseUsingRealAPI):
-    def test_search(self):
-
-        crude_id = "6f11b0724c9a4e85ffa7f1445bc768f054af755a090118dcf99f14745c261653"
-        rotterdam = Geographies().search("Rotterdam [NL]", exact_term_match=True).to_list()[0].id
+    def test_search_to_list_runs(self):
+        port = Geographies().search("Singapore", exact_term_match=True).to_list()[0].id
 
         diversions = VesselDiversions().search(
-            filter_time_min=datetime.now() - timedelta(days=1),
-            # filter_locations=rotterdam,
-            # filter_products=crude_id,
+            filter_time_min=datetime.now() - timedelta(days=10),
+            filter_locations=port,
+            include_waypoints=True,
+            unit='t'
         ).to_list()
 
         for d in diversions:
             print(d.next_declared_destination)
+
+    def test_long_date_range_raises_exception(self):
+        too_old_date = datetime.now() - timedelta(days=VesselDiversions()._MAX_DIVERSION_HISTORIC_DAYS + 1)
+
+        self.assertRaises(ValueError, lambda: VesselDiversions().search(filter_time_min=too_old_date))
+
+    def test_search_to_df_runs(self):
+        port = Geographies().search("Singapore", exact_term_match=True).to_list()[0].id
+
+        df = VesselDiversions().search(
+            filter_time_min=datetime.now() - timedelta(days=10),
+            filter_locations=port,
+            include_waypoints=True,
+            unit='t'
+        ).to_df()
+
+        print(df)
+

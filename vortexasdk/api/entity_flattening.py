@@ -24,12 +24,7 @@ def convert_vessel_diversion_to_flat_dict(vd: Dict, cols="all") -> Dict:
 
     as_dict = _group_vessel_diversion_attributed_by_layer(vd)
 
-    formatted = flatten_dictionary(as_dict)
-
-    if cols == "all":
-        return formatted
-    else:
-        return {k: v for k, v in formatted.items() if k in cols}
+    return flatten_dictionary(as_dict)
 
 
 def _group_vessel_diversion_attributed_by_layer(vd):

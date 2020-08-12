@@ -15,7 +15,7 @@ logger = get_logger(__name__)
 
 class VesselDiversions(Search):
     """
-    Use this endpoint to search through Vortexa's realtime vessel diversions.
+    Use this endpoint to search through Vortexa's real-time vessel diversions.
     """
 
     _MAX_PAGE_RESULT_SIZE = 500
@@ -27,7 +27,7 @@ class VesselDiversions(Search):
     # noinspection PyMethodOverriding
     def search(
             self,
-            behaviour: str = "country_diversion",
+            behaviour: str = "any",
             filter_locations: Union[ID, List[ID]] = None,
             filter_products: Union[ID, List[ID]] = None,
             filter_vessels: Union[ID, List[ID]] = None,
@@ -35,7 +35,7 @@ class VesselDiversions(Search):
             filter_vessel_flags: Union[str, List[str]] = None,
             filter_vessel_scrubbers: str = "disabled",
             unit: str = "b",
-            include_waypoints="true",
+            include_waypoints: bool = True,
             exclude_vessel_classes: Union[str, List[str]] = None,
             exclude_vessel_flags: Union[str, List[str]] = None,
             exclude_locations: Union[ID, List[ID]] = None,
@@ -51,8 +51,7 @@ class VesselDiversions(Search):
         # Arguments
             behaviour: The type of diversion to search for.
               These can be country diversions (where the vessel has diverted to a new country),
-              regional diversions (where the vessel has diverted to a new region),
-              or any diversions (include both country and regional diversions).
+              regional diversions (where the vessel has diverted to a new region), or any diversions.
               behaviour must be one of the following: `["country_diversion", "regional_diversion", "any"]`
 
             filter_locations: A geography ID, or list of geography IDs to filter on.
@@ -89,20 +88,20 @@ class VesselDiversions(Search):
 
         api_params = {
             "behaviour": behaviour,
-            "includeWaypoints": include_waypoints,
+            "include_waypoints": include_waypoints,
             "location": convert_to_list(filter_locations),
-            "locationExcluded": convert_to_list(exclude_locations),
+            "location_excluded": convert_to_list(exclude_locations),
             "products": convert_to_list(filter_products),
-            "productsExcluded": convert_to_list(exclude_products),
-            "scrubbersFitted": filter_vessel_scrubbers  ,
-            "startTimestamp": to_ISODate(filter_time_min),
+            "products_excluded": convert_to_list(exclude_products),
+            "scrubbers_fitted": filter_vessel_scrubbers  ,
+            "start_timestamp": to_ISODate(filter_time_min),
             "unit": unit,
-            "vesselClasses": convert_to_list(filter_vessel_classes),
-            "vesselClassesExcluded": convert_to_list(exclude_vessel_classes),
-            "vesselFlags": convert_to_list(filter_vessel_flags),
-            "vesselFlagsExcluded": convert_to_list(exclude_vessel_flags),
+            "vessel_classes": convert_to_list(filter_vessel_classes),
+            "vessel_classes_excluded": convert_to_list(exclude_vessel_classes),
+            "vessel_flags": convert_to_list(filter_vessel_flags),
+            "vessel_flags_excluded": convert_to_list(exclude_vessel_flags),
             "vessels": convert_to_list(filter_vessels),
-            "vesselsExcluded": convert_to_list(exclude_vessels),
+            "vessels_excluded": convert_to_list(exclude_vessels),
             "size": self._MAX_PAGE_RESULT_SIZE,
         }
 
