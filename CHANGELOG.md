@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.25.1](https://github.com/vortechsa/python-sdk/tree/0.25.1) (2020-08-12)
+
+[Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.25.0...0.25.1)
+
+**Closed issues:**
+
+- Add links to jupyter notebooks examples directory in the docs [\#172](https://github.com/VorTECHsa/python-sdk/issues/172)
+
+**Merged pull requests:**
+
+- test: Remove httpstat internet check [\#239](https://github.com/VorTECHsa/python-sdk/pull/239) ([KitBurgess](https://github.com/KitBurgess))
+- docs: Add docs package for pretty tables again [\#238](https://github.com/VorTECHsa/python-sdk/pull/238) ([KitBurgess](https://github.com/KitBurgess))
+- docs: Fix typo [\#236](https://github.com/VorTECHsa/python-sdk/pull/236) ([KitBurgess](https://github.com/KitBurgess))
+- feat: add Notebook links to docs [\#199](https://github.com/VorTECHsa/python-sdk/pull/199) ([asfakianakis](https://github.com/asfakianakis))
+
 ## [0.25.0](https://github.com/vortechsa/python-sdk/tree/0.25.0) (2020-08-05)
 
 [Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.24.0...0.25.0)
@@ -100,6 +115,7 @@
 - chore: Allow users to set lowercase log level [\#211](https://github.com/VorTECHsa/python-sdk/pull/211) ([KitBurgess](https://github.com/KitBurgess))
 - docs: Add loading external data example [\#209](https://github.com/VorTECHsa/python-sdk/pull/209) ([KitBurgess](https://github.com/KitBurgess))
 - docs: typo in products endpoint [\#208](https://github.com/VorTECHsa/python-sdk/pull/208) ([Natday](https://github.com/Natday))
+- Webinar10jun [\#207](https://github.com/VorTECHsa/python-sdk/pull/207) ([KitBurgess](https://github.com/KitBurgess))
 - Google analytics [\#206](https://github.com/VorTECHsa/python-sdk/pull/206) ([KitBurgess](https://github.com/KitBurgess))
 
 ## [0.21.1](https://github.com/vortechsa/python-sdk/tree/0.21.1) (2020-06-08)
@@ -137,7 +153,6 @@
 
 **Merged pull requests:**
 
-- Webinar10jun [\#207](https://github.com/VorTECHsa/python-sdk/pull/207) ([KitBurgess](https://github.com/KitBurgess))
 - Feat attribute endpoint [\#197](https://github.com/VorTECHsa/python-sdk/pull/197) ([KitBurgess](https://github.com/KitBurgess))
 - Feat new filters [\#193](https://github.com/VorTECHsa/python-sdk/pull/193) ([SeanBarry](https://github.com/SeanBarry))
 - docs: add SeanBarry as a contributor [\#192](https://github.com/VorTECHsa/python-sdk/pull/192) ([allcontributors[bot]](https://github.com/apps/allcontributors))
