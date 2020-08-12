@@ -1,6 +1,7 @@
 import os
 
 import requests
+from vortexasdk.endpoints.endpoints import API_FQDN
 
 all_tests_pass = True
 
@@ -19,29 +20,10 @@ def check_api_key_present():
         print("✅ Environment variable VORTEXA_API_KEY is set correctly.")
 
 
-def check_can_connect_to_internet():
-    global all_tests_pass
-    # noinspection PyBroadException
-    url = "https://httpstat.us/200"
-
-    try:
-        status_code = requests.get(url).status_code
-    except Exception:
-        status_code = None
-
-    if status_code is not None and status_code == 200:
-        print("✅ You're connected to the internet")
-    else:
-        all_tests_pass = False
-        print(f"❌ Python unable to connect to the internet.")
-        print(f"         Python attempted to connect to {url}")
-        print(f"         Check your internet connectivity / VPN settings.")
-
-
 def check_can_connect_to_vortexa_api():
     global all_tests_pass
 
-    url = "https://api.vortexa.com/health-check"
+    url = f"{API_FQDN}/health-check"
     reason, status_code = None, None
     try:
         response = requests.get(url)
@@ -56,6 +38,7 @@ def check_can_connect_to_vortexa_api():
         print(f"❌ Python unable to connect to {url}")
         print(f"         status code: {status_code}")
         print(f"         reason: {reason}")
+        print(f"         Check your internet connectivity / VPN settings.")
 
 
 def check_can_import_vortexasdk():
@@ -94,7 +77,6 @@ def check_can_retrieve_geographies():
 def run_all_checks():
     print("📚 Running Vortexa SDK setup check")
     check_api_key_present()
-    check_can_connect_to_internet()
     check_can_connect_to_vortexa_api()
     check_can_import_vortexasdk()
     check_can_retrieve_geographies()
