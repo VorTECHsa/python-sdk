@@ -24,12 +24,11 @@ def check_can_connect_to_vortexa_api():
     global all_tests_pass
 
     url = f"{API_FQDN}/health-check"
-    reason, status_code = None, None
     try:
         response = requests.get(url)
         reason, status_code = response.reason, response.status_code
     except Exception:
-        pass
+        reason, status_code = None, None
 
     if status_code is not None and status_code == 200:
         print(f"✅ Python successfully connected to {url}")
