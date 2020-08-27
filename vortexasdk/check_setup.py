@@ -10,6 +10,7 @@ def check_api_key_present():
     global all_tests_pass
     api_key = os.getenv("VORTEXA_API_KEY")
     if api_key is None:
+        all_tests_pass = False
         print("🔸 Environment variable VORTEXA_API_KEY is not set.")
         print(
             "         Please set this environment variable, this is the recommended way to authenticate with the SDK."
