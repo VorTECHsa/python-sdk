@@ -10,14 +10,14 @@ def check_api_key_present():
     global all_tests_pass
     api_key = os.getenv("VORTEXA_API_KEY")
     if api_key is None:
-        print("🔸 Environment variable VORTEXA_API_KEY is not set.")
+        print("Environment variable VORTEXA_API_KEY is not set.")
         print(
             "         Please set this environment variable, this is the recommended way to authenticate with the SDK."
             "\n         You may need to restart your python interpreter / bash terminal for the API Key to be ingested."
             "\n         Note: The SDK will work without an environment variable, you'll be prompted to interactively enter your password."
         )
     else:
-        print("✅ Environment variable VORTEXA_API_KEY is set correctly.")
+        print("Environment variable VORTEXA_API_KEY is set correctly.")
 
 
 def check_can_connect_to_vortexa_api():
@@ -31,10 +31,10 @@ def check_can_connect_to_vortexa_api():
         reason, status_code = None, None
 
     if status_code == 200:
-        print(f"✅ Python successfully connected to {url}")
+        print(f"Python successfully connected to {url}")
     else:
         all_tests_pass = False
-        print(f"❌ Python unable to connect to {url}")
+        print(f"Python unable to connect to {url}")
         print(f"         status code: {status_code}")
         print(f"         reason: {reason}")
         print(f"         Check your internet connectivity / VPN settings.")
@@ -46,10 +46,10 @@ def check_can_import_vortexasdk():
     try:
         import vortexasdk
 
-        print("✅ Python successfully imported vortexasdk")
+        print("Python successfully imported vortexasdk")
     except ImportError:
         all_tests_pass = False
-        print("❌ Python unable to import vortexasdk")
+        print("Python unable to import vortexasdk")
 
 
 def check_can_retrieve_geographies():
@@ -65,25 +65,25 @@ def check_can_retrieve_geographies():
         geography = Geographies().reference(europe)
         assert geography["id"] == europe
         print(
-            "✅ Python successfully retrieved a sample piece of reference data"
+            "Python successfully retrieved a sample piece of reference data"
         )
     except Exception as e:
         all_tests_pass = False
         print(e)
-        print("❌ Python unable to retrieve a sample piece of reference data")
+        print("Python unable to retrieve a sample piece of reference data")
 
 
 def run_all_checks():
-    print("📚 Running Vortexa SDK setup check")
+    print("Running Vortexa SDK setup check")
     check_api_key_present()
     check_can_connect_to_vortexa_api()
     check_can_import_vortexasdk()
     check_can_retrieve_geographies()
 
     if all_tests_pass:
-        print("✅ All tests passed, the SDK is correctly setup!")
+        print("All tests passed, the SDK is correctly setup!")
     else:
-        print("❌ One or more tests have failed.")
+        print("One or more tests have failed.")
     print()
 
 
