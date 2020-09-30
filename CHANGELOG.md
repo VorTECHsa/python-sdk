@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.25.2](https://github.com/vortechsa/python-sdk/tree/0.25.2) (2020-09-30)
+
+[Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.25.1...0.25.2)
+
+**Merged pull requests:**
+
+- Update check\_setup.py [\#242](https://github.com/VorTECHsa/python-sdk/pull/242) ([amhchiu](https://github.com/amhchiu))
+
 ## [0.25.1](https://github.com/vortechsa/python-sdk/tree/0.25.1) (2020-08-12)
 
 [Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.25.0...0.25.1)
