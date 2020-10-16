@@ -15,12 +15,6 @@ class TestConvert(TestCaseUsingRealAPI):
             "84a82843ec84ac6d67b65c50056eff78e0d58e6b9fc7a5ba9adc6c0442162cf4"
         ]
 
-    def test_convert_mmsi_to_vessel_ids(self):
-        result = convert_to_vessel_ids([563064200])
-        assert result == [
-            "b9f5cf3e2a3b17fe2c7eed717f7ab36d481ad69290c28197c7cd00e1669ca66a"
-        ]
-
     def test_convert_class_to_vessel_ids(self):
         result = convert_to_vessel_ids(["panamax"])
 
