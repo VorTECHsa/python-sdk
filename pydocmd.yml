@@ -38,6 +38,10 @@ generate:
       - vortexasdk.api.cargo_movement++
   - entities/vessel_movement.md:
       - vortexasdk.api.vessel_movement++
+  - endpoints/eia_forecasts.md:
+      - vortexasdk.endpoints.eia_forecasts++
+      - vortexasdk.endpoints.eia_forecasts_result++
+
 pages:
   - Home: index.md << README.md
   - Endpoints:
@@ -50,6 +54,7 @@ pages:
       Geographies: endpoints/geographies.md
       Products: endpoints/products.md
       Vessels: endpoints/vessels.md
+      EIA Forecasts: endpoints/eia_forecasts.md
   - Entities:
       Cargo Movement: entities/cargo_movement.md
       Corporation: entities/corporation.md

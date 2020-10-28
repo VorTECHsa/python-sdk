@@ -2,6 +2,7 @@ CARGO_TIMESERIES_RESOURCE = "/time-series"
 
 CARGO_MOVEMENTS_RESOURCE = "/cargo-movements/search"
 VESSEL_MOVEMENTS_RESOURCE = "/vessel-movements/search"
+EIA_FORECASTS_RESOURCE = "/search/eia-forecasts"
 
 ATTRIBUTES_REFERENCE = "/reference/attributes"
 GEOGRAPHIES_REFERENCE = "/reference/geographies"
