@@ -39,9 +39,7 @@ generate:
   - entities/vessel_movement.md:
       - vortexasdk.api.vessel_movement++
   - endpoints/ton_miles_breakdown.md:
-      - vortexasdk.endpoints.ton_miles++
-      - vortexasdk.endpoints.ton_miles_result++
-
+      - vortexasdk.endpoints.ton_miles_breakdown++
 
 pages:
   - Home: index.md << README.md
