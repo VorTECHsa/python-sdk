@@ -13,7 +13,7 @@ from vortexasdk.api.shared_types import to_ISODate
 class TonMilesBreakdown(Search):
     """
     Ton Miles Breakdown Endpoint. Used to retreive the ton miles data as a time series. The aggregation is done
-    on the Vessel Movements data.
+    on the Vessel Movements data hence similar parameters are accepted.
 
     A detailed explanation of the endpoint can be found [here](https://docs.vortexa.com/reference/ton-miles-breakdown).
     """
