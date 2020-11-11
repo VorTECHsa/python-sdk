@@ -1,17 +1,16 @@
 from dataclasses import dataclass
-from typing import List
+from typing import Optional
 
 from vortexasdk.api.serdes import FromDictMixin
-from vortexasdk.api.shared_types import IDName
 
 
 @dataclass(frozen=True)
-class EIAForecast(IDName, FromDictMixin):
+class EIAForecast(FromDictMixin):
     """Represent a EIA forecast record returned by the API."""
 
-    date: List[str]
+    date: str
     forecast_fri: float
-    value: int
-    stocks: int
-    cover: float
-    runs: float
+    value: Optional[int]
+    stocks: Optional[int]
+    cover: Optional[float]
+    runs: Optional[float]
