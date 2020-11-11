@@ -40,12 +40,14 @@ class EIAForecasts(Search):
 
         Find PADD5 gasoline imports EIA forecasts from January 2019.
         ```python
+        >>> from datetime import datetime
         >>> from vortexasdk import EIAForecasts
         >>> df = EIAForecasts().search(
-                type="padd5-gasoline-imports",
-                filter_time_min="2020-01-01T00:00:00.000Z",
-                filter_time_max="2020-01-31T00:00:00.000Z"
-            ).to_df()
+        ...     preset="padd5-gasoline-imports",
+        ...     filter_time_min=datetime(2020, 1, 1),
+        ...     filter_time_max=datetime(2020, 1, 31)
+        ... ).to_df()
+
         ```
 
         returns
