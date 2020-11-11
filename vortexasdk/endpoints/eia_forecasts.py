@@ -7,7 +7,17 @@ from vortexasdk.api.shared_types import to_ISODate
 
 
 class EIAForecasts(Search):
-    """EIA forecasts Endpoint."""
+    """EIA forecasts Endpoint, use this to search through Vortexa's EIA Forecasts data.
+
+    The data includes:
+
+    - Vortexa's data science based forecast of the EIA number to be published on the week
+    - Actual EIA import/export numbers as published by the EIA Weekly Supply Estimates report
+    - EIA stocks (kbl)
+    - Cover (days of Supply for the whole of the US, as published by the EIA Weekly Supply Estimates report)
+    - Refinery runs (refiner “Percent Operable Utilization” as published by the EIA Weekly Supply Estimates report)
+
+    """
 
     def __init__(self):
         Search.__init__(self, EIA_FORECASTS_RESOURCE)
