@@ -14,8 +14,6 @@ from vortexasdk import CargoMovements, Geographies, Products
 if __name__ == "__main__":
     now = datetime.utcnow()
 
-
-
     one_month_ago = now - relativedelta(months=1)
 
     # For this analysis we need the geography ID for India, and the geography ID for Saudi Arabia. We're going to

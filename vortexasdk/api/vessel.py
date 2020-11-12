@@ -14,7 +14,9 @@ from vortexasdk.api.shared_types import (
 )
 
 
-@dataclass(frozen=True,)
+@dataclass(
+    frozen=True,
+)
 class Vessel(Node, FromDictMixin):
     """
     Represent a Vessel reference record returned by the API.
