@@ -73,6 +73,7 @@ class EIAForecasts(Search):
         | 2020-01-03T00:00:00.000Z | 640.443229654771 |       |        |       |      |
 
         Some values can be NULL: value, stocks, cover, runs. It can happen when:
+
         - it's a very recent forecast, the Vortexa's data science based forecast (forecast_fri) is available but
           the complete EIA data isn't yet
         - it's an older forecast and the data is not available
