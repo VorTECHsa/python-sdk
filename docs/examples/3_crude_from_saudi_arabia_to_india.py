@@ -19,7 +19,12 @@ if __name__ == "__main__":
     # show 2 ways to retrieve geography IDs. You'll want to chose method 1 or 2 depending on your use case.
 
     # Option 1. We look up a geography with an exact matching name
-    saudi_arabia = Geographies().search("Saudi Arabia", exact_term_match=True).to_list()[0].id
+    saudi_arabia = (
+        Geographies()
+        .search("Saudi Arabia", exact_term_match=True)
+        .to_list()[0]
+        .id
+    )
 
     # Option 2. We search for geographies with similar names, then pick the one we're looking for
 

@@ -26,22 +26,37 @@ from vortexasdk.api import ID
 
 def convert_to_corporation_ids(corporation_name: str) -> List[ID]:
     # The search returns all corporations with exactly the same name.
-    return [c.id for c in Corporations().search(corporation_name, exact_term_match=True).to_list()]
+    return [
+        c.id
+        for c in Corporations()
+        .search(corporation_name, exact_term_match=True)
+        .to_list()
+    ]
 
 
 if __name__ == "__main__":
     # Read our excel sheet of charterers into a dataframe
-    charterers_df = pd.read_excel("./docs/examples/resources/my_charterers.xlsx")
+    charterers_df = pd.read_excel(
+        "./docs/examples/resources/my_charterers.xlsx"
+    )
 
     # Convert the charterer names into ids
-    charterers_list_of_lists = charterers_df['charterers'].apply(convert_to_corporation_ids).to_list()
-    charterers = [item for sublist in charterers_list_of_lists for item in sublist]
+    charterers_list_of_lists = (
+        charterers_df["charterers"].apply(convert_to_corporation_ids).to_list()
+    )
+    charterers = [
+        item for sublist in charterers_list_of_lists for item in sublist
+    ]
 
     # Query API
-    df = VesselMovements().search(
-        filter_charterers=charterers,
-        filter_time_min=datetime.now() - timedelta(weeks=1),
-        filter_time_max=datetime.now(),
-    ).to_df()
+    df = (
+        VesselMovements()
+        .search(
+            filter_charterers=charterers,
+            filter_time_min=datetime.now() - timedelta(weeks=1),
+            filter_time_max=datetime.now(),
+        )
+        .to_df()
+    )
 
     print(df)

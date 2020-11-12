@@ -133,8 +133,14 @@ class TestCargoMovementsReal(TestCaseUsingRealAPI):
             .head(2)
         )
 
-        self.assertEqual(str(df['events.cargo_port_load_event.0.end_timestamp'].dtypes), 'datetime64[ns, UTC]')
-        self.assertEqual(str(df['events.cargo_port_unload_event.0.end_timestamp'].dtypes), 'datetime64[ns, UTC]')
+        self.assertEqual(
+            str(df["events.cargo_port_load_event.0.end_timestamp"].dtypes),
+            "datetime64[ns, UTC]",
+        )
+        self.assertEqual(
+            str(df["events.cargo_port_unload_event.0.end_timestamp"].dtypes),
+            "datetime64[ns, UTC]",
+        )
 
     def test_search_single_filter_origin_name(self):
         df = (

@@ -43,7 +43,7 @@ setuptools.setup(
             "pydoc-markdown==2.0.5",
             "tabulate==0.8.5",
             "six==1.12.0",
-            "xlrd==1.2.0"
+            "xlrd==1.2.0",
         ]
     },
 )
