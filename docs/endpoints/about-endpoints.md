@@ -10,7 +10,8 @@ The VortexaSDK currently contains the following endpoints:
 4. Geographies
 5. Products
 6. Vessels
-
+7. Cargo Time Series
+8. EIA Forecasts
 
 Each endpoint offers either one, or both, of two different functionalities:
 

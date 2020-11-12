@@ -23,7 +23,7 @@ class EIAForecastResult(Result):
         Represent EIA forecasts as a `pd.DataFrame`.
 
         # Arguments
-            columns: The EIA forecasts features we want in the dataframe. Enter `columns='all'` to include all features.
+            columns: The EIA forecasts columns we want in the dataframe. Enter `columns='all'` to include all columns.
             Defaults to `columns = ['date', 'forecast_fri', 'value', 'stocks', 'cover', 'runs']`.
 
 

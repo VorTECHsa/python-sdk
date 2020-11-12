@@ -4,6 +4,7 @@ from vortexasdk.endpoints.eia_forecasts_result import EIAForecastResult
 from vortexasdk.endpoints.endpoints import EIA_FORECASTS_RESOURCE
 from vortexasdk.operations import Search
 from vortexasdk.api.shared_types import to_ISODate
+from datetime import datetime
 
 
 class EIAForecasts(Search):
@@ -11,11 +12,12 @@ class EIAForecasts(Search):
 
     The data includes:
 
-    - Vortexa's data science based forecast of the EIA number to be published on the week
-    - Actual EIA import/export numbers as published by the EIA Weekly Supply Estimates report
-    - EIA stocks (kbl)
-    - Cover (days of Supply for the whole of the US, as published by the EIA Weekly Supply Estimates report)
-    - Refinery runs (refiner “Percent Operable Utilization” as published by the EIA Weekly Supply Estimates report)
+    - `date`: date of the forecast
+    - `forecast_fri`: Vortexa's data science based forecast of the EIA number to be published on the week
+    - `value`: Actual EIA import/export numbers as published by the EIA Weekly Supply Estimates report
+    - `stocks`: EIA stocks (kbl)
+    - `cover`: Cover (days of Supply for the whole of the US, as published by the EIA Weekly Supply Estimates report)
+    - `runs`: refinery runs (refiner “Percent Operable Utilization” as published by the EIA Weekly Supply Estimates report)
 
     """
 
@@ -24,20 +26,20 @@ class EIAForecasts(Search):
 
     def search(
         self,
-        preset: str = None,
-        filter_time_min: str = False,
-        filter_time_max: str = False,
+        preset: str = "padd1-gasoline-imports",
+        filter_time_min: datetime = datetime(2020, 1, 1),
+        filter_time_max: datetime = datetime(2020, 1, 31),
     ) -> EIAForecastResult:
         """
-        Find EIA forecasts for a given date preset and date range.
+        Find EIA forecasts for a given preset and date range.
 
         # Arguments
-            preset: the EIA forecasts preset to be returned. Preset can be: 'padd1-gasoline-imports',
-            'padd3-gasoline-imports', 'padd5-gasoline-imports', 'us-gasoline-exports', 'padd1-crude-imports',
-            'padd3-crude-imports', 'padd5-crude-imports', 'us-crude-exports', 'padd1-diesel-imports',
-            'padd3-diesel-imports', 'padd5-diesel-imports', 'us-diesel-exports', 'padd1-jet-imports',
-            'padd5-jet-imports', 'us-jet-exports', 'padd1-fueloil-imports', 'padd3-fueloil-imports',
-            'padd5-fueloil-imports' or 'us-fueloil-exports'
+            preset: Use to specify what geography and product information you would like to query.
+            Preset can be: 'padd1-gasoline-imports', 'padd3-gasoline-imports', 'padd5-gasoline-imports',
+            'us-gasoline-exports', 'padd1-crude-imports', 'padd3-crude-imports', 'padd5-crude-imports',
+            'us-crude-exports', 'padd1-diesel-imports', 'padd3-diesel-imports', 'padd5-diesel-imports',
+            'us-diesel-exports', 'padd1-jet-imports', 'padd5-jet-imports', 'us-jet-exports',
+            'padd1-fueloil-imports', 'padd3-fueloil-imports', 'padd5-fueloil-imports' or 'us-fueloil-exports'
 
             filter_time_min: The UTC start date of the time filter
 
@@ -69,6 +71,11 @@ class EIAForecasts(Search):
         | 2020-01-17T00:00:00.000Z | 510.289752707662 | 549   | 10325  | 25.2  | 64.7 |
         | 2020-01-10T00:00:00.000Z | 469.841470826967 |       |        |       |      |
         | 2020-01-03T00:00:00.000Z | 640.443229654771 |       |        |       |      |
+
+        Some values can be NULL: value, stocks, cover, runs. It can happen when:
+        - it's a very recent forecast, the Vortexa's data science based forecast (forecast_fri) is available but
+          the complete EIA data isn't yet
+        - it's an older forecast and the data is not available
 
         """
         search_params = {
