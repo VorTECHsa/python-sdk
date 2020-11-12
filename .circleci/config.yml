@@ -32,6 +32,7 @@ jobs:
           name: "Check Linting"
           command: |
             . .venv/bin/activate
+            black .
             mypy docs/examples
 
       - run:
