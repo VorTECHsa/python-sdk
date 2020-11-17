@@ -95,6 +95,10 @@
                 </li>
                 <li class="">
                     
+    <a class="" href="../eia_forecasts/">EIA Forecasts</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../geographies/">Geographies</a>
                 </li>
                 <li class="">
@@ -255,6 +259,8 @@
 <li>Geographies</li>
 <li>Products</li>
 <li>Vessels</li>
+<li>Cargo Time Series</li>
+<li>EIA Forecasts</li>
 </ol>
 <p>Each endpoint offers either one, or both, of two different functionalities:</p>
 <ol>
@@ -263,12 +269,11 @@
 </ol>
 <p>Let's explain with some examples:</p>
 <p>Find all aframax vessels</p>
-<pre><code class="python">from vortexasdk import Vessels
+<pre><code class="language-python">from vortexasdk import Vessels
 df = Vessels().search(vessel_classes='aframax').to_df()
 </code></pre>
-
 <p>Find the vessel that has with id 1245</p>
-<pre><code class="python">vessel = Vessels().reference(id='12345')
+<pre><code class="language-python">vessel = Vessels().reference(id='12345')
 </code></pre>
               
             </div>

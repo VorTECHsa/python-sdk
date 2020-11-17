@@ -89,6 +89,10 @@
                 </li>
                 <li class="">
                     
+    <a class="" href="../../endpoints/eia_forecasts/">EIA Forecasts</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../../endpoints/geographies/">Geographies</a>
                 </li>
                 <li class="">
@@ -246,16 +250,14 @@
 
 <h2 id="vortexasdk.api.cargo_movement.CargoEvent">CargoEvent</h2>
 
-<pre><code class="python">CargoEvent(self, event_type: str, location: List[vortexasdk.api.geography.GeographyEntity], probability: Union[float, NoneType] = None, pos: Union[List[float], NoneType] = None, vessel_id: Union[str, NoneType] = None, start_timestamp: Union[str, NoneType] = None, end_timestamp: Union[str, NoneType] = None) -&gt; None
+<pre><code class="language-python">CargoEvent(self, event_type: str, location: List[vortexasdk.api.geography.GeographyEntity], probability: Union[float, NoneType] = None, pos: Union[List[float], NoneType] = None, vessel_id: Union[str, NoneType] = None, start_timestamp: Union[str, NoneType] = None, end_timestamp: Union[str, NoneType] = None) -&gt; None
 </code></pre>
-
 <p>A CargoEvent represents an event that occurred to a cargo during a cargo movement.</p>
 <p><a href="https://docs.vortexa.com/reference/intro-cargo-events">Cargo Event Entities Further Documentation</a></p>
 <h2 id="vortexasdk.api.cargo_movement.CargoMovement">CargoMovement</h2>
 
-<pre><code class="python">CargoMovement(self, cargo_movement_id: str, quantity: int, status: str, vessels: List[vortexasdk.api.vessel.VesselEntity], product: List[vortexasdk.api.product.ProductEntity], events: List[vortexasdk.api.cargo_movement.CargoEvent]) -&gt; None
+<pre><code class="language-python">CargoMovement(self, cargo_movement_id: str, quantity: int, status: str, vessels: List[vortexasdk.api.vessel.VesselEntity], product: List[vortexasdk.api.product.ProductEntity], events: List[vortexasdk.api.cargo_movement.CargoEvent]) -&gt; None
 </code></pre>
-
 <p>Cargo movements are the base data set the Vortexa API is centred around.</p>
 <p>Each movement represents a journey of a certain quantity of a product between places.</p>
 <p><a href="https://docs.vortexa.com/reference/intro-cargo-movement">Cargo Movement Further Documentation</a></p>

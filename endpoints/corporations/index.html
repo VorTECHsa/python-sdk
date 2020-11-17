@@ -92,6 +92,10 @@
                 </li>
                 <li class="">
                     
+    <a class="" href="../eia_forecasts/">EIA Forecasts</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../geographies/">Geographies</a>
                 </li>
                 <li class="">
@@ -244,21 +248,21 @@
               
                 <h1 id="vortexasdk.endpoints.corporations">vortexasdk.endpoints.corporations</h1>
 
-<p>Corporations Endpoint.
-<h2 id="vortexasdk.endpoints.corporations.Corporations">Corporations</h2></p>
-<pre><code class="python">Corporations(self)
-</code></pre>
+<p>Corporations Endpoint.</p>
+<h2 id="vortexasdk.endpoints.corporations.Corporations">Corporations</h2>
 
-<p>Corporations Endpoint.
-<h3 id="vortexasdk.endpoints.corporations.Corporations.load_all">load_all</h3></p>
-<pre><code class="python">Corporations.load_all(self) -&gt; vortexasdk.endpoints.corporations_result.CorporationsResult
+<pre><code class="language-python">Corporations(self)
 </code></pre>
+<p>Corporations Endpoint.</p>
+<h3 id="vortexasdk.endpoints.corporations.Corporations.load_all">load_all</h3>
 
-<p>Load all corporations.
-<h3 id="vortexasdk.endpoints.corporations.Corporations.search">search</h3></p>
-<pre><code class="python">Corporations.search(self, term: Union[str, List[str]] = None, exact_term_match: bool = False) -&gt; vortexasdk.endpoints.corporations_result.CorporationsResult
+<pre><code class="language-python">Corporations.load_all(self) -&gt; vortexasdk.endpoints.corporations_result.CorporationsResult
 </code></pre>
+<p>Load all corporations.</p>
+<h3 id="vortexasdk.endpoints.corporations.Corporations.search">search</h3>
 
+<pre><code class="language-python">Corporations.search(self, term: Union[str, List[str]] = None, exact_term_match: bool = False) -&gt; vortexasdk.endpoints.corporations_result.CorporationsResult
+</code></pre>
 <p>Find all Corporations matching given search terms.</p>
 <p><strong>Arguments</strong></p>
 <ul>
@@ -276,11 +280,10 @@
 <p>List of corporation matching <code>term</code></p>
 <p><strong>Examples</strong></p>
 <p>Let's load all corporations</p>
-<pre><code class="python">&gt;&gt;&gt; from vortexasdk import Corporations
+<pre><code class="language-python">&gt;&gt;&gt; from vortexasdk import Corporations
 &gt;&gt;&gt; df = Corporations().search().to_df()
 
 </code></pre>
-
 <p>returns</p>
 <table>
 <thead>
@@ -307,18 +310,16 @@
 </tbody>
 </table>
 <p>Let's find all corporations with 'do' in the name.</p>
-<pre><code class="python">&gt;&gt;&gt; [x.name for x in Corporations().search(term=&quot;do&quot;).to_list()]
+<pre><code class="language-python">&gt;&gt;&gt; [x.name for x in Corporations().search(term=&quot;do&quot;).to_list()]
 [...]
 
 </code></pre>
-
 <p><strong>Further Documentation</strong></p>
 <p><a href="https://docs.vortexa.com/reference/POST/reference/charterers">VortexaAPI Corporation Reference</a></p>
 <h3 id="vortexasdk.endpoints.corporations.Corporations.reference">reference</h3>
 
-<pre><code class="python">Corporations.reference(self, id: str) -&gt; Dict
+<pre><code class="language-python">Corporations.reference(self, id: str) -&gt; Dict
 </code></pre>
-
 <p>Perform a corporation lookup.</p>
 <p><strong>Arguments</strong></p>
 <ul>
@@ -340,19 +341,18 @@
 
 <h2 id="vortexasdk.endpoints.corporations_result.CorporationsResult">CorporationsResult</h2>
 
-<pre><code class="python">CorporationsResult(self, _records: List) -&gt; None
+<pre><code class="language-python">CorporationsResult(self, _records: List) -&gt; None
 </code></pre>
+<p>Container class that holds the result obtained from calling the <code>Vessels</code> endpoint.</p>
+<h3 id="vortexasdk.endpoints.corporations_result.CorporationsResult.to_list">to_list</h3>
 
-<p>Container class that holds the result obtained from calling the <code>Vessels</code> endpoint.
-<h3 id="vortexasdk.endpoints.corporations_result.CorporationsResult.to_list">to_list</h3></p>
-<pre><code class="python">CorporationsResult.to_list(self) -&gt; List[vortexasdk.api.corporation.Corporation]
+<pre><code class="language-python">CorporationsResult.to_list(self) -&gt; List[vortexasdk.api.corporation.Corporation]
 </code></pre>
+<p>Represent vessels as a list.</p>
+<h3 id="vortexasdk.endpoints.corporations_result.CorporationsResult.to_df">to_df</h3>
 
-<p>Represent vessels as a list.
-<h3 id="vortexasdk.endpoints.corporations_result.CorporationsResult.to_df">to_df</h3></p>
-<pre><code class="python">CorporationsResult.to_df(self, columns=None) -&gt; pandas.core.frame.DataFrame
+<pre><code class="language-python">CorporationsResult.to_df(self, columns=None) -&gt; pandas.core.frame.DataFrame
 </code></pre>
-
 <p>Represent corporations as a <code>pd.DataFrame</code>.</p>
 <p><strong>Arguments</strong></p>
 <ul>
@@ -368,7 +368,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../geographies/" class="btn btn-neutral float-right" title="Geographies">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../eia_forecasts/" class="btn btn-neutral float-right" title="EIA Forecasts">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../cargo_timeseries/" class="btn btn-neutral" title="Cargo Time Series"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -402,7 +402,7 @@
         <span><a href="../cargo_timeseries/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../geographies/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../eia_forecasts/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

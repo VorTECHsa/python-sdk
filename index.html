@@ -111,6 +111,10 @@
                 </li>
                 <li class="">
                     
+    <a class="" href="endpoints/eia_forecasts/">EIA Forecasts</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="endpoints/geographies/">Geographies</a>
                 </li>
                 <li class="">
@@ -268,7 +272,7 @@ world’s waterborne oil movements, and to build custom models &amp; reports wit
 giving you immediate access to pandas DataFrames.</p>
 <h5 id="example">Example</h5>
 <p>In an interactive Python console, run:</p>
-<pre><code class="python">&gt;&gt;&gt; from datetime import datetime
+<pre><code class="language-python">&gt;&gt;&gt; from datetime import datetime
 &gt;&gt;&gt; from vortexasdk import CargoMovements
 &gt;&gt;&gt; df = CargoMovements()\
         .search(filter_activity='loading_state',
@@ -276,7 +280,6 @@ giving you immediate access to pandas DataFrames.</p>
             filter_time_max=datetime(2017, 8, 1))\
         .to_df()
 </code></pre>
-
 <p>returns:</p>
 <table>
 <thead>
@@ -322,9 +325,8 @@ giving you immediate access to pandas DataFrames.</p>
 </table>
 <h2 id="quick-start">Quick Start</h2>
 <h5 id="installation">Installation</h5>
-<pre><code class="bash">$ pip install vortexasdk
+<pre><code class="language-bash">$ pip install vortexasdk
 </code></pre>
-
 <p>The SDK requires Python version 3.7 or above, see <a href="https://vortechsa.github.io/python-sdk/faq_setup/">Setup FAQ</a> for more details.</p>
 <h5 id="authentication">Authentication</h5>
 <p>Set your <code>VORTEXA_API_KEY</code> environment variable, that's all.
@@ -332,9 +334,8 @@ Alternatively, the SDK prompts to you enter your API Key when running a script i
 <p>To get an API key and experiment with Vortexa's data, you can <a href="https://www.vortexa.com/request-demo-sdk">request a demo here</a>.</p>
 <h5 id="check-setup">Check Setup</h5>
 <p>To check the SDK is setup correctly, run the following in a bash console:</p>
-<pre><code class="bash">$ python -m vortexasdk.check_setup
+<pre><code class="language-bash">$ python -m vortexasdk.check_setup
 </code></pre>
-
 <p>A successful setup looks like this:</p>
 <p><img alt="check_setup.png" src="https://raw.githubusercontent.com/VorTECHsa/python-sdk/master/docs/img/check_setup.png" /></p>
 <h2 id="next-steps">Next Steps</h2>
@@ -348,11 +349,8 @@ helping to extract powerful findings from our data.</p>
 <p>We welcome contributions! Please read our <a href="https://github.com/vortechsa/python-sdk/blob/master/CONTRIBUTING.md">Contributing Guide</a> for ways to offer feedback and contributions.</p>
 <p>Thanks goes to these wonderful contributors (<a href="https://allcontributors.org/docs/en/emoji-key">emoji key</a>):</p>
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-
 <!-- prettier-ignore-start -->
-
 <!-- markdownlint-disable -->
-
 <table>
   <tr>
     <td align="center"><a href="http://vortexa.com/"><img src="https://avatars1.githubusercontent.com/u/33626692?v=4" width="100px;" alt=""/><br /><sub><b>Kit Burgess</b></sub></a><br /><a href="#design-KitBurgess" title="Design">🎨</a> <a href="https://github.com/VorTECHsa/python-sdk/commits?author=KitBurgess" title="Code">💻</a></td>
@@ -374,9 +372,7 @@ helping to extract powerful findings from our data.</p>
 </table>
 
 <!-- markdownlint-enable -->
-
 <!-- prettier-ignore-end -->
-
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 <p>This project follows the <a href="https://github.com/all-contributors/all-contributors">all-contributors</a> specification. Contributions of any kind welcome!</p>
@@ -430,5 +426,5 @@ helping to extract powerful findings from our data.</p>
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2020-08-11 16:43:03
+Build Date UTC : 2020-11-17 10:50:51
 -->

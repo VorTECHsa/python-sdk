@@ -89,6 +89,10 @@
                 </li>
                 <li class="">
                     
+    <a class="" href="../../endpoints/eia_forecasts/">EIA Forecasts</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../../endpoints/geographies/">Geographies</a>
                 </li>
                 <li class="">
@@ -246,19 +250,18 @@
 
 <h2 id="vortexasdk.api.geography.BoundingBox">BoundingBox</h2>
 
-<pre><code class="python">BoundingBox(self, type: str, coordinates: List[Tuple[float, float]]) -&gt; None
+<pre><code class="language-python">BoundingBox(self, type: str, coordinates: List[Tuple[float, float]]) -&gt; None
 </code></pre>
+<p>Polygon with list of bounding lon lat coords.</p>
+<h2 id="vortexasdk.api.geography.Geography">Geography</h2>
 
-<p>Polygon with list of bounding lon lat coords.
-<h2 id="vortexasdk.api.geography.Geography">Geography</h2></p>
-<pre><code class="python">Geography(self, id: str, name: str, ref_type: str, leaf: bool, parent: List[vortexasdk.api.shared_types.IDNameLayer], layer: List[str], exclusion_rule: List[vortexasdk.api.shared_types.IDNameLayer], hierarchy: List[vortexasdk.api.shared_types.IDLayer], bounding_box: Union[vortexasdk.api.geography.BoundingBox, NoneType], centre_point: Union[Tuple[float, float], NoneType], location: Union[Tuple[float, float], NoneType]) -&gt; None
+<pre><code class="language-python">Geography(self, id: str, name: str, ref_type: str, leaf: bool, parent: List[vortexasdk.api.shared_types.IDNameLayer], layer: List[str], exclusion_rule: List[vortexasdk.api.shared_types.IDNameLayer], hierarchy: List[vortexasdk.api.shared_types.IDLayer], bounding_box: Union[vortexasdk.api.geography.BoundingBox, NoneType], centre_point: Union[Tuple[float, float], NoneType], location: Union[Tuple[float, float], NoneType]) -&gt; None
 </code></pre>
+<p>Represent a Geography reference record returned by the API.</p>
+<h2 id="vortexasdk.api.geography.GeographyEntity">GeographyEntity</h2>
 
-<p>Represent a Geography reference record returned by the API.
-<h2 id="vortexasdk.api.geography.GeographyEntity">GeographyEntity</h2></p>
-<pre><code class="python">GeographyEntity(self, id: str, label: str, layer: str, probability: float, source: str) -&gt; None
+<pre><code class="language-python">GeographyEntity(self, id: str, label: str, layer: str, probability: float, source: str) -&gt; None
 </code></pre>
-
 <p>Represents a hierarchy tree of locational data.</p>
 <p><a href="https://docs.vortexa.com/reference/intro-geography-entries">Geography Entities Further Documentation</a></p>
               

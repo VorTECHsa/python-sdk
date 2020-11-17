@@ -89,6 +89,10 @@
                 </li>
                 <li class="">
                     
+    <a class="" href="../eia_forecasts/">EIA Forecasts</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../geographies/">Geographies</a>
                 </li>
                 <li class="">
@@ -244,21 +248,21 @@
               
                 <h1 id="vortexasdk.endpoints.vessels">vortexasdk.endpoints.vessels</h1>
 
-<p>Vessels Endpoint.
-<h2 id="vortexasdk.endpoints.vessels.Vessels">Vessels</h2></p>
-<pre><code class="python">Vessels(self)
-</code></pre>
+<p>Vessels Endpoint.</p>
+<h2 id="vortexasdk.endpoints.vessels.Vessels">Vessels</h2>
 
-<p>Vessels endpoint.
-<h3 id="vortexasdk.endpoints.vessels.Vessels.load_all">load_all</h3></p>
-<pre><code class="python">Vessels.load_all(self) -&gt; vortexasdk.endpoints.vessels_result.VesselsResult
+<pre><code class="language-python">Vessels(self)
 </code></pre>
+<p>Vessels endpoint.</p>
+<h3 id="vortexasdk.endpoints.vessels.Vessels.load_all">load_all</h3>
 
-<p>Load all vessels.
-<h3 id="vortexasdk.endpoints.vessels.Vessels.search">search</h3></p>
-<pre><code class="python">Vessels.search(self, term: Union[str, List[str]] = None, ids: Union[str, List[str]] = None, vessel_classes: Union[str, List[str]] = None, vessel_product_types: Union[str, List[str]] = None, vessel_scrubbers: str = 'disabled', exact_term_match: bool = False) -&gt; vortexasdk.endpoints.vessels_result.VesselsResult
+<pre><code class="language-python">Vessels.load_all(self) -&gt; vortexasdk.endpoints.vessels_result.VesselsResult
 </code></pre>
+<p>Load all vessels.</p>
+<h3 id="vortexasdk.endpoints.vessels.Vessels.search">search</h3>
 
+<pre><code class="language-python">Vessels.search(self, term: Union[str, List[str]] = None, ids: Union[str, List[str]] = None, vessel_classes: Union[str, List[str]] = None, vessel_product_types: Union[str, List[str]] = None, vessel_scrubbers: str = 'disabled', exact_term_match: bool = False) -&gt; vortexasdk.endpoints.vessels_result.VesselsResult
+</code></pre>
 <p>Find all vessels matching given search arguments. Search arguments are combined in an AND manner.</p>
 <p><strong>Arguments</strong></p>
 <ul>
@@ -293,11 +297,10 @@
 <ul>
 <li>Let's find all the VLCCs with 'ocean' in their name, or related names.</li>
 </ul>
-<pre><code class="python">&gt;&gt;&gt; from vortexasdk import Vessels
+<pre><code class="language-python">&gt;&gt;&gt; from vortexasdk import Vessels
 &gt;&gt;&gt; vessels_df = Vessels().search(vessel_classes='vlcc', term='ocean').to_df(columns=['name', 'imo', 'mmsi', 'related_names'])
 
 </code></pre>
-
 <table>
 <thead>
 <tr>
@@ -371,19 +374,17 @@
 <ul>
 <li>Let's find all the vessels currently carrying Crude.</li>
 </ul>
-<pre><code class="python">&gt;&gt;&gt; from vortexasdk import Vessels, Products
+<pre><code class="language-python">&gt;&gt;&gt; from vortexasdk import Vessels, Products
 &gt;&gt;&gt; crude = [p.id for p in Products().search(term=&quot;crude&quot;).to_list() if 'group' in p.layer]
 &gt;&gt;&gt; vessels_df = Vessels().search(vessel_product_types=crude).to_df()
 
 </code></pre>
-
 <p><strong>Further Documentation</strong></p>
 <p><a href="https://docs.vortexa.com/reference/POST/reference/vessels">VortexaAPI Vessel Reference</a></p>
 <h3 id="vortexasdk.endpoints.vessels.Vessels.reference">reference</h3>
 
-<pre><code class="python">Vessels.reference(self, id: str) -&gt; Dict
+<pre><code class="language-python">Vessels.reference(self, id: str) -&gt; Dict
 </code></pre>
-
 <p>Perform a vessel lookup.</p>
 <p><strong>Arguments</strong></p>
 <ul>
@@ -397,19 +398,18 @@
 
 <h2 id="vortexasdk.endpoints.vessels_result.VesselsResult">VesselsResult</h2>
 
-<pre><code class="python">VesselsResult(self, _records: List) -&gt; None
+<pre><code class="language-python">VesselsResult(self, _records: List) -&gt; None
 </code></pre>
+<p>Container class that holds the result obtained from calling the <code>Vessels</code> endpoint.</p>
+<h3 id="vortexasdk.endpoints.vessels_result.VesselsResult.to_list">to_list</h3>
 
-<p>Container class that holds the result obtained from calling the <code>Vessels</code> endpoint.
-<h3 id="vortexasdk.endpoints.vessels_result.VesselsResult.to_list">to_list</h3></p>
-<pre><code class="python">VesselsResult.to_list(self) -&gt; List[vortexasdk.api.vessel.Vessel]
+<pre><code class="language-python">VesselsResult.to_list(self) -&gt; List[vortexasdk.api.vessel.Vessel]
 </code></pre>
+<p>Represent vessels as a list.</p>
+<h3 id="vortexasdk.endpoints.vessels_result.VesselsResult.to_df">to_df</h3>
 
-<p>Represent vessels as a list.
-<h3 id="vortexasdk.endpoints.vessels_result.VesselsResult.to_df">to_df</h3></p>
-<pre><code class="python">VesselsResult.to_df(self, columns=None) -&gt; pandas.core.frame.DataFrame
+<pre><code class="language-python">VesselsResult.to_df(self, columns=None) -&gt; pandas.core.frame.DataFrame
 </code></pre>
-
 <p>Represent vessels as a <code>pd.DataFrame</code>.</p>
 <p><strong>Arguments</strong></p>
 <ul>

@@ -92,6 +92,10 @@
                 </li>
                 <li class="">
                     
+    <a class="" href="../eia_forecasts/">EIA Forecasts</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../geographies/">Geographies</a>
                 </li>
                 <li class="">
@@ -244,27 +248,25 @@
               
                 <h1 id="vortexasdk.endpoints.attributes">vortexasdk.endpoints.attributes</h1>
 
-<p>Attributes Endpoint.
-<h2 id="vortexasdk.endpoints.attributes.Attributes">Attributes</h2></p>
-<pre><code class="python">Attributes(self)
-</code></pre>
+<p>Attributes Endpoint.</p>
+<h2 id="vortexasdk.endpoints.attributes.Attributes">Attributes</h2>
 
+<pre><code class="language-python">Attributes(self)
+</code></pre>
 <p>Attributes endpoint.</p>
 <p>An Attribute is a reference value that corresponds to an ID associated with other entities.</p>
 <p>For example, a vessel object from the Vessel reference endpoint may have the following keys:</p>
-<pre><code class="json">{
+<pre><code class="language-json">{
     &quot;ice_class&quot;: &quot;b09ed4e2bd6904dd&quot;,
     &quot;propulsion&quot;: &quot;3ace0e050724707b&quot;
 }
 </code></pre>
-
 <p>These IDs represent attributes which can be found via the Attributes reference endpoint.</p>
 <p>When the attributes endpoint is searched with those ids as parameters:</p>
-<pre><code class="python">    &gt;&gt;&gt; from vortexasdk import Attributes
+<pre><code class="language-python">    &gt;&gt;&gt; from vortexasdk import Attributes
     &gt;&gt;&gt; df = Attributes().search(ids=[&quot;b09ed4e2bd6904dd&quot;, &quot;3ace0e050724707b&quot;]).to_df()
 
 </code></pre>
-
 <p>Returns</p>
 <table>
 <thead>
@@ -292,15 +294,13 @@
 </table>
 <h3 id="vortexasdk.endpoints.attributes.Attributes.load_all">load_all</h3>
 
-<pre><code class="python">Attributes.load_all(self) -&gt; vortexasdk.endpoints.attributes_result.AttributeResult
+<pre><code class="language-python">Attributes.load_all(self) -&gt; vortexasdk.endpoints.attributes_result.AttributeResult
 </code></pre>
-
 <p>Load all attributes.</p>
 <h3 id="vortexasdk.endpoints.attributes.Attributes.search">search</h3>
 
-<pre><code class="python">Attributes.search(self, type: str = None, term: Union[str, List[str]] = None, ids: Union[str, List[str]] = None) -&gt; vortexasdk.endpoints.attributes_result.AttributeResult
+<pre><code class="language-python">Attributes.search(self, type: str = None, term: Union[str, List[str]] = None, ids: Union[str, List[str]] = None) -&gt; vortexasdk.endpoints.attributes_result.AttributeResult
 </code></pre>
-
 <p>Find all attributes matching given type.</p>
 <p><strong>Arguments</strong></p>
 <ul>
@@ -310,11 +310,10 @@
 <p>List of attributes matching <code>type</code></p>
 <p><strong>Examples</strong></p>
 <p>Find all attributes with a type of <code>ice_class</code>.</p>
-<pre><code class="python">&gt;&gt;&gt; from vortexasdk import Attributes
+<pre><code class="language-python">&gt;&gt;&gt; from vortexasdk import Attributes
 &gt;&gt;&gt; df = Attributes().search(type=&quot;scrubber&quot;).to_df()
 
 </code></pre>
-
 <p>returns</p>
 <table>
 <thead>
@@ -344,19 +343,18 @@
 
 <h2 id="vortexasdk.endpoints.attributes_result.AttributeResult">AttributeResult</h2>
 
-<pre><code class="python">AttributeResult(self, _records: List) -&gt; None
+<pre><code class="language-python">AttributeResult(self, _records: List) -&gt; None
 </code></pre>
+<p>Container class that holds the result obtained from calling the <code>Attributes</code> endpoint.</p>
+<h3 id="vortexasdk.endpoints.attributes_result.AttributeResult.to_list">to_list</h3>
 
-<p>Container class that holds the result obtained from calling the <code>Attributes</code> endpoint.
-<h3 id="vortexasdk.endpoints.attributes_result.AttributeResult.to_list">to_list</h3></p>
-<pre><code class="python">AttributeResult.to_list(self) -&gt; List[vortexasdk.api.attribute.Attribute]
+<pre><code class="language-python">AttributeResult.to_list(self) -&gt; List[vortexasdk.api.attribute.Attribute]
 </code></pre>
+<p>Represent attributes as a list.</p>
+<h3 id="vortexasdk.endpoints.attributes_result.AttributeResult.to_df">to_df</h3>
 
-<p>Represent attributes as a list.
-<h3 id="vortexasdk.endpoints.attributes_result.AttributeResult.to_df">to_df</h3></p>
-<pre><code class="python">AttributeResult.to_df(self, columns=None) -&gt; pandas.core.frame.DataFrame
+<pre><code class="language-python">AttributeResult.to_df(self, columns=None) -&gt; pandas.core.frame.DataFrame
 </code></pre>
-
 <p>Represent attributes as a <code>pd.DataFrame</code>.</p>
 <p><strong>Arguments</strong></p>
 <ul>

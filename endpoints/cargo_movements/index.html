@@ -95,6 +95,10 @@
                 </li>
                 <li class="">
                     
+    <a class="" href="../eia_forecasts/">EIA Forecasts</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../geographies/">Geographies</a>
                 </li>
                 <li class="">
@@ -247,18 +251,17 @@
               
                 <h1 id="vortexasdk.endpoints.cargo_movements">vortexasdk.endpoints.cargo_movements</h1>
 
-<p>Cargo Movements Endpoint.
-<h2 id="vortexasdk.endpoints.cargo_movements.CargoMovements">CargoMovements</h2></p>
-<pre><code class="python">CargoMovements(self)
-</code></pre>
+<p>Cargo Movements Endpoint.</p>
+<h2 id="vortexasdk.endpoints.cargo_movements.CargoMovements">CargoMovements</h2>
 
+<pre><code class="language-python">CargoMovements(self)
+</code></pre>
 <p>Cargo Movements Endpoint, use this to search through Vortexa's cargo movements.</p>
 <p>A detailed explanation of Cargo/Vessel Movements can be found <a href="https://docs.vortexa.com/reference/intro-movement-difference">here</a>.</p>
 <h3 id="vortexasdk.endpoints.cargo_movements.CargoMovements.search">search</h3>
 
-<pre><code class="python">CargoMovements.search(self, filter_activity: str, filter_time_min: datetime.datetime = datetime.datetime(2019, 10, 1, 0, 0), filter_time_max: datetime.datetime = datetime.datetime(2019, 10, 1, 1, 0), cm_unit: str = 'b', filter_charterers: Union[str, List[str]] = None, filter_destinations: Union[str, List[str]] = None, filter_origins: Union[str, List[str]] = None, filter_owners: Union[str, List[str]] = None, filter_products: Union[str, List[str]] = None, filter_vessels: Union[str, List[str]] = None, filter_storage_locations: Union[str, List[str]] = None, filter_ship_to_ship_locations: Union[str, List[str]] = None, filter_waypoints: Union[str, List[str]] = None, filter_vessel_age_min: int = None, filter_vessel_age_max: int = None, filter_vessel_scrubbers: str = 'disabled', filter_vessel_flags: Union[str, List[str]] = None, filter_vessel_ice_class: Union[str, List[str]] = None, filter_vessel_propulsion: Union[str, List[str]] = None, exclude_origins: Union[str, List[str]] = None, exclude_destinations: Union[str, List[str]] = None, exclude_products: Union[str, List[str]] = None, exclude_vessels: Union[str, List[str]] = None, exclude_charterers: Union[str, List[str]] = None, exclude_owners: Union[str, List[str]] = None, exclude_vessel_flags: Union[str, List[str]] = None, exclude_vessel_ice_class: Union[str, List[str]] = None, exclude_vessel_propulsion: Union[str, List[str]] = None, disable_geographic_exclusion_rules: bool = None, timeseries_activity_time_span_min: int = None, timeseries_activity_time_span_max: int = None) -&gt; vortexasdk.endpoints.cargo_movements_result.CargoMovementsResult
+<pre><code class="language-python">CargoMovements.search(self, filter_activity: str, filter_time_min: datetime.datetime = datetime.datetime(2019, 10, 1, 0, 0), filter_time_max: datetime.datetime = datetime.datetime(2019, 10, 1, 1, 0), cm_unit: str = 'b', filter_charterers: Union[str, List[str]] = None, filter_destinations: Union[str, List[str]] = None, filter_origins: Union[str, List[str]] = None, filter_owners: Union[str, List[str]] = None, filter_products: Union[str, List[str]] = None, filter_vessels: Union[str, List[str]] = None, filter_storage_locations: Union[str, List[str]] = None, filter_ship_to_ship_locations: Union[str, List[str]] = None, filter_waypoints: Union[str, List[str]] = None, filter_vessel_age_min: int = None, filter_vessel_age_max: int = None, filter_vessel_scrubbers: str = 'disabled', filter_vessel_flags: Union[str, List[str]] = None, filter_vessel_ice_class: Union[str, List[str]] = None, filter_vessel_propulsion: Union[str, List[str]] = None, exclude_origins: Union[str, List[str]] = None, exclude_destinations: Union[str, List[str]] = None, exclude_products: Union[str, List[str]] = None, exclude_vessels: Union[str, List[str]] = None, exclude_charterers: Union[str, List[str]] = None, exclude_owners: Union[str, List[str]] = None, exclude_vessel_flags: Union[str, List[str]] = None, exclude_vessel_ice_class: Union[str, List[str]] = None, exclude_vessel_propulsion: Union[str, List[str]] = None, disable_geographic_exclusion_rules: bool = None, timeseries_activity_time_span_min: int = None, timeseries_activity_time_span_max: int = None) -&gt; vortexasdk.endpoints.cargo_movements_result.CargoMovementsResult
 </code></pre>
-
 <p>Find CargoMovements matching the given search parameters.</p>
 <p><strong>Arguments</strong></p>
 <ul>
@@ -374,7 +377,7 @@
 <ul>
 <li><em>Which cargoes were loaded from Rotterdam on the morning of 1st December 2018?</em></li>
 </ul>
-<pre><code class="python">&gt;&gt;&gt; from vortexasdk import CargoMovements, Geographies
+<pre><code class="language-python">&gt;&gt;&gt; from vortexasdk import CargoMovements, Geographies
 &gt;&gt;&gt; rotterdam = [g.id for g in Geographies().search(&quot;rotterdam&quot;).to_list() if &quot;port&quot; in g.layer]
 &gt;&gt;&gt; search_result = CargoMovements().search(
 ...    filter_origins=rotterdam,
@@ -384,7 +387,6 @@
 &gt;&gt;&gt; df = search_result.to_df(columns=['product.grade.label', 'product.group.label', 'vessels.0.vessel_class'])
 
 </code></pre>
-
 <table>
 <thead>
 <tr>
@@ -444,7 +446,7 @@
 </ul>
 <p>Note here we include vessels.0..., vessels.1..., vessels.2... columns.
 This lets us view all vessels present in any STS operations.</p>
-<pre><code class="python">&gt;&gt;&gt; from vortexasdk import CargoMovements, Geographies, Vessels
+<pre><code class="language-python">&gt;&gt;&gt; from vortexasdk import CargoMovements, Geographies, Vessels
 &gt;&gt;&gt; suez = [g.id for g in Geographies().search(&quot;suez&quot;).to_list()]
 &gt;&gt;&gt; china = [g.id for g in Geographies().search(&quot;china&quot;).to_list() if &quot;country&quot; in g.layer]
 &gt;&gt;&gt; vlccs = [v.id for v in Vessels().search(vessel_classes=&quot;vlcc_plus&quot;).to_list()]
@@ -459,7 +461,6 @@ This lets us view all vessels present in any STS operations.</p>
 &gt;&gt;&gt; cargo_movements_df = cargo_movement_search_result.to_df(columns=cols)
 
 </code></pre>
-
 <table>
 <thead>
 <tr>
@@ -559,22 +560,20 @@ This lets us view all vessels present in any STS operations.</p>
 
 <h2 id="vortexasdk.endpoints.cargo_movements_result.CargoMovementsResult">CargoMovementsResult</h2>
 
-<pre><code class="python">CargoMovementsResult(self, _records: List) -&gt; None
+<pre><code class="language-python">CargoMovementsResult(self, _records: List) -&gt; None
 </code></pre>
-
 <p>Container class holdings search results returns from the cargo movements endpoint.</p>
 <p>This class has two methods, <code>to_list()</code>, and <code>to_df()</code>, allowing search results to be represented as a list of <code>CargoMovements</code>,
  or as a <code>pd.DataFrame</code> , respectively.</p>
 <h3 id="vortexasdk.endpoints.cargo_movements_result.CargoMovementsResult.to_list">to_list</h3>
 
-<pre><code class="python">CargoMovementsResult.to_list(self) -&gt; List[vortexasdk.api.cargo_movement.CargoMovement]
+<pre><code class="language-python">CargoMovementsResult.to_list(self) -&gt; List[vortexasdk.api.cargo_movement.CargoMovement]
 </code></pre>
+<p>Represent cargo movements as a list of <code>CargoMovementEntity</code>s.</p>
+<h3 id="vortexasdk.endpoints.cargo_movements_result.CargoMovementsResult.to_df">to_df</h3>
 
-<p>Represent cargo movements as a list of <code>CargoMovementEntity</code>s.
-<h3 id="vortexasdk.endpoints.cargo_movements_result.CargoMovementsResult.to_df">to_df</h3></p>
-<pre><code class="python">CargoMovementsResult.to_df(self, columns=None) -&gt; pandas.core.frame.DataFrame
+<pre><code class="language-python">CargoMovementsResult.to_df(self, columns=None) -&gt; pandas.core.frame.DataFrame
 </code></pre>
-
 <p>Represent cargo movements as a <code>pd.DataFrame</code>.</p>
 <p><strong>Arguments</strong></p>
 <ul>
@@ -600,7 +599,7 @@ This lets us view all vessels present in any STS operations.</p>
 <p>Similarly, to find out when the first vessel started
  loading the cargo from Rotterdam, we'd use the <code>events.cargo_port_load_event.0.start_timestamp</code> column.</p>
 <p>By default, the columns returned are something along the lines of.</p>
-<pre><code class="python">DEFAULT_COLUMNS = [
+<pre><code class="language-python">DEFAULT_COLUMNS = [
     'events.cargo_port_load_event.0.location.port.label',
     'events.cargo_port_unload_event.0.location.port.label',
     'product.group.label',
@@ -611,7 +610,6 @@ This lets us view all vessels present in any STS operations.</p>
     'events.cargo_port_unload_event.0.start_timestamp',
 ]
 </code></pre>
-
 <p>The exact default columns used can be found at <code>cargo_movements.DEFAULT_COLUMNS</code></p>
 <p>A near complete list of columns is given below</p>
 <pre><code>[
