@@ -98,6 +98,25 @@ Discussions about the VortexaSDK take place on this repository's https://github.
 
 Wherever possible, do not take these conversations to private channels, including contacting the maintainers directly. Keeping communication public means everybody can benefit and learn from the conversation.
 
+## How to release a new version of the SDK:
+
+### First, deploy a new version to pypi
+1. Make changes in a branch, and have the PR approved.
+2. Merge PR to master
+3. On your local machine, checkout master and pull the latest changes.
+4. Change `version.py` as necessary, following semver for a major/minor/patch release.
+5. Generate a github access token, used by the github changelog generator,
+ (see full instructions to generate token here)[https://github.com/github-changelog-generator/github-changelog-generator].
+Store this token in as environment variable `GITHUB_CHANGELOG_TOKEN`. No scopes are needed for this token,
+and you'll only need to generate this token once.
+6. Ensure your `TWINE_USERNAME` and `TWINE_PASSWORD` environment variables are set.
+7. Run `./scripts/export_package.sh` to export package to pypi.
+
+### Second, deploy a new version of the documentation to github pages
+
+Follow the instructions in the (sadly) semi automated script `./scripts/docs/deploy_docs.sh` 
+
+
 ## Code of Conduct
 
 Please see https://github.com/vortechsa/python-sdk/blob/master/CODE_OF_CONDUCT.md for the code of conduct.
