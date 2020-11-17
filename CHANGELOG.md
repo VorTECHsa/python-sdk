@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.26.0](https://github.com/vortechsa/python-sdk/tree/0.26.0) (2020-11-17)
+
+[Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.25.2...0.26.0)
+
+**Merged pull requests:**
+
+- Add support for EIA forecasts endpoint [\#247](https://github.com/VorTECHsa/python-sdk/pull/247) ([dufia](https://github.com/dufia))
+- fix: Edit failing test [\#246](https://github.com/VorTECHsa/python-sdk/pull/246) ([KitBurgess](https://github.com/KitBurgess))
+- Docs blogpost [\#245](https://github.com/VorTECHsa/python-sdk/pull/245) ([KitBurgess](https://github.com/KitBurgess))
+- Run Codeql analysis branch pushes. [\#243](https://github.com/VorTECHsa/python-sdk/pull/243) ([KitBurgess](https://github.com/KitBurgess))
+
 ## [0.25.2](https://github.com/vortechsa/python-sdk/tree/0.25.2) (2020-09-30)
 
 [Full Changelog](https://github.com/vortechsa/python-sdk/compare/0.25.1...0.25.2)
@@ -81,6 +92,7 @@
 
 - docs: Add how-to paste windows key [\#220](https://github.com/VorTECHsa/python-sdk/pull/220) ([KitBurgess](https://github.com/KitBurgess))
 - fix: Check httpstat site, rather than github as github can impose rat… [\#217](https://github.com/VorTECHsa/python-sdk/pull/217) ([KitBurgess](https://github.com/KitBurgess))
+- feat: Exact term match [\#212](https://github.com/VorTECHsa/python-sdk/pull/212) ([KitBurgess](https://github.com/KitBurgess))
 
 ## [0.23.0](https://github.com/vortechsa/python-sdk/tree/0.23.0) (2020-06-30)
 
@@ -119,7 +131,6 @@
 **Merged pull requests:**
 
 - Allow users to interactively enter API key [\#213](https://github.com/VorTECHsa/python-sdk/pull/213) ([KitBurgess](https://github.com/KitBurgess))
-- feat: Exact term match [\#212](https://github.com/VorTECHsa/python-sdk/pull/212) ([KitBurgess](https://github.com/KitBurgess))
 - chore: Allow users to set lowercase log level [\#211](https://github.com/VorTECHsa/python-sdk/pull/211) ([KitBurgess](https://github.com/KitBurgess))
 - docs: Add loading external data example [\#209](https://github.com/VorTECHsa/python-sdk/pull/209) ([KitBurgess](https://github.com/KitBurgess))
 - docs: typo in products endpoint [\#208](https://github.com/VorTECHsa/python-sdk/pull/208) ([Natday](https://github.com/Natday))
