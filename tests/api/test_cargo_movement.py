@@ -103,6 +103,7 @@ class TestCargoMovement(TestCase):
                 }
             )
         ],
+        "parent_ids": []
     }
 
     cm = CargoMovement(**dictionary)
@@ -171,6 +172,8 @@ class TestCargoMovement(TestCase):
             "vessels.0.status": "vessel_status_laden_known",
             "vessels.0.vessel_class": "tiny_tanker",
             "vessels.0.voyage_id": "401f0e74fc42401248a484aca2e9955dea885378796f7f4d0bc8e92c35ea270a",
+            "parent_ids.0.id": None,
+            "parent_ids.0.splinter_timestamp": None
         }
 
         assert flat == expected

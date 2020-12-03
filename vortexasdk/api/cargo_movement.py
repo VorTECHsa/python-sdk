@@ -30,6 +30,19 @@ class CargoEvent:
 
 
 @dataclass(frozen=True)
+class ParentIds:
+    """
+
+    cargo_movement_id may change under certain conditions. This array keeps track of all
+    previous ids related to this movement and the time at which the change occurred
+
+    """
+
+    id: str
+    splinter_timestamp: ISODate
+
+
+@dataclass(frozen=True)
 class CargoMovement(FromDictMixin):
     """
 
@@ -47,3 +60,4 @@ class CargoMovement(FromDictMixin):
     vessels: List[VesselEntity]
     product: List[ProductEntity]
     events: List[CargoEvent]
+    parent_ids: List[ParentIds]
