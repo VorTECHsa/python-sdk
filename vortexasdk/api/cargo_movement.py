@@ -33,7 +33,7 @@ class CargoEvent:
 class ParentIds:
     """
 
-    `cargo_movement_id` may change under certain conditions. `ParentIds` contains an `id`,  
+    `cargo_movement_id` may change under certain conditions. `ParentIds` contains an `id`,
     a previous id of the cargo movement, and a `splinter_timestamp`, the time at which the id change occurred.
 
     [Cargo Movement Further Documentation](https://docs.vortexa.com/reference/intro-cargo-movement)
