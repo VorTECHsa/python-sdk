@@ -33,8 +33,10 @@ class CargoEvent:
 class ParentIds:
     """
 
-    cargo_movement_id may change under certain conditions. This array keeps track of all
-    previous ids related to this movement and the time at which the change occurred
+    `cargo_movement_id` may change under certain conditions. `ParentIds` contains an `id`,  
+    a previous id of the cargo movement, and a `splinter_timestamp`, the time at which the id change occurred.
+
+    [Cargo Movement Further Documentation](https://docs.vortexa.com/reference/intro-cargo-movement)
 
     """
 
