@@ -9,6 +9,8 @@
 
 ![Anaconda prompt](img/anaconda_prompt.png)
 
+(Alternatively, if you have installed Anaconda Navigator click on the application "CMD.exe Prompt" to continue pip installation)
+
 - Use pip to install the sdk
 
 Run `pip install --user vortexasdk` in the anaconda command prompt
