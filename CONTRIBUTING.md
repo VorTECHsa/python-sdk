@@ -47,6 +47,12 @@ run tests
 $ python setup.py test
 ```
 
+If you're just looking to run tests in a single module (`test_vessels` in this case), you can do like this:
+
+```bash
+$ pytest -v tests/endpoints/test_vessels.py 
+```
+
 serve documentation
 ```bash
 $ ./docs/scripts/serve_docs.sh
