@@ -30,10 +30,10 @@ class CargoEvent:
 
 
 @dataclass(frozen=True)
-class ParentIds:
+class ParentID:
     """
 
-    `cargo_movement_id` may change under certain conditions. `ParentIds` contains an `id`,
+    `cargo_movement_id` may change under certain conditions. `ParentID` contains an `id`,
     a previous id of the cargo movement, and a `splinter_timestamp`, the time at which the id change occurred.
 
     [Cargo Movement Further Documentation](https://docs.vortexa.com/reference/intro-cargo-movement)
@@ -62,4 +62,4 @@ class CargoMovement(FromDictMixin):
     vessels: List[VesselEntity]
     product: List[ProductEntity]
     events: List[CargoEvent]
-    parent_ids: List[ParentIds]
+    parent_ids: List[ParentID]

@@ -10,7 +10,7 @@ from vortexasdk.api import (
     GeographyEntity,
     ProductEntity,
     VesselEntity,
-    ParentIds
+    ParentID
 )
 from vortexasdk.api.entity_flattening import (
     convert_cargo_movement_to_flat_dict,
@@ -105,7 +105,7 @@ class TestCargoMovement(TestCase):
             )
         ],
         "parent_ids": [
-            ParentIds(
+            ParentID(
                 **{
                     "id": "9d52ede1cff0421a8cd7283b0171afe8d23f519dca5f4e489734522f9cdf804c",
                     "splinter_timestamp": "2019-10-20T16:41:49+0000",

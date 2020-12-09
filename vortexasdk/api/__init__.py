@@ -1,6 +1,6 @@
 """Vortexa API."""
 from vortexasdk.api.attribute import Attribute
-from vortexasdk.api.cargo_movement import CargoEvent, CargoMovement, ParentIds
+from vortexasdk.api.cargo_movement import CargoEvent, CargoMovement, ParentID
 from vortexasdk.api.corporation import CorporateEntity, Corporation
 from vortexasdk.api.geography import (
     BoundingBox,
