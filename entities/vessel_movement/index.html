@@ -250,13 +250,14 @@
 
 <h2 id="vortexasdk.api.vessel_movement.VesselEvent">VesselEvent</h2>
 
-<pre><code class="language-python">VesselEvent(self, event_type: str, location: List[vortexasdk.api.geography.GeographyEntity], pos: Union[List[float], NoneType] = None, event_id: Union[str, NoneType] = None, start_timestamp: Union[str, NoneType] = None, end_timestamp: Union[str, NoneType] = None) -&gt; None
+<pre><code class="python">VesselEvent(self, event_type: str, location: List[vortexasdk.api.geography.GeographyEntity], pos: Union[List[float], NoneType] = None, event_id: Union[str, NoneType] = None, start_timestamp: Union[str, NoneType] = None, end_timestamp: Union[str, NoneType] = None) -&gt; None
 </code></pre>
-<p>Represent an event that occurred to a vessel during a vessel movement.</p>
-<h2 id="vortexasdk.api.vessel_movement.VesselMovement">VesselMovement</h2>
 
-<pre><code class="language-python">VesselMovement(self, vessel_movement_id: str, voyage_id: str, vessel: vortexasdk.api.vessel.VesselEntity, origin: vortexasdk.api.vessel_movement.VesselEvent, destination: vortexasdk.api.vessel_movement.VesselEvent, start_timestamp: Union[str, NoneType] = None, end_timestamp: Union[str, NoneType] = None) -&gt; None
+<p>Represent an event that occurred to a vessel during a vessel movement.
+<h2 id="vortexasdk.api.vessel_movement.VesselMovement">VesselMovement</h2></p>
+<pre><code class="python">VesselMovement(self, vessel_movement_id: str, voyage_id: str, vessel: vortexasdk.api.vessel.VesselEntity, origin: vortexasdk.api.vessel_movement.VesselEvent, destination: vortexasdk.api.vessel_movement.VesselEvent, start_timestamp: Union[str, NoneType] = None, end_timestamp: Union[str, NoneType] = None) -&gt; None
 </code></pre>
+
 <p>What is a vessel movement. TODO.</p>
 <p><a href="https://docs.vortexa.com/reference/intro-vessel-movement">Vessel Movement Further Documentation</a></p>
               

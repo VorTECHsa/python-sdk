@@ -1,0 +1,3 @@
+2020-06-29 11:31:07,305 vortexasdk.client — INFO — Creating new VortexaClient
+2020-06-29 11:31:07,581 vortexasdk.client — INFO — Payload: {'filter_activity': 'loading_start', 'filter_time_min': '2019-08-01T00:00:00.000Z', 'filter_time_max': '2019-08-01T00:00:00.000Z', 'cm_unit': 'b', 'filter_vessel_scrubbers': 'disabled', 'size': 500}
+2020-06-29 11:31:07,812 vortexasdk.client — INFO — 0 Results to retrieve. Sending 0 post requests in parallel using 6 threads.

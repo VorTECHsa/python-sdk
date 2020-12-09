@@ -248,21 +248,21 @@
               
                 <h1 id="vortexasdk.endpoints.geographies">vortexasdk.endpoints.geographies</h1>
 
-<p>Geographies Endpoint.</p>
-<h2 id="vortexasdk.endpoints.geographies.Geographies">Geographies</h2>
-
-<pre><code class="language-python">Geographies(self)
+<p>Geographies Endpoint.
+<h2 id="vortexasdk.endpoints.geographies.Geographies">Geographies</h2></p>
+<pre><code class="python">Geographies(self)
 </code></pre>
-<p>Geographies endpoint.</p>
-<h3 id="vortexasdk.endpoints.geographies.Geographies.load_all">load_all</h3>
 
-<pre><code class="language-python">Geographies.load_all(self) -&gt; vortexasdk.endpoints.geographies_result.GeographyResult
+<p>Geographies endpoint.
+<h3 id="vortexasdk.endpoints.geographies.Geographies.load_all">load_all</h3></p>
+<pre><code class="python">Geographies.load_all(self) -&gt; vortexasdk.endpoints.geographies_result.GeographyResult
 </code></pre>
-<p>Load all geographies.</p>
-<h3 id="vortexasdk.endpoints.geographies.Geographies.search">search</h3>
 
-<pre><code class="language-python">Geographies.search(self, term: Union[str, List[str]] = None, exact_term_match: bool = False) -&gt; vortexasdk.endpoints.geographies_result.GeographyResult
+<p>Load all geographies.
+<h3 id="vortexasdk.endpoints.geographies.Geographies.search">search</h3></p>
+<pre><code class="python">Geographies.search(self, term: Union[str, List[str]] = None, exact_term_match: bool = False) -&gt; vortexasdk.endpoints.geographies_result.GeographyResult
 </code></pre>
+
 <p>Find all geographies matching given search terms.</p>
 <p><strong>Arguments</strong></p>
 <ul>
@@ -280,15 +280,17 @@
 <p>List of geographies matching <code>term</code></p>
 <p><strong>Examples</strong></p>
 <p>Find all geographies with <code>portsmouth</code> in the name.</p>
-<pre><code class="language-python">&gt;&gt;&gt; from vortexasdk import Geographies
+<pre><code class="python">&gt;&gt;&gt; from vortexasdk import Geographies
 &gt;&gt;&gt; [x.name for x in Geographies().search(term=&quot;portsmouth&quot;).to_list()]
 ['Portsmouth [GB]', 'Portsmouth, NH [US]']
 
 </code></pre>
+
 <p>Search multiple geography terms</p>
-<pre><code class="language-python">&gt;&gt;&gt; df = Geographies().search(term=[&quot;Liverpool&quot;, &quot;Southampton&quot;]).to_df()
+<pre><code class="python">&gt;&gt;&gt; df = Geographies().search(term=[&quot;Liverpool&quot;, &quot;Southampton&quot;]).to_df()
 
 </code></pre>
+
 <p>returns</p>
 <table>
 <thead>
@@ -328,8 +330,9 @@
 </table>
 <h3 id="vortexasdk.endpoints.geographies.Geographies.reference">reference</h3>
 
-<pre><code class="language-python">Geographies.reference(self, id: str) -&gt; Dict
+<pre><code class="python">Geographies.reference(self, id: str) -&gt; Dict
 </code></pre>
+
 <p>Perform a geography lookup.</p>
 <p><strong>Arguments</strong></p>
 <ul>
@@ -343,18 +346,19 @@
 
 <h2 id="vortexasdk.endpoints.geographies_result.GeographyResult">GeographyResult</h2>
 
-<pre><code class="language-python">GeographyResult(self, _records: List) -&gt; None
+<pre><code class="python">GeographyResult(self, _records: List) -&gt; None
 </code></pre>
-<p>Container class that holds the result obtained from calling the <code>Geography</code> endpoint.</p>
-<h3 id="vortexasdk.endpoints.geographies_result.GeographyResult.to_list">to_list</h3>
 
-<pre><code class="language-python">GeographyResult.to_list(self) -&gt; List[vortexasdk.api.geography.Geography]
+<p>Container class that holds the result obtained from calling the <code>Geography</code> endpoint.
+<h3 id="vortexasdk.endpoints.geographies_result.GeographyResult.to_list">to_list</h3></p>
+<pre><code class="python">GeographyResult.to_list(self) -&gt; List[vortexasdk.api.geography.Geography]
 </code></pre>
-<p>Represent geographies as a list.</p>
-<h3 id="vortexasdk.endpoints.geographies_result.GeographyResult.to_df">to_df</h3>
 
-<pre><code class="language-python">GeographyResult.to_df(self, columns=None) -&gt; pandas.core.frame.DataFrame
+<p>Represent geographies as a list.
+<h3 id="vortexasdk.endpoints.geographies_result.GeographyResult.to_df">to_df</h3></p>
+<pre><code class="python">GeographyResult.to_df(self, columns=None) -&gt; pandas.core.frame.DataFrame
 </code></pre>
+
 <p>Represent geographies as a <code>pd.DataFrame</code>.</p>
 <p><strong>Arguments</strong></p>
 <ul>

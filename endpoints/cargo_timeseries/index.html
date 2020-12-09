@@ -248,15 +248,16 @@
               
                 <h1 id="vortexasdk.endpoints.cargo_timeseries">vortexasdk.endpoints.cargo_timeseries</h1>
 
-<p>Time Series Endpoint.</p>
-<h2 id="vortexasdk.endpoints.cargo_timeseries.CargoTimeSeries">CargoTimeSeries</h2>
-
-<pre><code class="language-python">CargoTimeSeries(self)
+<p>Time Series Endpoint.
+<h2 id="vortexasdk.endpoints.cargo_timeseries.CargoTimeSeries">CargoTimeSeries</h2></p>
+<pre><code class="python">CargoTimeSeries(self)
 </code></pre>
+
 <h3 id="vortexasdk.endpoints.cargo_timeseries.CargoTimeSeries.search">search</h3>
 
-<pre><code class="language-python">CargoTimeSeries.search(self, filter_activity: str, timeseries_activity: str = None, timeseries_frequency: str = 'day', timeseries_unit: str = 'b', filter_time_min: datetime.datetime = datetime.datetime(2019, 10, 1, 0, 0), filter_time_max: datetime.datetime = datetime.datetime(2019, 10, 1, 1, 0), filter_charterers: Union[str, List[str]] = None, filter_destinations: Union[str, List[str]] = None, filter_origins: Union[str, List[str]] = None, filter_owners: Union[str, List[str]] = None, filter_products: Union[str, List[str]] = None, filter_vessels: Union[str, List[str]] = None, filter_storage_locations: Union[str, List[str]] = None, filter_ship_to_ship_locations: Union[str, List[str]] = None, filter_waypoints: Union[str, List[str]] = None, disable_geographic_exclusion_rules: bool = None, timeseries_activity_time_span_min: int = None, timeseries_activity_time_span_max: int = None) -&gt; vortexasdk.endpoints.timeseries_result.TimeSeriesResult
+<pre><code class="python">CargoTimeSeries.search(self, filter_activity: str, timeseries_activity: str = None, timeseries_frequency: str = 'day', timeseries_unit: str = 'b', filter_time_min: datetime.datetime = datetime.datetime(2019, 10, 1, 0, 0), filter_time_max: datetime.datetime = datetime.datetime(2019, 10, 1, 1, 0), filter_charterers: Union[str, List[str]] = None, filter_destinations: Union[str, List[str]] = None, filter_origins: Union[str, List[str]] = None, filter_owners: Union[str, List[str]] = None, filter_products: Union[str, List[str]] = None, filter_vessels: Union[str, List[str]] = None, filter_storage_locations: Union[str, List[str]] = None, filter_ship_to_ship_locations: Union[str, List[str]] = None, filter_waypoints: Union[str, List[str]] = None, disable_geographic_exclusion_rules: bool = None, timeseries_activity_time_span_min: int = None, timeseries_activity_time_span_max: int = None) -&gt; vortexasdk.endpoints.timeseries_result.TimeSeriesResult
 </code></pre>
+
 <p>Find Aggregate flows between regions, for various products, for various vessels, or various corporations.</p>
 <p>Example questions that can be answered with this endpoint:</p>
 <ul>
@@ -349,7 +350,7 @@
 <ul>
 <li><em>What was the monthly average barrels per day of crude loaded from Rotterdam over the last year?</em></li>
 </ul>
-<pre><code class="language-python">&gt;&gt;&gt; from vortexasdk import CargoTimeSeries, Geographies, Products
+<pre><code class="python">&gt;&gt;&gt; from vortexasdk import CargoTimeSeries, Geographies, Products
 &gt;&gt;&gt; rotterdam = [g.id for g in Geographies().search(&quot;rotterdam&quot;).to_list() if &quot;port&quot; in g.layer]
 &gt;&gt;&gt; crude = [p.id for p in Products().search(&quot;crude&quot;).to_list() if &quot;Crude&quot; == p.name]
 &gt;&gt;&gt; search_result = CargoTimeSeries().search(
@@ -363,6 +364,7 @@
 &gt;&gt;&gt; df = search_result.to_df()
 
 </code></pre>
+
 <p>Gives the following:</p>
 <table>
 <thead>
@@ -452,18 +454,19 @@
 
 <h2 id="vortexasdk.endpoints.timeseries_result.TimeSeriesResult">TimeSeriesResult</h2>
 
-<pre><code class="language-python">TimeSeriesResult(self, _records: List) -&gt; None
+<pre><code class="python">TimeSeriesResult(self, _records: List) -&gt; None
 </code></pre>
-<p>Container class that holds the result obtained from calling a time series endpoint.</p>
-<h3 id="vortexasdk.endpoints.timeseries_result.TimeSeriesResult.to_list">to_list</h3>
 
-<pre><code class="language-python">TimeSeriesResult.to_list(self) -&gt; List[vortexasdk.api.timeseries_item.TimeSeriesItem]
+<p>Container class that holds the result obtained from calling a time series endpoint.
+<h3 id="vortexasdk.endpoints.timeseries_result.TimeSeriesResult.to_list">to_list</h3></p>
+<pre><code class="python">TimeSeriesResult.to_list(self) -&gt; List[vortexasdk.api.timeseries_item.TimeSeriesItem]
 </code></pre>
-<p>Represents time series as a list.</p>
-<h3 id="vortexasdk.endpoints.timeseries_result.TimeSeriesResult.to_df">to_df</h3>
 
-<pre><code class="language-python">TimeSeriesResult.to_df(self, columns=None) -&gt; pandas.core.frame.DataFrame
+<p>Represents time series as a list.
+<h3 id="vortexasdk.endpoints.timeseries_result.TimeSeriesResult.to_df">to_df</h3></p>
+<pre><code class="python">TimeSeriesResult.to_df(self, columns=None) -&gt; pandas.core.frame.DataFrame
 </code></pre>
+
 <p>Represents the timeseries as a dataframe.</p>
 <p>Returns a <code>pd.DataFrame</code>, of time series items with columns:
  key: The time series key
