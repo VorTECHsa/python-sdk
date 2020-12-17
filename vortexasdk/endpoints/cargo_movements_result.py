@@ -531,6 +531,10 @@ class CargoMovementsResult(Result):
             'vessels.3.status',
             'vessels.3.vessel_class',
             'vessels.3.voyage_id',
+            'parent_ids.0.id',
+            'parent_ids.0.splinter_timestamp',
+            'parent_ids.1.id',
+            'parent_ids.1.splinter_timestamp',
         ]
         ```
 
