@@ -143,7 +143,7 @@ class TonMilesBreakdown(Search):
 
         ```
 
-        returns 
+        returns
 
         |      |key                      |value       |count |
         |-----:|:------------------------|:-----------|-----:|
