@@ -3,6 +3,7 @@ from datetime import datetime
 from tests.testcases import TestCaseUsingRealAPI
 from vortexasdk import TonMilesBreakdown, Geographies, Corporations, Attributes
 from vortexasdk.endpoints import vessel_movements_result
+from docs.utils import to_markdown
 
 
 class TestTonMilesBreakdownReal(TestCaseUsingRealAPI):
@@ -13,6 +14,7 @@ class TestTonMilesBreakdownReal(TestCaseUsingRealAPI):
             filter_activity="loading_state",
             filter_time_min=date,
             filter_time_max=date,
+            breakdown_frequency="day"
         )
 
         assert len(result) == 1
@@ -25,11 +27,26 @@ class TestTonMilesBreakdownReal(TestCaseUsingRealAPI):
             filter_activity="loading_state",
             filter_time_min=start,
             filter_time_max=end,
+            breakdown_frequency="day"
         )
 
         n_days = (end - start).days + 1
 
         assert n_days == len(result)
+
+    def test_search_returns_default_freq(self):
+        start = datetime(2019, 1, 1)
+        end = datetime(2019, 11, 10)
+
+        result = TonMilesBreakdown().search(
+            filter_activity="loading_state",
+            filter_time_min=start,
+            filter_time_max=end
+        )
+
+        n_months = (end.year - start.year) * 12 + end.month - start.month + 1
+
+        assert n_months == len(result)
 
     def test_to_df(self):
         start = datetime(2019, 11, 1)
@@ -41,6 +58,7 @@ class TestTonMilesBreakdownReal(TestCaseUsingRealAPI):
                 filter_activity="loading_state",
                 filter_time_min=start,
                 filter_time_max=end,
+                breakdown_frequency="day"
             )
             .to_df()
         )
@@ -62,6 +80,7 @@ class TestTonMilesBreakdownReal(TestCaseUsingRealAPI):
                 filter_activity="loading_state",
                 filter_time_min=start,
                 filter_time_max=end,
+                breakdown_frequency="day"
             )
             .to_list()
         )

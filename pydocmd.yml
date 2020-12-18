@@ -58,6 +58,7 @@ pages:
       Products: endpoints/products.md
       Vessels: endpoints/vessels.md
       EIA Forecasts: endpoints/eia_forecasts.md
+      Ton Miles Breakdown: endpoints/ton_miles_breakdown.md
   - Entities:
       Cargo Movement: entities/cargo_movement.md
       Corporation: entities/corporation.md
