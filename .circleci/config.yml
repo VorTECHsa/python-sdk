@@ -60,6 +60,12 @@ jobs:
             rm *-example.py
 
       - run:
+          name: "Run all try-me-out notebooks"
+          command: |
+            . .venv/bin/activate
+            jupyter nbconvert --to notebook --execute docs/examples/try_me_out/*.ipynb
+
+      - run:
           name: "Confirm that the check_setup script works"
           command: |
             . .venv/bin/activate

@@ -3,6 +3,7 @@ experimental/
 html/
 pydocmd/
 site/
+docs/examples/try_me_out/*.nbconvert.ipynb
 
 .idea/
 .DS_Store
