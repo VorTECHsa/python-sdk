@@ -266,8 +266,8 @@ giving you immediate access to pandas DataFrames.</p>
 &gt;&gt;&gt; from vortexasdk import CargoMovements
 &gt;&gt;&gt; df = CargoMovements()\
         .search(filter_activity='loading_state',
-            filter_time_min=datetime(2017, 8, 1),
-            filter_time_max=datetime(2017, 8, 2))\
+            filter_time_min=datetime(2017, 8, 2),
+            filter_time_max=datetime(2017, 8, 3))\
         .to_df()
 </code></pre>
 <p>returns:</p>
@@ -416,5 +416,5 @@ helping to extract powerful findings from our data.</p>
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2020-12-30 16:46:52
+Build Date UTC : 2020-12-30 16:50:02
 -->
