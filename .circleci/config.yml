@@ -64,6 +64,6 @@ workflows:
           filters:
             branches:
               only:
-                - ci-automation
+                - master
           requires:
             - test
