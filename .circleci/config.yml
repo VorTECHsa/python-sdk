@@ -66,6 +66,18 @@ jobs:
           name: "Build docs"
           command: |
             . .venv/bin/activate
+            python -m vortexasdk.check_setup
+
+      - run:
+          name: "Check proposed version is valid next semver"
+          command: |
+            . .venv/bin/activate
+            python scripts/validate_proposed_package_version.py
+
+      - run:
+          name: "Build docs"
+          command: |
+            . .venv/bin/activate
             mkdir -p ./_build/pydocmd/examples
             python docs/autogen.py
             pydocmd build

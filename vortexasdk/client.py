@@ -19,7 +19,8 @@ from vortexasdk.retry_session import (
     retry_get,
     retry_post,
 )
-from vortexasdk.utils import filter_empty_values, is_sdk_version_outdated
+from vortexasdk.utils import filter_empty_values
+from vortexasdk.version_utils import is_sdk_version_outdated
 from vortexasdk.version import __version__
 from vortexasdk import __name__ as sdk_pkg_name
 
