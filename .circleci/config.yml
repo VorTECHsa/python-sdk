@@ -39,6 +39,9 @@ jobs:
       - image: circleci/python:3.7
     steps:
       - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - "b7:35:38:7a:76:62:44:82:28:93:77:f1:9c:f1:35:8c"
 
       - restore_cache: &restore_cache
           keys:
