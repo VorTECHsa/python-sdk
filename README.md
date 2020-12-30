@@ -20,8 +20,8 @@ In an interactive Python console, run:
 >>> from vortexasdk import CargoMovements
 >>> df = CargoMovements()\
         .search(filter_activity='loading_state',
-            filter_time_min=datetime(2017, 8, 1),
-            filter_time_max=datetime(2017, 8, 2))\
+            filter_time_min=datetime(2017, 8, 2),
+            filter_time_max=datetime(2017, 8, 3))\
         .to_df()
 ```
 returns:
