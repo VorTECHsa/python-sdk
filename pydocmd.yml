@@ -1,6 +1,9 @@
+# This file is used by pydocmd to generate markdown files from python modules
 site_name: VortexaSDK
 docs_dir: docs/
 repo_url: https://github.com/vortechsa/python-sdk
+
+# Generate the individual markdown files from specified python modules
 generate:
   - endpoints/cargo_movements.md:
       - vortexasdk.endpoints.cargo_movements++

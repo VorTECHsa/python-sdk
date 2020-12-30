@@ -21,7 +21,7 @@ In an interactive Python console, run:
 >>> df = CargoMovements()\
         .search(filter_activity='loading_state',
             filter_time_min=datetime(2017, 8, 1),
-            filter_time_max=datetime(2017, 8, 1))\
+            filter_time_max=datetime(2017, 8, 2))\
         .to_df()
 ```
 returns:

@@ -53,7 +53,7 @@ If you're just looking to run tests in a single module (`test_vessels` in this c
 $ pytest -v tests/endpoints/test_vessels.py 
 ```
 
-serve documentation
+serve documentation locally
 ```bash
 $ ./docs/scripts/serve_docs.sh
 ```
