@@ -59,6 +59,7 @@ jobs:
             pydocmd gh-deploy
 
 workflows:
+  version: 2
   build-deploy:
     jobs:
       - test
@@ -67,5 +68,5 @@ workflows:
             branches:
               only:
                 - ci-automation
-          - requires:
-              - test
+          requires:
+            - test
