@@ -248,11 +248,11 @@
               
                 <h1 id="vortexasdk.endpoints.eia_forecasts">vortexasdk.endpoints.eia_forecasts</h1>
 
-<p>EIA Forecasts Endpoint.
-<h2 id="vortexasdk.endpoints.eia_forecasts.EIAForecasts">EIAForecasts</h2></p>
-<pre><code class="python">EIAForecasts(self)
-</code></pre>
+<p>EIA Forecasts Endpoint.</p>
+<h2 id="vortexasdk.endpoints.eia_forecasts.EIAForecasts">EIAForecasts</h2>
 
+<pre><code class="language-python">EIAForecasts(self)
+</code></pre>
 <p>EIA forecasts Endpoint, use this to search through Vortexa's EIA Forecasts data.</p>
 <p>The data includes:</p>
 <ul>
@@ -265,9 +265,8 @@
 </ul>
 <h3 id="vortexasdk.endpoints.eia_forecasts.EIAForecasts.search">search</h3>
 
-<pre><code class="python">EIAForecasts.search(self, preset: str = 'padd1-gasoline-imports', filter_time_min: datetime.datetime = datetime.datetime(2020, 1, 1, 0, 0), filter_time_max: datetime.datetime = datetime.datetime(2020, 1, 31, 0, 0)) -&gt; vortexasdk.endpoints.eia_forecasts_result.EIAForecastResult
+<pre><code class="language-python">EIAForecasts.search(self, preset: str = 'padd1-gasoline-imports', filter_time_min: datetime.datetime = datetime.datetime(2020, 1, 1, 0, 0), filter_time_max: datetime.datetime = datetime.datetime(2020, 1, 31, 0, 0)) -&gt; vortexasdk.endpoints.eia_forecasts_result.EIAForecastResult
 </code></pre>
-
 <p>Find EIA forecasts for a given preset and date range.</p>
 <p><strong>Arguments</strong></p>
 <ul>
@@ -290,7 +289,7 @@
 <p>List of EIA Forecast object matching selected 'preset'.</p>
 <p><strong>Examples</strong></p>
 <p>Find PADD5 gasoline imports EIA forecasts from January 2019.</p>
-<pre><code class="python">&gt;&gt;&gt; from datetime import datetime
+<pre><code class="language-python">&gt;&gt;&gt; from datetime import datetime
 &gt;&gt;&gt; from vortexasdk import EIAForecasts
 &gt;&gt;&gt; df = EIAForecasts().search(
 ...     preset=&quot;padd5-gasoline-imports&quot;,
@@ -299,7 +298,6 @@
 ... ).to_df()
 
 </code></pre>
-
 <p>returns</p>
 <table>
 <thead>
@@ -365,19 +363,18 @@
 
 <h2 id="vortexasdk.endpoints.eia_forecasts_result.EIAForecastResult">EIAForecastResult</h2>
 
-<pre><code class="python">EIAForecastResult(self, _records: List) -&gt; None
+<pre><code class="language-python">EIAForecastResult(self, _records: List) -&gt; None
 </code></pre>
+<p>Container class that holds the result obtained from calling the <code>EIAForecasts</code> endpoint.</p>
+<h3 id="vortexasdk.endpoints.eia_forecasts_result.EIAForecastResult.to_list">to_list</h3>
 
-<p>Container class that holds the result obtained from calling the <code>EIAForecasts</code> endpoint.
-<h3 id="vortexasdk.endpoints.eia_forecasts_result.EIAForecastResult.to_list">to_list</h3></p>
-<pre><code class="python">EIAForecastResult.to_list(self) -&gt; List[vortexasdk.api.eia_forecast.EIAForecast]
+<pre><code class="language-python">EIAForecastResult.to_list(self) -&gt; List[vortexasdk.api.eia_forecast.EIAForecast]
 </code></pre>
+<p>Represent EIAForecast data as a list.</p>
+<h3 id="vortexasdk.endpoints.eia_forecasts_result.EIAForecastResult.to_df">to_df</h3>
 
-<p>Represent EIAForecast data as a list.
-<h3 id="vortexasdk.endpoints.eia_forecasts_result.EIAForecastResult.to_df">to_df</h3></p>
-<pre><code class="python">EIAForecastResult.to_df(self, columns=None) -&gt; pandas.core.frame.DataFrame
+<pre><code class="language-python">EIAForecastResult.to_df(self, columns=None) -&gt; pandas.core.frame.DataFrame
 </code></pre>
-
 <p>Represent EIA forecasts as a <code>pd.DataFrame</code>.</p>
 <p><strong>Arguments</strong></p>
 <ul>

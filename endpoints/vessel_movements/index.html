@@ -251,11 +251,11 @@
               
                 <h1 id="vortexasdk.endpoints.vessel_movements">vortexasdk.endpoints.vessel_movements</h1>
 
-<p>Vessel Movements Endpoint.
-<h2 id="vortexasdk.endpoints.vessel_movements.VesselMovements">VesselMovements</h2></p>
-<pre><code class="python">VesselMovements(self)
-</code></pre>
+<p>Vessel Movements Endpoint.</p>
+<h2 id="vortexasdk.endpoints.vessel_movements.VesselMovements">VesselMovements</h2>
 
+<pre><code class="language-python">VesselMovements(self)
+</code></pre>
 <p>Vessel Movements Endpoint, use this to search through Vortexa's VesselMovements.</p>
 <p>A VesselMovement represents a single vessel moving between two locations.</p>
 <ul>
@@ -266,9 +266,8 @@
 <p>A detailed explanation of Cargo/Vessel Movements can be found <a href="https://docs.vortexa.com/reference/intro-movement-difference">here</a>.</p>
 <h3 id="vortexasdk.endpoints.vessel_movements.VesselMovements.search">search</h3>
 
-<pre><code class="python">VesselMovements.search(self, filter_time_min: datetime.datetime = datetime.datetime(2019, 10, 1, 0, 0), filter_time_max: datetime.datetime = datetime.datetime(2019, 10, 1, 1, 0), unit: str = 'b', filter_activity: str = None, filter_charterers: Union[str, List[str]] = None, filter_destinations: Union[str, List[str]] = None, filter_origins: Union[str, List[str]] = None, filter_owners: Union[str, List[str]] = None, filter_products: Union[str, List[str]] = None, filter_vessels: Union[str, List[str]] = None, filter_vessel_classes: Union[str, List[str]] = None, filter_vessel_status: str = None, filter_vessel_age_min: int = None, filter_vessel_age_max: int = None, filter_vessel_scrubbers: str = 'disabled', filter_vessel_flags: Union[str, List[str]] = None, filter_vessel_ice_class: Union[str, List[str]] = None, filter_vessel_propulsion: Union[str, List[str]] = None, exclude_origins: Union[str, List[str]] = None, exclude_destinations: Union[str, List[str]] = None, exclude_products: Union[str, List[str]] = None, exclude_vessels: Union[str, List[str]] = None, exclude_vessel_classes: Union[str, List[str]] = None, exclude_charterers: Union[str, List[str]] = None, exclude_owners: Union[str, List[str]] = None, exclude_vessel_flags: Union[str, List[str]] = None, exclude_vessel_ice_class: Union[str, List[str]] = None, exclude_vessel_propulsion: Union[str, List[str]] = None) -&gt; vortexasdk.endpoints.vessel_movements_result.VesselMovementsResult
+<pre><code class="language-python">VesselMovements.search(self, filter_time_min: datetime.datetime = datetime.datetime(2019, 10, 1, 0, 0), filter_time_max: datetime.datetime = datetime.datetime(2019, 10, 1, 1, 0), unit: str = 'b', filter_activity: str = None, filter_charterers: Union[str, List[str]] = None, filter_destinations: Union[str, List[str]] = None, filter_origins: Union[str, List[str]] = None, filter_owners: Union[str, List[str]] = None, filter_products: Union[str, List[str]] = None, filter_vessels: Union[str, List[str]] = None, filter_vessel_classes: Union[str, List[str]] = None, filter_vessel_status: str = None, filter_vessel_age_min: int = None, filter_vessel_age_max: int = None, filter_vessel_scrubbers: str = 'disabled', filter_vessel_flags: Union[str, List[str]] = None, filter_vessel_ice_class: Union[str, List[str]] = None, filter_vessel_propulsion: Union[str, List[str]] = None, exclude_origins: Union[str, List[str]] = None, exclude_destinations: Union[str, List[str]] = None, exclude_products: Union[str, List[str]] = None, exclude_vessels: Union[str, List[str]] = None, exclude_vessel_classes: Union[str, List[str]] = None, exclude_charterers: Union[str, List[str]] = None, exclude_owners: Union[str, List[str]] = None, exclude_vessel_flags: Union[str, List[str]] = None, exclude_vessel_ice_class: Union[str, List[str]] = None, exclude_vessel_propulsion: Union[str, List[str]] = None) -&gt; vortexasdk.endpoints.vessel_movements_result.VesselMovementsResult
 </code></pre>
-
 <p>Find VesselMovements matching the given search parameters.</p>
 <p><strong>Arguments</strong></p>
 <ul>
@@ -364,7 +363,7 @@
 <p><code>VesselMovementsResult</code>, containing all the vessel movements matching the given search terms.</p>
 <p><strong>Example</strong></p>
 <p>Let's search for all vessels that departed from <code>Rotterdam [NL]</code> on the morning of 1st December 2018.</p>
-<pre><code class="python">&gt;&gt;&gt; from vortexasdk import VesselMovements, Geographies
+<pre><code class="language-python">&gt;&gt;&gt; from vortexasdk import VesselMovements, Geographies
 &gt;&gt;&gt; rotterdam = [g.id for g in Geographies().search(&quot;rotterdam&quot;).to_list() if &quot;port&quot; in g.layer]
 &gt;&gt;&gt; df = VesselMovements().search(
 ...        filter_time_min=datetime(2017, 10, 1, 0, 0),
@@ -373,7 +372,6 @@
 ... ).to_df().head(2)
 
 </code></pre>
-
 <table>
 <thead>
 <tr>
@@ -427,22 +425,20 @@
 
 <h2 id="vortexasdk.endpoints.vessel_movements_result.VesselMovementsResult">VesselMovementsResult</h2>
 
-<pre><code class="python">VesselMovementsResult(self, _records: List) -&gt; None
+<pre><code class="language-python">VesselMovementsResult(self, _records: List) -&gt; None
 </code></pre>
-
 <p>Container class holdings search results returns from the vessel movements endpoint.</p>
 <p>This class has two methods, <code>to_list()</code>, and <code>to_df()</code>, allowing search results to be represented as a list of <code>VesselMovement</code>s,
  or as a <code>pd.DataFrame</code> , respectively.</p>
 <h3 id="vortexasdk.endpoints.vessel_movements_result.VesselMovementsResult.to_list">to_list</h3>
 
-<pre><code class="python">VesselMovementsResult.to_list(self) -&gt; List[vortexasdk.api.vessel_movement.VesselMovement]
+<pre><code class="language-python">VesselMovementsResult.to_list(self) -&gt; List[vortexasdk.api.vessel_movement.VesselMovement]
 </code></pre>
+<p>Represent vessel movements as a list of <code>VesselMovementEntity</code>s.</p>
+<h3 id="vortexasdk.endpoints.vessel_movements_result.VesselMovementsResult.to_df">to_df</h3>
 
-<p>Represent vessel movements as a list of <code>VesselMovementEntity</code>s.
-<h3 id="vortexasdk.endpoints.vessel_movements_result.VesselMovementsResult.to_df">to_df</h3></p>
-<pre><code class="python">VesselMovementsResult.to_df(self, columns=None) -&gt; pandas.core.frame.DataFrame
+<pre><code class="language-python">VesselMovementsResult.to_df(self, columns=None) -&gt; pandas.core.frame.DataFrame
 </code></pre>
-
 <p>Represent vessel movements as a <code>pd.DataFrame</code>.</p>
 <p><strong>Arguments</strong></p>
 <ul>
@@ -454,7 +450,7 @@
 <p><code>pd.DataFrame</code>, one row per <code>VesselMovement</code>.</p>
 <h2 id="notes">Notes</h2>
 <p>By default, the columns returned are something along the lines of.</p>
-<pre><code class="python">DEFAULT_COLUMNS = [
+<pre><code class="language-python">DEFAULT_COLUMNS = [
     'vessel.imo',
     'vessel.name',
     'vessel.vessel_class',
@@ -472,7 +468,6 @@
     'end_timestamp',
 ]
 </code></pre>
-
 <p>The exact default columns used can be found at <code>vessel_movements.DEFAULT_COLUMNS</code></p>
 <p>A near complete list of columns is given below</p>
 <pre><code>[

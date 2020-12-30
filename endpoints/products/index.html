@@ -248,21 +248,21 @@
               
                 <h1 id="vortexasdk.endpoints.products">vortexasdk.endpoints.products</h1>
 
-<p>Products Endpoint.
-<h2 id="vortexasdk.endpoints.products.Products">Products</h2></p>
-<pre><code class="python">Products(self)
-</code></pre>
+<p>Products Endpoint.</p>
+<h2 id="vortexasdk.endpoints.products.Products">Products</h2>
 
-<p>Products endpoint.
-<h3 id="vortexasdk.endpoints.products.Products.load_all">load_all</h3></p>
-<pre><code class="python">Products.load_all(self) -&gt; vortexasdk.endpoints.products_result.ProductResult
+<pre><code class="language-python">Products(self)
 </code></pre>
+<p>Products endpoint.</p>
+<h3 id="vortexasdk.endpoints.products.Products.load_all">load_all</h3>
 
-<p>Load all products.
-<h3 id="vortexasdk.endpoints.products.Products.search">search</h3></p>
-<pre><code class="python">Products.search(self, term: Union[str, List[str]] = None, ids: Union[str, List[str]] = None, product_parent: Union[str, List[str]] = None, exact_term_match: bool = False) -&gt; vortexasdk.endpoints.products_result.ProductResult
+<pre><code class="language-python">Products.load_all(self) -&gt; vortexasdk.endpoints.products_result.ProductResult
 </code></pre>
+<p>Load all products.</p>
+<h3 id="vortexasdk.endpoints.products.Products.search">search</h3>
 
+<pre><code class="language-python">Products.search(self, term: Union[str, List[str]] = None, ids: Union[str, List[str]] = None, product_parent: Union[str, List[str]] = None, exact_term_match: bool = False) -&gt; vortexasdk.endpoints.products_result.ProductResult
+</code></pre>
 <p>Find all products matching given search terms.</p>
 <p><strong>Arguments</strong></p>
 <ul>
@@ -285,11 +285,10 @@
 <p>List of products matching the search arguments.</p>
 <p><strong>Examples</strong></p>
 <p>Let's look for products with in one of <code>['diesel', 'fuel oil', 'grane']</code> their name, or related names.</p>
-<pre><code class="python">&gt;&gt;&gt; from vortexasdk import Products
+<pre><code class="language-python">&gt;&gt;&gt; from vortexasdk import Products
 &gt;&gt;&gt; df = Products().search(term=['diesel', 'fuel oil', 'grane']).to_df('all')
 
 </code></pre>
-
 <p>Returns</p>
 <table>
 <thead>
@@ -361,9 +360,8 @@
 <p><a href="https://docs.vortexa.com/reference/POST/reference/products">VortexaAPI Product Reference</a></p>
 <h3 id="vortexasdk.endpoints.products.Products.reference">reference</h3>
 
-<pre><code class="python">Products.reference(self, id: str) -&gt; Dict
+<pre><code class="language-python">Products.reference(self, id: str) -&gt; Dict
 </code></pre>
-
 <p>Perform a product lookup.</p>
 <p><strong>Arguments</strong></p>
 <ul>
@@ -377,19 +375,18 @@
 
 <h2 id="vortexasdk.endpoints.products_result.ProductResult">ProductResult</h2>
 
-<pre><code class="python">ProductResult(self, _records: List) -&gt; None
+<pre><code class="language-python">ProductResult(self, _records: List) -&gt; None
 </code></pre>
+<p>Container class that holds the result obtained from calling the <code>Product</code> endpoint.</p>
+<h3 id="vortexasdk.endpoints.products_result.ProductResult.to_list">to_list</h3>
 
-<p>Container class that holds the result obtained from calling the <code>Product</code> endpoint.
-<h3 id="vortexasdk.endpoints.products_result.ProductResult.to_list">to_list</h3></p>
-<pre><code class="python">ProductResult.to_list(self) -&gt; List[vortexasdk.api.product.Product]
+<pre><code class="language-python">ProductResult.to_list(self) -&gt; List[vortexasdk.api.product.Product]
 </code></pre>
+<p>Represent products as a list.</p>
+<h3 id="vortexasdk.endpoints.products_result.ProductResult.to_df">to_df</h3>
 
-<p>Represent products as a list.
-<h3 id="vortexasdk.endpoints.products_result.ProductResult.to_df">to_df</h3></p>
-<pre><code class="python">ProductResult.to_df(self, columns=None) -&gt; pandas.core.frame.DataFrame
+<pre><code class="language-python">ProductResult.to_df(self, columns=None) -&gt; pandas.core.frame.DataFrame
 </code></pre>
-
 <p>Represent products as a <code>pd.DataFrame</code>.</p>
 <p><strong>Arguments</strong></p>
 <ul>
