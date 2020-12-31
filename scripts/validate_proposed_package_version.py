@@ -24,11 +24,17 @@ def check_proposed_version_is_allowed(
 
     if not proposed_version_is_allowed:
         raise Exception(
-            f"The proposed version {proposed} is not allowed. This might be because the proposed version "
-            f"already exists, or it isn't one of the next sequential semver version bumps. The next version must be a "
-            f"prerelease/build, or one of the following: "
-            f"{[str(v) for v in next_versions]}"
+            f"The proposed version {proposed} is not allowed. \n"
+            f"This might be because the proposed version already exists, \n"
+            f"or because it isn't one of the next sequential semver version bumps. \n"
+            f"The next version must be one of the following, or a pre-release: \n"
+            f"{[str(v) for v in next_versions]}\n"
+            f"You must change the vortexasdk/__version__.py file to a valid next version, following semver guidelines.\n"
+            f"Refer to https://semver.org for more information on semantic versioning."
         )
+    else:
+        print(f"Latest version:  {latest_version}")
+        print(f"Proposed version {proposed_version} is allowed.")
 
 
 if __name__ == "__main__":
