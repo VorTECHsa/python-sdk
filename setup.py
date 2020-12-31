@@ -43,6 +43,10 @@ setuptools.setup(
             "semver==2.13.0",
             "six==1.12.0",
             "xlrd==1.2.0"
+        ],
+        "deploy": [
+            "wheel==0.36.2",
+            "twine==3.3.0"
         ]
     },
 )

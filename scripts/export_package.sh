@@ -8,6 +8,7 @@ git add ./vortexasdk/version.py
 git commit -m "chore: New tag $TAG"
 git push
 
+TAG=$(python setup.py --version)
 git tag -a $TAG -m "chore: New tag $TAG"
 git push --tags
 

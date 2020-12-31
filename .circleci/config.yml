@@ -126,10 +126,18 @@ jobs:
           name: "Deploy package to pypi"
           command: |
             . .venv/bin/activate
+            pip install -e .[deploy]
             rm -rf dist
-            pip install wheel
-            python3 setup.py sdist bdist_wheel
-            python3 -m twine upload -u $TWINE_USERNAME -p $TWINE_PASSWORD dist/*
+            python setup.py sdist bdist_wheel
+            python -m twine upload -u $TWINE_USERNAME -p $TWINE_PASSWORD dist/*
+      - run:
+          name: "Tag the release with git"
+          command: |
+            . .venv/bin/activate
+            TAG=$(python setup.py --version)
+            git tag -a $TAG -m "New tag $TAG"
+            git push --tags
+
 
 
 workflows:
