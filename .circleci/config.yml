@@ -36,7 +36,7 @@ jobs:
           name: "Check Linting"
           command: |
             . .venv/bin/activate
-#            mypy docs/examples
+            mypy docs/examples
 
   test:
     working_directory: ~/project
@@ -53,31 +53,31 @@ jobs:
           command: |
             . .venv/bin/activate
             # This should be done in tox, but i can't work out how to run doctests in tox hence we're also running it here for now.
-#            pytest -v --doctest-modules
+            pytest -v --doctest-modules
 
       - run:
           name: "Run all tests"
           command: |
             . .venv/bin/activate
-#            pip install tox
-#            tox --verbose
+            pip install tox
+            tox --verbose
 
       - run:
           name: "Run all examples"
           command: |
             set -xe
             . .venv/bin/activate
-#            for f in docs/examples/*.py; do cp -v -- "$f" "$f-example.py"; done
-#            cp docs/examples/*-example.py .
-#            for f in *-example.py; do python "$f"; done
-#            rm docs/examples/*-example.py
-#            rm *-example.py
+            for f in docs/examples/*.py; do cp -v -- "$f" "$f-example.py"; done
+            cp docs/examples/*-example.py .
+            for f in *-example.py; do python "$f"; done
+            rm docs/examples/*-example.py
+            rm *-example.py
 
       - run:
           name: "Confirm that the check_setup script works"
           command: |
             . .venv/bin/activate
-#            python -m vortexasdk.check_setup
+            python -m vortexasdk.check_setup
 
       - run:
           name: "Build docs"
@@ -118,10 +118,10 @@ jobs:
           name: "Deploy docs if master branch"
           command: |
             . .venv/bin/activate
-#            mkdir -p ./_build/pydocmd/examples
-#            python docs/autogen.py
-#            pydocmd build
-#            pydocmd gh-deploy
+            mkdir -p ./_build/pydocmd/examples
+            python docs/autogen.py
+            pydocmd build
+            pydocmd gh-deploy
       - run:
           name: "Deploy package to pypi"
           command: |

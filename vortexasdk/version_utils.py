@@ -11,7 +11,7 @@ def get_latest_sdk_version() -> str:
     with urlopen(url) as u:
         data = json.loads(u.read())
 
-    versions = sorted([StrictVersion(release) for release in data["releases"].keys()])
+    versions = [StrictVersion(release) for release in data["releases"].keys()]
 
     filtered_out_prerelese_versions = [v for v in versions if v.prerelease is None]
 
