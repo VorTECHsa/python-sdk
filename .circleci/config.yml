@@ -29,50 +29,38 @@ jobs:
           name: "Check Linting"
           command: |
             . .venv/bin/activate
-            mypy docs/examples
+#            mypy docs/examples
 
       - run:
           name: "Run doctests"
           command: |
             . .venv/bin/activate
             # This should be done in tox, but i can't work out how to run doctests in tox hence we're also running it here for now.
-            pytest -v --doctest-modules
+#            pytest -v --doctest-modules
 
       - run:
           name: "Run all tests"
           command: |
             . .venv/bin/activate
-            pip install tox
-            tox --verbose
+#            pip install tox
+#            tox --verbose
 
       - run:
           name: "Run all examples"
           command: |
             set -xe
             . .venv/bin/activate
-            for f in docs/examples/*.py; do cp -v -- "$f" "$f-example.py"; done
-            cp docs/examples/*-example.py .
-            for f in *-example.py; do python "$f"; done
-            rm docs/examples/*-example.py
-            rm *-example.py
+#            for f in docs/examples/*.py; do cp -v -- "$f" "$f-example.py"; done
+#            cp docs/examples/*-example.py .
+#            for f in *-example.py; do python "$f"; done
+#            rm docs/examples/*-example.py
+#            rm *-example.py
 
       - run:
           name: "Confirm that the check_setup script works"
           command: |
             . .venv/bin/activate
-            python -m vortexasdk.check_setup
-
-      - run:
-          name: "Build docs"
-          command: |
-            . .venv/bin/activate
-            python -m vortexasdk.check_setup
-
-      - run:
-          name: "Check proposed version is valid next semver"
-          command: |
-            . .venv/bin/activate
-            python scripts/validate_proposed_package_version.py
+#            python -m vortexasdk.check_setup
 
       - run:
           name: "Build docs"
@@ -82,7 +70,19 @@ jobs:
             python docs/autogen.py
             pydocmd build
 
-  deploy-docs:
+  check-release-version:
+    working_directory: ~/project
+    docker:
+      - image: circleci/python:3.7
+    steps:
+      - checkout
+      - run:
+          name: "Check proposed release version is valid next semver"
+          command: |
+            . .venv/bin/activate
+            python scripts/validate_proposed_package_version.py
+
+  deploy:
     working_directory: ~/project
     docker:
       - image: circleci/python:3.7
@@ -99,20 +99,27 @@ jobs:
           name: "Deploy docs if master branch"
           command: |
             . .venv/bin/activate
-            mkdir -p ./_build/pydocmd/examples
-            python docs/autogen.py
-            pydocmd build
-            pydocmd gh-deploy
+#            mkdir -p ./_build/pydocmd/examples
+#            python docs/autogen.py
+#            pydocmd build
+#            pydocmd gh-deploy
+      - run:
+          name: "FAKE Deploy package to pypi"
+          command: |
+            . .venv/bin/activate
+            echo Done
 
 workflows:
   version: 2
   build-deploy:
     jobs:
       - test
-      - deploy-docs:
+      - check-release-version
+      - deploy:
           filters:
             branches:
               only:
-                - ci-automation
+                - ci-deployment-automation
           requires:
             - test
+            - check-release-version
