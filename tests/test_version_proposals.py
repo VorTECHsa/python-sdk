@@ -14,7 +14,7 @@ class TestVersionProposal(TestCase):
         check_proposed_version_is_allowed("0.18.0", "0.18.1")
 
     def test_prerelease_is_allowed(self):
-        check_proposed_version_is_allowed("0.18.0", "0.19.1-foo")
+        check_proposed_version_is_allowed("0.18.0", "0.18.1a1")
 
     def test_non_semver_is_not_allowed(self):
         self.assertRaises(Exception, lambda: check_proposed_version_is_allowed("1.18.0", "foobar"))

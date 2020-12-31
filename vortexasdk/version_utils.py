@@ -1,6 +1,6 @@
 import json
 from urllib.request import urlopen
-from distutils.version import LooseVersion
+from distutils.version import StrictVersion
 from vortexasdk import __name__ as sdk_pkg_name
 from vortexasdk.version import __version__
 
@@ -11,17 +11,19 @@ def get_latest_sdk_version() -> str:
     with urlopen(url) as u:
         data = json.loads(u.read())
 
-    versions = data["releases"].keys()
-    sorted_versions = sorted(versions, key=LooseVersion)
-    latest_version = sorted_versions[-1]
+    versions = sorted([StrictVersion(release) for release in data["releases"].keys()])
 
-    return latest_version
+    filtered_out_prerelese_versions = [v for v in versions if v.prerelease is None]
+
+    latest_version = sorted(filtered_out_prerelese_versions)[-1]
+
+    return str(latest_version)
 
 
 def is_sdk_version_outdated():
     """Checks whether SDK version is outdated."""
     latest_version = get_latest_sdk_version()
-    if LooseVersion(__version__) < latest_version:
+    if StrictVersion(__version__) < latest_version:
         return latest_version, True
     else:
         return latest_version, False
