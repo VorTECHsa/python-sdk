@@ -1,16 +1,14 @@
 version: 2
 jobs:
-  test:
+  build:
     working_directory: ~/project
     docker:
       - image: circleci/python:3.7
     steps:
       - checkout
-
       - restore_cache: &restore_cache
           keys:
             - v1-{{ .Branch }}-
-
       - run:
           name: "Install setup.py"
           command: |
@@ -25,6 +23,12 @@ jobs:
             - ~/project/.venv
             - ~/.cache/pip
 
+  test:
+    working_directory: ~/project
+    docker:
+      - image: circleci/python:3.7
+    steps:
+      - checkout
       - run:
           name: "Check Linting"
           command: |
@@ -113,8 +117,16 @@ workflows:
   version: 2
   build-deploy:
     jobs:
-      - test
-      - check-release-version
+      - build
+
+      - test:
+          requires:
+              - build
+
+      - check-release-version:
+          requires:
+            - build
+
       - deploy:
           filters:
             branches:
