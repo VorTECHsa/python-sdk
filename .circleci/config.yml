@@ -115,7 +115,7 @@ jobs:
           fingerprints:
             - "b7:35:38:7a:76:62:44:82:28:93:77:f1:9c:f1:35:8c"
       - run:
-          name: "Deploy docs if master branch"
+          name: "Deploy new documentation to github pages"
           command: |
             . .venv/bin/activate
             mkdir -p ./_build/pydocmd/examples
@@ -163,7 +163,7 @@ workflows:
           filters:
             branches:
               only:
-                - ci-deployment-automation
+                - master
           requires:
             - test
             - lint

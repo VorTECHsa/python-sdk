@@ -69,6 +69,21 @@ $ pre-commit install
 
 ## Contributing Code
 
+### Releasing a new package
+
+New versions of the SDK are automatically released to pypi when your branch PR is merged into the master branch.
+
+In the branch you're working on, you'll need to change the `version.py` file to the new version that you're looking to deploy.
+The python-sdk follow strict semver, so you'll need to increment the MAJOR nunber if and only if you're introducing
+a breaking change, the MINOR number if you're addind a new feature, or PATCH number if you've introduced a bug fix.
+
+Once your branch is merged to master, CircleCI will do a few things:
+- Deploy the new package to pypi https://pypi.org/project/vortexasdk/, using the version in `version.py`.
+- Update the github pages documentation at https://vortechsa.github.io/python-sdk/
+- Create a git tag, usign the version in `version.py`
+
+### Pull requests:
+
 A good pull request:
 -  Is clear.
 -  Follows the existing style of the code base (PEP-8).
