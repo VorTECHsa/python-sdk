@@ -123,10 +123,14 @@ jobs:
 #            pydocmd build
 #            pydocmd gh-deploy
       - run:
-          name: "FAKE Deploy package to pypi"
+          name: "Deploy package to pypi"
           command: |
             . .venv/bin/activate
-            echo Done
+            rm -rf dist
+            pip install wheel
+            python3 setup.py sdist bdist_wheel
+            python3 -m twine upload -u $TWINE_USERNAME -p $TWINE_PASSWORD dist/*
+
 
 workflows:
   version: 2
