@@ -135,9 +135,10 @@ jobs:
           command: |
             . .venv/bin/activate
             TAG=$(python setup.py --version)
+            git config --global user.email "developers@vortexa.com"
+            git config --global user.name "CircleCI"
             git tag -a $TAG -m "New tag $TAG"
             git push --tags
-
 
 
 workflows:
