@@ -23,17 +23,30 @@ jobs:
             - ~/project/.venv
             - ~/.cache/pip
 
+  lint:
+    working_directory: ~/project
+    docker:
+      - image: circleci/python:3.7
+    steps:
+      - checkout
+      - restore_cache: &restore_cache
+          keys:
+            - v1-{{ .Branch }}-
+      - run:
+          name: "Check Linting"
+          command: |
+            . .venv/bin/activate
+#            mypy docs/examples
+
   test:
     working_directory: ~/project
     docker:
       - image: circleci/python:3.7
     steps:
       - checkout
-      - run:
-          name: "Check Linting"
-          command: |
-            . .venv/bin/activate
-#            mypy docs/examples
+      - restore_cache: &restore_cache
+          keys:
+            - v1-{{ .Branch }}-
 
       - run:
           name: "Run doctests"
@@ -80,6 +93,9 @@ jobs:
       - image: circleci/python:3.7
     steps:
       - checkout
+      - restore_cache: &restore_cache
+          keys:
+            - v1-{{ .Branch }}-
       - run:
           name: "Check proposed release version is valid next semver"
           command: |
@@ -92,13 +108,12 @@ jobs:
       - image: circleci/python:3.7
     steps:
       - checkout
-      - add_ssh_keys:
-          fingerprints:
-            - "b7:35:38:7a:76:62:44:82:28:93:77:f1:9c:f1:35:8c"
-
       - restore_cache: &restore_cache
           keys:
             - v1-{{ .Branch }}-
+      - add_ssh_keys:
+          fingerprints:
+            - "b7:35:38:7a:76:62:44:82:28:93:77:f1:9c:f1:35:8c"
       - run:
           name: "Deploy docs if master branch"
           command: |
@@ -119,6 +134,10 @@ workflows:
     jobs:
       - build
 
+      - lint:
+          requires:
+              - build
+
       - test:
           requires:
               - build
@@ -134,4 +153,5 @@ workflows:
                 - ci-deployment-automation
           requires:
             - test
+            - lint
             - check-release-version
