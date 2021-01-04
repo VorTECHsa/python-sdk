@@ -28,13 +28,13 @@ setuptools.setup(
         "pandas>=0.25.2",
         "requests==2.22.0",
         "jsons==1.0.0",
-        "jupyter==1.0.0",
         "flatten-dict==0.2.0",
         "tabulate==0.8.5",
         "tqdm==4.38.0",
     ],
     extras_require={
         "tests": [
+            "jupyter==1.0.0",
             "mkdocs==1.0.4",
             "mypy==0.770",
             "pytest==5.2.4",
