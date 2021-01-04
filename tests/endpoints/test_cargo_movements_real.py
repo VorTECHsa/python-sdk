@@ -76,6 +76,8 @@ class TestCargoMovementsReal(TestCaseUsingRealAPI):
             "product.grade.id",
             "product.grade.label",
             "product.group_product.label",
+            "parent_ids.0.id",
+            "parent_ids.0.splinter_timestamp"
         ]
 
         df = (

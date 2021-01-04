@@ -19,7 +19,8 @@ from vortexasdk.retry_session import (
     retry_get,
     retry_post,
 )
-from vortexasdk.utils import filter_empty_values, is_sdk_version_outdated
+from vortexasdk.utils import filter_empty_values
+from vortexasdk.version_utils import is_sdk_version_outdated
 from vortexasdk.version import __version__
 from vortexasdk import __name__ as sdk_pkg_name
 
@@ -223,10 +224,9 @@ def _warn_user_if_sdk_version_outdated() -> None:
                 f"You are using {sdk_pkg_name} version {__version__}, however version {latest_sdk_version} is available.\n"
                 f"You should consider upgrading via the 'pip install {sdk_pkg_name} --upgrade' command."
             )
-    except Exception as e:
+    except Exception:
         logger.warning(
             f"Outdated SDK version check could not be completed. \n"
-            f"Got an exception: {e}"
         )
 
 
