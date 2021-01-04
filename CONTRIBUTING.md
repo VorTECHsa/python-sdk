@@ -53,7 +53,13 @@ If you're just looking to run tests in a single module (`test_vessels` in this c
 $ pytest -v tests/endpoints/test_vessels.py 
 ```
 
-serve documentation
+Run all the 'try-me-out' notebooks, and then clear the cell outputs so the data isn't publicly visible.
+```bash
+jupyter nbconvert --to notebook --inplace --execute  docs/examples/try_me_out/*.ipynb 
+jupyter nbconvert --to notebook --inplace --clear-output docs/examples/try_me_out/*.ipynb 
+```
+
+Serve documentation locally
 ```bash
 $ ./docs/scripts/serve_docs.sh
 ```
@@ -68,6 +74,21 @@ $ pre-commit install
 :tada: Now you're ready to create a new branch, add a feature or fix a bug, then send us a pull request! :tada:
 
 ## Contributing Code
+
+### Releasing a new package
+
+New versions of the SDK are automatically released to pypi when your branch PR is merged into the master branch.
+
+In the branch you're working on, you'll need to change the `version.py` file to the new version that you're looking to deploy.
+The python-sdk follow strict semver, so you'll need to increment the MAJOR nunber if and only if you're introducing
+a breaking change, the MINOR number if you're addind a new feature, or PATCH number if you've introduced a bug fix.
+
+Once your branch is merged to master, CircleCI will do a few things:
+- Deploy the new package to pypi https://pypi.org/project/vortexasdk/, using the version in `version.py`.
+- Update the github pages documentation at https://vortechsa.github.io/python-sdk/
+- Create a git tag, usign the version in `version.py`
+
+### Pull requests:
 
 A good pull request:
 -  Is clear.
