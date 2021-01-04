@@ -9,8 +9,8 @@ from vortexasdk.endpoints import (
     Products,
     VesselMovements,
     Vessels,
-    EIAForecasts,
     TonMilesBreakdown,
+    EIAForecasts,
 )
 
 # noinspection PyUnresolvedReferences

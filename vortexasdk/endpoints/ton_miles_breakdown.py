@@ -8,14 +8,13 @@ from vortexasdk.endpoints.endpoints import TON_MILES_BREAKDOWN
 from vortexasdk.operations import Search
 from vortexasdk.utils import convert_to_list
 from vortexasdk.api.shared_types import to_ISODate
+from vortexasdk.endpoints.timeseries_result import TimeSeriesResult, DEFAULT_COLUMNS
 
 
 class TonMilesBreakdown(Search):
     """
-    Ton Miles Breakdown Endpoint. Used to retreive the ton miles data as a time series. The aggregation is done
-    on the Vessel Movements data hence similar parameters are accepted.
-
-    A detailed explanation of the endpoint can be found [here](https://docs.vortexa.com/reference/ton-miles-breakdown).
+    The Ton Miles Breakdown Endpoint is used to retreive the ton miles data as a time series. The aggregation is done
+    on the Vessel Movements data hence similar search parameters are accepted.
     """
 
     def __init__(self):
@@ -23,7 +22,7 @@ class TonMilesBreakdown(Search):
 
     def search(
         self,
-        breakdown_frequency: str = "day",
+        breakdown_frequency: str = None,
         filter_time_min: datetime = datetime(2019, 10, 1, 0),
         filter_time_max: datetime = datetime(2019, 10, 1, 1),
         unit: str = "b",
@@ -38,6 +37,8 @@ class TonMilesBreakdown(Search):
         filter_vessel_status: str = None,
         filter_vessel_age_min: int = None,
         filter_vessel_age_max: int = None,
+        filter_vessel_dwt_min: int = None,
+        filter_vessel_dwt_max: int = None,
         filter_vessel_scrubbers: str = "disabled",
         filter_vessel_flags: Union[ID, List[ID]] = None,
         filter_vessel_ice_class: Union[ID, List[ID]] = None,
@@ -54,10 +55,10 @@ class TonMilesBreakdown(Search):
         exclude_vessel_propulsion: Union[ID, List[ID]] = None,
     ) -> TimeSeriesResult:
         """
-        Find VesselMovements matching the given search parameters.
+        Find TonMilesBreakdown matching the given search parameters.
 
         # Arguments
-            breakdown_frequency: Must be one of: 'day', 'week', 'doe_week', 'month', 'quarter' or 'year'.
+            breakdown_frequency: Must be one of: `'day'`, `'week'`, `'doe_week'`, `'month'`, `'quarter'` or `'year'`.
 
             filter_activity: Movement activity on which to base the time filter. Must be one of ['loading_state',
              'loading_start', 'loading_end', 'identified_for_loading_state', 'unloading_state', 'unloading_start',
@@ -68,7 +69,7 @@ class TonMilesBreakdown(Search):
 
             filter_time_max: The UTC end date of the time filter.
 
-            unit: Unit of measurement. Enter 'b' for barrels or 't' for tonnes.
+            unit: Unit of measurement. Enter `'b'` for barrels or `'t'` for tonnes.
 
             filter_charterers: A charterer ID, or list of charterer IDs to filter on.
 
@@ -84,13 +85,17 @@ class TonMilesBreakdown(Search):
 
             filter_vessel_classes: A vessel class, or list of vessel classes to filter on.
 
-            filter_vessel_status: The vessel status on which to base the filter. Enter 'vessel_status_ballast' for ballast vessels, 'vessel_status_laden_known' for laden vessels with known cargo (i.e. a type of cargo that Vortexa currently tracks) or 'vessel_status_laden_unknown' for laden vessels with unknown cargo (i.e. a type of cargo that Vortexa currently does not track).
+            filter_vessel_status: The vessel status on which to base the filter. Enter `'vessel_status_ballast'` for ballast vessels, `'vessel_status_laden_known'` for laden vessels with known cargo (i.e. a type of cargo that Vortexa currently tracks) or `'vessel_status_laden_unknown'` for laden vessels with unknown cargo (i.e. a type of cargo that Vortexa currently does not track).
 
             filter_vessel_age_min: A number between 1 and 100 (representing years).
 
             filter_vessel_age_max: A number between 1 and 100 (representing years).
 
-            filter_vessel_scrubbers: Either inactive 'disabled', or included 'inc' or excluded 'exc'.
+            filter_vessel_dwt_min: A number representing minimum deadweight tonnage of a vessel.
+
+            filter_vessel_dwt_max: A number representing maximum deadweight tonnage of a vessel.
+
+            filter_vessel_scrubbers: Either inactive `'disabled'`, or included `'inc'` or excluded `'exc'`.
 
             filter_vessel_flags: A geography ID, or list of geography IDs to filter on.
 
@@ -126,10 +131,11 @@ class TonMilesBreakdown(Search):
 
         ```python
         >>> from vortexasdk import TonMilesBreakdown, Vessels
+        >>> from datetime import datetime
         >>> new_wisdom = [g.id for g in Vessels().search("NEW WISDOM").to_list()]
-        >>> search_result = CargoTimeSeries().search(
+        >>> search_result = TonMilesBreakdown().search(
         ...    unit='b',
-        ...    timeseries_frequency='day',
+        ...    breakdown_frequency='month',
         ...    filter_vessels=new_wisdom,
         ...    filter_time_min=datetime(2018, 1, 1),
         ...    filter_time_max=datetime(2018, 12, 31))
@@ -137,9 +143,23 @@ class TonMilesBreakdown(Search):
 
         ```
 
-        PROVIDE AN EXAMPLE RESPONSE HERE
+        returns
 
-        [Ton Miles Breakdown Further Documentation](https://docs.vortexa.com/reference/ton-miles-breakdown)
+        |      |key                      |value       |count |
+        |-----:|:------------------------|:-----------|-----:|
+        |0     |2018-01-01 00:00:00+00:00|4.558499e+07|1     |
+        |1     |2018-02-01 00:00:00+00:00|4.393985e+07|1     |
+        |2     |2018-03-01 00:00:00+00:00|7.781776e+06|1     |
+        |3     |2018-04-01 00:00:00+00:00|8.041169e+07|1     |
+        |4     |2018-05-01 00:00:00+00:00|3.346161e+07|1     |
+        |5     |2018-06-01 00:00:00+00:00|5.731648e+07|1     |
+        |6     |2018-07-01 00:00:00+00:00|4.976054e+07|1     |
+        |7     |2018-08-01 00:00:00+00:00|3.022656e+06|1     |
+        |8     |2018-09-01 00:00:00+00:00|2.504909e+07|1     |
+        |9     |2018-10-01 00:00:00+00:00|6.269583e+07|1     |
+        |10    |2018-11-01 00:00:00+00:00|1.823642e+07|1     |
+        |11    |2018-12-01 00:00:00+00:00|3.137448e+07|1     |
+
         """
 
         exclude_params = {
@@ -175,6 +195,8 @@ class TonMilesBreakdown(Search):
             "filter_vessel_status": filter_vessel_status,
             "filter_vessel_age_min": filter_vessel_age_min,
             "filter_vessel_age_max": filter_vessel_age_max,
+            "filter_vessel_dwt_min": filter_vessel_dwt_min,
+            "filter_vessel_dwt_max": filter_vessel_dwt_max,
             "filter_vessel_scrubbers": filter_vessel_scrubbers,
             "filter_vessel_flags": convert_to_list(filter_vessel_flags),
             "filter_vessel_ice_class": convert_to_list(
