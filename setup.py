@@ -40,9 +40,12 @@ setuptools.setup(
             "pre-commit==1.20.0",
             "flake8==3.7.9",
             "pydoc-markdown==2.0.5",
-            "tabulate==0.8.5",
             "six==1.12.0",
             "xlrd==1.2.0"
+        ],
+        "deploy": [
+            "wheel==0.36.2",
+            "twine==3.3.0"
         ]
     },
 )

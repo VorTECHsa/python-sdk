@@ -1,6 +1,9 @@
+# This file is used by pydocmd to generate markdown files from python modules
 site_name: VortexaSDK
 docs_dir: docs/
 repo_url: https://github.com/vortechsa/python-sdk
+
+# Generate the individual markdown files from specified python modules
 generate:
   - endpoints/cargo_movements.md:
       - vortexasdk.endpoints.cargo_movements++
@@ -38,6 +41,9 @@ generate:
       - vortexasdk.api.cargo_movement++
   - entities/vessel_movement.md:
       - vortexasdk.api.vessel_movement++
+  - endpoints/eia_forecasts.md:
+      - vortexasdk.endpoints.eia_forecasts++
+      - vortexasdk.endpoints.eia_forecasts_result++
   - endpoints/ton_miles_breakdown.md:
       - vortexasdk.endpoints.ton_miles_breakdown++
 
@@ -53,6 +59,7 @@ pages:
       Geographies: endpoints/geographies.md
       Products: endpoints/products.md
       Vessels: endpoints/vessels.md
+      EIA Forecasts: endpoints/eia_forecasts.md
   - Entities:
       Cargo Movement: entities/cargo_movement.md
       Corporation: entities/corporation.md
