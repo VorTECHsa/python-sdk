@@ -1,10 +1,8 @@
 from unittest import TestCase
-from distutils.version import LooseVersion
 
 from vortexasdk.utils import (
     convert_to_list,
     convert_values_to_list,
-    get_latest_sdk_version,
     filter_exact_match,
 )
 
@@ -22,13 +20,6 @@ class TestUtils(TestCase):
         expected = {1: [], 2: ["b"], 3: ["c"]}
 
         assert actual == expected
-
-    def test_get_latest_sdk_version(self):
-        sdk_old_version = "0.18.0"
-
-        lv = get_latest_sdk_version()
-
-        assert lv > LooseVersion(sdk_old_version)
 
     def test_filter_doesn_not_match_part_name(self):
         search_result = [{"name": "China"}, {"name": "South China"}]
