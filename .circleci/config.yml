@@ -38,7 +38,7 @@ jobs:
             . .venv/bin/activate
             mypy docs/examples
 
-  test:
+  test-documentation:
     working_directory: ~/project
     docker:
       - image: circleci/python:3.7
@@ -54,13 +54,6 @@ jobs:
             . .venv/bin/activate
             # This should be done in tox, but i can't work out how to run doctests in tox hence we're also running it here for now.
             pytest -v --doctest-modules
-
-      - run:
-          name: "Run all tests"
-          command: |
-            . .venv/bin/activate
-            pip install tox
-            tox --verbose
 
       - run:
           name: "Run all examples"
@@ -92,6 +85,23 @@ jobs:
             mkdir -p ./_build/pydocmd/examples
             python docs/autogen.py
             pydocmd build
+
+  test:
+    working_directory: ~/project
+    docker:
+      - image: circleci/python:3.7
+    steps:
+      - checkout
+      - restore_cache: &restore_cache
+          keys:
+            - v1-{{ .Branch }}-
+
+      - run:
+          name: "Run all tests"
+          command: |
+            . .venv/bin/activate
+            pip install tox
+            tox --verbose
 
   check-release-version:
     working_directory: ~/project
@@ -161,6 +171,10 @@ workflows:
           requires:
               - build
 
+      - test-documentation:
+          requires:
+              - build
+
       - check-release-version:
           requires:
             - build
@@ -172,5 +186,6 @@ workflows:
                 - master
           requires:
             - test
+            - test-documentation
             - lint
             - check-release-version
