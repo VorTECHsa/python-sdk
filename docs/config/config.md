@@ -8,4 +8,4 @@ The VortexaSDK can be configured using environment variables.
 | LOG_FILE              | none                            | Output log file          |
 | LOG_LEVEL             | INFO                            | Configure the level of must be one of `["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]` |
 | HTTP_PROXY            | none                            | Send API requests via a http proxy |
-| HTTPS_PROXY           | none                            | Send API requests via a https proxy |
+| HTTPS_P   ROXY           | none                            | Send API requests via a https proxy |
