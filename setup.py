@@ -34,6 +34,7 @@ setuptools.setup(
     ],
     extras_require={
         "tests": [
+            "jupyter==1.0.0",
             "mkdocs==1.0.4",
             "mypy==0.770",
             "pytest==5.2.4",
