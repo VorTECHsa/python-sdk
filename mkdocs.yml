@@ -14,6 +14,7 @@ pages:
     EIA Forecasts: endpoints/eia_forecasts.md
     Geographies: endpoints/geographies.md
     Products: endpoints/products.md
+    Ton Miles Breakdown: endpoints/ton_miles_breakdown.md
     Vessel Movements: endpoints/vessel_movements.md
     Vessels: endpoints/vessels.md
 - Entities:
