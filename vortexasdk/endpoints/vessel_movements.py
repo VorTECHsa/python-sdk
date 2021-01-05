@@ -66,10 +66,10 @@ class VesselMovements(Search):
         Find VesselMovements matching the given search parameters.
 
         # Arguments
-            filter_activity: Movement activity on which to base the time filter. Must be one of ['loading_state',
-             'loading_start', 'loading_end', 'identified_for_loading_state', 'unloading_state', 'unloading_start',
-              'unloading_end', 'unloaded_state', 'storing_state', 'storing_start', 'storing_end', 'transiting_state',
-               'any_activity'].
+            filter_activity: Movement activity on which to base the time filter. Must be one of: `'loading_state'`,
+             `'loading_start'`, `'loading_end'`, `'identified_for_loading_state'`, `'unloading_state'`, `'unloading_start'`,
+              `'unloading_end'`, `'unloaded_state'`, `'storing_state'`, `'storing_start'`, `'storing_end'`, `'transiting_state'`,
+               `'any_activity'`.
 
             filter_time_min: The UTC start date of the time filter.
 

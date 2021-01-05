@@ -3,18 +3,22 @@ from typing import List, Union
 from datetime import datetime
 
 from vortexasdk.api import ID
-from vortexasdk.endpoints.timeseries_result import TimeSeriesResult
 from vortexasdk.endpoints.endpoints import TON_MILES_BREAKDOWN
 from vortexasdk.operations import Search
 from vortexasdk.utils import convert_to_list
 from vortexasdk.api.shared_types import to_ISODate
-from vortexasdk.endpoints.timeseries_result import TimeSeriesResult, DEFAULT_COLUMNS
+from vortexasdk.endpoints.timeseries_result import TimeSeriesResult
 
 
 class TonMilesBreakdown(Search):
     """
-    The Ton Miles Breakdown Endpoint is used to retreive the ton miles data as a time series. The aggregation is done
-    on the Vessel Movements data hence similar search parameters are accepted.
+    The Ton Miles Breakdown Endpoint is used to retrieve the ton miles data as a time series. The aggregation is done on the Vessel Movements data hence very similar search parameters are accepted (minus: `unit`, `size`, `offset`).
+    Additionally a parameter named `breakdown_frequency` can be used to specify the time series frequency.
+
+    A VesselMovement represents a single vessel moving between two locations.
+
+    The vessel may carry one cargo, many cargoes (co-loads), or zero cargos (ballast).
+    The start and end locations for a VesselMovement may be on land (loadings and discharges), they may be STS Zones (STS events), or they may be Floating Storage.
     """
 
     def __init__(self):
@@ -60,10 +64,10 @@ class TonMilesBreakdown(Search):
         # Arguments
             breakdown_frequency: Must be one of: `'day'`, `'week'`, `'doe_week'`, `'month'`, `'quarter'` or `'year'`.
 
-            filter_activity: Movement activity on which to base the time filter. Must be one of ['loading_state',
-             'loading_start', 'loading_end', 'identified_for_loading_state', 'unloading_state', 'unloading_start',
-              'unloading_end', 'unloaded_state', 'storing_state', 'storing_start', 'storing_end', 'transiting_state',
-               'any_activity'].
+            filter_activity: Movement activity on which to base the time filter. Must be one of: `'loading_state'`,
+             `'loading_start'`, `'loading_end'`, `'identified_for_loading_state'`, `'unloading_state'`, `'unloading_start'`,
+              `'unloading_end'`, `'unloaded_state'`, `'storing_state'`, `'storing_start'`, `'storing_end'`, `'transiting_state'`,
+               `'any_activity'`.
 
             filter_time_min: The UTC start date of the time filter.
 
