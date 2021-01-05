@@ -53,7 +53,13 @@ If you're just looking to run tests in a single module (`test_vessels` in this c
 $ pytest -v tests/endpoints/test_vessels.py 
 ```
 
-serve documentation locally
+Run all the 'try-me-out' notebooks, and then clear the cell outputs so the data isn't publicly visible.
+```bash
+jupyter nbconvert --to notebook --inplace --execute  docs/examples/try_me_out/*.ipynb 
+jupyter nbconvert --to notebook --inplace --clear-output docs/examples/try_me_out/*.ipynb 
+```
+
+Serve documentation locally
 ```bash
 $ ./docs/scripts/serve_docs.sh
 ```
