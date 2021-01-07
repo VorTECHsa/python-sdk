@@ -35,7 +35,7 @@ setuptools.setup(
     extras_require={
         "tests": [
             "jupyter==1.0.0",
-            "mkdocs==1.0.4",
+            "mkdocs==1.1.2",
             "mypy==0.770",
             "pytest==5.2.4",
             "pre-commit==1.20.0",
