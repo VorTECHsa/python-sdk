@@ -41,7 +41,7 @@ setuptools.setup(
             "pre-commit==1.20.0",
             "flake8==3.7.9",
             "pydoc-markdown==2.0.5",
-            "six==1.12.0",
+            "six==1.15.0",
             "xlrd==1.2.0"
         ],
         "deploy": [
