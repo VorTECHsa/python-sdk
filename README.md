@@ -1,15 +1,18 @@
 # VortexaSDK
+
 [![CircleCI](https://circleci.com/gh/VorTECHsa/python-sdk.svg?style=svg)](https://circleci.com/gh/VorTECHsa/python-sdk)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![All Contributors](https://img.shields.io/badge/all_contributors-12-orange.svg?style=flat-square)](#contributors)
 
-Welcome to Vortexa's Python Software Development Kit (SDK)!
-We built the SDK to provide fast, interactive, programmatic exploration of our data. The tool lets Data Scientists, Analysts and Developers efficiently explore the
-world’s waterborne oil movements, and to build custom models & reports with minimum setup cost.
+Welcome to Vortexa's Python Software Development Kit (SDK)! We built the SDK to
+provide fast, interactive, programmatic exploration of our data. The tool lets
+Data Scientists, Analysts and Developers efficiently explore the world’s
+waterborne oil movements, and to build custom models & reports with minimum
+setup cost.
 
-The SDK sits as a thin python wrapper around [Vortexa's API](https://docs.vortexa.com),
-giving you immediate access to pandas DataFrames.
-
+The SDK sits as a thin python wrapper around
+[Vortexa's API](https://docs.vortexa.com), giving you immediate access to pandas
+DataFrames.
 
 ##### Example
 
@@ -24,14 +27,14 @@ In an interactive Python console, run:
             filter_time_max=datetime(2017, 8, 3))\
         .to_df()
 ```
+
 returns:
 
-|    |   quantity | vessels.0.name   | product.group.label   | product.grade.label   | events.cargo_port_load_event.0.end_timestamp   | events.cargo_port_unload_event.0.start_timestamp   |
-|---:|-----------:|:-----------------|:----------------------|:----------------------|:-----------------------------------------------|:---------------------------------------------------|
-|  0 |       1998 | ALSIA SWAN       | Clean products        | Lube Oils             | 2017-08-01T06:10:45+0000                       | 2017-08-27T14:38:15+0000                           |
-|  1 |      16559 | IVER             | Dirty products        | nan                   | 2017-08-02T17:20:51+0000                       | 2017-09-07T07:52:20+0000                           |
-|  2 |     522288 | BLUE SUN         | Crude                 | Gharib                | 2017-08-02T04:22:09+0000                       | 2017-08-13T10:32:09+0000                           |
-
+|     | quantity | vessels.0.name | product.group.label | product.grade.label | events.cargo_port_load_event.0.end_timestamp | events.cargo_port_unload_event.0.start_timestamp |
+| --: | -------: | :------------- | :------------------ | :------------------ | :------------------------------------------- | :----------------------------------------------- |
+|   0 |     1998 | ALSIA SWAN     | Clean products      | Lube Oils           | 2017-08-01T06:10:45+0000                     | 2017-08-27T14:38:15+0000                         |
+|   1 |    16559 | IVER           | Dirty products      | nan                 | 2017-08-02T17:20:51+0000                     | 2017-09-07T07:52:20+0000                         |
+|   2 |   522288 | BLUE SUN       | Crude               | Gharib              | 2017-08-02T04:22:09+0000                     | 2017-08-13T10:32:09+0000                         |
 
 ## Quick Start
 
@@ -45,15 +48,16 @@ Try me out in your browser:
 $ pip install vortexasdk
 ```
 
-The SDK requires Python version 3.7 or above, see [Setup FAQ](https://vortechsa.github.io/python-sdk/faq_setup/) for more details.
+The SDK requires Python version 3.7 or above, see
+[Setup FAQ](https://vortechsa.github.io/python-sdk/faq_setup/) for more details.
 
 ##### Authentication
 
-Set your `VORTEXA_API_KEY` environment variable, that's all.
-Alternatively, the SDK prompts to you enter your API Key when running a script interactively.
- 
- To get an API key and experiment with Vortexa's data, you can [request a demo here](https://www.vortexa.com/request-demo-sdk).
+Set your `VORTEXA_API_KEY` environment variable, that's all. Alternatively, the
+SDK prompts to you enter your API Key when running a script interactively.
 
+To get an API key and experiment with Vortexa's data, you can
+[request a demo here](https://www.vortexa.com/request-demo-sdk).
 
 ##### Check Setup
 
@@ -67,26 +71,31 @@ A successful setup looks like this:
 
 ![check_setup.png](https://raw.githubusercontent.com/VorTECHsa/python-sdk/master/docs/img/check_setup.png)
 
-
 ## Next Steps
 
-Learn how to call [Endpoints](https://vortechsa.github.io/python-sdk/endpoints/about-endpoints/)
+Learn how to call
+[Endpoints](https://vortechsa.github.io/python-sdk/endpoints/about-endpoints/)
 
 ## Glossary
 
-The Glossary can be found at [Vortexa API Documentation](https://docs.vortexa.com). The Glossary outlines key terms, functions and assumptions aimed at
-helping to extract powerful findings from our data.
-
+The Glossary can be found at
+[Vortexa API Documentation](https://docs.vortexa.com). The Glossary outlines key
+terms, functions and assumptions aimed at helping to extract powerful findings
+from our data.
 
 ## Documentation
 
-Read the documentation at [VortexaSDK Docs](https://vortechsa.github.io/python-sdk/)
+Read the documentation at
+[VortexaSDK Docs](https://vortechsa.github.io/python-sdk/)
 
 ## Contributing
 
-We welcome contributions! Please read our [Contributing Guide](https://github.com/vortechsa/python-sdk/blob/master/CONTRIBUTING.md) for ways to offer feedback and contributions.
+We welcome contributions! Please read our
+[Contributing Guide](https://github.com/vortechsa/python-sdk/blob/master/CONTRIBUTING.md)
+for ways to offer feedback and contributions.
 
-Thanks goes to these wonderful contributors ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+Thanks goes to these wonderful contributors
+([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
@@ -110,6 +119,9 @@ Thanks goes to these wonderful contributors ([emoji key](https://allcontributors
     <td align="center"><a href="https://seanbarry.dev"><img src="https://avatars0.githubusercontent.com/u/7374449?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sean Barry</b></sub></a><br /><a href="https://github.com/VorTECHsa/python-sdk/commits?author=SeanBarry" title="Code">💻</a> <a href="https://github.com/VorTECHsa/python-sdk/commits?author=SeanBarry" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/dufia"><img src="https://avatars1.githubusercontent.com/u/5569649?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Konrad Moskal</b></sub></a><br /><a href="https://github.com/VorTECHsa/python-sdk/commits?author=dufia" title="Code">💻</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="http://pawelpietruszka.net"><img src="https://avatars0.githubusercontent.com/u/17066202?v=4" width="100px;" alt=""/><br /><sub><b>Pawel Pietruszka</b></sub></a><br /><a href="https://github.com/VorTECHsa/python-sdk/commits?author=Selerski" title="Code">💻</a></td>
+  </tr>
 </table>
 
 <!-- markdownlint-restore -->
@@ -117,4 +129,6 @@ Thanks goes to these wonderful contributors ([emoji key](https://allcontributors
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+This project follows the
+[all-contributors](https://github.com/all-contributors/all-contributors)
+specification. Contributions of any kind welcome!
