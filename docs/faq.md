@@ -1,8 +1,11 @@
-#### Why do my requests hang or run in an infinite loop?
+#### Why do my requests hang or run in an infinite loop or I get a RuntimeError ("An attempt has been made to start a new process...")?
 On Windows, it may be that your script doesn't check `if __name__ == "__main__":`
 before calling the SDK. Your script should contain this check, just like in [this example](https://vortechsa.github.io/python-sdk/examples/0_sample_load_cargo_movements/)
-For more details on why `if __name__ == "__main__":` is required, check out this interesting [stack overflow post](https://stackoverflow.com/questions/20360686/compulsory-usage-of-if-name-main-in-windows-while-using-multiprocessi) on Windows multiprocessing.
+For more details on why `if __name__ == "__main__":` is required, check out those interesting stack overflow posts [here](https://stackoverflow.com/questions/20360686/compulsory-usage-of-if-name-main-in-windows-while-using-multiprocessi) and [here](https://stackoverflow.com/questions/18204782/runtimeerror-on-windows-trying-python-multiprocessing) on Windows multiprocessing.
 
+#### How do I use the SDK with a corporate proxy?
+To send SDK requests via a proxy, you can set the `HTTP_PROXY` or `HTTPS_PROXY` environment variables.
+More detail is given in the requests library docs [here](https://requests.readthedocs.io/en/master/user/advanced/#proxies)
 
 #### What's the difference between a cargo movement and a vessel movement?
 A cargo movement is defined as the complete journey of a quantity of oil from its origin terminal to its destination terminal, including all ship to ship (STS) transfers in-between.
