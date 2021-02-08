@@ -1,7 +1,0 @@
-numpy==1.19.5
-pandas==1.2.0
-matplotlib==3.3.3
-statsmodels==0.12.1
-vortexasdk==0.28.0
-pywin32==225
-jupyter

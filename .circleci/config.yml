@@ -73,6 +73,12 @@ jobs:
             jupyter nbconvert --to notebook --execute docs/examples/try_me_out/*.ipynb
 
       - run:
+          name: "Run all academy notebooks"
+          command: |
+            . .venv/bin/activate
+            jupyter nbconvert --to notebook --execute docs/examples/academy/*.ipynb
+
+      - run:
           name: "Confirm that the check_setup script works"
           command: |
             . .venv/bin/activate
