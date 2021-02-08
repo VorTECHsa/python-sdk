@@ -56,6 +56,31 @@ jobs:
             pytest -v --doctest-modules
 
       - run:
+          name: "Confirm that the check_setup script works"
+          command: |
+            . .venv/bin/activate
+            python -m vortexasdk.check_setup
+
+      - run:
+          name: "Build docs"
+          command: |
+            . .venv/bin/activate
+            mkdir -p ./_build/pydocmd/examples
+            python docs/autogen.py
+            pydocmd build
+
+
+  run-examples:
+    working_directory: ~/project
+    docker:
+      - image: circleci/python:3.7
+    steps:
+      - checkout
+      - restore_cache: &restore_cache
+          keys:
+            - v1-{{ .Branch }}-
+
+      - run:
           name: "Run all examples"
           command: |
             set -xe
@@ -77,20 +102,6 @@ jobs:
           command: |
             . .venv/bin/activate
             jupyter nbconvert --to notebook --execute docs/examples/academy/*.ipynb
-
-      - run:
-          name: "Confirm that the check_setup script works"
-          command: |
-            . .venv/bin/activate
-            python -m vortexasdk.check_setup
-
-      - run:
-          name: "Build docs"
-          command: |
-            . .venv/bin/activate
-            mkdir -p ./_build/pydocmd/examples
-            python docs/autogen.py
-            pydocmd build
 
   test:
     working_directory: ~/project
@@ -181,6 +192,10 @@ workflows:
           requires:
               - build
 
+      - run-examples:
+          requires:
+              - build
+
       - check-release-version:
           requires:
             - build
@@ -193,5 +208,6 @@ workflows:
           requires:
             - test
             - test-documentation
+            - run-examples
             - lint
             - check-release-version
