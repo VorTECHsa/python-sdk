@@ -34,6 +34,7 @@ setuptools.setup(
     extras_require={
         "tests": [
             "jupyter==1.0.0",
+            "matplotlib==3.3.4",
             "mkdocs==1.0.4",
             "mypy==0.770",
             "pytest==5.2.4",
@@ -41,6 +42,7 @@ setuptools.setup(
             "flake8==3.7.9",
             "pydoc-markdown==2.0.5",
             "six==1.12.0",
+            "statsmodels==0.12.2",
             "tabulate==0.8.7",
             "xlrd==1.2.0"
         ],
