@@ -92,15 +92,27 @@ jobs:
             rm *-example.py
 
       - run:
-          name: "Run all try-me-out notebooks"
+          name: "Create mybinder virtual environment"
           command: |
-            . .venv/bin/activate
+            # mybinder currently does not install the extras_require in setup.py
+            # to replicate the mybinder environment, we install only the packages that mybinder installs
+            # For more details, see https://mybinder.readthedocs.io/en/latest/using/config_files.html#setup-py-install-python-packages
+            python3.7 -m venv .mybinder_venv;
+            . .mybinder_venv/bin/activate
+            pip install -U pip
+            pip install -e .
+            pip install jupyter==1.0.0
+
+      - run:
+          name: "Run all mybinder try-me-out notebooks"
+          command: |
+            . .mybinder_venv/bin/activate
             jupyter nbconvert --to notebook --execute docs/examples/try_me_out/*.ipynb
 
       - run:
-          name: "Run all academy notebooks"
+          name: "Run all mybinder academy notebooks"
           command: |
-            . .venv/bin/activate
+            . .mybinder_venv/bin/activate
             jupyter nbconvert --to notebook --execute docs/examples/academy/*.ipynb
 
   test:
