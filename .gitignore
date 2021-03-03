@@ -110,6 +110,7 @@ celerybeat-schedule
 *.sage.py
 
 # Environments
+.mybinder_venv/
 .env
 .venv
 env/
