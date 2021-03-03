@@ -92,7 +92,7 @@ class TestCargoMovementsReal(TestCaseUsingRealAPI):
                 exclude_products=arab_medium,
                 filter_time_min=datetime(2019, 10, 1),
                 filter_time_max=datetime(2019, 11, 1),
-                cm_unit="b",
+                cm_unit="t",
             )
             .to_df(columns=cols)
         )

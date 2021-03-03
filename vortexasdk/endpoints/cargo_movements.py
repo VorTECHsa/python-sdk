@@ -34,7 +34,7 @@ class CargoMovements(Search):
         filter_activity: str,
         filter_time_min: datetime = datetime(2019, 10, 1, 0),
         filter_time_max: datetime = datetime(2019, 10, 1, 1),
-        cm_unit: str = "b",
+        cm_unit: str = "t",
         filter_charterers: Union[ID, List[ID]] = None,
         filter_destinations: Union[ID, List[ID]] = None,
         filter_origins: Union[ID, List[ID]] = None,

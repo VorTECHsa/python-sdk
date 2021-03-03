@@ -90,7 +90,7 @@ class TestCargoTimeSeries(TestCaseUsingRealAPI):
             CargoTimeSeries()
             .search(
                 filter_activity="loading_state",
-                timeseries_unit="bpd",
+                timeseries_unit="tpd",
                 timeseries_frequency="month",
                 filter_time_min=start,
                 filter_time_max=end,
@@ -104,7 +104,7 @@ class TestCargoTimeSeries(TestCaseUsingRealAPI):
             CargoTimeSeries()
             .search(
                 filter_activity="loading_state",
-                timeseries_unit="bpd",
+                timeseries_unit="tpd",
                 timeseries_frequency="month",
                 filter_time_min=start,
                 filter_time_max=end,

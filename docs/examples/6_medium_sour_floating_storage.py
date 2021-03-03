@@ -33,7 +33,7 @@ if __name__ == "__main__":
         # We're looking at daily storage levels
         timeseries_frequency="day",
         # We want 'b' for barrels here
-        timeseries_unit="b",
+        timeseries_unit="t",
         # We're only interested in storage of Medium-Sour Crude
         filter_products=medium_sour,
         # We're only included in cargo's that were in floating storage

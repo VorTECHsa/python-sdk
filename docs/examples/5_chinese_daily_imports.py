@@ -32,7 +32,7 @@ if __name__ == "__main__":
         # We're looking at daily imports
         timeseries_frequency="day",
         # We want 'b' for barrels here
-        timeseries_unit="b",
+        timeseries_unit="t",
         # We're only interested in Crude/Condensates
         filter_products=crude_condensates,
         # We want all cargo movements that unloaded in January 2019 to be included

@@ -25,7 +25,7 @@ class CargoTimeSeries(Search):
         filter_activity: str,
         timeseries_activity: str = None,
         timeseries_frequency: str = "day",
-        timeseries_unit: str = "b",
+        timeseries_unit: str = "t",
         filter_time_min: datetime = datetime(2019, 10, 1, 0),
         filter_time_max: datetime = datetime(2019, 10, 1, 1),
         filter_charterers: Union[str, List[str]] = None,
