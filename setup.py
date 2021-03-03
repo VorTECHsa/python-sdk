@@ -28,6 +28,7 @@ setuptools.setup(
         "flatten-dict==0.2.0",
         "jsons==1.0.0",
         "jupyter==1.0.0",
+        "matplotlib==3.3.4",
         "pandas>=0.25.2",
         "requests==2.22.0",
         "statsmodels==0.12.2",
@@ -36,7 +37,6 @@ setuptools.setup(
     extras_require={
         "tests": [
             "flake8==3.7.9",
-            "matplotlib==3.3.4",
             "mkdocs==1.0.4",
             "mypy==0.770",
             "pre-commit==1.20.0",
