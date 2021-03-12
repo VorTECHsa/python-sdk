@@ -1,8 +1,8 @@
-mkdocs.yml
 experimental/
 html/
 pydocmd/
 site/
+*.nbconvert.ipynb
 
 .idea/
 .DS_Store
@@ -110,6 +110,7 @@ celerybeat-schedule
 *.sage.py
 
 # Environments
+.mybinder_venv/
 .env
 .venv
 env/
