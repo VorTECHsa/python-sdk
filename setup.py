@@ -51,4 +51,5 @@ setuptools.setup(
             "twine==3.3.0"
         ]
     },
+    package_data={"vortexasdk": ["py.typed"]},
 )
