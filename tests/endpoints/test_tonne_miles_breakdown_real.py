@@ -2,16 +2,16 @@ from datetime import datetime
 
 from docs.utils import to_markdown
 from tests.testcases import TestCaseUsingRealAPI
-from vortexasdk import TonMilesBreakdown, Geographies, Corporations, Attributes
+from vortexasdk import TonneMilesBreakdown, Geographies, Corporations, Attributes
 from vortexasdk.endpoints import vessel_movements_result
 from docs.utils import to_markdown
 
 
-class TestTonMilesBreakdownReal(TestCaseUsingRealAPI):
+class TestTonneMilesBreakdownReal(TestCaseUsingRealAPI):
     def test_search_returns_one_day(self):
         date = datetime(2019, 11, 10)
 
-        result = TonMilesBreakdown().search(
+        result = TonneMilesBreakdown().search(
             filter_activity="loading_state",
             filter_time_min=date,
             filter_time_max=date,
@@ -24,7 +24,7 @@ class TestTonMilesBreakdownReal(TestCaseUsingRealAPI):
         start = datetime(2019, 11, 1)
         end = datetime(2019, 11, 10)
 
-        result = TonMilesBreakdown().search(
+        result = TonneMilesBreakdown().search(
             filter_activity="loading_state",
             filter_time_min=start,
             filter_time_max=end,
@@ -39,7 +39,7 @@ class TestTonMilesBreakdownReal(TestCaseUsingRealAPI):
         start = datetime(2019, 1, 1)
         end = datetime(2019, 11, 10)
 
-        result = TonMilesBreakdown().search(
+        result = TonneMilesBreakdown().search(
             filter_activity="loading_state",
             filter_time_min=start,
             filter_time_max=end,
@@ -54,7 +54,7 @@ class TestTonMilesBreakdownReal(TestCaseUsingRealAPI):
         end = datetime(2019, 11, 10)
 
         df = (
-            TonMilesBreakdown()
+            TonneMilesBreakdown()
             .search(
                 filter_activity="loading_state",
                 filter_time_min=start,
@@ -76,7 +76,7 @@ class TestTonMilesBreakdownReal(TestCaseUsingRealAPI):
         end = datetime(2019, 11, 10)
 
         time_series_list = (
-            TonMilesBreakdown()
+            TonneMilesBreakdown()
             .search(
                 filter_activity="loading_state",
                 filter_time_min=start,

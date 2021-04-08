@@ -7,16 +7,16 @@ from typing import List, Union
 from datetime import datetime
 
 from vortexasdk.api import ID
-from vortexasdk.endpoints.endpoints import TON_MILES_BREAKDOWN
+from vortexasdk.endpoints.endpoints import TONNE_MILES_BREAKDOWN
 from vortexasdk.operations import Search
 from vortexasdk.utils import convert_to_list
 from vortexasdk.api.shared_types import to_ISODate
 from vortexasdk.endpoints.timeseries_result import TimeSeriesResult
 
 
-class TonMilesBreakdown(Search):
+class TonneMilesBreakdown(Search):
     """
-    The Ton Miles Breakdown Endpoint is used to retrieve the ton miles data as a time series. The aggregation is done on the Vessel Movements data hence very similar search parameters are accepted (minus: `unit`, `size`, `offset`).
+    The Tonne-miles Breakdown Endpoint is used to retrieve the tonne-miles data as a time series. The aggregation is done on the Vessel Movements data hence very similar search parameters are accepted (minus: `unit`, `size`, `offset`).
     Additionally a parameter named `breakdown_frequency` can be used to specify the time series frequency.
 
     A VesselMovement represents a single vessel moving between two locations.
@@ -26,7 +26,7 @@ class TonMilesBreakdown(Search):
     """
 
     def __init__(self):
-        Search.__init__(self, TON_MILES_BREAKDOWN)
+        Search.__init__(self, TONNE_MILES_BREAKDOWN)
 
     def search(
         self,
@@ -63,7 +63,7 @@ class TonMilesBreakdown(Search):
         exclude_vessel_propulsion: Union[ID, List[ID]] = None,
     ) -> TimeSeriesResult:
         """
-        Find TonMilesBreakdown matching the given search parameters.
+        Find TonneMilesBreakdown matching the given search parameters.
 
         # Arguments
             breakdown_frequency: Must be one of: `'day'`, `'week'`, `'doe_week'`, `'month'`, `'quarter'` or `'year'`.
@@ -138,10 +138,10 @@ class TonMilesBreakdown(Search):
         # Example
 
         ```python
-        >>> from vortexasdk import TonMilesBreakdown, Vessels
+        >>> from vortexasdk import TonneMilesBreakdown, Vessels
         >>> from datetime import datetime
         >>> new_wisdom = [g.id for g in Vessels().search("NEW WISDOM").to_list()]
-        >>> search_result = TonMilesBreakdown().search(
+        >>> search_result = TonneMilesBreakdown().search(
         ...    unit='b',
         ...    breakdown_frequency='month',
         ...    filter_vessels=new_wisdom,

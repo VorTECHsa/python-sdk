@@ -41,8 +41,8 @@ generate:
       - vortexasdk.api.cargo_movement++
   - entities/vessel_movement.md:
       - vortexasdk.api.vessel_movement++
-  - endpoints/ton_miles_breakdown.md:
-      - vortexasdk.endpoints.ton_miles_breakdown++
+  - endpoints/tonne_miles_breakdown.md:
+      - vortexasdk.endpoints.tonne_miles_breakdown++
   - endpoints/eia_forecasts.md:
       - vortexasdk.endpoints.eia_forecasts++
       - vortexasdk.endpoints.eia_forecasts_result++
@@ -60,7 +60,7 @@ pages:
       Products: endpoints/products.md
       Vessels: endpoints/vessels.md
       EIA Forecasts: endpoints/eia_forecasts.md
-      Ton Miles Breakdown: endpoints/ton_miles_breakdown.md
+      Tonne-miles Breakdown: endpoints/tonne_miles_breakdown.md
   - Entities:
       Cargo Movement: entities/cargo_movement.md
       Corporation: entities/corporation.md
