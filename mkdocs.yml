@@ -16,7 +16,7 @@ pages:
     Products: endpoints/products.md
     Vessel Movements: endpoints/vessel_movements.md
     Vessels: endpoints/vessels.md
-    Tonne Miles Breakdown: endpoints/tonne_miles_breakdown.md
+    Tonne-miles Breakdown: endpoints/tonne_miles_breakdown.md
 - Entities:
     Cargo Movement: entities/cargo_movement.md
     Corporation: entities/corporation.md
