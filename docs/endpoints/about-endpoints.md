@@ -28,7 +28,7 @@ from vortexasdk import Vessels
 df = Vessels().search(vessel_classes='aframax').to_df()
 ```
 
-Find the vessel that has with id 1245
+Find the vessel that has with id 12345
 ```python
 vessel = Vessels().reference(id='12345')
 ```
