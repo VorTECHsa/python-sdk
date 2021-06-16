@@ -69,8 +69,6 @@ Install the git [pre-commit-hooks](https://pre-commit.com/#3-install-the-git-hoo
 ```bash
 $ pre-commit install
 ```
-
-
 :tada: Now you're ready to create a new branch, add a feature or fix a bug, then send us a pull request! :tada:
 
 ## Contributing Code
