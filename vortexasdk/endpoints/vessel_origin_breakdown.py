@@ -192,7 +192,7 @@ class VesselOriginBreakdown(Search):
         api_params = {
             "breakdown_unit": breakdown_unit,
             "breakdown_size": breakdown_size,
-            "breakdown_frequency": breakdown_geography,
+            "breakdown_geography": breakdown_geography,
             "filter_activity": filter_activity,
             "filter_time_min": to_ISODate(filter_time_min),
             "filter_time_max": to_ISODate(filter_time_max),
