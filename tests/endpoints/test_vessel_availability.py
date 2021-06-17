@@ -1,7 +1,6 @@
 from vortexasdk.endpoints.vessel_availability_search import VesselAvailability
 
 from tests.testcases import TestCaseUsingRealAPI
-from vortexasdk import Geographies, logger
 
 singapore = "1b79e18416d358d7e07b978abcab3f17e2ca75085a6d70ce1811cf4eaeaea886"
 days_to_arrival = {"min": 0, "max": 5}

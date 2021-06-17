@@ -8,7 +8,6 @@ import pandas as pd
 from vortexasdk.api import VesselAvailability
 from vortexasdk.api.entity_flattening import (
     convert_vessel_availability_to_flat_dict,
-    convert_vessel_movement_to_flat_dict,
 )
 from vortexasdk.api.search_result import Result
 from vortexasdk.result_conversions import create_dataframe, create_list
