@@ -9,6 +9,8 @@ from vortexasdk.endpoints.endpoints import (
     VESSELS_REFERENCE,
     PRODUCTS_REFERENCE,
     ATTRIBUTES_REFERENCE,
+    VESSEL_AVAILABILITY_BREAKDOWN_RESOURCE,
+    VESSEL_AVAILABILITY_TIMERSERIES_RESOURCE,
     VESSEL_MOVEMENTS_RESOURCE,
     CARGO_TIMESERIES_RESOURCE,
 )
@@ -26,6 +28,8 @@ example_attributes: List[Dict] = _read("attributes.json")
 example_vessel_movements: List[Dict] = _read("vessel_movements.json")
 example_cargo_movements: List[Dict] = _read("vessel_movements.json")
 example_time_series = _read("cargo_time_series.json")
+example_va_time_series = _read("vessel_availability_timeseries.json")
+example_va_breakdown = _read("vessel_availability_timeseries.json")
 
 
 class MockVortexaClient(AbstractVortexaClient):
@@ -36,6 +40,8 @@ class MockVortexaClient(AbstractVortexaClient):
         PRODUCTS_REFERENCE: example_products,
         VESSEL_MOVEMENTS_RESOURCE: example_vessel_movements,
         CARGO_TIMESERIES_RESOURCE: example_time_series,
+        VESSEL_AVAILABILITY_TIMERSERIES_RESOURCE: example_va_time_series,
+        VESSEL_AVAILABILITY_BREAKDOWN_RESOURCE: example_va_breakdown,
     }
 
     def get_reference(self, resource: str, id: ID) -> List[Dict]:

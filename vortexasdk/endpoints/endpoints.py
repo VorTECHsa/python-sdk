@@ -4,6 +4,10 @@ CARGO_MOVEMENTS_RESOURCE = "/cargo-movements/search"
 VESSEL_MOVEMENTS_RESOURCE = "/vessel-movements/search"
 EIA_FORECASTS_RESOURCE = "/search/eia-forecasts"
 
+VESSEL_AVAILABILITY_SEARCH_RESOURCE = "/vessel-availability/search"
+VESSEL_AVAILABILITY_TIMERSERIES_RESOURCE = "/vessel-availability/timeseries"
+VESSEL_AVAILABILITY_BREAKDOWN_RESOURCE = "/vessel-availability/breakdown"
+
 ATTRIBUTES_REFERENCE = "/reference/attributes"
 GEOGRAPHIES_REFERENCE = "/reference/geographies"
 VESSELS_REFERENCE = "/reference/vessels"

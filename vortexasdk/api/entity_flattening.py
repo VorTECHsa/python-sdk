@@ -19,6 +19,17 @@ def _format_keys(dictionary):
     return flat_with_formatted_keys
 
 
+def convert_vessel_availability_to_flat_dict(cme: Dict, cols="all") -> Dict:
+    """Convert nested `CargoMovement` object to flat dictionary, keeping *cols*."""
+    as_dict = _group_vessel_availability_attributes_by_layer(cme)
+
+    formatted = flatten_dictionary(as_dict)
+
+    if cols == "all":
+        return formatted
+    else:
+        return {k: v for k, v in formatted.items() if k in cols}
+
 def convert_cargo_movement_to_flat_dict(cme: Dict, cols="all") -> Dict:
     """Convert nested `CargoMovement` object to flat dictionary, keeping *cols*."""
     as_dict = _group_cargo_movement_attributes_by_layer(cme)
@@ -42,6 +53,30 @@ def convert_vessel_movement_to_flat_dict(vm: Dict, cols="all") -> Dict:
     else:
         return {k: v for k, v in formatted.items() if k in cols}
 
+
+def _group_vessel_availability_attributes_by_layer(va: Dict) -> Dict:
+    """Group relevant `VesselMovement` attributes by `Entity.layer`."""
+    if "vessel_declared_destination" in va.keys():
+        flat_declared_destination = _flatten_attributes(va["vessel_declared_destination"])
+        va["vessel_declared_destination"] = flat_declared_destination
+
+    if "vessel_predicted_destination" in va.keys():
+        flat_predicted_destination = _flatten_attributes(va["vessel_predicted_destination"])
+        va["vessel_predicted_destination"] = flat_predicted_destination
+
+    if "vessel_last_cargo" in va.keys():
+        flat_last_cargo = _flatten_attributes(va["vessel_last_cargo"])
+        va["vessel_last_cargo"] = flat_last_cargo
+
+    if "vessel_fixtures" in va.keys():
+        flat_fixtures = _flatten_attributes(va["vessel_fixtures"])
+        va["vessel_last_cargo"] = flat_fixtures
+
+    if "vessel_location" in va.keys():
+        flat_locations = _flatten_attributes(va["vessel_location"])
+        va["vessel_location"] = flat_locations
+
+    return va
 
 def _group_vessel_movement_attributes_by_layer(vm: Dict) -> Dict:
     """Group relevant `VesselMovement` attributes by `Entity.layer`."""
