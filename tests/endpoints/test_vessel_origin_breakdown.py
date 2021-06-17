@@ -1,20 +1,21 @@
 from datetime import datetime
+from vortexasdk.endpoints.vessel_origin_breakdown import VesselOriginBreakdown
+
 
 from docs.utils import to_markdown
 from tests.testcases import TestCaseUsingRealAPI
-from vortexasdk import TonneMilesBreakdown
-from docs.utils import to_markdown
 
 
-class TestTonneMilesBreakdownReal(TestCaseUsingRealAPI):
+class TestVesselOriginBreakdownReal(TestCaseUsingRealAPI):
     def test_search_returns_one_day(self):
         date = datetime(2019, 11, 10)
 
-        result = TonneMilesBreakdown().search(
-            filter_activity="loading_state",
+        result = VesselOriginBreakdown().search(
+            breakdown_geography="country",
             filter_time_min=date,
             filter_time_max=date,
-            breakdown_frequency="day",
+            breakdown_size=1000,
+            breakdown_unit="b"
         )
 
         assert len(result) == 1
@@ -23,42 +24,30 @@ class TestTonneMilesBreakdownReal(TestCaseUsingRealAPI):
         start = datetime(2019, 11, 1)
         end = datetime(2019, 11, 10)
 
-        result = TonneMilesBreakdown().search(
-            filter_activity="loading_state",
+        result = VesselOriginBreakdown().search(
+            breakdown_geography="country",
             filter_time_min=start,
             filter_time_max=end,
-            breakdown_frequency="day",
+            breakdown_size=1000,
+            breakdown_unit="b"
         )
 
         n_days = (end - start).days + 1
 
         assert n_days == len(result)
 
-    def test_search_returns_default_freq(self):
-        start = datetime(2019, 1, 1)
-        end = datetime(2019, 11, 10)
-
-        result = TonneMilesBreakdown().search(
-            filter_activity="loading_state",
-            filter_time_min=start,
-            filter_time_max=end,
-        )
-
-        n_months = (end.year - start.year) * 12 + end.month - start.month + 1
-
-        assert n_months == len(result)
-
     def test_to_df(self):
         start = datetime(2019, 11, 1)
         end = datetime(2019, 11, 10)
 
         df = (
-            TonneMilesBreakdown()
+            VesselOriginBreakdown()
             .search(
-                filter_activity="loading_state",
+                breakdown_geography="country",
                 filter_time_min=start,
                 filter_time_max=end,
-                breakdown_frequency="day",
+                breakdown_size=1000,
+                breakdown_unit="b"
             )
             .to_df()
         )
@@ -75,12 +64,13 @@ class TestTonneMilesBreakdownReal(TestCaseUsingRealAPI):
         end = datetime(2019, 11, 10)
 
         time_series_list = (
-            TonneMilesBreakdown()
+            VesselOriginBreakdown()
             .search(
-                filter_activity="loading_state",
+                breakdown_geography="country",
                 filter_time_min=start,
                 filter_time_max=end,
-                breakdown_frequency="day",
+                breakdown_size=1000,
+                breakdown_unit="b"
             )
             .to_list()
         )
