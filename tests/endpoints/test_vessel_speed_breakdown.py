@@ -11,7 +11,7 @@ class TestVesselSpeedBreakdownReal(TestCaseUsingRealAPI):
 
         result = VesselSpeedBreakdown().search(
             filter_activity="loading_state",
-            breakdown_unit="kph",
+            breakdown_unit="kmh",
             filter_time_min=date,
             filter_time_max=date,
             breakdown_frequency="day",
@@ -25,7 +25,7 @@ class TestVesselSpeedBreakdownReal(TestCaseUsingRealAPI):
 
         result = VesselSpeedBreakdown().search(
             filter_activity="loading_state",
-            breakdown_unit="kph",
+            breakdown_unit="kmh",
             filter_time_min=start,
             filter_time_max=end,
             breakdown_frequency="day",
@@ -35,13 +35,13 @@ class TestVesselSpeedBreakdownReal(TestCaseUsingRealAPI):
 
         assert n_days == len(result)
    
-    def test_search_returns_for_mph(self):
+    def test_search_returns_for_mps(self):
         start = datetime(2019, 11, 1)
         end = datetime(2019, 11, 10)
 
         result = VesselSpeedBreakdown().search(
             filter_activity="loading_state",
-            breakdown_unit="mph",
+            breakdown_unit="mps",
             filter_time_min=start,
             filter_time_max=end,
             breakdown_frequency="day",
@@ -57,7 +57,7 @@ class TestVesselSpeedBreakdownReal(TestCaseUsingRealAPI):
 
         result = VesselSpeedBreakdown().search(
             filter_activity="loading_state",
-            breakdown_unit="kph",
+            breakdown_unit="kmh",
             filter_time_min=start,
             filter_time_max=end,
         )
@@ -74,7 +74,7 @@ class TestVesselSpeedBreakdownReal(TestCaseUsingRealAPI):
             VesselSpeedBreakdown()
             .search(
                 filter_activity="loading_state",
-                breakdown_unit="kph",
+                breakdown_unit="kmh",
                 filter_time_min=start,
                 filter_time_max=end,
                 breakdown_frequency="day",
@@ -97,7 +97,7 @@ class TestVesselSpeedBreakdownReal(TestCaseUsingRealAPI):
             VesselSpeedBreakdown()
             .search(
                 filter_activity="loading_state",
-                breakdown_unit="kph",
+                breakdown_unit="kmh",
                 filter_time_min=start,
                 filter_time_max=end,
                 breakdown_frequency="day",

@@ -15,9 +15,9 @@ PRODUCTS_REFERENCE = "/reference/products"
 CORPORATIONS_REFERENCE = "/reference/charterers"
 
 TONNE_MILES_BREAKDOWN = "/vessel-journey/breakdown/tonne-miles"
-VESSEL_ORIGIN_BREAKDOWN = "/vessel-journey/breakdown/speed"
+VESSEL_ORIGIN_BREAKDOWN = "/vessel-journey/breakdown/origin"
 VESSEL_DESTINATION_BREAKDOWN = "/vessel-journey/breakdown/destination"
-VESSEL_SPEED_BREAKDOWN = "/vessel-journey/breakdown/origin"
+VESSEL_SPEED_BREAKDOWN = "/vessel-journey/breakdown/speed"
 
 API_FQDN = "https://api.vortexa.com"
 API_URL = f"{API_FQDN}/v5"

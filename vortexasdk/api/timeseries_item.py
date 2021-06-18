@@ -14,5 +14,5 @@ class TimeSeriesItem(FromDictMixin):
     """
 
     key: ISODate
-    value: float
     count: int
+    value: float = None
