@@ -21,8 +21,10 @@ class UtilisationTimeseriesAvgDistance(Search):
 
     # noinspection PyUnresolvedReferences
     def search(
-        self,
+        self,        
+        timeseries_frequency: str = None,
         timeseries_unit: str = None,
+        timeseries_property: str = None,
         filter_products: Union[ID, List[ID]] = None,
         filter_charterers: Union[ID, List[ID]] = None,
         filter_owners: Union[ID, List[ID]] = None,
@@ -198,6 +200,8 @@ class UtilisationTimeseriesAvgDistance(Search):
         }
 
         api_params = {
+            "timeseries_frequency": timeseries_frequency,
+            "timeseries_property": timeseries_property,
             "timeseries_unit": timeseries_unit,
             "filter_activity": filter_activity,
             "filter_time_min": to_ISODate(filter_time_min),

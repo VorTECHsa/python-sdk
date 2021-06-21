@@ -23,6 +23,9 @@ class UtilisationTimeseriesCapacity(Search):
     # noinspection PyUnresolvedReferences
     def search(
         self,
+        timeseries_frequency: str = None,
+        timeseries_unit: str = None,
+        timeseries_property: str = None,
         filter_products: Union[ID, List[ID]] = None,
         filter_charterers: Union[ID, List[ID]] = None,
         filter_owners: Union[ID, List[ID]] = None,
@@ -199,6 +202,9 @@ class UtilisationTimeseriesCapacity(Search):
 
         api_params = {
             "filter_activity": filter_activity,
+            "timeseries_frequency": timeseries_frequency,
+            "timeseries_unit": timeseries_unit,
+            "timeseries_property": timeseries_property,
             "filter_time_min": to_ISODate(filter_time_min),
             "filter_time_max": to_ISODate(filter_time_max),
             "filter_vessel_age_min": filter_vessel_age_min,
