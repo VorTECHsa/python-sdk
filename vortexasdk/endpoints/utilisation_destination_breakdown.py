@@ -7,14 +7,14 @@ from typing import List, Union
 from datetime import datetime
 
 from vortexasdk.api import ID
-from vortexasdk.endpoints.endpoints import VESSEL_ORIGIN_BREAKDOWN
+from vortexasdk.endpoints.endpoints import UTILISATION_DESTINATION_BREAKDOWN
 from vortexasdk.operations import Search
 from vortexasdk.utils import convert_to_list
 from vortexasdk.api.shared_types import to_ISODate
 from vortexasdk.endpoints.timeseries_result import TimeSeriesResult
 
 
-class VesselOriginBreakdown(Search):
+class UtilisationDestinationBreakdown(Search):
     """
     The Tonne-miles Breakdown Endpoint is used to retrieve the tonne-miles data as a time series. The aggregation is done on the Vessel Movements data hence very similar search parameters are accepted (minus: `unit`, `size`, `offset`).
     Additionally a parameter named `breakdown_frequency` can be used to specify the time series frequency.
@@ -26,7 +26,7 @@ class VesselOriginBreakdown(Search):
     """
 
     def __init__(self):
-        Search.__init__(self, VESSEL_ORIGIN_BREAKDOWN)
+        Search.__init__(self, UTILISATION_DESTINATION_BREAKDOWN)
 
     def search(
         self,

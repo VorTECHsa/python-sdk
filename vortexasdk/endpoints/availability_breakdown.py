@@ -7,7 +7,7 @@ from typing import  List, Union, Dict
 from vortexasdk.endpoints.timeseries_result import TimeSeriesResult
 
 from vortexasdk.api import ID
-from vortexasdk.endpoints.endpoints import VESSEL_AVAILABILITY_TIMERSERIES_RESOURCE
+from vortexasdk.endpoints.endpoints import AVAILABILITY_TIMERSERIES_RESOURCE
 from vortexasdk.logger import get_logger
 from vortexasdk.operations import Search
 from vortexasdk.utils import convert_to_list
@@ -15,7 +15,7 @@ from vortexasdk.utils import convert_to_list
 logger = get_logger(__name__)
 
 
-class VesselAvailabilityBreakdown(Search):
+class AvailabilityBreakdown(Search):
     """
     Vessel Availability Endpoint, use this to search through Vortexa's cargo movements.
 
@@ -25,7 +25,7 @@ class VesselAvailabilityBreakdown(Search):
     _MAX_PAGE_RESULT_SIZE = 500
 
     def __init__(self):
-        Search.__init__(self, VESSEL_AVAILABILITY_TIMERSERIES_RESOURCE)
+        Search.__init__(self, AVAILABILITY_TIMERSERIES_RESOURCE)
 
     def search(
         self,

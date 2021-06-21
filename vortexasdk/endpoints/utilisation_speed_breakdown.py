@@ -5,16 +5,16 @@ Try me out in your browser:
 """
 from typing import List, Union
 from datetime import datetime
+from vortexasdk.endpoints.endpoints import UTILISATION_SPEED_BREAKDOWN
 
 from vortexasdk.api import ID
-from vortexasdk.endpoints.endpoints import VESSEL_DESTINATION_BREAKDOWN
 from vortexasdk.operations import Search
 from vortexasdk.utils import convert_to_list
 from vortexasdk.api.shared_types import to_ISODate
 from vortexasdk.endpoints.timeseries_result import TimeSeriesResult
 
 
-class VesselDestinationBreakdown(Search):
+class UtilisationSpeedBreakdown(Search):
     """
     The Tonne-miles Breakdown Endpoint is used to retrieve the tonne-miles data as a time series. The aggregation is done on the Vessel Movements data hence very similar search parameters are accepted (minus: `unit`, `size`, `offset`).
     Additionally a parameter named `breakdown_frequency` can be used to specify the time series frequency.
@@ -26,13 +26,12 @@ class VesselDestinationBreakdown(Search):
     """
 
     def __init__(self):
-        Search.__init__(self, VESSEL_DESTINATION_BREAKDOWN)
+        Search.__init__(self, UTILISATION_SPEED_BREAKDOWN)
 
     def search(
         self,
+        breakdown_frequency: str = None,
         breakdown_unit: str = None,
-        breakdown_size: int = None,
-        breakdown_geography: str = None,
         filter_time_min: datetime = datetime(2019, 10, 1, 0),
         filter_time_max: datetime = datetime(2019, 10, 1, 1),
         unit: str = "b",
@@ -190,9 +189,8 @@ class VesselDestinationBreakdown(Search):
         }
 
         api_params = {
+            "breakdown_frequency": breakdown_frequency,
             "breakdown_unit": breakdown_unit,
-            "breakdown_size": breakdown_size,
-            "breakdown_geography": breakdown_geography,
             "filter_activity": filter_activity,
             "filter_time_min": to_ISODate(filter_time_min),
             "filter_time_max": to_ISODate(filter_time_max),

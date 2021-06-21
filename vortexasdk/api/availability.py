@@ -41,7 +41,7 @@ class VesselFixtures:
 
 
 @dataclass(frozen=True)
-class VesselAvailability(FromDictMixin):
+class Availability(FromDictMixin):
     """
 
     Cargo movements are the base data set the Vortexa API is centred around.

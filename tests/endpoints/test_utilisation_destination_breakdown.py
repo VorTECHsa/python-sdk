@@ -1,16 +1,15 @@
 from datetime import datetime
-from vortexasdk.endpoints.vessel_origin_breakdown import VesselOriginBreakdown
-
+from vortexasdk.endpoints.utilisation_destination_breakdown import UtilisationDestinationBreakdown
 
 from docs.utils import to_markdown
 from tests.testcases import TestCaseUsingRealAPI
 
 
-class TestVesselOriginBreakdownReal(TestCaseUsingRealAPI):
+class TestUtilisationDestinationBreakdownReal(TestCaseUsingRealAPI):
     def test_search_returns_one_day(self):
         date = datetime(2019, 11, 10)
 
-        result = VesselOriginBreakdown().search(
+        result = UtilisationDestinationBreakdown().search(
             breakdown_geography="country",
             filter_time_min=date,
             filter_time_max=date,
@@ -24,7 +23,7 @@ class TestVesselOriginBreakdownReal(TestCaseUsingRealAPI):
         start = datetime(2019, 11, 1)
         end = datetime(2019, 11, 10)
 
-        result = VesselOriginBreakdown().search(
+        result = UtilisationDestinationBreakdown().search(
             breakdown_geography="country",
             filter_time_min=start,
             filter_time_max=end,
@@ -41,7 +40,7 @@ class TestVesselOriginBreakdownReal(TestCaseUsingRealAPI):
         end = datetime(2019, 11, 10)
 
         df = (
-            VesselOriginBreakdown()
+            UtilisationDestinationBreakdown()
             .search(
                 breakdown_geography="country",
                 filter_time_min=start,
@@ -64,7 +63,7 @@ class TestVesselOriginBreakdownReal(TestCaseUsingRealAPI):
         end = datetime(2019, 11, 10)
 
         time_series_list = (
-            VesselOriginBreakdown()
+            UtilisationDestinationBreakdown()
             .search(
                 breakdown_geography="country",
                 filter_time_min=start,

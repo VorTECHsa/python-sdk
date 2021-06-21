@@ -1,15 +1,15 @@
 from datetime import datetime
-from vortexasdk.endpoints.vessel_speed_breakdown import VesselSpeedBreakdown
+from vortexasdk.endpoints.utilisation_speed_breakdown import UtilisationSpeedBreakdown
 
 from docs.utils import to_markdown
 from tests.testcases import TestCaseUsingRealAPI
 
 
-class TestVesselSpeedBreakdownReal(TestCaseUsingRealAPI):
+class TestUtilisationSpeedBreakdownReal(TestCaseUsingRealAPI):
     def test_search_returns_one_day(self):
         date = datetime(2019, 11, 10)
 
-        result = VesselSpeedBreakdown().search(
+        result = UtilisationSpeedBreakdown().search(
             filter_activity="loading_state",
             breakdown_unit="kmh",
             filter_time_min=date,
@@ -23,7 +23,7 @@ class TestVesselSpeedBreakdownReal(TestCaseUsingRealAPI):
         start = datetime(2019, 11, 1)
         end = datetime(2019, 11, 10)
 
-        result = VesselSpeedBreakdown().search(
+        result = UtilisationSpeedBreakdown().search(
             filter_activity="loading_state",
             breakdown_unit="kmh",
             filter_time_min=start,
@@ -39,7 +39,7 @@ class TestVesselSpeedBreakdownReal(TestCaseUsingRealAPI):
         start = datetime(2019, 11, 1)
         end = datetime(2019, 11, 10)
 
-        result = VesselSpeedBreakdown().search(
+        result = UtilisationSpeedBreakdown().search(
             filter_activity="loading_state",
             breakdown_unit="mps",
             filter_time_min=start,
@@ -55,7 +55,7 @@ class TestVesselSpeedBreakdownReal(TestCaseUsingRealAPI):
         start = datetime(2019, 1, 1)
         end = datetime(2019, 11, 10)
 
-        result = VesselSpeedBreakdown().search(
+        result = UtilisationSpeedBreakdown().search(
             filter_activity="loading_state",
             breakdown_unit="kmh",
             filter_time_min=start,
@@ -71,7 +71,7 @@ class TestVesselSpeedBreakdownReal(TestCaseUsingRealAPI):
         end = datetime(2019, 11, 10)
 
         df = (
-            VesselSpeedBreakdown()
+            UtilisationSpeedBreakdown()
             .search(
                 filter_activity="loading_state",
                 breakdown_unit="kmh",
@@ -94,7 +94,7 @@ class TestVesselSpeedBreakdownReal(TestCaseUsingRealAPI):
         end = datetime(2019, 11, 10)
 
         time_series_list = (
-            VesselSpeedBreakdown()
+            UtilisationSpeedBreakdown()
             .search(
                 filter_activity="loading_state",
                 breakdown_unit="kmh",

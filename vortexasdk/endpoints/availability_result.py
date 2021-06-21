@@ -2,10 +2,10 @@ import functools
 import os
 from multiprocessing.pool import Pool
 from typing import List
+from vortexasdk.api.availability import Availability
 
 import pandas as pd
 
-from vortexasdk.api import VesselAvailability
 from vortexasdk.api.entity_flattening import (
     convert_vessel_availability_to_flat_dict,
 )
@@ -16,7 +16,7 @@ from vortexasdk.logger import get_logger
 logger = get_logger(__name__)
 
 
-class VesselAvailabilityResult(Result):
+class AvailabilityResult(Result):
     """
     Container class holdings search results returns from the vessel movements endpoint.
 
@@ -24,10 +24,10 @@ class VesselAvailabilityResult(Result):
      or as a `pd.DataFrame` , respectively.
     """
 
-    def to_list(self) -> List[VesselAvailability]:
+    def to_list(self) -> List[Availability]:
         """Represent vessel movements as a list of `VesselMovementEntity`s."""
         # noinspection PyTypeChecker
-        return create_list(super().to_list(), VesselAvailability)
+        return create_list(super().to_list(), Availability)
 
     def to_df(self, columns=None) -> pd.DataFrame:
         """
