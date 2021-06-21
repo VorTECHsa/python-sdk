@@ -9,7 +9,7 @@ from vortexasdk.api.shared_types import to_ISODate
 
 from vortexasdk.api import ID
 from datetime import datetime
-from vortexasdk.endpoints.endpoints import VESSEL_AVAILABILITY_TIMERSERIES_RESOURCE
+from vortexasdk.endpoints.endpoints import AVAILABILITY_TIMERSERIES_RESOURCE
 from vortexasdk.logger import get_logger
 from vortexasdk.operations import Search
 from vortexasdk.utils import convert_to_list
@@ -27,7 +27,7 @@ class AvailabilityTimeseries(Search):
     _MAX_PAGE_RESULT_SIZE = 500
 
     def __init__(self):
-        Search.__init__(self, VESSEL_AVAILABILITY_TIMERSERIES_RESOURCE)
+        Search.__init__(self, AVAILABILITY_TIMERSERIES_RESOURCE)
 
     def search(
         self,
