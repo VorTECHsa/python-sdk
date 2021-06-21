@@ -9,8 +9,8 @@ from vortexasdk.endpoints.endpoints import (
     VESSELS_REFERENCE,
     PRODUCTS_REFERENCE,
     ATTRIBUTES_REFERENCE,
-    VESSEL_AVAILABILITY_BREAKDOWN_RESOURCE,
-    VESSEL_AVAILABILITY_TIMERSERIES_RESOURCE,
+    AVAILABILITY_BREAKDOWN_RESOURCE,
+    AVAILABILITY_TIMERSERIES_RESOURCE,
     VESSEL_MOVEMENTS_RESOURCE,
     CARGO_TIMESERIES_RESOURCE,
 )
@@ -40,8 +40,8 @@ class MockVortexaClient(AbstractVortexaClient):
         PRODUCTS_REFERENCE: example_products,
         VESSEL_MOVEMENTS_RESOURCE: example_vessel_movements,
         CARGO_TIMESERIES_RESOURCE: example_time_series,
-        VESSEL_AVAILABILITY_TIMERSERIES_RESOURCE: example_va_time_series,
-        VESSEL_AVAILABILITY_BREAKDOWN_RESOURCE: example_va_breakdown,
+        AVAILABILITY_TIMERSERIES_RESOURCE: example_va_time_series,
+        AVAILABILITY_BREAKDOWN_RESOURCE: example_va_breakdown,
     }
 
     def get_reference(self, resource: str, id: ID) -> List[Dict]:
