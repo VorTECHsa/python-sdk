@@ -5,9 +5,10 @@ Try me out in your browser:
 """
 from datetime import datetime
 from typing import List, Union
+from vortexasdk.endpoints.timeseries_result import TimeSeriesResult
 from vortexasdk.endpoints.endpoints import UTILISATION_TIMESERIES_CAPACITY
 from vortexasdk.api.shared_types import Tag
-from vortexasdk.endpoints import TimeSeriesResult
+
 
 from vortexasdk.api import to_ISODate, ID
 from vortexasdk.operations import Search
