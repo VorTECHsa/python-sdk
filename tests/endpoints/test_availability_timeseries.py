@@ -1,5 +1,5 @@
 from datetime import datetime
-from vortexasdk.endpoints import availability_timeseries
+from vortexasdk.endpoints.availability_timeseries import AvailabilityTimeseries
 
 from tests.testcases import TestCaseUsingMockAPI
 
@@ -11,7 +11,7 @@ class TestAvailabilityTimeSeries(TestCaseUsingMockAPI):
         end = datetime(2021, 6, 21)
 
         df = (
-            availability_timeseries()
+            AvailabilityTimeseries()
             .search(
                 filter_time_min=start,
                 filter_time_max=end,
