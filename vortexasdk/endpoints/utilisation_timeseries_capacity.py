@@ -7,10 +7,10 @@ from datetime import datetime
 from typing import List, Union
 from vortexasdk.endpoints.timeseries_result import TimeSeriesResult
 from vortexasdk.endpoints.endpoints import UTILISATION_TIMESERIES_CAPACITY
-from vortexasdk.api.shared_types import Tag
+from vortexasdk.api.shared_types import Tag, to_ISODate
 
 
-from vortexasdk.api import to_ISODate, ID
+from vortexasdk.api import ID
 from vortexasdk.operations import Search
 from vortexasdk.utils import convert_to_list
 
