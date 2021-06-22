@@ -7,7 +7,7 @@ from typing import  List, Union, Dict
 from vortexasdk.endpoints.timeseries_result import TimeSeriesResult
 
 from vortexasdk.api import ID
-from vortexasdk.endpoints.endpoints import AVAILABILITY_TIMERSERIES_RESOURCE
+from vortexasdk.endpoints.endpoints import AVAILABILITY_BREAKDOWN_RESOURCE
 from vortexasdk.logger import get_logger
 from vortexasdk.operations import Search
 from vortexasdk.utils import convert_to_list
@@ -25,7 +25,7 @@ class AvailabilityBreakdown(Search):
     _MAX_PAGE_RESULT_SIZE = 500
 
     def __init__(self):
-        Search.__init__(self, AVAILABILITY_TIMERSERIES_RESOURCE)
+        Search.__init__(self, AVAILABILITY_BREAKDOWN_RESOURCE)
 
     def search(
         self,
@@ -38,7 +38,7 @@ class AvailabilityBreakdown(Search):
         filter_destination: Union[ID, List[ID]] = None,
         filter_region: str = None,
         filter_port: str = None,
-        use_reference_port: bool = None,
+        use_reference_port: bool = False,
         filter_days_to_arrival: List[Dict[str,int]] = None,
         filter_vessel_dwt_min: int = None,
         filter_vessel_dwt_max: int = None,
@@ -46,7 +46,7 @@ class AvailabilityBreakdown(Search):
         filter_vessel_age_max: int = None,
         filter_vessel_idle_min: int = None,
         filter_vessel_idle_max: int = None,
-        filter_vessel_scrubbers: str = None,
+        filter_vessel_scrubbers: str = "disabled",
         filter_recent_visits: str = None,
         exclude_products: Union[ID, List[ID]] = None,
         exclude_vessels: Union[ID, List[ID]] = None,
@@ -97,4 +97,4 @@ class AvailabilityBreakdown(Search):
             "size": self._MAX_PAGE_RESULT_SIZE,
         }
 
-        return TimeSeriesResult(super().search(**api_params))
+        return TimeSeriesResult(super().search(query_type="breakdown", **api_params))

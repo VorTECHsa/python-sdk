@@ -103,4 +103,4 @@ class AvailabilityTimeseries(Search):
             "size": self._MAX_PAGE_RESULT_SIZE,
         }
 
-        return TimeSeriesResult(super().search(**api_params))
+        return TimeSeriesResult(super().search(query_type="breakdown", **api_params))

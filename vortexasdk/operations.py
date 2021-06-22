@@ -66,7 +66,7 @@ class Search:
         self._resource = resource
 
     def search(
-        self, exact_term_match: bool = None, **api_params
+        self, exact_term_match: bool = None, query_type: str = None, **api_params
     ) -> List[dict]:
         """
         Search Reference data filtering on `params`.
@@ -84,7 +84,7 @@ class Search:
 
         """
         logger.info(f"Searching {self.__class__.__name__}")
-        api_result = default_client().search(self._resource, **api_params)
+        api_result = default_client().search(self._resource, query_type, **api_params)
         logger.debug(
             f"{len(api_result)} results received from {self._resource}"
         )

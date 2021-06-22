@@ -5,9 +5,9 @@ Try me out in your browser:
 """
 from datetime import datetime
 from typing import List, Union
+from vortexasdk.endpoints.timeseries_result import TimeSeriesResult
 from vortexasdk.endpoints.endpoints import UTILISATION_TIMESERIES_UTILISATION
 from vortexasdk.api.shared_types import Tag, to_ISODate
-from vortexasdk.endpoints.timeseries_result import TimeSeriesResult
 
 from vortexasdk.api import ID
 from vortexasdk.operations import Search
@@ -38,6 +38,7 @@ class UtilisationTimeseriesUtilisation(Search):
         filter_vessel_propulsion: Union[ID, List[ID]] = None,
         filter_vessel_tags: Union [List[Tag], Tag] = None,
         filter_vessel_risk_levels: Union[ID, List[ID]] = None,
+        filter_ship_to_ship: bool = None,
         filter_vessel_scrubbers: str = "disabled",
         filter_vessel_age_min: int = None,
         filter_vessel_age_max: int = None,
@@ -62,8 +63,8 @@ class UtilisationTimeseriesUtilisation(Search):
         exclude_vessel_scrubbers: str = None,
         exclude_vessel_risk_levels: Union[ID, List[ID]] = None,
         exclude_filter_ship_to_ship: bool = None,
-        crossfilter_ship_to_ship: bool = None,
-        crossfilter_charterer_exists: bool = None
+        crossfilter_ship_to_ship: bool = False,
+        crossfilter_charterer_exists: bool = False
     ) -> TimeSeriesResult:
         """
 
@@ -178,8 +179,8 @@ class UtilisationTimeseriesUtilisation(Search):
         """
 
         crossfilters = {
-            "filter_ship_to_ship": convert_to_list(crossfilter_ship_to_ship),
-            "filter_charterer_exists": convert_to_list(crossfilter_charterer_exists)
+            "filter_ship_to_ship": crossfilter_ship_to_ship,
+            "filter_charterer_exists": crossfilter_charterer_exists
 
         }
 
@@ -196,8 +197,8 @@ class UtilisationTimeseriesUtilisation(Search):
             "filter_vessel_propulsion": convert_to_list(exclude_vessel_propulsion),
             "filter_vessel_tags": convert_to_list(exclude_vessel_tags),
             "filter_vessel_risk_levels": convert_to_list(exclude_vessel_risk_levels),
-            "filter_vessel_scrubbers": convert_to_list(exclude_vessel_scrubbers),
-            "filter_ship_to_ship": convert_to_list(exclude_filter_ship_to_ship)
+            "filter_vessel_scrubbers": exclude_vessel_scrubbers,
+            "filter_ship_to_ship": exclude_filter_ship_to_ship
         }
 
         api_params = {
@@ -225,7 +226,8 @@ class UtilisationTimeseriesUtilisation(Search):
             "filter_vessel_propulsion": convert_to_list(filter_vessel_propulsion),
             "filter_vessel_tags": convert_to_list(filter_vessel_tags),
             "filter_vessel_risk_levels": convert_to_list(filter_vessel_risk_levels),
-            "filter_vessel_scrubbers": convert_to_list(filter_vessel_scrubbers),
+            "filter_ship_to_ship": filter_ship_to_ship,
+            "filter_vessel_scrubbers": filter_vessel_scrubbers,
             "exclude": exclude_params,
             "crossfilters": crossfilters,
             "size": self._MAX_PAGE_RESULT_SIZE,

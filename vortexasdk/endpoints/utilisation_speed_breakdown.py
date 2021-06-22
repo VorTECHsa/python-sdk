@@ -5,6 +5,7 @@ Try me out in your browser:
 """
 from typing import List, Union
 from datetime import datetime
+from vortexasdk.endpoints.breakdown_result import BreakdownResult
 from vortexasdk.endpoints.endpoints import UTILISATION_SPEED_BREAKDOWN
 
 from vortexasdk.api import ID
@@ -62,7 +63,7 @@ class UtilisationSpeedBreakdown(Search):
         exclude_vessel_flags: Union[ID, List[ID]] = None,
         exclude_vessel_ice_class: Union[ID, List[ID]] = None,
         exclude_vessel_propulsion: Union[ID, List[ID]] = None,
-    ) -> TimeSeriesResult:
+    ) -> BreakdownResult:
         """
         Find TonneMilesBreakdown matching the given search parameters.
 

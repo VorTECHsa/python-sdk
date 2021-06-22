@@ -18,10 +18,10 @@ TONNE_MILES_BREAKDOWN = "/vessel-journey/breakdown/tonne-miles"
 UTILISATION_ORIGIN_BREAKDOWN = "/vessel-journey/breakdown/origin"
 UTILISATION_DESTINATION_BREAKDOWN = "/vessel-journey/breakdown/destination"
 UTILISATION_SPEED_BREAKDOWN = "/vessel-journey/breakdown/speed"
-UTILISATION_TIMESERIES_QUANTITY = '/vessel-journey/timeseries/quantity',
-UTILISATION_TIMESERIES_CAPACITY = '/vessel-journey/timeseries/capacity',
-UTILISATION_TIMESERIES_UTILISATION = '/vessel-journey/timeseries/utilisation',
-UTILISATION_TIMESERIES_AVG_DISTANCE = '/vessel-journey/timeseries/avg-distance',
+UTILISATION_TIMESERIES_QUANTITY = '/vessel-journey/timeseries/quantity'
+UTILISATION_TIMESERIES_CAPACITY = '/vessel-journey/timeseries/capacity'
+UTILISATION_TIMESERIES_UTILISATION = '/vessel-journey/timeseries/utilisation'
+UTILISATION_TIMESERIES_AVG_DISTANCE = '/vessel-journey/timeseries/avg-distance'
 
 API_FQDN = "https://api.vortexa.com"
 API_URL = f"{API_FQDN}/v5"

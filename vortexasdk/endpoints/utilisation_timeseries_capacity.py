@@ -5,7 +5,7 @@ Try me out in your browser:
 """
 from datetime import datetime
 from typing import List, Union
-from vortexasdk.endpoints.timeseries_result import TimeSeriesResult
+from vortexasdk.endpoints.breakdown_result import BreakdownResult
 from vortexasdk.endpoints.endpoints import UTILISATION_TIMESERIES_CAPACITY
 from vortexasdk.api.shared_types import Tag, to_ISODate
 
@@ -65,7 +65,7 @@ class UtilisationTimeseriesCapacity(Search):
         exclude_filter_ship_to_ship: bool = None,
         crossfilter_ship_to_ship: bool = None,
         crossfilter_charterer_exists: bool = None
-    ) -> TimeSeriesResult:
+    ) -> BreakdownResult:
         """
 
         Find Aggregate flows between regions, for various products, for various vessels, or various corporations.
@@ -232,4 +232,4 @@ class UtilisationTimeseriesCapacity(Search):
             "size": self._MAX_PAGE_RESULT_SIZE,
         }
 
-        return TimeSeriesResult(super().search(**api_params))
+        return BreakdownResult(super().search(None, query_type="breakdown", **api_params))
