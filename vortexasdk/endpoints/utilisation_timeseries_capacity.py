@@ -5,6 +5,7 @@ Try me out in your browser:
 """
 from datetime import datetime
 from typing import List, Union
+from vortexasdk.endpoints.timeseries_result import TimeSeriesResult
 from vortexasdk.endpoints.breakdown_result import BreakdownResult
 from vortexasdk.endpoints.endpoints import UTILISATION_TIMESERIES_CAPACITY
 from vortexasdk.api.shared_types import Tag, to_ISODate
@@ -63,9 +64,10 @@ class UtilisationTimeseriesCapacity(Search):
         exclude_vessel_scrubbers: str = None,
         exclude_vessel_risk_levels: Union[ID, List[ID]] = None,
         exclude_filter_ship_to_ship: bool = None,
-        crossfilter_ship_to_ship: bool = None,
-        crossfilter_charterer_exists: bool = None
-    ) -> BreakdownResult:
+        filter_ship_to_ship: bool = None,
+        crossfilter_ship_to_ship: bool = False,
+        crossfilter_charterer_exists: bool = False
+    ) -> TimeSeriesResult:
         """
 
         Find Aggregate flows between regions, for various products, for various vessels, or various corporations.
@@ -179,8 +181,8 @@ class UtilisationTimeseriesCapacity(Search):
         """
 
         crossfilters = {
-            "filter_ship_to_ship": convert_to_list(crossfilter_ship_to_ship),
-            "filter_charterer_exists": convert_to_list(crossfilter_charterer_exists)
+            "filter_ship_to_ship": crossfilter_ship_to_ship,
+            "filter_charterer_exists": crossfilter_charterer_exists
 
         }
 
@@ -197,8 +199,8 @@ class UtilisationTimeseriesCapacity(Search):
             "filter_vessel_propulsion": convert_to_list(exclude_vessel_propulsion),
             "filter_vessel_tags": convert_to_list(exclude_vessel_tags),
             "filter_vessel_risk_levels": convert_to_list(exclude_vessel_risk_levels),
-            "filter_vessel_scrubbers": convert_to_list(exclude_vessel_scrubbers),
-            "filter_ship_to_ship": convert_to_list(exclude_filter_ship_to_ship)
+            "filter_vessel_scrubbers": exclude_vessel_scrubbers,
+            "filter_ship_to_ship": exclude_filter_ship_to_ship
         }
 
         api_params = {
@@ -226,10 +228,11 @@ class UtilisationTimeseriesCapacity(Search):
             "filter_vessel_propulsion": convert_to_list(filter_vessel_propulsion),
             "filter_vessel_tags": convert_to_list(filter_vessel_tags),
             "filter_vessel_risk_levels": convert_to_list(filter_vessel_risk_levels),
-            "filter_vessel_scrubbers": convert_to_list(filter_vessel_scrubbers),
+            "filter_vessel_scrubbers": filter_vessel_scrubbers,
+            "filter_ship_to_ship": filter_ship_to_ship,
             "exclude": exclude_params,
             "crossfilters": crossfilters,
             "size": self._MAX_PAGE_RESULT_SIZE,
         }
 
-        return BreakdownResult(super().search(None, query_type="breakdown", **api_params))
+        return TimeSeriesResult(super().search(**api_params))
