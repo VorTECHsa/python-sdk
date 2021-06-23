@@ -153,8 +153,7 @@ class UtilisationUtilisationTimeseries(Search):
         `TimeSeriesResult`
 
         # Example
-        _Ton days supply (ballast) of vessels originating from the Middle East by daily frequency over the
-        last 7 days, by origin_country breakdown._
+        _Utilisation of vessels carrying Crude/Condensate, departing from Rotterdam over the last 7 days, by quantity breakdown._
 
         ```python
         >>> from vortexasdk import UtilisationUtilisationTimeseries, Geographies, Products

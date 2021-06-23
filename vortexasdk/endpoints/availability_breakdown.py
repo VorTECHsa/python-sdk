@@ -16,13 +16,6 @@ logger = get_logger(__name__)
 
 
 class AvailabilityBreakdown(Search):
-    """
-    Vessel Availability Endpoint, use this to search through Vortexa's cargo movements.
-
-    A detailed explanation of Cargo/Vessel Movements can be found [here](https://docs.vortexa.com/reference/intro-movement-difference).
-    """
-
-    _MAX_PAGE_RESULT_SIZE = 500
 
     def __init__(self):
         Search.__init__(self, AVAILABILITY_BREAKDOWN_RESOURCE)
@@ -56,6 +49,96 @@ class AvailabilityBreakdown(Search):
         exclude_owners: Union[ID, List[ID]] = None,
         exclude_destination: Union[ID, List[ID]] = None,
     ) -> TimeSeriesResult:
+
+        """
+        Number and DWT of all vessels that can be available to load a given cargo at a given port,
+        grouped by the number of days to arrival.
+
+        # Arguments
+
+            order: Used to sort the returned results. Must be one of the following: [‘vessel_status’,
+            ‘days_to_arrival’, ‘days_idle’].
+
+            order_direction: Determines the direction of sorting. ‘asc’ for ascending, ‘desc’ for
+            descending.
+
+            offset: Used to page results. The offset from which records should be returned.
+
+            size: Used to page results. The size of the result set. Between 0 and 500.
+            
+            filter_owners: An corporation ID, or list of corporation IDs to filter on.
+
+            filter_products: A product ID, or list of product IDs to filter on.
+
+            filter_vessels: A vessel ID, or list of vessel IDs to filter on.
+
+            filter_vessel_classes: A vessel class, or list of vessel classes to filter on.
+
+            filter_vessel_status: The vessel status on which to base the filter. Enter 'vessel_status_ballast' for ballast vessels, 'vessel_status_laden_known' for laden vessels with known cargo (i.e. a type of cargo that Vortexa currently tracks) or 'any_activity' for any other vessels
+            
+            filter_vessel_location: A location ID, or list of location IDs to filter on.
+            
+            use_reference_port: If this flag is enabled, we will return data for
+            the reference port instead of the user selected one,
+
+            filter_vessel_age_min: A number between 1 and 100 (representing years).
+
+            filter_vessel_age_max: A number between 1 and 100 (representing years).
+            
+            filter_vessel_idle_min: A number greater than 0 (representing idle days).
+
+            filter_vessel_idle_max: A number greater than 0 and filter_vessel_idle_min (representing idle days).
+            
+            filter_vessel_dwt_min: A number between 0 and 550000.
+
+            filter_vessel_dwt_max: A number between 0 and 550000.
+
+            filter_vessel_scrubbers: Either inactive 'disabled', or included 'inc' or excluded 'exc'.
+
+            exclude_products: A product ID, or list of product IDs to exclude.
+
+            exclude_vessels: A vessel ID, or list of vessel IDs to exclude.
+
+            exclude_vessel_classes: A vessel class, or list of vessel classes to exclude.
+
+            exclude_vessel_status: The vessel status on which to base the filter. Enter 'vessel_status_ballast' for ballast vessels, 'vessel_status_laden_known' for laden vessels with known cargo (i.e. a type of cargo that Vortexa currently tracks) or 'any_activity' for any other vessels
+
+            exclude_owners: An owner ID, or list of owner IDs to exclude.
+
+            exclude_vessel_location: A location ID, or list of location IDs to filter on.
+
+
+        # Returns
+        `TimeSeriesResult`
+
+
+        # Example
+       _Breakdown of number and DWT of all vessels arriving at Rotterdam in the next 5 days._
+
+        ```python
+        >>> from vortexasdk import AvailabilitySearch, Geographies
+        >>> rotterdam = [g.id for g in Geographies().search("rotterdam").to_list() if "port" in g.layer]
+        >>> df = AvailabilitySearch().search(
+        ...        filter_port=rotterdam,
+        ...        filter_days_to_arrival={"min": 0, "max": 5},
+        ... ).to_df()
+
+        ```
+
+        Gives the following:
+
+        |    | key                      |     value |     count |
+        |---:|:-------------------------|----------:|----------:|
+        |  0 | 2021-06-23T00:00:00.000Z | 2939754   | 34        |
+        |  1 | 2021-06-24T00:00:00.000Z | 2676732   | 38        |
+        |  2 | 2021-06-25T00:00:00.000Z | 6262914   | 74        |
+        |  3 | 2021-06-26T00:00:00.000Z | 3445105   | 43        |
+        |  4 | 2021-06-27T00:00:00.000Z | 3924460   | 51        |
+
+        
+        """
+
+
         
         exclude_params = {
             "filter_destination": convert_to_list(exclude_destination),
@@ -94,7 +177,6 @@ class AvailabilityBreakdown(Search):
             "filter_vessel_scrubbers": filter_vessel_scrubbers,
             "filter_recent_visits": filter_recent_visits,
             "exclude": exclude_params,
-            "size": self._MAX_PAGE_RESULT_SIZE,
         }
 
         return TimeSeriesResult(super().search(query_type="breakdown", **api_params))

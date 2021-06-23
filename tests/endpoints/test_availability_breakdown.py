@@ -1,4 +1,5 @@
 
+from vortexasdk.endpoints.geographies import Geographies
 from vortexasdk.endpoints.availability_breakdown import AvailabilityBreakdown
 from tests.testcases import TestCaseUsingRealAPI
 
@@ -6,9 +7,11 @@ from tests.testcases import TestCaseUsingRealAPI
 class TestAvailabilityBreakdown(TestCaseUsingRealAPI):
     def test_search(self):
 
-        result = AvailabilityBreakdown().search(
-            filter_days_to_arrival=[{"min": 0, "max": 5}],
-            filter_port="1b79e18416d358d7e07b978abcab3f17e2ca75085a6d70ce1811cf4eaeaea886"
-        )
+        rotterdam = [g.id for g in Geographies().search("rotterdam").to_list() if "port" in g.layer]
 
-        assert len(result) == 5
+        df = AvailabilityBreakdown().search(
+            filter_days_to_arrival=[{"min": 0, "max": 5}],
+            filter_port=rotterdam[0]
+        ).to_df()
+
+        assert len(df) == 5
