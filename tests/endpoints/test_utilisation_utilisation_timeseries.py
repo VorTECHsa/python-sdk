@@ -23,7 +23,7 @@ class TestUtilisationUtilisationTimeSeries(TestCaseUsingRealAPI):
                 filter_products=crude,
                 timeseries_property="quantity"
             )
-            .to_list()
+            .to_df()
         )
 
         assert len(df) == 8
