@@ -1,4 +1,5 @@
 
+from vortexasdk.endpoints.geographies import Geographies
 from vortexasdk.endpoints.availability_search import AvailabilitySearch
 from tests.testcases import TestCaseUsingRealAPI
 
@@ -37,3 +38,12 @@ class TestAvailabilityReal(TestCaseUsingRealAPI):
         )
 
         assert len(results) > 10
+  
+    def test_df(self):
+        rotterdam = [g.id for g in Geographies().search("rotterdam").to_list() if "port" in g.layer]
+        df = AvailabilitySearch().search(
+            filter_port=rotterdam[0],
+            filter_days_to_arrival=days_to_arrival,
+        ).to_df().head(2)
+
+        assert len(df) == 2
