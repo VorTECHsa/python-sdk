@@ -1,5 +1,5 @@
 from datetime import datetime
-from vortexasdk.endpoints.utilisation_timeseries_avg_distance import UtilisationTimeseriesAvgDistance
+from vortexasdk.endpoints.utilisation_capacity_timeseries import UtilisationCapacityTimeseries
 
 from tests.testcases import TestCaseUsingRealAPI
 
@@ -9,12 +9,12 @@ class TestUtilisationCapacityTimeSeries(TestCaseUsingRealAPI):
         end = datetime(2021, 6, 21)
 
         df = (
-            UtilisationTimeseriesAvgDistance()
+            UtilisationCapacityTimeseries()
             .search(
-                timeseries_unit="km",
                 filter_time_min=start,
                 filter_time_max=end,
-                timeseries_frequency="day"
+                timeseries_frequency="day",
+                timeseries_property="quantity"
             )
             .to_df()
         )

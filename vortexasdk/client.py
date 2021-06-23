@@ -50,7 +50,7 @@ class VortexaClient(AbstractVortexaClient):
         logger.info(f"Payload: {payload}")
         # breakdowns do not support paging, the breakdown size is specified explicitly as a request parameter
         if query_type=="breakdown":
-            size = payload.get("breakdown_size", 10)
+            size = payload.get("breakdown_size", 1000)
             response = _send_post_request(url, payload, size=size, offset=0)
 
             ref = response.get("reference", {})
@@ -60,8 +60,6 @@ class VortexaClient(AbstractVortexaClient):
 
         probe_response = _send_post_request(url, payload, size=1, offset=0)
         total = self._calculate_total(probe_response)
-
-        print(payload, total)
 
         if total > self._MAX_ALLOWED_TOTAL:
             raise Exception(

@@ -30,7 +30,7 @@ class BreakdownResult(Result):
         """Represents time series as a list."""
         # noinspection PyTypeChecker
 
-        # data enrichment step - keys from `data` (id of entry) are replaced by labels from `reference` 
+        # data enrichment step - labels from `reference` replace keys from `data`
         new_list = replace_keys(self)
 
         return create_list(new_list, BreakdownItem)
@@ -51,7 +51,7 @@ class BreakdownResult(Result):
 
         """
 
-        # data enrichment step - keys from `data` (id of entry) are replaced by labels from `reference`
+        # data enrichment step - labels from `reference` replace keys from `data`
         new_list = replace_keys(self)
 
         df = create_dataframe(

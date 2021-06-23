@@ -5,20 +5,22 @@ Try me out in your browser:
 """
 from datetime import datetime
 from typing import List, Union
-from vortexasdk.endpoints.endpoints import UTILISATION_TIMESERIES_QUANTITY
 from vortexasdk.endpoints.timeseries_result import TimeSeriesResult
+from vortexasdk.endpoints.breakdown_result import BreakdownResult
+from vortexasdk.endpoints.endpoints import UTILISATION_TIMESERIES_CAPACITY
 from vortexasdk.api.shared_types import Tag, to_ISODate
+
 
 from vortexasdk.api import ID
 from vortexasdk.operations import Search
 from vortexasdk.utils import convert_to_list
 
 
-class UtilisationTimeseriesQuantity(Search):
+class UtilisationCapacityTimeseries(Search):
     _MAX_PAGE_RESULT_SIZE = 500
 
     def __init__(self):
-        Search.__init__(self, UTILISATION_TIMESERIES_QUANTITY)
+        Search.__init__(self, UTILISATION_TIMESERIES_CAPACITY)
 
     # noinspection PyUnresolvedReferences
     def search(
@@ -43,7 +45,6 @@ class UtilisationTimeseriesQuantity(Search):
         filter_vessel_age_max: int = None,
         filter_vessel_dwt_min: int = None,
         filter_vessel_dwt_max: int = None,
-        filter_ship_to_ship: bool = None,
         filter_activity: str = None,
         filter_time_min: datetime = datetime(2019, 10, 1, 0),
         filter_time_max: datetime = datetime(2019, 10, 1, 1),
@@ -63,24 +64,26 @@ class UtilisationTimeseriesQuantity(Search):
         exclude_vessel_scrubbers: str = None,
         exclude_vessel_risk_levels: Union[ID, List[ID]] = None,
         exclude_filter_ship_to_ship: bool = None,
+        filter_ship_to_ship: bool = None,
         crossfilter_ship_to_ship: bool = False,
         crossfilter_charterer_exists: bool = False
     ) -> TimeSeriesResult:
         """
 
-        Find Aggregate flows between regions, for various products, for various vessels, or various corporations.
-
-        Example questions that can be answered with this endpoint:
-
-        * _How many Crude/Condensate barrels have been imported into China each day over the last year?_
-        * _How many tonnes of Fuel Oil has company X exported from the United States each week over the last 2 years?_
-        * _How have long-term Medium-Sour floating storage levels changed over time?_
+        Sum of the dead weight tonnage for all unique vessels for each day. For frequencies other than
+        ‘day’, the values returned are calculated by summing each daily DWT bucket and returning the
+        total.
 
         # Arguments
-            filter_activity: Cargo movement activity on which to base the time filter. The endpoint only includes cargo
-            movements matching that match this filter in the aggregations. Must be one of ['loading_state',
-             'loading_start', 'loading_end', 'identified_for_loading_state', 'unloading_state', 'unloading_start',
-              'unloading_end', 'storing_state', 'storing_start', 'storing_end', 'transiting_state'].
+            timeseries_frequency (string): Frequency denoting the granularity of the time series. Must be one
+            of the following: ['day', 'week', 'doe_week', 'month', 'quarter', 'year'].
+
+            timeseries_property (string): Property on the vessel movement used to build the value of the
+            aggregation. By default it is “quantity”. Must be one of the following: ['quantity’, ‘vessel_class’,
+            ‘vessel_flag’, ‘origin_region’, ‘origin_trading_region’, ‘origin_trading_sub_region’, ‘origin_country’,
+            ‘origin_port’, ‘origin_terminal’, ‘destination_region’, ‘destination_trading_region’,
+            ‘destination_trading_sub_region’, ‘destination_country’, ‘destination_port’, ‘destination_terminal’,
+            'product_group', 'product_group_product', 'product_category', 'product_grade'].
 
             filter_time_min: The UTC start date of the time filter.
 
@@ -139,8 +142,8 @@ class UtilisationTimeseriesQuantity(Search):
         `TimeSeriesResult`
 
         # Example
-
-        * _What was the monthly average barrels per day of crude loaded from Rotterdam over the last year?_
+        _Ton days supply (ballast) of vessels originating from the Middle East by daily frequency over the
+        last 7 days, by origin_country breakdown._
 
         ```python
         >>> from vortexasdk import CargoTimeSeries, Geographies, Products
@@ -152,8 +155,8 @@ class UtilisationTimeseriesQuantity(Search):
         ...    filter_origins=rotterdam,
         ...    filter_products=crude,
         ...    filter_activity='loading_state',
-        ...    filter_time_min=datetime(2018, 1, 1),
-        ...    filter_time_max=datetime(2018, 12, 31))
+        ...    filter_time_min=datetime(2021, 1, 11),
+        ...    filter_time_max=datetime(2021, 1, 18))
         >>> df = search_result.to_df()
 
         ```
@@ -202,17 +205,16 @@ class UtilisationTimeseriesQuantity(Search):
         }
 
         api_params = {
+            "filter_activity": filter_activity,
             "timeseries_frequency": timeseries_frequency,
             "timeseries_unit": timeseries_unit,
             "timeseries_property": timeseries_property,
-            "filter_activity": filter_activity,
             "filter_time_min": to_ISODate(filter_time_min),
             "filter_time_max": to_ISODate(filter_time_max),
             "filter_vessel_age_min": filter_vessel_age_min,
             "filter_vessel_age_max": filter_vessel_age_max,
             "filter_vessel_dwt_min": filter_vessel_dwt_min,
             "filter_vessel_dwt_max": filter_vessel_dwt_max,
-            "filter_ship_to_ship": filter_ship_to_ship,
             "filter_voyage_id": convert_to_list(filter_voyage_id),
             "filter_vessel_status": convert_to_list(filter_vessel_status),
             "filter_charterers": convert_to_list(filter_charterers),
@@ -228,6 +230,7 @@ class UtilisationTimeseriesQuantity(Search):
             "filter_vessel_tags": convert_to_list(filter_vessel_tags),
             "filter_vessel_risk_levels": convert_to_list(filter_vessel_risk_levels),
             "filter_vessel_scrubbers": filter_vessel_scrubbers,
+            "filter_ship_to_ship": filter_ship_to_ship,
             "exclude": exclude_params,
             "crossfilters": crossfilters,
             "size": self._MAX_PAGE_RESULT_SIZE,

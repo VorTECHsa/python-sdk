@@ -6,8 +6,7 @@ Try me out in your browser:
 from datetime import datetime
 from typing import List, Union
 from vortexasdk.endpoints.timeseries_result import TimeSeriesResult
-from vortexasdk.endpoints.breakdown_result import BreakdownResult
-from vortexasdk.endpoints.endpoints import UTILISATION_TIMESERIES_AVG_DISTANCE
+from vortexasdk.endpoints.endpoints import UTILISATION_TIMESERIES_UTILISATION
 from vortexasdk.api.shared_types import Tag, to_ISODate
 
 from vortexasdk.api import ID
@@ -15,15 +14,15 @@ from vortexasdk.operations import Search
 from vortexasdk.utils import convert_to_list
 
 
-class UtilisationTimeseriesAvgDistance(Search):
+class UtilisationUtilisationTimeseries(Search):
     _MAX_PAGE_RESULT_SIZE = 500
 
     def __init__(self):
-        Search.__init__(self, UTILISATION_TIMESERIES_AVG_DISTANCE)
+        Search.__init__(self, UTILISATION_TIMESERIES_UTILISATION)
 
     # noinspection PyUnresolvedReferences
     def search(
-        self,        
+        self,
         timeseries_frequency: str = None,
         timeseries_unit: str = None,
         timeseries_property: str = None,
@@ -39,8 +38,8 @@ class UtilisationTimeseriesAvgDistance(Search):
         filter_vessel_propulsion: Union[ID, List[ID]] = None,
         filter_vessel_tags: Union [List[Tag], Tag] = None,
         filter_vessel_risk_levels: Union[ID, List[ID]] = None,
-        filter_vessel_scrubbers: str = "disabled",
         filter_ship_to_ship: bool = None,
+        filter_vessel_scrubbers: str = "disabled",
         filter_vessel_age_min: int = None,
         filter_vessel_age_max: int = None,
         filter_vessel_dwt_min: int = None,
@@ -204,8 +203,8 @@ class UtilisationTimeseriesAvgDistance(Search):
 
         api_params = {
             "timeseries_frequency": timeseries_frequency,
-            "timeseries_property": timeseries_property,
             "timeseries_unit": timeseries_unit,
+            "timeseries_property": timeseries_property,
             "filter_activity": filter_activity,
             "filter_time_min": to_ISODate(filter_time_min),
             "filter_time_max": to_ISODate(filter_time_max),
@@ -226,9 +225,9 @@ class UtilisationTimeseriesAvgDistance(Search):
             "filter_vessel_ice_class": convert_to_list(filter_vessel_ice_class),
             "filter_vessel_propulsion": convert_to_list(filter_vessel_propulsion),
             "filter_vessel_tags": convert_to_list(filter_vessel_tags),
-            "filter_vessel_risk_levels": filter_vessel_risk_levels,
-            "filter_vessel_scrubbers": filter_vessel_scrubbers,
+            "filter_vessel_risk_levels": convert_to_list(filter_vessel_risk_levels),
             "filter_ship_to_ship": filter_ship_to_ship,
+            "filter_vessel_scrubbers": filter_vessel_scrubbers,
             "exclude": exclude_params,
             "crossfilters": crossfilters,
             "size": self._MAX_PAGE_RESULT_SIZE,

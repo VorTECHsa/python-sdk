@@ -1,5 +1,5 @@
 from datetime import datetime
-from vortexasdk.endpoints.utilisation_timeseries_quantity import UtilisationTimeseriesQuantity
+from vortexasdk.endpoints.utilisation_quantity_timeseries import UtilisationQuantityTimeseries
 
 from tests.testcases import TestCaseUsingRealAPI
 
@@ -9,7 +9,7 @@ class TestUtilisationQuantityTimeSeries(TestCaseUsingRealAPI):
         end = datetime(2021, 6, 21)
 
         df = (
-            UtilisationTimeseriesQuantity()
+            UtilisationQuantityTimeseries()
             .search(
                 filter_time_min=start,
                 filter_time_max=end,

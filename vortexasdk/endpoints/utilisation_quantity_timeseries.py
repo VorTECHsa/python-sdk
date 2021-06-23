@@ -5,22 +5,20 @@ Try me out in your browser:
 """
 from datetime import datetime
 from typing import List, Union
+from vortexasdk.endpoints.endpoints import UTILISATION_TIMESERIES_QUANTITY
 from vortexasdk.endpoints.timeseries_result import TimeSeriesResult
-from vortexasdk.endpoints.breakdown_result import BreakdownResult
-from vortexasdk.endpoints.endpoints import UTILISATION_TIMESERIES_CAPACITY
 from vortexasdk.api.shared_types import Tag, to_ISODate
-
 
 from vortexasdk.api import ID
 from vortexasdk.operations import Search
 from vortexasdk.utils import convert_to_list
 
 
-class UtilisationTimeseriesCapacity(Search):
+class UtilisationQuantityTimeseries(Search):
     _MAX_PAGE_RESULT_SIZE = 500
 
     def __init__(self):
-        Search.__init__(self, UTILISATION_TIMESERIES_CAPACITY)
+        Search.__init__(self, UTILISATION_TIMESERIES_QUANTITY)
 
     # noinspection PyUnresolvedReferences
     def search(
@@ -45,6 +43,7 @@ class UtilisationTimeseriesCapacity(Search):
         filter_vessel_age_max: int = None,
         filter_vessel_dwt_min: int = None,
         filter_vessel_dwt_max: int = None,
+        filter_ship_to_ship: bool = None,
         filter_activity: str = None,
         filter_time_min: datetime = datetime(2019, 10, 1, 0),
         filter_time_max: datetime = datetime(2019, 10, 1, 1),
@@ -64,7 +63,6 @@ class UtilisationTimeseriesCapacity(Search):
         exclude_vessel_scrubbers: str = None,
         exclude_vessel_risk_levels: Union[ID, List[ID]] = None,
         exclude_filter_ship_to_ship: bool = None,
-        filter_ship_to_ship: bool = None,
         crossfilter_ship_to_ship: bool = False,
         crossfilter_charterer_exists: bool = False
     ) -> TimeSeriesResult:
@@ -204,16 +202,17 @@ class UtilisationTimeseriesCapacity(Search):
         }
 
         api_params = {
-            "filter_activity": filter_activity,
             "timeseries_frequency": timeseries_frequency,
             "timeseries_unit": timeseries_unit,
             "timeseries_property": timeseries_property,
+            "filter_activity": filter_activity,
             "filter_time_min": to_ISODate(filter_time_min),
             "filter_time_max": to_ISODate(filter_time_max),
             "filter_vessel_age_min": filter_vessel_age_min,
             "filter_vessel_age_max": filter_vessel_age_max,
             "filter_vessel_dwt_min": filter_vessel_dwt_min,
             "filter_vessel_dwt_max": filter_vessel_dwt_max,
+            "filter_ship_to_ship": filter_ship_to_ship,
             "filter_voyage_id": convert_to_list(filter_voyage_id),
             "filter_vessel_status": convert_to_list(filter_vessel_status),
             "filter_charterers": convert_to_list(filter_charterers),
@@ -229,7 +228,6 @@ class UtilisationTimeseriesCapacity(Search):
             "filter_vessel_tags": convert_to_list(filter_vessel_tags),
             "filter_vessel_risk_levels": convert_to_list(filter_vessel_risk_levels),
             "filter_vessel_scrubbers": filter_vessel_scrubbers,
-            "filter_ship_to_ship": filter_ship_to_ship,
             "exclude": exclude_params,
             "crossfilters": crossfilters,
             "size": self._MAX_PAGE_RESULT_SIZE,
