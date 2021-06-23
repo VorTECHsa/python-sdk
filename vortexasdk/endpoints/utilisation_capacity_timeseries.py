@@ -26,30 +26,28 @@ class UtilisationCapacityTimeseries(Search):
     def search(
         self,
         timeseries_frequency: str = None,
-        timeseries_unit: str = None,
         timeseries_property: str = None,
+        filter_time_min: datetime = datetime(2019, 10, 1, 0),
+        filter_time_max: datetime = datetime(2019, 10, 1, 1),
         filter_products: Union[ID, List[ID]] = None,
         filter_charterers: Union[ID, List[ID]] = None,
         filter_owners: Union[ID, List[ID]] = None,
         filter_origins: Union[ID, List[ID]] = None,
         filter_destinations: Union[ID, List[ID]] = None,
         filter_vessels: Union[ID, List[ID]] = None,
-        filter_vessel_classes: Union[ID, List[ID]] = None,
+        filter_vessel_classes: Union[str, List[str]] = None,
         filter_vessel_flags: Union[ID, List[ID]] = None,
         filter_vessel_ice_class: Union[ID, List[ID]] = None,
         filter_vessel_propulsion: Union[ID, List[ID]] = None,
-        filter_vessel_tags: Union [List[Tag], Tag] = None,
-        filter_vessel_risk_levels: Union[ID, List[ID]] = None,
+        filter_vessel_tags: Union[Tag, List[Tag]] = None,
+        filter_vessel_risk_levels: Union[str, List[str]] = None,
         filter_vessel_scrubbers: str = "disabled",
         filter_vessel_age_min: int = None,
         filter_vessel_age_max: int = None,
         filter_vessel_dwt_min: int = None,
         filter_vessel_dwt_max: int = None,
         filter_activity: str = None,
-        filter_time_min: datetime = datetime(2019, 10, 1, 0),
-        filter_time_max: datetime = datetime(2019, 10, 1, 1),
-        filter_vessel_status: Union[ID, List[ID]] = None,
-        filter_voyage_id: Union[ID, List[ID]] = None,
+        filter_vessel_status: Union[str, List[str]] = None,
         exclude_origins: Union[ID, List[ID]] = None,
         exclude_destinations: Union[ID, List[ID]] = None,
         exclude_products: Union[ID, List[ID]] = None,
@@ -61,11 +59,7 @@ class UtilisationCapacityTimeseries(Search):
         exclude_vessel_ice_class: Union[ID, List[ID]] = None,
         exclude_vessel_propulsion: Union[ID, List[ID]] = None,
         exclude_vessel_tags: Union [List[Tag], Tag] = None,
-        exclude_vessel_scrubbers: str = None,
         exclude_vessel_risk_levels: Union[ID, List[ID]] = None,
-        exclude_filter_ship_to_ship: bool = None,
-        filter_ship_to_ship: bool = None,
-        crossfilter_ship_to_ship: bool = False,
         crossfilter_charterer_exists: bool = False
     ) -> TimeSeriesResult:
         """
@@ -89,54 +83,68 @@ class UtilisationCapacityTimeseries(Search):
 
             filter_time_max: The UTC end date of the time filter.
 
-            filter_corporations: A corporation ID, or list of corporation IDs to filter on.
+            filter_products: A product ID, or list of product IDs to filter on.
 
-            filter_destinations: A geography ID, or list of geography IDs to filter on.
-
-            filter_origins: A geography ID, or list of geography IDs to filter on.
+            filter_charterers: A charterer entity ID, or list of product IDs to filter on.
 
             filter_owners: An owner ID, or list of owner IDs to filter on.
 
-            filter_products: A product ID, or list of product IDs to filter on.
+            filter_origins: A geography ID, or list of geography IDs to filter on.
+
+            filter_destinations: A geography ID, or list of geography IDs to filter on.
 
             filter_vessels: A vessel ID, or list of vessel IDs to filter on.
 
-            filter_storage_locations: A geography ID, or list of geography IDs to filter on.
+            filter_vessel_classes: A vessel class, or list of vessel classes to filter on.
 
-            filter_ship_to_ship_locations: A geography ID, or list of geography IDs to filter on.
+            filter_vessel_flags: A vessel flag ID, or list of vessel flag IDs to filter on.
 
-            filter_waypoints: A geography ID, or list of geography IDs to filter on.
+            filter_vessel_ice_class: A vessel ice class ID, or list of vessel ice class IDs to filter on.
 
-            disable_geographic_exclusion_rules: This controls a popular industry term "intra-movements" and determines
-             the filter behaviour for cargo leaving then entering the same geographic area.
+            filter_vessel_propulsion: A vessel propulsion ID, or list of vessel propulsion IDs to filter on.
 
-            timeseries_activity: The cargo movement activity we want to aggregate on. This param defaults to
-            `filter_activity` if left blank. For example, Let's say we want to aggregate the unloading timestamps of
-             all cargo movements that loaded in 2019, then we'd use `filter_time_min` and `filter_time_max` to specify
-             1st Jan 2019 and 31st Dec 2019 respectively, we'd set `filter_activity='loading_state'` and
-             `timeseries_activity='unloading_state'` to filter on loadings but aggregate on unloadings.
-              `filter_activity` Must be one of ['loading_state',
-             'loading_start', 'loading_end', 'identified_for_loading_state', 'unloading_state', 'unloading_start',
-              'unloading_end', 'storing_state', 'storing_start', 'storing_end', 'transiting_state'].
+            filter_vessel_tag: A time bound vessel tag, or list of time bound vessel tags to filter on.
 
-            timeseries_frequency: Frequency denoting the granularity of the time series. Must be one of ['day', 'week',
-             'doe_week', 'month', 'quarter', 'year']
+            filter_vessel_risk_levels: A vessel risk level, or list of vessel risk levels to filter on.
 
-            timeseries_unit: A numeric metric to be calculated for each time bucket. Must be one of ['b', 'bpd', 't',
-             'tpd', 'c', 'cpd'], corresponding to barrels, barrels per day, metric tonnes, metric tonnes per day,
-              cargo movement count, cargo movement count per day, respectively.
+            filter_vessel_scrubbers: Either inactive 'disabled', or included 'inc' or excluded 'exc'.
 
-            timeseries_activity_time_span_min: The minimum amount of time in milliseconds accounted for in a time series
-             activity. Can be used to request long-term floating storage. For example, to only return floating storage
-             movements that occurred for _more_ than 14 days enter
-             `timeseries_activity_time_span_min=1000 * 60 * 60 * 24 * 14` in conjunction with
-             `filter_activity='storing_state'`.
+            filter_vessel_age_min: A number between 1 and 100 (representing years).
 
-            timeseries_activity_time_span_max: The maximum amount of time in milliseconds accounted for in a time series
-             activity. Can be used to request short-term floating storage. For example, to only return floating storage
-             movements that occurred for _less_ than 14 days enter
-             `timeseries_activity_time_span_max=1000 * 60 * 60 * 24 * 14` in conjunction with
-             `filter_activity='storing_state'`.
+            filter_vessel_age_max: A number between 1 and 100 (representing years).
+            
+            filter_vessel_age_min: A number between 0 and 550000.
+
+            filter_vessel_age_max: A number between 0 and 550000.
+
+            filter_activity: Movement activity on which to base the time filter. Must be one of: `'loading_state'`,
+             `'oil_on_water_state'`, `'unloading_state'`, `'ship_to_ship'`, `'storing_state'`, `'transiting_state'`
+
+            filter_vessel_status: The vessel status on which to base the filter. Enter 'vessel_status_ballast' for ballast vessels, 'vessel_status_laden_known' for laden vessels with known cargo (i.e. a type of cargo that Vortexa currently tracks) or 'any_activity' for any other vessels.
+
+            exclude_filter_products: A product ID, or list of product IDs to exclude.
+
+            exclude_filter_charterers: A charterer entity ID, or list of product IDs to exclude.
+
+            exclude_filter_owners: An owner ID, or list of owner IDs to exclude.
+
+            exclude_filter_origins: A geography ID, or list of geography IDs to exclude.
+
+            exclude_filter_destinations: A geography ID, or list of geography IDs to exclude.
+
+            exclude_filter_vessels: A vessel ID, or list of vessel IDs to exclude.
+
+            exclude_filter_vessel_classes: A vessel class, or list of vessel classes to exclude.
+
+            exclude_filter_vessel_ice_class: A vessel ice class ID, or list of vessel ice class IDs to exclude.
+
+            exclude_filter_vessel_propulsion: A vessel propulsion ID, or list of vessel propulsion IDs to exclude.
+
+            exclude_filter_vessel_tag: A time bound vessel tag, or list of time bound vessel tags to exclude.
+
+            exclude_filter_vessel_risk_levels: A vessel risk level, or list of vessel risk levels to exclude.
+
+            crossfilter_charterer_exists: A boolean to include or exclude the records to those that have a charterer.
 
         # Returns
         `TimeSeriesResult`
@@ -146,68 +154,60 @@ class UtilisationCapacityTimeseries(Search):
         last 7 days, by origin_country breakdown._
 
         ```python
-        >>> from vortexasdk import CargoTimeSeries, Geographies, Products
+        >>> from vortexasdk import UtilisationCapacityTimeseries, Geographies, Products
+        >>> from datetime import datetime
         >>> rotterdam = [g.id for g in Geographies().search("rotterdam").to_list() if "port" in g.layer]
         >>> crude = [p.id for p in Products().search("crude").to_list() if "Crude" == p.name]
-        >>> search_result = CargoTimeSeries().search(
-        ...    timeseries_unit='bpd',
-        ...    timeseries_frequency='month',
+        >>> search_result = UtilisationCapacityTimeseries().search(
         ...    filter_origins=rotterdam,
         ...    filter_products=crude,
-        ...    filter_activity='loading_state',
         ...    filter_time_min=datetime(2021, 1, 11),
         ...    filter_time_max=datetime(2021, 1, 18))
+        ...    timeseries_frequency="day",
+        ...    timeseries_property="quantity"
         >>> df = search_result.to_df()
 
         ```
 
         Gives the following:
 
-        |    | key                      |     count |     value |
+        |    | key                      |     value |     count |
         |---:|:-------------------------|----------:|----------:|
-        |  0 | 2018-01-01T00:00:00.000Z | 0.354839  | 458665    |
-        |  1 | 2018-02-01T00:00:00.000Z | 0.75      | 45024     |
-        |  2 | 2018-03-01T00:00:00.000Z | 0.0645161 |  35663.5  |
-        |  3 | 2018-04-01T00:00:00.000Z | 0.878777  |  12345.2  |
-        |  4 | 2018-05-01T00:00:00.000Z | 0.455932  |   9999.32 |
-        |  5 | 2018-06-01T00:00:00.000Z | 0.777667  |  12234.8  |
-        |  6 | 2018-07-01T00:00:00.000Z | 0.555097  | 987666    |
-        |  7 | 2018-08-01T00:00:00.000Z | 0.290323  | 5318008.1 |
-        |  8 | 2018-09-01T00:00:00.000Z | 0.0333333 | 686888.87 |
-        |  9 | 2018-10-01T00:00:00.000Z | 0.354839  | 234344    |
-        | 10 | 2018-11-01T00:00:00.000Z | 0.2345    | 111111    |
-        | 11 | 2018-12-01T00:00:00.000Z | 0.123129  |  34344.5  |
+        |  0 | 2021-01-11T00:00:00.000Z | 184808    | 2         |
+        |  1 | 2021-01-12T00:00:00.000Z | 297735    | 3         |
+        |  2 | 2021-01-13T00:00:00.000Z | 410535    | 4         |
+        |  3 | 2021-01-14T00:00:00.000Z | 454835    | 4         |
+        |  4 | 2021-01-15T00:00:00.000Z | 430052    | 3         |
+        |  5 | 2021-01-16T00:00:00.000Z | 539342    | 4         |
+        |  6 | 2021-01-17T00:00:00.000Z | 539342    | 4         |
+        |  7 | 2021-01-18T00:00:00.000Z | 382242    | 3         |
 
 
         """
 
         crossfilters = {
-            "filter_ship_to_ship": crossfilter_ship_to_ship,
             "filter_charterer_exists": crossfilter_charterer_exists
+            # TODO add ship_to_ship filter
 
         }
-
         exclude_params = {
-            "filter_destinations": convert_to_list(exclude_destinations),
             "filter_products": convert_to_list(exclude_products),
+            "filter_charterers": convert_to_list(exclude_charterers),
+            "filter_owners": convert_to_list(exclude_owners),
+            "filter_destinations": convert_to_list(exclude_destinations),
+            "filter_origins": convert_to_list(exclude_origins),
             "filter_vessels": convert_to_list(exclude_vessels),
             "filter_vessel_classes": convert_to_list(exclude_vessel_classes),
-            "filter_owners": convert_to_list(exclude_owners),
-            "filter_origins": convert_to_list(exclude_origins),
-            "filter_charterers": convert_to_list(exclude_charterers),
             "filter_vessel_flags": convert_to_list(exclude_vessel_flags),
             "filter_vessel_ice_class": convert_to_list(exclude_vessel_ice_class),
             "filter_vessel_propulsion": convert_to_list(exclude_vessel_propulsion),
             "filter_vessel_tags": convert_to_list(exclude_vessel_tags),
             "filter_vessel_risk_levels": convert_to_list(exclude_vessel_risk_levels),
-            "filter_vessel_scrubbers": exclude_vessel_scrubbers,
-            "filter_ship_to_ship": exclude_filter_ship_to_ship
         }
 
         api_params = {
             "filter_activity": filter_activity,
             "timeseries_frequency": timeseries_frequency,
-            "timeseries_unit": timeseries_unit,
             "timeseries_property": timeseries_property,
             "filter_time_min": to_ISODate(filter_time_min),
             "filter_time_max": to_ISODate(filter_time_max),
@@ -215,7 +215,6 @@ class UtilisationCapacityTimeseries(Search):
             "filter_vessel_age_max": filter_vessel_age_max,
             "filter_vessel_dwt_min": filter_vessel_dwt_min,
             "filter_vessel_dwt_max": filter_vessel_dwt_max,
-            "filter_voyage_id": convert_to_list(filter_voyage_id),
             "filter_vessel_status": convert_to_list(filter_vessel_status),
             "filter_charterers": convert_to_list(filter_charterers),
             "filter_owners": convert_to_list(filter_owners),
@@ -230,7 +229,6 @@ class UtilisationCapacityTimeseries(Search):
             "filter_vessel_tags": convert_to_list(filter_vessel_tags),
             "filter_vessel_risk_levels": convert_to_list(filter_vessel_risk_levels),
             "filter_vessel_scrubbers": filter_vessel_scrubbers,
-            "filter_ship_to_ship": filter_ship_to_ship,
             "exclude": exclude_params,
             "crossfilters": crossfilters,
             "size": self._MAX_PAGE_RESULT_SIZE,
