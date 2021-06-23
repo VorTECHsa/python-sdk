@@ -17,7 +17,6 @@ from vortexasdk.utils import convert_to_list
 
 
 class UtilisationCapacityTimeseries(Search):
-    _MAX_PAGE_RESULT_SIZE = 500
 
     def __init__(self):
         Search.__init__(self, UTILISATION_TIMESERIES_CAPACITY)
@@ -230,8 +229,7 @@ class UtilisationCapacityTimeseries(Search):
             "filter_vessel_risk_levels": convert_to_list(filter_vessel_risk_levels),
             "filter_vessel_scrubbers": filter_vessel_scrubbers,
             "exclude": exclude_params,
-            "crossfilters": crossfilters,
-            "size": self._MAX_PAGE_RESULT_SIZE,
+            "crossfilters": crossfilters
         }
 
         return TimeSeriesResult(super().search(**api_params))

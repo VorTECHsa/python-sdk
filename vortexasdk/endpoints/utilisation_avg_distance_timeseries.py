@@ -16,8 +16,6 @@ from vortexasdk.utils import convert_to_list
 
 
 class UtilisationAvgDistanceTimeseries(Search):
-    _MAX_PAGE_RESULT_SIZE = 500
-
     def __init__(self):
         Search.__init__(self, UTILISATION_TIMESERIES_AVG_DISTANCE)
 
@@ -246,7 +244,6 @@ class UtilisationAvgDistanceTimeseries(Search):
             "filter_ship_to_ship": filter_ship_to_ship,
             "exclude": exclude_params,
             "crossfilters": crossfilters,
-            "size": self._MAX_PAGE_RESULT_SIZE,
         }
 
         return TimeSeriesResult(super().search(**api_params))

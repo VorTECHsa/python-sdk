@@ -15,7 +15,6 @@ from vortexasdk.utils import convert_to_list
 
 
 class UtilisationQuantityTimeseries(Search):
-    _MAX_PAGE_RESULT_SIZE = 500
 
     def __init__(self):
         Search.__init__(self, UTILISATION_TIMESERIES_QUANTITY)
@@ -246,7 +245,6 @@ class UtilisationQuantityTimeseries(Search):
             "filter_vessel_scrubbers": filter_vessel_scrubbers,
             "exclude": exclude_params,
             "crossfilters": crossfilters,
-            "size": self._MAX_PAGE_RESULT_SIZE,
         }
 
         return TimeSeriesResult(super().search(**api_params))
