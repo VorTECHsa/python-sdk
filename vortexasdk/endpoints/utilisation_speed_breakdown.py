@@ -16,15 +16,6 @@ from vortexasdk.endpoints.timeseries_result import TimeSeriesResult
 
 
 class UtilisationSpeedBreakdown(Search):
-    """
-    The Tonne-miles Breakdown Endpoint is used to retrieve the tonne-miles data as a time series. The aggregation is done on the Vessel Movements data hence very similar search parameters are accepted (minus: `unit`, `size`, `offset`).
-    Additionally a parameter named `breakdown_frequency` can be used to specify the time series frequency.
-
-    A VesselMovement represents a single vessel moving between two locations.
-
-    The vessel may carry one cargo, many cargoes (co-loads), or zero cargos (ballast).
-    The start and end locations for a VesselMovement may be on land (loadings and discharges), they may be STS Zones (STS events), or they may be Floating Storage.
-    """
 
     def __init__(self):
         Search.__init__(self, UTILISATION_SPEED_BREAKDOWN)
