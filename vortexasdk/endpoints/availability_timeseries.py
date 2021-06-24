@@ -135,7 +135,7 @@ class AvailabilityTimeseries(Search):
         ...     filter_time_max=end,
         ...     filter_port=rotterdam,
         ...     filter_days_to_arrival={"min": 0, "max": 5},
-        ... ).to_df()
+        ... ).to_df())
 
         ```
 

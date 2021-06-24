@@ -120,8 +120,8 @@ class AvailabilityBreakdown(Search):
         >>> from vortexasdk import AvailabilitySearch, Geographies
         >>> rotterdam = [g.id for g in Geographies().search("rotterdam").to_list() if "port" in g.layer]
         >>> df = AvailabilitySearch().search(
-        ...        filter_port=rotterdam,
-        ...        filter_days_to_arrival={"min": 0, "max": 5},
+        ...        filter_port=rotterdam[0],
+        ...        filter_days_to_arrival={"min": 0, "max": 5}
         ... ).to_df()
 
         ```
