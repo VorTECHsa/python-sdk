@@ -12,7 +12,6 @@ from vortexasdk.endpoints.endpoints import UTILISATION_ORIGIN_BREAKDOWN
 from vortexasdk.operations import Search
 from vortexasdk.utils import convert_to_list
 from vortexasdk.api.shared_types import to_ISODate
-from vortexasdk.endpoints.timeseries_result import TimeSeriesResult
 
 
 class UtilisationOriginBreakdown(Search):
@@ -57,10 +56,16 @@ class UtilisationOriginBreakdown(Search):
         exclude_vessel_propulsion: Union[ID, List[ID]] = None,
     ) -> BreakdownResult:
         """
-        Find TonneMilesBreakdown matching the given search parameters.
+        Number of unique vessels by origin.
 
         # Arguments
-            breakdown_frequency: Must be one of: `'day'`, `'week'`, `'doe_week'`, `'month'`, `'quarter'` or `'year'`.
+            breakdown_unit: Units to aggregate upon. Must be one of the following: [ 'b', 't', 'cbm', 'bpd', 'tpd', 'mpd'].
+
+            breakdown_size: Number of top geographies to return.
+
+            breakdown_geography: Geography hierarchy of the origin to aggregate upon. Must be
+            one of the following: [ 'berth', 'terminal', 'port','country', 'shipping_region',
+            'region','trading_block','trading_region','trading_subregion','sts_zone','waypoint'].
 
             filter_activity: Movement activity on which to base the time filter. Must be one of: `'loading_state'`,
              `'loading_start'`, `'loading_end'`, `'identified_for_loading_state'`, `'unloading_state'`, `'unloading_start'`,
@@ -127,20 +132,19 @@ class UtilisationOriginBreakdown(Search):
 
 
         # Returns
-        `TimeSeriesResult`
+        `BreakdownResult`
 
         # Example
+        _Top 5 countries by number of unique vessels by origin country breakdown, in the last quarter._
 
         ```python
-        >>> from vortexasdk import TonneMilesBreakdown, Vessels
+        >>> from vortexasdk import UtilisationOriginBreakdown, Vessels
         >>> from datetime import datetime
-        >>> new_wisdom = [g.id for g in Vessels().search("NEW WISDOM").to_list()]
-        >>> search_result = TonneMilesBreakdown().search(
-        ...    unit='b',
-        ...    breakdown_frequency='month',
-        ...    filter_vessels=new_wisdom,
-        ...    filter_time_min=datetime(2018, 1, 1),
-        ...    filter_time_max=datetime(2018, 12, 31))
+        >>> search_result = UtilisationOriginBreakdown().search(
+        ...    breakdown_geography='country',
+        ...    breakdown_size='5',
+        ...    filter_time_min=datetime(2020, 10, 18),
+        ...    filter_time_max=datetime(2021, 1, 18))
         >>> df = search_result.to_df()
 
         ```
@@ -149,18 +153,11 @@ class UtilisationOriginBreakdown(Search):
 
         |      |key                      |value       |count |
         |-----:|:------------------------|:-----------|-----:|
-        |0     |2018-01-01 00:00:00+00:00|4.558499e+07|1     |
-        |1     |2018-02-01 00:00:00+00:00|4.393985e+07|1     |
-        |2     |2018-03-01 00:00:00+00:00|7.781776e+06|1     |
-        |3     |2018-04-01 00:00:00+00:00|8.041169e+07|1     |
-        |4     |2018-05-01 00:00:00+00:00|3.346161e+07|1     |
-        |5     |2018-06-01 00:00:00+00:00|5.731648e+07|1     |
-        |6     |2018-07-01 00:00:00+00:00|4.976054e+07|1     |
-        |7     |2018-08-01 00:00:00+00:00|3.022656e+06|1     |
-        |8     |2018-09-01 00:00:00+00:00|2.504909e+07|1     |
-        |9     |2018-10-01 00:00:00+00:00|6.269583e+07|1     |
-        |10    |2018-11-01 00:00:00+00:00|1.823642e+07|1     |
-        |11    |2018-12-01 00:00:00+00:00|3.137448e+07|1     |
+        |0     |China                    |3414        |16439 |
+        |1     |Japan                    |1252        |10670 |
+        |2     |United States            |1991        |6048  |
+        |3     |South Korea              |1528        |4893  |
+        |4     |Malaysia                 |1607        |4597  |
 
         """
 

@@ -11,11 +11,8 @@ class TestOriginBreakdownReal(TestCaseUsingRealAPI):
         date = datetime(2019, 11, 10)
 
         result = UtilisationOriginBreakdown().search(
-            breakdown_geography="country",
             filter_time_min=date,
-            filter_time_max=date,
-            breakdown_size=1000,
-            breakdown_unit="b"
+            filter_time_max=date
         )
 
         assert len(result) > 0
@@ -27,18 +24,30 @@ class TestOriginBreakdownReal(TestCaseUsingRealAPI):
         df = (
             UtilisationOriginBreakdown()
             .search(
-                breakdown_geography="country",
                 filter_time_min=start,
-                filter_time_max=end,
-                breakdown_size=1000,
-                breakdown_unit="b"
+                filter_time_max=end
             )
             .to_df()
         )
 
-        print(to_markdown(df.head()))
-
         assert list(df.columns) == ["key", "value", "count"]
+
+    def test_with_params(self):
+        start = datetime(2020, 10, 18)
+        end = datetime(2021, 1, 18)
+
+        df = (
+            UtilisationOriginBreakdown()
+            .search(
+                filter_time_min=start,
+                filter_time_max=end,
+                breakdown_size='5',
+                breakdown_geography='country'
+            )
+            .to_df()
+        )
+
+        assert len(df) == 5
 
     def test_to_list(self):
         start = datetime(2019, 11, 1)
@@ -47,11 +56,8 @@ class TestOriginBreakdownReal(TestCaseUsingRealAPI):
         time_series_list = (
             UtilisationOriginBreakdown()
             .search(
-                breakdown_geography="country",
                 filter_time_min=start,
-                filter_time_max=end,
-                breakdown_size=10,
-                breakdown_unit="b"
+                filter_time_max=end
             )
             .to_list()
         )
