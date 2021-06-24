@@ -19,7 +19,6 @@ class AvailabilitySearch(Search):
     """
     Vessel Availability Endpoint, use this to search through Vortexa's vessel availability data.
 
-    A detailed explanation of Cargo/Vessel Movements can be found [here](https://docs.vortexa.com/reference/intro-movement-difference).
     """
 
     _MAX_PAGE_RESULT_SIZE = 500

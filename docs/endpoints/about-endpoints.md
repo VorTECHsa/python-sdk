@@ -11,7 +11,9 @@ The VortexaSDK currently contains the following endpoints:
 5. Products
 6. Vessels
 7. Cargo Time Series
-8. EIA Forecasts
+8. Tonne-miles
+9. Availability
+10. Utilisation
 
 Each endpoint offers either one, or both, of two different functionalities:
 

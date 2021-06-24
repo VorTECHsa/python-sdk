@@ -153,8 +153,6 @@ class UtilisationQuantityTimeseries(Search):
 
             exclude_filter_vessel_risk_levels: A vessel risk level, or list of vessel risk levels to exclude.
 
-            crossfilter_charterer_exists: A boolean to include or exclude the records to those that have a charterer.
-
         # Returns
         `TimeSeriesResult`
 
