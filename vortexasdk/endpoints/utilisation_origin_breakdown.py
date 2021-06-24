@@ -139,7 +139,7 @@ class UtilisationOriginBreakdown(Search):
 
 
         # Returns
-        `BreakdownResult`
+        `GeoBreakdownResult`
 
         # Example
         _Top 5 countries by number of unique vessels by origin country breakdown, in the last quarter._
