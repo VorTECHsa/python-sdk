@@ -163,7 +163,7 @@ class UtilisationTimeseries(Search):
         ...    filter_time_min=datetime(2021, 1, 11),
         ...    filter_time_max=datetime(2021, 1, 18),
         ...    timeseries_frequency="day",
-        ...    timeseries_property="quantity"
+        ...    timeseries_property="quantity")
         >>> df = search_result.to_df()
 
         ```
