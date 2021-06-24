@@ -35,7 +35,7 @@ class UtilisationDestinationBreakdown(Search):
         filter_owners: Union[ID, List[ID]] = None,
         filter_products: Union[ID, List[ID]] = None,
         filter_vessels: Union[ID, List[ID]] = None,
-        filter_vessel_classes: Union[ID, List[ID]] = None,
+        filter_vessel_classes: Union[str, List[str]] = None,
         filter_vessel_status: str = None,
         filter_ship_to_ship: bool = None,
         filter_charterer_exists: bool = None,
@@ -51,7 +51,7 @@ class UtilisationDestinationBreakdown(Search):
         exclude_destinations: Union[ID, List[ID]] = None,
         exclude_products: Union[ID, List[ID]] = None,
         exclude_vessels: Union[ID, List[ID]] = None,
-        exclude_vessel_classes: Union[ID, List[ID]] = None,
+        exclude_vessel_classes: Union[str, List[str]] = None,
         exclude_charterers: Union[ID, List[ID]] = None,
         exclude_owners: Union[ID, List[ID]] = None,
         exclude_vessel_flags: Union[ID, List[ID]] = None,
@@ -62,13 +62,12 @@ class UtilisationDestinationBreakdown(Search):
         Number of unique vessels by destination.
 
         # Arguments
-            breakdown_unit: Units to aggregate upon. Must be one of the following: [ 'b', 't', 'cbm', 'bpd', 'tpd', 'mpd'].
+            breakdown_unit: Units to aggregate upon. Must be one of the following: `'b'`, `'t'`, `'cbm'`, `'bpd'`, `'tpd'`, `'mpd'`.
 
             breakdown_size: Number of top geographies to return.
 
-            breakdown_geography: Geography hierarchy of the origin to aggregate upon. Must be
-            one of the following: [ 'berth', 'terminal', 'port','country', 'shipping_region',
-            'region','trading_block','trading_region','trading_subregion','sts_zone','waypoint'].
+            breakdown_geography: Geography hierarchy of the origin to aggregate upon. Must be one of the following: `'berth'`, `'terminal'`, `'port'`,`'country'`, `'shipping_region'`,
+            `'region'`,`'trading_block'`,`'trading_region'`,`'trading_subregion'`,`'sts_zone'`,`'waypoint'`.
 
             filter_activity: Movement activity on which to base the time filter. Must be one of: `'loading_state'`,
              `'loading_start'`, `'loading_end'`, `'identified_for_loading_state'`, `'unloading_state'`, `'unloading_start'`,

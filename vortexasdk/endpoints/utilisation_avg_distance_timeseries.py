@@ -48,7 +48,6 @@ class UtilisationAvgDistanceTimeseries(Search):
         filter_time_min: datetime = datetime(2019, 10, 1, 0),
         filter_time_max: datetime = datetime(2019, 10, 1, 1),
         filter_vessel_status: Union[ID, List[ID]] = None,
-        filter_voyage_id: Union[ID, List[ID]] = None,
         exclude_origins: Union[ID, List[ID]] = None,
         exclude_destinations: Union[ID, List[ID]] = None,
         exclude_products: Union[ID, List[ID]] = None,
@@ -61,7 +60,6 @@ class UtilisationAvgDistanceTimeseries(Search):
         exclude_vessel_propulsion: Union[ID, List[ID]] = None,
         exclude_vessel_tags: Union [List[Tag], Tag] = None,
         exclude_vessel_risk_levels: Union[ID, List[ID]] = None,
-        exclude_filter_ship_to_ship: bool = None,
     ) -> TimeSeriesResult:
         """
 
@@ -70,19 +68,17 @@ class UtilisationAvgDistanceTimeseries(Search):
 
         # Arguments
 
-            timeseries_unit: A numeric metric to be calculated for each time bucket. Must be one of ['b', 'bpd', 't',
-            'tpd', 'c', 'cpd'], corresponding to barrels, barrels per day, metric tonnes, metric tonnes per day,
+            timeseries_unit: A numeric metric to be calculated for each time bucket. Must be one of `'b'`, `'bpd'`, `'t'`,
+            `'tpd'`, `'c'`, `'cpd'`, corresponding to barrels, barrels per day, metric tonnes, metric tonnes per day,
             cargo movement count, cargo movement count per day, respectively.
         
-            timeseries_frequency (string): Frequency denoting the granularity of the time series. Must be one
-            of the following: ['day', 'week', 'doe_week', 'month', 'quarter', 'year'].
+            timeseries_frequency: Frequency denoting the granularity of the time series. Must be one of the following: `'day'`, `'week'`, `'doe_week'`, `'month'`, `'quarter'`, `'year'`.
 
-            timeseries_property (string): Property on the vessel movement used to build the value of the
-            aggregation. By default it is “quantity”. Must be one of the following: ['quantity’, ‘vessel_class’,
-            ‘vessel_flag’, ‘origin_region’, ‘origin_trading_region’, ‘origin_trading_sub_region’, ‘origin_country’,
-            ‘origin_port’, ‘origin_terminal’, ‘destination_region’, ‘destination_trading_region’,
-            ‘destination_trading_sub_region’, ‘destination_country’, ‘destination_port’, ‘destination_terminal’,
-            'product_group', 'product_group_product', 'product_category', 'product_grade'].
+            timeseries_property: Property on the vessel movement used to build the value of the aggregation. By default it is “quantity”. Must be one of the following: `'quantity’`, `‘vessel_class’`,
+            `‘vessel_flag’`, `‘origin_region’`, `‘origin_trading_region’`, `‘origin_trading_sub_region’`, `‘origin_country’`,
+            `‘origin_port’`, `‘origin_terminal’`, `‘destination_region’`, `‘destination_trading_region’`,
+            `‘destination_trading_sub_region’`, `‘destination_country’`, `‘destination_port’`, `‘destination_terminal’`,
+            `'product_group'`, `'product_group_product'`, `'product_category'`, `'product_grade'`.
 
             filter_time_min: The UTC start date of the time filter.
 
@@ -216,7 +212,7 @@ class UtilisationAvgDistanceTimeseries(Search):
             "filter_vessel_propulsion": convert_to_list(exclude_vessel_propulsion),
             "filter_vessel_tags": convert_to_list(exclude_vessel_tags),
             "filter_vessel_risk_levels": convert_to_list(exclude_vessel_risk_levels),
-            "filter_ship_to_ship": exclude_filter_ship_to_ship
+            "filter_ship_to_ship": sts_filter["exclude"]
         }
 
         api_params = {
@@ -230,7 +226,6 @@ class UtilisationAvgDistanceTimeseries(Search):
             "filter_vessel_age_max": filter_vessel_age_max,
             "filter_vessel_dwt_min": filter_vessel_dwt_min,
             "filter_vessel_dwt_max": filter_vessel_dwt_max,
-            "filter_voyage_id": convert_to_list(filter_voyage_id),
             "filter_vessel_status": convert_to_list(filter_vessel_status),
             "filter_charterers": convert_to_list(filter_charterers),
             "filter_owners": convert_to_list(filter_owners),
