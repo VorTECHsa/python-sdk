@@ -1,4 +1,5 @@
 from typing import List
+from vortexasdk.api.geo_breakdown_item import GeoBreakdownItem
 from vortexasdk.api.breakdown_item import BreakdownItem
 
 import pandas as pd
@@ -26,14 +27,14 @@ def key_from_ref(datum, refs):
 class GeoBreakdownResult(Result):
     """Container class that holds the result obtained from calling a breakdown endpoint."""
 
-    def to_list(self) -> List[BreakdownItem]:
+    def to_list(self) -> List[GeoBreakdownItem]:
         """Represents time series as a list."""
         # noinspection PyTypeChecker
 
         # data enrichment step - labels from `reference` replace keys from `data`
         new_list = replace_keys(self)
 
-        return create_list(new_list, BreakdownItem)
+        return create_list(new_list, GeoBreakdownItem)
 
     def to_df(self, columns=None) -> pd.DataFrame:
         """Represents the breakdown as a dataframe.
@@ -58,7 +59,7 @@ class GeoBreakdownResult(Result):
             columns=columns,
             default_columns=DEFAULT_COLUMNS,
             data=new_list,
-            logger_description="Breakdown",
+            logger_description="GeoBreakdown",
         )
 
         return df
