@@ -150,7 +150,7 @@ class UtilisationSpeedBreakdown(Search):
         ...    filter_origins="80aa9e4f3014c3d96559c8e642157edbb2b684ea0144ed76cd20b3af75110877",
         ...    filter_destinations="934c47f36c16a58d68ef5e007e62a23f5f036ee3f3d1f5f85a48c572b90ad8b2",
         ...    filter_time_min=datetime(2020, 12, 19),
-        ...    filter_time_max=datetime(2021, 1, 18)),
+        ...    filter_time_max=datetime(2021, 1, 18),
         ...    breakdown_unit="kn",
         >>> df = search_result.to_df()
 

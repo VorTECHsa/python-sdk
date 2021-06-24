@@ -151,7 +151,7 @@ class UtilisationDestinationBreakdown(Search):
         ...    breakdown_geography='country',
         ...    breakdown_size='5',
         ...    filter_time_min=datetime(2020, 10, 18),
-        ...    filter_time_max=datetime(2021, 1, 18))
+        ...    filter_time_max=datetime(2021, 1, 18)
         >>> df = search_result.to_df()
 
         ```
