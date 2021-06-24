@@ -66,12 +66,11 @@ class UtilisationSpeedBreakdown(Search):
 
             breakdown_frequency: Must be one of: `'day'`, `'week'`, `'doe_week'`, `'month'`, `'quarter'` or `'year'`.
 
-            breakdown_property (string): Property on the vessel movement used to build the value of the
-            aggregation. By default it is “quantity”. Must be one of the following: ['quantity’, ‘vessel_class’,
-            ‘vessel_flag’, ‘origin_region’, ‘origin_trading_region’, ‘origin_trading_sub_region’, ‘origin_country’,
-            ‘origin_port’, ‘origin_terminal’, ‘destination_region’, ‘destination_trading_region’,
-            ‘destination_trading_sub_region’, ‘destination_country’, ‘destination_port’, ‘destination_terminal’,
-            'product_group', 'product_group_product', 'product_category', 'product_grade'].
+            breakdown_property: Property on the vessel movement used to build the value of the aggregation. By default it is “quantity”. Must be one of the following: `'quantity’`, `‘vessel_class’`,
+            `‘vessel_flag’`, `‘origin_region’`, `‘origin_trading_region’`, `‘origin_trading_sub_region’`, `‘origin_country’`,
+            `‘origin_port’`, `‘origin_terminal’`, `‘destination_region’`, `‘destination_trading_region’`,
+            `‘destination_trading_sub_region’`, `‘destination_country’`, `‘destination_port’`, `‘destination_terminal’`,
+            `'product_group'`, `'product_group_product'`, `'product_category'`, `'product_grade'`.
 
             filter_activity: Movement activity on which to base the time filter. Must be one of: `'loading_state'`,
              `'loading_start'`, `'loading_end'`, `'identified_for_loading_state'`, `'unloading_state'`, `'unloading_start'`,

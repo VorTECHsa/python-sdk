@@ -60,7 +60,6 @@ class UtilisationQuantityTimeseries(Search):
         exclude_vessel_ice_class: Union[ID, List[ID]] = None,
         exclude_vessel_propulsion: Union[ID, List[ID]] = None,
         exclude_vessel_tags: Union [List[Tag], Tag] = None,
-        exclude_vessel_scrubbers: str = None,
         exclude_vessel_risk_levels: Union[ID, List[ID]] = None,
     ) -> TimeSeriesResult:
         """
@@ -216,7 +215,6 @@ class UtilisationQuantityTimeseries(Search):
             "filter_vessel_propulsion": convert_to_list(exclude_vessel_propulsion),
             "filter_vessel_tags": convert_to_list(exclude_vessel_tags),
             "filter_vessel_risk_levels": convert_to_list(exclude_vessel_risk_levels),
-            "filter_vessel_scrubbers": exclude_vessel_scrubbers,
             "filter_ship_to_ship": sts_filter["exclude"] 
         }
 

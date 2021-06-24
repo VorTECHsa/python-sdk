@@ -23,7 +23,6 @@ class UtilisationTimeseries(Search):
     def search(
         self,
         timeseries_frequency: str = None,
-        timeseries_unit: str = None,
         timeseries_property: str = None,
         filter_products: Union[ID, List[ID]] = None,
         filter_charterers: Union[ID, List[ID]] = None,
@@ -60,7 +59,6 @@ class UtilisationTimeseries(Search):
         exclude_vessel_ice_class: Union[ID, List[ID]] = None,
         exclude_vessel_propulsion: Union[ID, List[ID]] = None,
         exclude_vessel_tags: Union [List[Tag], Tag] = None,
-        exclude_vessel_scrubbers: str = None,
         exclude_vessel_risk_levels: Union[ID, List[ID]] = None,
     ) -> TimeSeriesResult:
         """
@@ -70,15 +68,13 @@ class UtilisationTimeseries(Search):
         the average count per day.
 
         # Arguments
-            timeseries_frequency (string): Frequency denoting the granularity of the time series. Must be one
-            of the following: ['day', 'week', 'doe_week', 'month', 'quarter', 'year'].
+            timeseries_frequency: Frequency denoting the granularity of the time series. Must be one of the following: ['day', 'week', 'doe_week', 'month', 'quarter', 'year'].
 
-            timeseries_property (string): Property on the vessel movement used to build the value of the
-            aggregation. By default it is “quantity”. Must be one of the following: ['quantity’, ‘vessel_class’,
-            ‘vessel_flag’, ‘origin_region’, ‘origin_trading_region’, ‘origin_trading_sub_region’, ‘origin_country’,
-            ‘origin_port’, ‘origin_terminal’, ‘destination_region’, ‘destination_trading_region’,
-            ‘destination_trading_sub_region’, ‘destination_country’, ‘destination_port’, ‘destination_terminal’,
-            'product_group', 'product_group_product', 'product_category', 'product_grade'].
+            timeseries_property: Property on the vessel movement used to build the value of the aggregation. By default it is “quantity”. Must be one of the following: `'quantity’`, `‘vessel_class’`,
+            `‘vessel_flag’`, `‘origin_region’`, `‘origin_trading_region’`, `‘origin_trading_sub_region’`, `‘origin_country’`,
+            `‘origin_port’`, `‘origin_terminal’`, `‘destination_region’`, `‘destination_trading_region’`,
+            `‘destination_trading_sub_region’`, `‘destination_country’`, `‘destination_port’`, `‘destination_terminal’`,
+            `'product_group'`, `'product_group_product'`, `'product_category'`, `'product_grade'`.
 
             filter_time_min: The UTC start date of the time filter.
 
@@ -127,27 +123,29 @@ class UtilisationTimeseries(Search):
             
             filter_ship_to_ship: A boolean to include or exclude the records to those that are involved in an STS.
 
-            exclude_filter_products: A product ID, or list of product IDs to exclude.
+            exclude_products: A product ID, or list of product IDs to exclude.
 
-            exclude_filter_charterers: A charterer entity ID, or list of product IDs to exclude.
+            exclude_charterers: A charterer entity ID, or list of product IDs to exclude.
 
-            exclude_filter_owners: An owner ID, or list of owner IDs to exclude.
+            exclude_owners: An owner ID, or list of owner IDs to exclude.
 
-            exclude_filter_origins: A geography ID, or list of geography IDs to exclude.
+            exclude_origins: A geography ID, or list of geography IDs to exclude.
 
-            exclude_filter_destinations: A geography ID, or list of geography IDs to exclude.
+            exclude_destinations: A geography ID, or list of geography IDs to exclude.
 
-            exclude_filter_vessels: A vessel ID, or list of vessel IDs to exclude.
+            exclude_vessels: A vessel ID, or list of vessel IDs to exclude.
 
-            exclude_filter_vessel_classes: A vessel class, or list of vessel classes to exclude.
+            exclude_vessel_classes: A vessel class, or list of vessel classes to exclude.
+            
+            exclude_vessel_flags: A vessel flag ID, or list of vessel flag IDs to filter on.
 
-            exclude_filter_vessel_ice_class: A vessel ice class ID, or list of vessel ice class IDs to exclude.
+            exclude_vessel_ice_class: A vessel ice class ID, or list of vessel ice class IDs to exclude.
 
-            exclude_filter_vessel_propulsion: A vessel propulsion ID, or list of vessel propulsion IDs to exclude.
+            exclude_vessel_propulsion: A vessel propulsion ID, or list of vessel propulsion IDs to exclude.
 
-            exclude_filter_vessel_tag: A time bound vessel tag, or list of time bound vessel tags to exclude.
+            exclude_vessel_tags: A time bound vessel tag, or list of time bound vessel tags to exclude.
 
-            exclude_filter_vessel_risk_levels: A vessel risk level, or list of vessel risk levels to exclude.
+            exclude_vessel_risk_levels: A vessel risk level, or list of vessel risk levels to exclude.
 
         # Returns
         `TimeSeriesResult`
@@ -210,13 +208,11 @@ class UtilisationTimeseries(Search):
             "filter_vessel_propulsion": convert_to_list(exclude_vessel_propulsion),
             "filter_vessel_tags": convert_to_list(exclude_vessel_tags),
             "filter_vessel_risk_levels": convert_to_list(exclude_vessel_risk_levels),
-            "filter_vessel_scrubbers": exclude_vessel_scrubbers,
             "filter_ship_to_ship": sts_filter["exclude"]
         }
 
         api_params = {
             "timeseries_frequency": timeseries_frequency,
-            "timeseries_unit": timeseries_unit,
             "timeseries_property": timeseries_property,
             "filter_activity": filter_activity,
             "filter_time_min": to_ISODate(filter_time_min),

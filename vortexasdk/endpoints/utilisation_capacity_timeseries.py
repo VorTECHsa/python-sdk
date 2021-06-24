@@ -70,7 +70,7 @@ class UtilisationCapacityTimeseries(Search):
 
         # Arguments
             timeseries_frequency (string): Frequency denoting the granularity of the time series. Must be one
-            of the following: ['day', 'week', 'doe_week', 'month', 'quarter', 'year'].
+            of the following: `'day'`, `'week'`, `'doe_week'`, `'month'`, `'quarter'`, `'year'`.
 
             timeseries_property (string): Property on the vessel movement used to build the value of the
             aggregation. By default it is “quantity”. Must be one of the following: ['quantity’, ‘vessel_class’,
