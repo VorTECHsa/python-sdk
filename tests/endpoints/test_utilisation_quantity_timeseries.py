@@ -10,7 +10,7 @@ class TestUtilisationQuantityTimeSeries(TestCaseUsingRealAPI):
         start = datetime(2021, 1, 11)
         end = datetime(2021, 1, 18)
 
-        rotterdam = [g.id for g in Geographies().search("rotterdam").to_list() if "port" in g.layer]
+        rotterdam = "68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e"
         crude = [p.id for p in Products().search("crude").to_list() if "Crude" == p.name]
 
         df = (

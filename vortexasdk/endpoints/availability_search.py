@@ -55,9 +55,9 @@ class AvailabilitySearch(Search):
         exclude_vessel_location: Union[ID, List[ID]] = None,
         exclude_owners: Union[ID, List[ID]] = None,
         exclude_destination: Union[ID, List[ID]] = None,
-        offset: int = 0,
-        order: str = "vessel_status",
-        order_direction: str = "desc",
+        offset: int = None,
+        order: str = None,
+        order_direction: str = None,
     ) -> AvailabilityResult:
         """
         List of vessels that can be available to load a given cargo at a given port on a future date.
@@ -117,29 +117,28 @@ class AvailabilitySearch(Search):
 
 
         # Returns
-        `VesselMovementsResult`, containing all the vessel movements matching the given search terms.
+        `AvailabilityResult`
 
 
         # Example
-        Let's search for all vessels that departed from `Rotterdam [NL]` on the morning of 1st December 2018.
+        Top 25 available vessels arriving at Rotterdam port in the next 5 days.
 
         ```python
         >>> from vortexasdk import AvailabilitySearch, Geographies
-        >>> rotterdam = [g.id for g in Geographies().search("rotterdam").to_list() if "port" in g.layer]
-        >>> df = VesselMovements().search(
+        >>> rotterdam = "68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e"
+        >>> df = AvailabilitySearch().search(
         ...        filter_port=rotterdam,
-        ...        filter_days_to_arrival={"min": 0, "max": 5}
-        ... ).to_df().head(2)
+        ...        filter_days_to_arrival={"min": 0, "max": 35},
+        ...        size=25
+        ... ).to_df(columns=['available_at','vessel_name','vessel_class']).head(2)
 
         ```
 
-        |    | start_timestamp          | end_timestamp            |   vessel.imo | vessel.name   | vessel.vessel_class   | origin.location.country.label   | origin.location.port.label   | destination.location.country.label   | destination.location.port.label   |   cargoes.0.quantity | cargoes.0.product.grade.label   |
-        |---:|:-------------------------|:-------------------------|-------------:|:--------------|:----------------------|:--------------------------------|:-----------------------------|:-------------------------------------|:----------------------------------|---------------------:|:--------------------------------|
-        |  0 | 2017-09-30T15:30:27+0000 | 2017-10-03T01:46:06+0000 |  9.21091e+06 | ADEBOMI 3     | handysize             | Netherlands                     | Rotterdam [NL]               | Netherlands                          | Rotterdam [NL]                    |                  nan | nan                             |
-        |  1 | 2017-08-29T14:51:32+0000 | 2017-10-04T14:46:21+0000 |  9.64544e+06 | AEGEAN VISION | suezmax               | Netherlands                     | Rotterdam [NL]               | Singapore                            | Singapore [SG]                    |               852261 | High Sulphur                    |
+        |    | available_at             | vessel_name              | vessel_class |
+        |---:|:-------------------------|:-------------------------|-------------:|
+        |  0 | 2017-09-30T15:30:27+0000 | STAR RIVER               |  handysize   |
+        |  1 | 2017-08-29T14:51:32+0000 | AMALTHEA                 |  aframax     |
 
-        [Vessel Movements Endpoint Further Documentation](https://docs.vortexa.com/reference/POST/vessel-movements/search)
-        
         """
 
         exclude_params = {

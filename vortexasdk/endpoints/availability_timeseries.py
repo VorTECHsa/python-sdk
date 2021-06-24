@@ -126,13 +126,13 @@ class AvailabilityTimeseries(Search):
         ```python
         >>> from vortexasdk import AvailabilityTimeseries, Geographies
         >>> from datetime import datetime
-        >>> rotterdam = [g.id for g in Geographies().search("rotterdam").to_list() if "port" in g.layer]
+        >>> rotterdam = "68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e"
         >>> start = datetime(2021, 6, 17)
         >>> end = datetime(2021, 6, 21)
         >>> df = (AvailabilityTimeseries().search(
         ...     filter_time_min=start,
-                filter_time_max=end,
-                filter_port=rotterdam[0]
+        ...     filter_time_max=end,
+        ...     filter_port=rotterdam,
         ...     filter_days_to_arrival={"min": 0, "max": 5},
         ... ).to_df()
 
