@@ -17,6 +17,16 @@ pages:
     Vessel Movements: endpoints/vessel_movements.md
     Vessels: endpoints/vessels.md
     Tonne-miles Breakdown: endpoints/tonne_miles_breakdown.md
+    Availability: endpoints/availability_search.md
+    Availability Time Series: endpoints/availability_timeseries.md
+    Availability Breakdown: endpoints/availability_breakdown.md
+    Utilisation Speed Breakdown: endpoints/utilisation_speed_breakdown.md
+    Utilisation Timeseries: endpoints/utilisation_timeseries.md
+    Utilisation Avg Distance Timeseries: endpoints/utilisation_avg_distance_timeseries.md
+    Utilisation Quantity Timeseries: endpoints/utilisation_quantity_timeseries.md
+    Utilisation Capacity Timeseries: endpoints/utilisation_capacity_timeseries.md
+    Utilisation Origin Breakdown: endpoints/utilisation_origin_breakdown.md
+    Utilisation Destination Breakdown: endpoints/utilisation_destination_breakdown.md
 - Entities:
     Cargo Movement: entities/cargo_movement.md
     Corporation: entities/corporation.md

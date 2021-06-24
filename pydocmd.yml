@@ -43,6 +43,26 @@ generate:
       - vortexasdk.api.vessel_movement++
   - endpoints/tonne_miles_breakdown.md:
       - vortexasdk.endpoints.tonne_miles_breakdown++
+  - endpoints/availability_search.md:
+      - vortexasdk.endpoints.availability_search++
+  - endpoints/availability_timeseries.md:
+      - vortexasdk.endpoints.availability_timeseries++
+  - endpoints/availability_breakdown.md:
+      - vortexasdk.endpoints.availability_breakdown++
+  - endpoints/utilisation_speed_breakdown.md:
+      - vortexasdk.endpoints.utilisation_speed_breakdown++
+  - endpoints/utilisation_timeseries.md:
+      - vortexasdk.endpoints.utilisation_timeseries++
+  - endpoints/utilisation_avg_distance_timeseries.md:
+      - vortexasdk.endpoints.utilisation_avg_distance_timeseries++
+  - endpoints/utilisation_quantity_timeseries.md:
+      - vortexasdk.endpoints.utilisation_quantity_timeseries++
+  - endpoints/utilisation_capacity_timeseries.md:
+      - vortexasdk.endpoints.utilisation_capacity_timeseries++
+  - endpoints/utilisation_origin_breakdown.md:
+      - vortexasdk.endpoints.utilisation_origin_breakdown++
+  - endpoints/utilisation_destination_breakdown.md:
+      - vortexasdk.endpoints.utilisation_destination_breakdown++
   - endpoints/eia_forecasts.md:
       - vortexasdk.endpoints.eia_forecasts++
       - vortexasdk.endpoints.eia_forecasts_result++
@@ -61,6 +81,16 @@ pages:
       Vessels: endpoints/vessels.md
       EIA Forecasts: endpoints/eia_forecasts.md
       Tonne-miles Breakdown: endpoints/tonne_miles_breakdown.md
+      Availability: endpoints/availability_search.md
+      Availability Time Series: endpoints/availability_timeseries.md
+      Availability Breakdown: endpoints/availability_breakdown.md
+      Utilisation Speed Breakdown: endpoints/utilisation_speed_breakdown.md
+      Utilisation Timeseries: endpoints/utilisation_timeseries.md
+      Utilisation Avg Distance Time Series: endpoints/utilisation_avg_distance_timeseries.md
+      Utilisation Quantity Time Series: endpoints/utilisation_quantity_timeseries.md
+      Utilisation Capacity Time Series: endpoints/utilisation_capacity_timeseries.md
+      Utilisation Origin Breakdown: endpoints/utilisation_origin_breakdown.md
+      Utilisation Destination Breakdown: endpoints/utilisation_destination_breakdown.md
   - Entities:
       Cargo Movement: entities/cargo_movement.md
       Corporation: entities/corporation.md
