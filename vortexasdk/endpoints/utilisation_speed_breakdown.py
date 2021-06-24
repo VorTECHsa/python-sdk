@@ -10,7 +10,7 @@ from vortexasdk.endpoints.endpoints import UTILISATION_SPEED_BREAKDOWN
 
 from vortexasdk.api import ID
 from vortexasdk.operations import Search
-from vortexasdk.utils import convert_to_list
+from vortexasdk.utils import convert_to_list, sts_param_value
 from vortexasdk.api.shared_types import to_ISODate
 from vortexasdk.endpoints.timeseries_result import TimeSeriesResult
 
@@ -24,6 +24,7 @@ class UtilisationSpeedBreakdown(Search):
         self,
         breakdown_frequency: str = None,
         breakdown_unit: str = None,
+        breakdown_property: str = None,
         filter_time_min: datetime = datetime(2019, 10, 1, 0),
         filter_time_max: datetime = datetime(2019, 10, 1, 1),
         unit: str = "b",
@@ -36,6 +37,8 @@ class UtilisationSpeedBreakdown(Search):
         filter_vessels: Union[ID, List[ID]] = None,
         filter_vessel_classes: Union[ID, List[ID]] = None,
         filter_vessel_status: str = None,
+        filter_ship_to_ship: bool = None,
+        filter_charterer_exists: bool = None,
         filter_vessel_age_min: int = None,
         filter_vessel_age_max: int = None,
         filter_vessel_dwt_min: int = None,
@@ -56,10 +59,19 @@ class UtilisationSpeedBreakdown(Search):
         exclude_vessel_propulsion: Union[ID, List[ID]] = None,
     ) -> BreakdownResult:
         """
-        Find TonneMilesBreakdown matching the given search parameters.
+        Average speed of vessels. For frequencies other than ‘day’, the average daily speed within that period is returned.
 
         # Arguments
+            breakdown_unit: Must be one of: `'mps'`, `'kmh'`, `'kn'`.
+
             breakdown_frequency: Must be one of: `'day'`, `'week'`, `'doe_week'`, `'month'`, `'quarter'` or `'year'`.
+
+            breakdown_property (string): Property on the vessel movement used to build the value of the
+            aggregation. By default it is “quantity”. Must be one of the following: ['quantity’, ‘vessel_class’,
+            ‘vessel_flag’, ‘origin_region’, ‘origin_trading_region’, ‘origin_trading_sub_region’, ‘origin_country’,
+            ‘origin_port’, ‘origin_terminal’, ‘destination_region’, ‘destination_trading_region’,
+            ‘destination_trading_sub_region’, ‘destination_country’, ‘destination_port’, ‘destination_terminal’,
+            'product_group', 'product_group_product', 'product_category', 'product_grade'].
 
             filter_activity: Movement activity on which to base the time filter. Must be one of: `'loading_state'`,
              `'loading_start'`, `'loading_end'`, `'identified_for_loading_state'`, `'unloading_state'`, `'unloading_start'`,
@@ -129,17 +141,18 @@ class UtilisationSpeedBreakdown(Search):
         `TimeSeriesResult`
 
         # Example
+        _Average daily speed by week and knots, over the last month, from Middle East to China; broken down by vessel class._
 
         ```python
-        >>> from vortexasdk import TonneMilesBreakdown, Vessels
+        >>> from vortexasdk import UtilisationSpeedBreakdown
         >>> from datetime import datetime
-        >>> new_wisdom = [g.id for g in Vessels().search("NEW WISDOM").to_list()]
-        >>> search_result = TonneMilesBreakdown().search(
-        ...    unit='b',
-        ...    breakdown_frequency='month',
-        ...    filter_vessels=new_wisdom,
-        ...    filter_time_min=datetime(2018, 1, 1),
-        ...    filter_time_max=datetime(2018, 12, 31))
+        >>> search_result = UtilisationSpeedBreakdown().search(
+        ...    filter_vessel_status="vessel_status_laden_known",
+        ...    filter_origins="80aa9e4f3014c3d96559c8e642157edbb2b684ea0144ed76cd20b3af75110877",
+        ...    filter_destinations="934c47f36c16a58d68ef5e007e62a23f5f036ee3f3d1f5f85a48c572b90ad8b2",
+        ...    filter_time_min=datetime(2020, 12, 19),
+        ...    filter_time_max=datetime(2021, 1, 18)),
+        ...    breakdown_unit="kn",
         >>> df = search_result.to_df()
 
         ```
@@ -163,6 +176,16 @@ class UtilisationSpeedBreakdown(Search):
 
         """
 
+        sts_filter = sts_param_value(filter_ship_to_ship)
+
+        crossfilters = {
+            "filter_ship_to_ship": sts_filter["x_filter"],
+            # if charterer toggle is True, apply cross filter
+            # else make it false
+            "filter_charterer_exists": filter_charterer_exists == True
+
+        }
+
         exclude_params = {
             "filter_origins": convert_to_list(exclude_origins),
             "filter_destinations": convert_to_list(exclude_destinations),
@@ -178,11 +201,13 @@ class UtilisationSpeedBreakdown(Search):
             "filter_vessel_propulsion": convert_to_list(
                 exclude_vessel_propulsion
             ),
+            "filter_ship_to_ship": sts_filter["exclude"]
         }
 
         api_params = {
             "breakdown_frequency": breakdown_frequency,
             "breakdown_unit": breakdown_unit,
+            "breakdown_property": breakdown_property,
             "filter_activity": filter_activity,
             "filter_time_min": to_ISODate(filter_time_min),
             "filter_time_max": to_ISODate(filter_time_max),
@@ -207,7 +232,8 @@ class UtilisationSpeedBreakdown(Search):
             "filter_vessel_propulsion": convert_to_list(
                 filter_vessel_propulsion
             ),
-            "exclude": exclude_params,
+            "crossfilters": crossfilters,
+            "exclude": exclude_params
         }
 
-        return TimeSeriesResult(super().search(**api_params))
+        return BreakdownResult(super().search(**api_params))

@@ -11,7 +11,7 @@ from vortexasdk.api.shared_types import Tag, to_ISODate
 
 from vortexasdk.api import ID
 from vortexasdk.operations import Search
-from vortexasdk.utils import convert_to_list
+from vortexasdk.utils import convert_to_list, sts_param_value
 
 
 class UtilisationQuantityTimeseries(Search):
@@ -43,6 +43,7 @@ class UtilisationQuantityTimeseries(Search):
         filter_vessel_dwt_min: int = None,
         filter_vessel_dwt_max: int = None,
         filter_ship_to_ship: bool = None,
+        filter_charterer_exists: bool = None,
         filter_activity: str = None,
         filter_time_min: datetime = datetime(2019, 10, 1, 0),
         filter_time_max: datetime = datetime(2019, 10, 1, 1),
@@ -61,9 +62,6 @@ class UtilisationQuantityTimeseries(Search):
         exclude_vessel_tags: Union [List[Tag], Tag] = None,
         exclude_vessel_scrubbers: str = None,
         exclude_vessel_risk_levels: Union[ID, List[ID]] = None,
-        exclude_filter_ship_to_ship: bool = None,
-        crossfilter_ship_to_ship: bool = False,
-        crossfilter_charterer_exists: bool = False
     ) -> TimeSeriesResult:
         """
 
@@ -129,6 +127,10 @@ class UtilisationQuantityTimeseries(Search):
 
             filter_vessel_status: The vessel status on which to base the filter. Enter 'vessel_status_ballast' for ballast vessels, 'vessel_status_laden_known' for laden vessels with known cargo (i.e. a type of cargo that Vortexa currently tracks) or 'any_activity' for any other vessels.
 
+            filter_charterer_exists: A boolean to include or exclude the records to those that have a charterer.
+            
+            filter_ship_to_ship: A boolean to include or exclude the records to those that are involved in an STS.
+
             exclude_filter_products: A product ID, or list of product IDs to exclude.
 
             exclude_filter_charterers: A charterer entity ID, or list of product IDs to exclude.
@@ -193,9 +195,13 @@ class UtilisationQuantityTimeseries(Search):
 
         """
 
+        sts_filter = sts_param_value(filter_ship_to_ship)
+
         crossfilters = {
-            "filter_ship_to_ship": crossfilter_ship_to_ship,
-            "filter_charterer_exists": crossfilter_charterer_exists
+            "filter_ship_to_ship": sts_filter["x_filter"],
+            # if charterer toggle is True, apply cross filter
+            # else make it false
+            "filter_charterer_exists": filter_charterer_exists == True
 
         }
 
@@ -213,7 +219,7 @@ class UtilisationQuantityTimeseries(Search):
             "filter_vessel_tags": convert_to_list(exclude_vessel_tags),
             "filter_vessel_risk_levels": convert_to_list(exclude_vessel_risk_levels),
             "filter_vessel_scrubbers": exclude_vessel_scrubbers,
-            "filter_ship_to_ship": exclude_filter_ship_to_ship
+            "filter_ship_to_ship": sts_filter["exclude"] 
         }
 
         api_params = {
@@ -227,7 +233,6 @@ class UtilisationQuantityTimeseries(Search):
             "filter_vessel_age_max": filter_vessel_age_max,
             "filter_vessel_dwt_min": filter_vessel_dwt_min,
             "filter_vessel_dwt_max": filter_vessel_dwt_max,
-            "filter_ship_to_ship": filter_ship_to_ship,
             "filter_voyage_id": convert_to_list(filter_voyage_id),
             "filter_vessel_status": convert_to_list(filter_vessel_status),
             "filter_charterers": convert_to_list(filter_charterers),

@@ -5,12 +5,13 @@ Try me out in your browser:
 """
 from typing import List, Union
 from datetime import datetime
+from vortexasdk.endpoints.geography_breakdown_result import GeoBreakdownResult
 from vortexasdk.endpoints.breakdown_result import BreakdownResult
 
 from vortexasdk.api import ID
 from vortexasdk.endpoints.endpoints import UTILISATION_DESTINATION_BREAKDOWN
 from vortexasdk.operations import Search
-from vortexasdk.utils import convert_to_list
+from vortexasdk.utils import convert_to_list, sts_param_value
 from vortexasdk.api.shared_types import to_ISODate
 
 
@@ -36,6 +37,8 @@ class UtilisationDestinationBreakdown(Search):
         filter_vessels: Union[ID, List[ID]] = None,
         filter_vessel_classes: Union[ID, List[ID]] = None,
         filter_vessel_status: str = None,
+        filter_ship_to_ship: bool = None,
+        filter_charterer_exists: bool = None,
         filter_vessel_age_min: int = None,
         filter_vessel_age_max: int = None,
         filter_vessel_dwt_min: int = None,
@@ -53,8 +56,8 @@ class UtilisationDestinationBreakdown(Search):
         exclude_owners: Union[ID, List[ID]] = None,
         exclude_vessel_flags: Union[ID, List[ID]] = None,
         exclude_vessel_ice_class: Union[ID, List[ID]] = None,
-        exclude_vessel_propulsion: Union[ID, List[ID]] = None,
-    ) -> BreakdownResult:
+        exclude_vessel_propulsion: Union[ID, List[ID]] = None
+    ) -> GeoBreakdownResult:
         """
         Number of unique vessels by destination.
 
@@ -110,6 +113,10 @@ class UtilisationDestinationBreakdown(Search):
 
             filter_vessel_propulsion: An attribute ID, or list of attribute IDs to filter on.
 
+            filter_charterer_exists: A boolean to include or exclude the records to those that have a charterer.
+            
+            filter_ship_to_ship: A boolean to include or exclude the records to those that are involved in an STS.
+
             exclude_origins: A geography ID, or list of geography IDs to exclude.
 
             exclude_destinations: A geography ID, or list of geography IDs to exclude.
@@ -161,6 +168,16 @@ class UtilisationDestinationBreakdown(Search):
 
         """
 
+        sts_filter = sts_param_value(filter_ship_to_ship)
+
+        crossfilters = {
+            "filter_ship_to_ship": sts_filter["x_filter"],
+            # if charterer toggle is True, apply cross filter
+            # else make it false
+            "filter_charterer_exists": filter_charterer_exists == True
+
+        }
+
         exclude_params = {
             "filter_origins": convert_to_list(exclude_origins),
             "filter_destinations": convert_to_list(exclude_destinations),
@@ -206,7 +223,8 @@ class UtilisationDestinationBreakdown(Search):
             "filter_vessel_propulsion": convert_to_list(
                 filter_vessel_propulsion
             ),
-            "exclude": exclude_params,
+            "crossfilters": crossfilters,
+            "exclude": exclude_params
         }
 
-        return BreakdownResult(super().search(query_type="breakdown", **api_params))
+        return GeoBreakdownResult(super().search(query_type="breakdown", **api_params))
