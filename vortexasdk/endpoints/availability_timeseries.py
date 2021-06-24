@@ -64,17 +64,9 @@ class AvailabilityTimeseries(Search):
 
             filter_time_max: The UTC end date of the time filter.
 
-            order: Used to sort the returned results. Must be one of the following: [‘vessel_status’,
-            ‘days_to_arrival’, ‘days_idle’].
-
-            order_direction: Determines the direction of sorting. ‘asc’ for ascending, ‘desc’ for
-            descending.
-
-            offset: Used to page results. The offset from which records should be returned.
-
-            size: Used to page results. The size of the result set. Between 0 and 500.
-            
             filter_owners: An corporation ID, or list of corporation IDs to filter on.
+            
+            filter_destination: A geography ID, or list of geography IDs to filter on.
 
             filter_products: A product ID, or list of product IDs to filter on.
 
@@ -85,6 +77,12 @@ class AvailabilityTimeseries(Search):
             filter_vessel_status: The vessel status on which to base the filter. Enter 'vessel_status_ballast' for ballast vessels, 'vessel_status_laden_known' for laden vessels with known cargo (i.e. a type of cargo that Vortexa currently tracks) or 'any_activity' for any other vessels
             
             filter_vessel_location: A location ID, or list of location IDs to filter on.
+
+            filter_port: Filter by port ID.
+
+            filter_region: Filter by region ID - takes precedence over filter_port if provided. This should be used in conjunction with `use_reference_port`
+            
+            filter_days_to_arrival: Filter availability by time to arrival in days`
             
             use_reference_port: If this flag is enabled, we will return data for
             the reference port instead of the user selected one,
@@ -102,6 +100,8 @@ class AvailabilityTimeseries(Search):
             filter_vessel_dwt_max: A number between 0 and 550000.
 
             filter_vessel_scrubbers: Either inactive 'disabled', or included 'inc' or excluded 'exc'.
+            
+            filter_recent_visits: Filter availability by each vessel's recent visits
 
             exclude_products: A product ID, or list of product IDs to exclude.
 
@@ -114,7 +114,8 @@ class AvailabilityTimeseries(Search):
             exclude_owners: An owner ID, or list of owner IDs to exclude.
 
             exclude_vessel_location: A location ID, or list of location IDs to filter on.
-
+            
+            exclude_destination: A location ID, or list of location IDs to filter on.
 
         # Returns
         `TimeSeriesResult`
