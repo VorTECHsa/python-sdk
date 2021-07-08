@@ -6,19 +6,18 @@ Try me out in your browser:
 from typing import List, Union
 from datetime import datetime
 from vortexasdk.endpoints.geography_breakdown_result import GeoBreakdownResult
-from vortexasdk.endpoints.breakdown_result import BreakdownResult
 
 from vortexasdk.api import ID
-from vortexasdk.endpoints.endpoints import UTILISATION_ORIGIN_BREAKDOWN
+from vortexasdk.endpoints.endpoints import FLEET_UTILISATION_ORIGIN_BREAKDOWN
 from vortexasdk.operations import Search
 from vortexasdk.utils import convert_to_list, sts_param_value
 from vortexasdk.api.shared_types import to_ISODate
 
 
-class UtilisationOriginBreakdown(Search):
+class FleetUtilisationOriginBreakdown(Search):
 
     def __init__(self):
-        Search.__init__(self, UTILISATION_ORIGIN_BREAKDOWN)
+        Search.__init__(self, FLEET_UTILISATION_ORIGIN_BREAKDOWN)
 
     def search(
         self,

@@ -2,7 +2,7 @@ import functools
 import os
 from multiprocessing.pool import Pool
 from typing import List
-from vortexasdk.api.availability import Availability
+from vortexasdk.api.availability import VesselAvailability
 
 import pandas as pd
 
@@ -16,7 +16,7 @@ from vortexasdk.logger import get_logger
 logger = get_logger(__name__)
 
 
-class AvailabilityResult(Result):
+class VesselAvailabilityResult(Result):
     """
     Container class holdings search results returns from the availability endpoint.
 
@@ -24,10 +24,10 @@ class AvailabilityResult(Result):
      or as a `pd.DataFrame` , respectively.
     """
 
-    def to_list(self) -> List[Availability]:
+    def to_list(self) -> List[VesselAvailability]:
         """Represent availability as a list."""
         # noinspection PyTypeChecker
-        return create_list(super().to_list(), Availability)
+        return create_list(super().to_list(), VesselAvailability)
 
     def to_df(self, columns=None) -> pd.DataFrame:
         """

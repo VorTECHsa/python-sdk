@@ -1,15 +1,15 @@
 from datetime import datetime
-from vortexasdk.endpoints.utilisation_speed_breakdown import UtilisationSpeedBreakdown
+from vortexasdk.endpoints.utilisation_speed_breakdown import FleetUtilisationSpeedBreakdown
 
 from docs.utils import to_markdown
 from tests.testcases import TestCaseUsingRealAPI
 
 
-class TestUtilisationSpeedBreakdownReal(TestCaseUsingRealAPI):
+class TestFleetUtilisationSpeedBreakdownReal(TestCaseUsingRealAPI):
     def test_search_returns_one_day(self):
         date = datetime(2019, 11, 10)
 
-        result = UtilisationSpeedBreakdown().search(
+        result = FleetUtilisationSpeedBreakdown().search(
             filter_activity="loading_state",
             breakdown_unit="kmh",
             filter_time_min=date,
@@ -23,7 +23,7 @@ class TestUtilisationSpeedBreakdownReal(TestCaseUsingRealAPI):
         start = datetime(2019, 11, 1)
         end = datetime(2019, 11, 10)
 
-        result = UtilisationSpeedBreakdown().search(
+        result = FleetUtilisationSpeedBreakdown().search(
             filter_activity="loading_state",
             breakdown_unit="kmh",
             filter_time_min=start,
@@ -39,7 +39,7 @@ class TestUtilisationSpeedBreakdownReal(TestCaseUsingRealAPI):
         start = datetime(2019, 11, 1)
         end = datetime(2019, 11, 10)
 
-        result = UtilisationSpeedBreakdown().search(
+        result = FleetUtilisationSpeedBreakdown().search(
             filter_activity="loading_state",
             breakdown_unit="mps",
             filter_time_min=start,
@@ -55,7 +55,7 @@ class TestUtilisationSpeedBreakdownReal(TestCaseUsingRealAPI):
         start = datetime(2019, 1, 1)
         end = datetime(2019, 11, 10)
 
-        result = UtilisationSpeedBreakdown().search(
+        result = FleetUtilisationSpeedBreakdown().search(
             filter_activity="loading_state",
             breakdown_unit="kmh",
             filter_time_min=start,
@@ -71,7 +71,7 @@ class TestUtilisationSpeedBreakdownReal(TestCaseUsingRealAPI):
         end = datetime(2019, 11, 10)
 
         df = (
-            UtilisationSpeedBreakdown()
+            FleetUtilisationSpeedBreakdown()
             .search(
                 filter_activity="loading_state",
                 breakdown_unit="kmh",
@@ -92,7 +92,7 @@ class TestUtilisationSpeedBreakdownReal(TestCaseUsingRealAPI):
     def test_with_params(self):
 
         df = (
-            UtilisationSpeedBreakdown()
+            FleetUtilisationSpeedBreakdown()
             .search(
                 filter_vessel_status="vessel_status_laden_known",
                 filter_origins="80aa9e4f3014c3d96559c8e642157edbb2b684ea0144ed76cd20b3af75110877",
@@ -113,7 +113,7 @@ class TestUtilisationSpeedBreakdownReal(TestCaseUsingRealAPI):
         end = datetime(2019, 11, 10)
 
         time_series_list = (
-            UtilisationSpeedBreakdown()
+            FleetUtilisationSpeedBreakdown()
             .search(
                 filter_activity="loading_state",
                 breakdown_unit="kmh",

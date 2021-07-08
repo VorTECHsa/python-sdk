@@ -5,9 +5,8 @@ Try me out in your browser:
 """
 from datetime import datetime
 from typing import List, Union
+from vortexasdk.endpoints.endpoints import FLEET_UTILISATION_TIMESERIES_AVG_DISTANCE
 from vortexasdk.endpoints.timeseries_result import TimeSeriesResult
-from vortexasdk.endpoints.breakdown_result import BreakdownResult
-from vortexasdk.endpoints.endpoints import UTILISATION_TIMESERIES_AVG_DISTANCE
 from vortexasdk.api.shared_types import Tag, to_ISODate
 
 from vortexasdk.api import ID
@@ -15,9 +14,9 @@ from vortexasdk.operations import Search
 from vortexasdk.utils import convert_to_list, sts_param_value
 
 
-class UtilisationAvgDistanceTimeseries(Search):
+class FleetUtilisationAvgDistanceTimeseries(Search):
     def __init__(self):
-        Search.__init__(self, UTILISATION_TIMESERIES_AVG_DISTANCE)
+        Search.__init__(self, FLEET_UTILISATION_TIMESERIES_AVG_DISTANCE)
 
     # noinspection PyUnresolvedReferences
     def search(

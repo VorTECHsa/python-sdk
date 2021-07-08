@@ -5,20 +5,19 @@ Try me out in your browser:
 """
 from typing import List, Union
 from datetime import datetime
+from vortexasdk.endpoints.endpoints import FLEET_UTILISATION_DESTINATION_BREAKDOWN
 from vortexasdk.endpoints.geography_breakdown_result import GeoBreakdownResult
-from vortexasdk.endpoints.breakdown_result import BreakdownResult
 
 from vortexasdk.api import ID
-from vortexasdk.endpoints.endpoints import UTILISATION_DESTINATION_BREAKDOWN
 from vortexasdk.operations import Search
 from vortexasdk.utils import convert_to_list, sts_param_value
 from vortexasdk.api.shared_types import to_ISODate
 
 
-class UtilisationDestinationBreakdown(Search):
+class FleetUtilisationDestinationBreakdown(Search):
 
     def __init__(self):
-        Search.__init__(self, UTILISATION_DESTINATION_BREAKDOWN)
+        Search.__init__(self, FLEET_UTILISATION_DESTINATION_BREAKDOWN)
 
     def search(
         self,
@@ -144,9 +143,9 @@ class UtilisationDestinationBreakdown(Search):
         _Top 5 countries by number of unique vessels by origin country breakdown, in the last quarter._
 
         ```python
-        >>> from vortexasdk import UtilisationDestinationBreakdown, Vessels
+        >>> from vortexasdk import FleetUtilisationDestinationBreakdown, Vessels
         >>> from datetime import datetime
-        >>> search_result = UtilisationDestinationBreakdown().search(
+        >>> search_result = FleetUtilisationDestinationBreakdown().search(
         ...    breakdown_geography='country',
         ...    breakdown_size='5',
         ...    filter_time_min=datetime(2020, 10, 18),

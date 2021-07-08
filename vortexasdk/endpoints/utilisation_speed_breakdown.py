@@ -6,19 +6,18 @@ Try me out in your browser:
 from typing import List, Union
 from datetime import datetime
 from vortexasdk.endpoints.breakdown_result import BreakdownResult
-from vortexasdk.endpoints.endpoints import UTILISATION_SPEED_BREAKDOWN
+from vortexasdk.endpoints.endpoints import FLEET_UTILISATION_SPEED_BREAKDOWN
 
 from vortexasdk.api import ID
 from vortexasdk.operations import Search
 from vortexasdk.utils import convert_to_list, sts_param_value
 from vortexasdk.api.shared_types import to_ISODate
-from vortexasdk.endpoints.timeseries_result import TimeSeriesResult
 
 
-class UtilisationSpeedBreakdown(Search):
+class FleetUtilisationSpeedBreakdown(Search):
 
     def __init__(self):
-        Search.__init__(self, UTILISATION_SPEED_BREAKDOWN)
+        Search.__init__(self, FLEET_UTILISATION_SPEED_BREAKDOWN)
 
     def search(
         self,
@@ -143,9 +142,9 @@ class UtilisationSpeedBreakdown(Search):
         _Average daily speed by week and knots, over the last month, from Middle East to China; broken down by vessel class._
 
         ```python
-        >>> from vortexasdk import UtilisationSpeedBreakdown
+        >>> from vortexasdk import FleetUtilisationSpeedBreakdown
         >>> from datetime import datetime
-        >>> search_result = UtilisationSpeedBreakdown().search(
+        >>> search_result = FleetUtilisationSpeedBreakdown().search(
         ...    filter_vessel_status="vessel_status_laden_known",
         ...    filter_origins="80aa9e4f3014c3d96559c8e642157edbb2b684ea0144ed76cd20b3af75110877",
         ...    filter_destinations="934c47f36c16a58d68ef5e007e62a23f5f036ee3f3d1f5f85a48c572b90ad8b2",

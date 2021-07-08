@@ -7,7 +7,7 @@ from typing import  List, Union, Dict
 from vortexasdk.endpoints.timeseries_result import TimeSeriesResult
 
 from vortexasdk.api import ID
-from vortexasdk.endpoints.endpoints import AVAILABILITY_BREAKDOWN_RESOURCE
+from vortexasdk.endpoints.endpoints import VESSEL_AVAILABILITY_BREAKDOWN_RESOURCE
 from vortexasdk.logger import get_logger
 from vortexasdk.operations import Search
 from vortexasdk.utils import convert_to_list
@@ -15,10 +15,10 @@ from vortexasdk.utils import convert_to_list
 logger = get_logger(__name__)
 
 
-class AvailabilityBreakdown(Search):
+class VesselAvailabilityBreakdown(Search):
 
     def __init__(self):
-        Search.__init__(self, AVAILABILITY_BREAKDOWN_RESOURCE)
+        Search.__init__(self, VESSEL_AVAILABILITY_BREAKDOWN_RESOURCE)
 
     def search(
         self,
@@ -117,9 +117,9 @@ class AvailabilityBreakdown(Search):
        _Breakdown of number and DWT of all vessels arriving at Rotterdam in the next 5 days._
 
         ```python
-        >>> from vortexasdk import AvailabilitySearch, Geographies
+        >>> from vortexasdk import VesselAvailabilityBreakdown, Geographies
         >>> rotterdam = [g.id for g in Geographies().search("rotterdam").to_list() if "port" in g.layer]
-        >>> df = AvailabilitySearch().search(
+        >>> df = VesselAvailabilityBreakdown().search(
         ...        filter_port=rotterdam[0],
         ...        filter_days_to_arrival={"min": 0, "max": 5}
         ... ).to_df()

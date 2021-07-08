@@ -1,12 +1,8 @@
 from dataclasses import dataclass
 from typing import List, Optional
 
-from vortexasdk.api.geography import GeographyEntity
-from vortexasdk.api.product import ProductEntity
 from vortexasdk.api.serdes import FromDictMixin
 from vortexasdk.api.shared_types import Entity, ISODate
-from vortexasdk.api.id import ID
-from vortexasdk.api.vessel import VesselEntity
 
 
 @dataclass(frozen=True)
@@ -41,7 +37,7 @@ class VesselFixtures:
 
 
 @dataclass(frozen=True)
-class Availability(FromDictMixin):
+class VesselAvailability(FromDictMixin):
     """
 
     Cargo movements are the base data set the Vortexa API is centred around.

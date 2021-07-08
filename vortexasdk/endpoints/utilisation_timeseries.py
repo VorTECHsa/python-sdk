@@ -6,7 +6,7 @@ Try me out in your browser:
 from datetime import datetime
 from typing import List, Union
 from vortexasdk.endpoints.timeseries_result import TimeSeriesResult
-from vortexasdk.endpoints.endpoints import UTILISATION_TIMESERIES
+from vortexasdk.endpoints.endpoints import FLEET_UTILISATION_TIMESERIES
 from vortexasdk.api.shared_types import Tag, to_ISODate
 
 from vortexasdk.api import ID
@@ -14,10 +14,10 @@ from vortexasdk.operations import Search
 from vortexasdk.utils import convert_to_list, sts_param_value
 
 
-class UtilisationTimeseries(Search):
+class FleetUtilisationTimeseries(Search):
 
     def __init__(self):
-        Search.__init__(self, UTILISATION_TIMESERIES)
+        Search.__init__(self, FLEET_UTILISATION_TIMESERIES)
 
     # noinspection PyUnresolvedReferences
     def search(

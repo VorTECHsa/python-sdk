@@ -1,16 +1,16 @@
 from datetime import datetime
-from vortexasdk.endpoints.utilisation_origin_breakdown import UtilisationOriginBreakdown
+from vortexasdk.endpoints.utilisation_origin_breakdown import FleetUtilisationOriginBreakdown
 
 
 from docs.utils import to_markdown
 from tests.testcases import TestCaseUsingRealAPI
 
 
-class TestOriginBreakdownReal(TestCaseUsingRealAPI):
+class TestFleetUtilisationOriginBreakdownReal(TestCaseUsingRealAPI):
     def test_search_returns_one_day(self):
         date = datetime(2019, 11, 10)
 
-        result = UtilisationOriginBreakdown().search(
+        result = FleetUtilisationOriginBreakdown().search(
             filter_time_min=date,
             filter_time_max=date
         )
@@ -22,7 +22,7 @@ class TestOriginBreakdownReal(TestCaseUsingRealAPI):
         end = datetime(2019, 11, 10)
 
         df = (
-            UtilisationOriginBreakdown()
+            FleetUtilisationOriginBreakdown()
             .search(
                 filter_time_min=start,
                 filter_time_max=end
@@ -37,7 +37,7 @@ class TestOriginBreakdownReal(TestCaseUsingRealAPI):
         end = datetime(2021, 1, 18)
 
         df = (
-            UtilisationOriginBreakdown()
+            FleetUtilisationOriginBreakdown()
             .search(
                 filter_time_min=start,
                 filter_time_max=end,
@@ -54,7 +54,7 @@ class TestOriginBreakdownReal(TestCaseUsingRealAPI):
         end = datetime(2019, 11, 10)
 
         time_series_list = (
-            UtilisationOriginBreakdown()
+            FleetUtilisationOriginBreakdown()
             .search(
                 filter_time_min=start,
                 filter_time_max=end

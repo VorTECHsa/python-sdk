@@ -1,12 +1,11 @@
 from datetime import datetime
-from vortexasdk.endpoints.utilisation_timeseries import UtilisationTimeseries
-from vortexasdk.endpoints.geographies import Geographies
+from vortexasdk.endpoints.utilisation_timeseries import FLeetUtilisationTimeseries
 from vortexasdk.endpoints.products import Products
 
 
 from tests.testcases import TestCaseUsingRealAPI
 
-class TestUtilisationTimeSeries(TestCaseUsingRealAPI):
+class TestFleetUtilisationTimeSeries(TestCaseUsingRealAPI):
     def test_search_returns_all_days(self):
         start = datetime(2021, 1, 11)
         end = datetime(2021, 1, 18)
@@ -15,7 +14,7 @@ class TestUtilisationTimeSeries(TestCaseUsingRealAPI):
         crude = [p.id for p in Products().search("crude").to_list() if "Crude" == p.name]
 
         df = (
-            UtilisationTimeseries()
+            FLeetUtilisationTimeseries()
             .search(
                 filter_time_min=start,
                 filter_time_max=end,

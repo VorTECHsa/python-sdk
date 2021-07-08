@@ -4,10 +4,10 @@ Try me out in your browser:
 [![Binder](https://img.shields.io/badge/try%20me%20out-launch%20notebook-579ACA.svg?logo=data:image/png;base64,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)](https://mybinder.org/v2/gh/VorTECHsa/python-sdk/master?filepath=docs%2Fexamples%2Ftry_me_out%2Favailability_search.ipynb)
 """
 from typing import Dict, List, Union
-from vortexasdk.endpoints.availability_result import AvailabilityResult
+from vortexasdk.endpoints.availability_result import VesselAvailabilityResult
 
 from vortexasdk.api import ID
-from vortexasdk.endpoints.endpoints import AVAILABILITY_SEARCH_RESOURCE
+from vortexasdk.endpoints.endpoints import VESSEL_AVAILABILITY_SEARCH_RESOURCE
 from vortexasdk.logger import get_logger
 from vortexasdk.operations import Search
 from vortexasdk.utils import convert_to_list
@@ -15,7 +15,7 @@ from vortexasdk.utils import convert_to_list
 logger = get_logger(__name__)
 
 
-class AvailabilitySearch(Search):
+class VesselAvailabilitySearch(Search):
     """
     Vessel Availability Endpoint, use this to search through Vortexa's vessel availability data.
 
@@ -24,7 +24,7 @@ class AvailabilitySearch(Search):
     _MAX_PAGE_RESULT_SIZE = 500
 
     def __init__(self):
-        Search.__init__(self, AVAILABILITY_SEARCH_RESOURCE)
+        Search.__init__(self, VESSEL_AVAILABILITY_SEARCH_RESOURCE)
 
     def search(
         self,
@@ -57,7 +57,7 @@ class AvailabilitySearch(Search):
         offset: int = None,
         order: str = None,
         order_direction: str = None,
-    ) -> AvailabilityResult:
+    ) -> VesselAvailabilityResult:
         """
         List of vessels that can be available to load a given cargo at a given port on a future date.
 
@@ -128,16 +128,16 @@ class AvailabilitySearch(Search):
 
 
         # Returns
-        `AvailabilityResult`
+        `VesselAvailabilityResult`
 
 
         # Example
         Top 25 available vessels arriving at Rotterdam port in the next 5 days.
 
         ```python
-        >>> from vortexasdk import AvailabilitySearch, Geographies
+        >>> from vortexasdk import VesselAvailabilitySearch, Geographies
         >>> rotterdam = "68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e"
-        >>> df = AvailabilitySearch().search(
+        >>> df = VesselAvailabilitySearch().search(
         ...        filter_port=rotterdam,
         ...        filter_days_to_arrival={"min": 0, "max": 35}
         ... ).to_df(columns=['available_at','vessel_name','vessel_class']).head(25)
@@ -194,4 +194,4 @@ class AvailabilitySearch(Search):
             "size": self._MAX_PAGE_RESULT_SIZE,
         }
 
-        return AvailabilityResult(super().search(**api_params))
+        return VesselAvailabilityResult(super().search(**api_params))
