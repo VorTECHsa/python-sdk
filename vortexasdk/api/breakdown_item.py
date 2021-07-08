@@ -10,8 +10,8 @@ class BreakdownItem(FromDictMixin):
     """
     Generic container class holding a _key_, _value_ pair, and a _count_ and breakdown of records contributing to the given value.
 
-    For example, this class could hold the total tonnage exported (value) on 2019-01-01 (key), and the count of cargo
-    movements contributing to this tonnage aggregate, ie the number of cargo movements on this day (count).
+    For example, this class could hold the average speed of vessels (value) on 2019-01-01 (key), the number of vessels contributing to the
+    this average (count) and additional information about the aggregation (breakdown).
     """
 
     key: ISODate

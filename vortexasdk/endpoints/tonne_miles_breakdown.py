@@ -5,7 +5,6 @@ Try me out in your browser:
 """
 from typing import List, Union
 from datetime import datetime
-from vortexasdk.endpoints.breakdown_result import BreakdownResult
 
 from vortexasdk.api import ID
 from vortexasdk.endpoints.endpoints import TONNE_MILES_BREAKDOWN

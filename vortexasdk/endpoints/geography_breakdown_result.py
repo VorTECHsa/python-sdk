@@ -1,6 +1,5 @@
 from typing import List
 from vortexasdk.api.geo_breakdown_item import GeoBreakdownItem
-from vortexasdk.api.breakdown_item import BreakdownItem
 
 import pandas as pd
 
