@@ -41,6 +41,8 @@ generate:
       - vortexasdk.api.cargo_movement++
   - entities/vessel_movement.md:
       - vortexasdk.api.vessel_movement++
+  - entities/availability.md:
+      - vortexasdk.api.availability++
   - endpoints/tonne_miles_breakdown.md:
       - vortexasdk.endpoints.tonne_miles_breakdown++
   - endpoints/availability_search.md:

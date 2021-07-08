@@ -9,9 +9,7 @@ from vortexasdk.api.shared_types import Entity, ISODate
 class DeclaredDestination:
     """
 
-    A CargoEvent represents an event that occurred to a cargo during a cargo movement.
-
-    [Cargo Event Entities Further Documentation](https://docs.vortexa.com/reference/intro-cargo-events)
+    Current destination location, as reported by the available vessel
 
     """
     eta: Optional[ISODate]
@@ -22,9 +20,7 @@ class DeclaredDestination:
 class VesselFixtures:
     """
 
-    A CargoEvent represents an event that occurred to a cargo during a cargo movement.
-
-    [Cargo Event Entities Further Documentation](https://docs.vortexa.com/reference/intro-cargo-events)
+    Current fixture information for the available vessel    
 
     """
     origin: Optional[str]
@@ -40,11 +36,7 @@ class VesselFixtures:
 class VesselAvailability(FromDictMixin):
     """
 
-    Cargo movements are the base data set the Vortexa API is centred around.
-
-    Each movement represents a journey of a certain quantity of a product between places.
-
-    [Cargo Movement Further Documentation](https://docs.vortexa.com/reference/intro-cargo-movement)
+    Vessel Availability shows vessels that are available to load a given cargo at a given port within a specified time range.
 
     """
     available_at: ISODate
