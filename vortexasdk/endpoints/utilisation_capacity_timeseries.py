@@ -155,11 +155,11 @@ class FleetUtilisationCapacityTimeseries(Search):
         last 7 days, by origin_country breakdown._
 
         ```python
-        >>> from vortexasdk import class FleetUtilisationCapacityTimeseries, Geographies, Products
+        >>> from vortexasdk import FleetUtilisationCapacityTimeseries, Geographies, Products
         >>> from datetime import datetime
         >>> rotterdam = [g.id for g in Geographies().search("rotterdam").to_list() if "port" in g.layer]
         >>> crude = [p.id for p in Products().search("crude").to_list() if "Crude" == p.name]
-        >>> search_result = class FleetUtilisationCapacityTimeseries().search(
+        >>> search_result = FleetUtilisationCapacityTimeseries().search(
         ...    filter_origins=rotterdam,
         ...    filter_products=crude,
         ...    filter_time_min=datetime(2021, 1, 11),
