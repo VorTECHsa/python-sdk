@@ -148,7 +148,7 @@ class FleetUtilisationCapacityTimeseries(Search):
             exclude_vessel_risk_levels: A vessel risk level, or list of vessel risk levels to exclude.
 
         # Returns
-        `TimeSeriesResult`
+        `BreakdownResult`
 
         # Example
         _Ton days supply of vessels originating from Rotterdam by daily frequency over the
