@@ -3,12 +3,12 @@ from dataclasses import dataclass
 from vortexasdk.api.serdes import FromDictMixin
 
 @dataclass(frozen=True)
-class GeoBreakdownItem(FromDictMixin):
+class GeographyBreakdownItem(FromDictMixin):
     """
-    Generic container class holding a _key_, _value_ pair, and a _count_ of records contributing to the given value.
+    A container class holding a _key_, _value_ pair, and a _count_ of records contributing to the given value.
 
-    For example, this class could hold the total tonnage exported (value) on 2019-01-01 (key), and the count of cargo
-    movements contributing to this tonnage aggregate, ie the number of cargo movements on this day (count).
+    For example, this class could hold the total number of unique vessels (value) on for a given geography (key), 
+    and the count of vessel movements contributing to this value in the specified period (count).
     """
 
     key: str

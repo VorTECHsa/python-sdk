@@ -6,7 +6,7 @@ Try me out in your browser:
 from typing import List, Union
 from datetime import datetime
 from vortexasdk.endpoints.endpoints import FLEET_UTILISATION_DESTINATION_BREAKDOWN
-from vortexasdk.endpoints.geography_breakdown_result import GeoBreakdownResult
+from vortexasdk.endpoints.geography_breakdown_result import GeographyBreakdownResult
 
 from vortexasdk.api import ID
 from vortexasdk.operations import Search
@@ -56,7 +56,7 @@ class FleetUtilisationDestinationBreakdown(Search):
         exclude_vessel_flags: Union[ID, List[ID]] = None,
         exclude_vessel_ice_class: Union[ID, List[ID]] = None,
         exclude_vessel_propulsion: Union[ID, List[ID]] = None
-    ) -> GeoBreakdownResult:
+    ) -> GeographyBreakdownResult:
         """
         Number of unique vessels by destination.
 
@@ -137,7 +137,7 @@ class FleetUtilisationDestinationBreakdown(Search):
 
 
         # Returns
-        `GeoBreakdownResult`
+        `GeographyBreakdownResult`
 
         # Example
         _Top 5 countries by number of unique vessels by origin country breakdown, in the last quarter._
@@ -225,4 +225,4 @@ class FleetUtilisationDestinationBreakdown(Search):
             "exclude": exclude_params
         }
 
-        return GeoBreakdownResult(super().search(query_type="breakdown", **api_params))
+        return GeographyBreakdownResult(super().search(query_type="breakdown", **api_params))
