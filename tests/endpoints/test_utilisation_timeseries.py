@@ -1,5 +1,5 @@
 from datetime import datetime
-from vortexasdk.endpoints.utilisation_timeseries import FLeetUtilisationTimeseries
+from vortexasdk.endpoints.utilisation_timeseries import FleetUtilisationTimeseries
 from vortexasdk.endpoints.products import Products
 
 
@@ -14,7 +14,7 @@ class TestFleetUtilisationTimeSeries(TestCaseUsingRealAPI):
         crude = [p.id for p in Products().search("crude").to_list() if "Crude" == p.name]
 
         df = (
-            FLeetUtilisationTimeseries()
+            FleetUtilisationTimeseries()
             .search(
                 filter_time_min=start,
                 filter_time_max=end,
