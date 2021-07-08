@@ -46,8 +46,8 @@ class GeographyBreakdownResult(Result):
         # Example:
 
         If we're aggregating origin breakdown by vessel count, then the `key` column holds the name of the country,
-        the `value` column holds the number of movements on that day, and the `count` column holds
-        the number of vessels contributing towards this day's movements.
+        the `value` column holds the number of unique vessels on that day, and the `count` column holds
+        the number of vessels movements contributing towards this day's movements.
 
         """
 
