@@ -143,9 +143,9 @@ class FleetUtilisationOriginBreakdown(Search):
         _Top 5 countries by number of unique vessels by origin country breakdown, in the last quarter._
 
         ```python
-        >>> from vortexasdk import UtilisationOriginBreakdown, Vessels
+        >>> from vortexasdk import FleetUtilisationOriginBreakdown, Vessels
         >>> from datetime import datetime
-        >>> search_result = UtilisationOriginBreakdown().search(
+        >>> search_result = FleetUtilisationOriginBreakdown().search(
         ...    breakdown_geography='country',
         ...    breakdown_size='5',
         ...    filter_time_min=datetime(2020, 10, 18),

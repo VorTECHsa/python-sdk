@@ -153,11 +153,11 @@ class FleetUtilisationTimeseries(Search):
         _Utilisation of vessels carrying Crude/Condensate, departing from Rotterdam over the last 7 days, by quantity breakdown._
 
         ```python
-        >>> from vortexasdk import UtilisationTimeseries, Geographies, Products
+        >>> from vortexasdk import FleetUtilisationTimeseries, Geographies, Products
         >>> from datetime import datetime
         >>> rotterdam = [g.id for g in Geographies().search("rotterdam").to_list() if "port" in g.layer]
         >>> crude = [p.id for p in Products().search("crude").to_list() if "Crude" == p.name]
-        >>> search_result = UtilisationTimeseries().search(
+        >>> search_result = FleetUtilisationTimeseries().search(
         ...    filter_origins=rotterdam,
         ...    filter_products=crude,
         ...    filter_time_min=datetime(2021, 1, 11),
