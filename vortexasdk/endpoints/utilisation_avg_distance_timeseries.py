@@ -153,8 +153,7 @@ class FleetUtilisationAvgDistanceTimeseries(Search):
         `TimeSeriesResult`
 
         # Example
-        _Ton days supply (ballast) of vessels originating from the Middle East by daily frequency over the
-        last 7 days, by origin_country breakdown._
+        _Average distance traveled per day, by all crude carrying vessels traveling from Rotterdam, in kilometers._
 
         ```python
         >>> from vortexasdk import FleetUtilisationAvgDistanceTimeseries, Geographies, Products
@@ -167,6 +166,7 @@ class FleetUtilisationAvgDistanceTimeseries(Search):
         ...    filter_time_min=datetime(2021, 1, 11),
         ...    filter_time_max=datetime(2021, 1, 18),
         ...    timeseries_frequency="day",
+        ...    timeseries_unit="km",
         ...    timeseries_property="quantity")
         >>> df = search_result.to_df()
 

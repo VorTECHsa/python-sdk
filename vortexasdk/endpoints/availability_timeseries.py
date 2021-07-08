@@ -122,7 +122,7 @@ class VesselAvailabilityTimeseries(Search):
 
 
         # Example
-       _Breakdown of number and DWT of all vessels arriving at Rotterdam in the next 5 days._
+       _Time series for the number of vessels available between 0 to 5 days, at port Rotterdam, over 4 days._
 
         ```python
         >>> from vortexasdk import VesselAvailabilityTimeseries, Geographies

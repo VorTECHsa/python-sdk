@@ -5,8 +5,8 @@ Try me out in your browser:
 """
 from datetime import datetime
 from typing import List, Union
+from vortexasdk.endpoints.breakdown_result import BreakdownResult
 from vortexasdk.endpoints.endpoints import FLEET_UTILISATION_TIMESERIES_QUANTITY
-from vortexasdk.endpoints.timeseries_result import TimeSeriesResult
 from vortexasdk.api.shared_types import Tag, to_ISODate
 
 from vortexasdk.api import ID
@@ -60,7 +60,7 @@ class FleetUtilisationQuantityTimeseries(Search):
         exclude_vessel_propulsion: Union[ID, List[ID]] = None,
         exclude_vessel_tags: Union [List[Tag], Tag] = None,
         exclude_vessel_risk_levels: Union[ID, List[ID]] = None,
-    ) -> TimeSeriesResult:
+    ) -> BreakdownResult:
         """
 
         Sum of cargoes quantity for each day. For frequencies other than ‘day’, the values returned are
@@ -150,11 +150,10 @@ class FleetUtilisationQuantityTimeseries(Search):
             exclude_filter_vessel_risk_levels: A vessel risk level, or list of vessel risk levels to exclude.
 
         # Returns
-        `TimeSeriesResult`
+        `BreakdownResult`
 
         # Example
-        _Ton days supply (ballast) of vessels originating from the Middle East by daily frequency over the
-        last 7 days, by origin_country breakdown._
+        _Ton days demand of crude carrying vessels from Rotterdam over the last 7 days._
 
         ```python
         >>> from vortexasdk import FleetUtilisationQuantityTimeseries, Geographies, Products
@@ -174,16 +173,16 @@ class FleetUtilisationQuantityTimeseries(Search):
 
         Gives the following:
 
-        |    | key                      |     value |     count |
-        |---:|:-------------------------|----------:|----------:|
-        |  0 | 2021-01-11T00:00:00.000Z | 24715     | 2         |
-        |  1 | 2021-01-12T00:00:00.000Z | 31203     | 3         |
-        |  2 | 2021-01-13T00:00:00.000Z | 40851     | 4         |
-        |  3 | 2021-01-14T00:00:00.000Z | 68033     | 4         |
-        |  4 | 2021-01-15T00:00:00.000Z | 60213     | 3         |
-        |  5 | 2021-01-16T00:00:00.000Z | 159031    | 4         |
-        |  6 | 2021-01-17T00:00:00.000Z | 159031    | 4         |
-        |  7 | 2021-01-18T00:00:00.000Z | 122201    | 3         |
+        |    | key                      |     value |     count |   breakdown |
+        |---:|:-------------------------|----------:|----------:|------------:|
+        |  0 | 2021-01-11T00:00:00.000Z | 24715     | 2         | [{...}]     |
+        |  1 | 2021-01-12T00:00:00.000Z | 31203     | 3         | [{...}]     |  
+        |  2 | 2021-01-13T00:00:00.000Z | 40851     | 4         | [{...}]     |
+        |  3 | 2021-01-14T00:00:00.000Z | 68033     | 4         | [{...}]     |
+        |  4 | 2021-01-15T00:00:00.000Z | 60213     | 3         | [{...}]     |
+        |  5 | 2021-01-16T00:00:00.000Z | 159031    | 4         | [{...}]     |
+        |  6 | 2021-01-17T00:00:00.000Z | 159031    | 4         | [{...}]     |
+        |  7 | 2021-01-18T00:00:00.000Z | 122201    | 3         | [{...}]     |
 
 
 
@@ -244,4 +243,4 @@ class FleetUtilisationQuantityTimeseries(Search):
             "crossfilters": crossfilters,
         }
 
-        return TimeSeriesResult(super().search(**api_params))
+        return BreakdownResult(super().search(**api_params))
