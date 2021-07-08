@@ -5,8 +5,8 @@ Try me out in your browser:
 """
 from datetime import datetime
 from typing import List, Union
+from vortexasdk.endpoints.breakdown_result import BreakdownResult
 from vortexasdk.endpoints.endpoints import FLEET_UTILISATION_TIMESERIES_AVG_DISTANCE
-from vortexasdk.endpoints.timeseries_result import TimeSeriesResult
 from vortexasdk.api.shared_types import Tag, to_ISODate
 
 from vortexasdk.api import ID
@@ -59,7 +59,7 @@ class FleetUtilisationAvgDistanceTimeseries(Search):
         exclude_vessel_propulsion: Union[ID, List[ID]] = None,
         exclude_vessel_tags: Union [List[Tag], Tag] = None,
         exclude_vessel_risk_levels: Union[ID, List[ID]] = None,
-    ) -> TimeSeriesResult:
+    ) -> BreakdownResult:
         """
 
         Sum of the average distance for each day. For frequencies other than ‘day’, the values returned
@@ -150,7 +150,7 @@ class FleetUtilisationAvgDistanceTimeseries(Search):
 
 
         # Returns
-        `TimeSeriesResult`
+        `BreakdownResult`
 
         # Example
         _Average distance traveled per day, by all crude carrying vessels traveling from Rotterdam, in kilometers._
@@ -174,16 +174,16 @@ class FleetUtilisationAvgDistanceTimeseries(Search):
 
         Gives the following:
 
-        |    | key                      |     value |     count |
-        |---:|:-------------------------|----------:|----------:|
-        |  0 | 2021-01-11T00:00:00.000Z | 140.993378| 2         |
-        |  1 | 2021-01-12T00:00:00.000Z | 71.484975 | 3         |
-        |  2 | 2021-01-13T00:00:00.000Z | 90.042649 | 4         |
-        |  3 | 2021-01-14T00:00:00.000Z | 90.042649 | 4         |
-        |  4 | 2021-01-15T00:00:00.000Z | 64.567284 | 3         |
-        |  5 | 2021-01-16T00:00:00.000Z | 43.663690 | 4         |
-        |  6 | 2021-01-17T00:00:00.000Z | 43.663690 | 4         |
-        |  7 | 2021-01-18T00:00:00.000Z | 64.567284 | 3         |
+        |    | key                      |     value |     count | breakdown |
+        |---:|:-------------------------|----------:|----------:|----------:|
+        |  0 | 2021-01-11T00:00:00.000Z | 140.993378| 2         | [{...}]   |
+        |  1 | 2021-01-12T00:00:00.000Z | 71.484975 | 3         | [{...}]   |
+        |  2 | 2021-01-13T00:00:00.000Z | 90.042649 | 4         | [{...}]   |
+        |  3 | 2021-01-14T00:00:00.000Z | 90.042649 | 4         | [{...}]   |
+        |  4 | 2021-01-15T00:00:00.000Z | 64.567284 | 3         | [{...}]   |
+        |  5 | 2021-01-16T00:00:00.000Z | 43.663690 | 4         | [{...}]   |
+        |  6 | 2021-01-17T00:00:00.000Z | 43.663690 | 4         | [{...}]   |
+        |  7 | 2021-01-18T00:00:00.000Z | 64.567284 | 3         | [{...}]   |
 
 
         """
@@ -244,4 +244,4 @@ class FleetUtilisationAvgDistanceTimeseries(Search):
             "crossfilters": crossfilters,
         }
 
-        return TimeSeriesResult(super().search(**api_params))
+        return BreakdownResult(super().search(**api_params))
