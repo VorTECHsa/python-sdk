@@ -1,28 +1,27 @@
 
-from vortexasdk.endpoints.geographies import Geographies
-from vortexasdk.endpoints.availability_search import AvailabilitySearch
+from vortexasdk.endpoints.availability_search import VesselAvailabilitySearch
 from tests.testcases import TestCaseUsingRealAPI
 
 rotterdam = "68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e"
 days_to_arrival = {"min": 0, "max": 5}
 
-class TestAvailabilityReal(TestCaseUsingRealAPI):
+class TestVesselAvailabilityReal(TestCaseUsingRealAPI):
     def test_default_search(self):
-        results = AvailabilitySearch().search(
+        results = VesselAvailabilitySearch().search(
             filter_port=rotterdam,
             filter_days_to_arrival=days_to_arrival
         )
         assert len(results) > 10
     
     def test_days_to_arrival(self):
-        results = AvailabilitySearch().search(
+        results = VesselAvailabilitySearch().search(
             filter_port=rotterdam,
             filter_days_to_arrival=days_to_arrival
         )
         assert len(results) > 10
 
     def test_exclusion_filters(self):
-        results = AvailabilitySearch().search(
+        results = VesselAvailabilitySearch().search(
             filter_port=rotterdam,
             filter_days_to_arrival=days_to_arrival,
             exclude_vessel_classes=["vlcc_plus"],
@@ -31,7 +30,7 @@ class TestAvailabilityReal(TestCaseUsingRealAPI):
         assert len(results) > 10
 
     def test_multiple_classes(self):
-        results = AvailabilitySearch().search(
+        results = VesselAvailabilitySearch().search(
             filter_port=rotterdam,
             filter_days_to_arrival=days_to_arrival,
             filter_vessel_classes=["vlcc_plus", "suezmax"],
@@ -40,7 +39,7 @@ class TestAvailabilityReal(TestCaseUsingRealAPI):
         assert len(results) > 10
   
     def test_df(self):
-        df = AvailabilitySearch().search(
+        df = VesselAvailabilitySearch().search(
             filter_port=rotterdam,
             filter_days_to_arrival=days_to_arrival,
         ).to_df(columns=['available_at','vessel_name','vessel_class']).head(2)
