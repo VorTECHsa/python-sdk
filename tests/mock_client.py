@@ -42,5 +42,5 @@ class MockVortexaClient(AbstractVortexaClient):
         entities = MockVortexaClient._results[resource]
         return [e for e in entities if e["id"] == id]
 
-    def search(self, resource: str, query_type=None, **data) -> List:
+    def search(self, resource: str, response_type=None, **data) -> List:
         return MockVortexaClient._results[resource]

@@ -226,4 +226,4 @@ class FleetUtilisationOriginBreakdown(Search):
             "exclude": exclude_params
         }
 
-        return GeographyBreakdownResult(super().search(query_type="breakdown", **api_params))
+        return GeographyBreakdownResult(super().search(response_type="breakdown", **api_params))

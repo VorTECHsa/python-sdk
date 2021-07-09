@@ -193,4 +193,4 @@ class VesselAvailabilityTimeseries(Search):
             "exclude": exclude_params,
         }
 
-        return TimeSeriesResult(super().search(query_type="breakdown", **api_params))
+        return TimeSeriesResult(super().search(response_type="breakdown", **api_params))
