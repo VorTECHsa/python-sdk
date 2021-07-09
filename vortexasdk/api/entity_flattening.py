@@ -19,11 +19,10 @@ def _format_keys(dictionary):
     return flat_with_formatted_keys
 
 
-def convert_vessel_availability_to_flat_dict(cme: Dict, cols="all") -> Dict:
+def convert_vessel_availability_to_flat_dict(va: Dict, cols="all") -> Dict:
     """Convert nested `VesselAvailability` object to flat dictionary, keeping *cols*."""
-    as_dict = _group_vessel_availability_attributes_by_layer(cme)
 
-    formatted = flatten_dictionary(as_dict)
+    formatted = flatten_dictionary(va)
 
     if cols == "all":
         return formatted
@@ -52,10 +51,6 @@ def convert_vessel_movement_to_flat_dict(vm: Dict, cols="all") -> Dict:
         return formatted
     else:
         return {k: v for k, v in formatted.items() if k in cols}
-
-
-def _group_vessel_availability_attributes_by_layer(va: Dict) -> Dict:
-    return va
 
 def _group_vessel_movement_attributes_by_layer(vm: Dict) -> Dict:
     """Group relevant `VesselMovement` attributes by `Entity.layer`."""
