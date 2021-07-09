@@ -21,10 +21,10 @@ pages:
     Vessel Availability Time Series: endpoints/availability_timeseries.md
     Vessel Availability Breakdown: endpoints/availability_breakdown.md
     Fleet Utilisation Speed Breakdown: endpoints/utilisation_speed_breakdown.md
-    Fleet Utilisation Timeseries: endpoints/utilisation_timeseries.md
-    Fleet Utilisation Avg Distance Timeseries: endpoints/utilisation_avg_distance_timeseries.md
-    Fleet Utilisation Quantity Timeseries: endpoints/utilisation_quantity_timeseries.md
-    Fleet Utilisation Capacity Timeseries: endpoints/utilisation_capacity_timeseries.md
+    Fleet Utilisation Time Series: endpoints/utilisation_timeseries.md
+    Fleet Utilisation Avg Distance Time Series: endpoints/utilisation_avg_distance_timeseries.md
+    Fleet Utilisation Quantity Time Series: endpoints/utilisation_quantity_timeseries.md
+    Fleet Utilisation Capacity Time Series: endpoints/utilisation_capacity_timeseries.md
     Fleet Utilisation Origin Breakdown: endpoints/utilisation_origin_breakdown.md
     Fleet Utilisation Destination Breakdown: endpoints/utilisation_destination_breakdown.md
 - Entities:
