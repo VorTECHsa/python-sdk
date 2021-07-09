@@ -36,7 +36,7 @@ class VesselAvailabilityResult(Result):
         # Arguments
             columns: Output columns present in the `pd.DataFrame`.
             Enter `columns='all'` to return all available columns.
-            Enter `columns=None` to use `vessel_movements.DEFAULT_COLUMNS`.
+            Enter `columns=None` to use `availability_result.DEFAULT_COLUMNS`.
 
         # Returns
         `pd.DataFrame`, one row per `Availability`.
@@ -61,7 +61,7 @@ class VesselAvailabilityResult(Result):
 
         ]
         ```
-        The exact default columns used can be found at `vessel_movements.DEFAULT_COLUMNS`
+        The exact default columns used can be found at `availability_result.DEFAULT_COLUMNS`
 
         A near complete list of columns is given below
         ```

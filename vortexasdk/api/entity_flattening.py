@@ -19,6 +19,20 @@ def _format_keys(dictionary):
     return flat_with_formatted_keys
 
 
+def convert_breakdown_to_flat_dict(va: Dict, cols="all") -> Dict:
+    """Convert nested `breakdown` object to flat dictionary, keeping *cols*."""
+
+    formatted = flatten_dictionary(va)
+
+    ret = {k: v for k, v in formatted.items() if k in cols}
+
+    print(ret)
+
+    if cols == "all":
+        return formatted
+    else:
+        return {k: v for k, v in formatted.items() if k in cols}
+
 def convert_vessel_availability_to_flat_dict(va: Dict, cols="all") -> Dict:
     """Convert nested `VesselAvailability` object to flat dictionary, keeping *cols*."""
 
