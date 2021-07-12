@@ -1,6 +1,5 @@
 from datetime import datetime
-from vortexasdk.endpoints.utilisation_timeseries import FleetUtilisationTimeseries
-from vortexasdk.endpoints.products import Products
+from vortexasdk import FleetUtilisationTimeseries, Products
 
 
 from tests.testcases import TestCaseUsingRealAPI

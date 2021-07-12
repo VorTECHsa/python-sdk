@@ -1,5 +1,5 @@
 from datetime import datetime
-from vortexasdk.endpoints.availability_timeseries import VesselAvailabilityTimeseries
+from vortexasdk import VesselAvailabilityTimeseries
 
 from tests.testcases import TestCaseUsingRealAPI
 

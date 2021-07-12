@@ -132,7 +132,7 @@ class VesselAvailabilitySearch(Search):
 
 
         # Example
-        Top 25 available vessels arriving at Rotterdam port in the next 5 days.
+        Top 2 available vessels arriving at Rotterdam port in the next 5 days.
 
         ```python
         >>> from vortexasdk import VesselAvailabilitySearch, Geographies
@@ -140,7 +140,7 @@ class VesselAvailabilitySearch(Search):
         >>> df = VesselAvailabilitySearch().search(
         ...        filter_port=rotterdam,
         ...        filter_days_to_arrival={"min": 0, "max": 35}
-        ... ).to_df(columns=['available_at','vessel_name','vessel_class']).head(25)
+        ... ).to_df(columns=['available_at','vessel_name','vessel_class']).head(2)
 
         ```
 
@@ -148,7 +148,7 @@ class VesselAvailabilitySearch(Search):
         |---:|:-------------------------|:-------------------------|-------------:|
         |  0 | 2017-09-30 15:30:27+00:00| STAR RIVER               |  handysize   |
         |  1 | 2017-08-29 14:51:32+00:00| AMALTHEA                 |  aframax     |
-00:00:00+00:00
+
         """
 
         exclude_params = {

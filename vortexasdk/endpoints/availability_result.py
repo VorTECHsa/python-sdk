@@ -6,9 +6,7 @@ from vortexasdk.api.availability import VesselAvailability
 
 import pandas as pd
 
-from vortexasdk.api.entity_flattening import (
-    convert_vessel_availability_to_flat_dict,
-)
+from vortexasdk.api.entity_flattening import convert_to_flat_dict
 from vortexasdk.api.search_result import Result
 from vortexasdk.result_conversions import create_dataframe, create_list
 from vortexasdk.logger import get_logger
@@ -192,7 +190,7 @@ class VesselAvailabilityResult(Result):
 
         logger.debug("Converting each Vessel Availability to a flat dictionary")
         flatten = functools.partial(
-            convert_vessel_availability_to_flat_dict, cols=columns
+            convert_to_flat_dict, cols=columns
         )
 
         with Pool(os.cpu_count()) as pool:
@@ -210,8 +208,8 @@ DEFAULT_COLUMNS = [
     'available_at',
     'vessel_name',
     'vessel_class',
-    'vessel_declared_destination.0.name'
     'vessel_declared_destination.0.eta',
+    'vessel_declared_destination.0.name',
     'vessel_owner_name',
     'vessel_status',
     'vessel_last_cargo.0.label',

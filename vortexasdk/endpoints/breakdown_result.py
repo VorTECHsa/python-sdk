@@ -1,5 +1,5 @@
 from typing import List
-from vortexasdk.api.entity_flattening import convert_breakdown_to_flat_dict
+from vortexasdk.api.entity_flattening import convert_to_flat_dict
 from vortexasdk.api.breakdown_item import BreakdownItem
 
 import pandas as pd
@@ -67,7 +67,7 @@ class BreakdownResult(Result):
 
         logger.debug("Converting each breakdown to a flat dictionary")
         flatten = functools.partial(
-            convert_breakdown_to_flat_dict, cols=columns
+            convert_to_flat_dict, cols=columns
         )
 
         with Pool(os.cpu_count()) as pool:

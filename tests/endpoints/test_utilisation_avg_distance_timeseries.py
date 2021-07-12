@@ -1,7 +1,5 @@
 from datetime import datetime
-from vortexasdk.endpoints.geographies import Geographies
-from vortexasdk.endpoints.products import Products
-from vortexasdk.endpoints.utilisation_avg_distance_timeseries import FleetUtilisationAvgDistanceTimeseries
+from vortexasdk import FleetUtilisationAvgDistanceTimeseries, Products
 
 from tests.testcases import TestCaseUsingRealAPI
 

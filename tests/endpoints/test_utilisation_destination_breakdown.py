@@ -1,5 +1,5 @@
 from datetime import datetime
-from vortexasdk.endpoints.utilisation_destination_breakdown import FleetUtilisationDestinationBreakdown
+from vortexasdk import FleetUtilisationDestinationBreakdown
 
 
 from docs.utils import to_markdown
