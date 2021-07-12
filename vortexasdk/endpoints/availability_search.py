@@ -146,9 +146,9 @@ class VesselAvailabilitySearch(Search):
 
         |    | available_at             | vessel_name              | vessel_class |
         |---:|:-------------------------|:-------------------------|-------------:|
-        |  0 | 2017-09-30T15:30:27+0000 | STAR RIVER               |  handysize   |
-        |  1 | 2017-08-29T14:51:32+0000 | AMALTHEA                 |  aframax     |
-
+        |  0 | 2017-09-30 15:30:27+00:00| STAR RIVER               |  handysize   |
+        |  1 | 2017-08-29 14:51:32+00:00| AMALTHEA                 |  aframax     |
+00:00:00+00:00
         """
 
         exclude_params = {
