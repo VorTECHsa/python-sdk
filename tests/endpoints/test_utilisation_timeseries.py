@@ -46,6 +46,4 @@ class TestFleetUtilisationTimeSeries(TestCaseUsingRealAPI):
             .to_df()
         )
 
-        print(df)
-
-        assert len(dfa) == 8
+        assert len(df) == 8
