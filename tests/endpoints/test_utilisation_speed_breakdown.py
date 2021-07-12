@@ -87,7 +87,7 @@ class TestFleetUtilisationSpeedBreakdownReal(TestCaseUsingRealAPI):
         n_days = (end - start).days + 1
 
         assert len(df) == n_days
-        assert list(df.columns) == ["key", "value", "count", "breakdown"]
+        assert list(df.columns) == ["key", "value", "count", "breakdown.0.label", "breakdown.0.count", "breakdown.0.value"]
    
     def test_with_params(self):
 
@@ -106,7 +106,7 @@ class TestFleetUtilisationSpeedBreakdownReal(TestCaseUsingRealAPI):
             .to_df().head(2)
         )
 
-        assert list(df.columns) == ["key", "value", "count", "breakdown"]
+        assert list(df.columns) == ["key", "value", "count", "breakdown.0.label", "breakdown.0.count", "breakdown.0.value"]
 
     def test_to_list(self):
         start = datetime(2019, 11, 1)
