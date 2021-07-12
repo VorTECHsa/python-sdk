@@ -151,37 +151,34 @@ class FleetUtilisationCapacityTimeseries(Search):
         `BreakdownResult`
 
         # Example
-        _Ton days supply of vessels originating from Rotterdam by daily frequency over the
-        last 7 days, by origin_country breakdown._
+        _Ton days supply (ballast) of vessels originating from the Middle East by daily frequency over the last 7 days, by origin_country breakdown._
 
         ```python
-        >>> from vortexasdk import FleetUtilisationCapacityTimeseries, Geographies, Products
+        >>> from vortexasdk import FleetUtilisationCapacityTimeseries
         >>> from datetime import datetime
-        >>> rotterdam = [g.id for g in Geographies().search("rotterdam").to_list() if "port" in g.layer]
-        >>> crude = [p.id for p in Products().search("crude").to_list() if "Crude" == p.name]
         >>> search_result = FleetUtilisationCapacityTimeseries().search(
-        ...    filter_origins=rotterdam,
-        ...    filter_products=crude,
+        ...    filter_vessel_status="vessel_status_ballast",
+        ...    filter_origins="80aa9e4f3014c3d96559c8e642157edbb2b684ea0144ed76cd20b3af75110877",
         ...    filter_time_min=datetime(2021, 1, 11),
         ...    filter_time_max=datetime(2021, 1, 18),
         ...    timeseries_frequency="day",
-        ...    timeseries_property="quantity")
+        ...    timeseries_property="origin_country")
         >>> df = search_result.to_df()
 
         ```
 
         Gives the following:
 
-        |    | key                      |     value |     count | breakdown |
-        |---:|:-------------------------|----------:|----------:|----------:|
-        |  0 | 2021-01-11T00:00:00.000Z | 184808    | 2         | [{...}]   |
-        |  1 | 2021-01-12T00:00:00.000Z | 297735    | 3         | [{...}]   |
-        |  2 | 2021-01-13T00:00:00.000Z | 410535    | 4         | [{...}]   |
-        |  3 | 2021-01-14T00:00:00.000Z | 454835    | 4         | [{...}]   |
-        |  4 | 2021-01-15T00:00:00.000Z | 430052    | 3         | [{...}]   |
-        |  5 | 2021-01-16T00:00:00.000Z | 539342    | 4         | [{...}]   |
-        |  6 | 2021-01-17T00:00:00.000Z | 539342    | 4         | [{...}]   |
-        |  7 | 2021-01-18T00:00:00.000Z | 382242    | 3         | [{...}]   |
+        |    | key                      |     value |     count |   breakdown.0.label    | breakdown.0.value |breakdown.0.count |
+        |---:|:-------------------------|----------:|----------:|-----------------------:|------------------:|-----------------:|
+        |  1 | 2021-01-11 00:00:00+00:00| 17487464  | 308       | "United Arab Emirates" | 6106197           | 133              |
+        |  2 | 2021-01-12 00:00:00+00:00| 17197204  | 307       | "United Arab Emirates" | 6020588           | 132              |
+        |  3 | 2021-01-13 00:00:00+00:00| 17393685  | 311       | "United Arab Emirates" | 5768300           | 129              |
+        |  4 | 2021-01-14 00:00:00+00:00| 16896103  | 302       | "United Arab Emirates" | 5401173           | 124              |
+        |  5 | 2021-01-15 00:00:00+00:00| 16755532  | 302       | "United Arab Emirates" | 5393500           | 123              |
+        |  6 | 2021-01-16 00:00:00+00:00| 16243406  | 298       | "United Arab Emirates" | 5382719           | 122              |
+        |  7 | 2021-01-17 00:00:00+00:00| 16016945  | 288       | "United Arab Emirates" | 5557221           | 121              |
+        |  8 | 2021-01-18 00:00:00+00:00| 15462925  | 277       | "United Arab Emirates" | 5203393           | 114              |
 
 
         """

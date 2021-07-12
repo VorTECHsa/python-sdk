@@ -103,7 +103,7 @@ class TestFleetUtilisationSpeedBreakdownReal(TestCaseUsingRealAPI):
                 breakdown_frequency="week",
                 breakdown_property="vessel_class",
             )
-            .to_df().head(2)
+            .to_df().head()
         )
 
         assert list(df.columns) == ["key", "value", "count", "breakdown.0.label", "breakdown.0.count", "breakdown.0.value"]

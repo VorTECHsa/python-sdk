@@ -153,20 +153,19 @@ class FleetUtilisationAvgDistanceTimeseries(Search):
         `BreakdownResult`
 
         # Example
-        _Average distance traveled per day, by all crude carrying vessels traveling from Rotterdam, in kilometers._
+        _Average distance traveled per day, by laden vessels between Middle East and China, in nautical miles._
 
         ```python
-        >>> from vortexasdk import FleetUtilisationAvgDistanceTimeseries, Geographies, Products
+        >>> from vortexasdk import FleetUtilisationAvgDistanceTimeseries
         >>> from datetime import datetime
-        >>> rotterdam = [g.id for g in Geographies().search("rotterdam").to_list() if "port" in g.layer]
-        >>> crude = [p.id for p in Products().search("crude").to_list() if "Crude" == p.name]
         >>> search_result = FleetUtilisationAvgDistanceTimeseries().search(
-        ...    filter_origins=rotterdam,
-        ...    filter_products=crude,
+        ...    filter_vessel_status="vessel_status_laden_known",
+        ...    filter_origins="80aa9e4f3014c3d96559c8e642157edbb2b684ea0144ed76cd20b3af75110877",
+        ...    filter_destinations="934c47f36c16a58d68ef5e007e62a23f5f036ee3f3d1f5f85a48c572b90ad8b2",
         ...    filter_time_min=datetime(2021, 1, 11),
         ...    filter_time_max=datetime(2021, 1, 18),
+        ...    timeseries_unit="nmi",
         ...    timeseries_frequency="day",
-        ...    timeseries_unit="km",
         ...    timeseries_property="quantity")
         >>> df = search_result.to_df()
 
@@ -174,16 +173,16 @@ class FleetUtilisationAvgDistanceTimeseries(Search):
 
         Gives the following:
 
-        |    | key                      |     value |     count | breakdown |
-        |---:|:-------------------------|----------:|----------:|----------:|
-        |  0 | 2021-01-11T00:00:00.000Z | 140.993378| 2         | [{...}]   |
-        |  1 | 2021-01-12T00:00:00.000Z | 71.484975 | 3         | [{...}]   |
-        |  2 | 2021-01-13T00:00:00.000Z | 90.042649 | 4         | [{...}]   |
-        |  3 | 2021-01-14T00:00:00.000Z | 90.042649 | 4         | [{...}]   |
-        |  4 | 2021-01-15T00:00:00.000Z | 64.567284 | 3         | [{...}]   |
-        |  5 | 2021-01-16T00:00:00.000Z | 43.663690 | 4         | [{...}]   |
-        |  6 | 2021-01-17T00:00:00.000Z | 43.663690 | 4         | [{...}]   |
-        |  7 | 2021-01-18T00:00:00.000Z | 64.567284 | 3         | [{...}]   |
+        |    | key                      |     value |     count |   breakdown.0.label | breakdown.0.value |breakdown.0.count |
+        |---:|:-------------------------|----------:|----------:|--------------------:|------------------:|-----------------:|
+        |  0 | 2021-01-11 00:00:00+00:00| 249.769869| 141       | "quantity"          | 249.769869        |141               |
+        |  1 | 2021-01-12 00:00:00+00:00| 253.188081| 137       | "quantity"          | 253.188081        |137               |
+        |  2 | 2021-01-13 00:00:00+00:00| 250.312211| 139       | "quantity"          | 250.312211        |139               |
+        |  3 | 2021-01-14 00:00:00+00:00| 255.139234| 138       | "quantity"          | 255.139234        |138               |
+        |  4 | 2021-01-15 00:00:00+00:00| 256.738301| 140       | "quantity"          | 256.738301        |140               |
+        |  5 | 2021-01-16 00:00:00+00:00| 258.256194| 141       | "quantity"          | 258.256194        |141               |
+        |  6 | 2021-01-17 00:00:00+00:00| 255.120250| 137       | "quantity"          | 255.120250        |137               |
+        |  7 | 2021-01-18 00:00:00+00:00| 253.602907| 132       | "quantity"          | 253.602907        |132               |
 
 
         """

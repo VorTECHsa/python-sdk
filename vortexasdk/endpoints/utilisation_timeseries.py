@@ -150,37 +150,36 @@ class FleetUtilisationTimeseries(Search):
         `BreakdownResult`
 
         # Example
-        _Utilisation of vessels carrying Crude/Condensate, departing from Rotterdam over the last 7 days, by quantity breakdown._
+        _Utilisation of laden vessels carrying Crude/Condensate, between Middle East and China over the last 7 days, by vessel_class breakdown._
 
         ```python
-        >>> from vortexasdk import FleetUtilisationTimeseries, Geographies, Products
+        >>> from vortexasdk import FleetUtilisationTimeseries
         >>> from datetime import datetime
-        >>> rotterdam = [g.id for g in Geographies().search("rotterdam").to_list() if "port" in g.layer]
-        >>> crude = [p.id for p in Products().search("crude").to_list() if "Crude" == p.name]
         >>> search_result = FleetUtilisationTimeseries().search(
-        ...    filter_origins=rotterdam,
-        ...    filter_products=crude,
+        ...    filter_vessel_status="vessel_status_laden_known",
+        ...    filter_products="54af755a090118dcf9b0724c9a4e9f14745c26165385ffa7f1445bc768f06f11",
+        ...    filter_origins="80aa9e4f3014c3d96559c8e642157edbb2b684ea0144ed76cd20b3af75110877",
+        ...    filter_destinations="934c47f36c16a58d68ef5e007e62a23f5f036ee3f3d1f5f85a48c572b90ad8b2",
         ...    filter_time_min=datetime(2021, 1, 11),
         ...    filter_time_max=datetime(2021, 1, 18),
         ...    timeseries_frequency="day",
-        ...    timeseries_property="quantity")
+        ...    timeseries_property="vessel_class")
         >>> df = search_result.to_df()
 
         ```
 
         Gives the following:
 
-        |    | key                      |     value |     count | breakdown |
-        |---:|:-------------------------|----------:|----------:|----------:|
-        |  0 | 2021-01-11T00:00:00.000Z | 2         | 2         | [{...}]   |
-        |  1 | 2021-01-12T00:00:00.000Z | 3         | 3         | [{...}]   |
-        |  2 | 2021-01-13T00:00:00.000Z | 4         | 4         | [{...}]   |
-        |  3 | 2021-01-14T00:00:00.000Z | 4         | 4         | [{...}]   |
-        |  4 | 2021-01-15T00:00:00.000Z | 3         | 3         | [{...}]   |
-        |  5 | 2021-01-16T00:00:00.000Z | 4         | 4         | [{...}]   |
-        |  6 | 2021-01-17T00:00:00.000Z | 4         | 4         | [{...}]   |
-        |  7 | 2021-01-18T00:00:00.000Z | 3         | 3         | [{...}]   |
-
+        |    | key                      |     value |     count |   breakdown.0.label | breakdown.0.value |breakdown.0.count |
+        |---:|:-------------------------|----------:|----------:|--------------------:|------------------:|-----------------:|
+        |  0 | 2021-01-11 00:00:00+00:00| 76        | 76        | "vlcc_plus"         | 70                | 70               |
+        |  1 | 2021-01-12 00:00:00+00:00| 74        | 74        | "vlcc_plus"         | 68                | 68               |
+        |  2 | 2021-01-13 00:00:00+00:00| 76        | 76        | "vlcc_plus"         | 69                | 69               |
+        |  3 | 2021-01-14 00:00:00+00:00| 76        | 76        | "vlcc_plus"         | 68                | 68               |
+        |  4 | 2021-01-15 00:00:00+00:00| 76        | 76        | "vlcc_plus"         | 68                | 68               |
+        |  5 | 2021-01-16 00:00:00+00:00| 76        | 76        | "vlcc_plus"         | 68                | 68               |
+        |  6 | 2021-01-17 00:00:00+00:00| 75        | 75        | "vlcc_plus"         | 67                | 67               |
+        |  7 | 2021-01-18 00:00:00+00:00| 74        | 74        | "vlcc_plus"         | 66                | 66               |
 
         """
 

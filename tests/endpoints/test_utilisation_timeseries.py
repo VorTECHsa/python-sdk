@@ -27,3 +27,26 @@ class TestFleetUtilisationTimeSeries(TestCaseUsingRealAPI):
         )
 
         assert len(df) == 8
+
+    def test_with_params(self):
+        start = datetime(2021, 1, 11)
+        end = datetime(2021, 1, 18)
+
+        df = (
+            FleetUtilisationTimeseries()
+            .search(
+                filter_time_min=start,
+                filter_time_max=end,
+                filter_vessel_status="vessel_status_laden_known",
+                filter_products="54af755a090118dcf9b0724c9a4e9f14745c26165385ffa7f1445bc768f06f11",
+                filter_origins="80aa9e4f3014c3d96559c8e642157edbb2b684ea0144ed76cd20b3af75110877",
+                filter_destinations="934c47f36c16a58d68ef5e007e62a23f5f036ee3f3d1f5f85a48c572b90ad8b2",
+                timeseries_property="vessel_class",
+                timeseries_frequency="day",
+            )
+            .to_df()
+        )
+
+        print(df)
+
+        assert len(dfa) == 8
