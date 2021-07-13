@@ -9,7 +9,17 @@ from vortexasdk.endpoints import (
     Products,
     VesselMovements,
     Vessels,
-    TonMilesBreakdown,
+    TonneMilesBreakdown,
+    VesselAvailabilitySearch,
+    VesselAvailabilityTimeseries,
+    VesselAvailabilityBreakdown,
+    FleetUtilisationTimeseries,
+    FleetUtilisationSpeedBreakdown,
+    FleetUtilisationAvgDistanceTimeseries,
+    FleetUtilisationCapacityTimeseries,
+    FleetUtilisationQuantityTimeseries,
+    FleetUtilisationDestinationBreakdown,
+    FleetUtilisationOriginBreakdown,
     EIAForecasts,
 )
 

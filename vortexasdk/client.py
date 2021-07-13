@@ -43,11 +43,20 @@ class VortexaClient(AbstractVortexaClient):
         response = retry_get(url)
         return _handle_response(response)["data"]
 
-    def search(self, resource: str, **data) -> List:
+    def search(self, resource: str, response_type: str, **data) -> List:
         """Search using `resource` using `**data` as filter params."""
         url = self._create_url(resource)
         payload = self._cleanse_payload(data)
         logger.info(f"Payload: {payload}")
+        # breakdowns do not support paging, the breakdown size is specified explicitly as a request parameter
+        if response_type=="breakdown":
+            size = payload.get("breakdown_size", 1000)
+            response = _send_post_request(url, payload, size=size, offset=0)
+
+            ref = response.get("reference", {})
+            
+            if ref: return response
+            else: return response["data"]
 
         probe_response = _send_post_request(url, payload, size=1, offset=0)
         total = self._calculate_total(probe_response)
