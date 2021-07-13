@@ -30,9 +30,7 @@ class TestFleetUtilisationDestinationBreakdownReal(TestCaseUsingRealAPI):
             .to_df()
         )
 
-        print(to_markdown(df.head()))
-
-        assert list(df.columns) == ["key", "value", "count"]
+        assert list(df.columns) == ["key", "label", "value", "count"]
 
     def test_with_params(self):
         start = datetime(2020, 10, 18)

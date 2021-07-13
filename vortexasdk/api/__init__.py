@@ -20,4 +20,4 @@ from vortexasdk.api.shared_types import (
 from vortexasdk.api.vessel import Vessel, VesselEntity
 from vortexasdk.api.vessel_movement import VesselEvent, VesselMovement
 from vortexasdk.api.eia_forecast import EIAForecast
-from vortexasdk.api.availability import VesselAvailability
+from vortexasdk.api.vessel_availability import VesselAvailability
