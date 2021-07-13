@@ -65,7 +65,7 @@ class FleetUtilisationDestinationBreakdown(Search):
 
             breakdown_size: Number of top geographies to return.
 
-            breakdown_geography: Geography hierarchy of the origin to aggregate upon. Must be one of the following: `'berth'`, `'terminal'`, `'port'`,`'country'`, `'shipping_region'`,
+            breakdown_geography: Geography hierarchy of the destination to aggregate upon. Must be one of the following: `'berth'`, `'terminal'`, `'port'`,`'country'`, `'shipping_region'`,
             `'region'`,`'trading_block'`,`'trading_region'`,`'trading_subregion'`,`'sts_zone'`,`'waypoint'`.
 
             filter_activity: Movement activity on which to base the time filter. Must be one of: `'loading_state'`,
@@ -140,7 +140,7 @@ class FleetUtilisationDestinationBreakdown(Search):
         `ReferenceBreakdownResult`
 
         # Example
-        _Top 5 countries by number of unique vessels by origin country breakdown, in the last quarter._
+        _Top 5 countries by number of unique vessels by destination country breakdown, in the last quarter._
 
         ```python
         >>> from vortexasdk import FleetUtilisationDestinationBreakdown, Vessels
