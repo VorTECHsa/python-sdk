@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Breakdown - VortexaSDK</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Breakdown";
+    var mkdocs_page_input_path = "endpoints/vessel_availability_breakdown.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-153895438-1', 'vortechsa.github.io');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> VortexaSDK</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Endpoints</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../about-endpoints/">About Endpoints</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../attributes/">Attributes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../cargo_movements/">Cargo Movements</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../cargo_timeseries/">Cargo Time Series</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../corporations/">Corporations</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../eia_forecasts/">EIA Forecasts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../geographies/">Geographies</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../products/">Products</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../vessel_movements/">Vessel Movements</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../vessels/">Vessels</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../tonne_miles_breakdown/">Tonne-miles Breakdown</a>
+                </li>
+                <li class=" current">
+                    
+    <span class="caption-text">Vessel Availability</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../vessel_availability_search/">Search</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../vessel_availability_timeseries/">Time Series</a>
+                </li>
+                <li class="toctree-l3 current">
+                    
+    <a class="current" href="./">Breakdown</a>
+    <ul class="subnav">
+            
+    </ul>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Fleet Utilisation</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../fleet_utilisation_speed_breakdown/">Speed Breakdown</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../fleet_utilisation_timeseries/">Time Series</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../fleet_utilisation_avg_distance_timeseries/">Avg Distance Time Series</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../fleet_utilisation_quantity_timeseries/">Quantity Time Series</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../fleet_utilisation_capacity_timeseries/">Capacity Time Series</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../fleet_utilisation_origin_breakdown/">Origin Breakdown</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../fleet_utilisation_destination_breakdown/">Destination Breakdown</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Entities</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../entities/cargo_movement/">Cargo Movement</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../entities/corporation/">Corporation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../entities/geography/">Geography</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../entities/product/">Product</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../entities/vessel/">Vessel</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../entities/vessel_movement/">Vessel Movement</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../entities/vessel_availability/">Vessel Availability</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../entities/timeseries_item/">Time Series Item</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../entities/breakdown_item/">Breakdown Item</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../config/">Config</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">FAQ</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../faq/">General</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../faq_setup/">Setup</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Examples</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../examples/0_sample_load_cargo_movements/">0 Simple Load Cargo Movements</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../examples/1_china/">1 China VLCC Discharges</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../examples/2_all_vessel_movements/">2 Laden Vessel Movements</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../examples/3_crude_from_saudi_arabia_to_india/">3 Crude movements from Saudi Arabia to India</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../examples/4_ballast_movements/">4 Ballast Movements</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../examples/5_chinese_daily_imports/">5 Chinese Daily Crude Imports</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../examples/6_medium_sour_floating_storage/">6 Floating Storage Medium Sour Crude</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../examples/7_custom_excel_charterer_ingestion/">7 Ingest Custom Excel Charterers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../examples/jupyter_notebooks/">Jupyter Notebooks</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">VortexaSDK</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Vessel Availability &raquo;</li>
+        
+      
+        
+          <li>Endpoints &raquo;</li>
+        
+      
+    
+    <li>Breakdown</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/vortechsa/python-sdk/edit/master/docs/endpoints/vessel_availability_breakdown.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="vortexasdk.endpoints.vessel_availability_breakdown">vortexasdk.endpoints.vessel_availability_breakdown</h1>
+
+<p>Try me out in your browser:</p>
+<p><a href="https://mybinder.org/v2/gh/VorTECHsa/python-sdk/master?filepath=docs%2Fexamples%2Ftry_me_out%2Fvessel_availability_breakdown.ipynb"><img alt="Binder" src="https://img.shields.io/badge/try%20me%20out-launch%20notebook-579ACA.svg?logo=data:image/png;base64,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" /></a></p>
+<h2 id="vortexasdk.endpoints.vessel_availability_breakdown.VesselAvailabilityBreakdown">VesselAvailabilityBreakdown</h2>
+
+<pre><code class="language-python">VesselAvailabilityBreakdown(self)
+</code></pre>
+<h3 id="vortexasdk.endpoints.vessel_availability_breakdown.VesselAvailabilityBreakdown.search">search</h3>
+
+<pre><code class="language-python">VesselAvailabilityBreakdown.search(self, filter_products: Union[str, List[str]] = None, filter_vessels: Union[str, List[str]] = None, filter_vessel_classes: Union[str, List[str]] = None, filter_vessel_status: str = None, filter_vessel_location: Union[str, List[str]] = None, filter_owners: Union[str, List[str]] = None, filter_destination: Union[str, List[str]] = None, filter_region: str = None, filter_port: str = None, use_reference_port: bool = False, filter_days_to_arrival: List[Dict[str, int]] = None, filter_vessel_dwt_min: int = None, filter_vessel_dwt_max: int = None, filter_vessel_age_min: int = None, filter_vessel_age_max: int = None, filter_vessel_idle_min: int = None, filter_vessel_idle_max: int = None, filter_vessel_scrubbers: str = 'disabled', filter_recent_visits: str = None, exclude_products: Union[str, List[str]] = None, exclude_vessels: Union[str, List[str]] = None, exclude_vessel_classes: Union[str, List[str]] = None, exclude_vessel_status: str = None, exclude_vessel_location: Union[str, List[str]] = None, exclude_owners: Union[str, List[str]] = None, exclude_destination: Union[str, List[str]] = None) -&gt; vortexasdk.endpoints.timeseries_result.TimeSeriesResult
+</code></pre>
+<p>Number and DWT of all vessels that can be available to load a given cargo at a given port,
+grouped by the number of days to arrival.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li>
+<p><strong>filter_owners</strong>: An corporation ID, or list of corporation IDs to filter on.</p>
+</li>
+<li>
+<p><strong>filter_destination</strong>: A geography ID, or list of geography IDs to filter on.</p>
+</li>
+<li>
+<p><strong>filter_products</strong>: A product ID, or list of product IDs to filter on.</p>
+</li>
+<li>
+<p><strong>filter_vessels</strong>: A vessel ID, or list of vessel IDs to filter on.</p>
+</li>
+<li>
+<p><strong>filter_vessel_classes</strong>: A vessel class, or list of vessel classes to filter on.</p>
+</li>
+<li>
+<p><strong>filter_vessel_status</strong>: The vessel status on which to base the filter. Enter 'vessel_status_ballast' for ballast vessels, 'vessel_status_laden_known' for laden vessels with known cargo (i.e. a type of cargo that Vortexa currently tracks) or 'any_activity' for any other vessels</p>
+</li>
+<li>
+<p><strong>filter_vessel_location</strong>: A location ID, or list of location IDs to filter on.</p>
+</li>
+<li>
+<p><strong>filter_port</strong>: Filter by port ID.</p>
+</li>
+<li>
+<p><strong>filter_region</strong>: Filter by region ID - takes precedence over filter_port if provided. This should be used in conjunction with <code>use_reference_port</code></p>
+</li>
+<li>
+<p><strong>filter_days_to_arrival</strong>: Filter availability by time to arrival in days`</p>
+</li>
+<li>
+<p><strong>use_reference_port</strong>: If this flag is enabled, we will return data for
+    the reference port instead of the user selected one,</p>
+</li>
+<li>
+<p><strong>filter_vessel_age_min</strong>: A number between 1 and 100 (representing years).</p>
+</li>
+<li>
+<p><strong>filter_vessel_age_max</strong>: A number between 1 and 100 (representing years).</p>
+</li>
+<li>
+<p><strong>filter_vessel_idle_min</strong>: A number greater than 0 (representing idle days).</p>
+</li>
+<li>
+<p><strong>filter_vessel_idle_max</strong>: A number greater than 0 and filter_vessel_idle_min (representing idle days).</p>
+</li>
+<li>
+<p><strong>filter_vessel_dwt_min</strong>: A number between 0 and 550000.</p>
+</li>
+<li>
+<p><strong>filter_vessel_dwt_max</strong>: A number between 0 and 550000.</p>
+</li>
+<li>
+<p><strong>filter_vessel_scrubbers</strong>: Either inactive 'disabled', or included 'inc' or excluded 'exc'.</p>
+</li>
+<li>
+<p><strong>filter_recent_visits</strong>: Filter availability by each vessel's recent visits</p>
+</li>
+<li>
+<p><strong>exclude_products</strong>: A product ID, or list of product IDs to exclude.</p>
+</li>
+<li>
+<p><strong>exclude_vessels</strong>: A vessel ID, or list of vessel IDs to exclude.</p>
+</li>
+<li>
+<p><strong>exclude_vessel_classes</strong>: A vessel class, or list of vessel classes to exclude.</p>
+</li>
+<li>
+<p><strong>exclude_vessel_status</strong>: The vessel status on which to base the filter. Enter 'vessel_status_ballast' for ballast vessels, 'vessel_status_laden_known' for laden vessels with known cargo (i.e. a type of cargo that Vortexa currently tracks) or 'any_activity' for any other vessels</p>
+</li>
+<li>
+<p><strong>exclude_owners</strong>: An owner ID, or list of owner IDs to exclude.</p>
+</li>
+<li>
+<p><strong>exclude_vessel_location</strong>: A location ID, or list of location IDs to filter on.</p>
+</li>
+<li>
+<p><strong>exclude_destination</strong>: A location ID, or list of location IDs to filter on.</p>
+</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p><code>TimeSeriesResult</code></p>
+<p><strong>Example</strong></p>
+<p><em>Breakdown of number and DWT of all vessels arriving at Rotterdam in the next 5 days.</em></p>
+<pre><code class="language-python">&gt;&gt;&gt; from vortexasdk import VesselAvailabilityBreakdown, Geographies
+&gt;&gt;&gt; rotterdam = [g.id for g in Geographies().search(&quot;rotterdam&quot;).to_list() if &quot;port&quot; in g.layer]
+&gt;&gt;&gt; df = VesselAvailabilityBreakdown().search(
+...        filter_port=rotterdam[0],
+...        filter_days_to_arrival={&quot;min&quot;: 0, &quot;max&quot;: 5}
+... ).to_df()
+
+</code></pre>
+<p>Gives the following:</p>
+<table>
+<thead>
+<tr>
+<th align="right"></th>
+<th align="left">key</th>
+<th align="right">value</th>
+<th align="right">count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">0</td>
+<td align="left">2021-06-23 00:00:00+00:00</td>
+<td align="right">2939754</td>
+<td align="right">34</td>
+</tr>
+<tr>
+<td align="right">1</td>
+<td align="left">2021-06-24 00:00:00+00:00</td>
+<td align="right">2676732</td>
+<td align="right">38</td>
+</tr>
+<tr>
+<td align="right">2</td>
+<td align="left">2021-06-25 00:00:00+00:00</td>
+<td align="right">6262914</td>
+<td align="right">74</td>
+</tr>
+<tr>
+<td align="right">3</td>
+<td align="left">2021-06-26 00:00:00+00:00</td>
+<td align="right">3445105</td>
+<td align="right">43</td>
+</tr>
+<tr>
+<td align="right">4</td>
+<td align="left">2021-06-27 00:00:00+00:00</td>
+<td align="right">3924460</td>
+<td align="right">51</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../fleet_utilisation_speed_breakdown/" class="btn btn-neutral float-right" title="Speed Breakdown">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../vessel_availability_timeseries/" class="btn btn-neutral" title="Time Series"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/vortechsa/python-sdk/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../vessel_availability_timeseries/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../fleet_utilisation_speed_breakdown/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

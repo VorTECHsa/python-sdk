@@ -112,7 +112,59 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../ton_miles_breakdown/">Ton Miles Breakdown</a>
+    <a class="" href="../tonne_miles_breakdown/">Tonne-miles Breakdown</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Vessel Availability</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../vessel_availability_search/">Search</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../vessel_availability_timeseries/">Time Series</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../vessel_availability_breakdown/">Breakdown</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Fleet Utilisation</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../fleet_utilisation_speed_breakdown/">Speed Breakdown</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../fleet_utilisation_timeseries/">Time Series</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../fleet_utilisation_avg_distance_timeseries/">Avg Distance Time Series</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../fleet_utilisation_quantity_timeseries/">Quantity Time Series</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../fleet_utilisation_capacity_timeseries/">Capacity Time Series</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../fleet_utilisation_origin_breakdown/">Origin Breakdown</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../fleet_utilisation_destination_breakdown/">Destination Breakdown</a>
+                </li>
+    </ul>
                 </li>
     </ul>
 	    </li>
@@ -144,6 +196,18 @@
                 <li class="">
                     
     <a class="" href="../../entities/vessel_movement/">Vessel Movement</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../entities/vessel_availability/">Vessel Availability</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../entities/timeseries_item/">Time Series Item</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../entities/breakdown_item/">Breakdown Item</a>
                 </li>
     </ul>
 	    </li>
@@ -453,31 +517,6 @@
 </tr>
 </tbody>
 </table>
-<h1 id="vortexasdk.endpoints.timeseries_result">vortexasdk.endpoints.timeseries_result</h1>
-
-<h2 id="vortexasdk.endpoints.timeseries_result.TimeSeriesResult">TimeSeriesResult</h2>
-
-<pre><code class="language-python">TimeSeriesResult(self, _records: List) -&gt; None
-</code></pre>
-<p>Container class that holds the result obtained from calling a time series endpoint.</p>
-<h3 id="vortexasdk.endpoints.timeseries_result.TimeSeriesResult.to_list">to_list</h3>
-
-<pre><code class="language-python">TimeSeriesResult.to_list(self) -&gt; List[vortexasdk.api.timeseries_item.TimeSeriesItem]
-</code></pre>
-<p>Represents time series as a list.</p>
-<h3 id="vortexasdk.endpoints.timeseries_result.TimeSeriesResult.to_df">to_df</h3>
-
-<pre><code class="language-python">TimeSeriesResult.to_df(self, columns=None) -&gt; pandas.core.frame.DataFrame
-</code></pre>
-<p>Represents the timeseries as a dataframe.</p>
-<p>Returns a <code>pd.DataFrame</code>, of time series items with columns:
- key: The time series key
- value: The value of the time series for a given key
- count: The number of records contributing to this time series record.</p>
-<p><strong>Example:</strong></p>
-<p>If we're aggregating Crude exports in tonnes by day, then the <code>key</code> column holds the date,
-the <code>value</code> column holds the Crude exports on that day, and the <code>count</code> column holds
-the number of cargo movements contributing towards this day's tonnage.</p>
               
             </div>
           </div>

@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Ton Miles Breakdown - VortexaSDK</title>
+  <title>Destination Breakdown - VortexaSDK</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -17,8 +17,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Ton Miles Breakdown";
-    var mkdocs_page_input_path = "endpoints/ton_miles_breakdown.md";
+    var mkdocs_page_name = "Destination Breakdown";
+    var mkdocs_page_input_path = "endpoints/fleet_utilisation_destination_breakdown.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -107,11 +107,63 @@
                     
     <a class="" href="../vessels/">Vessels</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../tonne_miles_breakdown/">Tonne-miles Breakdown</a>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Vessel Availability</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../vessel_availability_search/">Search</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../vessel_availability_timeseries/">Time Series</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../vessel_availability_breakdown/">Breakdown</a>
+                </li>
+    </ul>
+                </li>
                 <li class=" current">
                     
-    <a class="current" href="./">Ton Miles Breakdown</a>
+    <span class="caption-text">Fleet Utilisation</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../fleet_utilisation_speed_breakdown/">Speed Breakdown</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../fleet_utilisation_timeseries/">Time Series</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../fleet_utilisation_avg_distance_timeseries/">Avg Distance Time Series</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../fleet_utilisation_quantity_timeseries/">Quantity Time Series</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../fleet_utilisation_capacity_timeseries/">Capacity Time Series</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../fleet_utilisation_origin_breakdown/">Origin Breakdown</a>
+                </li>
+                <li class="toctree-l3 current">
+                    
+    <a class="current" href="./">Destination Breakdown</a>
     <ul class="subnav">
             
+    </ul>
+                </li>
     </ul>
                 </li>
     </ul>
@@ -144,6 +196,18 @@
                 <li class="">
                     
     <a class="" href="../../entities/vessel_movement/">Vessel Movement</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../entities/vessel_availability/">Vessel Availability</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../entities/timeseries_item/">Time Series Item</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../entities/breakdown_item/">Breakdown Item</a>
                 </li>
     </ul>
 	    </li>
@@ -233,14 +297,18 @@
     
       
         
+          <li>Fleet Utilisation &raquo;</li>
+        
+      
+        
           <li>Endpoints &raquo;</li>
         
       
     
-    <li>Ton Miles Breakdown</li>
+    <li>Destination Breakdown</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/vortechsa/python-sdk/edit/master/docs/endpoints/ton_miles_breakdown.md"
+        <a href="https://github.com/vortechsa/python-sdk/edit/master/docs/endpoints/fleet_utilisation_destination_breakdown.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -250,28 +318,30 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="vortexasdk.endpoints.ton_miles_breakdown">vortexasdk.endpoints.ton_miles_breakdown</h1>
+                <h1 id="vortexasdk.endpoints.fleet_utilisation_destination_breakdown">vortexasdk.endpoints.fleet_utilisation_destination_breakdown</h1>
 
 <p>Try me out in your browser:</p>
-<p><a href="https://mybinder.org/v2/gh/VorTECHsa/python-sdk/master?filepath=docs%2Fexamples%2Ftry_me_out%2Fton_miles_breakdown.ipynb"><img alt="Binder" src="https://img.shields.io/badge/try%20me%20out-launch%20notebook-579ACA.svg?logo=data:image/png;base64,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" /></a></p>
-<h2 id="vortexasdk.endpoints.ton_miles_breakdown.TonMilesBreakdown">TonMilesBreakdown</h2>
+<p><a href="https://mybinder.org/v2/gh/VorTECHsa/python-sdk/master?filepath=docs%2Fexamples%2Ftry_me_out%2Ffleet_utilisation_destination_breakdown.ipynb"><img alt="Binder" src="https://img.shields.io/badge/try%20me%20out-launch%20notebook-579ACA.svg?logo=data:image/png;base64,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" /></a></p>
+<h2 id="vortexasdk.endpoints.fleet_utilisation_destination_breakdown.FleetUtilisationDestinationBreakdown">FleetUtilisationDestinationBreakdown</h2>
 
-<pre><code class="language-python">TonMilesBreakdown(self)
+<pre><code class="language-python">FleetUtilisationDestinationBreakdown(self)
 </code></pre>
-<p>The Ton Miles Breakdown Endpoint is used to retrieve the ton miles data as a time series. The aggregation is done on the Vessel Movements data hence very similar search parameters are accepted (minus: <code>unit</code>, <code>size</code>, <code>offset</code>).
-Additionally a parameter named <code>breakdown_frequency</code> can be used to specify the time series frequency.</p>
-<p>A VesselMovement represents a single vessel moving between two locations.</p>
-<p>The vessel may carry one cargo, many cargoes (co-loads), or zero cargos (ballast).
-The start and end locations for a VesselMovement may be on land (loadings and discharges), they may be STS Zones (STS events), or they may be Floating Storage.</p>
-<h3 id="vortexasdk.endpoints.ton_miles_breakdown.TonMilesBreakdown.search">search</h3>
+<h3 id="vortexasdk.endpoints.fleet_utilisation_destination_breakdown.FleetUtilisationDestinationBreakdown.search">search</h3>
 
-<pre><code class="language-python">TonMilesBreakdown.search(self, breakdown_frequency: str = None, filter_time_min: datetime.datetime = datetime.datetime(2019, 10, 1, 0, 0), filter_time_max: datetime.datetime = datetime.datetime(2019, 10, 1, 1, 0), unit: str = 'b', filter_activity: str = None, filter_charterers: Union[str, List[str]] = None, filter_destinations: Union[str, List[str]] = None, filter_origins: Union[str, List[str]] = None, filter_owners: Union[str, List[str]] = None, filter_products: Union[str, List[str]] = None, filter_vessels: Union[str, List[str]] = None, filter_vessel_classes: Union[str, List[str]] = None, filter_vessel_status: str = None, filter_vessel_age_min: int = None, filter_vessel_age_max: int = None, filter_vessel_dwt_min: int = None, filter_vessel_dwt_max: int = None, filter_vessel_scrubbers: str = 'disabled', filter_vessel_flags: Union[str, List[str]] = None, filter_vessel_ice_class: Union[str, List[str]] = None, filter_vessel_propulsion: Union[str, List[str]] = None, exclude_origins: Union[str, List[str]] = None, exclude_destinations: Union[str, List[str]] = None, exclude_products: Union[str, List[str]] = None, exclude_vessels: Union[str, List[str]] = None, exclude_vessel_classes: Union[str, List[str]] = None, exclude_charterers: Union[str, List[str]] = None, exclude_owners: Union[str, List[str]] = None, exclude_vessel_flags: Union[str, List[str]] = None, exclude_vessel_ice_class: Union[str, List[str]] = None, exclude_vessel_propulsion: Union[str, List[str]] = None) -&gt; vortexasdk.endpoints.timeseries_result.TimeSeriesResult
+<pre><code class="language-python">FleetUtilisationDestinationBreakdown.search(self, breakdown_unit: str = None, breakdown_size: int = None, breakdown_geography: str = None, filter_time_min: datetime.datetime = datetime.datetime(2019, 10, 1, 0, 0), filter_time_max: datetime.datetime = datetime.datetime(2019, 10, 1, 1, 0), unit: str = 'b', filter_activity: str = None, filter_charterers: Union[str, List[str]] = None, filter_destinations: Union[str, List[str]] = None, filter_origins: Union[str, List[str]] = None, filter_owners: Union[str, List[str]] = None, filter_products: Union[str, List[str]] = None, filter_vessels: Union[str, List[str]] = None, filter_vessel_classes: Union[str, List[str]] = None, filter_vessel_status: str = None, filter_ship_to_ship: bool = None, filter_charterer_exists: bool = None, filter_vessel_age_min: int = None, filter_vessel_age_max: int = None, filter_vessel_dwt_min: int = None, filter_vessel_dwt_max: int = None, filter_vessel_scrubbers: str = 'disabled', filter_vessel_flags: Union[str, List[str]] = None, filter_vessel_ice_class: Union[str, List[str]] = None, filter_vessel_propulsion: Union[str, List[str]] = None, exclude_origins: Union[str, List[str]] = None, exclude_destinations: Union[str, List[str]] = None, exclude_products: Union[str, List[str]] = None, exclude_vessels: Union[str, List[str]] = None, exclude_vessel_classes: Union[str, List[str]] = None, exclude_charterers: Union[str, List[str]] = None, exclude_owners: Union[str, List[str]] = None, exclude_vessel_flags: Union[str, List[str]] = None, exclude_vessel_ice_class: Union[str, List[str]] = None, exclude_vessel_propulsion: Union[str, List[str]] = None) -&gt; vortexasdk.endpoints.reference_breakdown_result.ReferenceBreakdownResult
 </code></pre>
-<p>Find TonMilesBreakdown matching the given search parameters.</p>
+<p>Number of unique vessels by destination.</p>
 <p><strong>Arguments</strong></p>
 <ul>
 <li>
-<p><strong>breakdown_frequency</strong>: Must be one of: <code>'day'</code>, <code>'week'</code>, <code>'doe_week'</code>, <code>'month'</code>, <code>'quarter'</code> or <code>'year'</code>.</p>
+<p><strong>breakdown_unit</strong>: Units to aggregate upon. Must be one of the following: <code>'b'</code>, <code>'t'</code>, <code>'cbm'</code>, <code>'bpd'</code>, <code>'tpd'</code>, <code>'mpd'</code>.</p>
+</li>
+<li>
+<p><strong>breakdown_size</strong>: Number of top geographies to return.</p>
+</li>
+<li>
+<p><strong>breakdown_geography</strong>: Geography hierarchy of the destination to aggregate upon. Must be one of the following: <code>'berth'</code>, <code>'terminal'</code>, <code>'port'</code>,<code>'country'</code>, <code>'shipping_region'</code>,
+    <code>'region'</code>,<code>'trading_block'</code>,<code>'trading_region'</code>,<code>'trading_subregion'</code>,<code>'sts_zone'</code>,<code>'waypoint'</code>.</p>
 </li>
 <li>
 <p><strong>filter_activity</strong>: Movement activity on which to base the time filter. Must be one of: <code>'loading_state'</code>,
@@ -337,6 +407,12 @@ The start and end locations for a VesselMovement may be on land (loadings and di
 <p><strong>filter_vessel_propulsion</strong>: An attribute ID, or list of attribute IDs to filter on.</p>
 </li>
 <li>
+<p><strong>filter_charterer_exists</strong>: A boolean to include or exclude the records to those that have a charterer.</p>
+</li>
+<li>
+<p><strong>filter_ship_to_ship</strong>: A boolean to include or exclude the records to those that are involved in an STS.</p>
+</li>
+<li>
 <p><strong>exclude_origins</strong>: A geography ID, or list of geography IDs to exclude.</p>
 </li>
 <li>
@@ -368,17 +444,16 @@ The start and end locations for a VesselMovement may be on land (loadings and di
 </li>
 </ul>
 <p><strong>Returns</strong></p>
-<p><code>TimeSeriesResult</code></p>
+<p><code>ReferenceBreakdownResult</code></p>
 <p><strong>Example</strong></p>
-<pre><code class="language-python">&gt;&gt;&gt; from vortexasdk import TonMilesBreakdown, Vessels
+<p><em>Top 5 countries by number of unique vessels by destination country breakdown, in the last quarter.</em></p>
+<pre><code class="language-python">&gt;&gt;&gt; from vortexasdk import FleetUtilisationDestinationBreakdown, Vessels
 &gt;&gt;&gt; from datetime import datetime
-&gt;&gt;&gt; new_wisdom = [g.id for g in Vessels().search(&quot;NEW WISDOM&quot;).to_list()]
-&gt;&gt;&gt; search_result = TonMilesBreakdown().search(
-...    unit='b',
-...    breakdown_frequency='month',
-...    filter_vessels=new_wisdom,
-...    filter_time_min=datetime(2018, 1, 1),
-...    filter_time_max=datetime(2018, 12, 31))
+&gt;&gt;&gt; search_result = FleetUtilisationDestinationBreakdown().search(
+...    breakdown_geography='country',
+...    breakdown_size='5',
+...    filter_time_min=datetime(2020, 10, 18),
+...    filter_time_max=datetime(2021, 1, 18))
 &gt;&gt;&gt; df = search_result.to_df()
 
 </code></pre>
@@ -388,6 +463,7 @@ The start and end locations for a VesselMovement may be on land (loadings and di
 <tr>
 <th align="right"></th>
 <th align="left">key</th>
+<th align="left">label</th>
 <th align="left">value</th>
 <th align="right">count</th>
 </tr>
@@ -395,75 +471,38 @@ The start and end locations for a VesselMovement may be on land (loadings and di
 <tbody>
 <tr>
 <td align="right">0</td>
-<td align="left">2018-01-01 00:00:00+00:00</td>
-<td align="left">4.558499e+07</td>
-<td align="right">1</td>
+<td align="left">934c47f36c16a58d68ef5e007e62a23f5f036ee3f3d1f5f85a48c572b90ad8b2</td>
+<td align="left">China</td>
+<td align="left">3305</td>
+<td align="right">16226</td>
 </tr>
 <tr>
 <td align="right">1</td>
-<td align="left">2018-02-01 00:00:00+00:00</td>
-<td align="left">4.393985e+07</td>
-<td align="right">1</td>
+<td align="left">50182d9d05051a6c8d24f0514d4ee828da6eaa29eacbb11cfe368f51526328ce</td>
+<td align="left">Japan</td>
+<td align="left">1248</td>
+<td align="right">10683</td>
 </tr>
 <tr>
 <td align="right">2</td>
-<td align="left">2018-03-01 00:00:00+00:00</td>
-<td align="left">7.781776e+06</td>
-<td align="right">1</td>
+<td align="left">2d92cc08f22524dba59f6a7e340f132a9da0ce9573cca968eb8e3752ef17a963</td>
+<td align="left">United States</td>
+<td align="left">2017</td>
+<td align="right">6092</td>
 </tr>
 <tr>
 <td align="right">3</td>
-<td align="left">2018-04-01 00:00:00+00:00</td>
-<td align="left">8.041169e+07</td>
-<td align="right">1</td>
+<td align="left">bcd7dddaf951959ebf6076a3a594b426a246d3bffe13339b10d04e45f222e011</td>
+<td align="left">South Korea</td>
+<td align="left">1543</td>
+<td align="right">4883</td>
 </tr>
 <tr>
 <td align="right">4</td>
-<td align="left">2018-05-01 00:00:00+00:00</td>
-<td align="left">3.346161e+07</td>
-<td align="right">1</td>
-</tr>
-<tr>
-<td align="right">5</td>
-<td align="left">2018-06-01 00:00:00+00:00</td>
-<td align="left">5.731648e+07</td>
-<td align="right">1</td>
-</tr>
-<tr>
-<td align="right">6</td>
-<td align="left">2018-07-01 00:00:00+00:00</td>
-<td align="left">4.976054e+07</td>
-<td align="right">1</td>
-</tr>
-<tr>
-<td align="right">7</td>
-<td align="left">2018-08-01 00:00:00+00:00</td>
-<td align="left">3.022656e+06</td>
-<td align="right">1</td>
-</tr>
-<tr>
-<td align="right">8</td>
-<td align="left">2018-09-01 00:00:00+00:00</td>
-<td align="left">2.504909e+07</td>
-<td align="right">1</td>
-</tr>
-<tr>
-<td align="right">9</td>
-<td align="left">2018-10-01 00:00:00+00:00</td>
-<td align="left">6.269583e+07</td>
-<td align="right">1</td>
-</tr>
-<tr>
-<td align="right">10</td>
-<td align="left">2018-11-01 00:00:00+00:00</td>
-<td align="left">1.823642e+07</td>
-<td align="right">1</td>
-</tr>
-<tr>
-<td align="right">11</td>
-<td align="left">2018-12-01 00:00:00+00:00</td>
-<td align="left">3.137448e+07</td>
-<td align="right">1</td>
+<td align="left">3267ef2a83a749052c87e981f1bb12c6396acf590b4b1cd3316cf8f8c5aeb7bc</td>
+<td align="left">Malaysia</td>
+<td align="left">1539</td>
+<td align="right">4495</td>
 </tr>
 </tbody>
 </table>
@@ -477,7 +516,7 @@ The start and end locations for a VesselMovement may be on land (loadings and di
         <a href="../../entities/cargo_movement/" class="btn btn-neutral float-right" title="Cargo Movement">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../vessels/" class="btn btn-neutral" title="Vessels"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../fleet_utilisation_origin_breakdown/" class="btn btn-neutral" title="Origin Breakdown"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -505,7 +544,7 @@ The start and end locations for a VesselMovement may be on land (loadings and di
           <a href="https://github.com/vortechsa/python-sdk/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../vessels/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../fleet_utilisation_origin_breakdown/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
         <span style="margin-left: 15px"><a href="../../entities/cargo_movement/" style="color: #fcfcfc">Next &raquo;</a></span>
