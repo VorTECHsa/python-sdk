@@ -12,6 +12,7 @@ setup cost.
 
 The SDK sits as a thin python wrapper around
 [Vortexa's API](https://docs.vortexa.com), giving you immediate access to pandas
+
 DataFrames.
 
 ##### Example
