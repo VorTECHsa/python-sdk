@@ -97,7 +97,6 @@ class TestDestinationBreakdownReal(TestCaseUsingRealAPI):
         assert len(df) == 5
         assert list(df.columns) == ["key", "value", "count"]
 
-
     def test_to_list(self):
         date = datetime(2019, 11, 10)
 
@@ -118,7 +117,6 @@ class TestDestinationBreakdownReal(TestCaseUsingRealAPI):
     def test_with_params(self):
         start = datetime(2019, 11, 10)
         end = datetime(2019, 11, 15)
-
 
         df = (
             DestinationBreakdown()

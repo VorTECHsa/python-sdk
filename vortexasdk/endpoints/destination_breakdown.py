@@ -71,7 +71,7 @@ class DestinationBreakdown(Search):
         # Arguments
 
             breakdown_unit_average_basis: Per day metrics only - movement activity on which to base the average metric. Can be one of state properties of a cargo movement: `identified_for_loading_state`, `loading_state`, `transiting_state`, `storing_state`, `ship_to_ship`, `unloading_state`, `unloaded_state`, `oil_on_water_state`, `unknown_state`, or one of time properties of a cargo movement: `identified_for_loading_at`, `loading_start`, `loading_end`, `storing_start`, `storing_end`, `ship_to_ship_start`, `ship_to_ship_end`, `unloading_start`, `unloading_end`.
-            
+
             breakdown_unit: Units to aggregate upon. Must be one of the following: `'b'`, `'t'`, `'cbm'`, `'bpd'`, `'tpd'`, `'mpd'`.
 
             breakdown_size: Number of top geographies to return. Default is 5.
