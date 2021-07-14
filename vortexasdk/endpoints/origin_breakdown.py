@@ -177,10 +177,7 @@ class OriginBreakdown(Search):
         |  3 | 9dfa3be1b42d1f5e80361b6f442b5217b486876ad0c25e382055887c9e231ad2| SabTank (PCQ-1) Al Jubail                | 238723   | 21        |
         |  4 | 4813dd7209e85b128cc2fbc7c08fef08d26259550210f28a5c7ff3ccd7b2ba61| Mailiao Industrial Park-Formosa Plastics | 118285   | 18        |
 
-        """
-
-
-        
+        """        
         exclude_params = {
             "filter_destinations": convert_to_list(exclude_destinations),
             "filter_products": convert_to_list(exclude_products),
