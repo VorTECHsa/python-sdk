@@ -32,7 +32,7 @@ class TestDestinationBreakdownReal(TestCaseUsingRealAPI):
         )
 
         assert len(result["data"]) == 100
-   
+
     def test_search_returns_any_activity(self):
         date = datetime(2019, 11, 10)
 
@@ -78,7 +78,7 @@ class TestDestinationBreakdownReal(TestCaseUsingRealAPI):
 
         assert len(df) == 5
         assert list(df.columns) == ["key", "label", "value", "count"]
- 
+
     def test_to_df_without_label(self):
         date = datetime(2019, 11, 10)
 
@@ -96,7 +96,7 @@ class TestDestinationBreakdownReal(TestCaseUsingRealAPI):
 
         assert len(df) == 5
         assert list(df.columns) == ["key", "value", "count"]
-   
+
 
     def test_to_list(self):
         date = datetime(2019, 11, 10)
