@@ -169,13 +169,13 @@ class DestinationBreakdown(Search):
 
         Gives the following:
 
-        |    | key                                                             | label                                    | value    | count     |
-        |---:|:----------------------------------------------------------------|-----------------------------------------:|---------:|----------:|
-        |  0 | c3daea3cc9c5b3bd91c90882d42c2a418c4cf17b90ff12da3ac78444282a238a| Juaymah Crude Oil Terminal               | 3009799  | 24        |
-        |  1 | 3a39cf841ece0c7cb879f72af01cb634191142e0de8010d5ef877fd66c2e8605| Houston Enterprise Terminal              | 776599   | 17        |
-        |  2 | 345b7661310bc82a04e0a4edffd02c286c410c023b53edfb90ed3386640c0476| Arzew GL1Z/GL2Z LNG Terminal             | 381359   | 24        |
-        |  3 | 9dfa3be1b42d1f5e80361b6f442b5217b486876ad0c25e382055887c9e231ad2| SabTank (PCQ-1) Al Jubail                | 238723   | 21        |
-        |  4 | 4813dd7209e85b128cc2fbc7c08fef08d26259550210f28a5c7ff3ccd7b2ba61| Mailiao Industrial Park-Formosa Plastics | 118285   | 18        |
+        |    | key                                                             | label                                       | value    | count     |
+        |---:|:----------------------------------------------------------------|--------------------------------------------:|---------:|----------:|
+        |  0 | 606e73162cfd0492919ef96b04dae1bfddda09d148d03bafc1dc3eab979a9b0a| SPSE - DPF - G.I.E. Petroleum Terminal	     | 785819   | 12        |
+        |  1 | 844756c877c680ce0ff582a46b5bb1cf34cc33179df977a609b2c10838d9db5d| SK Energy (Ulsan)	                         | 288529   | 11        |
+        |  2 | a5269f5a20759b3a120af66a298fa2385a2b81d8b248aec590db73ecd984f8b7| Dongying CNOOC Oil & Petrochemicals Shandong| 201283   | 11        |
+        |  3 | 78fcabe3bb6a47f2aa019ae9948be43c5ebbe08a2d1cba7b113315c85362cb7c| Kandla Oil Terminal	                     | 121762   | 15        |
+        |  4 | 15db6ca55a3b13d3c4b135afcaf87f5d605680ac75177412af05be37fc3fec38| Pirpau Island	                             | 62933    | 12        |
 
         
         """
