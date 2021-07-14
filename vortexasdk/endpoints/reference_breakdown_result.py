@@ -17,10 +17,12 @@ logger = get_logger(__name__)
 
 def replace_keys(result):
     # Creates a list of data entries with keys enriched by references
-    refs = result["reference"]
-    data = result["data"]
-        
-    return list(map(lambda x: key_from_ref(x, refs), data))
+    if len(result) == 0:
+        return list([])
+    else:
+        refs = result["reference"]
+        data = result["data"]
+        return list(map(lambda x: key_from_ref(x, refs), data))
 
 def key_from_ref(datum, refs):
     # Reads the label from references and adds the label to the output
@@ -34,8 +36,6 @@ class ReferenceBreakdownResult(Result):
 
     def to_list(self) -> List[BreakdownItem]:
         """Represents time series as a list."""
-        # noinspection PyTypeChecker
-
         # data enrichment step - labels from `reference` enrich entries from `data`
         new_list = replace_keys(self)
 
