@@ -5,7 +5,7 @@ Try me out in your browser:
 """
 from typing import List, Union
 from datetime import datetime
-from vortexasdk.api.shared_types import to_ISODate
+from vortexasdk.api.shared_types import Tag, to_ISODate
 from vortexasdk.endpoints.reference_breakdown_result import ReferenceBreakdownResult
 
 from vortexasdk.api import ID
@@ -50,6 +50,7 @@ class OriginBreakdown(Search):
         filter_vessel_age_min: int = None,
         filter_vessel_age_max: int = None,
         filter_vessel_scrubbers: str = "disabled",
+        filter_vessel_tags: Union [List[Tag], Tag] = None,
         exclude_products: Union[ID, List[ID]] = None,
         exclude_vessels: Union[ID, List[ID]] = None,
         exclude_vessel_classes: Union[str, List[str]] = None,
@@ -63,6 +64,7 @@ class OriginBreakdown(Search):
         exclude_ship_to_ship_locations: Union[ID, List[ID]] = None,
         exclude_vessel_ice_class: Union[ID, List[ID]] = None,
         exclude_vessel_propulsion: Union[ID, List[ID]] = None,
+        exclude_vessel_tags: Union [List[Tag], Tag] = None,
     ) -> ReferenceBreakdownResult:
 
         """
@@ -73,6 +75,9 @@ class OriginBreakdown(Search):
             breakdown_unit_average_basis: Per day metrics only - movement activity on which to base the average metric. Can be one of state properties of a cargo movement: `identified_for_loading_state`, `loading_state`, `transiting_state`, `storing_state`, `ship_to_ship`, `unloading_state`, `unloaded_state`, `oil_on_water_state`, `unknown_state`, or one of time properties of a cargo movement: `identified_for_loading_at`, `loading_start`, `loading_end`, `storing_start`, `storing_end`, `ship_to_ship_start`, `ship_to_ship_end`, `unloading_start`, `unloading_end`.
 
             breakdown_unit: Units to aggregate upon. Must be one of the following: `'b'`, `'t'`, `'cbm'`, `'bpd'`, `'tpd'`, `'mpd'`.
+
+            breakdown_geography: Geography hierarchy of the origin to aggregate upon. Must be one of the following: `'terminal'`, `'port'`,`'country'`, `'shipping_region'`,
+            `'region'`,`'trading_block'`,`'trading_region'`,`'trading_subregion'`,`'sts_zone'`,`'waypoint'`.
 
             breakdown_size: Number of top geographies to return. Default is 5.
 
@@ -119,6 +124,8 @@ class OriginBreakdown(Search):
 
             filter_vessel_scrubbers: Either inactive 'disabled', or included 'inc' or excluded 'exc'.
 
+            filter_vessel_tags: A time bound vessel tag, or list of time bound vessel tags to filter on.
+
             exclude_products: A product ID, or list of product IDs to exclude.
 
             exclude_vessel_flags: A vessel flag ID, or list of vessel flag IDs to exclude.
@@ -144,6 +151,8 @@ class OriginBreakdown(Search):
             exclude_waypoints: A location ID, or list of location IDs to exclude.
 
             exclude_ship_to_ship_locations: A location ID, or list of location IDs to exclude.
+
+            exclude_vessel_tags: A time bound vessel tag, or list of time bound vessel tags to exclude.
 
         # Returns
         `ReferenceBreakdownResult`
@@ -191,7 +200,7 @@ class OriginBreakdown(Search):
             "filter_vessel_propulsion": convert_to_list(exclude_vessel_propulsion),
             "filter_storage_locations": convert_to_list(exclude_storage_locations),
             "filter_waypoints": convert_to_list(exclude_waypoints),
-            "filter_ship_to_ship_locations": convert_to_list(exclude_ship_to_ship_locations),
+            "filter_ship_to_ship": convert_to_list(exclude_ship_to_ship_locations),
         }
 
         api_params = {
@@ -222,6 +231,8 @@ class OriginBreakdown(Search):
             "filter_vessel_age_min": filter_vessel_age_min,
             "filter_vessel_age_max": filter_vessel_age_max,
             "filter_vessel_scrubbers": filter_vessel_scrubbers,
+            "vessel_tags": convert_to_list(filter_vessel_tags),
+            "vessel_tags_excluded": convert_to_list(exclude_vessel_tags),
             "exclude": exclude_params,
             "include_reference": self._INCLUDE_REFERENCE_DATA,
         }
