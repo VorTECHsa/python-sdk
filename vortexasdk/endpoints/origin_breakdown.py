@@ -50,7 +50,7 @@ class OriginBreakdown(Search):
         filter_vessel_age_min: int = None,
         filter_vessel_age_max: int = None,
         filter_vessel_scrubbers: str = "disabled",
-        filter_vessel_tags: Union [List[Tag], Tag] = None,
+        filter_vessel_tags: Union[List[Tag], Tag] = None,
         exclude_products: Union[ID, List[ID]] = None,
         exclude_vessels: Union[ID, List[ID]] = None,
         exclude_vessel_classes: Union[str, List[str]] = None,
@@ -64,7 +64,7 @@ class OriginBreakdown(Search):
         exclude_ship_to_ship_locations: Union[ID, List[ID]] = None,
         exclude_vessel_ice_class: Union[ID, List[ID]] = None,
         exclude_vessel_propulsion: Union[ID, List[ID]] = None,
-        exclude_vessel_tags: Union [List[Tag], Tag] = None,
+        exclude_vessel_tags: Union[List[Tag], Tag] = None,
     ) -> ReferenceBreakdownResult:
 
         """
