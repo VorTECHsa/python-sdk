@@ -19,3 +19,5 @@ from vortexasdk.endpoints.fleet_utilisation_origin_breakdown import FleetUtilisa
 from vortexasdk.endpoints.fleet_utilisation_destination_breakdown import FleetUtilisationDestinationBreakdown
 from vortexasdk.endpoints.fleet_utilisation_timeseries import FleetUtilisationTimeseries
 from vortexasdk.endpoints.eia_forecasts import EIAForecasts
+from vortexasdk.endpoints.origin_breakdown import OriginBreakdown
+from vortexasdk.endpoints.destination_breakdown import DestinationBreakdown

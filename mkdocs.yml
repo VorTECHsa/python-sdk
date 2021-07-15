@@ -9,6 +9,9 @@ pages:
     About Endpoints: endpoints/about-endpoints.md
     Attributes: endpoints/attributes.md
     Cargo Movements: endpoints/cargo_movements.md
+    Origin Breakdown: endpoints/origin_breakdown.md
+    Destination Breakdown: endpoints/destination_breakdown.md
+    Cargo Movements: endpoints/cargo_movements.md
     Cargo Time Series: endpoints/cargo_timeseries.md
     Corporations: endpoints/corporations.md
     EIA Forecasts: endpoints/eia_forecasts.md
