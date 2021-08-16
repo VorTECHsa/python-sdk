@@ -18,7 +18,7 @@ logger = get_logger(__name__)
 class VesselAvailabilitySearch(Search):
     """
     Vessel Availability Endpoint, use this to search through Vortexa's vessel availability data.
-
+    Please note: you will require a subscription to our Freight module to access this endpoint.
     """
 
     _MAX_PAGE_RESULT_SIZE = 500
@@ -38,7 +38,7 @@ class VesselAvailabilitySearch(Search):
         filter_vessel_location: Union[ID, List[ID]] = None,
         filter_owners: Union[ID, List[ID]] = None,
         filter_destination: Union[ID, List[ID]] = None,
-        filter_days_to_arrival: List[Dict[str,int]] = None,
+        filter_days_to_arrival: List[Dict[str, int]] = None,
         filter_vessel_dwt_min: int = None,
         filter_vessel_dwt_max: int = None,
         filter_vessel_age_min: int = None,
@@ -72,9 +72,9 @@ class VesselAvailabilitySearch(Search):
             offset: Used to page results. The offset from which records should be returned.
 
             size: Used to page results. The size of the result set. Between 0 and 500.
-            
+
             filter_owners: An corporation ID, or list of corporation IDs to filter on.
-            
+
             filter_destination: A geography ID, or list of geography IDs to filter on.
 
             filter_products: A product ID, or list of product IDs to filter on.
@@ -84,32 +84,32 @@ class VesselAvailabilitySearch(Search):
             filter_vessel_classes: A vessel class, or list of vessel classes to filter on.
 
             filter_vessel_status: The vessel status on which to base the filter. Enter 'vessel_status_ballast' for ballast vessels, 'vessel_status_laden_known' for laden vessels with known cargo (i.e. a type of cargo that Vortexa currently tracks) or 'any_activity' for any other vessels
-            
+
             filter_vessel_location: A location ID, or list of location IDs to filter on.
 
             filter_port: Filter by port ID.
 
             filter_region: Filter by region ID - takes precedence over filter_port if provided. This should be used in conjunction with `use_reference_port`
-            
+
             filter_days_to_arrival: Filter availability by time to arrival in days`
-            
+
             use_reference_port: If this flag is enabled, we will return data for
             the reference port instead of the user selected one,
 
             filter_vessel_age_min: A number between 1 and 100 (representing years).
 
             filter_vessel_age_max: A number between 1 and 100 (representing years).
-            
+
             filter_vessel_idle_min: A number greater than 0 (representing idle days).
 
             filter_vessel_idle_max: A number greater than 0 and filter_vessel_idle_min (representing idle days).
-            
+
             filter_vessel_dwt_min: A number between 0 and 550000.
 
             filter_vessel_dwt_max: A number between 0 and 550000.
 
             filter_vessel_scrubbers: Either inactive 'disabled', or included 'inc' or excluded 'exc'.
-            
+
             filter_recent_visits: Filter availability by each vessel's recent visits
 
             exclude_products: A product ID, or list of product IDs to exclude.
@@ -123,7 +123,7 @@ class VesselAvailabilitySearch(Search):
             exclude_owners: An owner ID, or list of owner IDs to exclude.
 
             exclude_vessel_location: A location ID, or list of location IDs to filter on.
-            
+
             exclude_destination: A location ID, or list of location IDs to filter on.
 
 
