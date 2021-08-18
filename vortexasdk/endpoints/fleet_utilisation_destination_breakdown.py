@@ -15,7 +15,9 @@ from vortexasdk.api.shared_types import to_ISODate
 
 
 class FleetUtilisationDestinationBreakdown(Search):
-
+    """
+    Please note: you will require a subscription to our Freight module to access this endpoint.
+    """
     def __init__(self):
         Search.__init__(self, FLEET_UTILISATION_DESTINATION_BREAKDOWN)
 
