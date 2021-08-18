@@ -15,6 +15,9 @@ from vortexasdk.utils import convert_to_list, sts_param_value
 
 
 class FleetUtilisationQuantityTimeseries(Search):
+    """
+    Please note: you will require a subscription to our Freight module to access this endpoint.
+    """
 
     def __init__(self):
         Search.__init__(self, FLEET_UTILISATION_TIMESERIES_QUANTITY)
@@ -35,7 +38,7 @@ class FleetUtilisationQuantityTimeseries(Search):
         filter_vessel_flags: Union[ID, List[ID]] = None,
         filter_vessel_ice_class: Union[ID, List[ID]] = None,
         filter_vessel_propulsion: Union[ID, List[ID]] = None,
-        filter_vessel_tags: Union [List[Tag], Tag] = None,
+        filter_vessel_tags: Union[List[Tag], Tag] = None,
         filter_vessel_risk_levels: Union[ID, List[ID]] = None,
         filter_vessel_scrubbers: str = "disabled",
         filter_vessel_age_min: int = None,
@@ -58,7 +61,7 @@ class FleetUtilisationQuantityTimeseries(Search):
         exclude_vessel_flags: Union[ID, List[ID]] = None,
         exclude_vessel_ice_class: Union[ID, List[ID]] = None,
         exclude_vessel_propulsion: Union[ID, List[ID]] = None,
-        exclude_vessel_tags: Union [List[Tag], Tag] = None,
+        exclude_vessel_tags: Union[List[Tag], Tag] = None,
         exclude_vessel_risk_levels: Union[ID, List[ID]] = None,
     ) -> BreakdownResult:
         """
@@ -71,7 +74,7 @@ class FleetUtilisationQuantityTimeseries(Search):
             timeseries_unit: A numeric metric to be calculated for each time bucket. Must be one of `'b'`, `'bpd'`, `'t'`,
             `'tpd'`, `'c'`, `'cpd'`, corresponding to barrels, barrels per day, metric tonnes, metric tonnes per day,
             cargo movement count, cargo movement count per day, respectively.
-        
+
             timeseries_frequency: Frequency denoting the granularity of the time series. Must be one of the following: `'day'`, `'week'`, `'doe_week'`, `'month'`, `'quarter'`, `'year'`.
 
             timeseries_property: Property on the vessel movement used to build the value of the aggregation. By default it is “quantity”. Must be one of the following: `'quantity’`, `‘vessel_class’`,
@@ -113,7 +116,7 @@ class FleetUtilisationQuantityTimeseries(Search):
             filter_vessel_age_min: A number between 1 and 100 (representing years).
 
             filter_vessel_age_max: A number between 1 and 100 (representing years).
-            
+
             filter_vessel_age_min: A number between 0 and 550000.
 
             filter_vessel_age_max: A number between 0 and 550000.
@@ -124,7 +127,7 @@ class FleetUtilisationQuantityTimeseries(Search):
             filter_vessel_status: The vessel status on which to base the filter. Enter 'vessel_status_ballast' for ballast vessels, 'vessel_status_laden_known' for laden vessels with known cargo (i.e. a type of cargo that Vortexa currently tracks) or 'any_activity' for any other vessels.
 
             filter_charterer_exists: A boolean to include or exclude the records to those that have a charterer.
-            
+
             filter_ship_to_ship: A boolean to include or exclude the records to those that are involved in an STS.
 
             exclude_filter_products: A product ID, or list of product IDs to exclude.
@@ -209,7 +212,7 @@ class FleetUtilisationQuantityTimeseries(Search):
             "filter_vessel_ice_class": convert_to_list(exclude_vessel_ice_class),
             "filter_vessel_propulsion": convert_to_list(exclude_vessel_propulsion),
             "filter_vessel_risk_levels": convert_to_list(exclude_vessel_risk_levels),
-            "filter_ship_to_ship": sts_filter["exclude"] 
+            "filter_ship_to_ship": sts_filter["exclude"]
         }
 
         api_params = {
