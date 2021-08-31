@@ -8,6 +8,7 @@ from vortexasdk.endpoints.corporations import Corporations
 from vortexasdk.endpoints.geographies import Geographies
 from vortexasdk.endpoints.products import Products
 from vortexasdk.endpoints.vessels import Vessels
+from vortexasdk.endpoints.storage_terminals import StorageTerminals
 from vortexasdk.endpoints.tonne_miles_breakdown import TonneMilesBreakdown
 from vortexasdk.endpoints.vessel_availability_breakdown import VesselAvailabilityBreakdown
 from vortexasdk.endpoints.vessel_availability_timeseries import VesselAvailabilityTimeseries

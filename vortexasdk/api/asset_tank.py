@@ -2,10 +2,7 @@ from dataclasses import dataclass
 from typing import List, Optional, Tuple
 
 from vortexasdk.api.serdes import FromDictMixin
-from vortexasdk.api.shared_types import (
-    Entity,
-    ISODate
-)
+from vortexasdk.api.shared_types import ISODate
 
 @dataclass(frozen=True)
 class CorporateEntity:

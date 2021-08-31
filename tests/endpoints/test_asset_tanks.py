@@ -6,6 +6,7 @@ from vortexasdk.endpoints.asset_tanks_result import AssetTankResult
 
 class TestAssetTanks(TestCaseUsingMockAPI):
     at = AssetTankResult(example_asset_tanks)
+
     def test_search(self):
         asset_tanks = AssetTanks().search().to_df()
         assert len(asset_tanks) > 0
@@ -14,7 +15,7 @@ class TestAssetTanks(TestCaseUsingMockAPI):
         asset_tanks = AssetTanks().search(storage_type=['refinery']).to_df()
         assert len(asset_tanks) > 0
 
-    def test_search_names(self):
+    def test_search_ids(self):
         asset_tanks = (
             AssetTanks().search(ids=['6114b93026e61993797db33a46a5d2acbeacdbd63238a4271efaeafcee94b1d2']).to_list()
         )

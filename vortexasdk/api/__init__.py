@@ -18,6 +18,7 @@ from vortexasdk.api.shared_types import (
     IDNameLayer,
     ISODate,
 )
+from vortexasdk.api.storage_terminal import StorageTerminal
 from vortexasdk.api.vessel import Vessel, VesselEntity
 from vortexasdk.api.vessel_movement import VesselEvent, VesselMovement
 from vortexasdk.api.eia_forecast import EIAForecast

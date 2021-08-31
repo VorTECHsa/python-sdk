@@ -10,6 +10,7 @@ from vortexasdk.endpoints.endpoints import (
     CARGO_TIMESERIES_RESOURCE,
     CORPORATIONS_REFERENCE,
     PRODUCTS_REFERENCE,
+    STORAGE_TERMINALS_REFERENCE,
     VESSEL_MOVEMENTS_RESOURCE,
     VESSELS_REFERENCE,
 )
@@ -25,6 +26,7 @@ example_attributes: List[Dict] = _read("attributes.json")
 example_cargo_movements: List[Dict] = _read("vessel_movements.json")
 example_corporations: List[Dict] = _read("corporations.json")
 example_products: List[Dict] = _read("products.json")
+example_storage_terminals: List[Dict] = _read("storage_terminals.json")
 example_time_series = _read("cargo_time_series.json")
 example_vessel_movements: List[Dict] = _read("vessel_movements.json")
 example_vessels: List[Dict] = _read("vessels.json")
@@ -37,6 +39,7 @@ class MockVortexaClient(AbstractVortexaClient):
         CARGO_TIMESERIES_RESOURCE: example_time_series,
         CORPORATIONS_REFERENCE: example_corporations,
         PRODUCTS_REFERENCE: example_products,
+        STORAGE_TERMINALS_REFERENCE: example_storage_terminals,
         VESSEL_MOVEMENTS_RESOURCE: example_vessel_movements,
         VESSELS_REFERENCE: example_vessels,
     }

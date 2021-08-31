@@ -23,7 +23,8 @@ from vortexasdk.endpoints import (
     FleetUtilisationOriginBreakdown,
     EIAForecasts,
     OriginBreakdown,
-    DestinationBreakdown
+    DestinationBreakdown,
+    StorageTerminals
 )
 
 # noinspection PyUnresolvedReferences
