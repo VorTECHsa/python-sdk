@@ -11,6 +11,7 @@ VESSEL_AVAILABILITY_SEARCH_RESOURCE = "/vessel-availability/search"
 VESSEL_AVAILABILITY_TIMERSERIES_RESOURCE = "/vessel-availability/timeseries"
 VESSEL_AVAILABILITY_BREAKDOWN_RESOURCE = "/vessel-availability/breakdown"
 
+ASSET_TANKS_REFERENCE = "/reference/asset-tanks"
 ATTRIBUTES_REFERENCE = "/reference/attributes"
 GEOGRAPHIES_REFERENCE = "/reference/geographies"
 VESSELS_REFERENCE = "/reference/vessels"

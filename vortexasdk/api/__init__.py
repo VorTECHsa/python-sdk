@@ -1,4 +1,5 @@
 """Vortexa API."""
+from vortexasdk.api.asset_tank import AssetTank
 from vortexasdk.api.attribute import Attribute
 from vortexasdk.api.cargo_movement import CargoEvent, CargoMovement, ParentID
 from vortexasdk.api.corporation import CorporateEntity, Corporation
