@@ -14,19 +14,20 @@ class AssetTanks(Reference, Search):
     """
         Asset Tanks endpoint.
 
-        An Asset Tanks is a reference value that corresponds to an ID associated with other entities.
+        An Asset Tank is a reference value that corresponds to an ID associated with other entities.
 
-        For example, a asset tanks object may have the following keys:
+        For example, an Asset Tank object may have the following keys:
 
         ```json
         {
             "name": "AAM001",
-            "storage_terminal_name": "South Pars Kangan Site - Phase 14"
+            "storage_type": "tdb"
+            "crude_confidence": "confirmed"
             ...
         }
         ```
 
-        These IDs represent asset tanks which can be found via the Asset Tank reference endpoint.
+        IDs represent asset tanks which can be found via the Asset Tank reference endpoint.
 
         When the asset tanks endpoint is searched with those ids as parameters:
 

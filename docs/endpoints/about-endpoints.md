@@ -15,7 +15,7 @@ The VortexaSDK currently contains the following endpoints:
 9. Tonne-miles
 10. Vessel Availability
 11. Fleet Utilisation
-12. Land Storage
+12. Crude Onshore Inventories
 
 Each endpoint offers either one, or both, of two different functionalities:
 

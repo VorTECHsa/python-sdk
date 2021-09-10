@@ -11,6 +11,9 @@ VESSEL_AVAILABILITY_SEARCH_RESOURCE = "/vessel-availability/search"
 VESSEL_AVAILABILITY_TIMERSERIES_RESOURCE = "/vessel-availability/timeseries"
 VESSEL_AVAILABILITY_BREAKDOWN_RESOURCE = "/vessel-availability/breakdown"
 
+# LAND_STORAGE_MEASUREMENT_SEARCH_RESOURCE = "/land-storage/search"
+CRUDE_ONSHORE_INVENTORIES_TIMESERIES = '/land-storage/timeseries'
+
 ASSET_TANKS_REFERENCE = "/reference/asset-tanks"
 ATTRIBUTES_REFERENCE = "/reference/attributes"
 CORPORATIONS_REFERENCE = "/reference/charterers"

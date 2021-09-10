@@ -10,6 +10,7 @@ from vortexasdk.api.geography import (
     Position,
 )
 from vortexasdk.api.id import ID
+from vortexasdk.api.onshore_inventory import OnshoreInventory
 from vortexasdk.api.product import Product, ProductEntity
 from vortexasdk.api.shared_types import (
     Entity,

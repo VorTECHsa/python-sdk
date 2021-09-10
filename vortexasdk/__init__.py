@@ -24,7 +24,8 @@ from vortexasdk.endpoints import (
     EIAForecasts,
     OriginBreakdown,
     DestinationBreakdown,
-    StorageTerminals
+    StorageTerminals,
+    OnshoreInventoriesTimeseries
 )
 
 # noinspection PyUnresolvedReferences

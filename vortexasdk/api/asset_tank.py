@@ -29,6 +29,7 @@ class AssetTank(FromDictMixin):
     corporate_entity_details: CorporateEntity
     corporate_entity_id: str
     crude_confidence: str
+    leaf: bool
     location_id: str
     location_details: List[LocationDetails]
     name: str
