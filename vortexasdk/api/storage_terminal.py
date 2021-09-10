@@ -4,6 +4,7 @@ from typing import List, Tuple
 from vortexasdk.api.serdes import FromDictMixin
 from vortexasdk.api.shared_types import ISODate
 
+
 @dataclass(frozen=True)
 class TerminalHierarchy:
     id: str
@@ -31,4 +32,3 @@ class StorageTerminal(FromDictMixin):
     name: str
     parent: List[TerminalParent]
     pos: Tuple[float, float]
-

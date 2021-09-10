@@ -4,6 +4,7 @@ from typing import List, Optional, Tuple
 from vortexasdk.api.serdes import FromDictMixin
 from vortexasdk.api.shared_types import ISODate
 
+
 @dataclass(frozen=True)
 class CorporateEntity:
     id: str
@@ -41,4 +42,3 @@ class AssetTank(FromDictMixin):
     storage_type: str
     valid_from: ISODate
     valid_to: Optional[ISODate]
-
