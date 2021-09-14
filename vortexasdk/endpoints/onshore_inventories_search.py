@@ -77,8 +77,7 @@ class OnshoreInventoriesSearch(Search):
 
         ```python
         >>> from vortexasdk import OnshoreInventoriesSearch
-        >>> list = OnshoreInventoriesSearch().search(crude_confidence='confirmed').to_list()
-        ... list[0]
+        >>> list = OnshoreInventoriesSearch().search(crude_confidence='confirmed').to_list()[0]
 
         ```
 
