@@ -81,6 +81,7 @@ generate:
   - endpoints/storage_terminals.md:
       - vortexasdk.endpoints.storage_terminals++
       - vortexasdk.endpoints.storage_terminals_result++
+  - endpoints/onshore_inventories_search.md: vortexasdk.endpoints.onshore_inventories_search++
   - endpoints/onshore_inventories_timeseries.md: vortexasdk.endpoints.onshore_inventories_timeseries++
 pages:
   - Home: index.md << README.md
@@ -110,6 +111,7 @@ pages:
       Fleet Utilisation Destination Breakdown: endpoints/fleet_utilisation_destination_breakdown.md
       Asset Tanks: endpoints/asset_tanks.md
       Storage Terminals: endpoints/storage_terminals.md
+      Crude Onshore Inventories Search: endpoints/onshore_inventories_search.md
       Crude Onshore Inventories Time Series: endpoints/onshore_inventories_timeseries.md
   - Entities:
       Breakdown Item: entities/breakdown_result.md

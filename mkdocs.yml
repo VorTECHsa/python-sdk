@@ -33,6 +33,7 @@ pages:
         Origin Breakdown: endpoints/fleet_utilisation_origin_breakdown.md
         Destination Breakdown: endpoints/fleet_utilisation_destination_breakdown.md
     Crude Onshore Inventories:
+        Search: endpoints/onshore_inventories_search.md
         Time Series: endpoints/onshore_inventories_timeseries.md
         Reference Data:
             Asset Tanks: endpoints/asset_tanks.md

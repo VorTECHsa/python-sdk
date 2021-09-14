@@ -60,13 +60,22 @@ class AssetTanks(Reference, Search):
     def search(
         self,
         ids: Union[str, List[str]] = None,
-        storage_type: Union[str, List[str]] = None,
+        corporate_entity_ids: Union[str, List[str]] = None,
+        crude_confidence: List[str] = None,
+        location_ids: Union[str, List[str]] = None,
+        storage_type: List[str] = None,
     ) -> AssetTankResult:
         """
         Find all asset tanks matching given type.
 
         # Arguments
-            type: The type of asset tank we're filtering on. Type can be: `storage_type`, `crude_confidence` etc
+
+            ids: An array of unique Asset Tanks ID(s) to filter on.
+            corporate_entity_ids: An array of owner ID(s) to filter on.
+            crude_confidence: An array of confidence metrics to filter on. Possible values are: `'confirmed’`, `‘probable’`, `‘unlikely’`
+            location_ids: An array of geography ID(s) to filter on.
+            storage_types: An array of storage types to filter on. Possible values are: `'refinery'`, `'non-refinery'`, `'commercial'`, `'spr'`, `'tbd'`
+
 
         # Returns
         List of asset tanks matching `type`
@@ -90,8 +99,11 @@ class AssetTanks(Reference, Search):
         """
 
         search_params = {
+            "ids": convert_to_list(ids),
+            "corporate_entity_ids": convert_to_list(corporate_entity_ids),
+            "crude_confidence": convert_to_list(crude_confidence),
+            "location_ids": convert_to_list(location_ids),
             "storage_type": convert_to_list(storage_type),
-            "ids": convert_to_list(ids)
         }
 
         return AssetTankResult(super().search(**search_params))

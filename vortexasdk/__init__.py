@@ -25,7 +25,8 @@ from vortexasdk.endpoints import (
     OriginBreakdown,
     DestinationBreakdown,
     StorageTerminals,
-    OnshoreInventoriesTimeseries
+    OnshoreInventoriesTimeseries,
+    OnshoreInventoriesSearch,
 )
 
 # noinspection PyUnresolvedReferences

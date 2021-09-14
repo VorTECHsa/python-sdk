@@ -24,3 +24,4 @@ from vortexasdk.endpoints.eia_forecasts import EIAForecasts
 from vortexasdk.endpoints.origin_breakdown import OriginBreakdown
 from vortexasdk.endpoints.destination_breakdown import DestinationBreakdown
 from vortexasdk.endpoints.onshore_inventories_timeseries import OnshoreInventoriesTimeseries
+from vortexasdk.endpoints.onshore_inventories_search import OnshoreInventoriesSearch
