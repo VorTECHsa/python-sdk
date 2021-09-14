@@ -77,8 +77,8 @@ class StorageTerminals(Reference, Search):
 
         Find a storage terminal by name.
         ```python
-        >>> from vortexasdk import StorageTerminal
-        >>> df = StorageTerminal().search(name=["Military"]).to_df()
+        >>> from vortexasdk import StorageTerminals
+        >>> df = StorageTerminals().search(name=["Military"]).to_df()
 
         ```
         Returns

@@ -59,8 +59,7 @@ class OnshoreInventoriesSearch(Search):
 
         ```python
         >>> from vortexasdk import OnshoreInventoriesSearch
-        >>> df = OnshoreInventoriesSearch().search(crude_confidence=['confirmed']).to_df()
-        >>> df.head(5)
+        >>> df = OnshoreInventoriesSearch().search(crude_confidence=['confirmed']).to_df().head(5)
 
         ```
 
@@ -79,7 +78,7 @@ class OnshoreInventoriesSearch(Search):
         ```python
         >>> from vortexasdk import OnshoreInventoriesSearch
         >>> list = OnshoreInventoriesSearch().search(crude_confidence='confirmed').to_list()
-        >>> list[0]
+        ... list[0]
 
         ```
 
