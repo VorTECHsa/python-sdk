@@ -23,7 +23,7 @@
         {
           "id": "01ec474e7324c7633ffaf2a5c92bb7348cc02adc4d10b85daa3dd2cc5458df59",
           "label": "CORE PETROLEUM",
-          "layer": "commercial_owner",
+          "layer": "effective_controller",
           "probability": 1,
           "source": "external"
         }
@@ -112,10 +112,7 @@
           "label": "Xianrendao Crude Oil Terminal"
         }
       ],
-      "pos": [
-        121.95271103090423,
-        40.20963715299812
-      ],
+      "pos": [121.95271103090423, 40.20963715299812],
       "start_timestamp": "2017-11-19T06:59:05+0000",
       "end_timestamp": "2017-11-21T00:00:08+0000",
       "event_type": "discharge"
@@ -201,10 +198,7 @@
           "label": "Dalian Xingang Oil Terminal"
         }
       ],
-      "pos": [
-        121.9107237155891,
-        38.965178213026206
-      ],
+      "pos": [121.9107237155891, 38.965178213026206],
       "start_timestamp": "2017-11-27T06:39:50+0000",
       "end_timestamp": "2017-11-29T02:49:32+0000",
       "event_type": "discharge"

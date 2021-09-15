@@ -16,7 +16,7 @@
           {
             "id": "f9bd45e65e292909a7b751b0026dcf7795c6194b3c0712910a241caee32c99b8",
             "label": "Essberger J.T.",
-            "layer": "commercial_owner",
+            "layer": "effective_controller",
             "probability": 1,
             "source": "external"
           }
