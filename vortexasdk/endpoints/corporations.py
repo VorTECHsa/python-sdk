@@ -55,8 +55,8 @@ class Corporations(Reference, Search):
 
         |    | id                                                               | name       | corporate_entity_type   |
         |---:|:-----------------------------------------------------------------|:-----------|:------------------------|
-        |  0 | 04f418ee78c1e17744ad653e7815e8e28891ed9ba25a8427030e4478e5c00974 | 3J         | ['commercial_owner']    |
-        |  1 | b6384cf17f1639a64bbff04cfd32257bf732a3a13e4b0532802a9ae84a36be34 | 5XJAPANESE | ['commercial_owner']    |
+        |  0 | 04f418ee78c1e17744ad653e7815e8e28891ed9ba25a8427030e4478e5c00974 | 3J         | ['effective_controller']    |
+        |  1 | b6384cf17f1639a64bbff04cfd32257bf732a3a13e4b0532802a9ae84a36be34 | 5XJAPANESE | ['effective_controller']    |
 
 
         Let's find all corporations with 'do' in the name.

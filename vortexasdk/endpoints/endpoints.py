@@ -26,5 +26,5 @@ FLEET_UTILISATION_TIMESERIES_CAPACITY = '/vessel-journey/timeseries/capacity'
 FLEET_UTILISATION_TIMESERIES = '/vessel-journey/timeseries/utilisation'
 FLEET_UTILISATION_TIMESERIES_AVG_DISTANCE = '/vessel-journey/timeseries/avg-distance'
 
-API_FQDN = "https://api.vortexa.com"
+API_FQDN = "https://api-chore-effective-controller.public.kube.develop.vortexa.com"
 API_URL = f"{API_FQDN}/v5"

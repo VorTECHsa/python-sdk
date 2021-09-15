@@ -63,7 +63,7 @@ if __name__ == "__main__":
         # Here we show any corporate information associated with the primary vessel
         "vessels.0.corporate_entities.charterer.label",
         "vessels.0.corporate_entities.time_charterer.label",
-        "vessels.0.corporate_entities.commercial_owner.label",
+        "vessels.0.corporate_entities.effective_controller.label",
         # Show the product information and quantity
         "product.group.label",
         "product.grade.label",

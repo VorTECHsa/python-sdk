@@ -429,11 +429,11 @@ class VesselMovementsResult(Result):
             vessel.corporate_entities.charterer.layer
             vessel.corporate_entities.charterer.probability
             vessel.corporate_entities.charterer.source
-            vessel.corporate_entities.commercial_owner.id
-            vessel.corporate_entities.commercial_owner.label
-            vessel.corporate_entities.commercial_owner.layer
-            vessel.corporate_entities.commercial_owner.probability
-            vessel.corporate_entities.commercial_owner.source
+            vessel.corporate_entities.effective_controller.id
+            vessel.corporate_entities.effective_controller.label
+            vessel.corporate_entities.effective_controller.layer
+            vessel.corporate_entities.effective_controller.probability
+            vessel.corporate_entities.effective_controller.source
             vessel.corporate_entities.time_charterer.end_timestamp
             vessel.corporate_entities.time_charterer.id
             vessel.corporate_entities.time_charterer.label
@@ -511,5 +511,5 @@ DEFAULT_COLUMNS = [
     "cargoes.0.product.grade.probability",
     "vessel.corporate_entities.charterer.label",
     "vessel.corporate_entities.time_charterer.label",
-    "vessel.corporate_entities.commercial_owner.label",
+    "vessel.corporate_entities.effective_controller.label",
 ]

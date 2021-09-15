@@ -52,7 +52,7 @@ class VesselAvailabilityResult(Result):
             'vessel_class',
             'vessel_declared_destination.0.name'
             'vessel_declared_destination.0.eta',
-            'vessel_owner_name',
+            'vessel_controller_name',
             'vessel_status',
             'vessel_last_cargo.0.label',
             'vessel_last_cargo.0.layer',
@@ -137,8 +137,8 @@ class VesselAvailabilityResult(Result):
             'vessel_location.13.label',
             'vessel_location.13.layer',
             'vessel_name',
-            'vessel_owner_id',
-            'vessel_owner_name'
+            'vessel_controller_id',
+            'vessel_controller_name'
             'vessel_predicted_destination.0.id',
             'vessel_predicted_destination.0.label',
             'vessel_predicted_destination.0.layer',
@@ -212,7 +212,7 @@ DEFAULT_COLUMNS = [
     'vessel_class',
     'vessel_declared_destination.0.eta',
     'vessel_declared_destination.0.name',
-    'vessel_owner_name',
+    'vessel_controller_name',
     'vessel_status',
     'vessel_last_cargo.0.label',
     'vessel_last_cargo.0.layer',
