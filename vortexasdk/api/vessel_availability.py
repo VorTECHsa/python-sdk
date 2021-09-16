@@ -49,8 +49,8 @@ class VesselAvailability(FromDictMixin):
     vessel_last_cargo: List[Entity]
     vessel_location: List[Entity]
     vessel_name: Optional[str]
-    vessel_owner_id: Optional[str]
-    vessel_owner_name: Optional[str]
+    vessel_controller_id: Optional[str]
+    vessel_controller_name: Optional[str]
     vessel_predicted_destination: List[Entity]
     vessel_scrubber: Optional[bool]
     vessel_status: str
