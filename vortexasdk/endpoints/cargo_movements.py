@@ -120,7 +120,7 @@ class CargoMovements(Search):
             exclude_products: A product ID, or list of product IDs to exclude.
 
             exclude_vessels: A vessel ID, or list of vessel IDs to exclude.
-            
+
             exclude_vessel_classes: A vessel class, or list of vessel classes to exclude.
 
             exclude_charterers: A charterer ID, or list of charterer IDs to exclude.
@@ -241,7 +241,7 @@ class CargoMovements(Search):
             "filter_owners": convert_to_list(filter_owners),
             "filter_products": convert_to_list(filter_products),
             "filter_vessels": convert_to_list(filter_vessels),
-             "filter_vessel_classes": convert_to_list(
+            "filter_vessel_classes": convert_to_list(
                 filter_vessel_classes
             ),
             "filter_destinations": convert_to_list(filter_destinations),
