@@ -6,6 +6,7 @@ Try me out in your browser:
 from datetime import datetime
 from typing import List, Union
 
+from vortexasdk.api import ID
 from vortexasdk.api.shared_types import to_ISODate
 from vortexasdk.endpoints.endpoints import CARGO_TIMESERIES_RESOURCE
 from vortexasdk.endpoints.timeseries_result import TimeSeriesResult
@@ -28,15 +29,16 @@ class CargoTimeSeries(Search):
         timeseries_unit: str = "b",
         filter_time_min: datetime = datetime(2019, 10, 1, 0),
         filter_time_max: datetime = datetime(2019, 10, 1, 1),
-        filter_charterers: Union[str, List[str]] = None,
-        filter_destinations: Union[str, List[str]] = None,
-        filter_origins: Union[str, List[str]] = None,
-        filter_owners: Union[str, List[str]] = None,
-        filter_products: Union[str, List[str]] = None,
-        filter_vessels: Union[str, List[str]] = None,
-        filter_storage_locations: Union[str, List[str]] = None,
-        filter_ship_to_ship_locations: Union[str, List[str]] = None,
-        filter_waypoints: Union[str, List[str]] = None,
+        filter_charterers: Union[ID, List[ID]] = None,
+        filter_destinations: Union[ID, List[ID]] = None,
+        filter_origins: Union[ID, List[ID]] = None,
+        filter_owners: Union[ID, List[ID]] = None,
+        filter_products: Union[ID, List[ID]] = None,
+        filter_vessels: Union[ID, List[ID]] = None,
+        filter_vessel_classes: Union[ID, List[ID]] = None,
+        filter_storage_locations: Union[ID, List[ID]] = None,
+        filter_ship_to_ship_locations: Union[ID, List[ID]] = None,
+        filter_waypoints: Union[ID, List[ID]] = None,
         disable_geographic_exclusion_rules: bool = None,
         timeseries_activity_time_span_min: int = None,
         timeseries_activity_time_span_max: int = None,
@@ -72,6 +74,8 @@ class CargoTimeSeries(Search):
             filter_products: A product ID, or list of product IDs to filter on.
 
             filter_vessels: A vessel ID, or list of vessel IDs to filter on.
+
+            filter_vessel_classes: A vessel class, or list of vessel classes to filter on.
 
             filter_storage_locations: A geography ID, or list of geography IDs to filter on.
 
@@ -162,6 +166,9 @@ class CargoTimeSeries(Search):
             "filter_owners": convert_to_list(filter_owners),
             "filter_products": convert_to_list(filter_products),
             "filter_vessels": convert_to_list(filter_vessels),
+             "filter_vessel_classes": convert_to_list(
+                filter_vessel_classes
+            ),
             "filter_destinations": convert_to_list(filter_destinations),
             "filter_origins": convert_to_list(filter_origins),
             "filter_storage_locations": convert_to_list(
