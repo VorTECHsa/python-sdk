@@ -130,7 +130,7 @@ jobs:
           command: |
             . .venv/bin/activate
             pip install tox
-            tox  -o --verbose
+            tox  -o
 
   check-release-version:
     working_directory: ~/project
