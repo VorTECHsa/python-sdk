@@ -36,6 +36,8 @@ class CargoTimeSeries(Search):
         filter_products: Union[ID, List[ID]] = None,
         filter_vessels: Union[ID, List[ID]] = None,
         filter_vessel_classes: Union[ID, List[ID]] = None,
+        filter_vessel_age_min: int = None,
+        filter_vessel_age_max: int = None,
         filter_storage_locations: Union[ID, List[ID]] = None,
         filter_ship_to_ship_locations: Union[ID, List[ID]] = None,
         filter_waypoints: Union[ID, List[ID]] = None,
@@ -76,6 +78,10 @@ class CargoTimeSeries(Search):
             filter_vessels: A vessel ID, or list of vessel IDs to filter on.
 
             filter_vessel_classes: A vessel class, or list of vessel classes to filter on.
+
+            filter_vessel_age_min: A number between 1 and 100 (representing years).
+
+            filter_vessel_age_max: A number between 1 and 100 (representing years).
 
             filter_storage_locations: A geography ID, or list of geography IDs to filter on.
 
@@ -169,6 +175,8 @@ class CargoTimeSeries(Search):
             "filter_vessel_classes": convert_to_list(
                 filter_vessel_classes
             ),
+            "filter_vessel_age_min": filter_vessel_age_min,
+            "filter_vessel_age_max": filter_vessel_age_max,
             "filter_destinations": convert_to_list(filter_destinations),
             "filter_origins": convert_to_list(filter_origins),
             "filter_storage_locations": convert_to_list(
