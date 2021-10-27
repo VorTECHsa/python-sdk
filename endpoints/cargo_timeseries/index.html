@@ -332,7 +332,7 @@
 </code></pre>
 <h3 id="vortexasdk.endpoints.cargo_timeseries.CargoTimeSeries.search">search</h3>
 
-<pre><code class="language-python">CargoTimeSeries.search(self, filter_activity: str, timeseries_activity: str = None, timeseries_frequency: str = 'day', timeseries_unit: str = 'b', filter_time_min: datetime.datetime = datetime.datetime(2019, 10, 1, 0, 0), filter_time_max: datetime.datetime = datetime.datetime(2019, 10, 1, 1, 0), filter_charterers: Union[str, List[str]] = None, filter_destinations: Union[str, List[str]] = None, filter_origins: Union[str, List[str]] = None, filter_owners: Union[str, List[str]] = None, filter_products: Union[str, List[str]] = None, filter_vessels: Union[str, List[str]] = None, filter_vessel_classes: Union[str, List[str]] = None, filter_storage_locations: Union[str, List[str]] = None, filter_ship_to_ship_locations: Union[str, List[str]] = None, filter_waypoints: Union[str, List[str]] = None, disable_geographic_exclusion_rules: bool = None, timeseries_activity_time_span_min: int = None, timeseries_activity_time_span_max: int = None) -&gt; vortexasdk.endpoints.timeseries_result.TimeSeriesResult
+<pre><code class="language-python">CargoTimeSeries.search(self, filter_activity: str, timeseries_activity: str = None, timeseries_frequency: str = 'day', timeseries_unit: str = 'b', filter_time_min: datetime.datetime = datetime.datetime(2019, 10, 1, 0, 0), filter_time_max: datetime.datetime = datetime.datetime(2019, 10, 1, 1, 0), filter_charterers: Union[str, List[str]] = None, filter_destinations: Union[str, List[str]] = None, filter_origins: Union[str, List[str]] = None, filter_owners: Union[str, List[str]] = None, filter_products: Union[str, List[str]] = None, filter_vessels: Union[str, List[str]] = None, filter_vessel_classes: Union[str, List[str]] = None, filter_vessel_age_min: int = None, filter_vessel_age_max: int = None, filter_storage_locations: Union[str, List[str]] = None, filter_ship_to_ship_locations: Union[str, List[str]] = None, filter_waypoints: Union[str, List[str]] = None, disable_geographic_exclusion_rules: bool = None, timeseries_activity_time_span_min: int = None, timeseries_activity_time_span_max: int = None) -&gt; vortexasdk.endpoints.timeseries_result.TimeSeriesResult
 </code></pre>
 <p>Find Aggregate flows between regions, for various products, for various vessels, or various corporations.</p>
 <p>Example questions that can be answered with this endpoint:</p>
@@ -375,6 +375,12 @@
 </li>
 <li>
 <p><strong>filter_vessel_classes</strong>: A vessel class, or list of vessel classes to filter on.</p>
+</li>
+<li>
+<p><strong>filter_vessel_age_min</strong>: A number between 1 and 100 (representing years).</p>
+</li>
+<li>
+<p><strong>filter_vessel_age_max</strong>: A number between 1 and 100 (representing years).</p>
 </li>
 <li>
 <p><strong>filter_storage_locations</strong>: A geography ID, or list of geography IDs to filter on.</p>
