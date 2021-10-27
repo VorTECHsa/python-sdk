@@ -32,7 +32,7 @@ setuptools.setup(
         "pandas>=0.25.2",
         "requests==2.22.0",
         "statsmodels==0.12.2",
-        "tqdm==4.38.0",
+        "tqdm==4.38.0","
     ],
     extras_require={
         "tests": [
@@ -42,6 +42,7 @@ setuptools.setup(
             "pre-commit==1.20.0",
             "pytest==5.2.4",
             "pydoc-markdown==2.0.5",
+            "pyyaml<6.0.0",
             "six==1.12.0",
             "tabulate==0.8.7",
             "xlrd==1.2.0",
