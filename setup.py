@@ -30,7 +30,7 @@ setuptools.setup(
         "jupyter==1.0.0",
         "matplotlib==3.3.4",
         "pandas>=0.25.2",
-        "requests==2.22.0",
+        "requests==2.26.0",
         "statsmodels==0.12.2",
         "tqdm==4.38.0"
     ],
