@@ -173,6 +173,38 @@ class TestCargoMovementsReal(TestCaseUsingRealAPI):
 
         assert len(df) == 2
 
+    def test_filter_vessel_classes(self):
+        start = datetime(2021, 1, 1)
+        end = datetime(2021, 1, 11)
+
+        vlcc_plus = 'vlcc_plus'
+
+        vlcc_plus_movements = (
+            CargoMovements()
+            .search(
+                filter_activity="loading_state",
+                filter_time_min=start,
+                filter_time_max=end,
+                filter_vessel_classes=[vlcc_plus]
+            )
+            .to_df()
+        )
+
+        all_vessel_classes_movements = (
+            CargoMovements()
+            .search(
+                filter_activity="loading_state",
+                filter_time_min=start,
+                filter_time_max=end,
+            )
+            .to_df()
+        )
+
+        assert (
+            all_vessel_classes_movements.shape[0]
+            > vlcc_plus_movements.shape[0]
+        )
+
     def test_search_single_filter_owner_name(self):
         df = (
             CargoMovements()
