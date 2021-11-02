@@ -1,4 +1,5 @@
 """Vortexa endpoints."""
+from vortexasdk.endpoints.asset_tanks import AssetTanks
 from vortexasdk.endpoints.attributes import Attributes
 from vortexasdk.endpoints.cargo_movements import CargoMovements
 from vortexasdk.endpoints.cargo_timeseries import CargoTimeSeries
@@ -7,6 +8,7 @@ from vortexasdk.endpoints.corporations import Corporations
 from vortexasdk.endpoints.geographies import Geographies
 from vortexasdk.endpoints.products import Products
 from vortexasdk.endpoints.vessels import Vessels
+from vortexasdk.endpoints.storage_terminals import StorageTerminals
 from vortexasdk.endpoints.tonne_miles_breakdown import TonneMilesBreakdown
 from vortexasdk.endpoints.vessel_availability_breakdown import VesselAvailabilityBreakdown
 from vortexasdk.endpoints.vessel_availability_timeseries import VesselAvailabilityTimeseries
@@ -21,3 +23,5 @@ from vortexasdk.endpoints.fleet_utilisation_timeseries import FleetUtilisationTi
 from vortexasdk.endpoints.eia_forecasts import EIAForecasts
 from vortexasdk.endpoints.origin_breakdown import OriginBreakdown
 from vortexasdk.endpoints.destination_breakdown import DestinationBreakdown
+from vortexasdk.endpoints.onshore_inventories_timeseries import OnshoreInventoriesTimeseries
+from vortexasdk.endpoints.onshore_inventories_search import OnshoreInventoriesSearch

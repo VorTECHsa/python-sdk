@@ -11,11 +11,16 @@ VESSEL_AVAILABILITY_SEARCH_RESOURCE = "/vessel-availability/search"
 VESSEL_AVAILABILITY_TIMERSERIES_RESOURCE = "/vessel-availability/timeseries"
 VESSEL_AVAILABILITY_BREAKDOWN_RESOURCE = "/vessel-availability/breakdown"
 
+CRUDE_ONSHORE_INVENTORIES_SEARCH = "/onshore-inventories/search"
+CRUDE_ONSHORE_INVENTORIES_TIMESERIES = '/onshore-inventories/timeseries'
+
+ASSET_TANKS_REFERENCE = "/reference/asset-tanks"
 ATTRIBUTES_REFERENCE = "/reference/attributes"
-GEOGRAPHIES_REFERENCE = "/reference/geographies"
-VESSELS_REFERENCE = "/reference/vessels"
-PRODUCTS_REFERENCE = "/reference/products"
 CORPORATIONS_REFERENCE = "/reference/charterers"
+GEOGRAPHIES_REFERENCE = "/reference/geographies"
+PRODUCTS_REFERENCE = "/reference/products"
+STORAGE_TERMINALS_REFERENCE = "/reference/storage-terminals"
+VESSELS_REFERENCE = "/reference/vessels"
 
 TONNE_MILES_BREAKDOWN = "/vessel-journey/breakdown/tonne-miles"
 FLEET_UTILISATION_ORIGIN_BREAKDOWN = "/vessel-journey/breakdown/origin"
