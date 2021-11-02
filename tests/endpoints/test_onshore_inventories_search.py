@@ -17,7 +17,7 @@ class TestOnshoreInventoriesSearch(TestCaseUsingRealAPI):
     def test_timeseries_returns_list(self):
         lst = OnshoreInventoriesSearch().search(
             crude_confidence=['probable'],
-            storage_types=['non-refinery']
+            storage_types=['refinery']
         ).to_list()
 
         assert len(lst) > 0
