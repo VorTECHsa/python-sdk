@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Vessels - VortexaSDK</title>
+  <title>Time Series - VortexaSDK</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -17,8 +17,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Vessels";
-    var mkdocs_page_input_path = "endpoints/vessels.md";
+    var mkdocs_page_name = "Time Series";
+    var mkdocs_page_input_path = "endpoints/onshore_inventories_timeseries.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -111,12 +111,9 @@
                     
     <a class="" href="../vessel_movements/">Vessel Movements</a>
                 </li>
-                <li class=" current">
+                <li class="">
                     
-    <a class="current" href="./">Vessels</a>
-    <ul class="subnav">
-            
-    </ul>
+    <a class="" href="../vessels/">Vessels</a>
                 </li>
                 <li class="">
                     
@@ -174,7 +171,7 @@
                 </li>
     </ul>
                 </li>
-                <li class="">
+                <li class=" current">
                     
     <span class="caption-text">Crude Onshore Inventories</span>
     <ul class="subnav">
@@ -182,9 +179,12 @@
                     
     <a class="" href="../onshore_inventories_search/">Search</a>
                 </li>
-                <li class="toctree-l3">
+                <li class="toctree-l3 current">
                     
-    <a class="" href="../onshore_inventories_timeseries/">Time Series</a>
+    <a class="current" href="./">Time Series</a>
+    <ul class="subnav">
+            
+    </ul>
                 </li>
                 <li class="toctree-l3">
                     
@@ -333,14 +333,18 @@
     
       
         
+          <li>Crude Onshore Inventories &raquo;</li>
+        
+      
+        
           <li>Endpoints &raquo;</li>
         
       
     
-    <li>Vessels</li>
+    <li>Time Series</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/vortechsa/python-sdk/edit/master/docs/endpoints/vessels.md"
+        <a href="https://github.com/vortechsa/python-sdk/edit/master/docs/endpoints/onshore_inventories_timeseries.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -350,179 +354,100 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="vortexasdk.endpoints.vessels">vortexasdk.endpoints.vessels</h1>
+                <h1 id="vortexasdk.endpoints.onshore_inventories_timeseries">vortexasdk.endpoints.onshore_inventories_timeseries</h1>
 
 <p>Try me out in your browser:</p>
-<p><a href="https://mybinder.org/v2/gh/VorTECHsa/python-sdk/master?filepath=docs%2Fexamples%2Ftry_me_out%2Fvessels.ipynb"><img alt="Binder" src="https://img.shields.io/badge/try%20me%20out-launch%20notebook-579ACA.svg?logo=data:image/png;base64,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" /></a></p>
-<h2 id="vortexasdk.endpoints.vessels.Vessels">Vessels</h2>
+<p><a href="https://mybinder.org/v2/gh/VorTECHsa/python-sdk/master?filepath=docs%2Fexamples%2Ftry_me_out%2Fonshore_inventories_timeseries.ipynb"><img alt="Binder" src="https://img.shields.io/badge/try%20me%20out-launch%20notebook-579ACA.svg?logo=data:image/png;base64,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" /></a></p>
+<h2 id="vortexasdk.endpoints.onshore_inventories_timeseries.OnshoreInventoriesTimeseries">OnshoreInventoriesTimeseries</h2>
 
-<pre><code class="language-python">Vessels(self)
+<pre><code class="language-python">OnshoreInventoriesTimeseries(self)
 </code></pre>
-<p>Vessels endpoint.</p>
-<h3 id="vortexasdk.endpoints.vessels.Vessels.load_all">load_all</h3>
+<p>Please note: you will require a subscription to our Crude Onshore Inventories module to access this endpoint.</p>
+<h3 id="vortexasdk.endpoints.onshore_inventories_timeseries.OnshoreInventoriesTimeseries.search">search</h3>
 
-<pre><code class="language-python">Vessels.load_all(self) -&gt; vortexasdk.endpoints.vessels_result.VesselsResult
+<pre><code class="language-python">OnshoreInventoriesTimeseries.search(self, corporate_entity_ids: Union[str, List[str]] = None, crude_confidence: List[str] = None, location_ids: Union[str, List[str]] = None, storage_types: List[str] = None, tank_ids: Union[str, List[str]] = None, time_max: datetime.datetime = None, time_min: datetime.datetime = None, timeseries_frequency: str = None, timeseries_split_property: str = None, timeseries_unit: str = None, timeseries_unit_operator: str = None, exclude_corporate_entity_ids: List[str] = None, exclude_crude_confidence: List[str] = None, exclude_location_ids: Union[str, List[str]] = None, exclude_storage_types: List[str] = None) -&gt; vortexasdk.endpoints.breakdown_result.BreakdownResult
 </code></pre>
-<p>Load all vessels.</p>
-<h3 id="vortexasdk.endpoints.vessels.Vessels.search">search</h3>
-
-<pre><code class="language-python">Vessels.search(self, term: Union[str, List[str]] = None, ids: Union[str, List[str]] = None, vessel_classes: Union[str, List[str]] = None, vessel_product_types: Union[str, List[str]] = None, vessel_scrubbers: str = 'disabled', exact_term_match: bool = False) -&gt; vortexasdk.endpoints.vessels_result.VesselsResult
-</code></pre>
-<p>Find all vessels matching given search arguments. Search arguments are combined in an AND manner.</p>
+<p>Sum of crude onshore inventories storage and total capacity updated weekly. For frequencies other than 'week', the values returned are
+calculated by returning the final weekly onshore inventories 'quantity' bucket for the specified period.</p>
 <p><strong>Arguments</strong></p>
 <ul>
+<li><strong>corporate_entity_ids</strong>: An array of owner ID(s) to filter on.</li>
+<li><strong>crude_confidence</strong>: An array of confidence metrics to filter on. Possible values are: <code>'confirmed’</code>, <code>‘probable’</code>, <code>‘unlikely’</code></li>
+<li><strong>location_ids</strong>: An array of geography ID(s) to filter on.</li>
+<li><strong>storage_types</strong>: An array of storage types to filter on. Possible values are: <code>'refinery'</code>, <code>'non-refinery'</code>, <code>'commercial'</code>, <code>'spr'</code>, <code>'tbd'</code></li>
+<li><strong>tank_ids</strong>: An array of unique Asset Tanks ID(s) to filter on - linked to the Asset Tank Reference data.</li>
+<li><strong>time_min</strong>: The UTC start date of the time filter.</li>
+<li><strong>time_max</strong>: The UTC end date of the time filter.</li>
+<li><strong>timeseries_frequency</strong>: Frequency denoting the granularity of the time series. Must be one of the following: <code>'week'</code>, <code>'month'</code>, <code>'year'</code>.</li>
 <li>
-<p><strong>term</strong>: The name(s) (or partial name(s)) of a vessel we'd like to search</p>
+<p><strong>timeseries_split_property</strong>: Property used to breakdown the aggregation. By default 'quantity' is used which returns only the total, but aggregations can be broken down
+    by either <code>'crude_confidence'</code>, <code>'storage_type'</code>, <code>'location_country'</code>, <code>'location_port'</code>, <code>'location_region'</code>, <code>'location_shipping_region'</code>, <code>'location_trading_region'</code>,
+    <code>'location_trading_subregion'</code></p>
 </li>
 <li>
-<p><strong>ids</strong>: ID or IDs of vessels we'd like to search</p>
+<p><strong>timeseries_unit</strong>: A numeric metric to be calculated for each time bucket. Must be either <code>'b'</code>, <code>'t'</code>, <code>'cbm'</code> corresponding to barrels, metric tonnes, cubic meters.</p>
 </li>
 <li>
-<p><strong>vessel_classes</strong>: vessel_class (or list of vessel classes) we'd like to search. Each vessel class must be one of <code>"tiny_tanker" , "general_purpose" , "handysize" , "handymax" , "panamax", "aframax" , "suezmax" , "vlcc_plus" , "sgc" , "mgc" , "lgc" , "vlgc"</code>. Refer to <a href="https://docs.vortexa.com/reference/intro-vessel-entities">VortexaAPI Vessel Entities</a> for the most up-to-date list of vessel classes.</p>
+<p><strong>timeseries_unit_operator</strong>: Argument must be either 'fill' (total in storage) or 'capacity' (total capacity).</p>
 </li>
 <li>
-<p><strong>vessel_product_types</strong>: A product ID, or list of product IDs to filter on, searching vessels <em>currently</em> carrying these products.</p>
+<p><strong>exclude_corporate_entity_ids</strong>: An array of owner ID(s) to exclude from the results,</p>
 </li>
-<li>
-<p><strong>vessel_scrubbers</strong>: An optional filter to filter on vessels with or without scrubbers.
-     To disable the filter (the default behaviour), enter 'disabled'.
-     To only include vessels with scrubbers, enter 'inc'.
-     To exclude vessels with scrubbers, enter 'exc'.</p>
-</li>
-<li>
-<p><strong>exact_term_match</strong>: Search on only exact term matches, or allow similar matches.
-         e.g. When searching for "Ocean" with <code>exact_term_match=False</code>, then the SDK will yield vessels named
-        ['Ocean', 'Ocean Wisdom', ...] etc. When <code>exact_term_match=True</code>,
-        the SDK will only yield the vessel named <code>Ocean</code>.</p>
-</li>
+<li><strong>exclude_crude_confidence</strong>: An array of confidence metrics to exclude from the results</li>
+<li><strong>exclude_location_ids</strong>: An array of geography ID(s) to exclude from the results</li>
+<li><strong>exclude_storage_types</strong>: An array of storage types to exclude from the results</li>
 </ul>
 <p><strong>Returns</strong></p>
-<p>List of vessels matching the search arguments.</p>
-<p><strong>Examples</strong></p>
-<ul>
-<li>Let's find all the VLCCs with 'ocean' in their name, or related names.</li>
-</ul>
-<pre><code class="language-python">&gt;&gt;&gt; from vortexasdk import Vessels
-&gt;&gt;&gt; vessels_df = Vessels().search(vessel_classes='vlcc', term='ocean').to_df(columns=['name', 'imo', 'mmsi', 'related_names'])
+<p><code>BreakdownResult</code></p>
+<p><strong>Example</strong></p>
+<p><em>Total storage capacity across Europe for the first week of January 2021.</em></p>
+<pre><code class="language-python">&gt;&gt;&gt; from vortexasdk import OnshoreInventoriesTimeseries
+&gt;&gt;&gt; from datetime import datetime
+&gt;&gt;&gt; search_result = OnshoreInventoriesTimeseries().search(
+...    location_ids=[&quot;f39d455f5d38907394d6da3a91da4e391f9a34bd6a17e826d6042761067e88f4&quot;],
+...    time_min=datetime(2021, 1, 5),
+...    time_max=datetime(2021, 1, 12),
+...    timeseries_frequency=&quot;week&quot;,
+...    timeseries_split_property=&quot;location_country&quot;,
+...    timeseries_unit=&quot;b&quot;,
+...    timeseries_unit_operator=&quot;capacity&quot;,
+...    ).to_list()
 
 </code></pre>
-<table>
-<thead>
-<tr>
-<th align="right"></th>
-<th align="left">name</th>
-<th align="right">imo</th>
-<th align="right">mmsi</th>
-<th align="left">related_names</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="right">0</td>
-<td align="left">OCEANIS</td>
-<td align="right">9532757</td>
-<td align="right">241089000</td>
-<td align="left">['OCEANIS']</td>
-</tr>
-<tr>
-<td align="right">1</td>
-<td align="left">AEGEAN</td>
-<td align="right">9732553</td>
-<td align="right">205761000</td>
-<td align="left">['GENER8 OCEANUS']</td>
-</tr>
-<tr>
-<td align="right">2</td>
-<td align="left">OCEANIA</td>
-<td align="right">9246633</td>
-<td align="right">205753000</td>
-<td align="left">['OCEANIA'</td>
-</tr>
-<tr>
-<td align="right">3</td>
-<td align="left">ENEOS OCEAN</td>
-<td align="right">9662875</td>
-<td align="right">432986000</td>
-<td align="left">['ENEOS OCEAN']</td>
-</tr>
-<tr>
-<td align="right">4</td>
-<td align="left">OCEAN LILY</td>
-<td align="right">9284960</td>
-<td align="right">477178100</td>
-<td align="left">['OCEAN LILY']</td>
-</tr>
-<tr>
-<td align="right">5</td>
-<td align="left">SHINYO OCEAN</td>
-<td align="right">9197868</td>
-<td align="right">636019316</td>
-<td align="left">['SHINYO OCEAN']</td>
-</tr>
-<tr>
-<td align="right">6</td>
-<td align="left">NASHA</td>
-<td align="right">9079107</td>
-<td align="right">370497000</td>
-<td align="left">['OCEANIC']</td>
-</tr>
-<tr>
-<td align="right">7</td>
-<td align="left">HUMANITY</td>
-<td align="right">9180281</td>
-<td align="right">422204700</td>
-<td align="left">['OCEAN NYMPH']</td>
-</tr>
-</tbody>
-</table>
-<p>Note the <code>term</code> search also looks for vessels with matching <code>related_names</code></p>
-<ul>
-<li>Let's find all the vessels currently carrying Crude.</li>
-</ul>
-<pre><code class="language-python">&gt;&gt;&gt; from vortexasdk import Vessels, Products
-&gt;&gt;&gt; crude = [p.id for p in Products().search(term=&quot;crude&quot;).to_list() if 'group' in p.layer]
-&gt;&gt;&gt; vessels_df = Vessels().search(vessel_product_types=crude).to_df()
-
+<p>Gives the following result:</p>
+<pre><code>[
+    BreakdownItem(key='2021-09-09T14:00:00.000Z',
+    count=3769,
+    value=994621677,
+    breakdown=[
+        {
+            'id': 'ee1de4914cc26e8f1326b49793b089131870d478714c07e0c99c56cb307704c5',
+            'label': 'Italy',
+            'value': 204482432,
+            'count': 762
+        },
+        {
+            'id': '2aaad41b89dfad19e5668918018ae02695d7710bcbe5f2dc689234e8da492de3',
+            'label': 'UnitedKingdom',
+            'value': 113001186,
+            'count': 415
+        },
+        {
+            'id': '284c8d9831e1ac59c0cb714468856d561af722c8a2432c13a001f909b97e6b71',
+            'label': 'Germany',
+            'value': 93583672,
+            'count': 405
+        },
+        {
+            'id': 'e9e556620469f46a4dc171aef71073f5286a288da35c5883cac760446b0ceb46',
+            'label': 'France',
+            'value': 86652291,
+            'count': 327
+        },
+        ...
+    ])
+]
 </code></pre>
-<p><strong>Further Documentation</strong></p>
-<p><a href="https://docs.vortexa.com/reference/POST/reference/vessels">VortexaAPI Vessel Reference</a></p>
-<h3 id="vortexasdk.endpoints.vessels.Vessels.reference">reference</h3>
-
-<pre><code class="language-python">Vessels.reference(self, id: str) -&gt; Dict
-</code></pre>
-<p>Perform a vessel lookup.</p>
-<p><strong>Arguments</strong></p>
-<ul>
-<li><strong>id</strong>: Vessel ID to lookup</li>
-</ul>
-<p><strong>Returns</strong></p>
-<p>Vessel record matching the ID</p>
-<p><strong>Further Documentation:</strong></p>
-<p><a href="https://docs.vortexa.com/reference/GET/reference/vessels/%7Bid%7D">VortexaAPI Vessel Reference</a></p>
-<h1 id="vortexasdk.endpoints.vessels_result">vortexasdk.endpoints.vessels_result</h1>
-
-<h2 id="vortexasdk.endpoints.vessels_result.VesselsResult">VesselsResult</h2>
-
-<pre><code class="language-python">VesselsResult(self, _records: List) -&gt; None
-</code></pre>
-<p>Container class that holds the result obtained from calling the <code>Vessels</code> endpoint.</p>
-<h3 id="vortexasdk.endpoints.vessels_result.VesselsResult.to_list">to_list</h3>
-
-<pre><code class="language-python">VesselsResult.to_list(self) -&gt; List[vortexasdk.api.vessel.Vessel]
-</code></pre>
-<p>Represent vessels as a list.</p>
-<h3 id="vortexasdk.endpoints.vessels_result.VesselsResult.to_df">to_df</h3>
-
-<pre><code class="language-python">VesselsResult.to_df(self, columns=None) -&gt; pandas.core.frame.DataFrame
-</code></pre>
-<p>Represent vessels as a <code>pd.DataFrame</code>.</p>
-<p><strong>Arguments</strong></p>
-<ul>
-<li><strong>columns</strong>: The vessel features we want in the dataframe. Enter <code>columns='all'</code> to include all features.
-    Defaults to <code>columns = ['id', 'name', 'imo', 'vessel_class']</code>.</li>
-</ul>
-<p><strong>Returns</strong></p>
-<p><code>pd.DataFrame</code> of vessels.</p>
               
             </div>
           </div>
@@ -530,10 +455,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../tonne_miles_breakdown/" class="btn btn-neutral float-right" title="Tonne-miles Breakdown">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../asset_tanks/" class="btn btn-neutral float-right" title="Asset Tanks">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../vessel_movements/" class="btn btn-neutral" title="Vessel Movements"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../onshore_inventories_search/" class="btn btn-neutral" title="Search"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -561,10 +486,10 @@
           <a href="https://github.com/vortechsa/python-sdk/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../vessel_movements/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../onshore_inventories_search/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../tonne_miles_breakdown/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../asset_tanks/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
