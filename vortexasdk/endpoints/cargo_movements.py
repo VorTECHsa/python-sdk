@@ -41,6 +41,7 @@ class CargoMovements(Search):
         filter_owners: Union[ID, List[ID]] = None,
         filter_products: Union[ID, List[ID]] = None,
         filter_vessels: Union[ID, List[ID]] = None,
+        filter_vessel_classes: Union[str, List[str]] = None,
         filter_storage_locations: Union[ID, List[ID]] = None,
         filter_ship_to_ship_locations: Union[ID, List[ID]] = None,
         filter_waypoints: Union[ID, List[ID]] = None,
@@ -54,6 +55,7 @@ class CargoMovements(Search):
         exclude_destinations: Union[ID, List[ID]] = None,
         exclude_products: Union[ID, List[ID]] = None,
         exclude_vessels: Union[ID, List[ID]] = None,
+        exclude_vessel_classes: Union[str, List[str]] = None,
         exclude_charterers: Union[ID, List[ID]] = None,
         exclude_owners: Union[ID, List[ID]] = None,
         exclude_vessel_flags: Union[ID, List[ID]] = None,
@@ -91,6 +93,8 @@ class CargoMovements(Search):
 
             filter_vessels: A vessel ID, or list of vessel IDs to filter on.
 
+            filter_vessel_classes: A vessel class, or list of vessel classes to filter on.
+
             filter_storage_locations: A geography ID, or list of geography IDs to filter on.
 
             filter_ship_to_ship_locations: A geography ID, or list of geography IDs to filter on.
@@ -116,6 +120,8 @@ class CargoMovements(Search):
             exclude_products: A product ID, or list of product IDs to exclude.
 
             exclude_vessels: A vessel ID, or list of vessel IDs to exclude.
+
+            exclude_vessel_classes: A vessel class, or list of vessel classes to exclude.
 
             exclude_charterers: A charterer ID, or list of charterer IDs to exclude.
 
@@ -212,6 +218,7 @@ class CargoMovements(Search):
             "filter_destinations": convert_to_list(exclude_destinations),
             "filter_products": convert_to_list(exclude_products),
             "filter_vessels": convert_to_list(exclude_vessels),
+            "filter_vessel_classes": convert_to_list(exclude_vessel_classes),
             "filter_charterers": convert_to_list(exclude_charterers),
             "filter_owners": convert_to_list(exclude_owners),
             "filter_vessel_flags": convert_to_list(exclude_vessel_flags),
@@ -234,6 +241,9 @@ class CargoMovements(Search):
             "filter_owners": convert_to_list(filter_owners),
             "filter_products": convert_to_list(filter_products),
             "filter_vessels": convert_to_list(filter_vessels),
+            "filter_vessel_classes": convert_to_list(
+                filter_vessel_classes
+            ),
             "filter_destinations": convert_to_list(filter_destinations),
             "filter_origins": convert_to_list(filter_origins),
             "filter_storage_locations": convert_to_list(
