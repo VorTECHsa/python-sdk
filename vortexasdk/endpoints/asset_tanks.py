@@ -64,6 +64,7 @@ class AssetTanks(Reference, Search):
         crude_confidence: List[str] = None,
         location_ids: Union[str, List[str]] = None,
         storage_type: List[str] = None,
+        term: Union[str, List[str]] = None,
     ) -> AssetTankResult:
         """
         Find all asset tanks matching given type.
@@ -104,6 +105,7 @@ class AssetTanks(Reference, Search):
             "crude_confidence": convert_to_list(crude_confidence),
             "location_ids": convert_to_list(location_ids),
             "storage_type": convert_to_list(storage_type),
+            "term": [str(e) for e in convert_to_list(term)],
         }
 
         return AssetTankResult(super().search(**search_params))
