@@ -24,7 +24,7 @@ class AssetTankResult(Result):
 
         # Arguments
             columns: The asset tanks features we want in the dataframe. Enter `columns='all'` to include all features.
-            Defaults to `columns = ['id', 'capacity_bbl', 'crude_confidence', 'location_id', 'name', 'storage_type']`.
+            Defaults to `columns = ['id', 'capacity_bbl', 'crude_confidence', 'location_id', 'name', 'storage_type', 'lat', 'lon']`.
 
 
         # Returns
@@ -39,4 +39,4 @@ class AssetTankResult(Result):
         )
 
 
-DEFAULT_COLUMNS = ["id", "capacity_bbl", "crude_confidence", "location_id", "name", "storage_type"]
+DEFAULT_COLUMNS = ["id", "capacity_bbl", "crude_confidence", "location_id", "name", "storage_type", "lat", "lon"]

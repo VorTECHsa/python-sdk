@@ -92,10 +92,10 @@ class AssetTanks(Reference, Search):
         ```
         Returns
 
-        |    | id                      | capacity_bbl | crude_confidence | location_id                     | name   | storage_type |
-        |---:|:------------------------|:-------------|:-----------------|:--------------------------------|:-------|:-------------|
-        |  0 | 0a736a1816c0fea49a88... | 104815       | probable         | f726416f49adcac6d5d296c49a00... | HOM009 | refinery     |
-        |  1 | b96adfb025a719b66927... | 139279       | unlikely         | f726416f49adcac6d5d296c49a00... | HOM022 | refinery     |
+        |    | id                      | capacity_bbl | crude_confidence | location_id                     | name   | storage_type | lat | lon |
+        |---:|:------------------------|:-------------|:-----------------|:--------------------------------|:-------|:-------------|-----|-----|
+        |  0 | 0a736a1816c0fea49a88... | 104815       | probable         | f726416f49adcac6d5d296c49a00... | HOM009 | refinery     | -60 |  24 |
+        |  1 | b96adfb025a719b66927... | 139279       | unlikely         | f726416f49adcac6d5d296c49a00... | HOM022 | refinery     | 100 | -90 |
 
         """
 

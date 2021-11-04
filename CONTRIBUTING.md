@@ -42,7 +42,7 @@ install the required dependencies
 $ pip install -e '.[tests]'
 ```
 
-To run the live tests, you'll need to have the `VORTEXA_API_KEY` environment variable set.
+To run the live tests, you'll need to have the `VORTEXA_API_KEY` environment variable set - `export VORTEXA_API_KEY=xyz`
 
 run tests
 
