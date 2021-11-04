@@ -393,6 +393,8 @@
 <th align="left">location_id</th>
 <th align="left">name</th>
 <th align="left">storage_type</th>
+<th>lat</th>
+<th>lon</th>
 </tr>
 </thead>
 <tbody>
@@ -404,6 +406,8 @@
 <td align="left">b839dc5fee39ff7efd5e1cf2494...</td>
 <td align="left">AAM001</td>
 <td align="left">tbd</td>
+<td>90</td>
+<td>180</td>
 </tr>
 </tbody>
 </table>
@@ -444,6 +448,8 @@
 <th align="left">location_id</th>
 <th align="left">name</th>
 <th align="left">storage_type</th>
+<th>lat</th>
+<th>lon</th>
 </tr>
 </thead>
 <tbody>
@@ -455,6 +461,8 @@
 <td align="left">f726416f49adcac6d5d296c49a00...</td>
 <td align="left">HOM009</td>
 <td align="left">refinery</td>
+<td>-60</td>
+<td>24</td>
 </tr>
 <tr>
 <td align="right">1</td>
@@ -464,6 +472,8 @@
 <td align="left">f726416f49adcac6d5d296c49a00...</td>
 <td align="left">HOM022</td>
 <td align="left">refinery</td>
+<td>100</td>
+<td>-90</td>
 </tr>
 </tbody>
 </table>
@@ -487,7 +497,7 @@
 <p><strong>Arguments</strong></p>
 <ul>
 <li><strong>columns</strong>: The asset tanks features we want in the dataframe. Enter <code>columns='all'</code> to include all features.
-    Defaults to <code>columns = ['id', 'capacity_bbl', 'crude_confidence', 'location_id', 'name', 'storage_type']</code>.</li>
+    Defaults to <code>columns = ['id', 'capacity_bbl', 'crude_confidence', 'location_id', 'name', 'storage_type', 'lat', 'lon']</code>.</li>
 </ul>
 <p><strong>Returns</strong></p>
 <p><code>pd.DataFrame</code> of asset tanks.</p>
