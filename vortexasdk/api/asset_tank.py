@@ -34,7 +34,8 @@ class AssetTank(FromDictMixin):
     location_id: str
     location_details: List[LocationDetails]
     name: str
-    pos: Tuple[float, float]
+    lat: float
+    lon: float
     radius: int
     ref_type: str
     storage_terminal_id: str

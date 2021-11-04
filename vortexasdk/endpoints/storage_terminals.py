@@ -40,9 +40,9 @@ class StorageTerminals(Reference, Search):
 
         Returns
 
-        |    | id                      | name               |
-        |---:|:------------------------|:-------------------|
-        |  0 | 08bbaf7a67ab30036d73... | Military Oil Depot |
+        |    | id                      | name               | lat | lon |
+        |---:|:------------------------|:-------------------|-----|-----|
+        |  0 | 08bbaf7a67ab30036d73... | Military Oil Depot |  90 | 180 |
 
 
     """
@@ -83,9 +83,9 @@ class StorageTerminals(Reference, Search):
         ```
         Returns
 
-        |    | id                      | name               |
-        |---:|:------------------------|:-------------------|
-        |  0 | 08bbaf7a67ab30036d73... | Military Oil Depot |
+        |    | id                      | name               | lat | lon |
+        |---:|:------------------------|:-------------------|-----|-----|
+        |  0 | 08bbaf7a67ab30036d73... | Military Oil Depot |  90 | 180 |
 
         """
 

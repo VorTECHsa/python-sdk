@@ -24,7 +24,7 @@ class StorageTerminalResult(Result):
 
         # Arguments
             columns: The storage terminals features we want in the dataframe. Enter `columns='all'` to include all features.
-            Defaults to `columns = ['id', 'name']`.
+            Defaults to `columns = ['id', 'name', 'lat', 'lon']`.
 
 
         # Returns
@@ -39,4 +39,4 @@ class StorageTerminalResult(Result):
         )
 
 
-DEFAULT_COLUMNS = ["id", "name"]
+DEFAULT_COLUMNS = ["id", "name", "lat", "lon"]

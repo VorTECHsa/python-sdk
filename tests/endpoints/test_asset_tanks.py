@@ -27,3 +27,7 @@ class TestAssetTanks(TestCaseUsingMockAPI):
         names = [x.name for x in self.at.to_list()]
 
         assert names == ['AAM001', 'ASL011']
+
+    def test_check_columns(self):
+        asset_tanks = AssetTanks().search().to_df()
+        assert list(asset_tanks.columns) == ['id', 'capacity_bbl', 'crude_confidence', 'location_id', 'name', 'storage_type', 'lat', 'lon']

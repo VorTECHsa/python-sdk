@@ -28,7 +28,8 @@ class StorageTerminal(FromDictMixin):
     exclusion_rule: List[str]
     hierarchy: List[TerminalHierarchy]
     layer: List[str]
+    lat: float
+    lon: float
     leaf: bool
     name: str
     parent: List[TerminalParent]
-    pos: Tuple[float, float]
