@@ -6,7 +6,7 @@ from vortexasdk.api.shared_types import to_ISODate_Array
 
 class TestToISODate(TestCase):
     def test_to_ISODate(self):
-        assert to_ISODate_Array(None) == None
+        assert to_ISODate_Array([]) == []
 
     def test_to_ISODate_with_time(self):
         assert (
