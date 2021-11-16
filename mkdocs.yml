@@ -38,6 +38,9 @@ pages:
         Reference Data:
             Asset Tanks: endpoints/asset_tanks.md
             Storage Terminals: endpoints/storage_terminals.md
+    Freight Pricing:
+        Search: endpoints/freight_pricing_search.md
+        Time Series: endpoints/freight_pricing_timeseries.md
 - Entities:
     Cargo Movement: entities/cargo_movement.md
     Corporation: entities/corporation.md
