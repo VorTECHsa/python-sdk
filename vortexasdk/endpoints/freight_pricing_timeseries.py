@@ -45,7 +45,7 @@ class FreightPricingTimeseries(Search):
 
             breakdown_property: Property used to build the value of the aggregation. Must be one of the following: `route`, `cost`, `tce`.
 
-            routes: Used to filter by specific routes. Must be one of the following: 
+            routes: Used to filter by specific routes. Must be one of the following:
             - Clean routes - `TC1`, `TC2_37`, `TC5`, `TC6`, `TC7`, `TC8`, `TC9`, `TC10`, `TC11`, `TC12`, `TC14`, `TC15`, `TC16`, `TC17`, `TC18`, `TC19`.
             - Dirty routes - `TD1`, `TD2`, `TD3C`, `TD6`, `TD7`, `TD8`, `TD9`, `TD12`, `TD14`, `TD15`, `TD17`, `TD18`, `TD19`, `TD20`, `TD21`, `TD22`, `TD23`, `TD24`, `TD25`, `TD26`.
             - BLPG routes - `BLPG1`, `BLPG2`, `BLPG3`.

@@ -1,15 +1,13 @@
 from dataclasses import dataclass
 from typing import Optional
 from vortexasdk.api.id import ID
-
 from vortexasdk.api.serdes import FromDictMixin
+
 
 @dataclass(frozen=True)
 class FreightPricing(FromDictMixin):
     """
-
     Freight pricing shows pricing information applicable to a selected route on a given day.
-
     """
     id: ID
     short_code: str

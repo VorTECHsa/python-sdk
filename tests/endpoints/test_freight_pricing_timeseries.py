@@ -5,6 +5,7 @@ from tests.testcases import TestCaseUsingRealAPI
 from vortexasdk.endpoints.freight_pricing_timeseries import FreightPricingTimeseries
 
 class TestFreightPricingTimeSeries(TestCaseUsingRealAPI):
+
     def test_search_returns_all_days(self):
         start = datetime(2021, 11, 1)
         end = datetime(2021, 11, 5)
