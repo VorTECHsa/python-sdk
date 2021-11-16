@@ -15,7 +15,8 @@ class TestFreightPricingTimeSeries(TestCaseUsingRealAPI):
                 time_min=start,
                 time_max=end,
                 routes=["TD3C"],
-                breakdown_frequency="day"
+                breakdown_frequency="day",
+                breakdown_property="rate"
             )
             .to_df()
         )
