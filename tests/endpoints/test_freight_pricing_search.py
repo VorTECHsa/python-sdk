@@ -5,8 +5,8 @@ from vortexasdk.endpoints.freight_pricing_search import FreightPricingSearch
 
 day = datetime(2021, 11, 1)
 
-class TestFreightPricingReal(TestCaseUsingRealAPI):
 
+class TestFreightPricingReal(TestCaseUsingRealAPI):
     def test_default_search(self):
         results = FreightPricingSearch().search(
             routes=["TD3C"]
