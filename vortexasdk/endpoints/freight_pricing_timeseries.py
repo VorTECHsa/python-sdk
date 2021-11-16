@@ -32,8 +32,7 @@ class FreightPricingTimeseries(Search):
         breakdown_property: str = None
     ) -> TimeSeriesResult:
         """
-        Time series of the number of vessels that can be available to load a given cargo at a given port for
-        every day in the specified range.
+        Time series of the selected pricing information for given routes in the specified time range.
 
         # Arguments
 
