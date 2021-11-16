@@ -32,7 +32,7 @@ if __name__ == "__main__":
     search_result = CargoTimeSeries().search(
         # We're looking at daily storage levels
         timeseries_frequency="day",
-        # We want 'b' for barrels here
+        # We want 't' for tonnes here
         timeseries_unit="t",
         # We're only interested in storage of Medium-Sour Crude
         filter_products=medium_sour,

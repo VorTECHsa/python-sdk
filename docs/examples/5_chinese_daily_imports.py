@@ -31,7 +31,7 @@ if __name__ == "__main__":
         filter_destinations=china,
         # We're looking at daily imports
         timeseries_frequency="day",
-        # We want 'b' for barrels here
+        # We want 't' for tonnes here
         timeseries_unit="t",
         # We're only interested in Crude/Condensates
         filter_products=crude_condensates,
