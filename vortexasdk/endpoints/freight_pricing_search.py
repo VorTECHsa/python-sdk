@@ -35,7 +35,7 @@ class FreightPricingSearch(Search):
     def search(
         self,
         routes: List[str] = None,
-        days: Union[List[datetime], None] = None,
+        days: List[datetime] = None,
         offset: int = None,
         order: str = None,
         order_direction: str = None,
