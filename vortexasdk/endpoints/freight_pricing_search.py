@@ -5,7 +5,7 @@ Try me out in your browser:
 """
 from datetime import datetime
 from typing import List
-from vortexasdk.api.shared_types import to_ISODate
+from vortexasdk.api.shared_types import to_ISODate_Array
 from vortexasdk.endpoints.freight_pricing_result import FreightPricingResult
 
 from vortexasdk.endpoints.endpoints import FREIGHT_PRICING_SEARCH
@@ -81,7 +81,7 @@ class FreightPricingSearch(Search):
 
         api_params = {
             "routes": convert_to_list(routes),
-            "days": convert_to_list(map(to_ISODate, days)),
+            "days": convert_to_list(to_ISODate_Array(days)),
             "offset": offset,
             "order": order,
             "order_direction": order_direction,

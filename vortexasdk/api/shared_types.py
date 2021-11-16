@@ -14,6 +14,8 @@ ISODate = str
 def to_ISODate(utc_datetime: datetime) -> str:
     return utc_datetime.strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3] + "Z"
 
+def to_ISODate_Array(days: List) -> List:
+    return [to_ISODate(date) for date in days]
 
 @dataclass(frozen=True)
 class Entity:
