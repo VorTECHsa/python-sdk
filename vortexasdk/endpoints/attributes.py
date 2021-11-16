@@ -85,7 +85,7 @@ class Attributes(Reference, Search):
         |    | id               | name       | type        |
         |---:|:-----------------|:-----------|:------------|
         |  0 | 14c7b073809eb565 | Open Loop  | scrubber    |
-        |  1 | 478fca39000c49d6 | Unkown     | scrubber    |
+        |  1 | 478fca39000c49d6 | Unknown     | scrubber   |
 
         """
 

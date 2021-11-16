@@ -1,0 +1,203 @@
+[
+    {
+        "id": "6114b93026e61993797db33a46a5d2acbeacdbd63238a4271efaeafcee94b1d2",
+        "name": "AAM001",
+        "storage_terminal_name": "South Pars Kangan Site - Phase 14",
+        "storage_terminal_id": "0f04619ee6f579bef68e8a02e50fc40607743c0cf058f28822daf55e95b94109",
+        "storage_type": "tbd",
+        "radius": 39,
+        "capacity_bbl": 645201,
+        "capacity_ton": 88217.68752899999,
+        "capacity_cbm": 102579.216588,
+        "leaf": true,
+        "lat": 52.2186,
+        "lon": 27.7103,
+        "crude_confidence": "confirmed",
+        "valid_from": "2021-08-03T14:34:18.533Z",
+        "location_id": "b839dc5fee39ff7efd5e1cf2494b3b59f448cfee7e515491a98cb898df9f73ef",
+        "location_details": [
+        {
+            "id": "b36c45f9370868b3030ac6567a4e344d69932d843b2125a41901a295e48a2d32",
+            "layer": "port",
+            "label": "Tonbak [IR]"
+        },
+        {
+            "id": "145b480228ca8f02dff6e95fa595d49e1b4aeab0ef36f9a6fc355be0e65a55b8",
+            "layer": "fragment",
+            "label": "Iran Gulf (Persian Gulf) 1"
+        },
+        {
+            "id": "8d5dd2fc66b9b1bc95e5b9d0f36619e00160bcab956ef7b9c4339bda31f1bbed",
+            "layer": "trading_subregion",
+            "label": "Iran Gulf"
+        },
+        {
+            "id": "0899599f74faadb7ba7eb65205ee5c20cb434367a6e7203bc274d310cdb54754",
+            "layer": "trading_region",
+            "label": "MEG/AG"
+        },
+        {
+            "id": "80aa9e4f3014c3d96559c8e642157edbb2b684ea0144ed76cd20b3af75110877",
+            "layer": "region",
+            "label": "Middle East"
+        },
+        {
+            "id": "693f4f6d59b709e8114e339f2d6c0c3083a453278226e58ea7473c09b2de6d40",
+            "layer": "root",
+            "label": "Geographic Regions"
+        },
+        {
+            "id": "2d1e54439c2c69fdc00946ca47cf0b947adbdd9df6e98dcdf31029117e115093",
+            "layer": "root",
+            "label": "Trading Regions"
+        },
+        {
+            "id": "d308ddc557e774187ad6c7da81b39db990def9a39e6c88e79cb163b6bdd6e8e5",
+            "layer": "country",
+            "label": "Iran"
+        },
+        {
+            "id": "a7536c48714140c7ba8e8895cdcccc12ebb2c4813720d6712f08c5c03c1e3ecf",
+            "layer": "trading_block",
+            "label": "OPEC + Russia"
+        },
+        {
+            "id": "24481af34df2eb318220d78db7511cd35032f0daf5e0587df2d75ab48e5d5508",
+            "layer": "root",
+            "label": "Trading Blocks"
+        },
+        {
+            "id": "5057dafe08229da478858da705209d61d88db8dcaadf8376c266eeabdbe1f0ee",
+            "layer": "trading_block",
+            "label": "OPEC"
+        },
+        {
+            "id": "7bc5d2b5ea1cc552f6df9640185e8c7923106b0099a9c432437b8c5768aa670a",
+            "layer": "shipping_region",
+            "label": "Persian Gulf"
+        },
+        {
+            "id": "314fe4799926bfb738aef1674243e546a23bd1e0db74432288350b7952ef67c8",
+            "layer": "root",
+            "label": "Shipping Regions"
+        },
+        {
+            "id": "fc6694742ebce49ff955fffa066898c41686d460ab683ab5c44dc7b799aeac58",
+            "layer": "trading_block",
+            "label": "East of Suez"
+        },
+        {
+            "layer": "terminal",
+            "label": "SBM Tombak",
+            "id": "b839dc5fee39ff7efd5e1cf2494b3b59f448cfee7e515491a98cb898df9f73ef"
+        }
+        ],
+        "corporate_entity_id": "f9d16d3ecc2bf62145f85809901932a712a78e5b6df21ab255174c6acfd384db",
+        "corporate_entity_details": {
+            "layer": "charterer",
+            "label": "NIOC",
+            "id": "f9d16d3ecc2bf62145f85809901932a712a78e5b6df21ab255174c6acfd384db"
+        },
+        "ref_type": "asset_tank"
+    },
+    {
+        "id": "00177189462ff422beae3f0997df359c6325cd4a26243c8b68c5d4db272d5ea6",
+        "name": "ASL011",
+        "storage_terminal_name": "South Pars Terminal",
+        "storage_terminal_id": "69d0eb3c4708feb291159e24d6ecf385fc46fd7e08114b477cde3c4497f95719",
+        "storage_type": "refinery",
+        "radius": 36.8,
+        "capacity_bbl": 471196,
+        "capacity_ton": 64426.15788399999,
+        "capacity_cbm": 74914.50964799999,
+        "leaf": true,
+        "lat": 52.2186,
+        "lon": 27.7103,
+        "crude_confidence": "probable",
+        "valid_from": "2021-08-03T14:34:18.533Z",
+        "location_id": "86b4f89661638c51f6cdd6e8f521669e538414fdc0dc19d00a468e26380bf628",
+        "location_details": [
+          {
+            "id": "f1dc564f0eeb2764592ab00c8dbb0540a72dd858fbdb76dee91757c9aa347c3a",
+            "layer": "port",
+            "label": "Assaluyeh [IR]"
+          },
+          {
+            "id": "145b480228ca8f02dff6e95fa595d49e1b4aeab0ef36f9a6fc355be0e65a55b8",
+            "layer": "fragment",
+            "label": "Iran Gulf (Persian Gulf) 1"
+          },
+          {
+            "id": "8d5dd2fc66b9b1bc95e5b9d0f36619e00160bcab956ef7b9c4339bda31f1bbed",
+            "layer": "trading_subregion",
+            "label": "Iran Gulf"
+          },
+          {
+            "id": "0899599f74faadb7ba7eb65205ee5c20cb434367a6e7203bc274d310cdb54754",
+            "layer": "trading_region",
+            "label": "MEG/AG"
+          },
+          {
+            "id": "80aa9e4f3014c3d96559c8e642157edbb2b684ea0144ed76cd20b3af75110877",
+            "layer": "region",
+            "label": "Middle East"
+          },
+          {
+            "id": "693f4f6d59b709e8114e339f2d6c0c3083a453278226e58ea7473c09b2de6d40",
+            "layer": "root",
+            "label": "Geographic Regions"
+          },
+          {
+            "id": "2d1e54439c2c69fdc00946ca47cf0b947adbdd9df6e98dcdf31029117e115093",
+            "layer": "root",
+            "label": "Trading Regions"
+          },
+          {
+            "id": "d308ddc557e774187ad6c7da81b39db990def9a39e6c88e79cb163b6bdd6e8e5",
+            "layer": "country",
+            "label": "Iran"
+          },
+          {
+            "id": "a7536c48714140c7ba8e8895cdcccc12ebb2c4813720d6712f08c5c03c1e3ecf",
+            "layer": "trading_block",
+            "label": "OPEC + Russia"
+          },
+          {
+            "id": "24481af34df2eb318220d78db7511cd35032f0daf5e0587df2d75ab48e5d5508",
+            "layer": "root",
+            "label": "Trading Blocks"
+          },
+          {
+            "id": "5057dafe08229da478858da705209d61d88db8dcaadf8376c266eeabdbe1f0ee",
+            "layer": "trading_block",
+            "label": "OPEC"
+          },
+          {
+            "id": "7bc5d2b5ea1cc552f6df9640185e8c7923106b0099a9c432437b8c5768aa670a",
+            "layer": "shipping_region",
+            "label": "Persian Gulf"
+          },
+          {
+            "id": "314fe4799926bfb738aef1674243e546a23bd1e0db74432288350b7952ef67c8",
+            "layer": "root",
+            "label": "Shipping Regions"
+          },
+          {
+            "id": "fc6694742ebce49ff955fffa066898c41686d460ab683ab5c44dc7b799aeac58",
+            "layer": "trading_block",
+            "label": "East of Suez"
+          },
+          {
+            "layer": "terminal",
+            "label": "South Pars Pcc Terminal",
+            "id": "86b4f89661638c51f6cdd6e8f521669e538414fdc0dc19d00a468e26380bf628"
+          }
+        ],
+        "corporate_entity_id": "5b7ad09a405da3b9defe1acd01497fedf62236aef0836643bc401cd656ff9cd1",
+        "corporate_entity_details": {
+          "label": "Pars Petrochemical Company",
+          "id": "5b7ad09a405da3b9defe1acd01497fedf62236aef0836643bc401cd656ff9cd1"
+        },
+        "ref_type": "asset_tank"
+      }
+]

@@ -48,7 +48,7 @@ class VesselMovements(Search):
         filter_products: Union[ID, List[ID]] = None,
         filter_vessels: Union[ID, List[ID]] = None,
         filter_vessel_classes: Union[ID, List[ID]] = None,
-        filter_vessel_status: str = None,
+        filter_vessel_status: Union[str, List[str]] = None,
         filter_vessel_age_min: int = None,
         filter_vessel_age_max: int = None,
         filter_vessel_scrubbers: str = "disabled",
@@ -95,7 +95,7 @@ class VesselMovements(Search):
 
             filter_vessel_classes: A vessel class, or list of vessel classes to filter on.
 
-            filter_vessel_status: The vessel status on which to base the filter. Enter 'vessel_status_ballast' for ballast vessels, 'vessel_status_laden_known' for laden vessels with known cargo (i.e. a type of cargo that Vortexa currently tracks) or 'vessel_status_laden_unknown' for laden vessels with unknown cargo (i.e. a type of cargo that Vortexa currently does not track).
+            filter_vessel_status: A vessel status, or array of vessel statuses on which to base the filter. Enter 'vessel_status_ballast' for ballast vessels, 'vessel_status_laden_known' for laden vessels with known cargo (i.e. a type of cargo that Vortexa currently tracks) or 'vessel_status_laden_unknown' for laden vessels with unknown cargo (i.e. a type of cargo that Vortexa currently does not track).
 
             filter_vessel_age_min: A number between 1 and 100 (representing years).
 
@@ -185,7 +185,7 @@ class VesselMovements(Search):
             "filter_products": convert_to_list(filter_products),
             "filter_vessels": convert_to_list(filter_vessels),
             "filter_vessel_classes": convert_to_list(filter_vessel_classes),
-            "filter_vessel_status": filter_vessel_status,
+            "filter_vessel_status": convert_to_list(filter_vessel_status),
             "filter_vessel_age_min": filter_vessel_age_min,
             "filter_vessel_age_max": filter_vessel_age_max,
             "filter_vessel_scrubbers": filter_vessel_scrubbers,
