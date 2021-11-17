@@ -66,10 +66,10 @@ class FreightPricingSearch(Search):
         ```python
         >>> from vortexasdk import FreightPricingSearch
         >>> from datetime import datetime
-        >>> day = datetime(2021, 11, 15)
+        >>> day = [datetime(2021, 11, 15)]
         >>> df = FreightPricingSearch().search(
         ...        routes=['TD3C'],
-        ...        days=[day])
+        ...        days=day)
         ... .to_df(columns=['short_code','rate','rate_unit'])
 
         ```
