@@ -69,8 +69,8 @@ class FreightPricingSearch(Search):
         >>> day = [datetime(2021, 11, 15)]
         >>> df = FreightPricingSearch().search(
         ...        routes=['TD3C'],
-        ...        days=day)
-        ... .to_df(columns=['short_code','rate','rate_unit'])
+        ...        days=day
+        ... ).to_df(columns=['short_code','rate','rate_unit'])
 
         ```
 
