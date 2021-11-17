@@ -53,7 +53,7 @@ jobs:
           command: |
             . .venv/bin/activate
             # This should be done in tox, but i can't work out how to run doctests in tox hence we're also running it here for now.
-            pytest -v --doctest-modules
+            pytest -v --doctest-modules --ignore=tests
 
       - run:
           name: "Confirm that the check_setup script works"
@@ -68,7 +68,6 @@ jobs:
             mkdir -p ./_build/pydocmd/examples
             python docs/autogen.py
             pydocmd build
-
 
   run-examples:
     working_directory: ~/project
@@ -185,7 +184,6 @@ jobs:
             git tag -a $TAG -m "New tag $TAG"
             git push --tags
 
-
 workflows:
   version: 2
   build-deploy:
@@ -194,19 +192,19 @@ workflows:
 
       - lint:
           requires:
-              - build
+            - build
 
       - test:
           requires:
-              - build
+            - build
 
       - test-documentation:
           requires:
-              - build
+            - build
 
       - run-examples:
           requires:
-              - build
+            - build
 
       - check-release-version:
           requires:
