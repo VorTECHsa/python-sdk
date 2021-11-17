@@ -65,7 +65,7 @@ class FreightPricingTimeseries(Search):
         ...     time_min=start,
         ...     time_max=end,
         ...     routes=['TD3C'],
-        ...     breakdown_property='rate'
+        ...     breakdown_property='rate',
         ...     breakdown_frequency='day')
         ... .to_df()).head(2)
 
