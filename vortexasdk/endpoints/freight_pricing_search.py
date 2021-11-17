@@ -26,16 +26,10 @@ class FreightPricingSearch(Search):
     def __init__(self):
         Search.__init__(self, FREIGHT_PRICING_SEARCH)
 
-    def __get_ISO_Dates(self, days: Optional[List[datetime]] ) -> List:
-        if (type(days) is list):
-            return to_ISODate_Array(days)
-        else:
-            return None
-
     def search(
         self,
         routes: List[str] = None,
-        days: List[datetime] = None,
+        days: List[datetime] = [],
         offset: int = None,
         order: str = None,
         order_direction: str = None,
@@ -87,7 +81,7 @@ class FreightPricingSearch(Search):
 
         api_params = {
             "routes": convert_to_list(routes),
-            "days": convert_to_list(self.__get_ISO_Dates(days)),
+            "days": convert_to_list(to_ISODate_Array(days)),
             "offset": offset,
             "order": order,
             "order_direction": order_direction,
