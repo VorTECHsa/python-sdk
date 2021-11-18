@@ -89,4 +89,4 @@ class FreightPricingTimeseries(Search):
             "breakdown_property": breakdown_property
         }
 
-        return TimeSeriesResult(super().search(**api_params))
+        return TimeSeriesResult(super().search(response_type="breakdown",**api_params))
