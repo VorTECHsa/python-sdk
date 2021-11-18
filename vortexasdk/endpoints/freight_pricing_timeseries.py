@@ -24,8 +24,8 @@ class FreightPricingTimeseries(Search):
 
     def search(
         self,
-        time_min: datetime = datetime(2019, 10, 1, 0),
-        time_max: datetime = datetime(2019, 10, 1, 1),
+        time_min: datetime = datetime(2021, 9, 1),
+        time_max: datetime = datetime(2021, 11, 1),
         routes: Union[List[str], str] = None,
         breakdown_frequency: str = None,
         breakdown_property: str = None
