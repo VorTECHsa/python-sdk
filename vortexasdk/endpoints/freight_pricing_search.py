@@ -46,7 +46,7 @@ class FreightPricingSearch(Search):
 
             days: Used to filter results by day on which the record was generated. Must be an ISO date or not supplied.
 
-            order: Used to sort the returned results. Must be one of the following: ['record_date'].
+            order: Used to sort the returned results. Must be either 'record_date' or not supplied.
 
             order_direction: Determines the direction of sorting. ‘asc’ for ascending, ‘desc’ for
             descending.

@@ -19,7 +19,7 @@ class TestFreightPricingReal(TestCaseUsingRealAPI):
             days=[day]
         )
         assert len(results) == 1
-   
+
     def test_route_as_string(self):
         results = FreightPricingSearch().search(
             routes="TD3C",
