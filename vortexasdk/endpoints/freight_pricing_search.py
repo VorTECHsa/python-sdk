@@ -44,7 +44,7 @@ class FreightPricingSearch(Search):
             - Dirty routes - `TD1`, `TD2`, `TD3C`, `TD6`, `TD7`, `TD8`, `TD9`, `TD12`, `TD14`, `TD15`, `TD17`, `TD18`, `TD19`, `TD20`, `TD21`, `TD22`, `TD23`, `TD24`, `TD25`, `TD26`.
             - BLPG routes - `BLPG1`, `BLPG2`, `BLPG3`.
 
-            days: Used to filter results by day on which the record was generated. Must be an ISO date or not supplied.
+            days: Used to filter results by day on which the record was generated. Must be an ISO date array or not supplied.
 
             order: Used to sort the returned results. Must be either 'record_date' or not supplied.
 
