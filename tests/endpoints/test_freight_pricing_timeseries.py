@@ -22,7 +22,7 @@ class TestFreightPricingTimeSeries(TestCaseUsingRealAPI):
         )
         assert len(df) == 5
 
-    def test_search_returns_all_days(self):
+    def test_search_returns_all_days_as_list(self):
         start = datetime(2021, 11, 1)
         end = datetime(2021, 11, 5)
 
