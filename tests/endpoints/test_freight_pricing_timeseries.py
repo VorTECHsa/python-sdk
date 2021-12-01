@@ -21,3 +21,20 @@ class TestFreightPricingTimeSeries(TestCaseUsingRealAPI):
             .to_df()
         )
         assert len(df) == 5
+
+    def test_search_returns_all_days(self):
+        start = datetime(2021, 11, 1)
+        end = datetime(2021, 11, 5)
+
+        result_list = (
+            FreightPricingTimeseries()
+            .search(
+                time_min=start,
+                time_max=end,
+                routes=["TD3C"],
+                breakdown_frequency="day",
+                breakdown_property="rate"
+            )
+            .to_list()
+        )
+        assert len(result_list) == 5

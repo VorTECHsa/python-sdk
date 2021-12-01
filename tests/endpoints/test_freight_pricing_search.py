@@ -10,8 +10,14 @@ class TestFreightPricingReal(TestCaseUsingRealAPI):
     def test_default_search(self):
         results = FreightPricingSearch().search(
             routes=["TD3C"]
-        )
+        ).to_list()
         assert len(results) > 10
+
+    def test_default_search_to_list(self):
+        results_list = FreightPricingSearch().search(
+            routes=["TD3C"]
+        ).to_list()
+        assert len(results_list[0].short_code) == "TD3C"
 
     def test_days(self):
         results = FreightPricingSearch().search(
@@ -40,3 +46,4 @@ class TestFreightPricingReal(TestCaseUsingRealAPI):
             routes=["TD3C"]
         ).to_df(columns=['short_code', 'rate', 'rate_unit']).head(2)
         assert len(df) == 2
+        assert list(df.columns) == ['short_code', 'rate', 'rate_unit']
