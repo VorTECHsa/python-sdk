@@ -17,7 +17,7 @@ class TestFreightPricingReal(TestCaseUsingRealAPI):
         results_list = FreightPricingSearch().search(
             routes=["TD3C"]
         ).to_list()
-        assert len(results_list[0].short_code) == "TD3C"
+        assert results_list[0].short_code == "TD3C"
 
     def test_days(self):
         results = FreightPricingSearch().search(
