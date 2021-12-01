@@ -31,5 +31,8 @@ FLEET_UTILISATION_TIMESERIES_CAPACITY = '/vessel-journey/timeseries/capacity'
 FLEET_UTILISATION_TIMESERIES = '/vessel-journey/timeseries/utilisation'
 FLEET_UTILISATION_TIMESERIES_AVG_DISTANCE = '/vessel-journey/timeseries/avg-distance'
 
+FREIGHT_PRICING_SEARCH = '/freight-pricing/rates'
+FREIGHT_PRICING_TIMESERIES = '/freight-pricing/timeseries'
+
 API_FQDN = "https://api.vortexa.com"
 API_URL = f"{API_FQDN}/v5"

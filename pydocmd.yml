@@ -83,6 +83,8 @@ generate:
       - vortexasdk.endpoints.storage_terminals_result++
   - endpoints/onshore_inventories_search.md: vortexasdk.endpoints.onshore_inventories_search++
   - endpoints/onshore_inventories_timeseries.md: vortexasdk.endpoints.onshore_inventories_timeseries++
+  - endpoints/freight_pricing_search.md: vortexasdk.endpoints.freight_pricing_search++
+  - endpoints/freight_pricing_timeseries.md: vortexasdk.endpoints.freight_pricing_timeseries++
 pages:
   - Home: index.md << README.md
   - Endpoints:
@@ -113,6 +115,8 @@ pages:
       Storage Terminals: endpoints/storage_terminals.md
       Crude Onshore Inventories Search: endpoints/onshore_inventories_search.md
       Crude Onshore Inventories Time Series: endpoints/onshore_inventories_timeseries.md
+      Freight Pricing Search: endpoints/freight_pricing_search.md
+      Freight Pricing Time Series: endpoints/freight_pricing_timeseries.md
   - Entities:
       Breakdown Item: entities/breakdown_result.md
       Cargo Movement: entities/cargo_movement.md
