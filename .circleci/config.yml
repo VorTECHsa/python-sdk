@@ -8,7 +8,7 @@ jobs:
       - checkout
       - restore_cache: &restore_cache
           keys:
-            - v1-cache-{{ .Branch }}-
+            - v2-{{ .Branch }}-
       - run:
           name: "Install setup.py"
           command: |
@@ -18,7 +18,7 @@ jobs:
             pip install -e .[tests]
 
       - save_cache: &save_cache
-          key: v1-cache-{{ .Branch }}-{{ epoch }}
+          key: v2-{{ .Branch }}-{{ epoch }}
           paths:
             - ~/project/.venv
             - ~/.cache/pip
@@ -31,7 +31,7 @@ jobs:
       - checkout
       - restore_cache: &restore_cache
           keys:
-            - v1-{{ .Branch }}-
+            - v2-{{ .Branch }}-
       - run:
           name: "Check Linting"
           command: |
@@ -46,7 +46,7 @@ jobs:
       - checkout
       - restore_cache: &restore_cache
           keys:
-            - v1-{{ .Branch }}-
+            - v2-{{ .Branch }}-
 
       - run:
           name: "Run doctests"
@@ -77,7 +77,7 @@ jobs:
       - checkout
       - restore_cache: &restore_cache
           keys:
-            - v1-{{ .Branch }}-
+            - v2-{{ .Branch }}-
 
       - run:
           name: "Run all examples"
@@ -122,7 +122,7 @@ jobs:
       - checkout
       - restore_cache: &restore_cache
           keys:
-            - v1-{{ .Branch }}-
+            - v2-{{ .Branch }}-
 
       - run:
           name: "Run all tests"
@@ -139,7 +139,7 @@ jobs:
       - checkout
       - restore_cache: &restore_cache
           keys:
-            - v1-{{ .Branch }}-
+            - v2-{{ .Branch }}-
       - run:
           name: "Check proposed release version is valid next semver"
           command: |
@@ -154,7 +154,7 @@ jobs:
       - checkout
       - restore_cache: &restore_cache
           keys:
-            - v1-{{ .Branch }}-
+            - v2-{{ .Branch }}-
       - add_ssh_keys:
           fingerprints:
             - "b7:35:38:7a:76:62:44:82:28:93:77:f1:9c:f1:35:8c"
