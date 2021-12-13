@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/project
     docker:
-      - image: circleci/python:3.7
+      - image: cimg/python:3.7
     steps:
       - checkout
       - restore_cache: &restore_cache
@@ -26,7 +26,7 @@ jobs:
   lint:
     working_directory: ~/project
     docker:
-      - image: circleci/python:3.7
+      - image: cimg/python:3.7
     steps:
       - checkout
       - restore_cache: &restore_cache
@@ -41,7 +41,7 @@ jobs:
   test-documentation:
     working_directory: ~/project
     docker:
-      - image: circleci/python:3.7
+      - image: cimg/python:3.7
     steps:
       - checkout
       - restore_cache: &restore_cache
@@ -72,7 +72,7 @@ jobs:
   run-examples:
     working_directory: ~/project
     docker:
-      - image: circleci/python:3.7
+      - image: cimg/python:3.7
     steps:
       - checkout
       - restore_cache: &restore_cache
@@ -117,7 +117,7 @@ jobs:
   test:
     working_directory: ~/project
     docker:
-      - image: circleci/python:3.7
+      - image: cimg/python:3.7
     steps:
       - checkout
       - restore_cache: &restore_cache
@@ -134,7 +134,7 @@ jobs:
   check-release-version:
     working_directory: ~/project
     docker:
-      - image: circleci/python:3.7
+      - image: cimg/python:3.7
     steps:
       - checkout
       - restore_cache: &restore_cache
@@ -149,7 +149,7 @@ jobs:
   deploy:
     working_directory: ~/project
     docker:
-      - image: circleci/python:3.7
+      - image: cimg/python:3.7
     steps:
       - checkout
       - restore_cache: &restore_cache
