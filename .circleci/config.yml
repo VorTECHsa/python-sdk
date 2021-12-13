@@ -8,7 +8,7 @@ jobs:
       - checkout
       - restore_cache: &restore_cache
           keys:
-            - v1-{{ .Branch }}-
+            - v1-cache-{{ .Branch }}-
       - run:
           name: "Install setup.py"
           command: |
@@ -18,7 +18,7 @@ jobs:
             pip install -e .[tests]
 
       - save_cache: &save_cache
-          key: v1-{{ .Branch }}-{{ epoch }}
+          key: v1-cache-{{ .Branch }}-{{ epoch }}
           paths:
             - ~/project/.venv
             - ~/.cache/pip
