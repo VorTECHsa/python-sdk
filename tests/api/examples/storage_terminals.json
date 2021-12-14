@@ -1,0 +1,173 @@
+[
+    {
+      "id": "e95c64c0293aa82ad3657ac1e2bda70ac549bfacb1fa15c2ed362bb5584a9b98",
+      "name": "Waypoints",
+      "layer": [],
+      "leaf": false,
+      "parent": [],
+      "exclusion_rule": [
+        {
+          "name": "Waypoints",
+          "layer": [
+            "root"
+          ],
+          "id": "e95c64c0293aa82ad3657ac1e2bda70ac549bfacb1fa15c2ed362bb5584a9b98"
+        }
+      ],
+      "ref_type": "storage_terminal",
+      "hierarchy": [],
+      "lat": 0,
+      "lon": 0
+    },
+    {
+      "id": "7f501d6dd79933d5ada010800be572de493871c2ffdbae183bd0586be021c53e",
+      "name": "South Pars Kangan Site - Phase 13",
+      "layer": [
+        "storage_terminal"
+      ],
+      "leaf": true,
+      "parent": [
+        {
+          "name": "SBM Tombak",
+          "layer": [
+            "terminal"
+          ],
+          "id": "b839dc5fee39ff7efd5e1cf2494b3b59f448cfee7e515491a98cb898df9f73ef"
+        }
+      ],
+      "exclusion_rule": [],
+      "ref_type": "storage_terminal",
+      "hierarchy": [
+        {
+          "id": "b839dc5fee39ff7efd5e1cf2494b3b59f448cfee7e515491a98cb898df9f73ef",
+          "label": "SBM Tombak",
+          "layer": "terminal"
+        },
+        {
+          "id": "b36c45f9370868b3030ac6567a4e344d69932d843b2125a41901a295e48a2d32",
+          "label": "Tonbak [IR]",
+          "layer": "port"
+        },
+        {
+          "id": "d308ddc557e774187ad6c7da81b39db990def9a39e6c88e79cb163b6bdd6e8e5",
+          "label": "Iran",
+          "layer": "country"
+        },
+        {
+          "id": "7bc5d2b5ea1cc552f6df9640185e8c7923106b0099a9c432437b8c5768aa670a",
+          "label": "Persian Gulf",
+          "layer": "shipping_region"
+        },
+        {
+          "id": "80aa9e4f3014c3d96559c8e642157edbb2b684ea0144ed76cd20b3af75110877",
+          "label": "Middle East",
+          "layer": "region"
+        },
+        {
+          "id": "a7536c48714140c7ba8e8895cdcccc12ebb2c4813720d6712f08c5c03c1e3ecf",
+          "label": "OPEC + Russia",
+          "layer": "trading_block"
+        },
+        {
+          "id": "5057dafe08229da478858da705209d61d88db8dcaadf8376c266eeabdbe1f0ee",
+          "label": "OPEC",
+          "layer": "trading_block"
+        },
+        {
+          "id": "fc6694742ebce49ff955fffa066898c41686d460ab683ab5c44dc7b799aeac58",
+          "label": "East of Suez",
+          "layer": "trading_block"
+        },
+        {
+          "id": "0899599f74faadb7ba7eb65205ee5c20cb434367a6e7203bc274d310cdb54754",
+          "label": "MEG/AG",
+          "layer": "trading_region"
+        },
+        {
+          "id": "8d5dd2fc66b9b1bc95e5b9d0f36619e00160bcab956ef7b9c4339bda31f1bbed",
+          "label": "Iran Gulf",
+          "layer": "trading_subregion"
+        },
+        {
+          "label": "South Pars Kangan Site - Phase 13",
+          "layer": "storage_terminal",
+          "id": "7f501d6dd79933d5ada010800be572de493871c2ffdbae183bd0586be021c53e"
+        }
+      ],
+      "lat": 27.7103,
+      "lon": 52.2186
+    },
+    {
+      "id": "08bbaf7a67ab30036d73b9604b932352a73905e16b8342b27f02ae34941b7db5",
+      "name": "Military Oil Depot",
+      "layer": [
+        "storage_terminal"
+      ],
+      "leaf": true,
+      "parent": [
+        {
+          "name": "Bandar Khomeini, Bandar Mahshahr [IR]",
+          "layer": [
+            "port"
+          ],
+          "id": "d161ba563c1598239a143dc8a17495d2eb79b915104dac3b2905b0b90b122769"
+        }
+      ],
+      "exclusion_rule": [],
+      "ref_type": "storage_terminal",
+      "hierarchy": [
+        {
+          "id": "d161ba563c1598239a143dc8a17495d2eb79b915104dac3b2905b0b90b122769",
+          "label": "Bandar Khomeini, Bandar Mahshahr [IR]",
+          "layer": "port"
+        },
+        {
+          "id": "d308ddc557e774187ad6c7da81b39db990def9a39e6c88e79cb163b6bdd6e8e5",
+          "label": "Iran",
+          "layer": "country"
+        },
+        {
+          "id": "7bc5d2b5ea1cc552f6df9640185e8c7923106b0099a9c432437b8c5768aa670a",
+          "label": "Persian Gulf",
+          "layer": "shipping_region"
+        },
+        {
+          "id": "80aa9e4f3014c3d96559c8e642157edbb2b684ea0144ed76cd20b3af75110877",
+          "label": "Middle East",
+          "layer": "region"
+        },
+        {
+          "id": "a7536c48714140c7ba8e8895cdcccc12ebb2c4813720d6712f08c5c03c1e3ecf",
+          "label": "OPEC + Russia",
+          "layer": "trading_block"
+        },
+        {
+          "id": "5057dafe08229da478858da705209d61d88db8dcaadf8376c266eeabdbe1f0ee",
+          "label": "OPEC",
+          "layer": "trading_block"
+        },
+        {
+          "id": "fc6694742ebce49ff955fffa066898c41686d460ab683ab5c44dc7b799aeac58",
+          "label": "East of Suez",
+          "layer": "trading_block"
+        },
+        {
+          "id": "0899599f74faadb7ba7eb65205ee5c20cb434367a6e7203bc274d310cdb54754",
+          "label": "MEG/AG",
+          "layer": "trading_region"
+        },
+        {
+          "id": "8d5dd2fc66b9b1bc95e5b9d0f36619e00160bcab956ef7b9c4339bda31f1bbed",
+          "label": "Iran Gulf",
+          "layer": "trading_subregion"
+        },
+        {
+          "label": "Military Oil Depot",
+          "layer": "storage_terminal",
+          "id": "08bbaf7a67ab30036d73b9604b932352a73905e16b8342b27f02ae34941b7db5"
+        }
+      ],
+      "lat": 31.418,
+      "lon" :48.6465
+    }
+]

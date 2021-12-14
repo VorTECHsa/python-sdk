@@ -9,6 +9,9 @@ pages:
     About Endpoints: endpoints/about-endpoints.md
     Attributes: endpoints/attributes.md
     Cargo Movements: endpoints/cargo_movements.md
+    Origin Breakdown: endpoints/origin_breakdown.md
+    Destination Breakdown: endpoints/destination_breakdown.md
+    Cargo Movements: endpoints/cargo_movements.md
     Cargo Time Series: endpoints/cargo_timeseries.md
     Corporations: endpoints/corporations.md
     EIA Forecasts: endpoints/eia_forecasts.md
@@ -16,7 +19,28 @@ pages:
     Products: endpoints/products.md
     Vessel Movements: endpoints/vessel_movements.md
     Vessels: endpoints/vessels.md
-    Ton Miles Breakdown: endpoints/ton_miles_breakdown.md
+    Tonne-miles Breakdown: endpoints/tonne_miles_breakdown.md
+    Vessel Availability: 
+        Search: endpoints/vessel_availability_search.md
+        Time Series: endpoints/vessel_availability_timeseries.md
+        Breakdown: endpoints/vessel_availability_breakdown.md
+    Fleet Utilisation:
+        Speed Breakdown: endpoints/fleet_utilisation_speed_breakdown.md
+        Time Series: endpoints/fleet_utilisation_timeseries.md
+        Avg Distance Time Series: endpoints/fleet_utilisation_avg_distance_timeseries.md
+        Quantity Time Series: endpoints/fleet_utilisation_quantity_timeseries.md
+        Capacity Time Series: endpoints/fleet_utilisation_capacity_timeseries.md
+        Origin Breakdown: endpoints/fleet_utilisation_origin_breakdown.md
+        Destination Breakdown: endpoints/fleet_utilisation_destination_breakdown.md
+    Crude Onshore Inventories:
+        Search: endpoints/onshore_inventories_search.md
+        Time Series: endpoints/onshore_inventories_timeseries.md
+        Reference Data:
+            Asset Tanks: endpoints/asset_tanks.md
+            Storage Terminals: endpoints/storage_terminals.md
+    Freight Pricing:
+        Search: endpoints/freight_pricing_search.md
+        Time Series: endpoints/freight_pricing_timeseries.md
 - Entities:
     Cargo Movement: entities/cargo_movement.md
     Corporation: entities/corporation.md
@@ -24,6 +48,9 @@ pages:
     Product: entities/product.md
     Vessel: entities/vessel.md
     Vessel Movement: entities/vessel_movement.md
+    Vessel Availability: entities/vessel_availability.md
+    Time Series Item: entities/timeseries_item.md
+    Breakdown Item: entities/breakdown_item.md
 - Config: config.md
 - FAQ:
     General: faq.md

@@ -3,12 +3,12 @@ jobs:
   build:
     working_directory: ~/project
     docker:
-      - image: circleci/python:3.7
+      - image: cimg/python:3.7
     steps:
       - checkout
       - restore_cache: &restore_cache
           keys:
-            - v1-{{ .Branch }}-
+            - v2-{{ .Branch }}-
       - run:
           name: "Install setup.py"
           command: |
@@ -18,7 +18,7 @@ jobs:
             pip install -e .[tests]
 
       - save_cache: &save_cache
-          key: v1-{{ .Branch }}-{{ epoch }}
+          key: v2-{{ .Branch }}-{{ epoch }}
           paths:
             - ~/project/.venv
             - ~/.cache/pip
@@ -26,12 +26,12 @@ jobs:
   lint:
     working_directory: ~/project
     docker:
-      - image: circleci/python:3.7
+      - image: cimg/python:3.7
     steps:
       - checkout
       - restore_cache: &restore_cache
           keys:
-            - v1-{{ .Branch }}-
+            - v2-{{ .Branch }}-
       - run:
           name: "Check Linting"
           command: |
@@ -41,19 +41,19 @@ jobs:
   test-documentation:
     working_directory: ~/project
     docker:
-      - image: circleci/python:3.7
+      - image: cimg/python:3.7
     steps:
       - checkout
       - restore_cache: &restore_cache
           keys:
-            - v1-{{ .Branch }}-
+            - v2-{{ .Branch }}-
 
       - run:
           name: "Run doctests"
           command: |
             . .venv/bin/activate
             # This should be done in tox, but i can't work out how to run doctests in tox hence we're also running it here for now.
-            pytest -v --doctest-modules
+            pytest -v --doctest-modules --ignore=tests
 
       - run:
           name: "Confirm that the check_setup script works"
@@ -69,16 +69,15 @@ jobs:
             python docs/autogen.py
             pydocmd build
 
-
   run-examples:
     working_directory: ~/project
     docker:
-      - image: circleci/python:3.7
+      - image: cimg/python:3.7
     steps:
       - checkout
       - restore_cache: &restore_cache
           keys:
-            - v1-{{ .Branch }}-
+            - v2-{{ .Branch }}-
 
       - run:
           name: "Run all examples"
@@ -118,12 +117,12 @@ jobs:
   test:
     working_directory: ~/project
     docker:
-      - image: circleci/python:3.7
+      - image: cimg/python:3.7
     steps:
       - checkout
       - restore_cache: &restore_cache
           keys:
-            - v1-{{ .Branch }}-
+            - v2-{{ .Branch }}-
 
       - run:
           name: "Run all tests"
@@ -135,12 +134,12 @@ jobs:
   check-release-version:
     working_directory: ~/project
     docker:
-      - image: circleci/python:3.7
+      - image: cimg/python:3.7
     steps:
       - checkout
       - restore_cache: &restore_cache
           keys:
-            - v1-{{ .Branch }}-
+            - v2-{{ .Branch }}-
       - run:
           name: "Check proposed release version is valid next semver"
           command: |
@@ -150,12 +149,12 @@ jobs:
   deploy:
     working_directory: ~/project
     docker:
-      - image: circleci/python:3.7
+      - image: cimg/python:3.7
     steps:
       - checkout
       - restore_cache: &restore_cache
           keys:
-            - v1-{{ .Branch }}-
+            - v2-{{ .Branch }}-
       - add_ssh_keys:
           fingerprints:
             - "b7:35:38:7a:76:62:44:82:28:93:77:f1:9c:f1:35:8c"
@@ -185,7 +184,6 @@ jobs:
             git tag -a $TAG -m "New tag $TAG"
             git push --tags
 
-
 workflows:
   version: 2
   build-deploy:
@@ -194,19 +192,19 @@ workflows:
 
       - lint:
           requires:
-              - build
+            - build
 
       - test:
           requires:
-              - build
+            - build
 
       - test-documentation:
           requires:
-              - build
+            - build
 
       - run-examples:
           requires:
-              - build
+            - build
 
       - check-release-version:
           requires:

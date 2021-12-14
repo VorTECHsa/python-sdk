@@ -35,3 +35,18 @@ def filter_empty_values(data: Dict) -> Dict:
     return {
         k: v for k, v in data.items() if not (v is None or v == [] or v == {})
     }
+
+def sts_param_value(param):
+    """
+    If sts filter is True, apply cross filter.
+
+    If sts filter is False, apply exclude param.
+    
+    Else - don't apply any filters
+    """
+    if param == True:
+        return {"exclude": False, "x_filter": True}
+    elif param == False:
+        return {"exclude": True, "x_filter": False}
+    else:
+        return {"exclude": False, "x_filter": False}

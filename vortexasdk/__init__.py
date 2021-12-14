@@ -1,6 +1,7 @@
 """Vortexa Python SDK."""
 # noinspection PyUnresolvedReferences
 from vortexasdk.endpoints import (
+    AssetTanks,
     Attributes,
     CargoMovements,
     CargoTimeSeries,
@@ -9,8 +10,25 @@ from vortexasdk.endpoints import (
     Products,
     VesselMovements,
     Vessels,
-    TonMilesBreakdown,
+    TonneMilesBreakdown,
+    VesselAvailabilitySearch,
+    VesselAvailabilityTimeseries,
+    VesselAvailabilityBreakdown,
+    FleetUtilisationTimeseries,
+    FleetUtilisationSpeedBreakdown,
+    FleetUtilisationAvgDistanceTimeseries,
+    FleetUtilisationCapacityTimeseries,
+    FleetUtilisationQuantityTimeseries,
+    FleetUtilisationDestinationBreakdown,
+    FleetUtilisationOriginBreakdown,
     EIAForecasts,
+    OriginBreakdown,
+    DestinationBreakdown,
+    StorageTerminals,
+    OnshoreInventoriesTimeseries,
+    OnshoreInventoriesSearch,
+    FreightPricingSearch,
+    FreightPricingTimeseries
 )
 
 # noinspection PyUnresolvedReferences
