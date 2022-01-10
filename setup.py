@@ -38,7 +38,7 @@ setuptools.setup(
         "tests": [
             "flake8==3.7.9",
             "mkdocs==1.0.4",
-            "mypy==0.770",
+            "mypy==0.931",
             "pre-commit==1.20.0",
             "pytest==5.2.4",
             "pydoc-markdown==2.0.5",
