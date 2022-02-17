@@ -13,7 +13,7 @@
         "lat": 52.2186,
         "lon": 27.7103,
         "crude_confidence": "confirmed",
-        "valid_from": "2021-08-03T14:34:18.533Z",
+        "last_update_ts": "2021-08-03T14:34:18.533Z",
         "location_id": "b839dc5fee39ff7efd5e1cf2494b3b59f448cfee7e515491a98cb898df9f73ef",
         "location_details": [
         {
@@ -114,7 +114,7 @@
         "lat": 52.2186,
         "lon": 27.7103,
         "crude_confidence": "probable",
-        "valid_from": "2021-08-03T14:34:18.533Z",
+        "last_update_ts": "2021-08-03T14:34:18.533Z",
         "location_id": "86b4f89661638c51f6cdd6e8f521669e538414fdc0dc19d00a468e26380bf628",
         "location_details": [
           {
