@@ -41,5 +41,4 @@ class AssetTank(FromDictMixin):
     storage_terminal_id: str
     storage_terminal_name: str
     storage_type: str
-    valid_from: ISODate
-    valid_to: Optional[ISODate]
+    last_updated: ISODate
