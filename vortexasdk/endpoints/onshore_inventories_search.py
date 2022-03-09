@@ -96,7 +96,7 @@ class OnshoreInventoriesSearch(Search):
                 },
                 corporate_entity_id: 'b25523ae823b9e38bb11a161eb60d42194f1a886e58dfe39592dcc324f06f60e',
                 crude_confidence: 'confirmed',
-                last_update: '2021-08-03T14: 34: 18.533Z',
+                last_updated: '2021-08-03T14: 34: 18.533Z',
                 leaf: True,
                 location_id: 'a98c21d06633d86c8c55',
                 location_details: [
