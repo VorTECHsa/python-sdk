@@ -26,7 +26,7 @@ setuptools.setup(
     python_requires=">=3.7",
     install_requires=[
         "flatten-dict==0.2.0",
-        "jsons==1.0.0",
+        "jsons==1.6.1",
         "jupyter==1.0.0",
         "matplotlib==3.3.4",
         "pandas>=0.25.2",
