@@ -96,6 +96,7 @@ class OnshoreInventoriesSearch(Search):
                 },
                 corporate_entity_id: 'b25523ae823b9e38bb11a161eb60d42194f1a886e58dfe39592dcc324f06f60e',
                 crude_confidence: 'confirmed',
+                last_updated: '2021-08-03T14: 34: 18.533Z',
                 leaf: True,
                 location_id: 'a98c21d06633d86c8c55',
                 location_details: [
@@ -119,9 +120,7 @@ class OnshoreInventoriesSearch(Search):
                 ref_type: 'asset_tank',
                 storage_terminal_id: 'e757382d4aa5a8aa77d0f11ac7f535fb32993bae89bdf581771f155d1c0149b8',
                 storage_terminal_name: 'RepsolCartagenaRefinery',
-                storage_type: 'refinery',
-                valid_from: '2021-08-03T14: 34: 18.533Z',
-                valid_to: None
+                storage_type: 'refinery'
             },
             measurement_timestamp: '2021-09-06T17: 50: 12',
             publish_timestamp: '2021-09-08T13: 59: 45',
