@@ -32,7 +32,7 @@ setuptools.setup(
         "pandas>=0.25.2",
         "requests==2.27.1",
         "statsmodels==0.12.2",
-        "tqdm==4.38.0",
+        "tqdm==4.63.1",
     ],
     extras_require={
         "tests": [
