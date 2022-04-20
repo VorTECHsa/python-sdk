@@ -28,3 +28,4 @@ from vortexasdk.endpoints.onshore_inventories_search import OnshoreInventoriesSe
 from vortexasdk.endpoints.freight_pricing_search import FreightPricingSearch
 from vortexasdk.endpoints.freight_pricing_timeseries import FreightPricingTimeseries
 from vortexasdk.endpoints.voyages_timeseries import VoyagesTimeseries
+from vortexasdk.endpoints.voyages_congestion_breakdown import VoyagesCongestionBreakdown
