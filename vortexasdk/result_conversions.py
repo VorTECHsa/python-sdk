@@ -23,11 +23,10 @@ def format_datatypes(df: pd.DataFrame) -> pd.DataFrame:
 
     return df
 
-
 def create_dataframe(
     columns: Union[None, List[str]],
     default_columns: List[str],
-    data: List[dict],
+    data: Union[List[dict], List[List[str]]],
     logger_description: str,
 ) -> pd.DataFrame:
     """

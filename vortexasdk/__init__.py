@@ -31,7 +31,8 @@ from vortexasdk.endpoints import (
     FreightPricingTimeseries,
     VoyagesTimeseries,
     VoyagesCongestionBreakdown,
-    VoyagesTopHits
+    VoyagesTopHits,
+    VoyagesSearch
 )
 
 # noinspection PyUnresolvedReferences
