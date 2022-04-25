@@ -3,11 +3,13 @@ from typing import List
 
 from vortexasdk.api.serdes import FromDictMixin
 
+
 @dataclass(frozen=True)
 class LocationDetails:
     id: str
     label: str
     layer: List[str]
+
 
 @dataclass(frozen=True)
 class CongestionBreakdownItem(FromDictMixin):

@@ -5,6 +5,7 @@ from vortexasdk import VoyagesSearch
 
 rotterdam = "68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e"
 
+
 class TestVoyagesSearch(TestCaseUsingRealAPI):
     def test_search_returns_dataframe(self):
         start = datetime(2021, 6, 17)

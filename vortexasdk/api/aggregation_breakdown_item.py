@@ -2,6 +2,7 @@ from dataclasses import dataclass
 
 from vortexasdk.api.serdes import FromDictMixin
 
+
 @dataclass(frozen=True)
 class AggregationBreakdownItem(FromDictMixin):
     """

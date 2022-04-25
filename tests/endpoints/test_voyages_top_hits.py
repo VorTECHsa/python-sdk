@@ -26,7 +26,7 @@ class TestVoyagesTopHits(TestCaseUsingRealAPI):
         )
 
         assert len(result) > 0
-   
+
     def test_search_split_vessel_status(self):
         start = datetime(2019, 11, 1)
         end = datetime(2019, 11, 10)
@@ -66,7 +66,7 @@ class TestVoyagesTopHits(TestCaseUsingRealAPI):
 
         assert len(df) > 0
         assert list(df.columns) == ["id", "value", "count", "label"]
-   
+
     def test_with_params(self):
 
         df = (

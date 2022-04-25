@@ -28,7 +28,7 @@ class TestVoyagesCongestionBreakdown(TestCaseUsingRealAPI):
         )
 
         assert len(result) == 10
-   
+
     def test_search_returns_for_terminal(self):
         start = datetime(2019, 11, 1)
         end = datetime(2019, 11, 10)
@@ -70,7 +70,7 @@ class TestVoyagesCongestionBreakdown(TestCaseUsingRealAPI):
 
         assert len(df) == 10
         assert list(df.columns) == ['avg_waiting_time', 'vessel_dwt', 'vessel_cubic_capacity', 'vessel_count', 'cargo_quantity', 'avg_waiting_time_laden', 'vessel_dwt_laden', 'vessel_cubic_capacity_laden', 'vessel_count_laden', 'avg_waiting_time_ballast', 'vessel_dwt_ballast', 'vessel_cubic_capacity_ballast', 'vessel_count_ballast', 'location_details.0.label']
-   
+
     def test_with_params(self):
 
         df = (

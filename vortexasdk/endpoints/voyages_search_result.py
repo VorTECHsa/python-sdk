@@ -39,4 +39,4 @@ class VoyagesSearchResult(Result):
         # converts buffer to a datafrane
         df = pd.read_csv(buffer, sep=",")
 
-        return df 
+        return df
