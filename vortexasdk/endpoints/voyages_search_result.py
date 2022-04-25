@@ -30,7 +30,7 @@ class VoyagesSearchResult(Result):
 
         """
 
-        logger.debug("Converting each Voyage to a dataframe")
+        logger.debug("Converting Voyage CSV response to a dataframe")
 
         # https://stackoverflow.com/questions/22604564/create-pandas-dataframe-from-a-string
         # convertu utf-8 decoded CSV response to a text buffer
