@@ -1,7 +1,6 @@
 import copy
 import functools
 import getpass
-import csv
 import os
 from json import JSONDecodeError
 from multiprocessing.pool import ThreadPool
@@ -55,7 +54,7 @@ class VortexaClient(AbstractVortexaClient):
         # breakdowns do not support paging, the breakdown size is specified explicitly as a request parameter
         if response_type == "breakdown":
             size = payload.get("breakdown_size", 1000)
-            response = _send_post_request(url, payload, size=size, offset=0)
+            response = _send_post_request(url, payload, size=size, offset=0, headers=headers)
 
             ref = response.get("reference", {})
 
@@ -80,10 +79,12 @@ class VortexaClient(AbstractVortexaClient):
             responses = self._process_multiple_pages(
                 total=total, url=url, payload=payload, data=data, headers=headers
             )
+            if headers['accept'] == 'text/csv':
+                # no need to flatten CSVs
+                return responses
+
             flattened = self._flatten_response(responses)
 
-            # account for a header in the CSV file
-            total = total + 1 if headers['accept'] == 'text/csv' else total
 
             assert len(flattened) == total, (
                 f"Incorrect number of records returned from API. "
@@ -192,7 +193,7 @@ def _handle_response(response: Response, headers: Dict, payload: Dict = None) ->
     else:
         try:
             if headers['accept'] == "text/csv":
-                decoded = {"data": csv.reader(response.content.decode('utf-8').splitlines(), delimiter=','), "total": int(response.headers['x-total'])}
+                decoded = {"data": response.content.decode('utf-8'), "total": int(response.headers['x-total'])}
             else:
                 decoded = response.json()
         except JSONDecodeError:

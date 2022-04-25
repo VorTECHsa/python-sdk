@@ -21,8 +21,6 @@ class TestVoyagesSearch(TestCaseUsingRealAPI):
             .head(2)
         )
 
-        print(df)
-
         assert len(df) == 2
 
     def test_search_returns_some_cols(self):
