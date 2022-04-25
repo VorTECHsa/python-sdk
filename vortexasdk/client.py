@@ -84,8 +84,6 @@ class VortexaClient(AbstractVortexaClient):
                 return responses
 
             flattened = self._flatten_response(responses)
-
-
             assert len(flattened) == total, (
                 f"Incorrect number of records returned from API. "
                 f"Actual: {len(flattened)}, expected: {total}"

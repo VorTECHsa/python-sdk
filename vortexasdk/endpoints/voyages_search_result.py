@@ -32,10 +32,10 @@ class VoyagesSearchResult(Result):
 
         logger.debug("Converting each Voyage to a dataframe")
 
-        # reads raw CSV response from API
+        # reads decoded CSV response from API
         data = StringIO(super().to_list()[0])
 
-        # converts raw CSV response to a DataFrame
+        # converts decoded response to a DataFrame
         df = pd.read_csv(data, sep=",")
 
         return df 
