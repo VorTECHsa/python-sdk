@@ -34,9 +34,9 @@ class VoyagesSearchResult(Result):
 
         # https://stackoverflow.com/questions/22604564/create-pandas-dataframe-from-a-string
         # convertu utf-8 decoded CSV response to a text buffer
-        data = StringIO(super().to_list()[0])
+        buffer = StringIO(super().to_list()[0])
 
         # converts buffer to a datafrane
-        df = pd.read_csv(data, sep=",")
+        df = pd.read_csv(buffer, sep=",")
 
         return df 
