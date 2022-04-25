@@ -26,7 +26,7 @@ def format_datatypes(df: pd.DataFrame) -> pd.DataFrame:
 def create_dataframe(
     columns: Union[None, List[str]],
     default_columns: List[str],
-    data: Union[List[dict], List[List[str]]],
+    data: List[dict],
     logger_description: str,
 ) -> pd.DataFrame:
     """
