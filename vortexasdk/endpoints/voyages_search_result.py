@@ -7,7 +7,9 @@ from io import StringIO
 import pandas as pd
 
 from vortexasdk.api.search_result import Result
+from vortexasdk.api.voyages import VoyagesItem
 from vortexasdk.logger import get_logger
+from vortexasdk.result_conversions import create_list
 
 logger = get_logger(__name__)
 
@@ -21,6 +23,11 @@ class VoyagesSearchResult(Result):
     This class returns results 
     """
 
+    def to_list(self) -> List:
+        """Represent voyages as a list."""
+        # noinspection PyTypeChecker
+        return super().to_list()
+
     def to_df(self) -> pd.DataFrame:
         """
         Represent voyages as a `pd.DataFrame`.
@@ -32,11 +39,5 @@ class VoyagesSearchResult(Result):
 
         logger.debug("Converting Voyage CSV response to a dataframe")
 
-        # https://stackoverflow.com/questions/22604564/create-pandas-dataframe-from-a-string
-        # convertu utf-8 decoded CSV response to a text buffer
-        buffer = StringIO(super().to_list()[0])
-
-        # converts buffer to a datafrane
-        df = pd.read_csv(buffer, sep=",")
-
-        return df
+        # converts list to a datafrane
+        return pd.DataFrame(data=super().to_list())

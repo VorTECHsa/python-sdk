@@ -40,3 +40,20 @@ class TestVoyagesSearch(TestCaseUsingRealAPI):
         )
 
         assert len(df.columns) == 4
+
+    def test_search_returns_list(self):
+        start = datetime(2021, 6, 17)
+        end = datetime(2021, 6, 21)
+
+        res = (
+            VoyagesSearch()
+            .search(
+                time_min=start,
+                time_max=end,
+                origins=rotterdam,
+                csv_columns=['vessel_name', 'imo', 'dwt', 'capacity']
+            )
+            .to_list()
+        )
+
+        assert len(res) > 0

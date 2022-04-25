@@ -1,6 +1,8 @@
 import copy
+import csv
 import functools
 import getpass
+import json
 import os
 from json import JSONDecodeError
 from multiprocessing.pool import ThreadPool
@@ -79,9 +81,6 @@ class VortexaClient(AbstractVortexaClient):
             responses = self._process_multiple_pages(
                 total=total, url=url, payload=payload, data=data, headers=headers
             )
-            if headers['accept'] == 'text/csv':
-                # no need to flatten CSVs
-                return responses
 
             flattened = self._flatten_response(responses)
             assert len(flattened) == total, (
@@ -190,8 +189,18 @@ def _handle_response(response: Response, headers: Dict, payload: Dict = None) ->
 
     else:
         try:
-            if headers['accept'] == "text/csv":
-                decoded = {"data": response.content.decode('utf-8'), "total": int(response.headers['x-total'])}
+            if 'accept' in headers and headers['accept'] == 'text/csv':
+                # decode
+                raw = response.content.decode('utf-8')
+
+                # convert to dictionaries
+                reader = csv.DictReader(raw.splitlines())
+
+                # convert to JSON
+                data = [dict(line) for line in reader]
+
+                decoded = {"data": data, "total": int(response.headers['x-total'])}
+
             else:
                 decoded = response.json()
         except JSONDecodeError:
