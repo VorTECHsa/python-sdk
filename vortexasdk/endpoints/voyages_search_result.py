@@ -32,10 +32,11 @@ class VoyagesSearchResult(Result):
 
         logger.debug("Converting each Voyage to a dataframe")
 
-        # reads decoded CSV response from API
+        # https://stackoverflow.com/questions/22604564/create-pandas-dataframe-from-a-string
+        # convertu utf-8 decoded CSV response to a text buffer
         data = StringIO(super().to_list()[0])
 
-        # converts decoded response to a DataFrame
+        # converts buffer to a datafrane
         df = pd.read_csv(data, sep=",")
 
         return df 
