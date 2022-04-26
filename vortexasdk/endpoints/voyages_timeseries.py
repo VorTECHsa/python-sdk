@@ -200,11 +200,6 @@ class VoyagesTimeseries(Search):
 
             has_charterer: A boolean to show data where at least one charterer is specified.
 
-            order: Used to sort the returned results. Can be one of: `'location'`, `'avg_wait'`, `'dwt'`, `'capacity'`, `'count'`.
-
-            order_direction: Determines the direction of sorting. ‘asc’ for ascending, ‘desc’ for
-            descending.
-
         # Returns
         `BreakdownResult`
 

@@ -34,7 +34,7 @@ class TestVoyagesSearch(TestCaseUsingRealAPI):
                 time_min=start,
                 time_max=end,
                 origins=rotterdam,
-                csv_columns=['vessel_name', 'imo', 'dwt', 'capacity']
+                columns=['vessel_name', 'imo', 'dwt', 'capacity']
             )
             .to_df()
         )
@@ -51,9 +51,28 @@ class TestVoyagesSearch(TestCaseUsingRealAPI):
                 time_min=start,
                 time_max=end,
                 origins=rotterdam,
-                csv_columns=['vessel_name', 'imo', 'dwt', 'capacity']
+                columns=['vessel_name', 'imo', 'dwt', 'capacity']
             )
             .to_list()
         )
 
         assert len(res) > 0
+
+    def test_search_from_description(self):
+        start = datetime(2022, 4, 26)
+        end = datetime(2022, 4, 26, 23, 59)
+
+        res = (
+            VoyagesSearch()
+            .search(
+                time_min=start,
+                time_max=end,
+                origins=rotterdam,
+            )
+            .to_df()
+            .head()
+        )
+
+        print(res.to_markdown())
+
+        assert len(ress) > 0

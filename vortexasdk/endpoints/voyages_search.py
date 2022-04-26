@@ -33,8 +33,7 @@ class VoyagesSearch(Search):
         order_direction: str = None,
         offset: int = None,
         unit: str = None,
-        csv_columns: Union[str, List[str]] = "all",
-
+        columns: Union[str, List[str]] = "all",
         time_min: datetime = datetime(2022, 1, 1, 0),
         time_max: datetime = datetime(2022, 1, 1, 1),
         voyage_id: Union[ID, List[ID]] = None,
@@ -90,122 +89,154 @@ class VoyagesSearch(Search):
     ) -> VoyagesSearchResult:
         """
 
-        Returns voyages aggregation for the selected property and frequency.
-
+        Returns a list of voyage records.
 
         # Arguments
-            breakdown_unit_operator: An array of owner ID(s) to filter on.
-            breakdown_frequency: An array of confidence metrics to filter on. Possible values are: `'confirmed’`, `‘probable’`, `‘unlikely’`
-            breakdown_property: Property to aggregate upon. Must be one of the following: `'b'`, `'t'`, `'cbm'`, `'bpd'`, `'tpd'`, `'mpd'`.
-            breakdown_split_property: An array of storage types to filter on. Possible values are: `'refinery'`, `'non-refinery'`, `'commercial'`, `'spr'`, `'tbd'`
             time_min: The UTC start date of the time filter.
+
             time_max: The UTC end date of the time filter.
-            voyage_id: An array of unique Asset Tanks ID(s) to filter on - linked to the Asset Tank Reference data.
-            cargo_movement_id: Frequency denoting the granularity of the time series. Must be one of the following: `'week'`, `'month'`, `'year'`.
-            voyage_status:
-            voyage_status_excluded: 
-            movement_status: 
-            movement_status_excluded: 
-            cargo_status: 
-            cargo_status_excluded: 
-            location_status: 
-            location_status_excluded: 
-            commitment_status: 
-            commitment_status_excluded: 
-            origin_behaviour:
-            destination_behaviour:
-            exclude_overlapping_entries:
-            products: 
-            products_excluded: 
-            latest_products: 
-            latest_products_excluded: 
-            charterers: 
-            charterers_excluded: 
-            vessel_owners: 
-            vessel_owners_excluded: 
-            origins: 
-            origins_excluded: 
-            destinations: 
-            destinations_excluded: 
-            locations: 
-            locations_excluded: 
-            vessels: 
-            vessels_excluded: 
-            flags: 
-            flags_excluded: 
-            ice_class: 
-            ice_class_excluded: 
-            vessel_propulsion: 
-            vessel_propulsion_excluded: 
-            vessel_age_min: 
-            vessel_age_max: 
-            vessel_dwt_min: 
-            vessel_dwt_max: 
-            vessel_wait_time_min: 
-            vessel_wait_time_max: 
-            vessel_scrubbers:
-            vessels_tags:
-            vessels_tags_excluded:
-            vessel_risk_level: 
-            vessel_risk_level_excluded: 
-            has_ship_to_ship: 
-            has_charterer: 
+
+            voyage_id: An array of unique voyage ID(s) to filter on.
+
+            cargo_movement_id: An array of unique cargo movement ID(s) to filter on.
+
+            voyage_status: A voyage status, or list of voyage statuses to filter on. Can be one of: `'ballast'`, `'laden'`.
+
+            voyage_status_excluded: A voyage status, or list of voyage statuses to exclude.
+
+            movement_status: A movement status, or list of movement statuses to filter on. Can be one of: `'moving'`, `'stationary'`, `'waiting'`, `'congestion'`, `'slow'`.
+
+            movement_status_excluded: A movement status, or list of movement statuses to exclude.
+
+            cargo_status: A cargo status, or list of cargo statuses to filter on. Can be one of: `'in-transit'`, `'floating-storage'`, `'loading'`, `'discharging'`.
+
+            cargo_status_excluded: A cargo status, or list of cargo statuses to exclude.
+
+            location_status: A location status, or list of location statuses to filter on. Can be one of: `'berth'`, `'anchorage-zone'`, `'dry-dock'`, `'on-the-sea'`.
+
+            location_status_excluded: A location status, or list of location statuses to exclude.
+
+            commitment_status: A commitment status, or list of commitment statuses to filter on. Can be one of: `'committed'`, `'uncommitted'`, `'open'`, `'unknown'`.
+
+            commitment_status_excluded: A commitment status, or list of commitment statuses to exclude.
+
+            exclude_overlapping_entries: A boolean to only consider the latest voyage in days where two or more Voyages overlap.
+
+            products: A product ID, or list of product IDs to filter on.
+
+            products_excluded: A product ID, or list of product IDs to exclude.
+
+            latest_products: A product ID, or list of product IDs of the latest cargo on board to filter on.
+
+            latest_products_excluded: A product ID, or list of product IDs of the latest cargo on board to exclude.
+
+            charterers: A charterer ID, or list of charterer IDs to filter on.
+
+            charterers_excluded: A charterer ID, or list of charterer IDs to exclude.
+
+            vessel_owners: A vessel owner ID, or list of vessel owner IDs to filter on.
+
+            vessel_owners_excluded: A vessel owner ID, or list of vessel owner IDs to exclude.
+
+            origins: An origin ID, or list of origin IDs to filter on.
+
+            origins_excluded: An origin ID, or list of origin IDs to exclude.
+
+            destinations: A destination ID, or list of destination IDs to filter on.
+
+            destinations_excluded: A destination ID, or list of destination IDs to exclude.
+
+            locations: A location ID, or list of location IDs to filter on.
+
+            locations_excluded: A location ID, or list of location IDs to exclude.
+
+            vessels: A vessel ID or vessel class, or list of vessel IDs/vessel classes to filter on.
+
+            vessels_excluded: A vessel ID or vessel class, or list of vessel IDs/vessel classes to exclude.
+
+            flags: A flag, or list of flags to filter on.
+
+            flags_excluded: A flag, or list of flags to exclude.
+
+            ice_class: An ice class, or list of ice classes to filter on.
+
+            ice_class_excluded: An ice class, or list of ice classes to ęxclude.
+
+            vessel_propulsion: A propulsion method, or list of propulsion methods to filter on.
+
+            vessel_propulsion_excluded: A propulsion method, or list of propulsion methods to ęxclude.
+
+            vessel_age_min: A number between 1 and 100 (representing years).
+
+            vessel_age_max: A number between 1 and 100 (representing years).
+
+            vessel_dwt_min: A number representing minimum deadweight tonnage of a vessel.
+
+            vessel_dwt_max: A number representing maximum deadweight tonnage of a vessel.
+
+            vessel_wait_time_min: A number representing a minimum number of days until a vessel becomes available.
+
+            vessel_wait_time_max: A number representing a maximum number of days until a vessel becomes available.
+
+            vessel_scrubbers: Either inactive 'disabled', or included 'inc' or excluded 'exc'.
+
+            vessels_tags: A time bound vessel tag, or list of time bound vessel tags to filter on.
+
+            vessels_tags_excluded: A time bound vessel tag, or list of time bound vessel tags to exclude.
+
+            vessel_risk_level: A vessel risk level, or list of vessel risk levels to filter on.
+
+            vessel_risk_level_excluded: A vessel risk level, or list of vessel risk levels to exclude.
+
+            has_ship_to_ship: A boolean to show data where at least one STS transfer occurs.
+
+            has_charterer: A boolean to show data where at least one charterer is specified.
+
+            order: Used to sort the returned results. Can be one of:`'vessel_name'`,`'vessel_dwt'`,`'vessel_class'`,
+            `'start_date'`,`'end_date'`,`'product'`,`'origin'`,`'destination'`,`'voyage_status'`,`'movement_status'`,`'location_status'`,`'commitment_status'`.
+
+            order_direction: Determines the direction of sorting. ‘asc’ for ascending, ‘desc’ for
+            descending. 
+
+            offset: Used to page results. The offset from which records should be returned.
+
+            unit: Unit of measurement. Enter `'b'` for barrels or `'t'` for tonnes or `'cbm'` for cubic metres.
+
+            columns: Determines what columns are visible in the output. Enter "all" for all columns, or any of: '`vessel_name`',
+            '`imo`','`dwt`','`capacity`','`vessel_class`','`status`','`origin`','`destination`','`destination_eta`','`voyage_type`',
+            '`charterer`','`effective_controller`','`total_quantity`','`latest_product`','`time_charterer`','`flag`','`scrubber`','`year`',
+            '`risk_rating`','`vessel_coating`','`date_entered`','`date_departed`','`duration`','`location`','`waiting_time`','`waiting_commence`',
+            '`waiting_finished`',
 
         # Returns
-        `BreakdownResult`
+        `VoyagesSearchResult`
 
         # Example
-        _Total storage capacity across Europe for the first week of January 2021._
+        _Voyages as of 26th April 2022 for vessels carrying crude departing from Rotterdam._
 
         ```python
-        >>> from vortexasdk import VoyagesTimeseries
+        >>> from vortexasdk import VoyagesSearch
         >>> from datetime import datetime
-        >>> search_result = VoyagesTimeseries().search(
-        ...    location_ids=["f39d455f5d38907394d6da3a91da4e391f9a34bd6a17e826d6042761067e88f4"],
-        ...    time_min=datetime(2021, 1, 5),
-        ...    time_max=datetime(2021, 1, 12),
-        ...    timeseries_frequency="week",
-        ...    timeseries_split_property="location_country",
-        ...    timeseries_unit="b",
-        ...    timeseries_unit_operator="capacity",
-        ...    ).to_list()
+        >>> rotterdam = [g.id for g in Geographies().search("rotterdam").to_list() if "port" in g.layer]
+        >>> start = datetime(2021, 8, 1)
+        >>> end = datetime(2021, 8, 1, 23, 59)
+        >>> search_result = VoyagesSearch().search(
+            time_min=start,
+            time_max=end,
+            origins=rotterdam,
+         ).to_df().head()
 
         ```
         Gives the following result:
 
         ```
-        [
-            BreakdownItem(key='2021-09-09T14:00:00.000Z',
-            count=3769,
-            value=994621677,
-            breakdown=[
-                {
-                    'id': 'ee1de4914cc26e8f1326b49793b089131870d478714c07e0c99c56cb307704c5',
-                    'label': 'Italy',
-                    'value': 204482432,
-                    'count': 762
-                },
-                {
-                    'id': '2aaad41b89dfad19e5668918018ae02695d7710bcbe5f2dc689234e8da492de3',
-                    'label': 'UnitedKingdom',
-                    'value': 113001186,
-                    'count': 415
-                },
-                {
-                    'id': '284c8d9831e1ac59c0cb714468856d561af722c8a2432c13a001f909b97e6b71',
-                    'label': 'Germany',
-                    'value': 93583672,
-                    'count': 405
-                },
-                {
-                    'id': 'e9e556620469f46a4dc171aef71073f5286a288da35c5883cac760446b0ceb46',
-                    'label': 'France',
-                    'value': 86652291,
-                    'count': 327
-                },
-                ...
-            ])
-        ]
+        |    | VESSEL NAME     |     IMO |   DWT (t) |   CAPACITY (cbm) | VESSEL CLASS   | STATUS              | ORIGIN         | DESTINATION     | DESTINATION ETA   | VOYAGE TYPE   | CHARTERER   | EFFECTIVE CONTROLLER   |   QUANTITY (bbl) | LATEST PRODUCT   | TIME CHARTERER   | FLAG   | SCRUBBERS   |   BUILD YEAR | RISK RATING   | COATING   | DAY ENTERED   | DAY DEPARTED   | DURATION   | LOCATION    |   WAITING TIME (h) | WAITING START   | WAITING END   |
+        |---:|:----------------|--------:|----------:|-----------------:|:---------------|:--------------------|:---------------|:----------------|:------------------|:--------------|:------------|:-----------------------|-----------------:|:-----------------|:-----------------|:-------|:------------|-------------:|:--------------|:----------|:--------------|:---------------|:-----------|:------------|-------------------:|:----------------|:--------------|
+        |  0 | YURIY KUCHIEV   | 9804033 |     52292 |           106368 | Handymax / MR  | Ballast uncommitted | Rotterdam [NL] |                 |                   |               |             | Yamal LNG              |                0 | Condensates      |                  | CY     |             |         2019 | Low           | Coated    | 26 Apr 2022   |                |            | -           |                 16 | Apr 26, 2022    |               |
+        |  1 | YASA SWAN       | 9857248 |     49000 |            51950 | Handymax / MR  | Ballast uncommitted | Rotterdam [NL] |                 |                   |               |             | Equinor                |                0 | Naphtha          |                  | MH     | Installed   |         2019 | Low           | Coated    | 26 Apr 2022   |                |            | -           |                 16 | Apr 26, 2022    |               |
+        |  2 | WONDER MIMOSA   | 9312901 |     37620 |            41613 | Handysize      | Laden               | Rotterdam [NL] | Marsaxlokk [MT] | May 1, 2022       | Single        | Gunvor      | HAFNIA                 |           201752 | Fuel Oil         |                  | MH     |             |         2006 | Low           | Coated    | 25 Apr 2022   |                |            | UK Cont     |                 36 | Apr 25, 2022    |               |
+        |  3 | WINE TRADER     | 8808707 |      6259 |             6489 | Tiny tanker    | Ballast uncommitted | Rotterdam [NL] | Luanda [AO]     | Apr 29, 2022      |               |             |                        |                0 | Biodiesel        |                  | PA     |             |         1989 | Low           | Coated    | 12 Apr 2022   |                |            | West Africa |                351 | Apr 12, 2022    |               |
+        |  4 | WHISTLER SPIRIT | 9417323 |    109011 |           125993 | Aframax / LR2  | Laden               | Rotterdam [NL] | -               |                   | Single        |             | TEEKAY                 |           332334 | Fuel Oil         |                  | BS     |             |         2010 | Low           |           | 26 Apr 2022   |                |            | -           |                 16 | Apr 26, 2022    |               |
         ```
         """
         api_params = {
@@ -248,7 +279,7 @@ class VoyagesSearch(Search):
             "offset": offset,
             "size": self._MAX_PAGE_RESULT_SIZE,
             "unit": unit,
-            "csv_columns": csv_columns,
+            "csv_columns": columns,
             "voyage_status_excluded": convert_to_list(voyage_status_excluded),
             "cargo_status_excluded": convert_to_list(cargo_status_excluded),
             "location_status_excluded": convert_to_list(location_status_excluded),
