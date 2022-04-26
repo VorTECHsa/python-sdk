@@ -195,8 +195,7 @@ class VoyagesSearch(Search):
             order: Used to sort the returned results. Can be one of:`'vessel_name'`,`'vessel_dwt'`,`'vessel_class'`,
             `'start_date'`,`'end_date'`,`'product'`,`'origin'`,`'destination'`,`'voyage_status'`,`'movement_status'`,`'location_status'`,`'commitment_status'`.
 
-            order_direction: Determines the direction of sorting. ‘asc’ for ascending, ‘desc’ for
-            descending. 
+            order_direction: Determines the direction of sorting. ‘asc’ for ascending, ‘desc’ for descending.
 
             offset: Used to page results. The offset from which records should be returned.
 

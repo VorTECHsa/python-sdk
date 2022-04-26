@@ -226,33 +226,33 @@ class VoyagesTopHits(Search):
         ```
         [
             AggregationBreakdownItem(
-                id='b996521be9c996db', 
-                count=8, 
-                value=8.0, 
+                id='b996521be9c996db',
+                count=8,
+                value=8.0,
                 label='Russia'
-            ), 
+            ),
             AggregationBreakdownItem(
-                id='2d92cc08f22524db', 
+                id='2d92cc08f22524db',
                 count=7,
-                value=7.0, 
+                value=7.0,
                 label='United States'
-            ), 
+            ),
             AggregationBreakdownItem(
-                id='2aaad41b89dfad19', 
-                count=4, 
-                value=4.0, 
+                id='2aaad41b89dfad19',
+                count=4,
+                value=4.0,
                 label='United Kingdom'
-            ), 
+            ),
             AggregationBreakdownItem(
-                id='430f0e467f3a408f', 
-                count=2, 
-                value=2.0, 
+                id='430f0e467f3a408f',
+                count=2,
+                value=2.0,
                 label='Nigeria'
-            ), 
+            ),
             AggregationBreakdownItem(
-                id='3eac69e760d9ec57', 
-                count=1, 
-                value=1.0, 
+                id='3eac69e760d9ec57',
+                count=1,
+                value=1.0,
                 label='Egypt'
             )
         ]
