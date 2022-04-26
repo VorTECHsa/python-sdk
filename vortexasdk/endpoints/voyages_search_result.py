@@ -1,15 +1,9 @@
-import functools
-import os
-from multiprocessing.pool import Pool
 from typing import List
-from io import StringIO
 
 import pandas as pd
 
 from vortexasdk.api.search_result import Result
-from vortexasdk.api.voyages import VoyagesItem
 from vortexasdk.logger import get_logger
-from vortexasdk.result_conversions import create_list
 
 logger = get_logger(__name__)
 

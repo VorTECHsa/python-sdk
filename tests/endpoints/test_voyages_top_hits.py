@@ -2,6 +2,8 @@ from datetime import datetime
 
 from tests.testcases import TestCaseUsingRealAPI
 from vortexasdk import VoyagesTopHits
+from vortexasdk.endpoints.geographies import Geographies
+from vortexasdk.endpoints.products import Products
 
 
 class TestVoyagesTopHits(TestCaseUsingRealAPI):
@@ -93,6 +95,28 @@ class TestVoyagesTopHits(TestCaseUsingRealAPI):
             .search(
                 time_min=start,
                 time_max=end,
+            )
+            .to_list()
+        )
+
+        assert len(time_series_list) > 0
+
+    def test_from_description(self):
+        start = datetime(2021, 8, 1)
+        end = datetime(2021, 8, 1, 23, 59)
+
+        rotterdam = [g.id for g in Geographies().search("rotterdam").to_list() if "port" in g.layer]
+        crude = [p.id for p in Products().search("crude").to_list() if "Crude" == p.name]
+
+        time_series_list = (
+            VoyagesTopHits()
+            .search(
+                destinations=rotterdam,
+                products=crude,
+                time_min=start,
+                time_max=end,
+                breakdown_split_property="origin_country",
+                breakdown_size=5
             )
             .to_list()
         )
