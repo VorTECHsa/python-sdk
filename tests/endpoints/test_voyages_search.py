@@ -73,6 +73,4 @@ class TestVoyagesSearch(TestCaseUsingRealAPI):
             .head()
         )
 
-        print(res.to_markdown())
-
-        assert len(ress) > 0
+        assert len(res) > 0
