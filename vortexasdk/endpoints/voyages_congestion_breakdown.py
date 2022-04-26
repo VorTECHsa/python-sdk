@@ -29,7 +29,6 @@ class VoyagesCongestionBreakdown(Search):
         breakdown_size: int = 2000,
         order: str = None,
         order_direction: str = None,
-
         time_min: datetime = datetime(2022, 1, 1, 0),
         time_max: datetime = datetime(2022, 1, 1, 1),
         voyage_id: Union[ID, List[ID]] = None,
@@ -44,8 +43,8 @@ class VoyagesCongestionBreakdown(Search):
         location_status_excluded: Union[str, List[str]] = None,
         commitment_status: Union[str, List[str]] = None,
         commitment_status_excluded: Union[str, List[str]] = None,
-        origin_behaviour: str = None,
-        destination_behaviour: str = None,
+        # origin_behaviour: str = None,
+        # destination_behaviour: str = None,
         exclude_overlapping_entries: bool = None,
         products: Union[ID, List[ID]] = None,
         products_excluded: Union[ID, List[ID]] = None,
@@ -85,122 +84,145 @@ class VoyagesCongestionBreakdown(Search):
     ) -> CongestionBreakdownResult:
         """
 
-        Returns voyages aggregation for the selected property and frequency.
-
+        Returns various congestion stats broken down by geography.
 
         # Arguments
-            breakdown_unit_operator: An array of owner ID(s) to filter on.
-            breakdown_frequency: An array of confidence metrics to filter on. Possible values are: `'confirmed’`, `‘probable’`, `‘unlikely’`
-            breakdown_property: Property to aggregate upon. Must be one of the following: `'b'`, `'t'`, `'cbm'`, `'bpd'`, `'tpd'`, `'mpd'`.
-            breakdown_split_property: An array of storage types to filter on. Possible values are: `'refinery'`, `'non-refinery'`, `'commercial'`, `'spr'`, `'tbd'`
+            breakdown_size: Number of top records to return.
+
+            breakdown_property: Property to aggregate upon. Can be one of: '`port`', '`shipping_region`', '`terminal`'.
+
             time_min: The UTC start date of the time filter.
+
             time_max: The UTC end date of the time filter.
-            voyage_id: An array of unique Asset Tanks ID(s) to filter on - linked to the Asset Tank Reference data.
-            cargo_movement_id: Frequency denoting the granularity of the time series. Must be one of the following: `'week'`, `'month'`, `'year'`.
-            voyage_status:
-            voyage_status_excluded: 
-            movement_status: 
-            movement_status_excluded: 
-            cargo_status: 
-            cargo_status_excluded: 
-            location_status: 
-            location_status_excluded: 
-            commitment_status: 
-            commitment_status_excluded: 
-            origin_behaviour:
-            destination_behaviour:
-            exclude_overlapping_entries:
-            products: 
-            products_excluded: 
-            latest_products: 
-            latest_products_excluded: 
-            charterers: 
-            charterers_excluded: 
-            vessel_owners: 
-            vessel_owners_excluded: 
-            origins: 
-            origins_excluded: 
-            destinations: 
-            destinations_excluded: 
-            locations: 
-            locations_excluded: 
-            vessels: 
-            vessels_excluded: 
-            flags: 
-            flags_excluded: 
-            ice_class: 
-            ice_class_excluded: 
-            vessel_propulsion: 
-            vessel_propulsion_excluded: 
-            vessel_age_min: 
-            vessel_age_max: 
-            vessel_dwt_min: 
-            vessel_dwt_max: 
-            vessel_wait_time_min: 
-            vessel_wait_time_max: 
-            vessel_scrubbers:
-            vessels_tags:
-            vessels_tags_excluded:
-            vessel_risk_level: 
-            vessel_risk_level_excluded: 
-            has_ship_to_ship: 
-            has_charterer: 
+
+            voyage_id: An array of unique voyage ID(s) to filter on.
+
+            cargo_movement_id: An array of unique cargo movement ID(s) to filter on.
+
+            voyage_status: A voyage status, or list of voyage statuses to filter on. Can be one of: `'ballast'`, `'laden'`.
+
+            voyage_status_excluded: A voyage status, or list of voyage statuses to exclude.
+
+            movement_status: A movement status, or list of movement statuses to filter on. Can be one of: `'moving'`, `'stationary'`, `'waiting'`, `'congestion'`, `'slow'`.
+
+            movement_status_excluded: A movement status, or list of movement statuses to exclude.
+
+            cargo_status: A cargo status, or list of cargo statuses to filter on. Can be one of: `'in-transit'`, `'floating-storage'`, `'loading'`, `'discharging'`.
+
+            cargo_status_excluded: A cargo status, or list of cargo statuses to exclude.
+
+            location_status: A location status, or list of location statuses to filter on. Can be one of: `'berth'`, `'anchorage-zone'`, `'dry-dock'`, `'on-the-sea'`.
+
+            location_status_excluded: A location status, or list of location statuses to exclude.
+
+            commitment_status: A commitment status, or list of commitment statuses to filter on. Can be one of: `'committed'`, `'uncommitted'`, `'open'`, `'unknown'`.
+
+            commitment_status_excluded: A commitment status, or list of commitment statuses to exclude.
+
+            exclude_overlapping_entries: A boolean to only consider the latest voyage in days where two or more Voyages overlap.
+
+            products: A product ID, or list of product IDs to filter on.
+
+            products_excluded: A product ID, or list of product IDs to exclude.
+
+            latest_products: A product ID, or list of product IDs of the latest cargo on board to filter on.
+
+            latest_products_excluded: A product ID, or list of product IDs of the latest cargo on board to exclude.
+
+            charterers: A charterer ID, or list of charterer IDs to filter on.
+
+            charterers_excluded: A charterer ID, or list of charterer IDs to exclude.
+
+            vessel_owners: A vessel owner ID, or list of vessel owner IDs to filter on.
+
+            vessel_owners_excluded: A vessel owner ID, or list of vessel owner IDs to exclude.
+
+            origins: An origin ID, or list of origin IDs to filter on.
+
+            origins_excluded: An origin ID, or list of origin IDs to exclude.
+
+            destinations: A destination ID, or list of destination IDs to filter on.
+
+            destinations_excluded: A destination ID, or list of destination IDs to exclude.
+
+            locations: A location ID, or list of location IDs to filter on.
+
+            locations_excluded: A location ID, or list of location IDs to exclude.
+
+            vessels: A vessel ID or vessel class, or list of vessel IDs/vessel classes to filter on.
+
+            vessels_excluded: A vessel ID or vessel class, or list of vessel IDs/vessel classes to exclude.
+
+            flags: A flag, or list of flags to filter on.
+
+            flags_excluded: A flag, or list of flags to exclude.
+
+            ice_class: An ice class, or list of ice classes to filter on.
+
+            ice_class_excluded: An ice class, or list of ice classes to ęxclude.
+
+            vessel_propulsion: A propulsion method, or list of propulsion methods to filter on.
+
+            vessel_propulsion_excluded: A propulsion method, or list of propulsion methods to ęxclude.
+
+            vessel_age_min: A number between 1 and 100 (representing years).
+
+            vessel_age_max: A number between 1 and 100 (representing years).
+
+            vessel_dwt_min: A number representing minimum deadweight tonnage of a vessel.
+
+            vessel_dwt_max: A number representing maximum deadweight tonnage of a vessel.
+
+            vessel_wait_time_min: A number representing a minimum number of days until a vessel becomes available.
+
+            vessel_wait_time_max: A number representing a maximum number of days until a vessel becomes available.
+
+            vessel_scrubbers: Either inactive 'disabled', or included 'inc' or excluded 'exc'.
+
+            vessels_tags: A time bound vessel tag, or list of time bound vessel tags to filter on.
+
+            vessels_tags_excluded: A time bound vessel tag, or list of time bound vessel tags to exclude.
+
+            vessel_risk_level: A vessel risk level, or list of vessel risk levels to filter on.
+
+            vessel_risk_level_excluded: A vessel risk level, or list of vessel risk levels to exclude.
+
+            has_ship_to_ship: A boolean to show data where at least one STS transfer occurs.
+
+            has_charterer: A boolean to show data where at least one charterer is specified.
+
+            order: Used to sort the returned results. Can be one of: `'location'`, `'avg_wait'`, `'dwt'`, `'capacity'`, `'count'`.
+
+            order_direction: Determines the direction of sorting. ‘asc’ for ascending, ‘desc’ for
+            descending.
 
         # Returns
-        `BreakdownResult`
+        `CongestionBreakdownResult`
 
         # Example
-        _Total storage capacity across Europe for the first week of January 2021._
+        _Stats for vessels in congestion on 26th April 2022 split by shipping region._
 
         ```python
-        >>> from vortexasdk import VoyagesTimeseries
+        >>> from vortexasdk import VoyagesCongestionBreakdown
         >>> from datetime import datetime
-        >>> search_result = VoyagesTimeseries().search(
-        ...    location_ids=["f39d455f5d38907394d6da3a91da4e391f9a34bd6a17e826d6042761067e88f4"],
-        ...    time_min=datetime(2021, 1, 5),
-        ...    time_max=datetime(2021, 1, 12),
-        ...    timeseries_frequency="week",
-        ...    timeseries_split_property="location_country",
-        ...    timeseries_unit="b",
-        ...    timeseries_unit_operator="capacity",
-        ...    ).to_list()
+        >>> search_result = VoyagesCongestionBreakdown().search(
+        ...    time_min=datetime(2022, 4, 26),
+        ...    time_max=datetime(2022, 4, 26, 23, 59),
+        ...    movement_status="congestion",
+        ...    breakdown_property="shipping_region",
+        ...    breakdown_size=2,
+        ...    ).to_df()
 
         ```
         Gives the following result:
 
         ```
-        [
-            BreakdownItem(key='2021-09-09T14:00:00.000Z',
-            count=3769,
-            value=994621677,
-            breakdown=[
-                {
-                    'id': 'ee1de4914cc26e8f1326b49793b089131870d478714c07e0c99c56cb307704c5',
-                    'label': 'Italy',
-                    'value': 204482432,
-                    'count': 762
-                },
-                {
-                    'id': '2aaad41b89dfad19e5668918018ae02695d7710bcbe5f2dc689234e8da492de3',
-                    'label': 'UnitedKingdom',
-                    'value': 113001186,
-                    'count': 415
-                },
-                {
-                    'id': '284c8d9831e1ac59c0cb714468856d561af722c8a2432c13a001f909b97e6b71',
-                    'label': 'Germany',
-                    'value': 93583672,
-                    'count': 405
-                },
-                {
-                    'id': 'e9e556620469f46a4dc171aef71073f5286a288da35c5883cac760446b0ceb46',
-                    'label': 'France',
-                    'value': 86652291,
-                    'count': 327
-                },
-                ...
-            ])
-        ]
+        |    |   avg_waiting_time |   vessel_dwt |   vessel_cubic_capacity |   vessel_count |   cargo_quantity |   avg_waiting_time_laden |   vessel_dwt_laden |   vessel_cubic_capacity_laden |   vessel_count_laden |   avg_waiting_time_ballast |   vessel_dwt_ballast |   vessel_cubic_capacity_ballast |   vessel_count_ballast | location_details.0.label   |
+        |---:|-------------------:|-------------:|------------------------:|---------------:|-----------------:|-------------------------:|-------------------:|------------------------------:|---------------------:|---------------------------:|---------------------:|--------------------------------:|-----------------------:|:---------------------------|
+        |  0 |                  0 |      9199789 |                10271697 |            353 |           320829 |                        0 |            7104725 |                       7943428 |                  161 |                          0 |              2095064 |                         2328269 |                    192 | East Asia                  |
+        |  1 |                  0 |      6415240 |                 7241430 |            248 |           106209 |                        0 |            3392911 |                       3815449 |                  126 |                          0 |              3022329 |                         3425981 |                    122 | South East Asia            |
+
+
         ```
         """
         api_params = {
@@ -211,8 +233,8 @@ class VoyagesCongestionBreakdown(Search):
             "location_status": convert_to_list(location_status),
             "commitment_status": convert_to_list(commitment_status),
             "movement_status": convert_to_list(movement_status),
-            "origin_behaviour": origin_behaviour,
-            "destination_behaviour": destination_behaviour,
+            # "origin_behaviour": origin_behaviour,
+            # "destination_behaviour": destination_behaviour,
             "products": convert_to_list(products),
             "latest_products": convert_to_list(latest_products),
             "charterers": convert_to_list(charterers),

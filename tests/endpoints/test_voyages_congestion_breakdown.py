@@ -101,3 +101,15 @@ class TestVoyagesCongestionBreakdown(TestCaseUsingRealAPI):
         )
 
         assert len(time_series_list) == 10
+
+    def test_from_docs(self):
+
+        search_result = VoyagesCongestionBreakdown().search(
+            time_min=datetime(2022, 4, 26),
+            time_max=datetime(2022, 4, 26, 23, 59),
+            movement_status="congestion",
+            breakdown_property="shipping_region",
+            breakdown_size=2,
+        ).to_df()
+
+        assert len(search_result) == 2
