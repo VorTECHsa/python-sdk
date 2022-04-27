@@ -15,7 +15,7 @@ class LocationDetails:
 class CongestionBreakdownItem(FromDictMixin):
     """
 
-    TODO - add description
+    Congestion breakdown shows various stats of vessels in congestion.
 
     """
     avg_waiting_time: int
