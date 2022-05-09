@@ -57,7 +57,7 @@ Set your `VORTEXA_API_KEY` environment variable, that's all. Alternatively, the
 SDK prompts to you enter your API Key when running a script interactively.
 
 To get an API key and experiment with Vortexa's data, you can
-[request a demo here](https://www.vortexa.com/request-demo-sdk).
+[request a demo here](https://www.vortexa.com/demo).
 
 ##### Check Setup
 
