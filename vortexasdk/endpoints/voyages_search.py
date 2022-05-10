@@ -193,7 +193,7 @@ class VoyagesSearch(Search):
             has_charterer: A boolean to show data where at least one charterer is specified.
 
             order: Used to sort the returned results. Can be one of:`'vessel_name'`,`'vessel_dwt'`,`'vessel_class'`,
-            `'start_date'`,`'end_date'`,`'product'`,`'origin'`,`'destination'`,`'voyage_status'`,`'movement_status'`,`'location_status'`,`'commitment_status'`.
+            `'start_date'`,`'end_date'`.
 
             order_direction: Determines the direction of sorting. ‘asc’ for ascending, ‘desc’ for descending.
 
@@ -201,11 +201,7 @@ class VoyagesSearch(Search):
 
             unit: Unit of measurement. Enter `'b'` for barrels or `'t'` for tonnes or `'cbm'` for cubic metres.
 
-            columns: Determines what columns are visible in the output. Enter "all" for all columns, or any of: '`vessel_name`',
-            '`imo`','`dwt`','`capacity`','`vessel_class`','`status`','`origin`','`destination`','`destination_eta`','`voyage_type`',
-            '`charterer`','`effective_controller`','`total_quantity`','`latest_product`','`time_charterer`','`flag`','`scrubber`','`year`',
-            '`risk_rating`','`vessel_coating`','`date_entered`','`date_departed`','`duration`','`location`','`waiting_time`','`waiting_commence`',
-            '`waiting_finished`',
+            columns: Determines what columns are visible in the output. Enter "all" for all columns, or any of: TODO: add selection of columns
 
         # Returns
         `VoyagesSearchResult`

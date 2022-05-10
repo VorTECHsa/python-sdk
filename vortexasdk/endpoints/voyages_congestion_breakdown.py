@@ -89,7 +89,7 @@ class VoyagesCongestionBreakdown(Search):
         # Arguments
             breakdown_size: Number of top records to return.
 
-            breakdown_property: Property to aggregate upon. Can be one of: '`port`', '`shipping_region`', '`terminal`'.
+            breakdown_property: Property to aggregate upon. Can be one of: `'port'`, `'shipping_region'`, `'terminal'`.
 
             time_min: The UTC start date of the time filter.
 
