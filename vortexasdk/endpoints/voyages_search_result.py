@@ -3,6 +3,7 @@ from typing import List
 import pandas as pd
 
 from vortexasdk.api.search_result import Result
+from vortexasdk.api.voyages import VoyageItem
 from vortexasdk.logger import get_logger
 
 logger = get_logger(__name__)
@@ -17,7 +18,7 @@ class VoyagesSearchResult(Result):
     This class has two methods, `to_list()`, and `to_df()`, allowing search results to be represented as a list of voyages, or as a `pd.DataFrame` , respectively.
     """
 
-    def to_list(self) -> List:
+    def to_list(self) -> List[VoyageItem]:
         """Represent voyages as a list."""
         # noinspection PyTypeChecker
         return super().to_list()
