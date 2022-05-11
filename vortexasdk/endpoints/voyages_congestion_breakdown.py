@@ -84,7 +84,7 @@ class VoyagesCongestionBreakdown(Search):
     ) -> CongestionBreakdownResult:
         """
 
-        Returns various congestion stats broken down by geography.
+        Returns a vessel breakdown by congestion location.
 
         # Arguments
             breakdown_size: Number of top records to return.

@@ -84,7 +84,7 @@ class VoyagesTopHits(Search):
     ) -> AggregationBreakdownResult:
         """
 
-        Returns an aggregation of top voyage records for the selected breakdown property.
+        Returns a list of top values by vessel count aggregated by a chosen `breakdown_split_property`
 
 
         # Arguments

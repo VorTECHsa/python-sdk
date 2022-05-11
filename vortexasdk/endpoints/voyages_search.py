@@ -89,7 +89,7 @@ class VoyagesSearch(Search):
     ) -> VoyagesSearchResult:
         """
 
-        Returns a list of voyage records.
+        Returns one record per voyage containing all of its respective voyage events,
 
         # Arguments
             time_min: The UTC start date of the time filter.
