@@ -201,7 +201,10 @@ class VoyagesSearch(Search):
 
             unit: Unit of measurement. Enter `'b'` for barrels or `'t'` for tonnes or `'cbm'` for cubic metres.
 
-            columns: Determines what columns are visible in the output. Enter "all" for all columns, or any of: TODO: add selection of columns
+            columns: Determines what columns are visible in the output. Enter "all" for all columns, or any of: `'vessel_name'`,`'imo'`,`'dwt'`,`'capacity'`,
+            `'vessel_class'`,`'voyage_status'`,`'cargo_status'`,`'origin'`,`'destination'`,`'destination_eta'`,`'voyage_type'`,`'charterer'`,`'effective_controller'`,
+            `'quantity'`,`'latest_product'`,`'time_charterer'`,`'flag'`,`'scrubber'`,`'build_year'`,`'risk_rating'`,`'coating'`,`'start_date'`,`'end_date'`,`'duration'`,
+            `'location'`,`'waiting_time'`,`'waiting_commence'`,`'waiting_finished'`,`'tonne_miles'`,`'distance'`.
 
         # Returns
         `VoyagesSearchResult`
