@@ -52,8 +52,8 @@ class VoyagesTimeseries(Search):
         latest_products_excluded: Union[ID, List[ID]] = None,
         charterers: Union[ID, List[ID]] = None,
         charterers_excluded: Union[ID, List[ID]] = None,
-        vessel_owners: Union[ID, List[ID]] = None,
-        vessel_owners_excluded: Union[ID, List[ID]] = None,
+        effective_controllers: Union[ID, List[ID]] = None,
+        effective_controllers_excluded: Union[ID, List[ID]] = None,
         origins: Union[ID, List[ID]] = None,
         origins_excluded: Union[ID, List[ID]] = None,
         destinations: Union[ID, List[ID]] = None,
@@ -142,9 +142,9 @@ class VoyagesTimeseries(Search):
 
             charterers_excluded: A charterer ID, or list of charterer IDs to exclude.
 
-            vessel_owners: A vessel owner ID, or list of vessel owner IDs to filter on.
+            effective_controllers: A vessel owner ID, or list of vessel owner IDs to filter on.
 
-            vessel_owners_excluded: A vessel owner ID, or list of vessel owner IDs to exclude.
+            effective_controllers_excluded: A vessel owner ID, or list of vessel owner IDs to exclude.
 
             origins: An origin ID, or list of origin IDs to filter on.
 
@@ -244,7 +244,7 @@ class VoyagesTimeseries(Search):
             "products": convert_to_list(products),
             "latest_products": convert_to_list(latest_products),
             "charterers": convert_to_list(charterers),
-            "vessel_owners": convert_to_list(vessel_owners),
+            "effective_controllers": convert_to_list(effective_controllers),
             "origins": convert_to_list(origins),
             "destinations": convert_to_list(destinations),
             "locations": convert_to_list(locations),
@@ -278,7 +278,7 @@ class VoyagesTimeseries(Search):
             "products_excluded": convert_to_list(products_excluded),
             "latest_products_excluded": convert_to_list(latest_products_excluded),
             "charterers_excluded": convert_to_list(charterers_excluded),
-            "vessel_owners_excluded": convert_to_list(vessel_owners_excluded),
+            "effective_controllers_excluded": convert_to_list(effective_controllers_excluded),
             "origins_excluded": convert_to_list(origins_excluded),
             "destinations_excluded": convert_to_list(destinations_excluded),
             "locations_excluded": convert_to_list(locations_excluded),
