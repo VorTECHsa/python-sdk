@@ -43,6 +43,4 @@ class TestVoyagesTimeseries(TestCaseUsingRealAPI):
             .to_df()
         )
 
-        print(df.to_markdown())
-
-        assert len(time_series_list) > 0
+        assert len(df) > 0
