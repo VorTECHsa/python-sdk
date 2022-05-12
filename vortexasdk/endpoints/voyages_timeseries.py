@@ -84,7 +84,7 @@ class VoyagesTimeseries(Search):
     ) -> BreakdownResult:
         """
 
-        Returns one record per count of voyages for the requested date period
+        Returns a count of voyages per record for the requested date period
 
         # Arguments
             breakdown_frequency: Frequency denoting the granularity of the time series. Must be one of the following: `'day'`, `'week'`, `'doe_week'`, `'month'`, `'quarter'`, `'year'`.

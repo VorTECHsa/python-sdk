@@ -84,7 +84,7 @@ class VoyagesCongestionBreakdown(Search):
     ) -> CongestionBreakdownResult:
         """
 
-        Returns a vessel breakdown by congestion location.
+        Returns a count of congested voyages aggregated by congestion location.
 
         # Arguments
             breakdown_size: Number of top records to return.
