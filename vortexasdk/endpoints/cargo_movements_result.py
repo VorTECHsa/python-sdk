@@ -547,6 +547,7 @@ class CargoMovementsResult(Result):
         )
 
         logger.debug("Converting each CargoMovement to a flat dictionary")
+        # FIXME: See if we can reduce the manipulation here
         with Pool(os.cpu_count()) as pool:
             records = pool.map(flatten, super().to_list())
 
