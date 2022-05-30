@@ -209,7 +209,7 @@ class VoyagesTimeseries(Search):
         >>> from datetime import datetime
         >>> rotterdam = [g.id for g in Geographies().search("rotterdam").to_list() if "port" in g.layer]
         >>> search_result = VoyagesTimeseries().search(
-        ...    origins=rotterdam
+        ...    origins=rotterdam,
         ...    time_min=datetime(2022, 4, 26),
         ...    time_max=datetime(2022, 4, 28, 23, 59),
         ...    breakdown_frequency="day",

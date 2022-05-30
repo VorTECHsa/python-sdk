@@ -216,10 +216,10 @@ class VoyagesSearchEnriched(Search):
         >>> start = datetime(2021, 8, 1)
         >>> end = datetime(2021, 8, 1, 23, 59)
         >>> search_result = VoyagesSearchEnriched().search(
-            time_min=start,
-            time_max=end,
-            origins=rotterdam,
-         ).to_df().head()
+        ... time_min=start,
+        ... time_max=end,
+        ... origins=rotterdam,
+        ... ).to_df().head()
 
         ```
         Gives the following result:

@@ -46,7 +46,7 @@ class VortexaClient(AbstractVortexaClient):
         response = retry_get(url)
         return _handle_response(response)["data"]
 
-    def search(self, resource: str, response_type: str, custom_headers: dict, **data) -> List:
+    def search(self, resource: str, response_type: str, custom_headers: dict = None, **data) -> List:
         """Search using `resource` using `**data` as filter params."""
         url = self._create_url(resource)
         payload = self._cleanse_payload(data)
@@ -189,7 +189,7 @@ def _handle_response(response: Response, headers: Dict = None, payload: Dict = N
 
     else:
         try:
-            if 'accept' in headers and headers['accept'] == 'text/csv':
+            if headers and 'accept' in headers and headers['accept'] == 'text/csv':
                 # decode
                 raw = response.content.decode('utf-8')
 
