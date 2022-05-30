@@ -189,7 +189,7 @@ def _handle_response(response: Response, headers: Dict = None, payload: Dict = N
 
     else:
         try:
-            if headers != None and 'accept' in headers and headers['accept'] == 'text/csv':
+            if headers is not None and 'accept' in headers and headers['accept'] == 'text/csv':
                 # decode
                 raw = response.content.decode('utf-8')
 
