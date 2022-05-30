@@ -199,7 +199,7 @@ class VoyagesSearchEnriched(Search):
 
             unit: Unit of measurement. Enter `'b'` for barrels or `'t'` for tonnes or `'cbm'` for cubic metres.
 
-            columns: Determines what columns are visible in the output. Enter "all" for all columns, or any of: 
+            columns: Determines what columns are visible in the output. Enter "all" for all columns, or any of:
             `'vessel_name'`,`'imo'`,`'vessel_class'`,`'voyage_status'`,`'origin'`,`'destination'`,`'charterer'`,`'effective_controller'`,
             `'quantity'`,`'latest_product'`,`'time_charterer'`,`'flag'`,`'scrubber'`,`'build_year'`,`'risk_rating'`,`'coating'`,`'start_date'`,`'end_date'`,`'tonne_miles'`,`'distance'`.
 

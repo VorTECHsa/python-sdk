@@ -89,7 +89,7 @@ class VoyageEnrichedEvent():
 class VoyageEnrichedItem(FromDictMixin):
     """
 
-    A voyage is defined as a continuous period of time when the vessel is either laden or ballast. 
+    A voyage is defined as a continuous period of time when the vessel is either laden or ballast.
 
     Each voyage is made up of multiple voyage events which describe the activity of the vessel while it is laden or ballast.
 
