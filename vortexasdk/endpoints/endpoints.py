@@ -34,12 +34,10 @@ FLEET_UTILISATION_TIMESERIES_AVG_DISTANCE = '/vessel-journey/timeseries/avg-dist
 FREIGHT_PRICING_SEARCH = '/freight-pricing/rates'
 FREIGHT_PRICING_TIMESERIES = '/freight-pricing/timeseries'
 
-VOYAGES_SEARCH = '/voyages/search'
+VOYAGES_SEARCH_ENRICHED = '/voyages/search-enriched'
 VOYAGES_TOP_HITS = '/voyages/top-hits'
 VOYAGES_CONGESTION_BREAKDOWN = '/voyages/congestion-breakdown'
-VOYAGES_POSITIONS = '/voyages/positions'
-VOYAGES_CURRENT = '/voyages/current'
 VOYAGES_TIMESERIES = '/voyages/timeseries'
 
-API_FQDN = "https://api-feat-voyages-docs.public.kube.develop.vortexa.com"
+API_FQDN = "https://api.vortexa.com"
 API_URL = f"{API_FQDN}/v5"
