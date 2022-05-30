@@ -168,7 +168,7 @@ def _send_post_request(url, payload, size, offset, headers) -> Dict:
     return _handle_response(response, headers, payload_with_offset)
 
 
-def _handle_response(response: Response, headers: Dict, payload: Dict = None) -> Dict:
+def _handle_response(response: Response, headers: Dict = None, payload: Dict = None) -> Dict:
     if not response.ok:
         logger.error(response.reason)
         logger.error(response.status_code)
