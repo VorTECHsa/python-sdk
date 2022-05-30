@@ -205,7 +205,7 @@ class VoyagesTimeseries(Search):
         _Sum of vessels departing from Rotterdam between 26th-28th April 2022, split by location country._
 
         ```python
-        >>> from vortexasdk import VoyagesTimeseries
+        >>> from vortexasdk import VoyagesTimeseries, Geographies
         >>> from datetime import datetime
         >>> rotterdam = [g.id for g in Geographies().search("rotterdam").to_list() if "port" in g.layer]
         >>> search_result = VoyagesTimeseries().search(

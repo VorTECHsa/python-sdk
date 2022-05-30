@@ -203,7 +203,7 @@ class VoyagesTopHits(Search):
         _Top oritin countries for crude imports to Rotterdam on 8th August 2021._
 
         ```python
-        >>> from vortexasdk import VoyagesTopHits
+        >>> from vortexasdk import VoyagesTopHits, Geographies, Products
         >>> from datetime import datetime
         >>> rotterdam = [g.id for g in Geographies().search("rotterdam").to_list() if "port" in g.layer]
         >>> crude = [p.id for p in Products().search("crude").to_list() if "Crude" == p.name]

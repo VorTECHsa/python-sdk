@@ -210,12 +210,12 @@ class VoyagesSearchEnriched(Search):
         _Voyages as of 26th April 2022 for vessels carrying crude departing from Rotterdam._
 
         ```python
-        >>> from vortexasdk import VoyagesSearch
+        >>> from vortexasdk import VoyagesSearchEnriched, Geographies
         >>> from datetime import datetime
         >>> rotterdam = [g.id for g in Geographies().search("rotterdam").to_list() if "port" in g.layer]
         >>> start = datetime(2021, 8, 1)
         >>> end = datetime(2021, 8, 1, 23, 59)
-        >>> search_result = VoyagesSearch().search(
+        >>> search_result = VoyagesSearchEnriched().search(
             time_min=start,
             time_max=end,
             origins=rotterdam,
