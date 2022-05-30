@@ -46,12 +46,12 @@ class VortexaClient(AbstractVortexaClient):
         response = retry_get(url)
         return _handle_response(response)["data"]
 
-    def search(self, resource: str, response_type: str, custom_headers: dict = None, **data) -> List:
+    def search(self, resource: str, response_type: str, **data) -> List:
         """Search using `resource` using `**data` as filter params."""
         url = self._create_url(resource)
         payload = self._cleanse_payload(data)
         # use default headers if none are provided
-        headers = custom_headers if custom_headers else default_headers
+        headers = payload['headers'] if 'headers' in payload else default_headers
         logger.info(f"Payload: {payload}")
         # breakdowns do not support paging, the breakdown size is specified explicitly as a request parameter
         if response_type == "breakdown":
@@ -189,7 +189,7 @@ def _handle_response(response: Response, headers: Dict = None, payload: Dict = N
 
     else:
         try:
-            if headers and 'accept' in headers and headers['accept'] == 'text/csv':
+            if 'accept' in headers and headers['accept'] == 'text/csv':
                 # decode
                 raw = response.content.decode('utf-8')
 
