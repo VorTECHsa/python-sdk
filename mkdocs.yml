@@ -41,6 +41,11 @@ pages:
     Freight Pricing:
         Search: endpoints/freight_pricing_search.md
         Time Series: endpoints/freight_pricing_timeseries.md
+    Voyages:
+        Search Enriched: endpoints/voyages_search_enriched.md
+        Time Series: endpoints/voyages_timeseries.md
+        Top Hits: endpoints/voyages_top_hits.md
+        Congestion Breakdown: endpoints/voyages_congestion_breakdown.md
 - Entities:
     Cargo Movement: entities/cargo_movement.md
     Corporation: entities/corporation.md
@@ -48,6 +53,7 @@ pages:
     Product: entities/product.md
     Vessel: entities/vessel.md
     Vessel Movement: entities/vessel_movement.md
+    Voyages: entities/voyages.md
     Vessel Availability: entities/vessel_availability.md
     Time Series Item: entities/timeseries_item.md
     Breakdown Item: entities/breakdown_item.md

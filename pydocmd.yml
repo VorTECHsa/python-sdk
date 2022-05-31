@@ -46,6 +46,8 @@ generate:
       - vortexasdk.api.timeseries_item++
   - entities/breakdown_item.md:
       - vortexasdk.api.breakdown_item++
+  - entities/voyages.md:
+      - vortexasdk.api.voyages++
   - endpoints/origin_breakdown.md:
       - vortexasdk.endpoints.origin_breakdown++
   - endpoints/destination_breakdown.md:
@@ -85,6 +87,10 @@ generate:
   - endpoints/onshore_inventories_timeseries.md: vortexasdk.endpoints.onshore_inventories_timeseries++
   - endpoints/freight_pricing_search.md: vortexasdk.endpoints.freight_pricing_search++
   - endpoints/freight_pricing_timeseries.md: vortexasdk.endpoints.freight_pricing_timeseries++
+  - endpoints/voyages_search_enriched.md: vortexasdk.endpoints.voyages_search_enriched++
+  - endpoints/voyages_timeseries.md: vortexasdk.endpoints.voyages_timeseries++
+  - endpoints/voyages_top_hits.md: vortexasdk.endpoints.voyages_top_hits++
+  - endpoints/voyages_congestion_breakdown.md: vortexasdk.endpoints.voyages_congestion_breakdown++
 pages:
   - Home: index.md << README.md
   - Endpoints:
@@ -117,6 +123,10 @@ pages:
       Crude Onshore Inventories Time Series: endpoints/onshore_inventories_timeseries.md
       Freight Pricing Search: endpoints/freight_pricing_search.md
       Freight Pricing Time Series: endpoints/freight_pricing_timeseries.md
+      Voyages Search Enriched: endpoints/voyages_search_enriched.md
+      Voyages Time Series: endpoints/voyages_timeseries.md
+      Voyages Top Hits: endpoints/voyages_top_hits.md
+      Voyages Congestion Breakdown: endpoints/voyages_congestion_breakdown.md
   - Entities:
       Breakdown Item: entities/breakdown_result.md
       Cargo Movement: entities/cargo_movement.md

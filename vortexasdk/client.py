@@ -1,6 +1,8 @@
 import copy
+import csv
 import functools
 import getpass
+import json
 import os
 from json import JSONDecodeError
 from multiprocessing.pool import ThreadPool
@@ -16,6 +18,7 @@ from vortexasdk.api.id import ID
 from vortexasdk.endpoints.endpoints import API_URL
 from vortexasdk.logger import get_logger
 from vortexasdk.retry_session import (
+    _HEADERS as default_headers,
     retry_get,
     retry_post,
 )
@@ -47,11 +50,13 @@ class VortexaClient(AbstractVortexaClient):
         """Search using `resource` using `**data` as filter params."""
         url = self._create_url(resource)
         payload = self._cleanse_payload(data)
+        # use default headers if none are provided
+        headers = payload['headers'] if 'headers' in payload else default_headers
         logger.info(f"Payload: {payload}")
         # breakdowns do not support paging, the breakdown size is specified explicitly as a request parameter
         if response_type == "breakdown":
             size = payload.get("breakdown_size", 1000)
-            response = _send_post_request(url, payload, size=size, offset=0)
+            response = _send_post_request(url, payload, size=size, offset=0, headers=headers)
 
             ref = response.get("reference", {})
 
@@ -60,7 +65,7 @@ class VortexaClient(AbstractVortexaClient):
             else:
                 return response["data"]
 
-        probe_response = _send_post_request(url, payload, size=1, offset=0)
+        probe_response = _send_post_request(url, payload, size=1, offset=0, headers=headers)
         total = self._calculate_total(probe_response)
 
         if total > self._MAX_ALLOWED_TOTAL:
@@ -74,8 +79,9 @@ class VortexaClient(AbstractVortexaClient):
         else:
             # Multiple pages available, create offsets and fetch all responses
             responses = self._process_multiple_pages(
-                total=total, url=url, payload=payload, data=data
+                total=total, url=url, payload=payload, data=data, headers=headers
             )
+
             flattened = self._flatten_response(responses)
             assert len(flattened) == total, (
                 f"Incorrect number of records returned from API. "
@@ -89,7 +95,7 @@ class VortexaClient(AbstractVortexaClient):
         )
 
     def _process_multiple_pages(
-        self, total: int, url: str, payload: Dict, data: Dict
+        self, total: int, url: str, payload: Dict, data: Dict, headers
     ) -> List:
         size = data.get("size", 1000)
         offsets = list(range(0, total, size))
@@ -111,6 +117,7 @@ class VortexaClient(AbstractVortexaClient):
                     payload=payload,
                     size=size,
                     progress_bar=pbar,
+                    headers=headers
                 )
 
                 return pool.map(func, offsets)
@@ -133,7 +140,7 @@ class VortexaClient(AbstractVortexaClient):
 
 
 def _send_post_request_data(
-    offset, url, payload, size, progress_bar: tqdm
+    offset, url, payload, size, progress_bar: tqdm, headers
 ) -> List:
     # noinspection PyBroadException
     try:
@@ -141,12 +148,12 @@ def _send_post_request_data(
     except Exception:
         logger.warn("Could not update progress bar")
 
-    dict_response = _send_post_request(url, payload, size, offset)
+    dict_response = _send_post_request(url, payload, size, offset, headers)
 
     return dict_response.get("data", [])
 
 
-def _send_post_request(url, payload, size, offset) -> Dict:
+def _send_post_request(url, payload, size, offset, headers) -> Dict:
     logger.debug(f"Sending post request, offset: {offset}, size: {size}")
 
     payload_with_offset = copy.deepcopy(payload)
@@ -156,12 +163,12 @@ def _send_post_request(url, payload, size, offset) -> Dict:
     payload_with_offset["size"] = size
     payload_with_offset["cm_size"] = size
 
-    response = retry_post(url, json=payload_with_offset)
+    response = retry_post(url, json=payload_with_offset, headers=headers)
 
-    return _handle_response(response, payload_with_offset)
+    return _handle_response(response, headers, payload_with_offset)
 
 
-def _handle_response(response: Response, payload: Dict = None) -> Dict:
+def _handle_response(response: Response, headers: Dict = None, payload: Dict = None) -> Dict:
     if not response.ok:
         logger.error(response.reason)
         logger.error(response.status_code)
@@ -182,15 +189,28 @@ def _handle_response(response: Response, payload: Dict = None) -> Dict:
 
     else:
         try:
-            json = response.json()
+            if headers is not None and 'accept' in headers and headers['accept'] == 'text/csv':
+                # decode
+                raw = response.content.decode('utf-8')
+
+                # convert to dictionaries
+                reader = csv.DictReader(raw.splitlines())
+
+                # convert to JSON
+                data = [dict(line) for line in reader]
+
+                decoded = {"data": data, "total": int(response.headers['x-total'])}
+
+            else:
+                decoded = response.json()
         except JSONDecodeError:
             logger.error("Could not decode response")
-            json = {}
+            decoded = {}
         except Exception as e:
             logger.error(e)
-            json = {}
+            decoded = {}
 
-    return json
+    return decoded
 
 
 __client__ = None

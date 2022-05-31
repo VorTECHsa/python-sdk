@@ -19,6 +19,10 @@ logger = get_logger(__name__)
 
 class VesselMovements(Search):
     """
+    _DEPRECATION NOTE: Vessel movements is a legacy product, which has been replaced by [Voyages](https://docs.vortexa.com/reference/intro-voyages).
+    Vessel movements will be deprecated in the future, but all users will be proactively informed of these plans with substantial notice.
+    If you are building a new API integration, please avoid using Vessel movements and use Voyages instead._
+
     Vessel Movements Endpoint, use this to search through Vortexa's VesselMovements.
 
     A VesselMovement represents a single vessel moving between two locations.

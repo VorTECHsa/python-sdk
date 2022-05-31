@@ -40,4 +40,4 @@ def retry_get(*args, **kwargs) -> Response:
 
 def retry_post(*args, **kwargs) -> Response:
     with _requests_retry_session() as s:
-        return s.post(headers=_HEADERS, *args, **kwargs)
+        return s.post(*args, **kwargs)
