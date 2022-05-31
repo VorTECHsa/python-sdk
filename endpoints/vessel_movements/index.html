@@ -142,6 +142,18 @@
                 </li>
     </ul>
                     </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Voyages</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../voyages_search_enriched/">Search Enriched</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../voyages_timeseries/">Time Series</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../voyages_top_hits/">Top Hits</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../voyages_congestion_breakdown/">Congestion Breakdown</a>
+                </li>
+    </ul>
+                    </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Entities</span></p>
                 <ul>
@@ -156,6 +168,8 @@
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/vessel/">Vessel</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/vessel_movement/">Vessel Movement</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../entities/voyages/">Voyages</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/vessel_availability/">Vessel Availability</a>
                     </li>
@@ -244,6 +258,9 @@
 
 <pre><code class="language-python">VesselMovements(self)
 </code></pre>
+<p><em>DEPRECATION NOTE: Vessel movements is a legacy product, which has been replaced by <a href="https://docs.vortexa.com/reference/intro-voyages">Voyages</a>.
+Vessel movements will be deprecated in the future, but all users will be proactively informed of these plans with substantial notice.
+If you are building a new API integration, please avoid using Vessel movements and use Voyages instead.</em></p>
 <p>Vessel Movements Endpoint, use this to search through Vortexa's VesselMovements.</p>
 <p>A VesselMovement represents a single vessel moving between two locations.</p>
 <ul>

@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Cargo Movement - VortexaSDK</title>
+  <title>Voyages - VortexaSDK</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Cargo Movement";
-    var mkdocs_page_input_path = "entities/cargo_movement.md";
+    var mkdocs_page_name = "Voyages";
+    var mkdocs_page_input_path = "entities/voyages.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -155,7 +155,7 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Entities</span></p>
                 <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Cargo Movement</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../cargo_movement/">Cargo Movement</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../corporation/">Corporation</a>
                     </li>
@@ -167,7 +167,7 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../vessel_movement/">Vessel Movement</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../voyages/">Voyages</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Voyages</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../vessel_availability/">Vessel Availability</a>
                     </li>
@@ -233,10 +233,10 @@
         
       
     
-    <li>Cargo Movement</li>
+    <li>Voyages</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/vortechsa/python-sdk/edit/master/docs/entities/cargo_movement.md"
+        <a href="https://github.com/vortechsa/python-sdk/edit/master/docs/entities/voyages.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -248,28 +248,40 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="vortexasdk.api.cargo_movement">vortexasdk.api.cargo_movement</h1>
+                <h1 id="vortexasdk.api.voyages">vortexasdk.api.voyages</h1>
 
-<h2 id="vortexasdk.api.cargo_movement.CargoEvent">CargoEvent</h2>
+<h2 id="vortexasdk.api.voyages.LocationDetails">LocationDetails</h2>
 
-<pre><code class="language-python">CargoEvent(self, event_type: str, location: List[vortexasdk.api.geography.GeographyEntity], probability: Union[float, NoneType] = None, pos: Union[List[float], NoneType] = None, vessel_id: Union[str, NoneType] = None, start_timestamp: Union[str, NoneType] = None, end_timestamp: Union[str, NoneType] = None) -&gt; None
+<pre><code class="language-python">LocationDetails(self, id: str, label: str, layer: List[str]) -&gt; None
 </code></pre>
-<p>A CargoEvent represents an event that occurred to a cargo during a cargo movement.</p>
-<p><a href="https://docs.vortexa.com/reference/intro-cargo-events">Cargo Event Entities Further Documentation</a></p>
-<h2 id="vortexasdk.api.cargo_movement.ParentID">ParentID</h2>
+<h2 id="vortexasdk.api.voyages.ProductDetails">ProductDetails</h2>
 
-<pre><code class="language-python">ParentID(self, id: str, splinter_timestamp: str) -&gt; None
+<pre><code class="language-python">ProductDetails(self, id: str, label: str, layer: List[str]) -&gt; None
 </code></pre>
-<p><code>cargo_movement_id</code> may change under certain conditions. <code>ParentID</code> contains an <code>id</code>,
-a previous id of the cargo movement, and a <code>splinter_timestamp</code>, the time at which the id change occurred.</p>
-<p><a href="https://docs.vortexa.com/reference/intro-cargo-movement">Cargo Movement Further Documentation</a></p>
-<h2 id="vortexasdk.api.cargo_movement.CargoMovement">CargoMovement</h2>
+<h2 id="vortexasdk.api.voyages.CongestionBreakdownItem">CongestionBreakdownItem</h2>
 
-<pre><code class="language-python">CargoMovement(self, cargo_movement_id: str, quantity: int, status: str, vessels: List[vortexasdk.api.vessel.VesselEntity], product: List[vortexasdk.api.product.ProductEntity], events: List[vortexasdk.api.cargo_movement.CargoEvent], parent_ids: List[vortexasdk.api.cargo_movement.ParentID]) -&gt; None
+<pre><code class="language-python">CongestionBreakdownItem(self, avg_waiting_time: int, vessel_dwt: int, vessel_cubic_capacity: int, vessel_count: int, cargo_quantity: int, avg_waiting_time_laden: int, vessel_dwt_laden: int, vessel_cubic_capacity_laden: int, vessel_count_laden: int, avg_waiting_time_ballast: int, vessel_dwt_ballast: int, vessel_cubic_capacity_ballast: int, vessel_count_ballast: int, location_details: List[vortexasdk.api.voyages.LocationDetails]) -&gt; None
 </code></pre>
-<p>Cargo movements are the base data set the Vortexa API is centred around.</p>
-<p>Each movement represents a journey of a certain quantity of a product between places.</p>
-<p><a href="https://docs.vortexa.com/reference/intro-cargo-movement">Cargo Movement Further Documentation</a></p>
+<p>Congestion breakdown shows various stats of vessels in congestion.</p>
+<h2 id="vortexasdk.api.voyages.VoyagesVesselEntity">VoyagesVesselEntity</h2>
+
+<pre><code class="language-python">VoyagesVesselEntity(self, id: str, name: str, imo: int, mmsi: int, call_sign: str, cubic_capacity: int, dead_weight: int, vessel_class: str, year: int, flag: List[enum.Flag], scrubber: List[vortexasdk.api.shared_types.Scrubber], ice_class: str, propulsion: str, tags: List[vortexasdk.api.shared_types.Tag], vessel_risk_level: Union[str, NoneType]) -&gt; None
+</code></pre>
+<p>A VoyagesVesselEntity represents a vessel record used in Voyages.</p>
+<p><a href="https://docs.vortexa.com/reference/intro-vessel-entities">Vessel Entities Further Documentation</a></p>
+<h2 id="vortexasdk.api.voyages.VoyageEnrichedEvent">VoyageEnrichedEvent</h2>
+
+<pre><code class="language-python">VoyageEnrichedEvent(self) -&gt; None
+</code></pre>
+<p>A voyage event represents an action / event that occurred during a voyage. It allows you to get a full picture of the sequence of activities.</p>
+<p><a href="https://docs.vortexa.com/reference/intro-voyage-events">Voyage Events Further Documentation</a></p>
+<h2 id="vortexasdk.api.voyages.VoyageEnrichedItem">VoyageEnrichedItem</h2>
+
+<pre><code class="language-python">VoyageEnrichedItem(self, voyage_id: str, start_timestamp: Union[str, NoneType], end_timestamp: Union[str, NoneType], start_event_id: str, end_event_id: Union[str, NoneType], vessel_id: str, previous_voyage_id: Union[str, NoneType], next_voyage_id: Union[str, NoneType], latest_product_ids: List[str], tags: List[vortexasdk.api.shared_types.Tag], tonne_miles: Union[int, NoneType], vessel: vortexasdk.api.voyages.VoyagesVesselEntity, odometer_start: Union[int, NoneType], odometer_end: Union[int, NoneType], corporate_entities: List[vortexasdk.api.corporation.CorporateEntity], events: List[vortexasdk.api.voyages.VoyageEnrichedEvent], latest_product_details: List[vortexasdk.api.voyages.ProductDetails]) -&gt; None
+</code></pre>
+<p>A voyage is defined as a continuous period of time when the vessel is either laden or ballast.</p>
+<p>Each voyage is made up of multiple voyage events which describe the activity of the vessel while it is laden or ballast.</p>
+<p><a href="https://docs.vortexa.com/reference/intro-voyages">Voyages Further Documentation</a></p>
               
             </div>
           </div>
@@ -277,10 +289,10 @@ a previous id of the cargo movement, and a <code>splinter_timestamp</code>, the 
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../corporation/" class="btn btn-neutral float-right" title="Corporation">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../vessel_availability/" class="btn btn-neutral float-right" title="Vessel Availability">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../../endpoints/voyages_congestion_breakdown/" class="btn btn-neutral" title="Congestion Breakdown"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../vessel_movement/" class="btn btn-neutral" title="Vessel Movement"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -310,10 +322,10 @@ a previous id of the cargo movement, and a <code>splinter_timestamp</code>, the 
         </span>
     
     
-      <span><a href="../../endpoints/voyages_congestion_breakdown/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../vessel_movement/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../corporation/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../vessel_availability/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

@@ -140,6 +140,18 @@
                 </li>
     </ul>
                     </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Voyages</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../voyages_search_enriched/">Search Enriched</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../voyages_timeseries/">Time Series</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../voyages_top_hits/">Top Hits</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../voyages_congestion_breakdown/">Congestion Breakdown</a>
+                </li>
+    </ul>
+                    </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Entities</span></p>
                 <ul>
@@ -154,6 +166,8 @@
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/vessel/">Vessel</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/vessel_movement/">Vessel Movement</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../entities/voyages/">Voyages</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/vessel_availability/">Vessel Availability</a>
                     </li>
@@ -250,7 +264,7 @@
 Please note: you will require a subscription to our Crude Onshore Inventories module to access this endpoint.</p>
 <h3 id="vortexasdk.endpoints.onshore_inventories_search.OnshoreInventoriesSearch.search">search</h3>
 
-<pre><code class="language-python">OnshoreInventoriesSearch.search(self, corporate_entity_ids: Union[str, List[str]] = None, crude_confidence: List[str] = None, location_ids: Union[str, List[str]] = None, storage_types: List[str] = None, time_min: datetime.datetime = datetime.datetime(2022, 5, 2, 16, 6, 30, 346329), time_max: datetime.datetime = datetime.datetime(2022, 5, 9, 16, 6, 30, 346338)) -&gt; vortexasdk.endpoints.onshore_inventories_result.OnshoreInventoriesResult
+<pre><code class="language-python">OnshoreInventoriesSearch.search(self, corporate_entity_ids: Union[str, List[str]] = None, crude_confidence: List[str] = None, location_ids: Union[str, List[str]] = None, storage_types: List[str] = None, time_min: datetime.datetime = datetime.datetime(2022, 5, 24, 13, 54, 57, 84944), time_max: datetime.datetime = datetime.datetime(2022, 5, 31, 13, 54, 57, 84953)) -&gt; vortexasdk.endpoints.onshore_inventories_result.OnshoreInventoriesResult
 </code></pre>
 <p>List of crude onshore inventories across the globe.</p>
 <p><strong>Arguments</strong></p>
