@@ -98,7 +98,7 @@ class VoyageEnrichedItem(FromDictMixin):
     """
 
     voyage_id: ID
-    start_timestamp: ISODate
+    start_timestamp: Optional[ISODate]
     end_timestamp: Optional[ISODate]
     start_event_id: ID
     end_event_id: Optional[ID]
