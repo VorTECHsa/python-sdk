@@ -41,24 +41,6 @@ class TestVoyagesSearchEnrichedEnriched(TestCaseUsingRealAPI):
 
         assert len(df.columns) == 4
 
-    def test_search_returns_list(self):
-        start = datetime(2021, 6, 17)
-        end = datetime(2021, 6, 21)
-
-        res = (
-            VoyagesSearchEnriched()
-            .search(
-                time_min=start,
-                time_max=end,
-                origins=rotterdam,
-                columns=['vessel_name', 'imo', 'voyage_status', 'destination']
-
-            )
-            .to_list()
-        )
-
-        assert len(res) > 0
-
     def test_search_from_description(self):
         start = datetime(2022, 4, 26)
         end = datetime(2022, 4, 26, 23, 59)
@@ -69,6 +51,7 @@ class TestVoyagesSearchEnrichedEnriched(TestCaseUsingRealAPI):
                 time_min=start,
                 time_max=end,
                 origins=rotterdam,
+                columns="all"
             )
             .to_df()
             .head()

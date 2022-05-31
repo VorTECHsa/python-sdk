@@ -15,13 +15,13 @@ class VoyagesSearchEnrichedResult(Result):
 
     Please note: you will require a subscription to our Freight module to access Voyages.
 
-    This class has two methods, `to_list()`, and `to_df()`, allowing search results to be represented as a list of voyages, or as a `pd.DataFrame` , respectively.
+    This class has a `to_df()` method, allowing search results to be represented as a `pd.DataFrame`.
     """
 
     def to_list(self) -> List[VoyageEnrichedItem]:
         """Represent voyages as a list."""
         # noinspection PyTypeChecker
-        return super().to_list()
+        raise ValueError(f"to_list method not yet supported")
 
     def to_df(self) -> pd.DataFrame:
         """

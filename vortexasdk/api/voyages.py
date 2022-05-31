@@ -52,7 +52,7 @@ class CongestionBreakdownItem(FromDictMixin):
 @dataclass(frozen=True)
 class VoyagesVesselEntity():
     """
-    A VoyagesVesselEntity represents a vessel record used in Voyages and VesselMovements.
+    A VoyagesVesselEntity represents a vessel record used in Voyages.
 
     [Vessel Entities Further Documentation](https://docs.vortexa.com/reference/intro-vessel-entities)
     """
