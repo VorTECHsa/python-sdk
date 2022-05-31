@@ -21,7 +21,7 @@ class VoyagesSearchEnrichedResult(Result):
     def to_list(self) -> List[VoyageEnrichedItem]:
         """Represent voyages as a list."""
         # noinspection PyTypeChecker
-        raise ValueError(f"to_list method not yet supported")
+        raise Exception(f"to_list method is not supported")
 
     def to_df(self) -> pd.DataFrame:
         """
