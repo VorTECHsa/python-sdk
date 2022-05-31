@@ -25,7 +25,6 @@ class VoyagesTimeseries(Search):
     # noinspection PyUnresolvedReferences
     def search(
         self,
-        breakdown_unit_operator: str = None,
         breakdown_frequency: str = None,
         breakdown_property: str = None,
         breakdown_split_property: str = None,
@@ -86,8 +85,6 @@ class VoyagesTimeseries(Search):
 
         # Arguments
             breakdown_frequency: Frequency denoting the granularity of the time series. Must be one of the following: `'day'`, `'week'`, `'doe_week'`, `'month'`, `'quarter'`, `'year'`.
-
-            breakdown_unit_operator: Determines how to aggregate results. Can be one of: `'sum'`, `'avg'`
 
             breakdown_property: Property to aggregate upon. Can be one of: `'vessel_count'`, `'cargo_quantity'`, `'avg_wait_time'`,`'dwt'`, `'cubic_capacity'`,
             `'tonne_miles'`.
@@ -215,7 +212,6 @@ class VoyagesTimeseries(Search):
         ...    breakdown_frequency="day",
         ...    breakdown_property="vessel_count",
         ...    breakdown_split_property="location_country",
-        ...    breakdown_unit_operator="sum",
         ...    ).to_df()
 
         ```
@@ -265,7 +261,6 @@ class VoyagesTimeseries(Search):
             "breakdown_frequency": breakdown_frequency,
             "breakdown_split_property": breakdown_split_property,
             "breakdown_property": breakdown_property,
-            "breakdown_unit_operator": breakdown_unit_operator,
             "voyage_status_excluded": convert_to_list(voyage_status_excluded),
             "cargo_status_excluded": convert_to_list(cargo_status_excluded),
             "location_status_excluded": convert_to_list(location_status_excluded),

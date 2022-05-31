@@ -37,8 +37,7 @@ class TestVoyagesTimeseries(TestCaseUsingRealAPI):
                 time_max=end,
                 breakdown_frequency="day",
                 breakdown_property="vessel_count",
-                breakdown_split_property="location_country",
-                breakdown_unit_operator="sum",
+                breakdown_split_property="location_country"
             )
             .to_df()
         )
