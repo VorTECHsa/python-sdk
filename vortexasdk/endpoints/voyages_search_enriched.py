@@ -472,7 +472,7 @@ class VoyagesSearchEnriched(Search):
             `'quantity'`,`'latest_product'`,`'time_charterer'`,`'flag'`,`'scrubber'`,`'build_year'`,`'risk_rating'`,`'coating'`,`'start_date'`,`'end_date'`,`'tonne_miles'`,`'distance'`.
 
         # Returns
-        `VoyagesSearchEnrichedResult`
+        `VoyagesSearchEnrichedRawResult`
 
         # Example
         _Voyages as of 26th April 2022 for vessels carrying crude departing from Rotterdam._
@@ -483,11 +483,11 @@ class VoyagesSearchEnriched(Search):
         >>> rotterdam = [g.id for g in Geographies().search("rotterdam").to_list() if "port" in g.layer]
         >>> start = datetime(2021, 8, 1)
         >>> end = datetime(2021, 8, 1, 23, 59)
-        >>> search_result = VoyagesSearchEnriched().search(
+        >>> search_result = VoyagesSearchEnriched().search_raw(
         ... time_min=start,
         ... time_max=end,
         ... origins=rotterdam,
-        ... ).to_list().head()
+        ... ).to_list()
 
         ```
         Gives the following result:
