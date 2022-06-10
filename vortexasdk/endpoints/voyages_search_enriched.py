@@ -301,7 +301,6 @@ class VoyagesSearchEnriched(Search):
         order_direction: str = None,
         offset: int = None,
         unit: str = None,
-        columns: Union[str, List[str]] = None,
         time_min: datetime = datetime(2022, 1, 1, 0),
         time_max: datetime = datetime(2022, 1, 1, 1),
         voyage_id: Union[ID, List[ID]] = None,
@@ -466,10 +465,6 @@ class VoyagesSearchEnriched(Search):
             offset: Used to page results. The offset from which records should be returned.
 
             unit: Unit of measurement. Enter `'b'` for barrels or `'t'` for tonnes or `'cbm'` for cubic metres.
-
-            columns: Determines what columns are visible in the output. Enter "all" for all columns, or any of:
-            `'vessel_name'`,`'imo'`,`'vessel_class'`,`'voyage_status'`,`'origin'`,`'destination'`,`'charterer'`,`'effective_controller'`,
-            `'quantity'`,`'latest_product'`,`'time_charterer'`,`'flag'`,`'scrubber'`,`'build_year'`,`'risk_rating'`,`'coating'`,`'start_date'`,`'end_date'`,`'tonne_miles'`,`'distance'`.
 
         # Returns
         `VoyagesSearchEnrichedRawResult`
