@@ -1,24 +1,13 @@
 from dataclasses import dataclass
-from enum import Flag
 from typing import List, Optional
-from vortexasdk.api.corporation import CorporateEntity
 from vortexasdk.api.id import ID
 
 from vortexasdk.api.serdes import FromDictMixin
-from vortexasdk.api.shared_types import ISODate, Scrubber, Tag
+from vortexasdk.api.shared_types import Flag, ISODate, Scrubber, Tag
 
 
 @dataclass(frozen=True)
-class LocationDetails:
-    """
-    """
-    id: str
-    label: str
-    layer: List[str]
-
-
-@dataclass(frozen=True)
-class ProductDetails:
+class ReferenceEntry:
     """
     """
     id: str
@@ -46,7 +35,7 @@ class CongestionBreakdownItem(FromDictMixin):
     vessel_dwt_ballast: int
     vessel_cubic_capacity_ballast: int
     vessel_count_ballast: int
-    location_details: List[LocationDetails]
+    location_details: List[ReferenceEntry]
 
 
 @dataclass(frozen=True)
@@ -59,17 +48,17 @@ class VoyagesVesselEntity():
 
     id: ID
     name: str
-    imo: int
+    imo: Optional[int]
     mmsi: int
     call_sign: str
     cubic_capacity: int
     dead_weight: int
     vessel_class: str
-    year: int
+    year: Optional[int]
     flag: List[Flag]
     scrubber: List[Scrubber]
-    ice_class: str
-    propulsion: str
+    ice_class: Optional[str]
+    propulsion: Optional[str]
     tags: List[Tag]
     vessel_risk_level: Optional[str]
 
@@ -111,6 +100,6 @@ class VoyageEnrichedItem(FromDictMixin):
     vessel: VoyagesVesselEntity
     odometer_start: Optional[int]
     odometer_end: Optional[int]
-    corporate_entities: List[CorporateEntity]
+    corporate_entities: List[ReferenceEntry]
     events: List[VoyageEnrichedEvent]
-    latest_product_details: List[ProductDetails]
+    latest_product_details: List[ReferenceEntry]
