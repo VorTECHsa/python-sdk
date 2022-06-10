@@ -33,7 +33,7 @@ class VoyagesSearchEnriched(Search):
         order_direction: str = None,
         offset: int = None,
         unit: str = None,
-        columns: Union[str, List[str]] = None,
+        columns: Union[str, List[str]] = "all",
         time_min: datetime = datetime(2022, 1, 1, 0),
         time_max: datetime = datetime(2022, 1, 1, 1),
         voyage_id: Union[ID, List[ID]] = None,
