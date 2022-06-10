@@ -27,7 +27,7 @@ class VoyagesSearchEnriched(Search):
         Search.__init__(self, VOYAGES_SEARCH_ENRICHED)
 
     # noinspection PyUnresolvedReferences
-    def search(
+    def search_flattened(
         self,
         order: str = None,
         order_direction: str = None,
@@ -215,7 +215,7 @@ class VoyagesSearchEnriched(Search):
         >>> rotterdam = [g.id for g in Geographies().search("rotterdam").to_list() if "port" in g.layer]
         >>> start = datetime(2021, 8, 1)
         >>> end = datetime(2021, 8, 1, 23, 59)
-        >>> search_result = VoyagesSearchEnriched().search(
+        >>> search_result = VoyagesSearchEnriched().search_flattened(
         ... time_min=start,
         ... time_max=end,
         ... origins=rotterdam,
@@ -529,7 +529,6 @@ class VoyagesSearchEnriched(Search):
             "offset": offset,
             "size": self._MAX_PAGE_RESULT_SIZE,
             "unit": unit,
-            "csv_columns": columns,
             "voyage_status_excluded": convert_to_list(voyage_status_excluded),
             "cargo_status_excluded": convert_to_list(cargo_status_excluded),
             "location_status_excluded": convert_to_list(location_status_excluded),

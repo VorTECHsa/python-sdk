@@ -13,7 +13,7 @@ class TestVoyagesSearchEnrichedEnriched(TestCaseUsingRealAPI):
 
         df = (
             VoyagesSearchEnriched()
-            .search(
+            .search_flattened(
                 time_min=start,
                 time_max=end,
                 origins=rotterdam,
@@ -31,7 +31,7 @@ class TestVoyagesSearchEnrichedEnriched(TestCaseUsingRealAPI):
 
         df = (
             VoyagesSearchEnriched()
-            .search(
+            .search_flattened(
                 time_min=start,
                 time_max=end,
                 origins=rotterdam,
@@ -41,6 +41,7 @@ class TestVoyagesSearchEnrichedEnriched(TestCaseUsingRealAPI):
         )
 
         assert len(df.columns) == 4
+        assert list(df.columns) == ['VESSEL NAME', 'IMO', 'VOYAGE STATUS', 'DESTINATION']
 
     def test_search_from_description_df(self):
         start = datetime(2022, 4, 26)
@@ -48,7 +49,7 @@ class TestVoyagesSearchEnrichedEnriched(TestCaseUsingRealAPI):
 
         res = (
             VoyagesSearchEnriched()
-            .search(
+            .search_flattened(
                 time_min=start,
                 time_max=end,
                 origins=rotterdam,
