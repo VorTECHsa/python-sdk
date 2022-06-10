@@ -76,4 +76,4 @@ class TestVoyagesSearchEnrichedEnriched(TestCaseUsingRealAPI):
 
         assert len(res) == 210
         assert res[0].__getattribute__('schema_version') == '1.0.0'
-        assert res[0].__getattribute__('vessel') != None
+        assert res[0].__getattribute__('vessel') is not None
