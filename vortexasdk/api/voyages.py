@@ -86,6 +86,7 @@ class VoyageEnrichedItem(FromDictMixin):
 
     """
 
+    schema_version: str
     voyage_id: ID
     start_timestamp: Optional[ISODate]
     end_timestamp: Optional[ISODate]
@@ -98,8 +99,8 @@ class VoyageEnrichedItem(FromDictMixin):
     tags: List[Tag]
     tonne_miles: Optional[int]
     vessel: VoyagesVesselEntity
+    corporate_entities: List[ReferenceEntry]
     odometer_start: Optional[int]
     odometer_end: Optional[int]
-    corporate_entities: List[ReferenceEntry]
     events: List[VoyageEnrichedEvent]
     latest_product_details: List[ReferenceEntry]
