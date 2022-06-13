@@ -13,7 +13,7 @@ class TestVoyagesSearchEnrichedEnriched(TestCaseUsingRealAPI):
 
         df = (
             VoyagesSearchEnriched()
-            .search_flattened(
+            .search(
                 time_min=start,
                 time_max=end,
                 origins=rotterdam,
@@ -31,7 +31,7 @@ class TestVoyagesSearchEnrichedEnriched(TestCaseUsingRealAPI):
 
         df = (
             VoyagesSearchEnriched()
-            .search_flattened(
+            .search(
                 time_min=start,
                 time_max=end,
                 origins=rotterdam,
@@ -49,7 +49,7 @@ class TestVoyagesSearchEnrichedEnriched(TestCaseUsingRealAPI):
 
         res = (
             VoyagesSearchEnriched()
-            .search_flattened(
+            .search(
                 time_min=start,
                 time_max=end,
                 origins=rotterdam,
