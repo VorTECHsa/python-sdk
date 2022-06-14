@@ -67,7 +67,7 @@ class TestVoyagesSearchEnrichedEnriched(TestCaseUsingRealAPI):
 
         res = (
             VoyagesSearchEnriched()
-            .search_raw(
+            .search(
                 time_min=start,
                 time_max=end,
                 origins=rotterdam
