@@ -9,7 +9,7 @@ from typing import List, Union
 from vortexasdk.api import ID
 from vortexasdk.api.shared_types import Tag, to_ISODate
 from vortexasdk.endpoints.endpoints import VOYAGES_SEARCH_ENRICHED
-from vortexasdk.endpoints.voyages_search_enriched_result import VoyagesSearchEnrichedRawResult, VoyagesSearchEnrichedResult
+from vortexasdk.endpoints.voyages_search_enriched_result import VoyagesSearchEnrichedFlattenedResult, VoyagesSearchEnrichedListResult
 
 from vortexasdk.operations import Search
 from vortexasdk.utils import convert_to_list
@@ -84,7 +84,7 @@ class VoyagesSearchEnriched(Search):
         vessel_risk_level_excluded: Union[str, List[str]] = None,
         has_ship_to_ship: bool = None,
         has_charterer: bool = None
-    ) -> VoyagesSearchEnrichedResult:
+    ) -> VoyagesSearchEnrichedFlattenedResult or VoyagesSearchEnrichedListResult:
         """
 
         Returns one record per voyage, containing a selection of information about the voyage.
@@ -206,7 +206,7 @@ class VoyagesSearchEnriched(Search):
             `'quantity'`,`'latest_product'`,`'time_charterer'`,`'flag'`,`'scrubber'`,`'build_year'`,`'risk_rating'`,`'coating'`,`'start_date'`,`'end_date'`,`'tonne_miles'`,`'distance'`.
 
         # Returns
-        `VoyagesSearchEnrichedResult`
+        `VoyagesSearchEnrichedListResult` oe `VoyagesSearchEnrichedFlattenedResult`
 
         # Example
         _Voyages as of 26th April 2022 for vessels carrying crude departing from Rotterdam._
@@ -296,6 +296,6 @@ class VoyagesSearchEnriched(Search):
         }
 
         if columns is not None:
-            return VoyagesSearchEnrichedResult(super().search(headers=self._HEADERS, **api_params))
+            return VoyagesSearchEnrichedFlattenedResult(super().search(headers=self._HEADERS, **api_params))
         else:
-            return VoyagesSearchEnrichedRawResult(super().search(**api_params))
+            return VoyagesSearchEnrichedListResult(super().search(**api_params))

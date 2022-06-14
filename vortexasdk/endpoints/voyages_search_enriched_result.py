@@ -10,7 +10,7 @@ from vortexasdk.result_conversions import create_list
 logger = get_logger(__name__)
 
 
-class VoyagesSearchEnrichedResult(Result):
+class VoyagesSearchEnrichedFlattenedResult(Result):
     """
     Container class holdings search results returned from the voyages endpoint.
 
@@ -38,7 +38,7 @@ class VoyagesSearchEnrichedResult(Result):
         return pd.DataFrame(data=super().to_list())
 
 
-class VoyagesSearchEnrichedRawResult(Result):
+class VoyagesSearchEnrichedListResult(Result):
     """
     Container class holdings search results returned from the voyages endpoint.
 
