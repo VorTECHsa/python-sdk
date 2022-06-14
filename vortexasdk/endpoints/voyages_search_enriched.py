@@ -295,7 +295,7 @@ class VoyagesSearchEnriched(Search):
             "vessel_risk_level_excluded": convert_to_list(vessel_risk_level_excluded),
         }
 
-        if columns is not None:
-            return VoyagesSearchEnrichedFlattenedResult(super().search(headers=self._HEADERS, **api_params))
-        else:
+        if columns is None:
             return VoyagesSearchEnrichedListResult(super().search(**api_params))
+        else:
+            return VoyagesSearchEnrichedFlattenedResult(super().search(headers=self._HEADERS, **api_params))
