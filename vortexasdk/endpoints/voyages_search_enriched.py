@@ -206,7 +206,7 @@ class VoyagesSearchEnriched(Search):
             `'quantity'`,`'latest_product'`,`'time_charterer'`,`'flag'`,`'scrubber'`,`'build_year'`,`'risk_rating'`,`'coating'`,`'start_date'`,`'end_date'`,`'tonne_miles'`,`'distance'`.
 
         # Returns
-        `VoyagesSearchEnrichedListResult` oe `VoyagesSearchEnrichedFlattenedResult`
+        `VoyagesSearchEnrichedListResult` or `VoyagesSearchEnrichedFlattenedResult`
 
         # Example
         _Voyages as of 26th April 2022 for vessels carrying crude departing from Rotterdam._
