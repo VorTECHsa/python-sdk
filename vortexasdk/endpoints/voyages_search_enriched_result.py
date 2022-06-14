@@ -21,7 +21,7 @@ class VoyagesSearchEnrichedResult(Result):
 
     def to_list(self) -> List[VoyageEnrichedItem]:
         # noinspection PyTypeChecker
-        raise Exception(f"to_list method is not supported for search results in flat format. Please use to_df() instead.")
+        raise Exception(f"to_list method is not supported for search results in the flattened format (i.e. when the `columns` API param is provided). Please use to_df() instead.")
 
     def to_df(self) -> pd.DataFrame:
         """
@@ -54,4 +54,4 @@ class VoyagesSearchEnrichedRawResult(Result):
 
     def to_df(self) -> pd.DataFrame:
         # noinspection PyTypeChecker
-        raise Exception(f"to_df method is not supported for search results in raw format. Please use to_list() instead.")
+        raise Exception(f"to_df method is not supported for search results in the list format (i.e. when the `columns` API param is not provided). Please use to_list() instead.")
