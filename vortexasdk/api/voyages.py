@@ -12,7 +12,7 @@ class ReferenceEntry:
     """
     id: str
     label: str
-    layer: List[str]
+    layer: str
 
 
 @dataclass(frozen=True)
@@ -39,7 +39,7 @@ class CongestionBreakdownItem(FromDictMixin):
 
 
 @dataclass(frozen=True)
-class VoyagesVesselEntity():
+class VoyagesVesselEntity(FromDictMixin):
     """
     A VoyagesVesselEntity represents a vessel record used in Voyages.
 
@@ -64,7 +64,7 @@ class VoyagesVesselEntity():
 
 
 @dataclass(frozen=True)
-class VoyageEnrichedEvent():
+class VoyageEnrichedEvent(FromDictMixin):
     """
     A voyage event represents an action / event that occurred during a voyage. It allows you to get a full picture of the sequence of activities.
 
@@ -72,6 +72,41 @@ class VoyageEnrichedEvent():
 
 
     """
+    # shared event properties
+    event_id: str
+    start_timestamp: Optional[ISODate]
+    end_timestamp: Optional[ISODate]
+    event_group: str
+    event_type: str
+    event_activity: Optional[str]
+    odometer_start: Optional[int]
+    odometer_end: Optional[int]
+    # vessel event properties
+    location_id: Optional[str]
+    location_layer: Optional[List[str]]
+    cargo_movement_id: Optional[List[str]]
+    sts_event_counterparty_vessel_id: Optional[str]
+    waiting_event_target_geography_id: Optional[str]
+    fixture_event_fixing_timestamp: Optional[ISODate]
+    tags: Optional[List[Tag]]
+    probability: Optional[int]
+    location_details: Optional[List[ReferenceEntry]]
+    waiting_event_target_geography_details: Optional[List[ReferenceEntry]]
+    # cargo event properties
+    cargo_movement_id: Optional[str]
+    cargo_origin_id: Optional[str]
+    cargo_destination_id: Optional[str]
+    product_id: Optional[str]
+    product_details: Optional[List[ReferenceEntry]]
+    quantity_tonnes: Optional[int]
+    quantity_barrels: Optional[int]
+    quantity_cubic_metres: Optional[int]
+    tonne_miles: Optional[int]
+    cargo_origin_details: Optional[List[ReferenceEntry]]
+    cargo_destination_details: Optional[List[ReferenceEntry]]
+    # status event properties
+    value: Optional[str]
+    source_event_id: Optional[str]
 
 
 @dataclass(frozen=True)
