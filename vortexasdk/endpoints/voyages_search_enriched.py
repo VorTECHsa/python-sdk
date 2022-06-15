@@ -221,6 +221,7 @@ class VoyagesSearchEnriched(Search):
         ... time_min=start,
         ... time_max=end,
         ... origins=rotterdam,
+        ... columns="all",
         ... ).to_df().head()
 
         ```
