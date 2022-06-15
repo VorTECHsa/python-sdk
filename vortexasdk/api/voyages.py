@@ -161,5 +161,5 @@ class VoyageEnrichedItem(FromDictMixin):
     corporate_entities: List[Entity]
     odometer_start: Optional[int]
     odometer_end: Optional[int]
-    events: List[Union[Any, VoyageStatusEvent, VoyageVesselEvent, VoyageCargoEvent]]
+    events: List[Optional[Union[VoyageStatusEvent, VoyageVesselEvent, VoyageCargoEvent]]]
     latest_product_details: List[Entity]
