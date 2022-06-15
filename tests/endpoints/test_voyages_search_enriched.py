@@ -79,4 +79,4 @@ class TestVoyagesSearchEnrichedEnriched(TestCaseUsingRealAPI):
         assert res[0].__getattribute__('schema_version') == '1.0.0'
         assert res[0].__getattribute__('vessel') is not None
         assert len(res[0].events) > 0
-        assert res[0].events[0]['event_group'] is not None
+        assert res[0].events[0].__getattribute__('event_group') is not None
