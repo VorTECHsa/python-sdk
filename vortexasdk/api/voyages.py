@@ -86,7 +86,7 @@ class VoyageVesselEvent:
 @dataclass(frozen=True)
 class VoyageCargoEvent:
     """
-    Cargo events relate to the movement of cargo during the voyage. 
+    Cargo events relate to the movement of cargo during the voyage.
 
     [Voyage Events Further Documentation](https://docs.vortexa.com/reference/intro-voyage-events)
 
@@ -116,7 +116,7 @@ class VoyageCargoEvent:
 @dataclass(frozen=True)
 class VoyageStatusEvent:
     """
-    Status events describe the status of the voyage at a given period. 
+    Status events describe the status of the voyage at a given period.
 
     [Voyage Events Further Documentation](https://docs.vortexa.com/reference/intro-voyage-events)
 
