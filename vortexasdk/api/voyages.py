@@ -97,7 +97,7 @@ class VoyageCargoEvent:
     end_timestamp: Optional[ISODate]
     event_group: str
     event_type: str
-    activity: Optional[str]
+    activity: None
     odometer_start: Optional[int]
     odometer_end: Optional[int]
     cargo_movement_id: str
@@ -122,7 +122,6 @@ class VoyageStatusEvent:
 
 
     """
-    # shared event properties
     event_id: str
     start_timestamp: Optional[ISODate]
     end_timestamp: Optional[ISODate]

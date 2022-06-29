@@ -21,7 +21,7 @@ class VoyagesSearchEnriched(Search):
     """
 
     _MAX_PAGE_RESULT_SIZE = 500
-    _HEADERS = {"Content-Type": "application/json", "accept": "text/csv"}
+    _CSV_HEADERS = {"Content-Type": "application/json", "accept": "text/csv"}
 
     def __init__(self):
         Search.__init__(self, VOYAGES_SEARCH_ENRICHED)
@@ -299,4 +299,4 @@ class VoyagesSearchEnriched(Search):
         if columns is None:
             return VoyagesSearchEnrichedListResult(super().search(**api_params))
         else:
-            return VoyagesSearchEnrichedFlattenedResult(super().search(headers=self._HEADERS, **api_params))
+            return VoyagesSearchEnrichedFlattenedResult(super().search(headers=self._CSV_HEADERS, **api_params))
