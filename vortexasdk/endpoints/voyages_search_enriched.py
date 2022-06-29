@@ -202,8 +202,10 @@ class VoyagesSearchEnriched(Search):
             unit: Unit of measurement. Enter `'b'` for barrels or `'t'` for tonnes or `'cbm'` for cubic metres.
 
             columns: Determines what columns are visible in the output. Enter "all" for all columns, or any of:
-            `'vessel_name'`,`'imo'`,`'vessel_class'`,`'voyage_status'`,`'origin'`,`'destination'`,`'charterer'`,`'effective_controller'`,
-            `'quantity'`,`'latest_product'`,`'time_charterer'`,`'flag'`,`'scrubber'`,`'build_year'`,`'risk_rating'`,`'coating'`,`'start_date'`,`'end_date'`,`'tonne_miles'`,`'distance'`.
+            `'vessel_name'`,`'imo'`,`'dwt'`,`'capacity'`,`'vessel_class'`,`'voyage_status'`,`'cargo_status'`,`'origin'`,`'origin_shipping_region'`,`'origin_region'`,
+            `'origin_country'`,`'origin_port'`,`'origin_terminal'`,`'destination'`,`'destination_shipping_region'`,`'destination_region'`,`'destination_country'`,`'destination_port'`,
+            `'destination_terminal'`,`'destination_eta'`,`'charterer'`,`'effective_controller'`,`'voyage_type'`,`'quantity'`,`'latest_product'`,`'time_charterer'`,`'flag'`,`'scrubber'`,
+            `'build_year'`,`'risk_rating'`,`'coating'`,`'start_date'`,`'end_date'`,`'tonne_miles'`,`'distance'`,`'duration'`,`'location'`,`'waiting_time'`,`'waiting_commence'`,`'waiting_finished'`.
 
         # Returns
         `VoyagesSearchEnrichedListResult` or `VoyagesSearchEnrichedFlattenedResult`
