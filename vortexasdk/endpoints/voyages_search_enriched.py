@@ -9,7 +9,7 @@ from typing import List, Union
 from vortexasdk.api import ID
 from vortexasdk.api.shared_types import Tag, to_ISODate
 from vortexasdk.endpoints.endpoints import VOYAGES_SEARCH_ENRICHED
-from vortexasdk.endpoints.voyages_search_enriched_result import VoyagesSearchEnrichedResult
+from vortexasdk.endpoints.voyages_search_enriched_result import VoyagesSearchEnrichedFlattenedResult, VoyagesSearchEnrichedListResult
 
 from vortexasdk.operations import Search
 from vortexasdk.utils import convert_to_list
@@ -21,7 +21,7 @@ class VoyagesSearchEnriched(Search):
     """
 
     _MAX_PAGE_RESULT_SIZE = 500
-    _HEADERS = {"Content-Type": "application/json", "accept": "text/csv"}
+    _CSV_HEADERS = {"Content-Type": "application/json", "accept": "text/csv"}
 
     def __init__(self):
         Search.__init__(self, VOYAGES_SEARCH_ENRICHED)
@@ -84,10 +84,12 @@ class VoyagesSearchEnriched(Search):
         vessel_risk_level_excluded: Union[str, List[str]] = None,
         has_ship_to_ship: bool = None,
         has_charterer: bool = None
-    ) -> VoyagesSearchEnrichedResult:
+    ) -> VoyagesSearchEnrichedFlattenedResult or VoyagesSearchEnrichedListResult:
         """
 
-        Returns one record per voyage containing all of its respective voyage events,
+        Returns one record per voyage, containing a selection of information about the voyage.
+
+        NOTE: To display results as a list (`to_list()`), please set the columns parameter to `None`. To display results as dataframe (`to_df()`), please set the columns parameter to `all` or a list of selected columns.
 
         # Arguments
             time_min: The UTC start date of the time filter.
@@ -200,11 +202,13 @@ class VoyagesSearchEnriched(Search):
             unit: Unit of measurement. Enter `'b'` for barrels or `'t'` for tonnes or `'cbm'` for cubic metres.
 
             columns: Determines what columns are visible in the output. Enter "all" for all columns, or any of:
-            `'vessel_name'`,`'imo'`,`'vessel_class'`,`'voyage_status'`,`'origin'`,`'destination'`,`'charterer'`,`'effective_controller'`,
-            `'quantity'`,`'latest_product'`,`'time_charterer'`,`'flag'`,`'scrubber'`,`'build_year'`,`'risk_rating'`,`'coating'`,`'start_date'`,`'end_date'`,`'tonne_miles'`,`'distance'`.
+            `'vessel_name'`,`'imo'`,`'dwt'`,`'capacity'`,`'vessel_class'`,`'voyage_status'`,`'cargo_status'`,`'origin'`,`'origin_shipping_region'`,`'origin_region'`,
+            `'origin_country'`,`'origin_port'`,`'origin_terminal'`,`'destination'`,`'destination_shipping_region'`,`'destination_region'`,`'destination_country'`,`'destination_port'`,
+            `'destination_terminal'`,`'destination_eta'`,`'charterer'`,`'effective_controller'`,`'voyage_type'`,`'quantity'`,`'latest_product'`,`'time_charterer'`,`'flag'`,`'scrubber'`,
+            `'build_year'`,`'risk_rating'`,`'coating'`,`'start_date'`,`'end_date'`,`'tonne_miles'`,`'distance'`,`'duration'`,`'location'`,`'waiting_time'`,`'waiting_commence'`,`'waiting_finished'`.
 
         # Returns
-        `VoyagesSearchEnrichedResult`
+        `VoyagesSearchEnrichedListResult` or `VoyagesSearchEnrichedFlattenedResult`
 
         # Example
         _Voyages as of 26th April 2022 for vessels carrying crude departing from Rotterdam._
@@ -219,6 +223,7 @@ class VoyagesSearchEnriched(Search):
         ... time_min=start,
         ... time_max=end,
         ... origins=rotterdam,
+        ... columns="all",
         ... ).to_df().head()
 
         ```
@@ -293,4 +298,7 @@ class VoyagesSearchEnriched(Search):
             "vessel_risk_level_excluded": convert_to_list(vessel_risk_level_excluded),
         }
 
-        return VoyagesSearchEnrichedResult(super().search(headers=self._HEADERS, **api_params))
+        if columns is None:
+            return VoyagesSearchEnrichedListResult(super().search(**api_params))
+        else:
+            return VoyagesSearchEnrichedFlattenedResult(super().search(headers=self._CSV_HEADERS, **api_params))

@@ -24,8 +24,6 @@ class VesselEvent:
 @dataclass(frozen=True)
 class VesselMovement(FromDictMixin):
     """
-    What is a vessel movement. TODO.
-
     [Vessel Movement Further Documentation](https://docs.vortexa.com/reference/intro-vessel-movement)
 
     """

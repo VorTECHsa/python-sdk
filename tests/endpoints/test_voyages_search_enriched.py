@@ -17,6 +17,7 @@ class TestVoyagesSearchEnrichedEnriched(TestCaseUsingRealAPI):
                 time_min=start,
                 time_max=end,
                 origins=rotterdam,
+                columns="all"
             )
             .to_df()
             .head(2)
@@ -40,8 +41,9 @@ class TestVoyagesSearchEnrichedEnriched(TestCaseUsingRealAPI):
         )
 
         assert len(df.columns) == 4
+        assert list(df.columns) == ['VESSEL NAME', 'IMO', 'VOYAGE STATUS', 'DESTINATION']
 
-    def test_search_from_description(self):
+    def test_search_from_description_df(self):
         start = datetime(2022, 4, 26)
         end = datetime(2022, 4, 26, 23, 59)
 
@@ -58,3 +60,23 @@ class TestVoyagesSearchEnrichedEnriched(TestCaseUsingRealAPI):
         )
 
         assert len(res) > 0
+
+    def test_search_from_description_raw(self):
+        start = datetime(2022, 4, 26)
+        end = datetime(2022, 4, 26, 23, 59)
+
+        res = (
+            VoyagesSearchEnriched()
+            .search(
+                time_min=start,
+                time_max=end,
+                origins=rotterdam
+            )
+            .to_list()
+        )
+
+        assert len(res) > 0
+        assert res[0].__getattribute__('schema_version') == '1.0.0'
+        assert res[0].__getattribute__('vessel') is not None
+        assert len(res[0].events) > 0
+        assert res[0].events[0].__getattribute__('event_group') is not None

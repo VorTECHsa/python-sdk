@@ -18,6 +18,7 @@ def to_ISODate(utc_datetime: datetime) -> str:
 def to_ISODate_Array(days: List[datetime]) -> List[ISODate]:
     return [to_ISODate(date) for date in days]
 
+
 @dataclass(frozen=True)
 class Entity:
     """Holds commonly used properties."""
@@ -114,7 +115,7 @@ class Flag:
 
     tag: str
     flag: str
-    flag_country: str
+    flag_country: Optional[str]
 
 
 @dataclass(frozen=True)
