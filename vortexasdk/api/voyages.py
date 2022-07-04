@@ -39,12 +39,12 @@ class VoyagesVesselEntity:
 
     id: ID
     name: str
-    imo: Optional[int]
-    mmsi: int
-    call_sign: str
-    cubic_capacity: int
     dead_weight: int
     vessel_class: str
+    imo: Optional[int]
+    mmsi: Optional[int]
+    call_sign: Optional[str]
+    cubic_capacity: Optional[int]
     year: Optional[int]
     flag: List[Flag]
     scrubber: List[Scrubber]
