@@ -24,8 +24,8 @@ class Entity:
     """Holds commonly used properties."""
 
     id: ID
-    label: str
-    layer: str
+    label: Optional[str]
+    layer: Optional[str]
 
 
 @dataclass(frozen=True)
