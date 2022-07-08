@@ -16,4 +16,4 @@ class FromDictMixin:
     @classmethod
     def from_dict(cls: T, d: Dict) -> T:
         """Serialize dictionary to dataclass of type T."""
-        return jsons.loads(jsons.dumps(d), cls)
+        return jsons.loads(d, cls)
