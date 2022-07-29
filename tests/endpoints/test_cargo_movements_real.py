@@ -77,7 +77,7 @@ class TestCargoMovementsReal(TestCaseUsingRealAPI):
             "product.grade.label",
             "product.group_product.label",
             "parent_ids.0.id",
-            "parent_ids.0.splinter_timestamp"
+            "parent_ids.0.splinter_timestamp",
         ]
 
         df = (
@@ -135,8 +135,14 @@ class TestCargoMovementsReal(TestCaseUsingRealAPI):
             .head(2)
         )
 
-        self.assertEqual(str(df['events.cargo_port_load_event.0.end_timestamp'].dtypes), 'datetime64[ns, UTC]')
-        self.assertEqual(str(df['events.cargo_port_unload_event.0.end_timestamp'].dtypes), 'datetime64[ns, UTC]')
+        self.assertEqual(
+            str(df["events.cargo_port_load_event.0.end_timestamp"].dtypes),
+            "datetime64[ns, UTC]",
+        )
+        self.assertEqual(
+            str(df["events.cargo_port_unload_event.0.end_timestamp"].dtypes),
+            "datetime64[ns, UTC]",
+        )
 
     def test_search_single_filter_origin_name(self):
         df = (
@@ -177,7 +183,7 @@ class TestCargoMovementsReal(TestCaseUsingRealAPI):
         start = datetime(2021, 1, 1)
         end = datetime(2021, 1, 11)
 
-        vlcc_plus = 'vlcc_plus'
+        vlcc_plus = "vlcc_plus"
 
         vlcc_plus_movements = (
             CargoMovements()
@@ -185,7 +191,7 @@ class TestCargoMovementsReal(TestCaseUsingRealAPI):
                 filter_activity="loading_state",
                 filter_time_min=start,
                 filter_time_max=end,
-                filter_vessel_classes=[vlcc_plus]
+                filter_vessel_classes=[vlcc_plus],
             )
             .to_df()
         )
@@ -213,8 +219,8 @@ class TestCargoMovementsReal(TestCaseUsingRealAPI):
                 filter_owners=[
                     c.id for c in Corporations().search(term="DHT").to_list()
                 ],
-                filter_time_min=datetime(2018, 10, 1, 0),
-                filter_time_max=datetime(2018, 10, 5, 1),
+                filter_time_min=datetime(2018, 10, 12, 0),
+                filter_time_max=datetime(2018, 10, 13, 1),
             )
             .to_df()
             .head(2)
