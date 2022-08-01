@@ -30,7 +30,7 @@ class OnshoreInventoriesTimeseries(Search):
         crude_confidence: List[str] = None,
         location_ids: Union[ID, List[ID]] = None,
         storage_types: List[str] = None,
-        tank_ids: Union[ID, List[ID]] = None,
+        asset_tank_ids: Union[ID, List[ID]] = None,
         time_max: datetime = None,
         time_min: datetime = None,
         timeseries_frequency: str = None,
@@ -54,7 +54,7 @@ class OnshoreInventoriesTimeseries(Search):
             crude_confidence: An array of confidence metrics to filter on. Possible values are: `'confirmed’`, `‘probable’`, `‘unlikely’`
             location_ids: An array of geography ID(s) to filter on.
             storage_types: An array of storage types to filter on. Possible values are: `'refinery'`, `'non-refinery'`, `'commercial'`, `'spr'`, `'tbd'`
-            tank_ids: An array of unique Asset Tanks ID(s) to filter on - linked to the Asset Tank Reference data.
+            asset_tank_ids: An array of unique Asset Tanks ID(s) to filter on - linked to the Asset Tank Reference data.
             time_min: The UTC start date of the time filter.
             time_max: The UTC end date of the time filter.
             timeseries_frequency: Frequency denoting the granularity of the time series. Must be one of the following: `'week'`, `'month'`, `'year'`.
@@ -140,7 +140,7 @@ class OnshoreInventoriesTimeseries(Search):
             "crude_confidence": crude_confidence,
             "location_ids": location_ids,
             "storage_types": storage_types,
-            "tank_ids": tank_ids,
+            "asset_tank_ids": asset_tank_ids,
             "time_max": to_ISODate(time_max) if time_max else None,
             "time_min": to_ISODate(time_min) if time_min else None,
             "timeseries_frequency": timeseries_frequency,
