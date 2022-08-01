@@ -213,8 +213,8 @@ class TestCargoMovementsReal(TestCaseUsingRealAPI):
                 filter_owners=[
                     c.id for c in Corporations().search(term="DHT").to_list()
                 ],
-                filter_time_min=datetime(2018, 10, 1, 0),
-                filter_time_max=datetime(2018, 10, 5, 1),
+                filter_time_min=datetime(2020, 10, 1, 0),
+                filter_time_max=datetime(2020, 10, 5, 1),
             )
             .to_df()
             .head(2)
