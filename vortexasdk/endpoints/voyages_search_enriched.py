@@ -9,7 +9,10 @@ from typing import List, Union
 from vortexasdk.api import ID
 from vortexasdk.api.shared_types import Tag, to_ISODate
 from vortexasdk.endpoints.endpoints import VOYAGES_SEARCH_ENRICHED
-from vortexasdk.endpoints.voyages_search_enriched_result import VoyagesSearchEnrichedFlattenedResult, VoyagesSearchEnrichedListResult
+from vortexasdk.endpoints.voyages_search_enriched_result import (
+    VoyagesSearchEnrichedFlattenedResult,
+    VoyagesSearchEnrichedListResult,
+)
 
 from vortexasdk.operations import Search
 from vortexasdk.utils import convert_to_list
@@ -83,7 +86,7 @@ class VoyagesSearchEnriched(Search):
         vessel_risk_level: Union[str, List[str]] = None,
         vessel_risk_level_excluded: Union[str, List[str]] = None,
         has_ship_to_ship: bool = None,
-        has_charterer: bool = None
+        has_charterer: bool = None,
     ) -> VoyagesSearchEnrichedFlattenedResult or VoyagesSearchEnrichedListResult:
         """
 
@@ -205,7 +208,7 @@ class VoyagesSearchEnriched(Search):
             `'vessel_name'`,`'imo'`,`'dwt'`,`'capacity'`,`'vessel_class'`,`'voyage_status'`,`'cargo_status'`,`'origin'`,`'origin_shipping_region'`,`'origin_region'`,
             `'origin_country'`,`'origin_port'`,`'origin_terminal'`,`'destination'`,`'destination_shipping_region'`,`'destination_region'`,`'destination_country'`,`'destination_port'`,
             `'destination_terminal'`,`'destination_eta'`,`'charterer'`,`'effective_controller'`,`'voyage_type'`,`'quantity'`,`'latest_product'`,`'time_charterer'`,`'flag'`,`'scrubber'`,
-            `'build_year'`,`'risk_rating'`,`'coating'`,`'start_date'`,`'end_date'`,`'tonne_miles'`,`'distance'`,`'duration'`,`'location'`,`'waiting_time'`,`'waiting_commence'`,`'waiting_finished'`.
+            `'build_year'`,`'risk_rating'`,`'coating'`,`'start_date'`,`'end_date'`,`'tonne_miles'`,`'distance'`,`'voyage_id'`,`'previous_voyage_id'`,`'next_voyage_id'`,`'duration'`,`'location'`,`'waiting_time'`,`'waiting_commence'`,`'waiting_finished'`.
 
         # Returns
         `VoyagesSearchEnrichedListResult` or `VoyagesSearchEnrichedFlattenedResult`
@@ -280,25 +283,43 @@ class VoyagesSearchEnriched(Search):
             "csv_columns": columns,
             "voyage_status_excluded": convert_to_list(voyage_status_excluded),
             "cargo_status_excluded": convert_to_list(cargo_status_excluded),
-            "location_status_excluded": convert_to_list(location_status_excluded),
-            "commitment_status_excluded": convert_to_list(commitment_status_excluded),
-            "movement_status_excluded": convert_to_list(movement_status_excluded),
+            "location_status_excluded": convert_to_list(
+                location_status_excluded
+            ),
+            "commitment_status_excluded": convert_to_list(
+                commitment_status_excluded
+            ),
+            "movement_status_excluded": convert_to_list(
+                movement_status_excluded
+            ),
             "products_excluded": convert_to_list(products_excluded),
-            "latest_products_excluded": convert_to_list(latest_products_excluded),
+            "latest_products_excluded": convert_to_list(
+                latest_products_excluded
+            ),
             "charterers_excluded": convert_to_list(charterers_excluded),
-            "effective_controllers_excluded": convert_to_list(effective_controllers_excluded),
+            "effective_controllers_excluded": convert_to_list(
+                effective_controllers_excluded
+            ),
             "origins_excluded": convert_to_list(origins_excluded),
             "destinations_excluded": convert_to_list(destinations_excluded),
             "locations_excluded": convert_to_list(locations_excluded),
             "flags_excluded": convert_to_list(flags_excluded),
             "ice_class_excluded": convert_to_list(ice_class_excluded),
-            "vessel_propulsion_excluded": convert_to_list(vessel_propulsion_excluded),
+            "vessel_propulsion_excluded": convert_to_list(
+                vessel_propulsion_excluded
+            ),
             "vessels_excluded": convert_to_list(vessels_excluded),
             "vessels_tags_excluded": convert_to_list(vessels_tags_excluded),
-            "vessel_risk_level_excluded": convert_to_list(vessel_risk_level_excluded),
+            "vessel_risk_level_excluded": convert_to_list(
+                vessel_risk_level_excluded
+            ),
         }
 
         if columns is None:
-            return VoyagesSearchEnrichedListResult(super().search(**api_params))
+            return VoyagesSearchEnrichedListResult(
+                super().search(**api_params)
+            )
         else:
-            return VoyagesSearchEnrichedFlattenedResult(super().search(headers=self._CSV_HEADERS, **api_params))
+            return VoyagesSearchEnrichedFlattenedResult(
+                super().search(headers=self._CSV_HEADERS, **api_params)
+            )
