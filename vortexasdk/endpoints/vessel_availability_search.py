@@ -139,7 +139,7 @@ class VesselAvailabilitySearch(Search):
         >>> rotterdam = "68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e"
         >>> df = VesselAvailabilitySearch().search(
         ...        filter_port=rotterdam,
-        ...        filter_days_to_arrival={"min": 0, "max": 35}
+        ...        filter_days_to_arrival={"min": 1, "max": 5}
         ... ).to_df(columns=['available_at','vessel_name','vessel_class']).head(2)
 
         ```

@@ -67,10 +67,11 @@ class StorageTerminals(Reference, Search):
         Find all storage terminals matching given term.
 
         # Arguments
-            term: The term of storage terminal we're filtering on.
+            ids: List of storage terminal ids to filter by.
+            term: List of terms to filter on.
 
         # Returns
-        List of storage terminals matching `term`
+        List of storage terminals matching the `ids` or `term` specified.
 
 
         # Examples
