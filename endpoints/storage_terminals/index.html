@@ -309,19 +309,20 @@
 <p>Load all storage terminals.</p>
 <h3 id="vortexasdk.endpoints.storage_terminals.StorageTerminals.search">search</h3>
 
-<pre><code class="language-python">StorageTerminals.search(self, ids: Union[str, List[str]] = None, name: Union[str, List[str]] = None) -&gt; vortexasdk.endpoints.storage_terminals_result.StorageTerminalResult
+<pre><code class="language-python">StorageTerminals.search(self, ids: Union[str, List[str]] = None, term: Union[str, List[str]] = None) -&gt; vortexasdk.endpoints.storage_terminals_result.StorageTerminalResult
 </code></pre>
-<p>Find all storage terminals matching given type.</p>
+<p>Find all storage terminals matching given term.</p>
 <p><strong>Arguments</strong></p>
 <ul>
-<li><strong>type</strong>: The type of storage terminal we're filtering on.</li>
+<li><strong>ids</strong>: List of storage terminal ids to filter by.</li>
+<li><strong>term</strong>: List of terms to filter on.</li>
 </ul>
 <p><strong>Returns</strong></p>
-<p>List of storage terminals matching <code>type</code></p>
+<p>List of storage terminals matching the <code>ids</code> or <code>term</code> specified.</p>
 <p><strong>Examples</strong></p>
-<p>Find a storage terminal by name.</p>
+<p>Find a storage terminal by term, for example the name of the storage terminal.</p>
 <pre><code class="language-python">&gt;&gt;&gt; from vortexasdk import StorageTerminals
-&gt;&gt;&gt; df = StorageTerminals().search(name=[&quot;Military&quot;]).to_df()
+&gt;&gt;&gt; df = StorageTerminals().search(term=[&quot;Military&quot;]).to_df()
 
 </code></pre>
 <p>Returns</p>
