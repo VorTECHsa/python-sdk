@@ -12,8 +12,8 @@ class TestStorageTerminals(TestCaseUsingMockAPI):
         terminals = StorageTerminals().search().to_df()
         assert len(terminals) > 0
 
-    def test_name_search_term(self):
-        terminals = StorageTerminals().search(name=['Military']).to_df()
+    def test_term_search_term(self):
+        terminals = StorageTerminals().search(term=['Military']).to_df()
         assert len(terminals) > 0
 
     def test_search_ids(self):
@@ -24,9 +24,9 @@ class TestStorageTerminals(TestCaseUsingMockAPI):
         assert 'Military Oil Depot' in names
 
     def test_to_list(self):
-        names = [x.name for x in self.st.to_list()]
+        terms = [x.name for x in self.st.to_list()]
 
-        assert names == ['Waypoints', 'South Pars Kangan Site - Phase 13', 'Military Oil Depot']
+        assert terms == ['Waypoints', 'South Pars Kangan Site - Phase 13', 'Military Oil Depot']
 
     def test_check_columns(self):
         terminals = StorageTerminals().search().to_df()

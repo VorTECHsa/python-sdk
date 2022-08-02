@@ -61,24 +61,25 @@ class StorageTerminals(Reference, Search):
     def search(
         self,
         ids: Union[str, List[str]] = None,
-        name: Union[str, List[str]] = None,
+        term: Union[str, List[str]] = None,
     ) -> StorageTerminalResult:
         """
-        Find all storage terminals matching given type.
+        Find all storage terminals matching given term.
 
         # Arguments
-            type: The type of storage terminal we're filtering on.
+            ids: List of storage terminal ids to filter by.
+            term: List of terms to filter on.
 
         # Returns
-        List of storage terminals matching `type`
+        List of storage terminals matching the `ids` or `term` specified.
 
 
         # Examples
 
-        Find a storage terminal by name.
+        Find a storage terminal by term, for example the name of the storage terminal.
         ```python
         >>> from vortexasdk import StorageTerminals
-        >>> df = StorageTerminals().search(name=["Military"]).to_df()
+        >>> df = StorageTerminals().search(term=["Military"]).to_df()
 
         ```
         Returns
@@ -90,7 +91,7 @@ class StorageTerminals(Reference, Search):
         """
 
         search_params = {
-            "name": convert_to_list(name),
+            "term": convert_to_list(term),
             "ids": convert_to_list(ids)
         }
 
