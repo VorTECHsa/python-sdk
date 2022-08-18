@@ -29,7 +29,7 @@ setuptools.setup(
         "jsons==1.0.0",
         "jupyter==1.0.0",
         "matplotlib==3.3.4",
-        "pandas>=0.25.2",
+        "pandas==0.25.2",
         "requests==2.27.1",
         "statsmodels==0.12.2",
         "tqdm==4.38.0",
