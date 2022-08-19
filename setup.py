@@ -139,7 +139,6 @@ setuptools.setup(
         "typish==1.2.0",
         "urllib3==1.26.11",
         "virtualenv==20.16.2",
-        "vortexasdk==0.37.1",
         "watchdog==2.1.9",
         "wcwidth==0.2.5",
         "webencodings==0.5.1",
