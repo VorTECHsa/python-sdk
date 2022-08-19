@@ -33,6 +33,21 @@ setuptools.setup(
         "requests==2.27.1",
         "statsmodels==0.12.2",
         "tqdm==4.38.0",
+        "debugpy==1.6.2",
+        "filelock==3.7.1",
+        "identify==2.5.2",
+        "ipywidgets==7.7.1",
+        "jsonschema==4.9.0",
+        "jupyterlab=widgets==1.1.1",
+        "matplotlib-inline==0.1.3",
+        "more-itertools==8.13.0",
+        "nbconvert==6.5.0",
+        "pygments==2.12.0",
+        "pytz==2022.1",
+        "pyzmq==23.2.0",
+        "qtpy==2.1.0",
+        "virtualenv==20.16.2",
+        "widgetsnbextension==3.6.1"
     ],
     extras_require={
         "tests": [
