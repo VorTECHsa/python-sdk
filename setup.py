@@ -47,7 +47,7 @@ setuptools.setup(
         "decorator==5.1.1",
         "defusedxml==0.7.1",
         "distlib==0.3.5",
-        "entrypoints==0.3"
+        "entrypoints==0.3",
         "et-xmlfile==1.1.0",
         "fastjsonschema==2.16.1",
         "filelock==3.7.1",
