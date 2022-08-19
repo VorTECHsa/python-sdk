@@ -38,7 +38,7 @@ setuptools.setup(
         "identify==2.5.2",
         "ipywidgets==7.7.1",
         "jsonschema==4.9.0",
-        "jupyterlab=widgets==1.1.1",
+        "jupyterlab-widgets==1.1.1",
         "matplotlib-inline==0.1.3",
         "more-itertools==8.13.0",
         "nbconvert==6.5.0",
