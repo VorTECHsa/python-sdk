@@ -77,7 +77,7 @@ setuptools.setup(
         "mccabe==0.6.1",
         "mergedeep==1.3.4",
         "mistune==0.8.4",
-        "mkdocs==1.2.4"
+        "mkdocs==1.2.4",
         "more-itertools==8.13.0",
         "mypy==0.770",
         "mypy-extensions==0.4.3",
@@ -114,7 +114,7 @@ setuptools.setup(
         "pygments==2.12.0",
         "pyparsing==3.0.9",
         "pyrsistent==0.18.1",
-        "pytest==5.2.4"
+        "pytest==5.2.4",
         "python-dateutil==2.8.2",
         "pytz==2022.1",
         "pyyaml==5.4.1",
