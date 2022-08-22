@@ -1,17 +1,16 @@
 from unittest import TestCase
 
-import jsons
-
-from vortexasdk.api.product import ProductEntity
+import json
+from vortexasdk.api.product import ProductEntityWithSingleLayer
 
 
 class TestProductEntity(TestCase):
     def test_serialize(self):
         with open("tests/api/examples/product_entity1.json", "r") as f:
-            serialized = f.read()
-            deserialized = jsons.loads(serialized, ProductEntity)
+            serialized = json.loads(f.read())
+            deserialized = ProductEntityWithSingleLayer(**serialized)
 
-            expected = ProductEntity(
+            expected = ProductEntityWithSingleLayer(
                 id="6f11b0724c9a4e85ffa7f1445bc768f054af755a090118dcf99f14745c261653",
                 layer="group",
                 probability=0.9369364,
@@ -30,6 +29,6 @@ class TestProductEntity(TestCase):
             "label": "Clean products",
         }
 
-        p = ProductEntity(**dictionary)
+        p = ProductEntityWithSingleLayer(**dictionary)
 
         assert p.source == "model"

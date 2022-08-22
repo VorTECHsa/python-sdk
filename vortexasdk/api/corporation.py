@@ -1,22 +1,27 @@
-from dataclasses import dataclass
+from pydantic.dataclasses import dataclass
 from typing import List
 
-from vortexasdk.api.serdes import FromDictMixin
-from vortexasdk.api.shared_types import IDName, EntityWithProbability
+
+from vortexasdk.api.shared_types import (
+    EntityWithSingleLayerAndProbability,
+    IDName,
+    EntityWithListLayerAndProbability,
+)
 
 
 @dataclass(frozen=True)
-class Corporation(IDName, FromDictMixin):
+class Corporation(IDName):
     """Represent a Corporation reference record returned by the API."""
 
     corporate_entity_type: List[str]
     ref_type: str
     leaf: bool
     parent: List[str]
+    filterable: bool
 
 
 @dataclass(frozen=True)
-class CorporateEntity(EntityWithProbability):
+class CorporateEntity(EntityWithSingleLayerAndProbability):
     """
     Represents a relationship between a corporation and another entity like a vessel.
 

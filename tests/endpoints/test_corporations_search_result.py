@@ -7,7 +7,7 @@ from vortexasdk.endpoints.corporations_result import CorporationsResult
 
 
 class TestCorporationsSearchResult(TestCase):
-    cr = CorporationsResult(example_corporations)
+    cr = CorporationsResult(example_corporations, {})
 
     def test_to_df(self):
         df = self.cr.to_df(["name", "corporate_entity_type"])

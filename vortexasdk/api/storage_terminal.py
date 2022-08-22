@@ -1,8 +1,8 @@
-from dataclasses import dataclass
+from pydantic.dataclasses import dataclass
 from typing import List, Tuple
 
-from vortexasdk.api.serdes import FromDictMixin
-from vortexasdk.api.shared_types import ISODate
+
+from vortexasdk.api.shared_types import IDNameLayer, ISODate
 
 
 @dataclass(frozen=True)
@@ -20,12 +20,13 @@ class TerminalParent:
 
 
 @dataclass(frozen=True)
-class StorageTerminal(FromDictMixin):
+class StorageTerminal:
     """
     Represents a Storage Terminal reference record returned by the API.
     """
+
     id: str
-    exclusion_rule: List[str]
+    exclusion_rule: List[IDNameLayer]
     hierarchy: List[TerminalHierarchy]
     layer: List[str]
     lat: float
@@ -33,3 +34,4 @@ class StorageTerminal(FromDictMixin):
     leaf: bool
     name: str
     parent: List[TerminalParent]
+    ref_type: str

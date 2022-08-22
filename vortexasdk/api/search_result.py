@@ -1,37 +1,37 @@
-from abc import ABC, abstractmethod
-from dataclasses import dataclass
-from typing import List
+from dataclasses import field
+from pydantic.dataclasses import dataclass
+from typing import Any, Dict, List
 
 import pandas as pd
 
 
 @dataclass
-class Result(ABC):
-    """Abstract Container that holds a list of *_records*."""
+class Result:
+    """Abstract Container that holds a list of *records*."""
 
-    _records: List
+    records: List = field(default_factory=list)
+    reference: Dict[str, Any] = field(default_factory=dict)
 
     def to_list(self) -> List:
-        """Represent *_records* as a list."""
-        return self._records
+        """Represent *records* as a list."""
+        return self.records
 
-    @abstractmethod
     def to_df(self, columns=None) -> pd.DataFrame:
-        """Represent *_records* as a `pd.DataFrame` with given columns."""
+        """Represent *records* as a `pd.DataFrame` with given columns."""
         pass
 
     def __len__(self):
-        """Delegate to *_records*."""
-        return len(self._records)
+        """Delegate to *records*."""
+        return len(self.records)
 
     def __str__(self):
-        """Delegate to *_records*."""
-        return str(self._records)
+        """Delegate to *records*."""
+        return str(self.records)
 
     def __iter__(self):
-        """Delegate to *_records*."""
-        return iter(self._records)
+        """Delegate to *records*."""
+        return iter(self.records)
 
     def __getitem__(self, item):
-        """Delegate to *_records*."""
-        return self._records.__getitem__(item)
+        """Delegate to *records*."""
+        return self.records.__getitem__(item)

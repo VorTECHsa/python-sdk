@@ -1,12 +1,17 @@
-from dataclasses import dataclass
+from pydantic.dataclasses import dataclass
 from typing import List
 
-from vortexasdk.api.serdes import FromDictMixin
-from vortexasdk.api.shared_types import Entity, EntityWithProbability, Node
+
+from vortexasdk.api.shared_types import (
+    EntityWithListLayer,
+    EntityWithListLayerAndProbability,
+    EntityWithSingleLayerAndProbability,
+    Node,
+)
 
 
 @dataclass(frozen=True)
-class Product(Node, FromDictMixin):
+class Product(Node):
     """
     Represent a Product reference record returned by the API.
 
@@ -15,11 +20,21 @@ class Product(Node, FromDictMixin):
 
     layer: List[str]
     meta: dict
-    hierarchy: List[Entity]
+    hierarchy: List[EntityWithListLayer]
 
 
 @dataclass(frozen=True)
-class ProductEntity(EntityWithProbability):
+class ProductEntityWithSingleLayer(EntityWithSingleLayerAndProbability):
+    """
+
+    Represents a single product layer of a hierarchical product tree.
+
+    [Further Documentation](https://docs.vortexa.com/reference/intro-product-entities)
+    """
+
+
+@dataclass(frozen=True)
+class ProductEntityWithListLayer(EntityWithListLayerAndProbability):
     """
 
     Represents a single product layer of a hierarchical product tree.

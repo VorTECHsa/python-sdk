@@ -1,6 +1,6 @@
 from unittest import TestCase
+import json
 
-import jsons
 
 from vortexasdk.api.corporation import CorporateEntity
 
@@ -8,8 +8,8 @@ from vortexasdk.api.corporation import CorporateEntity
 class TestCorporateEntity(TestCase):
     def test_serialize(self):
         with open("tests/api/examples/corporate_entity1.json", "r") as f:
-            serialized = f.read()
-            deserialized = jsons.loads(serialized, CorporateEntity)
+            serialized = json.loads(f.read())
+            deserialized = CorporateEntity(**serialized)
 
             expected = CorporateEntity(
                 id="cbd7dfe8a9fb0fa0ce3252ce7643437db6a32d0947a0c23d68dc5dea2f2d65d7",

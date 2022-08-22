@@ -1,9 +1,10 @@
-from dataclasses import dataclass
+from pydantic.dataclasses import dataclass
 from typing import List, Optional
 
 from vortexasdk.api.geography import GeographyEntity
 from vortexasdk.api.id import ID
-from vortexasdk.api.serdes import FromDictMixin
+from vortexasdk.api.product import ProductEntityWithSingleLayer
+
 from vortexasdk.api.shared_types import ISODate
 from vortexasdk.api.vessel import VesselEntity
 
@@ -22,7 +23,14 @@ class VesselEvent:
 
 
 @dataclass(frozen=True)
-class VesselMovement(FromDictMixin):
+class VesselMovementCargo:
+    cargo_movement_id: ID
+    quantity: float
+    product: List[ProductEntityWithSingleLayer]
+
+
+@dataclass(frozen=True)
+class VesselMovement:
     """
     [Vessel Movement Further Documentation](https://docs.vortexa.com/reference/intro-vessel-movement)
 
@@ -34,5 +42,7 @@ class VesselMovement(FromDictMixin):
 
     origin: VesselEvent
     destination: VesselEvent
+    cargoes: List[VesselMovementCargo]
+
     start_timestamp: Optional[ISODate] = None
     end_timestamp: Optional[ISODate] = None

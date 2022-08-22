@@ -12,36 +12,36 @@ from vortexasdk.utils import convert_to_list
 
 class AssetTanks(Reference, Search):
     """
-        Asset Tanks endpoint.
+    Asset Tanks endpoint.
 
-        An Asset Tank is a reference value that corresponds to an ID associated with other entities.
+    An Asset Tank is a reference value that corresponds to an ID associated with other entities.
 
-        For example, an Asset Tank object may have the following keys:
+    For example, an Asset Tank object may have the following keys:
 
-        ```json
-        {
-            "name": "AAM001",
-            "storage_type": "tdb"
-            "crude_confidence": "confirmed"
-            ...
-        }
-        ```
+    ```json
+    {
+        "name": "AAM001",
+        "storage_type": "tdb"
+        "crude_confidence": "confirmed"
+        ...
+    }
+    ```
 
-        IDs represent asset tanks which can be found via the Asset Tank reference endpoint.
+    IDs represent asset tanks which can be found via the Asset Tank reference endpoint.
 
-        When the asset tanks endpoint is searched with those ids as parameters:
+    When the asset tanks endpoint is searched with those ids as parameters:
 
-        ```python
-            >>> from vortexasdk import AssetTanks
-            >>> df = AssetTanks().search(ids=["6114b93026e61993797db33a46a5d2acbeacdbd63238a4271efaeafcee94b1d2"]).to_df()
+    ```python
+        >>> from vortexasdk import AssetTanks
+        >>> df = AssetTanks().search(ids=["6114b93026e61993797db33a46a5d2acbeacdbd63238a4271efaeafcee94b1d2"]).to_df()
 
-        ```
+    ```
 
-        Returns
+    Returns
 
-        |    | id                      | capacity_bbl | crude_confidence | location_id                     | name   | storage_type | lat | lon |
-        |---:|:------------------------|:-------------|:-----------------|:--------------------------------|:-------|:-------------|-----|-----|
-        |  0 | 6114b93026e61993797d... | 645201       | confirmed         | b839dc5fee39ff7efd5e1cf2494... | AAM001 | tbd          |  90 | 180 |
+    |    | id                      | capacity_bbl | crude_confidence | location_id                     | name   | storage_type | lat | lon |
+    |---:|:------------------------|:-------------|:-----------------|:--------------------------------|:-------|:-------------|-----|-----|
+    |  0 | 6114b93026e61993797d... | 645201       | confirmed         | b839dc5fee39ff7efd5e1cf2494... | AAM001 | tbd          |  90 | 180 |
 
 
     """
@@ -52,7 +52,7 @@ class AssetTanks(Reference, Search):
 
     def load_all(self) -> AssetTankResult:
         """
-            Load all asset tanks.
+        Load all asset tanks.
         """
         return self.search()
 
@@ -108,4 +108,6 @@ class AssetTanks(Reference, Search):
             "term": [str(e) for e in convert_to_list(term)],
         }
 
-        return AssetTankResult(super().search(**search_params))
+        response = super().search(**search_params)
+
+        return AssetTankResult(response["data"], response["reference"])

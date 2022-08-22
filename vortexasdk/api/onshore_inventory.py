@@ -1,14 +1,14 @@
-from dataclasses import dataclass
+from pydantic.dataclasses import dataclass
 from typing import Optional
 
 from vortexasdk.api.asset_tank import AssetTank
-from vortexasdk.api.serdes import FromDictMixin
+
 from vortexasdk.api.shared_types import ISODate
 from vortexasdk.api.id import ID
 
 
 @dataclass(frozen=True)
-class OnshoreInventory(FromDictMixin):
+class OnshoreInventory:
     """
 
     Land Storage measurements are the base data set the Vortexa API is centred around.

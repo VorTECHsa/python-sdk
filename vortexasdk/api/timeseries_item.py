@@ -1,11 +1,19 @@
-from dataclasses import dataclass
+from typing import List, Optional
+from pydantic.dataclasses import dataclass
 
 from vortexasdk.api import ISODate
-from vortexasdk.api.serdes import FromDictMixin
 
 
 @dataclass(frozen=True)
-class TimeSeriesItem(FromDictMixin):
+class TimeSeriesBreakdownItem:
+    id: str
+    label: str
+    value: float
+    count: int
+
+
+@dataclass(frozen=True)
+class TimeSeriesItem:
     """
     Generic container class holding a `key <> value` pair, a `count` of records contributing to the given value.
 
@@ -15,4 +23,5 @@ class TimeSeriesItem(FromDictMixin):
 
     key: ISODate
     count: int
-    value: float = None
+    breakdown: Optional[List[TimeSeriesBreakdownItem]] = None
+    value: Optional[float] = None

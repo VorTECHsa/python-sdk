@@ -1,10 +1,11 @@
-from dataclasses import dataclass
+from pydantic.dataclasses import dataclass
 from typing import List, Optional, Tuple
 
-from vortexasdk.api.serdes import FromDictMixin
+
 from vortexasdk.api.shared_types import (
-    EntityWithProbability,
+    EntityWithListLayerAndProbability,
     ID,
+    EntityWithSingleLayerAndProbability,
     IDLayer,
     IDNameLayer,
     Node,
@@ -22,7 +23,7 @@ class BoundingBox:
 
 
 @dataclass(frozen=True)
-class Geography(Node, FromDictMixin):
+class Geography(Node):
     """Represent a Geography reference record returned by the API."""
 
     id: ID
@@ -30,13 +31,11 @@ class Geography(Node, FromDictMixin):
     layer: List[str]
     exclusion_rule: List[IDNameLayer]
     hierarchy: List[IDLayer]
-    bounding_box: Optional[BoundingBox]
-    centre_point: Optional[Position]
-    location: Optional[Position]
+    pos: List[str]
 
 
 @dataclass(frozen=True)
-class GeographyEntity(EntityWithProbability):
+class GeographyEntity(EntityWithSingleLayerAndProbability):
     """
     Represents a hierarchy tree of locational data.
 

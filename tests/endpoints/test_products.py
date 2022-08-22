@@ -22,7 +22,7 @@ class TestProducts(TestCaseUsingMockAPI):
             ],
         }
 
-        Product.from_dict(crude_dict)
+        Product(**crude_dict)
 
     def test_search_ids_retreives_names(self):
         products = Products().search().to_df()

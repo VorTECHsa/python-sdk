@@ -7,7 +7,7 @@ from vortexasdk.endpoints.vessels_result import VesselsResult
 
 
 class TestVesselsSearchResult(TestCase):
-    vsr = VesselsResult(example_vessels)
+    vsr = VesselsResult(example_vessels, {})
 
     def test_to_df(self):
         df = self.vsr.to_df("all")

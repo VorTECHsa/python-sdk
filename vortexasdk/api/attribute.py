@@ -1,11 +1,13 @@
-from dataclasses import dataclass
+from pydantic.dataclasses import dataclass
 
-from vortexasdk.api.serdes import FromDictMixin
+
 from vortexasdk.api.shared_types import Node
 
 
-@dataclass(frozen=True,)
-class Attribute(Node, FromDictMixin):
+@dataclass(
+    frozen=True,
+)
+class Attribute(Node):
     """
     Represent an Attribute reference record returned by the API.
     """

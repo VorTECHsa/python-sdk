@@ -1,7 +1,7 @@
-from dataclasses import dataclass
-from typing import List, Optional, Tuple
+from pydantic.dataclasses import dataclass
+from typing import List, Optional
 
-from vortexasdk.api.serdes import FromDictMixin
+
 from vortexasdk.api.shared_types import ISODate
 
 
@@ -9,6 +9,7 @@ from vortexasdk.api.shared_types import ISODate
 class CorporateEntity:
     id: str
     label: str
+    layer: Optional[str] = None
 
 
 @dataclass(frozen=True)
@@ -19,10 +20,11 @@ class LocationDetails:
 
 
 @dataclass(frozen=True)
-class AssetTank(FromDictMixin):
+class AssetTank:
     """
     Represents an Asset Tank reference record returned by the API.
     """
+
     id: str
     capacity_bbl: int
     capacity_cbm: int

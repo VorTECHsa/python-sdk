@@ -1,10 +1,8 @@
-from dataclasses import dataclass
-
-from vortexasdk.api.serdes import FromDictMixin
+from pydantic.dataclasses import dataclass
 
 
 @dataclass(frozen=True)
-class AggregationBreakdownItem(FromDictMixin):
+class AggregationBreakdownItem:
     """
     Generic container class holding a `id <> value` pair, a `count` a `label`.
 

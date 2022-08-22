@@ -1,5 +1,5 @@
 from abc import ABC
-from dataclasses import dataclass
+from pydantic.dataclasses import dataclass
 from datetime import datetime
 from typing import List, Optional, Union
 
@@ -7,7 +7,7 @@ from vortexasdk.api.id import ID
 
 IDsNames = Union[List[Union[ID, str]], str, ID]
 
-ISODate = str
+ISODate = datetime
 
 
 # noinspection PyPep8Naming
@@ -15,21 +15,39 @@ def to_ISODate(utc_datetime: datetime) -> str:
     return utc_datetime.strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3] + "Z"
 
 
-def to_ISODate_Array(days: List[datetime]) -> List[ISODate]:
+def to_ISODate_Array(days: List[datetime]) -> List[str]:
     return [to_ISODate(date) for date in days]
 
 
 @dataclass(frozen=True)
-class Entity:
+class EntityWithSingleLayer:
     """Holds commonly used properties."""
 
     id: ID
-    label: Optional[str]
     layer: Optional[str]
+    label: Optional[str] = None
 
 
 @dataclass(frozen=True)
-class EntityWithProbability(Entity):
+class EntityWithSingleLayerAndTimespan:
+    id: ID
+    layer: Optional[str]
+    label: Optional[str] = None
+    start_timestamp: Optional[ISODate] = None
+    end_timestamp: Optional[ISODate] = None
+
+
+@dataclass(frozen=True)
+class EntityWithListLayer:
+    """Holds commonly used properties."""
+
+    id: ID
+    layer: Optional[List[str]]
+    label: Optional[str] = None
+
+
+@dataclass(frozen=True)
+class EntityWithSingleLayerAndProbability:
     """
     Extension of `Entity`, containing additional properties.
 
@@ -39,6 +57,25 @@ class EntityWithProbability(Entity):
 
     probability: float
     source: str
+    id: ID
+    layer: Optional[str] = None
+    label: Optional[str] = None
+
+
+@dataclass(frozen=True)
+class EntityWithListLayerAndProbability:
+    """
+    Extension of `Entity`, containing additional properties.
+
+    - `probability` the probability of an entity occurring.
+    - `source` the source of this entity, (is typically one of `['model', 'external_data']`
+    """
+
+    probability: float
+    source: str
+    id: ID
+    layer: Optional[List[str]]
+    label: Optional[str] = None
 
 
 @dataclass(frozen=True)
@@ -55,6 +92,7 @@ class IDLayer:
 
     id: ID
     layer: str
+    label: str
 
 
 @dataclass(frozen=True)
@@ -115,7 +153,7 @@ class Flag:
 
     tag: str
     flag: str
-    flag_country: Optional[str]
+    flag_country: Optional[str] = None
 
 
 @dataclass(frozen=True)

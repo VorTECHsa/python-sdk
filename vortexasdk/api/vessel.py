@@ -1,9 +1,11 @@
-from dataclasses import dataclass
-from typing import List, Optional
+from dataclasses import field
+from datetime import datetime
+from pydantic.dataclasses import dataclass
+from typing import List, Literal, Optional
 
 from vortexasdk.api.corporation import CorporateEntity
 from vortexasdk.api.id import ID
-from vortexasdk.api.serdes import FromDictMixin
+
 from vortexasdk.api.shared_types import (
     IDName,
     ISODate,
@@ -14,8 +16,30 @@ from vortexasdk.api.shared_types import (
 )
 
 
-@dataclass(frozen=True,)
-class Vessel(Node, FromDictMixin):
+@dataclass(frozen=True)
+class VesselEntityCorporateEntity:
+    id: ID
+    label: str
+    layer: str
+    end_timestamp: Optional[datetime] = None
+    start_timestamp: Optional[datetime] = None
+
+
+@dataclass(frozen=True)
+class VesselEntityCorporateEntityWithConfidence:
+    probability: float
+    source: str
+    id: ID
+    label: str
+    layer: str
+    end_timestamp: Optional[datetime] = None
+    start_timestamp: Optional[datetime] = None
+
+
+@dataclass(
+    frozen=True,
+)
+class Vessel(Node):
     """
     Represent a Vessel reference record returned by the API.
 
@@ -24,12 +48,14 @@ class Vessel(Node, FromDictMixin):
 
     related_names: List[str]
     mmsi: int
+    layer: List[str]
 
     tags: List[Tag]
     current_product_type: List
 
     vessel_class: str
 
+    corporate_entities: Optional[List[VesselEntityCorporateEntity]] = None
     dead_weight: Optional[int] = None
     cubic_capacity: Optional[int] = None
     to_bow: Optional[str] = None
@@ -41,10 +67,11 @@ class Vessel(Node, FromDictMixin):
     imo: Optional[int] = None
     gross_tonnage: Optional[int] = None
 
-    scrubber: Optional[Scrubber] = None
-    flag: Optional[Flag] = None
+    scrubber: Optional[List[Scrubber]] = None
+    flag: Optional[List[Flag]] = None
     ice_class: Optional[str] = None
     propulsion: Optional[str] = None
+    vessel_status: Optional[str] = Literal[""]
 
 
 @dataclass(frozen=True)
@@ -63,7 +90,7 @@ class VesselEntity(IDName):
     dwt: int
 
     vessel_class: str
-    corporate_entities: List[CorporateEntity]
+    corporate_entities: List[VesselEntityCorporateEntityWithConfidence]
     tags: List[Tag]
     status: str
     year: Optional[int] = None
@@ -76,7 +103,7 @@ class VesselEntity(IDName):
     end_timestamp: Optional[ISODate] = None
     fixture_id: Optional[str] = None
 
-    scrubber: Optional[Scrubber] = None
-    flag: Optional[Flag] = None
+    scrubber: List[Scrubber] = field(default_factory=list)
+    flag: List[Flag] = field(default_factory=list)
     ice_class: Optional[str] = None
     propulsion: Optional[str] = None
