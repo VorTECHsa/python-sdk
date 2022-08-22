@@ -3,8 +3,8 @@ from typing import List
 
 
 from vortexasdk.api.shared_types import (
-    EntityWithListLayer,
     EntityWithListLayerAndProbability,
+    EntityWithSingleLayer,
     EntityWithSingleLayerAndProbability,
     Node,
 )
@@ -20,7 +20,7 @@ class Product(Node):
 
     layer: List[str]
     meta: dict
-    hierarchy: List[EntityWithListLayer]
+    hierarchy: List[EntityWithSingleLayer]
 
 
 @dataclass(frozen=True)
