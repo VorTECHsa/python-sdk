@@ -7,7 +7,7 @@ from vortexasdk.api.product import ProductEntityWithSingleLayer
 class TestProductEntity(TestCase):
     def test_serialize(self):
         with open("tests/api/examples/product_entity1.json", "r") as f:
-            serialized = json.loads(f.read())
+            serialized = json.load(f)
             deserialized = ProductEntityWithSingleLayer(**serialized)
 
             expected = ProductEntityWithSingleLayer(

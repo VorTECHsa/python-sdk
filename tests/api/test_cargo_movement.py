@@ -100,7 +100,7 @@ class TestCargoMovement(TestCase):
 
     def test_serialize(self):
         with open("tests/api/examples/cargo_movements.json", "r") as f:
-            serialized = json.loads(f.read())[0]
+            serialized = json.load(f)[0]
             deserialized = CargoMovement(**serialized)
 
             assert self.cm == deserialized

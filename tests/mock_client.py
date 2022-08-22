@@ -18,7 +18,7 @@ from vortexasdk.search_response import SearchResponse
 
 def _read(example_file) -> List[Dict]:
     with open(f"tests/api/examples/{example_file}", "r") as f:
-        return json.loads(f.read())
+        return json.load(f)
 
 
 example_asset_tanks: List[Dict] = _read("asset_tanks.json")
