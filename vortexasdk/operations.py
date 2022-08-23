@@ -68,7 +68,7 @@ class Search:
         """
         self._resource = resource
 
-    def search(
+    def search_with_client(
         self,
         exact_term_match: bool = None,
         response_type: str = None,

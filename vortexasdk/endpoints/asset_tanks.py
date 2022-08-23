@@ -108,6 +108,11 @@ class AssetTanks(Reference, Search):
             "term": [str(e) for e in convert_to_list(term)],
         }
 
-        response = super().search(**search_params)
+        response = super().search_with_client(
+            exact_term_match=False,
+            response_type=None,
+            headers=None,
+            **search_params
+        )
 
         return AssetTankResult(response["data"], response["reference"])

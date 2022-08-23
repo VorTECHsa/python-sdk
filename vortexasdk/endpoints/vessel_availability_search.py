@@ -190,7 +190,7 @@ class VesselAvailabilitySearch(Search):
             "size": self._MAX_PAGE_RESULT_SIZE,
         }
 
-        response = super().search(**api_params)
+        response = super().search_with_client(**api_params)
 
         return VesselAvailabilityResult(
             response["data"], response["reference"]

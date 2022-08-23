@@ -95,6 +95,11 @@ class Attributes(Reference, Search):
             "type": type,
         }
 
-        response = super().search(**search_params)
+        response = super().search_with_client(
+            exact_term_match=False,
+            response_type=None,
+            headers=None,
+            **search_params
+        )
 
         return AttributeResult(response["data"], response["reference"])

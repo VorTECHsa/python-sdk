@@ -1,3 +1,4 @@
+from dataclasses import dataclass
 import functools
 import os
 from multiprocessing.pool import Pool
@@ -17,6 +18,7 @@ logger = get_logger(__name__)
 
 
 class CargoMovementsResult(Result):
+
     """
     Container class holdings search results returns from the cargo movements endpoint.
 

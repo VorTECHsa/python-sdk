@@ -232,6 +232,6 @@ class FleetUtilisationSpeedBreakdown(Search):
             "exclude": exclude_params,
         }
 
-        response = super().search(**api_params)
+        response = super().search_with_client(**api_params)
 
         return BreakdownResult(response["data"], response["reference"])

@@ -73,7 +73,7 @@ class Corporations(Reference, Search):
         """
         api_params: Dict[str, Any] = convert_values_to_list({"term": term})
 
-        response = super().search(
+        response = super().search_with_client(
             exact_term_match=exact_term_match, **api_params
         )
 

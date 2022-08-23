@@ -88,7 +88,9 @@ class VoyagesSearchEnriched(Search):
         vessel_risk_level_excluded: Union[str, List[str]] = None,
         has_ship_to_ship: bool = None,
         has_charterer: bool = None,
-    ) -> VoyagesSearchEnrichedFlattenedResult or VoyagesSearchEnrichedListResult:
+    ) -> Union[
+        VoyagesSearchEnrichedFlattenedResult, VoyagesSearchEnrichedListResult
+    ]:
         """
 
         Returns one record per voyage, containing a selection of information about the voyage.
@@ -317,12 +319,14 @@ class VoyagesSearchEnriched(Search):
         }
 
         if columns is None:
-            response = super().search(**api_params)
+            response = super().search_with_client(**api_params)
             return VoyagesSearchEnrichedListResult(
                 response["data"], response["reference"]
             )
         else:
-            response = super().search(headers=self._CSV_HEADERS, **api_params)
+            response = super().search_with_client(
+                headers=self._CSV_HEADERS, **api_params
+            )
             return VoyagesSearchEnrichedFlattenedResult(
                 response["data"], response["reference"]
             )

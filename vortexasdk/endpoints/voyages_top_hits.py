@@ -329,7 +329,9 @@ class VoyagesTopHits(Search):
             ),
         }
 
-        response = super().search(response_type="breakdown", **api_params)
+        response = super().search_with_client(
+            response_type="breakdown", **api_params
+        )
 
         return AggregationBreakdownResult(
             response["data"], response["reference"]

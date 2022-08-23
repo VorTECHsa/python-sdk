@@ -190,6 +190,8 @@ class VesselAvailabilityTimeseries(Search):
             "exclude": exclude_params,
         }
 
-        response = super().search(response_type="breakdown", **api_params)
+        response = super().search_with_client(
+            response_type="breakdown", **api_params
+        )
 
         return TimeSeriesResult(response["data"], response["reference"])

@@ -79,7 +79,7 @@ class Products(Reference, Search):
             "allowTopLevelProducts": True,
         }
 
-        response = super().search(
+        response = super().search_with_client(
             exact_term_match=exact_term_match, **api_params
         )
 

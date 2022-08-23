@@ -95,6 +95,11 @@ class StorageTerminals(Reference, Search):
             "ids": convert_to_list(ids),
         }
 
-        response = super().search(**search_params)
+        response = super().search_with_client(
+            exact_term_match=None,
+            response_type=None,
+            headers=None,
+            **search_params
+        )
 
         return StorageTerminalResult(response["data"], response["reference"])

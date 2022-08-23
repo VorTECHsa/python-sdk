@@ -258,6 +258,6 @@ class FleetUtilisationQuantityTimeseries(Search):
             "crossfilters": crossfilters,
         }
 
-        response = super().search(**api_params)
+        response = super().search_with_client(**api_params)
 
         return BreakdownResult(response["data"], response["reference"])

@@ -54,6 +54,7 @@ class Vessel(Node):
     current_product_type: List
 
     vessel_class: str
+    vessel_status: Literal[""]
 
     corporate_entities: Optional[List[VesselEntityCorporateEntity]] = None
     dead_weight: Optional[int] = None
@@ -71,7 +72,6 @@ class Vessel(Node):
     flag: Optional[List[Flag]] = None
     ice_class: Optional[str] = None
     propulsion: Optional[str] = None
-    vessel_status: Optional[str] = Literal[""]
 
 
 @dataclass(frozen=True)

@@ -296,7 +296,7 @@ class VoyagesCongestionBreakdown(Search):
             "order_direction": order_direction,
         }
 
-        response = super().search(**api_params)
+        response = super().search_with_client(**api_params)
 
         return CongestionBreakdownResult(
             response["data"], response["reference"]

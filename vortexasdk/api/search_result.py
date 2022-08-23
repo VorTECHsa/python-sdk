@@ -1,6 +1,6 @@
 from dataclasses import field
 from pydantic.dataclasses import dataclass
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
 
 import pandas as pd
 
@@ -16,7 +16,7 @@ class Result:
         """Represent *records* as a list."""
         return self.records
 
-    def to_df(self, columns=None) -> pd.DataFrame:
+    def to_df(self, columns: Optional[List[str]] = None) -> pd.DataFrame:
         """Represent *records* as a `pd.DataFrame` with given columns."""
         pass
 

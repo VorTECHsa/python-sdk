@@ -89,6 +89,11 @@ class EIAForecasts(Search):
             "filter_time_max": to_ISODate(filter_time_max),
         }
 
-        response = super().search(**search_params)
+        response = super().search_with_client(
+            exact_term_match=None,
+            response_type=None,
+            headers=None,
+            **search_params
+        )
 
         return EIAForecastResult(response["data"], response["reference"])

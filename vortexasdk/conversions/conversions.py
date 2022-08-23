@@ -27,9 +27,9 @@ def _search_ids(searcher: Search, **kwargs) -> List[ID]:
         f"Searching {searcher.__class__.__name__} matching search terms: {kwargs}"
     )
 
-    results = searcher.search(**kwargs)
+    results = searcher.search_with_client(**kwargs)
 
-    id_to_name = {r["id"]: r["name"] for r in results}
+    id_to_name = {r["id"]: r["name"] for r in results["data"]}
 
     logger.info(
         f"Found {len(results)} {searcher.__class__.__name__}: {id_to_name}"

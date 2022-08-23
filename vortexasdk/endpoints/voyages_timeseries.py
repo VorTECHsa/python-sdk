@@ -295,6 +295,8 @@ class VoyagesTimeseries(Search):
             ),
         }
 
-        response = super().search(response_type="breakdown", **api_params)
+        response = super().search_with_client(
+            response_type="breakdown", **api_params
+        )
 
         return BreakdownResult(response["data"], response["reference"])
