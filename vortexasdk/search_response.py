@@ -1,6 +1,6 @@
 from typing import Any, Dict, List
 
-from typing import TypedDict
+from typing_extensions import TypedDict
 
 
 class SearchResponse(TypedDict):
