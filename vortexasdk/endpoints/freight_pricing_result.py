@@ -80,10 +80,10 @@ class FreightPricingResult(Result):
         if columns is None:
             columns = DEFAULT_COLUMNS
 
-        logger.debug("Converting each Freight Pricing object to a flat dictionary")
-        flatten = functools.partial(
-            convert_to_flat_dict, cols=columns
+        logger.debug(
+            "Converting each Freight Pricing object to a flat dictionary"
         )
+        flatten = functools.partial(convert_to_flat_dict, cols=columns)
 
         with Pool(os.cpu_count()) as pool:
             records = pool.map(flatten, super().to_list())
@@ -97,11 +97,10 @@ class FreightPricingResult(Result):
 
 
 DEFAULT_COLUMNS = [
-    'short_code',
-    'rate'
-    'rate_unit',
-    'cost',
-    'cost_unit',
-    'tce',
-    'tce_unit'
+    "short_code",
+    "rate" "rate_unit",
+    "cost",
+    "cost_unit",
+    "tce",
+    "tce_unit",
 ]

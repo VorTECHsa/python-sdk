@@ -11,9 +11,7 @@ class TestAttributes(TestCaseUsingMockAPI):
         assert names == ["Open Loop", "Unknown", "DFDE"]
 
     def test_search_names(self):
-        attributes = (
-            Attributes().search(ids=["14c7b073809eb565"]).to_list()
-        )
+        attributes = Attributes().search(ids=["14c7b073809eb565"]).to_list()
 
         names = [a.name for a in attributes]
         assert "Open Loop" in names

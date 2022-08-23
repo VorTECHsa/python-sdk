@@ -34,7 +34,7 @@ class TestFleetUtilisationSpeedBreakdownReal(TestCaseUsingRealAPI):
         n_days = (end - start).days + 1
 
         assert n_days == len(result)
-   
+
     def test_search_returns_for_mps(self):
         start = datetime(2019, 11, 1)
         end = datetime(2019, 11, 10)
@@ -87,8 +87,15 @@ class TestFleetUtilisationSpeedBreakdownReal(TestCaseUsingRealAPI):
         n_days = (end - start).days + 1
 
         assert len(df) == n_days
-        assert list(df.columns) == ["key", "value", "count", "breakdown.0.label", "breakdown.0.count", "breakdown.0.value"]
-   
+        assert list(df.columns) == [
+            "key",
+            "value",
+            "count",
+            "breakdown.0.label",
+            "breakdown.0.count",
+            "breakdown.0.value",
+        ]
+
     def test_with_params(self):
 
         df = (
@@ -103,10 +110,18 @@ class TestFleetUtilisationSpeedBreakdownReal(TestCaseUsingRealAPI):
                 breakdown_frequency="week",
                 breakdown_property="vessel_class",
             )
-            .to_df().head()
+            .to_df()
+            .head()
         )
 
-        assert list(df.columns) == ["key", "value", "count", "breakdown.0.label", "breakdown.0.count", "breakdown.0.value"]
+        assert list(df.columns) == [
+            "key",
+            "value",
+            "count",
+            "breakdown.0.label",
+            "breakdown.0.count",
+            "breakdown.0.value",
+        ]
 
     def test_to_list(self):
         start = datetime(2019, 11, 1)
