@@ -31,7 +31,6 @@ class AssetTank:
     capacity_ton: int
     corporate_entity_details: CorporateEntity
     corporate_entity_id: str
-    crude_confidence: str
     leaf: bool
     location_id: str
     location_details: List[LocationDetails]
@@ -44,3 +43,4 @@ class AssetTank:
     storage_terminal_name: str
     storage_type: str
     last_updated: ISODate
+    crude_confidence: Optional[str] = None

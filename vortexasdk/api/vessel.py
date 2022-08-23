@@ -2,7 +2,6 @@ from dataclasses import field
 from datetime import datetime
 from pydantic.dataclasses import dataclass
 from typing import List, Optional
-from typing_extensions import Literal
 
 from vortexasdk.api.id import ID
 
@@ -54,7 +53,7 @@ class Vessel(Node):
     current_product_type: List
 
     vessel_class: str
-    vessel_status: Literal[""]
+    vessel_status: str
 
     corporate_entities: Optional[List[VesselEntityCorporateEntity]] = None
     dead_weight: Optional[int] = None
