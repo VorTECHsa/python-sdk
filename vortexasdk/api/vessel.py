@@ -1,9 +1,9 @@
 from dataclasses import field
 from datetime import datetime
 from pydantic.dataclasses import dataclass
-from typing import List, Literal, Optional
+from typing import List, Optional
+from typing_extensions import Literal
 
-from vortexasdk.api.corporation import CorporateEntity
 from vortexasdk.api.id import ID
 
 from vortexasdk.api.shared_types import (

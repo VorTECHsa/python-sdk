@@ -1,5 +1,6 @@
 from pydantic.dataclasses import dataclass
-from typing import Any, List, Literal, Optional, Union
+from typing import List, Optional, Union
+from typing_extensions import Literal
 from vortexasdk.api.id import ID
 from dataclasses import field
 

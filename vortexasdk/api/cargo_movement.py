@@ -1,7 +1,7 @@
 from pydantic import Field
 from pydantic.dataclasses import dataclass
-from typing import List, Literal, Optional, Union
-from typing_extensions import Annotated
+from typing import List, Optional, Union
+from typing_extensions import Annotated, Literal
 
 from vortexasdk.api.geography import GeographyEntity
 from vortexasdk.api.product import ProductEntityWithSingleLayer
