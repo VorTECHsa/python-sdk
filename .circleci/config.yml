@@ -17,7 +17,7 @@ jobs:
             . .venv/bin/activate
             pip install -U pip
             pip install -e .[tests]
-            mypy --install-types
+            mypy --install-types --python-executable
 
       - save_cache: &save_cache
           key: v3-{{ .Branch }}-{{ checksum "setup.py" }}
