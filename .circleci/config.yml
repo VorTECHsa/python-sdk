@@ -8,6 +8,7 @@ jobs:
       - checkout
       - restore_cache: &restore_cache
           keys:
+            - v3-{{ .Branch }}-{{ checksum "setup.py" }}
             - v3-{{ .Branch }}-
       - run:
           name: "Install setup.py"
@@ -18,7 +19,7 @@ jobs:
             pip install -e .[tests]
 
       - save_cache: &save_cache
-          key: v3-{{ .Branch }}-{{ epoch }}
+          key: v3-{{ .Branch }}-{{ checksum "setup.py" }}
           paths:
             - ~/project/.venv
             - ~/.cache/pip
@@ -31,6 +32,7 @@ jobs:
       - checkout
       - restore_cache: &restore_cache
           keys:
+            - v3-{{ .Branch }}-{{ checksum "setup.py" }}
             - v3-{{ .Branch }}-
       - run:
           name: "Check Linting"
@@ -46,6 +48,7 @@ jobs:
       - checkout
       - restore_cache: &restore_cache
           keys:
+            - v3-{{ .Branch }}-{{ checksum "setup.py" }}
             - v3-{{ .Branch }}-
 
       - run:
@@ -77,6 +80,7 @@ jobs:
       - checkout
       - restore_cache: &restore_cache
           keys:
+            - v3-{{ .Branch }}-{{ checksum "setup.py" }}
             - v3-{{ .Branch }}-
 
       - run:
@@ -122,6 +126,7 @@ jobs:
       - checkout
       - restore_cache: &restore_cache
           keys:
+            - v3-{{ .Branch }}-{{ checksum "setup.py" }}
             - v3-{{ .Branch }}-
 
       - run:
@@ -139,6 +144,7 @@ jobs:
       - checkout
       - restore_cache: &restore_cache
           keys:
+            - v3-{{ .Branch }}-{{ checksum "setup.py" }}
             - v3-{{ .Branch }}-
       - run:
           name: "Check proposed release version is valid next semver"
@@ -154,6 +160,7 @@ jobs:
       - checkout
       - restore_cache: &restore_cache
           keys:
+            - v3-{{ .Branch }}-{{ checksum "setup.py" }}
             - v3-{{ .Branch }}-
       - add_ssh_keys:
           fingerprints:
