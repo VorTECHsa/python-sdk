@@ -9,7 +9,6 @@ jobs:
       - restore_cache: &restore_cache
           keys:
             - v3-{{ .Branch }}-{{ checksum "setup.py" }}
-            - v3-{{ .Branch }}-
       - run:
           name: "Install setup.py"
           command: |
@@ -33,7 +32,6 @@ jobs:
       - restore_cache: &restore_cache
           keys:
             - v3-{{ .Branch }}-{{ checksum "setup.py" }}
-            - v3-{{ .Branch }}-
       - run:
           name: "Check Linting"
           command: |
@@ -49,7 +47,6 @@ jobs:
       - restore_cache: &restore_cache
           keys:
             - v3-{{ .Branch }}-{{ checksum "setup.py" }}
-            - v3-{{ .Branch }}-
 
       - run:
           name: "Run doctests"
@@ -81,7 +78,6 @@ jobs:
       - restore_cache: &restore_cache
           keys:
             - v3-{{ .Branch }}-{{ checksum "setup.py" }}
-            - v3-{{ .Branch }}-
 
       - run:
           name: "Run all examples"
@@ -127,7 +123,6 @@ jobs:
       - restore_cache: &restore_cache
           keys:
             - v3-{{ .Branch }}-{{ checksum "setup.py" }}
-            - v3-{{ .Branch }}-
 
       - run:
           name: "Run all tests"
@@ -145,7 +140,6 @@ jobs:
       - restore_cache: &restore_cache
           keys:
             - v3-{{ .Branch }}-{{ checksum "setup.py" }}
-            - v3-{{ .Branch }}-
       - run:
           name: "Check proposed release version is valid next semver"
           command: |
@@ -161,7 +155,6 @@ jobs:
       - restore_cache: &restore_cache
           keys:
             - v3-{{ .Branch }}-{{ checksum "setup.py" }}
-            - v3-{{ .Branch }}-
       - add_ssh_keys:
           fingerprints:
             - "b7:35:38:7a:76:62:44:82:28:93:77:f1:9c:f1:35:8c"
