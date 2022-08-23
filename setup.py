@@ -25,11 +25,11 @@ setuptools.setup(
     ],
     python_requires=">=3.7",
     install_requires=[
-        "flatten-dict==0.2.0",
+        "flatten-dict==0.4.2",
         "jupyter==1.0.0",
         "matplotlib==3.3.4",
         "pandas>=0.25.2",
-        "requests==2.27.1",
+        "requests==2.28.1",
         "statsmodels==0.12.2",
         "tqdm==4.38.0",
         "pydantic==1.9.2",
@@ -47,6 +47,9 @@ setuptools.setup(
             "tabulate==0.8.7",
             "xlrd==1.2.0",
             "openpyxl==3.0.7",
+            "types-requests==2.28.9",
+            "types-urllib3==1.26.23",
+            "types-tabulate==0.8.11"
         ],
         "deploy": ["wheel==0.36.2", "twine==3.3.0"],
     },
