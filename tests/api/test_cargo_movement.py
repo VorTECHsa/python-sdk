@@ -1,4 +1,3 @@
-from dataclasses import asdict
 import datetime
 from unittest import TestCase
 
@@ -106,7 +105,7 @@ class TestCargoMovement(TestCase):
             assert self.cm == deserialized
 
     def test_convert_to_flat_dict(self):
-        flat = convert_cargo_movement_to_flat_dict(asdict(self.cm))
+        flat = convert_cargo_movement_to_flat_dict(self.cm.dict())
 
         expected = {
             "cargo_movement_id": "00886b05a0747522b67322f50123ee60e61e219fc9a9c6011be1a1dade65f63e",

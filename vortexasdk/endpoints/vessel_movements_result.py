@@ -4,7 +4,7 @@ from multiprocessing.pool import Pool
 from typing import List
 
 import pandas as pd
-
+from pydantic import BaseModel
 from vortexasdk.api import VesselMovement
 from vortexasdk.api.entity_flattening import (
     convert_vessel_movement_to_flat_dict,
@@ -16,7 +16,7 @@ from vortexasdk.logger import get_logger
 logger = get_logger(__name__)
 
 
-class VesselMovementsResult(Result):
+class VesselMovementsResult(Result, BaseModel):
     """
     Container class holdings search results returns from the vessel movements endpoint.
 

@@ -6,11 +6,11 @@ from vortexasdk.api.search_result import Result
 from vortexasdk.api.voyages import VoyageEnrichedItem
 from vortexasdk.logger import get_logger
 from vortexasdk.result_conversions import create_list
-
+from pydantic import BaseModel
 logger = get_logger(__name__)
 
 
-class VoyagesSearchEnrichedFlattenedResult(Result):
+class VoyagesSearchEnrichedFlattenedResult(Result, BaseModel):
     """
     Container class holdings search results returned from the voyages endpoint.
 
@@ -40,7 +40,7 @@ class VoyagesSearchEnrichedFlattenedResult(Result):
         return pd.DataFrame(data=super().to_list())
 
 
-class VoyagesSearchEnrichedListResult(Result):
+class VoyagesSearchEnrichedListResult(Result, BaseModel):
     """
     Container class holdings search results returned from the voyages endpoint.
 

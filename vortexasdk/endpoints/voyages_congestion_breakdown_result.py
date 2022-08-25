@@ -4,7 +4,7 @@ from multiprocessing.pool import Pool
 from typing import List
 
 import pandas as pd
-
+from pydantic import BaseModel
 from vortexasdk.api.entity_flattening import convert_to_flat_dict
 from vortexasdk.api.search_result import Result
 from vortexasdk.api.voyages import CongestionBreakdownItem
@@ -14,7 +14,7 @@ from vortexasdk.logger import get_logger
 logger = get_logger(__name__)
 
 
-class CongestionBreakdownResult(Result):
+class CongestionBreakdownResult(Result, BaseModel):
     """
     Container class holdings search results returns from the voyages congestion breakdown endpoint.
 

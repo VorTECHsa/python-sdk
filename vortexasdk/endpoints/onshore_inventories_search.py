@@ -151,5 +151,5 @@ class OnshoreInventoriesSearch(Search):
         response = super().search_with_client(**api_params)
 
         return OnshoreInventoriesResult(
-            response["data"], response["reference"]
+            records=response["data"], reference=response["reference"]
         )

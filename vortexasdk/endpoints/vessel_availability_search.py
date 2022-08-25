@@ -193,5 +193,5 @@ class VesselAvailabilitySearch(Search):
         response = super().search_with_client(**api_params)
 
         return VesselAvailabilityResult(
-            response["data"], response["reference"]
+            records=response["data"], reference=response["reference"]
         )

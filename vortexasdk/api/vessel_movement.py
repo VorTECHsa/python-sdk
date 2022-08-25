@@ -1,4 +1,4 @@
-from pydantic.dataclasses import dataclass
+from pydantic import BaseModel
 from typing import List, Optional
 
 from vortexasdk.api.geography import GeographyEntity
@@ -9,8 +9,8 @@ from vortexasdk.api.shared_types import ISODate
 from vortexasdk.api.vessel import VesselEntity
 
 
-@dataclass(frozen=True)
-class VesselEvent:
+
+class VesselEvent(BaseModel):
     """Represent an event that occurred to a vessel during a vessel movement."""
 
     event_type: str
@@ -22,15 +22,15 @@ class VesselEvent:
     end_timestamp: Optional[ISODate] = None
 
 
-@dataclass(frozen=True)
-class VesselMovementCargo:
+
+class VesselMovementCargo(BaseModel):
     cargo_movement_id: ID
     quantity: float
     product: List[ProductEntityWithSingleLayer]
 
 
-@dataclass(frozen=True)
-class VesselMovement:
+
+class VesselMovement(BaseModel):
     """
     [Vessel Movement Further Documentation](https://docs.vortexa.com/reference/intro-vessel-movement)
 

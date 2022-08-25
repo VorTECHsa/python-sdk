@@ -6,7 +6,7 @@ from vortexasdk.endpoints.storage_terminals_result import StorageTerminalResult
 
 
 class TestStorageTerminals(TestCaseUsingMockAPI):
-    st = StorageTerminalResult(example_storage_terminals)
+    st = StorageTerminalResult(records=example_storage_terminals, reference={})
 
     def test_search(self):
         terminals = StorageTerminals().search().to_df()

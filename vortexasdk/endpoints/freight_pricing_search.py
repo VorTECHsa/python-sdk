@@ -91,4 +91,4 @@ class FreightPricingSearch(Search):
 
         response = super().search_with_client(**api_params)
 
-        return FreightPricingResult(response["data"], response["reference"])
+        return FreightPricingResult(records=response["data"], reference=response["reference"])

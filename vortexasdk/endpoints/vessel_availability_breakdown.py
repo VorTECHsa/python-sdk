@@ -180,4 +180,4 @@ class VesselAvailabilityBreakdown(Search):
             response_type="breakdown", **api_params
         )
 
-        return TimeSeriesResult(response["data"], response["reference"])
+        return TimeSeriesResult(records=response["data"], reference=response["reference"])

@@ -1,19 +1,19 @@
 from typing import List, Optional
-from pydantic.dataclasses import dataclass
+from pydantic import BaseModel
 
 from vortexasdk.api import ISODate
 
 
-@dataclass(frozen=True)
-class TimeSeriesBreakdownItem:
+
+class TimeSeriesBreakdownItem(BaseModel):
     id: str
     label: str
     value: float
     count: int
 
 
-@dataclass(frozen=True)
-class TimeSeriesItem:
+
+class TimeSeriesItem(BaseModel):
     """
     Generic container class holding a `key <> value` pair, a `count` of records contributing to the given value.
 

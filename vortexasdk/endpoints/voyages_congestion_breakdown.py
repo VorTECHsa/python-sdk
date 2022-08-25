@@ -299,5 +299,5 @@ class VoyagesCongestionBreakdown(Search):
         response = super().search_with_client(**api_params)
 
         return CongestionBreakdownResult(
-            response["data"], response["reference"]
+            records=response["data"], reference=response["reference"]
         )

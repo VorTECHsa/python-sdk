@@ -234,4 +234,4 @@ class FleetUtilisationSpeedBreakdown(Search):
 
         response = super().search_with_client(**api_params)
 
-        return BreakdownResult(response["data"], response["reference"])
+        return BreakdownResult(records=response["data"], reference=response["reference"])

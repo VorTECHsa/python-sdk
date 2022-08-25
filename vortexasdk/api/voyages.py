@@ -1,8 +1,8 @@
-from pydantic.dataclasses import dataclass
+from pydantic import BaseModel, Field
 from typing import List, Optional, Union
 from typing_extensions import Literal
 from vortexasdk.api.id import ID
-from dataclasses import field
+
 
 from vortexasdk.api.shared_types import (
     EntityWithListLayer,
@@ -15,8 +15,8 @@ from vortexasdk.api.shared_types import (
 )
 
 
-@dataclass(frozen=True)
-class CongestionBreakdownItem:
+
+class CongestionBreakdownItem(BaseModel):
     """
 
     Congestion breakdown shows various stats of vessels in congestion.
@@ -36,11 +36,11 @@ class CongestionBreakdownItem:
     vessel_dwt_ballast: int
     vessel_cubic_capacity_ballast: int
     vessel_count_ballast: int
-    location_details: List[EntityWithListLayer] = field(default_factory=list)
+    location_details: List[EntityWithListLayer] = Field(default_factory=list)
 
 
-@dataclass(frozen=True)
-class VoyagesVesselEntity:
+
+class VoyagesVesselEntity(BaseModel):
     """
     A VoyagesVesselEntity represents a vessel record used in Voyages.
 
@@ -56,16 +56,16 @@ class VoyagesVesselEntity:
     call_sign: Optional[str] = None
     cubic_capacity: Optional[int] = None
     year: Optional[int] = None
-    flag: List[Flag] = field(default_factory=list)
-    scrubber: List[Scrubber] = field(default_factory=list)
+    flag: List[Flag] = Field(default_factory=list)
+    scrubber: List[Scrubber] = Field(default_factory=list)
     ice_class: Optional[str] = None
     propulsion: Optional[str] = None
-    tags: List[Tag] = field(default_factory=list)
+    tags: List[Tag] = Field(default_factory=list)
     vessel_risk_level: Optional[str] = None
 
 
-@dataclass(frozen=True)
-class VoyageVesselEvent:
+
+class VoyageVesselEvent(BaseModel):
     """
     A vessel event represents an activity that a vessel has performed during a voyage
 
@@ -83,22 +83,22 @@ class VoyageVesselEvent:
     activity: Optional[str] = None
     odometer_start: Optional[int] = None
     odometer_end: Optional[int] = None
-    location_layer: List[str] = field(default_factory=list)
+    location_layer: List[str] = Field(default_factory=list)
     cargo_movement_id: Optional[List[str]] = None
     sts_event_counterparty_vessel_id: Optional[str] = None
     waiting_event_target_geography_id: Optional[str] = None
     fixture_event_fixing_timestamp: Optional[ISODate] = None
-    tags: List[Tag] = field(default_factory=list)
+    tags: List[Tag] = Field(default_factory=list)
     probability: Optional[int] = None
-    location_details: List[EntityWithSingleLayer] = field(default_factory=list)
+    location_details: List[EntityWithSingleLayer] = Field(default_factory=list)
     is_open_event: Optional[bool] = None
     waiting_event_target_geography_details: Optional[
         List[EntityWithSingleLayer]
     ] = None
 
 
-@dataclass(frozen=True)
-class VoyageCargoEvent:
+
+class VoyageCargoEvent(BaseModel):
     """
     Cargo events relate to the movement of cargo during the voyage.
 
@@ -123,18 +123,18 @@ class VoyageCargoEvent:
     odometer_end: Optional[int] = None
     cargo_destination_id: Optional[str] = None
     tonne_miles: Optional[int] = None
-    product_details: List[EntityWithSingleLayer] = field(default_factory=list)
-    cargo_origin_details: List[EntityWithSingleLayer] = field(
+    product_details: List[EntityWithSingleLayer] = Field(default_factory=list)
+    cargo_origin_details: List[EntityWithSingleLayer] = Field(
         default_factory=list
     )
-    cargo_destination_details: List[EntityWithSingleLayer] = field(
+    cargo_destination_details: List[EntityWithSingleLayer] = Field(
         default_factory=list
     )
     is_open_event: Optional[bool] = None
 
 
-@dataclass(frozen=True)
-class VoyageStatusEvent:
+
+class VoyageStatusEvent(BaseModel):
     """
     Status events describe the status of the voyage at a given period.
 
@@ -154,8 +154,8 @@ class VoyageStatusEvent:
     is_open_event: Optional[bool] = None
 
 
-@dataclass(frozen=True)
-class VoyageEnrichedItem:
+
+class VoyageEnrichedItem(BaseModel):
     """
 
     A voyage is defined as a continuous period of time when the vessel is either laden or ballast.
@@ -176,17 +176,17 @@ class VoyageEnrichedItem:
     end_event_id: Optional[ID] = None
     previous_voyage_id: Optional[ID] = None
     next_voyage_id: Optional[ID] = None
-    latest_product_ids: List[ID] = field(default_factory=list)
-    tags: List[Tag] = field(default_factory=list)
+    latest_product_ids: List[ID] = Field(default_factory=list)
+    tags: List[Tag] = Field(default_factory=list)
     tonne_miles: Optional[int] = None
-    corporate_entities: List[EntityWithSingleLayerAndTimespan] = field(
+    corporate_entities: List[EntityWithSingleLayerAndTimespan] = Field(
         default_factory=list
     )
     odometer_start: Optional[int] = None
     odometer_end: Optional[int] = None
     events: List[
         Optional[Union[VoyageVesselEvent, VoyageCargoEvent, VoyageStatusEvent]]
-    ] = field(default_factory=list)
-    latest_product_details: List[EntityWithSingleLayer] = field(
+    ] = Field(default_factory=list)
+    latest_product_details: List[EntityWithSingleLayer] = Field(
         default_factory=list
     )

@@ -83,7 +83,7 @@ class Products(Reference, Search):
             exact_term_match=exact_term_match, **api_params
         )
 
-        return ProductResult(response["data"], response["reference"])
+        return ProductResult(records=response["data"], reference=response["reference"])
 
     def reference(self, id: ID) -> Dict:
         """

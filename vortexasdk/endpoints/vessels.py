@@ -111,7 +111,7 @@ class Vessels(Reference, Search):
             exact_term_match=exact_term_match, **api_params
         )
 
-        return VesselsResult(response["data"], response["reference"])
+        return VesselsResult(records=response["data"], reference=response["reference"])
 
     def reference(self, id: ID) -> Dict:
         """

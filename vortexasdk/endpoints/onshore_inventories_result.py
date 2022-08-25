@@ -10,11 +10,11 @@ from vortexasdk.api.entity_flattening import convert_to_flat_dict
 from vortexasdk.api.search_result import Result
 from vortexasdk.result_conversions import create_dataframe, create_list
 from vortexasdk.logger import get_logger
-
+from pydantic import BaseModel
 logger = get_logger(__name__)
 
 
-class OnshoreInventoriesResult(Result):
+class OnshoreInventoriesResult(Result, BaseModel):
     """
     Container class holdings search results returns from the availability endpoint.
 

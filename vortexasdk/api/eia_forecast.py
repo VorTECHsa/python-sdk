@@ -1,9 +1,9 @@
-from pydantic.dataclasses import dataclass
+from pydantic import BaseModel
 from typing import Optional
 
 
-@dataclass(frozen=True)
-class EIAForecast:
+
+class EIAForecast(BaseModel):
     """Represent a EIA forecast record returned by the API."""
 
     date: str

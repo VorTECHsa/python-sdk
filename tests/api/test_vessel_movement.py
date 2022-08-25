@@ -1,4 +1,3 @@
-from dataclasses import asdict
 import datetime
 from unittest import TestCase
 
@@ -257,7 +256,7 @@ class TestVesselMovement(TestCase):
         assert self.vm == deserialized
 
     def test_flatten(self):
-        d = asdict(self.vm)
+        d = self.vm.dict()
         flat = convert_vessel_movement_to_flat_dict(d)
 
         expected = {

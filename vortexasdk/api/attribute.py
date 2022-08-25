@@ -1,13 +1,10 @@
-from pydantic.dataclasses import dataclass
+from pydantic import BaseModel
 
 
 from vortexasdk.api.shared_types import Node
 
 
-@dataclass(
-    frozen=True,
-)
-class Attribute(Node):
+class Attribute(Node, BaseModel):
     """
     Represent an Attribute reference record returned by the API.
     """

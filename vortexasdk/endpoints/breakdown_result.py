@@ -1,7 +1,7 @@
 from typing import List
 from vortexasdk.api.entity_flattening import convert_to_flat_dict
 from vortexasdk.api.breakdown_item import BreakdownItem
-
+from pydantic import BaseModel
 import pandas as pd
 import functools
 import os
@@ -14,7 +14,7 @@ from vortexasdk.result_conversions import create_dataframe, create_list
 logger = get_logger(__name__)
 
 
-class BreakdownResult(Result):
+class BreakdownResult(Result, BaseModel):
     """Container class that holds the result obtained from calling a breakdown endpoint."""
 
     def to_list(self) -> List[BreakdownItem]:

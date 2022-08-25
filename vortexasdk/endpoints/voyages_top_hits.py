@@ -334,5 +334,5 @@ class VoyagesTopHits(Search):
         )
 
         return AggregationBreakdownResult(
-            response["data"], response["reference"]
+            records=response["data"], reference=response["reference"]
         )

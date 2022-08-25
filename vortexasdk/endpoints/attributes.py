@@ -102,4 +102,4 @@ class Attributes(Reference, Search):
             **search_params
         )
 
-        return AttributeResult(response["data"], response["reference"])
+        return AttributeResult(records=response["data"], reference=response["reference"])

@@ -6,11 +6,11 @@ from vortexasdk.logger import get_logger
 from vortexasdk.api import Vessel
 from vortexasdk.api.search_result import Result
 from vortexasdk.result_conversions import create_dataframe, create_list
-
+from pydantic import BaseModel
 logger = get_logger(__name__)
 
 
-class VesselsResult(Result):
+class VesselsResult(Result, BaseModel):
     """Container class that holds the result obtained from calling the `Vessels` endpoint."""
 
     def to_list(self) -> List[Vessel]:

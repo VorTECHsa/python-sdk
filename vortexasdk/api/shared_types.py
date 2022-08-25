@@ -1,5 +1,5 @@
 from abc import ABC
-from pydantic.dataclasses import dataclass
+from pydantic import BaseModel
 from datetime import datetime
 from typing import List, Optional, Union
 
@@ -19,8 +19,8 @@ def to_ISODate_Array(days: List[datetime]) -> List[str]:
     return [to_ISODate(date) for date in days]
 
 
-@dataclass(frozen=True)
-class EntityWithSingleLayer:
+
+class EntityWithSingleLayer(BaseModel):
     """Holds commonly used properties."""
 
     id: ID
@@ -28,8 +28,8 @@ class EntityWithSingleLayer:
     label: Optional[str] = None
 
 
-@dataclass(frozen=True)
-class EntityWithSingleLayerAndTimespan:
+
+class EntityWithSingleLayerAndTimespan(BaseModel):
     id: ID
     layer: Optional[str]
     label: Optional[str] = None
@@ -37,8 +37,8 @@ class EntityWithSingleLayerAndTimespan:
     end_timestamp: Optional[ISODate] = None
 
 
-@dataclass(frozen=True)
-class EntityWithListLayer:
+
+class EntityWithListLayer(BaseModel):
     """Holds commonly used properties."""
 
     id: ID
@@ -46,8 +46,8 @@ class EntityWithListLayer:
     label: Optional[str] = None
 
 
-@dataclass(frozen=True)
-class EntityWithSingleLayerAndProbability:
+
+class EntityWithSingleLayerAndProbability(BaseModel):
     """
     Extension of `Entity`, containing additional properties.
 
@@ -62,8 +62,8 @@ class EntityWithSingleLayerAndProbability:
     label: Optional[str] = None
 
 
-@dataclass(frozen=True)
-class EntityWithListLayerAndProbability:
+
+class EntityWithListLayerAndProbability(BaseModel):
     """
     Extension of `Entity`, containing additional properties.
 
@@ -78,16 +78,16 @@ class EntityWithListLayerAndProbability:
     label: Optional[str] = None
 
 
-@dataclass(frozen=True)
-class IDName:
+
+class IDName(BaseModel):
     """Tuple containing `id` and `name`."""
 
     id: ID
     name: str
 
 
-@dataclass(frozen=True)
-class IDLayer:
+
+class IDLayer(BaseModel):
     """Tuple containing `id` and `layer`."""
 
     id: ID
@@ -95,8 +95,8 @@ class IDLayer:
     label: str
 
 
-@dataclass(frozen=True)
-class IDNameLayer:
+
+class IDNameLayer(BaseModel):
     """Triple holding `id`, `name`, and `layer`."""
 
     id: ID
@@ -104,8 +104,8 @@ class IDNameLayer:
     name: str
 
 
-@dataclass(frozen=True)
-class Node(ABC, IDName):
+
+class Node(ABC, IDName, BaseModel):
     """
     Abstract Base Class holding a node of a tree.
 
@@ -121,8 +121,8 @@ class Node(ABC, IDName):
     parent: List[IDNameLayer]
 
 
-@dataclass(frozen=True)
-class Tag:
+
+class Tag(BaseModel):
     """
 
     Represents a property that is associated with a period of time.
@@ -138,8 +138,8 @@ class Tag:
     end_timestamp: Optional[ISODate] = None
 
 
-@dataclass(frozen=True)
-class Flag:
+
+class Flag(BaseModel):
     """
 
     Represents a property that is associated with a vessel's flag.
@@ -156,8 +156,8 @@ class Flag:
     flag_country: Optional[str] = None
 
 
-@dataclass(frozen=True)
-class Scrubber:
+
+class Scrubber(BaseModel):
     """
 
     Represents information about scrubbers fitted to a vessel.

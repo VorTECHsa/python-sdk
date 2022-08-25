@@ -1,8 +1,8 @@
-from pydantic.dataclasses import dataclass
+from pydantic import BaseModel
 
 
-@dataclass(frozen=True)
-class AggregationBreakdownItem:
+
+class AggregationBreakdownItem(BaseModel):
     """
     Generic container class holding a `id <> value` pair, a `count` a `label`.
 

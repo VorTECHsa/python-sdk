@@ -1,9 +1,8 @@
-from pydantic.dataclasses import dataclass
-from typing import List, Optional, Tuple
+from pydantic import BaseModel
+from typing import List, Tuple
 
 
 from vortexasdk.api.shared_types import (
-    EntityWithListLayerAndProbability,
     ID,
     EntityWithSingleLayerAndProbability,
     IDLayer,
@@ -14,16 +13,16 @@ from vortexasdk.api.shared_types import (
 Position = Tuple[float, float]
 
 
-@dataclass(frozen=True)
-class BoundingBox:
+
+class BoundingBox(BaseModel):
     """Polygon with list of bounding lon lat coords."""
 
     type: str
     coordinates: List[Position]
 
 
-@dataclass(frozen=True)
-class Geography(Node):
+
+class Geography(Node, BaseModel):
     """Represent a Geography reference record returned by the API."""
 
     id: ID
@@ -34,8 +33,8 @@ class Geography(Node):
     pos: List[str]
 
 
-@dataclass(frozen=True)
-class GeographyEntity(EntityWithSingleLayerAndProbability):
+
+class GeographyEntity(EntityWithSingleLayerAndProbability, BaseModel):
     """
     Represents a hierarchy tree of locational data.
 

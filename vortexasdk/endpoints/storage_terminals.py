@@ -102,4 +102,4 @@ class StorageTerminals(Reference, Search):
             **search_params
         )
 
-        return StorageTerminalResult(response["data"], response["reference"])
+        return StorageTerminalResult(records=response["data"], reference=response["reference"])

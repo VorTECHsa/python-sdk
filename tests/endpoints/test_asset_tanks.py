@@ -1,3 +1,4 @@
+from weakref import ref
 from tests.testcases import TestCaseUsingMockAPI
 from vortexasdk.endpoints.asset_tanks import AssetTanks
 
@@ -6,7 +7,7 @@ from vortexasdk.endpoints.asset_tanks_result import AssetTankResult
 
 
 class TestAssetTanks(TestCaseUsingMockAPI):
-    at = AssetTankResult(example_asset_tanks, {})
+    at = AssetTankResult(records=example_asset_tanks, reference={})
 
     def test_search(self):
         asset_tanks = AssetTanks().search().to_df()

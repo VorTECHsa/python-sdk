@@ -1,5 +1,5 @@
 from pydantic import Field
-from pydantic.dataclasses import dataclass
+from pydantic import BaseModel
 from typing import List, Optional, Union
 from typing_extensions import Annotated, Literal
 
@@ -11,14 +11,14 @@ from vortexasdk.api.id import ID
 from vortexasdk.api.vessel import VesselEntity
 
 
-@dataclass(frozen=True)
-class RawLocations:
+
+class RawLocations(BaseModel):
     probability: float
     location_id: str
 
 
-@dataclass(frozen=True)
-class CargoPortLoadEvent:
+
+class CargoPortLoadEvent(BaseModel):
     vessel_id: ID
     start_timestamp: ISODate
     event_type: Literal["cargo_port_load_event"]
@@ -28,8 +28,8 @@ class CargoPortLoadEvent:
     pos: Optional[List[float]] = None
 
 
-@dataclass(frozen=True)
-class CargoFSOLoadEvent:
+
+class CargoFSOLoadEvent(BaseModel):
     start_timestamp: ISODate
     event_type: Literal["cargo_fso_load_event"]
     location: List[GeographyEntity]
@@ -42,8 +42,8 @@ class CargoFSOLoadEvent:
     pos: Optional[List[float]] = None
 
 
-@dataclass(frozen=True)
-class CargoPortUnloadEvent:
+
+class CargoPortUnloadEvent(BaseModel):
     vessel_id: ID
     event_type: Literal["cargo_port_unload_event"]
     location: List[GeographyEntity]
@@ -55,8 +55,8 @@ class CargoPortUnloadEvent:
     restricted: Optional[bool] = False
 
 
-@dataclass(frozen=True)
-class CargoFSOUnloadEvent:
+
+class CargoFSOUnloadEvent(BaseModel):
     start_timestamp: ISODate
     event_type: Literal["cargo_fso_unload_event"]
     location: List[GeographyEntity]
@@ -69,15 +69,15 @@ class CargoFSOUnloadEvent:
     pos: Optional[List[float]] = None
 
 
-@dataclass(frozen=True)
-class CargoFixtureEvent:
+
+class CargoFixtureEvent(BaseModel):
     start_timestamp: ISODate
     event_type: Literal["cargo_fixture_event"]
     end_timestamp: Optional[ISODate] = None
 
 
-@dataclass(frozen=True)
-class CargoSTSEvent:
+
+class CargoSTSEvent(BaseModel):
     start_timestamp: ISODate
     event_type: Literal["cargo_sts_event"]
     location: List[GeographyEntity]
@@ -89,8 +89,8 @@ class CargoSTSEvent:
     pos: Optional[List[float]] = None
 
 
-@dataclass(frozen=True)
-class CargoStorageEvent:
+
+class CargoStorageEvent(BaseModel):
     vessel_id: ID
     start_timestamp: ISODate
     event_type: Literal["cargo_storage_event"]
@@ -100,8 +100,8 @@ class CargoStorageEvent:
     pos: Optional[List[float]] = None
 
 
-@dataclass(frozen=True)
-class CargoWaypointEvent:
+
+class CargoWaypointEvent(BaseModel):
     vessel_id: ID
     start_timestamp: ISODate
     event_type: Literal["cargo_waypoint_event"]
@@ -111,22 +111,22 @@ class CargoWaypointEvent:
     pos: Optional[List[float]] = None
 
 
-@dataclass(frozen=True)
-class CargoTransitingEvent:
+
+class CargoTransitingEvent(BaseModel):
     start_timestamp: ISODate
     event_type: Literal["cargo_transiting_event"]
     end_timestamp: Optional[ISODate] = None
 
 
-@dataclass(frozen=True)
-class CargoOilOnWaterEvent:
+
+class CargoOilOnWaterEvent(BaseModel):
     start_timestamp: ISODate
     event_type: Literal["cargo_oil_on_water_event"]
     end_timestamp: Optional[ISODate] = None
 
 
-@dataclass(frozen=True)
-class ParentID:
+
+class ParentID(BaseModel):
     """
 
     `cargo_movement_id` may change under certain conditions. `ParentID` contains an `id`,
@@ -140,8 +140,8 @@ class ParentID:
     splinter_timestamp: ISODate
 
 
-@dataclass(frozen=True)
-class CargoMovementProductEntry:
+
+class CargoMovementProductEntry(BaseModel):
     probability: float
     source: str
     id: ID
@@ -149,8 +149,8 @@ class CargoMovementProductEntry:
     label: Optional[str] = None
 
 
-@dataclass(frozen=True)
-class CargoMovement:
+
+class CargoMovement(BaseModel):
     """
 
     Cargo movements are the base data set the Vortexa API is centred around.

@@ -6,7 +6,7 @@ from vortexasdk.api.freight_pricing import FreightPricing
 from vortexasdk.api.vessel_availability import VesselAvailability
 
 import pandas as pd
-
+from pydantic import BaseModel
 from vortexasdk.api.entity_flattening import convert_to_flat_dict
 from vortexasdk.api.search_result import Result
 from vortexasdk.result_conversions import create_dataframe, create_list
@@ -15,7 +15,7 @@ from vortexasdk.logger import get_logger
 logger = get_logger(__name__)
 
 
-class FreightPricingResult(Result):
+class FreightPricingResult(Result, BaseModel):
     """
     Container class holdings search results returns from the freight pricing endpoint.
 

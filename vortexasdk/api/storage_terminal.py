@@ -1,26 +1,26 @@
-from pydantic.dataclasses import dataclass
-from typing import List, Tuple
+from pydantic import BaseModel
+from typing import List
 
 
 from vortexasdk.api.shared_types import IDNameLayer, ISODate
 
 
-@dataclass(frozen=True)
-class TerminalHierarchy:
+
+class TerminalHierarchy(BaseModel):
     id: str
     label: str
     layer: str
 
 
-@dataclass(frozen=True)
-class TerminalParent:
+
+class TerminalParent(BaseModel):
     id: str
     layer: List[str]
     name: str
 
 
-@dataclass(frozen=True)
-class StorageTerminal:
+
+class StorageTerminal(BaseModel):
     """
     Represents a Storage Terminal reference record returned by the API.
     """

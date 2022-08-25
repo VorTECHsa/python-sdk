@@ -7,7 +7,7 @@ from vortexasdk.logger import get_logger
 from vortexasdk.result_conversions import create_dataframe, create_list
 from vortexasdk.api.breakdown_item import BreakdownItem
 from vortexasdk.api.entity_flattening import convert_to_flat_dict
-
+from pydantic import BaseModel
 import pandas as pd
 import functools
 import os
@@ -33,7 +33,7 @@ def key_from_ref(datum, refs):
     return {**datum, "label": name}
 
 
-class ReferenceBreakdownResult(Result):
+class ReferenceBreakdownResult(Result, BaseModel):
     """Container class that holds the result obtained from calling a breakdown endpoint enriched with reference data."""
 
     def to_list(self) -> List[BreakdownItem]:

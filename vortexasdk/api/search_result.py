@@ -1,16 +1,15 @@
-from dataclasses import field
-from pydantic.dataclasses import dataclass
+
+from pydantic import BaseModel, Field
 from typing import Any, Dict, List, Optional
 
 import pandas as pd
 
 
-@dataclass
-class Result:
+class Result(BaseModel):
     """Abstract Container that holds a list of *records*."""
 
-    records: List = field(default_factory=list)
-    reference: Dict[str, Any] = field(default_factory=dict)
+    records: List = Field(default_factory=list)
+    reference: Dict[str, Any] = Field(default_factory=dict)
 
     def to_list(self) -> List:
         """Represent *records* as a list."""

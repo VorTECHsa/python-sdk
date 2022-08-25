@@ -235,5 +235,5 @@ class FleetUtilisationOriginBreakdown(Search):
         )
 
         return ReferenceBreakdownResult(
-            response["data"], response["reference"]
+            records=response["data"], reference=response["reference"]
         )

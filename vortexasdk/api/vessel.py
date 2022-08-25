@@ -1,6 +1,6 @@
-from dataclasses import field
+
 from datetime import datetime
-from pydantic.dataclasses import dataclass
+from pydantic import BaseModel, Field
 from typing import List, Optional
 
 from vortexasdk.api.id import ID
@@ -15,8 +15,8 @@ from vortexasdk.api.shared_types import (
 )
 
 
-@dataclass(frozen=True)
-class VesselEntityCorporateEntity:
+
+class VesselEntityCorporateEntity(BaseModel):
     id: ID
     label: str
     layer: str
@@ -24,8 +24,8 @@ class VesselEntityCorporateEntity:
     start_timestamp: Optional[datetime] = None
 
 
-@dataclass(frozen=True)
-class VesselEntityCorporateEntityWithConfidence:
+
+class VesselEntityCorporateEntityWithConfidence(BaseModel):
     probability: float
     source: str
     id: ID
@@ -35,10 +35,7 @@ class VesselEntityCorporateEntityWithConfidence:
     start_timestamp: Optional[datetime] = None
 
 
-@dataclass(
-    frozen=True,
-)
-class Vessel(Node):
+class Vessel(Node, BaseModel):
     """
     Represent a Vessel reference record returned by the API.
 
@@ -73,8 +70,8 @@ class Vessel(Node):
     propulsion: Optional[str] = None
 
 
-@dataclass(frozen=True)
-class VesselEntity(IDName):
+
+class VesselEntity(IDName, BaseModel):
     """
     A VesselEntity represents a vessel record used in CargoMovements and VesselMovements.
 
@@ -102,7 +99,7 @@ class VesselEntity(IDName):
     end_timestamp: Optional[ISODate] = None
     fixture_id: Optional[str] = None
 
-    scrubber: List[Scrubber] = field(default_factory=list)
-    flag: List[Flag] = field(default_factory=list)
+    scrubber: List[Scrubber] = Field(default_factory=list)
+    flag: List[Flag] = Field(default_factory=list)
     ice_class: Optional[str] = None
     propulsion: Optional[str] = None

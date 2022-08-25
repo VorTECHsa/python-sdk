@@ -1,18 +1,18 @@
 from datetime import datetime
-from pydantic.dataclasses import dataclass
+from pydantic import BaseModel
 from typing import List, Optional
 from vortexasdk.api.id import ID
 
 
-@dataclass(frozen=True)
-class FreightPricingPrediction:
+
+class FreightPricingPrediction(BaseModel):
     prediction: str
     prediction_type: str
     rating: str
 
 
-@dataclass(frozen=True)
-class FreightPricing:
+
+class FreightPricing(BaseModel):
     """
     Freight pricing shows pricing information applicable to a selected route on a given day.
     """

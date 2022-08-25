@@ -1,12 +1,12 @@
-from pydantic.dataclasses import dataclass
+from pydantic import BaseModel
 from typing import List, Optional
 
 
 from vortexasdk.api.shared_types import EntityWithListLayer, ISODate
 
 
-@dataclass(frozen=True)
-class DeclaredDestination:
+
+class DeclaredDestination(BaseModel):
     """
 
     Current destination location, as reported by the available vessel
@@ -18,8 +18,8 @@ class DeclaredDestination:
     vessel_id: str
 
 
-@dataclass(frozen=True)
-class VesselFixtures:
+
+class VesselFixtures(BaseModel):
     """
 
     Current fixture information for the available vessel
@@ -34,8 +34,8 @@ class VesselFixtures:
     laycan_to: ISODate
 
 
-@dataclass(frozen=True)
-class VesselAvailability:
+
+class VesselAvailability(BaseModel):
     """
 
     Vessel Availability shows vessels that are available to load a given cargo at a given port within a specified time range.
