@@ -2,7 +2,6 @@ from pydantic import BaseModel
 from typing import Dict, List, Optional
 
 
-
 class BreakdownItem(BaseModel):
     """
     Generic container class holding a `key <> value` pair, a `count`, and optionally a `label` and a `breakdown` of records contributing to the given value.

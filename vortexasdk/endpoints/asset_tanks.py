@@ -115,4 +115,6 @@ class AssetTanks(Reference, Search):
             **search_params
         )
 
-        return AssetTankResult(records=response["data"], reference=response["reference"])
+        return AssetTankResult(
+            records=response["data"], reference=response["reference"]
+        )

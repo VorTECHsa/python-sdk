@@ -9,7 +9,6 @@ from vortexasdk.api.shared_types import ISODate
 from vortexasdk.api.vessel import VesselEntity
 
 
-
 class VesselEvent(BaseModel):
     """Represent an event that occurred to a vessel during a vessel movement."""
 
@@ -22,12 +21,10 @@ class VesselEvent(BaseModel):
     end_timestamp: Optional[ISODate] = None
 
 
-
 class VesselMovementCargo(BaseModel):
     cargo_movement_id: ID
     quantity: float
     product: List[ProductEntityWithSingleLayer]
-
 
 
 class VesselMovement(BaseModel):

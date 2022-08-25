@@ -1,7 +1,6 @@
 from pydantic import BaseModel
 
 
-
 class AggregationBreakdownItem(BaseModel):
     """
     Generic container class holding a `id <> value` pair, a `count` a `label`.

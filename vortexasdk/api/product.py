@@ -10,7 +10,6 @@ from vortexasdk.api.shared_types import (
 )
 
 
-
 class Product(Node, BaseModel):
     """
     Represent a Product reference record returned by the API.
@@ -23,15 +22,15 @@ class Product(Node, BaseModel):
     hierarchy: List[EntityWithSingleLayer]
 
 
-
-class ProductEntityWithSingleLayer(EntityWithSingleLayerAndProbability, BaseModel):
+class ProductEntityWithSingleLayer(
+    EntityWithSingleLayerAndProbability, BaseModel
+):
     """
 
     Represents a single product layer of a hierarchical product tree.
 
     [Further Documentation](https://docs.vortexa.com/reference/intro-product-entities)
     """
-
 
 
 class ProductEntityWithListLayer(EntityWithListLayerAndProbability, BaseModel):

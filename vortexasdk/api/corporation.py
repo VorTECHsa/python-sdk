@@ -4,9 +4,8 @@ from typing import List
 
 from vortexasdk.api.shared_types import (
     EntityWithSingleLayerAndProbability,
-    IDName
+    IDName,
 )
-
 
 
 class Corporation(IDName, BaseModel):
@@ -17,7 +16,6 @@ class Corporation(IDName, BaseModel):
     leaf: bool
     parent: List[str]
     filterable: bool
-
 
 
 class CorporateEntity(EntityWithSingleLayerAndProbability, BaseModel):

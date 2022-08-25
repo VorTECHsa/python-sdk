@@ -10,6 +10,7 @@ from vortexasdk.result_conversions import create_dataframe, create_list
 logger = get_logger(__name__)
 from pydantic import BaseModel
 
+
 class GeographyResult(Result, BaseModel):
     """Container class that holds the result obtained from calling the `Geography` endpoint."""
 

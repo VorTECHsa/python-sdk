@@ -4,13 +4,11 @@ from pydantic import BaseModel
 from vortexasdk.api import ISODate
 
 
-
 class TimeSeriesBreakdownItem(BaseModel):
     id: str
     label: str
     value: float
     count: int
-
 
 
 class TimeSeriesItem(BaseModel):

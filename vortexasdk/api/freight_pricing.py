@@ -4,12 +4,10 @@ from typing import List, Optional
 from vortexasdk.api.id import ID
 
 
-
 class FreightPricingPrediction(BaseModel):
     prediction: str
     prediction_type: str
     rating: str
-
 
 
 class FreightPricing(BaseModel):

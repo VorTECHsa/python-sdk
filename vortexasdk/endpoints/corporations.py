@@ -77,7 +77,9 @@ class Corporations(Reference, Search):
             exact_term_match=exact_term_match, **api_params
         )
 
-        return CorporationsResult(records=response["data"], reference=response["reference"])
+        return CorporationsResult(
+            records=response["data"], reference=response["reference"]
+        )
 
     def reference(self, id: ID) -> Dict:
         """

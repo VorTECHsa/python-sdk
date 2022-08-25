@@ -74,7 +74,9 @@ class Geographies(Reference, Search):
             exact_term_match=exact_term_match, **api_params
         )
 
-        return GeographyResult(records=response["data"], reference=response["reference"])
+        return GeographyResult(
+            records=response["data"], reference=response["reference"]
+        )
 
     def reference(self, id: ID) -> Dict:
         """

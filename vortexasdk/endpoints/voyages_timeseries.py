@@ -299,4 +299,6 @@ class VoyagesTimeseries(Search):
             response_type="breakdown", **api_params
         )
 
-        return BreakdownResult(records=response["data"], reference=response["reference"])
+        return BreakdownResult(
+            records=response["data"], reference=response["reference"]
+        )

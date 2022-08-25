@@ -5,19 +5,16 @@ from typing import List
 from vortexasdk.api.shared_types import IDNameLayer, ISODate
 
 
-
 class TerminalHierarchy(BaseModel):
     id: str
     label: str
     layer: str
 
 
-
 class TerminalParent(BaseModel):
     id: str
     layer: List[str]
     name: str
-
 
 
 class StorageTerminal(BaseModel):

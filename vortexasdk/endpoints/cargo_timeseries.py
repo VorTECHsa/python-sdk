@@ -193,4 +193,6 @@ class CargoTimeSeries(Search):
 
         response = super().search_with_client(**api_params)
 
-        return TimeSeriesResult(records=response["data"], reference=response["reference"])
+        return TimeSeriesResult(
+            records=response["data"], reference=response["reference"]
+        )

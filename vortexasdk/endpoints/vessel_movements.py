@@ -206,4 +206,6 @@ class VesselMovements(Search):
 
         response = super().search_with_client(**api_params)
 
-        return VesselMovementsResult(records=response["data"], reference=response["reference"])
+        return VesselMovementsResult(
+            records=response["data"], reference=response["reference"]
+        )

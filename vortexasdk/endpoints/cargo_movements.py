@@ -269,4 +269,6 @@ class CargoMovements(Search):
 
         response = super().search_with_client(**api_params)
 
-        return CargoMovementsResult(records=response["data"], reference=response["reference"])
+        return CargoMovementsResult(
+            records=response["data"], reference=response["reference"]
+        )

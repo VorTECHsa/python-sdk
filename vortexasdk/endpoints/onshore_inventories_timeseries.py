@@ -156,4 +156,6 @@ class OnshoreInventoriesTimeseries(Search):
             response_type="breakdown", **api_params
         )
 
-        return BreakdownResult(records=response["data"], ref=response["reference"])
+        return BreakdownResult(
+            records=response["data"], ref=response["reference"]
+        )

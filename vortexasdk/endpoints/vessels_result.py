@@ -7,6 +7,7 @@ from vortexasdk.api import Vessel
 from vortexasdk.api.search_result import Result
 from vortexasdk.result_conversions import create_dataframe, create_list
 from pydantic import BaseModel
+
 logger = get_logger(__name__)
 
 

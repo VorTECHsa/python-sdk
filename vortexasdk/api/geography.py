@@ -13,13 +13,11 @@ from vortexasdk.api.shared_types import (
 Position = Tuple[float, float]
 
 
-
 class BoundingBox(BaseModel):
     """Polygon with list of bounding lon lat coords."""
 
     type: str
     coordinates: List[Position]
-
 
 
 class Geography(Node, BaseModel):
@@ -31,7 +29,6 @@ class Geography(Node, BaseModel):
     exclusion_rule: List[IDNameLayer]
     hierarchy: List[IDLayer]
     pos: List[str]
-
 
 
 class GeographyEntity(EntityWithSingleLayerAndProbability, BaseModel):

@@ -5,19 +5,16 @@ from typing import List, Optional
 from vortexasdk.api.shared_types import ISODate
 
 
-
 class CorporateEntity(BaseModel):
     id: str
     label: str
     layer: Optional[str] = None
 
 
-
 class LocationDetails(BaseModel):
     id: str
     label: str
     layer: str
-
 
 
 class AssetTank(BaseModel):

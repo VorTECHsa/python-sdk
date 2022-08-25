@@ -7,6 +7,7 @@ from vortexasdk.api.voyages import VoyageEnrichedItem
 from vortexasdk.logger import get_logger
 from vortexasdk.result_conversions import create_list
 from pydantic import BaseModel
+
 logger = get_logger(__name__)
 
 

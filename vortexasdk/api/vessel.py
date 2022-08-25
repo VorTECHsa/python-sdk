@@ -1,4 +1,3 @@
-
 from datetime import datetime
 from pydantic import BaseModel, Field
 from typing import List, Optional
@@ -15,14 +14,12 @@ from vortexasdk.api.shared_types import (
 )
 
 
-
 class VesselEntityCorporateEntity(BaseModel):
     id: ID
     label: str
     layer: str
     end_timestamp: Optional[datetime] = None
     start_timestamp: Optional[datetime] = None
-
 
 
 class VesselEntityCorporateEntityWithConfidence(BaseModel):
@@ -68,7 +65,6 @@ class Vessel(Node, BaseModel):
     flag: Optional[List[Flag]] = None
     ice_class: Optional[str] = None
     propulsion: Optional[str] = None
-
 
 
 class VesselEntity(IDName, BaseModel):

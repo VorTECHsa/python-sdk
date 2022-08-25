@@ -5,7 +5,6 @@ from typing import List, Optional
 from vortexasdk.api.shared_types import EntityWithListLayer, ISODate
 
 
-
 class DeclaredDestination(BaseModel):
     """
 
@@ -16,7 +15,6 @@ class DeclaredDestination(BaseModel):
     eta: Optional[ISODate]
     name: str
     vessel_id: str
-
 
 
 class VesselFixtures(BaseModel):
@@ -32,7 +30,6 @@ class VesselFixtures(BaseModel):
     fixing_timestamp: ISODate
     laycan_from: ISODate
     laycan_to: ISODate
-
 
 
 class VesselAvailability(BaseModel):

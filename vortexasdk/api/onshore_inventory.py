@@ -7,7 +7,6 @@ from vortexasdk.api.shared_types import ISODate
 from vortexasdk.api.id import ID
 
 
-
 class OnshoreInventory(BaseModel):
     """
 

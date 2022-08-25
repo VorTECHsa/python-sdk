@@ -11,11 +11,9 @@ from vortexasdk.api.id import ID
 from vortexasdk.api.vessel import VesselEntity
 
 
-
 class RawLocations(BaseModel):
     probability: float
     location_id: str
-
 
 
 class CargoPortLoadEvent(BaseModel):
@@ -26,7 +24,6 @@ class CargoPortLoadEvent(BaseModel):
     probability: float
     end_timestamp: Optional[ISODate] = None
     pos: Optional[List[float]] = None
-
 
 
 class CargoFSOLoadEvent(BaseModel):
@@ -42,7 +39,6 @@ class CargoFSOLoadEvent(BaseModel):
     pos: Optional[List[float]] = None
 
 
-
 class CargoPortUnloadEvent(BaseModel):
     vessel_id: ID
     event_type: Literal["cargo_port_unload_event"]
@@ -53,7 +49,6 @@ class CargoPortUnloadEvent(BaseModel):
     pos: Optional[List[float]] = None
     start_timestamp: Optional[ISODate] = None
     restricted: Optional[bool] = False
-
 
 
 class CargoFSOUnloadEvent(BaseModel):
@@ -69,12 +64,10 @@ class CargoFSOUnloadEvent(BaseModel):
     pos: Optional[List[float]] = None
 
 
-
 class CargoFixtureEvent(BaseModel):
     start_timestamp: ISODate
     event_type: Literal["cargo_fixture_event"]
     end_timestamp: Optional[ISODate] = None
-
 
 
 class CargoSTSEvent(BaseModel):
@@ -89,7 +82,6 @@ class CargoSTSEvent(BaseModel):
     pos: Optional[List[float]] = None
 
 
-
 class CargoStorageEvent(BaseModel):
     vessel_id: ID
     start_timestamp: ISODate
@@ -98,7 +90,6 @@ class CargoStorageEvent(BaseModel):
     vessel_class: Optional[str] = None
     end_timestamp: Optional[ISODate] = None
     pos: Optional[List[float]] = None
-
 
 
 class CargoWaypointEvent(BaseModel):
@@ -111,19 +102,16 @@ class CargoWaypointEvent(BaseModel):
     pos: Optional[List[float]] = None
 
 
-
 class CargoTransitingEvent(BaseModel):
     start_timestamp: ISODate
     event_type: Literal["cargo_transiting_event"]
     end_timestamp: Optional[ISODate] = None
 
 
-
 class CargoOilOnWaterEvent(BaseModel):
     start_timestamp: ISODate
     event_type: Literal["cargo_oil_on_water_event"]
     end_timestamp: Optional[ISODate] = None
-
 
 
 class ParentID(BaseModel):
@@ -140,14 +128,12 @@ class ParentID(BaseModel):
     splinter_timestamp: ISODate
 
 
-
 class CargoMovementProductEntry(BaseModel):
     probability: float
     source: str
     id: ID
     layer: Optional[str] = None
     label: Optional[str] = None
-
 
 
 class CargoMovement(BaseModel):

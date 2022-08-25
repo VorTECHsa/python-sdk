@@ -19,14 +19,12 @@ def to_ISODate_Array(days: List[datetime]) -> List[str]:
     return [to_ISODate(date) for date in days]
 
 
-
 class EntityWithSingleLayer(BaseModel):
     """Holds commonly used properties."""
 
     id: ID
     layer: Optional[str]
     label: Optional[str] = None
-
 
 
 class EntityWithSingleLayerAndTimespan(BaseModel):
@@ -37,14 +35,12 @@ class EntityWithSingleLayerAndTimespan(BaseModel):
     end_timestamp: Optional[ISODate] = None
 
 
-
 class EntityWithListLayer(BaseModel):
     """Holds commonly used properties."""
 
     id: ID
     layer: Optional[List[str]]
     label: Optional[str] = None
-
 
 
 class EntityWithSingleLayerAndProbability(BaseModel):
@@ -62,7 +58,6 @@ class EntityWithSingleLayerAndProbability(BaseModel):
     label: Optional[str] = None
 
 
-
 class EntityWithListLayerAndProbability(BaseModel):
     """
     Extension of `Entity`, containing additional properties.
@@ -78,13 +73,11 @@ class EntityWithListLayerAndProbability(BaseModel):
     label: Optional[str] = None
 
 
-
 class IDName(BaseModel):
     """Tuple containing `id` and `name`."""
 
     id: ID
     name: str
-
 
 
 class IDLayer(BaseModel):
@@ -95,14 +88,12 @@ class IDLayer(BaseModel):
     label: str
 
 
-
 class IDNameLayer(BaseModel):
     """Triple holding `id`, `name`, and `layer`."""
 
     id: ID
     layer: List[str]
     name: str
-
 
 
 class Node(ABC, IDName, BaseModel):
@@ -121,7 +112,6 @@ class Node(ABC, IDName, BaseModel):
     parent: List[IDNameLayer]
 
 
-
 class Tag(BaseModel):
     """
 
@@ -136,7 +126,6 @@ class Tag(BaseModel):
     tag: str
     start_timestamp: Optional[ISODate] = None
     end_timestamp: Optional[ISODate] = None
-
 
 
 class Flag(BaseModel):
@@ -154,7 +143,6 @@ class Flag(BaseModel):
     tag: str
     flag: str
     flag_country: Optional[str] = None
-
 
 
 class Scrubber(BaseModel):

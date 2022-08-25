@@ -15,7 +15,6 @@ from vortexasdk.api.shared_types import (
 )
 
 
-
 class CongestionBreakdownItem(BaseModel):
     """
 
@@ -37,7 +36,6 @@ class CongestionBreakdownItem(BaseModel):
     vessel_cubic_capacity_ballast: int
     vessel_count_ballast: int
     location_details: List[EntityWithListLayer] = Field(default_factory=list)
-
 
 
 class VoyagesVesselEntity(BaseModel):
@@ -62,7 +60,6 @@ class VoyagesVesselEntity(BaseModel):
     propulsion: Optional[str] = None
     tags: List[Tag] = Field(default_factory=list)
     vessel_risk_level: Optional[str] = None
-
 
 
 class VoyageVesselEvent(BaseModel):
@@ -95,7 +92,6 @@ class VoyageVesselEvent(BaseModel):
     waiting_event_target_geography_details: Optional[
         List[EntityWithSingleLayer]
     ] = None
-
 
 
 class VoyageCargoEvent(BaseModel):
@@ -133,7 +129,6 @@ class VoyageCargoEvent(BaseModel):
     is_open_event: Optional[bool] = None
 
 
-
 class VoyageStatusEvent(BaseModel):
     """
     Status events describe the status of the voyage at a given period.
@@ -152,7 +147,6 @@ class VoyageStatusEvent(BaseModel):
     end_timestamp: Optional[ISODate] = None
     start_timestamp: Optional[ISODate] = None
     is_open_event: Optional[bool] = None
-
 
 
 class VoyageEnrichedItem(BaseModel):

@@ -96,4 +96,6 @@ class EIAForecasts(Search):
             **search_params
         )
 
-        return EIAForecastResult(records=response["data"], reference=response["reference"])
+        return EIAForecastResult(
+            records=response["data"], reference=response["reference"]
+        )

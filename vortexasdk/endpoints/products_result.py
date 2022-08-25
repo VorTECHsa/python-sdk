@@ -8,6 +8,7 @@ from vortexasdk.api.search_result import Result
 from vortexasdk.logger import get_logger
 from vortexasdk.result_conversions import create_dataframe, create_list
 from pydantic import BaseModel
+
 logger = get_logger(__name__)
 
 

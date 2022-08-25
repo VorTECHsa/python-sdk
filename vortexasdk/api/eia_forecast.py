@@ -2,7 +2,6 @@ from pydantic import BaseModel
 from typing import Optional
 
 
-
 class EIAForecast(BaseModel):
     """Represent a EIA forecast record returned by the API."""
 
