@@ -8,8 +8,6 @@ class TestProductsReal(TestCaseUsingRealAPI):
         products = Products().search().to_list()
         assert len(products) > 0
 
-        print([x.name for x in products[:5]])
-
     def test_search_dataframe(self):
         df = Products().search().to_df()
         assert list(df.columns) == DEFAULT_COLUMNS

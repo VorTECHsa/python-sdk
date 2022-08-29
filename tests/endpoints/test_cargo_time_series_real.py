@@ -46,8 +46,6 @@ class TestCargoTimeSeries(TestCaseUsingRealAPI):
             .to_df()
         )
 
-        print(to_markdown(df.head()))
-
         n_days = (end - start).days + 1
 
         assert len(df) == n_days
@@ -118,13 +116,11 @@ class TestCargoTimeSeries(TestCaseUsingRealAPI):
             > rotterdam_crude_timeseries["value"].sum()
         )
 
-        print(rotterdam_crude_timeseries.head())
-
     def test_filter_vessel_classes(self):
         start = datetime(2019, 1, 1)
         end = datetime(2019, 1, 20)
 
-        vlcc_plus = 'vlcc_plus'
+        vlcc_plus = "vlcc_plus"
 
         vlcc_plus_timeseries = (
             CargoTimeSeries()
@@ -134,7 +130,7 @@ class TestCargoTimeSeries(TestCaseUsingRealAPI):
                 timeseries_frequency="month",
                 filter_time_min=start,
                 filter_time_max=end,
-                filter_vessel_classes=[vlcc_plus]
+                filter_vessel_classes=[vlcc_plus],
             )
             .to_df()
         )
@@ -155,8 +151,6 @@ class TestCargoTimeSeries(TestCaseUsingRealAPI):
             all_vessel_classes_timeseries["value"].sum()
             > vlcc_plus_timeseries["value"].sum()
         )
-
-        print(vlcc_plus_timeseries.head())
 
     def test_search_filters_on_timeseries_max_activity(self):
         df = (

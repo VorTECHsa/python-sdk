@@ -1,4 +1,3 @@
-
 from datetime import datetime
 from tests.testcases import TestCaseUsingRealAPI
 from vortexasdk.api.freight_pricing import FreightPricing
@@ -47,36 +46,25 @@ class TestFreightPricingReal(TestCaseUsingRealAPI):
         assert p.short_code == "a_route_code"
 
     def test_default_search(self):
-        results = FreightPricingSearch().search(
-            routes=["TD3C"]
-        ).to_list()
+        results = FreightPricingSearch().search(routes=["TD3C"]).to_list()
         assert len(results) > 10
 
     def test_default_search_to_list(self):
-        results_list = FreightPricingSearch().search(
-            routes=["TD3C"]
-        ).to_list()
+        results_list = FreightPricingSearch().search(routes=["TD3C"]).to_list()
         assert results_list[0].short_code == "TD3C"
 
     def test_days(self):
-        results = FreightPricingSearch().search(
-            routes=["TD3C"],
-            days=[day]
-        )
+        results = FreightPricingSearch().search(routes=["TD3C"], days=[day])
         assert len(results) == 1
 
     def test_route_as_string(self):
-        results = FreightPricingSearch().search(
-            routes="TD3C",
-            days=[day]
-        )
+        results = FreightPricingSearch().search(routes="TD3C", days=[day])
         assert len(results) == 1
 
     def test_multiple_days(self):
         day2 = datetime(2021, 11, 2)
         results = FreightPricingSearch().search(
-            routes=["TD3C"],
-            days=[day, day2]
+            routes=["TD3C"], days=[day, day2]
         )
         assert len(results) == 2
 

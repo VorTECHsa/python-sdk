@@ -46,9 +46,7 @@ class TestVoyagesTopHits(TestCaseUsingRealAPI):
         end = datetime(2019, 11, 10)
 
         result = VoyagesTopHits().search(
-            time_min=start,
-            time_max=end,
-            breakdown_size=5
+            time_min=start, time_max=end, breakdown_size=5
         )
 
         assert len(result) == 5
@@ -79,10 +77,9 @@ class TestVoyagesTopHits(TestCaseUsingRealAPI):
                 time_min=datetime(2020, 12, 19),
                 time_max=datetime(2021, 1, 18),
             )
-            .to_df().head()
+            .to_df()
+            .head()
         )
-
-        print(df.columns)
 
         assert list(df.columns) == ["id", "value", "count", "label"]
 
@@ -105,8 +102,16 @@ class TestVoyagesTopHits(TestCaseUsingRealAPI):
         start = datetime(2021, 8, 1)
         end = datetime(2021, 8, 1, 23, 59)
 
-        rotterdam = [g.id for g in Geographies().search("rotterdam").to_list() if "port" in g.layer]
-        crude = [p.id for p in Products().search("crude").to_list() if "Crude" == p.name]
+        rotterdam = [
+            g.id
+            for g in Geographies().search("rotterdam").to_list()
+            if "port" in g.layer
+        ]
+        crude = [
+            p.id
+            for p in Products().search("crude").to_list()
+            if "Crude" == p.name
+        ]
 
         time_series_list = (
             VoyagesTopHits()
@@ -116,7 +121,7 @@ class TestVoyagesTopHits(TestCaseUsingRealAPI):
                 time_min=start,
                 time_max=end,
                 breakdown_split_property="origin_country",
-                breakdown_size=5
+                breakdown_size=5,
             )
             .to_list()
         )

@@ -5,7 +5,6 @@ from typing import List
 from vortexasdk.api.freight_pricing import FreightPricing
 
 import pandas as pd
-
 from vortexasdk.api.entity_flattening import convert_to_flat_dict
 from vortexasdk.api.search_result import Result
 from vortexasdk.result_conversions import create_dataframe, create_list
@@ -158,10 +157,10 @@ class FreightPricingResult(Result):
         if columns is None:
             columns = DEFAULT_COLUMNS
 
-        logger.debug("Converting each Freight Pricing object to a flat dictionary")
-        flatten = functools.partial(
-            convert_to_flat_dict, cols=columns
+        logger.debug(
+            "Converting each Freight Pricing object to a flat dictionary"
         )
+        flatten = functools.partial(convert_to_flat_dict, cols=columns)
 
         with Pool(os.cpu_count()) as pool:
             records = pool.map(flatten, self.format_prediction_outlooks(super().to_list()))
@@ -172,17 +171,17 @@ class FreightPricingResult(Result):
             data=records,
             logger_description="FreightPricing",
         )
-    
+
 
 DEFAULT_COLUMNS = [
-    'short_code',
-    'record_date',
-    'rate',
-    'rate_unit',
-    'cost',
-    'cost_unit',
-    'tce',
-    'tce_unit',
-    'predictions.outlook_1d.prediction',
-    'predictions.outlook_1d.rating',
+    "short_code",
+    "record_date",
+    "rate",
+    "rate_unit",
+    "cost",
+    "cost_unit",
+    "tce",
+    "tce_unit",
+    "predictions.outlook_1d.prediction",
+    "predictions.outlook_1d.rating",
 ]

@@ -74,10 +74,10 @@ class OnshoreInventoriesResult(Result):
         if columns is None:
             columns = DEFAULT_COLUMNS
 
-        logger.debug("Converting Crude Onshore Inventories to a flat dictionary")
-        flatten = functools.partial(
-            convert_to_flat_dict, cols=columns
+        logger.debug(
+            "Converting Crude Onshore Inventories to a flat dictionary"
         )
+        flatten = functools.partial(convert_to_flat_dict, cols=columns)
 
         with Pool(os.cpu_count()) as pool:
             records = pool.map(flatten, super().to_list())
@@ -91,22 +91,22 @@ class OnshoreInventoriesResult(Result):
 
 
 DEFAULT_COLUMNS = [
-    'measurement_id',
-    'tank_id',
-    'tank_details.capacity_bbl',
-    'tank_details.capacity_cbm',
-    'tank_details.capacity_ton',
-    'tank_details.corporate_entity_details.id',
-    'tank_details.corporate_entity_details.label',
-    'tank_details.crude_confidence',
-    'tank_details.location_id',
-    'tank_details.name',
-    'tank_details.pos',
-    'tank_details.storage_terminal_id',
-    'tank_details.storage_terminal_name',
-    'tank_details.last_updated',
-    'report_timestamp',
-    'fill_bbl',
-    'fill_tons',
-    'fill_cbm',
+    "measurement_id",
+    "tank_id",
+    "tank_details.capacity_bbl",
+    "tank_details.capacity_cbm",
+    "tank_details.capacity_ton",
+    "tank_details.corporate_entity_details.id",
+    "tank_details.corporate_entity_details.label",
+    "tank_details.crude_confidence",
+    "tank_details.location_id",
+    "tank_details.name",
+    "tank_details.pos",
+    "tank_details.storage_terminal_id",
+    "tank_details.storage_terminal_name",
+    "tank_details.last_updated",
+    "report_timestamp",
+    "fill_bbl",
+    "fill_tons",
+    "fill_cbm",
 ]

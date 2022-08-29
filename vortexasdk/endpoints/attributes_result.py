@@ -1,7 +1,6 @@
 from typing import List
 
 import pandas as pd
-
 from vortexasdk.api import Attribute
 from vortexasdk.api.search_result import Result
 from vortexasdk.result_conversions import create_dataframe, create_list

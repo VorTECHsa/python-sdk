@@ -13,8 +13,6 @@ class TestAttributesReal(TestCaseUsingRealAPI):
         attributes = Attributes().search(ids=ids).to_list()
         assert len(attributes) == 2
 
-        print([x.name for x in attributes])
-
     def test_search_filters_term(self):
         term = ["Open Loop Hybrid Ready"]
 
@@ -47,8 +45,7 @@ class TestAttributesReal(TestCaseUsingRealAPI):
             result.to_list()
 
         with Timer("Dataframe"):
-            df = result.to_df()
-            print(df.head())
+            result.to_df()
 
         assert len(result) >= 40
 
