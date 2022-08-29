@@ -47,12 +47,14 @@ class FreightPricingResult(Result):
         ```python
         DEFAULT_COLUMNS = [
             'short_code',
+            'record_date',
             'rate'
             'rate_unit',
             'cost',
             'cost_unit',
             'tce',
-            'tce_unit'
+            'tce_unit',
+            'predictions'
         ]
         ```
         The exact default columns used can be found at `vessel_availability_result.DEFAULT_COLUMNS`
@@ -71,8 +73,8 @@ class FreightPricingResult(Result):
             'tce',
             'tce_precision',
             'tce_unit',
-            'source',
-            'route_prediction'
+            'record_date',
+            'predictions'
         ]
         ```
 
@@ -98,10 +100,12 @@ class FreightPricingResult(Result):
 
 DEFAULT_COLUMNS = [
     'short_code',
+    'record_date',
     'rate',
     'rate_unit',
     'cost',
     'cost_unit',
     'tce',
-    'tce_unit'
+    'tce_unit',
+    'predictions',
 ]
