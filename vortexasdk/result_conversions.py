@@ -40,10 +40,10 @@ def create_dataframe(
     logger.debug(f"Creating DataFrame of {logger_description}")
 
     if columns is None:
-        df = pd.DataFrame(data=data, columns=default_columns)
+        df = pd.DataFrame(data=data, columns=default_columns).fillna("")
     elif columns == "all":
-        df = pd.DataFrame(data=data)
+        df = pd.DataFrame(data=data).fillna("")
     else:
-        df = pd.DataFrame(data=data, columns=columns)
+        df = pd.DataFrame(data=data, columns=columns).fillna("")
 
     return format_datatypes(df)
