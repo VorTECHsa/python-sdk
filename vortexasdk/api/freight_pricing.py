@@ -25,5 +25,5 @@ class FreightPricing(FromDictMixin):
     tce: Optional[float]
     tce_precision: Optional[int]
     tce_unit: Optional[str]
-    record_date: str;
+    record_date: str
     predictions: Optional[FreightPricingPrediction] = None
