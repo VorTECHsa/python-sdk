@@ -3,7 +3,6 @@ import os
 from multiprocessing.pool import Pool
 from typing import List
 from vortexasdk.api.freight_pricing import FreightPricing
-from vortexasdk.api.vessel_availability import VesselAvailability
 
 import pandas as pd
 
@@ -19,7 +18,7 @@ class FreightPricingResult(Result):
     """
     Container class holdings search results returns from the freight pricing endpoint.
 
-    This class has two methods, `to_list()`, and `to_df()`, allowing search results to be represented as a list
+    This class has two public methods, `to_list()`, and `to_df()`, allowing search results to be represented as a list
      or as a `pd.DataFrame` , respectively.
     """
 
@@ -54,10 +53,11 @@ class FreightPricingResult(Result):
             'cost_unit',
             'tce',
             'tce_unit',
-            'predictions'
+            'predictions.outlook_1d.prediction',
+            'predictions.outlook_1d.rating',
         ]
         ```
-        The exact default columns used can be found at `vessel_availability_result.DEFAULT_COLUMNS`
+        The exact default columns used can be found at `freight_pricing.DEFAULT_COLUMNS`
 
         A near complete list of columns is given below
         ```
@@ -74,7 +74,14 @@ class FreightPricingResult(Result):
             'tce_precision',
             'tce_unit',
             'record_date',
-            'predictions'
+            'predictions.outlook_1d.prediction',
+            'predictions.outlook_1d.rating',
+            'predictions.outlook_2d.prediction',
+            'predictions.outlook_2d.rating',
+            'predictions.outlook_3d.prediction',
+            'predictions.outlook_3d.rating',
+            'predictions.outlook_4d.prediction',
+            'predictions.outlook_4d.rating',
         ]
         ```
 
@@ -88,7 +95,7 @@ class FreightPricingResult(Result):
         )
 
         with Pool(os.cpu_count()) as pool:
-            records = pool.map(flatten, super().to_list())
+            records = pool.map(flatten, self.__format_prediction_outlooks(super().to_list()))
 
         return create_dataframe(
             columns=columns,
@@ -96,6 +103,73 @@ class FreightPricingResult(Result):
             data=records,
             logger_description="FreightPricing",
         )
+    
+    def __format_prediction_outlooks(self, records: List):
+        """
+        This private method formats the freight_pricing records to replace a list of predictions
+        with a dictionary where each key is the prediction outlook.
+
+        We do this so that when the freight pricing object is flattened to be consumed in a dataframe,
+        the column names are predictable, without having list indices in the column name.
+        `predictions.0.prediction` will become `predictions.outlook_1d.prediction`
+        This also means specific outlooks can be passed in the `columns` argument to the `to_df()` method.
+
+        E.G.
+        Input:
+        {
+            predictions: [
+                {
+                    prediction_type: "outlook_1d",
+                    prediction: "firm",
+                    rating: "medium"
+                },
+                {
+                    prediction_type: "outlook_4d",
+                    prediction: "firm",
+                    rating: "low"
+                }
+            ]
+        }
+
+        Output:
+        {
+            predictions: {
+                outlook_1d: {
+                    prediction: "firm",
+                    rating: "medium",
+                    prediction_type: "outlook_1d"
+                },
+                "outlook_4d": {
+                    prediction: "firm",
+                    rating: "low",
+                    prediction_type: "outlook_4d"
+                }
+            }
+        }
+
+        """
+        formatted_records = []
+
+        for record in records:
+            formatted_predictions = None
+            new_record = {}
+            
+            if record["predictions"]:
+                formatted_predictions = {}
+
+                for fp_prediction in record["predictions"]:
+                    formatted_predictions[fp_prediction["prediction_type"]] = {
+                        **fp_prediction
+                    }
+
+            new_record = {
+                **record,
+                "predictions": formatted_predictions,
+            }
+
+            formatted_records.append(new_record)
+
+        return formatted_records        
 
 
 DEFAULT_COLUMNS = [
@@ -107,5 +181,6 @@ DEFAULT_COLUMNS = [
     'cost_unit',
     'tce',
     'tce_unit',
-    'predictions',
+    'predictions.outlook_1d.prediction',
+    'predictions.outlook_1d.rating',
 ]
