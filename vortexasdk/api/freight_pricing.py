@@ -3,6 +3,11 @@ from typing import Optional
 from vortexasdk.api.id import ID
 from vortexasdk.api.serdes import FromDictMixin
 
+@dataclass(frozen=True)
+class FreightPricingPrediction:
+    prediction: str
+    prediction_type: str
+    rating: str
 
 @dataclass(frozen=True)
 class FreightPricing(FromDictMixin):
@@ -20,5 +25,5 @@ class FreightPricing(FromDictMixin):
     tce: Optional[float]
     tce_precision: Optional[int]
     tce_unit: Optional[str]
-    source: Optional[str]
-    route_prediction: Optional[str]
+    record_date: str;
+    predictions: Optional[FreightPricingPrediction] = None
