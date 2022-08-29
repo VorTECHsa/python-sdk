@@ -76,7 +76,7 @@ class FreightPricingResult(Result):
         for record in records:
             formatted_predictions = None
             new_record = {}
-            
+
             if record["predictions"]:
                 formatted_predictions = {}
 
@@ -92,8 +92,7 @@ class FreightPricingResult(Result):
 
             formatted_records.append(new_record)
 
-        return formatted_records        
-
+        return formatted_records
 
     def to_df(self, columns=None) -> pd.DataFrame:
         """
@@ -163,7 +162,9 @@ class FreightPricingResult(Result):
         flatten = functools.partial(convert_to_flat_dict, cols=columns)
 
         with Pool(os.cpu_count()) as pool:
-            records = pool.map(flatten, self.format_prediction_outlooks(super().to_list()))
+            records = pool.map(
+                flatten, self.format_prediction_outlooks(super().to_list())
+            )
 
         return create_dataframe(
             columns=columns,
