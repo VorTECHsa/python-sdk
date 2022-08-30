@@ -11,7 +11,7 @@ def create_list(list_of_dicts, output_class) -> List:
     """Convert each list element into an instance of the output class."""
     logger.debug(f"Converting list of dictionaries to list of {output_class}")
 
-    return [output_class(**d) for d in list_of_dicts]
+    return [output_class.construct(**d) for d in list_of_dicts]
 
 
 def format_datatypes(df: pd.DataFrame) -> pd.DataFrame:
