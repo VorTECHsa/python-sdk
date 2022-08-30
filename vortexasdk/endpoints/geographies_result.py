@@ -1,3 +1,4 @@
+from pydantic import BaseModel
 from typing import List
 
 import pandas as pd
@@ -8,7 +9,6 @@ from vortexasdk.logger import get_logger
 from vortexasdk.result_conversions import create_dataframe, create_list
 
 logger = get_logger(__name__)
-from pydantic import BaseModel
 
 
 class GeographyResult(Result, BaseModel):
