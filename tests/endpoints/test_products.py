@@ -22,7 +22,19 @@ class TestProducts(TestCaseUsingMockAPI):
             ],
         }
 
-        Product(**crude_dict)
+        Product.construct(**crude_dict)
+
+    def test_serialize_with_missing_fields(self):
+        crude_dict = {
+            "name": "Crude",
+            "layer": ["group"],
+            "parent": [],
+            "meta": {"api_min": 33.39586, "api_max": 33.39586},
+            "ref_type": "product",
+        }
+
+        Product.construct(**crude_dict)
+
 
     def test_search_ids_retreives_names(self):
         products = Products().search().to_df()
