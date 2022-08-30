@@ -11,6 +11,11 @@ def create_list(list_of_dicts, output_class) -> List:
     """Convert each list element into an instance of the output class."""
     logger.debug(f"Converting list of dictionaries to list of {output_class}")
 
+    """
+    Using the `construct()` method skips validation during deserialisation.
+    This means that if the Model for the dataset is outdated, or a breaking change
+    is made, deserialisation will not throw an error.
+    """
     return [output_class.construct(**d) for d in list_of_dicts]
 
 
