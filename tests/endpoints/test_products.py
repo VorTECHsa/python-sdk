@@ -22,7 +22,7 @@ class TestProducts(TestCaseUsingMockAPI):
             ],
         }
 
-        Product.construct(**crude_dict)
+        Product(**crude_dict)
 
     def test_serialize_with_missing_fields(self):
         crude_dict = {
