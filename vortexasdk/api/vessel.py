@@ -1,4 +1,3 @@
-from datetime import datetime
 from pydantic import BaseModel
 from typing import List, Optional
 
@@ -18,8 +17,8 @@ class VesselEntityCorporateEntity(BaseModel):
     id: ID
     label: Optional[str] = None
     layer: Optional[str] = None
-    end_timestamp: Optional[datetime] = None
-    start_timestamp: Optional[datetime] = None
+    end_timestamp: Optional[ISODate] = None
+    start_timestamp: Optional[ISODate] = None
 
 
 class VesselEntityCorporateEntityWithConfidence(BaseModel):
@@ -28,8 +27,8 @@ class VesselEntityCorporateEntityWithConfidence(BaseModel):
     id: Optional[ID] = None
     label: Optional[str] = None
     layer: Optional[str] = None
-    end_timestamp: Optional[datetime] = None
-    start_timestamp: Optional[datetime] = None
+    end_timestamp: Optional[ISODate] = None
+    start_timestamp: Optional[ISODate] = None
 
 
 class Vessel(Node):

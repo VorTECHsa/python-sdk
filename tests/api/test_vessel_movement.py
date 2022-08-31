@@ -1,4 +1,3 @@
-import datetime
 from unittest import TestCase
 
 from tests.mock_client import example_vessel_movements
@@ -277,9 +276,7 @@ class TestVesselMovement(TestCase):
             "cargoes.0.product.category.probability": 1.0,
             "cargoes.0.product.category.source": "external",
             "cargoes.0.quantity": 290692.0,
-            "destination.end_timestamp": datetime.datetime(
-                2017, 11, 29, 2, 49, 32, tzinfo=datetime.timezone.utc
-            ),
+            "destination.end_timestamp": "2017-11-29T02:49:32+0000",
             "destination.event_id": "487d3eba7cc29724ce6b8aca3822dfbe85eaa0a61500c3cd5fa5f705bf95c832",
             "destination.event_type": "discharge",
             "destination.location.country.id": "934c47f36c16a58d68ef5e007e62a23f5f036ee3f3d1f5f85a48c572b90ad8b2",
@@ -324,15 +321,9 @@ class TestVesselMovement(TestCase):
             "destination.location.terminal.source": "model",
             "destination.pos.0": 121.9107237155891,
             "destination.pos.1": 38.965178213026206,
-            "destination.start_timestamp": datetime.datetime(
-                2017, 11, 27, 6, 39, 50, tzinfo=datetime.timezone.utc
-            ),
-            "end_timestamp": datetime.datetime(
-                2017, 11, 29, 2, 49, 32, tzinfo=datetime.timezone.utc
-            ),
-            "origin.end_timestamp": datetime.datetime(
-                2017, 11, 21, 0, 0, 8, tzinfo=datetime.timezone.utc
-            ),
+            "destination.start_timestamp": "2017-11-27T06:39:50+0000",
+            "end_timestamp": "2017-11-29T02:49:32+0000",
+            "origin.end_timestamp": "2017-11-21T00:00:08+0000",
             "origin.event_id": "5769995a932e152f9ded42706cebe90992ba6cc06208e32833d29ea91e37a68f",
             "origin.event_type": "discharge",
             "origin.location.country.id": "934c47f36c16a58d68ef5e007e62a23f5f036ee3f3d1f5f85a48c572b90ad8b2",
@@ -377,12 +368,8 @@ class TestVesselMovement(TestCase):
             "origin.location.terminal.source": "model",
             "origin.pos.0": 121.95271103090423,
             "origin.pos.1": 40.20963715299812,
-            "origin.start_timestamp": datetime.datetime(
-                2017, 11, 19, 6, 59, 5, tzinfo=datetime.timezone.utc
-            ),
-            "start_timestamp": datetime.datetime(
-                2017, 11, 19, 6, 59, 5, tzinfo=datetime.timezone.utc
-            ),
+            "origin.start_timestamp": "2017-11-19T06:59:05+0000",
+            "start_timestamp": "2017-11-19T06:59:05+0000",
             "vessel.corporate_entities.charterer.end_timestamp": None,
             "vessel.corporate_entities.charterer.id": "19b1bf392f474ca942b7b25ddcba363638516b2e40268ea7a70888021575a4dd",
             "vessel.corporate_entities.charterer.label": "VITOL",
@@ -413,6 +400,8 @@ class TestVesselMovement(TestCase):
             "vessel.vessel_class": "suezmax",
             "vessel.voyage_id": None,
             "vessel.year": None,
+            "vessel.flag": None,
+            "vessel.scrubber": None,
             "vessel_movement_id": "7e0fb931ec1117d102f957048a6cce473a7eaf3f2b95f6bccdcc7b50dc3d8ab7",
             "voyage_id": "7a29c4880276cbbdfade2ec6a0ee2dbbebf9e41bb47b18657196fff7cd3dc32e",
         }

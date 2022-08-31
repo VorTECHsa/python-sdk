@@ -1,7 +1,7 @@
-from datetime import datetime
 from pydantic import BaseModel
 from typing import List, Optional
 from vortexasdk.api.id import ID
+from vortexasdk.api.shared_types import ISODate
 
 
 class FreightPricingPrediction(BaseModel):
@@ -18,7 +18,7 @@ class FreightPricing(BaseModel):
     id: ID
     short_code: Optional[str] = None
     rate: Optional[float] = None
-    record_date: Optional[datetime] = None
+    record_date: Optional[ISODate] = None
     rate_precision: Optional[int] = None
     rate_unit: Optional[str] = None
     cost: Optional[float] = None

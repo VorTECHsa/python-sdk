@@ -35,7 +35,7 @@ class CongestionBreakdownItem(BaseModel):
     vessel_dwt_ballast: Optional[int] = None
     vessel_cubic_capacity_ballast: Optional[int] = None
     vessel_count_ballast: Optional[int] = None
-    location_details: List[EntityWithListLayer] = None
+    location_details: Optional[List[EntityWithListLayer]] = None
 
 
 class VoyagesVesselEntity(BaseModel):
@@ -54,11 +54,11 @@ class VoyagesVesselEntity(BaseModel):
     call_sign: Optional[str] = None
     cubic_capacity: Optional[int] = None
     year: Optional[int] = None
-    flag: List[Flag] = None
-    scrubber: List[Scrubber] = None
+    flag: Optional[List[Flag]] = None
+    scrubber: Optional[List[Scrubber]] = None
     ice_class: Optional[str] = None
     propulsion: Optional[str] = None
-    tags: List[Tag] = None
+    tags: Optional[List[Tag]] = None
     vessel_risk_level: Optional[str] = None
 
 
@@ -156,10 +156,10 @@ class VoyageEnrichedItem(BaseModel):
 
     """
 
-    schema_version: Optional[str] = None
     voyage_id: ID
-    start_event_id: Optional[ID] = None
     vessel_id: ID
+    schema_version: Optional[str] = None
+    start_event_id: Optional[ID] = None
     vessel: Optional[VoyagesVesselEntity] = None
     start_timestamp: Optional[ISODate] = None
     end_timestamp: Optional[ISODate] = None

@@ -7,7 +7,7 @@ from vortexasdk.api.id import ID
 
 IDsNames = Union[List[Union[ID, str]], str, ID]
 
-ISODate = datetime
+ISODate = str
 
 
 # noinspection PyPep8Naming
