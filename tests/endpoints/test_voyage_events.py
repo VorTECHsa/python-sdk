@@ -3,7 +3,6 @@ from vortexasdk.api.voyages import (
     VoyageStatusEvent,
     VoyageVesselEvent,
 )
-from vortexasdk.endpoints.products import Products
 
 
 class TestVoyageEvents:
