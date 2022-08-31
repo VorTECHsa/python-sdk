@@ -45,7 +45,7 @@ class VoyagesVesselEntity(BaseModel):
     [Vessel Entities Further Documentation](https://docs.vortexa.com/reference/intro-vessel-entities)
     """
 
-    id: Optional[ID] = None
+    id: ID
     name: Optional[str] = None
     dead_weight: Optional[int] = None
     vessel_class: Optional[str] = None
@@ -161,9 +161,9 @@ class VoyageEnrichedItem(BaseModel):
     """
 
     schema_version: Optional[str] = None
-    voyage_id: Optional[ID] = None
+    voyage_id: ID
     start_event_id: Optional[ID] = None
-    vessel_id: Optional[ID] = None
+    vessel_id: ID
     vessel: Optional[VoyagesVesselEntity] = None
     start_timestamp: Optional[ISODate] = None
     end_timestamp: Optional[ISODate] = None

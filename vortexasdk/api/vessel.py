@@ -15,7 +15,7 @@ from vortexasdk.api.shared_types import (
 
 
 class VesselEntityCorporateEntity(BaseModel):
-    id: Optional[ID] = None
+    id: ID
     label: Optional[str] = None
     layer: Optional[str] = None
     end_timestamp: Optional[datetime] = None
@@ -74,7 +74,7 @@ class VesselEntity(IDName, BaseModel):
     [Vessel Entities Further Documentation](https://docs.vortexa.com/reference/intro-vessel-entities)
     """
 
-    id: Optional[ID] = None
+    id: ID
     name: Optional[str] = None
     mmsi: Optional[int] = None
     imo: Optional[int] = None

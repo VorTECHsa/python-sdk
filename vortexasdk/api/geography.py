@@ -23,7 +23,7 @@ class BoundingBox(BaseModel):
 class Geography(Node, BaseModel):
     """Represent a Geography reference record returned by the API."""
 
-    id: Optional[ID] = None
+    id: ID
     name: Optional[str] = None
     layer: Optional[List[str]] = None
     exclusion_rule: Optional[List[IDNameLayer]] = None

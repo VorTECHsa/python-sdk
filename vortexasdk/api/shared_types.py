@@ -22,13 +22,13 @@ def to_ISODate_Array(days: List[datetime]) -> List[str]:
 class EntityWithSingleLayer(BaseModel):
     """Holds commonly used properties."""
 
-    id: Optional[ID] = None
+    id: ID
     layer: Optional[str] = None
     label: Optional[str] = None
 
 
 class EntityWithSingleLayerAndTimespan(BaseModel):
-    id: Optional[ID] = None
+    id: ID
     layer: Optional[str] = None
     label: Optional[str] = None
     start_timestamp: Optional[ISODate] = None
@@ -38,7 +38,7 @@ class EntityWithSingleLayerAndTimespan(BaseModel):
 class EntityWithListLayer(BaseModel):
     """Holds commonly used properties."""
 
-    id: Optional[ID] = None
+    id: ID
     layer: Optional[List[str]] = None
     label: Optional[str] = None
 
@@ -51,9 +51,9 @@ class EntityWithSingleLayerAndProbability(BaseModel):
     - `source` the source of this entity, (is typically one of `['model', 'external_data']`
     """
 
+    id: ID
     probability: Optional[float] = None
     source: Optional[str] = None
-    id: Optional[ID] = None
     layer: Optional[str] = None
     label: Optional[str] = None
 
@@ -66,9 +66,9 @@ class EntityWithListLayerAndProbability(BaseModel):
     - `source` the source of this entity, (is typically one of `['model', 'external_data']`
     """
 
+    id: ID
     probability: Optional[float] = None
     source: Optional[str] = None
-    id: Optional[ID] = None
     layer: Optional[List[str]]
     label: Optional[str] = None
 
@@ -76,14 +76,14 @@ class EntityWithListLayerAndProbability(BaseModel):
 class IDName(BaseModel):
     """Tuple containing `id` and `name`."""
 
-    id: Optional[ID] = None
+    id: ID
     name: Optional[str] = None
 
 
 class IDLayer(BaseModel):
     """Tuple containing `id` and `layer`."""
 
-    id: Optional[ID] = None
+    id: ID
     layer: Optional[str] = None
     label: Optional[str] = None
 
@@ -91,7 +91,7 @@ class IDLayer(BaseModel):
 class IDNameLayer(BaseModel):
     """Triple holding `id`, `name`, and `layer`."""
 
-    id: Optional[ID] = None
+    id: ID
     layer: Optional[List[str]] = None
     name: Optional[str] = None
 

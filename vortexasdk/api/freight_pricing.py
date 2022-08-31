@@ -15,7 +15,7 @@ class FreightPricing(BaseModel):
     Freight pricing shows pricing information applicable to a selected route on a given day.
     """
 
-    id: Optional[ID] = None
+    id: ID
     short_code: Optional[str] = None
     rate: Optional[float] = None
     record_date: Optional[datetime] = None

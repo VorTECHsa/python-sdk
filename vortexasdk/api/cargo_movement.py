@@ -147,7 +147,7 @@ class CargoMovement(BaseModel):
 
     """
 
-    cargo_movement_id: Optional[ID] = None
+    cargo_movement_id: ID
     quantity: Optional[int] = None
     status: Optional[str] = None
     vessels: Optional[List[VesselEntity]] = None
