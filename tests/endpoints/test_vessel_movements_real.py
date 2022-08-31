@@ -163,7 +163,6 @@ class TestVesselMovementsReal(TestCaseUsingRealAPI):
             .head(2)
         )
 
-        print(df.head())
         assert len(df) == 2
 
     def test_age_flag_scrubbers_filters(self):
@@ -187,7 +186,6 @@ class TestVesselMovementsReal(TestCaseUsingRealAPI):
             .head(2)
         )
 
-        print(df.head())
         assert len(df) == 2
 
     def test_ice_class_filters(self):
@@ -211,5 +209,4 @@ class TestVesselMovementsReal(TestCaseUsingRealAPI):
             .head(2)
         )
 
-        print(df.head())
         assert len(df) == 2

@@ -81,8 +81,6 @@ class TestVoyagesTopHits(TestCaseUsingRealAPI):
             .head()
         )
 
-        print(df.columns)
-
         assert list(df.columns) == ["id", "value", "count", "label"]
 
     def test_to_list(self):

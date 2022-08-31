@@ -70,8 +70,6 @@ class TestVoyagesSearchEnrichedEnriched(TestCaseUsingRealAPI):
             .to_list()
         )
 
-        print(res)
-
         assert len(res) > 0
         assert res[0].schema_version == "1.0.0"
         assert res[0].vessel is not None

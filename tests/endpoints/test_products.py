@@ -33,7 +33,7 @@ class TestProducts(TestCaseUsingMockAPI):
             "ref_type": "product",
         }
 
-        Product.construct.parse_obj(crude_dict)
+        Product.parse_obj(crude_dict)
 
 
     def test_search_ids_retreives_names(self):

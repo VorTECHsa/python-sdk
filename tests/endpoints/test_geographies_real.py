@@ -13,11 +13,7 @@ class TestGeographiesReal(TestCaseUsingRealAPI):
         Geographies().search()
 
     def test_search_to_df(self):
-        geographies = (
-            Geographies().search(term=["Liverpool", "Southampton"]).to_df()
-        )
-
-        print(to_markdown(geographies))
+        Geographies().search(term=["Liverpool", "Southampton"]).to_df()
 
     def test_search_to_list(self):
         geographies = (
