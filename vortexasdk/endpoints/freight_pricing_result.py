@@ -18,7 +18,7 @@ class FreightPricingResult(Result):
     """
     Container class holdings search results returns from the freight pricing endpoint.
 
-    This class has two public methods, `to_list()`, and `to_df()`, allowing search results to be represented as a list
+    This class has two methods, `to_list()`, and `to_df()`, allowing search results to be represented as a list
      or as a `pd.DataFrame` , respectively.
     """
 
@@ -26,6 +26,75 @@ class FreightPricingResult(Result):
         """Represent availability as a list."""
         # noinspection PyTypeChecker
         return create_list(super().to_list(), FreightPricing)
+
+    @staticmethod
+    def format_prediction_outlooks(records: List):
+        """
+        This private method formats the freight_pricing records to replace a list of predictions
+        with a dictionary where each key is the prediction outlook.
+
+        We do this so that when the freight pricing object is flattened to be consumed in a dataframe,
+        the column names are predictable, without having list indices in the column name.
+        `predictions.0.prediction` will become `predictions.outlook_1d.prediction`
+        This also means specific outlooks can be passed in the `columns` argument to the `to_df()` method.
+
+        E.G.
+        Input:
+        {
+            predictions: [
+                {
+                    prediction_type: "outlook_1d",
+                    prediction: "firm",
+                    rating: "medium"
+                },
+                {
+                    prediction_type: "outlook_4d",
+                    prediction: "firm",
+                    rating: "low"
+                }
+            ]
+        }
+
+        Output:
+        {
+            predictions: {
+                outlook_1d: {
+                    prediction: "firm",
+                    rating: "medium",
+                    prediction_type: "outlook_1d"
+                },
+                outlook_4d: {
+                    prediction: "firm",
+                    rating: "low",
+                    prediction_type: "outlook_4d"
+                }
+            }
+        }
+
+        """
+        formatted_records = []
+
+        for record in records:
+            formatted_predictions = None
+            new_record = {}
+            
+            if record["predictions"]:
+                formatted_predictions = {}
+
+                for fp_prediction in record["predictions"]:
+                    formatted_predictions[fp_prediction["prediction_type"]] = {
+                        **fp_prediction
+                    }
+
+            new_record = {
+                **record,
+                "predictions": formatted_predictions,
+            }
+
+            formatted_records.append(new_record)
+
+        return formatted_records        
+
 
     def to_df(self, columns=None) -> pd.DataFrame:
         """
@@ -95,7 +164,7 @@ class FreightPricingResult(Result):
         )
 
         with Pool(os.cpu_count()) as pool:
-            records = pool.map(flatten, self.__format_prediction_outlooks(super().to_list()))
+            records = pool.map(flatten, self.format_prediction_outlooks(super().to_list()))
 
         return create_dataframe(
             columns=columns,
@@ -104,73 +173,6 @@ class FreightPricingResult(Result):
             logger_description="FreightPricing",
         )
     
-    def __format_prediction_outlooks(self, records: List):
-        """
-        This private method formats the freight_pricing records to replace a list of predictions
-        with a dictionary where each key is the prediction outlook.
-
-        We do this so that when the freight pricing object is flattened to be consumed in a dataframe,
-        the column names are predictable, without having list indices in the column name.
-        `predictions.0.prediction` will become `predictions.outlook_1d.prediction`
-        This also means specific outlooks can be passed in the `columns` argument to the `to_df()` method.
-
-        E.G.
-        Input:
-        {
-            predictions: [
-                {
-                    prediction_type: "outlook_1d",
-                    prediction: "firm",
-                    rating: "medium"
-                },
-                {
-                    prediction_type: "outlook_4d",
-                    prediction: "firm",
-                    rating: "low"
-                }
-            ]
-        }
-
-        Output:
-        {
-            predictions: {
-                outlook_1d: {
-                    prediction: "firm",
-                    rating: "medium",
-                    prediction_type: "outlook_1d"
-                },
-                "outlook_4d": {
-                    prediction: "firm",
-                    rating: "low",
-                    prediction_type: "outlook_4d"
-                }
-            }
-        }
-
-        """
-        formatted_records = []
-
-        for record in records:
-            formatted_predictions = None
-            new_record = {}
-            
-            if record["predictions"]:
-                formatted_predictions = {}
-
-                for fp_prediction in record["predictions"]:
-                    formatted_predictions[fp_prediction["prediction_type"]] = {
-                        **fp_prediction
-                    }
-
-            new_record = {
-                **record,
-                "predictions": formatted_predictions,
-            }
-
-            formatted_records.append(new_record)
-
-        return formatted_records        
-
 
 DEFAULT_COLUMNS = [
     'short_code',
