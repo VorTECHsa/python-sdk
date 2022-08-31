@@ -10,6 +10,4 @@ class Attribute(Node, BaseModel):
     Represent an Attribute reference record returned by the API.
     """
 
-    id: Optional[str] = None
-    name: Optional[str] = None
     type: Optional[str] = None

@@ -19,7 +19,7 @@ class RawLocations(BaseModel):
 class CargoPortLoadEvent(BaseModel):
     vessel_id: Optional[ID] = None
     start_timestamp: Optional[ISODate] = None
-    event_type: Optional[Literal["cargo_port_load_event"]] = Literal["cargo_port_load_event"]
+    event_type: Optional[Literal["cargo_port_load_event"]] = None
     location: Optional[List[GeographyEntity]] = None
     probability: Optional[float] = None
     end_timestamp: Optional[ISODate] = None
@@ -28,7 +28,7 @@ class CargoPortLoadEvent(BaseModel):
 
 class CargoFSOLoadEvent(BaseModel):
     start_timestamp: Optional[ISODate] = None
-    event_type: Optional[Literal["cargo_fso_load_event"]] = Literal["cargo_fso_load_event"]
+    event_type: Optional[Literal["cargo_fso_load_event"]] = None
     location: Optional[List[GeographyEntity]] = None
     probability: Optional[float] = None
     fso_vessel_id: Optional[ID] = None
@@ -41,7 +41,7 @@ class CargoFSOLoadEvent(BaseModel):
 
 class CargoPortUnloadEvent(BaseModel):
     vessel_id: Optional[ID] = None
-    event_type: Optional[Literal["cargo_port_unload_event"]] = Literal["cargo_port_unload_event"]
+    event_type: Optional[Literal["cargo_port_unload_event"]] = None
     location: Optional[List[GeographyEntity]] = None
     probability: Optional[float] = None
     end_timestamp: Optional[ISODate] = None
@@ -53,7 +53,7 @@ class CargoPortUnloadEvent(BaseModel):
 
 class CargoFSOUnloadEvent(BaseModel):
     start_timestamp: Optional[ISODate] = None
-    event_type: Optional[Literal["cargo_fso_unload_event"]] = Literal["cargo_fso_unload_event"]
+    event_type: Optional[Literal["cargo_fso_unload_event"]] = None
     location: Optional[List[GeographyEntity]] = None
     probability: Optional[float] = None
     fso_vessel_id: Optional[str] = None
@@ -66,13 +66,13 @@ class CargoFSOUnloadEvent(BaseModel):
 
 class CargoFixtureEvent(BaseModel):
     start_timestamp: Optional[ISODate] = None
-    event_type: Optional[Literal["cargo_fixture_event"]] = Literal["cargo_fixture_event"]
+    event_type: Optional[Literal["cargo_fixture_event"]] = None
     end_timestamp: Optional[ISODate] = None
 
 
 class CargoSTSEvent(BaseModel):
     start_timestamp: Optional[ISODate] = None
-    event_type: Optional[Literal["cargo_sts_event"]] = Literal["cargo_sts_event"]
+    event_type: Optional[Literal["cargo_sts_event"]] = None
     location: Optional[List[GeographyEntity]] = None
     to_vessel_id: Optional[str] = None
     to_vessel_name: Optional[str] = None
@@ -85,7 +85,7 @@ class CargoSTSEvent(BaseModel):
 class CargoStorageEvent(BaseModel):
     vessel_id: Optional[ID] = None
     start_timestamp: Optional[ISODate] = None
-    event_type: Optional[Literal["cargo_storage_event"]] = Literal["cargo_storage_event"]
+    event_type: Optional[Literal["cargo_storage_event"]] = None
     location: Optional[List[GeographyEntity]] = None
     vessel_class: Optional[str] = None
     end_timestamp: Optional[ISODate] = None
@@ -95,7 +95,7 @@ class CargoStorageEvent(BaseModel):
 class CargoWaypointEvent(BaseModel):
     vessel_id: Optional[ID] = None
     start_timestamp: Optional[ISODate] = None
-    event_type: Optional[Literal["cargo_waypoint_event"]] = Literal["cargo_waypoint_event"]
+    event_type: Optional[Literal["cargo_waypoint_event"]] = None
     location: Optional[List[GeographyEntity]] = None
     probability: Optional[float] = None
     end_timestamp: Optional[ISODate] = None
@@ -104,13 +104,13 @@ class CargoWaypointEvent(BaseModel):
 
 class CargoTransitingEvent(BaseModel):
     start_timestamp: Optional[ISODate] = None
-    event_type: Optional[Literal["cargo_transiting_event"]] = Literal["cargo_transiting_event"]
+    event_type: Optional[Literal["cargo_transiting_event"]] = None
     end_timestamp: Optional[ISODate] = None
 
 
 class CargoOilOnWaterEvent(BaseModel):
     start_timestamp: Optional[ISODate] = None
-    event_type: Optional[Literal["cargo_oil_on_water_event"]] = Literal["cargo_oil_on_water_event"]
+    event_type: Optional[Literal["cargo_oil_on_water_event"]] = None
     end_timestamp: Optional[ISODate] = None
 
 
