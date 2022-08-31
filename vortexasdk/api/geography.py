@@ -20,7 +20,7 @@ class BoundingBox(BaseModel):
     coordinates: Optional[List[Position]] = None
 
 
-class Geography(Node, BaseModel):
+class Geography(Node):
     """Represent a Geography reference record returned by the API."""
 
     id: ID
@@ -31,7 +31,7 @@ class Geography(Node, BaseModel):
     pos: Optional[List[str]] = None
 
 
-class GeographyEntity(EntityWithSingleLayerAndProbability, BaseModel):
+class GeographyEntity(EntityWithSingleLayerAndProbability):
     """
     Represents a hierarchy tree of locational data.
 

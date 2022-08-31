@@ -7,12 +7,11 @@ from vortexasdk.api.entity_flattening import flatten_dictionary
 from vortexasdk.api.search_result import Result
 from vortexasdk.logger import get_logger
 from vortexasdk.result_conversions import create_dataframe, create_list
-from pydantic import BaseModel
 
 logger = get_logger(__name__)
 
 
-class ProductResult(Result, BaseModel):
+class ProductResult(Result):
     """Container class that holds the result obtained from calling the `Product` endpoint."""
 
     def to_list(self) -> List[Product]:

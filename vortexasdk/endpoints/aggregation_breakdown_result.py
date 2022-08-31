@@ -2,7 +2,6 @@ from typing import List
 
 import pandas as pd
 from vortexasdk.api.aggregation_breakdown_item import AggregationBreakdownItem
-from pydantic import BaseModel
 from vortexasdk.api.search_result import Result
 from vortexasdk.logger import get_logger
 from vortexasdk.result_conversions import create_dataframe, create_list
@@ -10,7 +9,7 @@ from vortexasdk.result_conversions import create_dataframe, create_list
 logger = get_logger(__name__)
 
 
-class AggregationBreakdownResult(Result, BaseModel):
+class AggregationBreakdownResult(Result):
     """Container class that holds the result obtained from calling a top hits endpoint."""
 
     def to_list(self) -> List[AggregationBreakdownItem]:

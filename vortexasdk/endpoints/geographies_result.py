@@ -1,4 +1,3 @@
-from pydantic import BaseModel
 from typing import List
 
 import pandas as pd
@@ -11,7 +10,7 @@ from vortexasdk.result_conversions import create_dataframe, create_list
 logger = get_logger(__name__)
 
 
-class GeographyResult(Result, BaseModel):
+class GeographyResult(Result):
     """Container class that holds the result obtained from calling the `Geography` endpoint."""
 
     def to_list(self) -> List[Geography]:

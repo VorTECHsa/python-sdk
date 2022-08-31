@@ -6,12 +6,9 @@ from vortexasdk.api.search_result import Result
 from vortexasdk.api.timeseries_item import TimeSeriesItem
 from vortexasdk.logger import get_logger
 from vortexasdk.result_conversions import create_dataframe, create_list
-from pydantic import BaseModel
-
-logger = get_logger(__name__)
 
 
-class TimeSeriesResult(Result, BaseModel):
+class TimeSeriesResult(Result):
     """Container class that holds the result obtained from calling a time series endpoint."""
 
     def to_list(self) -> List[TimeSeriesItem]:

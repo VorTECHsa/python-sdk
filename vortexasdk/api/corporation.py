@@ -1,4 +1,3 @@
-from pydantic import BaseModel
 from typing import List, Optional
 
 
@@ -8,7 +7,7 @@ from vortexasdk.api.shared_types import (
 )
 
 
-class Corporation(IDName, BaseModel):
+class Corporation(IDName):
     """Represent a Corporation reference record returned by the API."""
 
     corporate_entity_type: Optional[List[str]] = None
@@ -18,7 +17,7 @@ class Corporation(IDName, BaseModel):
     filterable: Optional[bool] = None
 
 
-class CorporateEntity(EntityWithSingleLayerAndProbability, BaseModel):
+class CorporateEntity(EntityWithSingleLayerAndProbability):
     """
     Represents a relationship between a corporation and another entity like a vessel.
 

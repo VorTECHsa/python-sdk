@@ -1,5 +1,5 @@
 from datetime import datetime
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 from typing import List, Optional
 
 from vortexasdk.api.id import ID
@@ -32,7 +32,7 @@ class VesselEntityCorporateEntityWithConfidence(BaseModel):
     start_timestamp: Optional[datetime] = None
 
 
-class Vessel(Node, BaseModel):
+class Vessel(Node):
     """
     Represent a Vessel reference record returned by the API.
 
@@ -67,7 +67,7 @@ class Vessel(Node, BaseModel):
     propulsion: Optional[str] = None
 
 
-class VesselEntity(IDName, BaseModel):
+class VesselEntity(IDName):
     """
     A VesselEntity represents a vessel record used in CargoMovements and VesselMovements.
 
@@ -95,7 +95,7 @@ class VesselEntity(IDName, BaseModel):
     end_timestamp: Optional[ISODate] = None
     fixture_id: Optional[str] = None
 
-    scrubber: Optional[List[Scrubber]] = Field(default_factory=list)
-    flag: Optional[List[Flag]] = Field(default_factory=list)
+    scrubber: Optional[List[Scrubber]] = None
+    flag: Optional[List[Flag]] = None
     ice_class: Optional[str] = None
     propulsion: Optional[str] = None

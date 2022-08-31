@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 from typing import List, Optional, Union
 from typing_extensions import Literal
 from vortexasdk.api.id import ID
@@ -35,7 +35,7 @@ class CongestionBreakdownItem(BaseModel):
     vessel_dwt_ballast: Optional[int] = None
     vessel_cubic_capacity_ballast: Optional[int] = None
     vessel_count_ballast: Optional[int] = None
-    location_details: List[EntityWithListLayer] = Field(default_factory=list)
+    location_details: List[EntityWithListLayer] = None
 
 
 class VoyagesVesselEntity(BaseModel):
@@ -54,11 +54,11 @@ class VoyagesVesselEntity(BaseModel):
     call_sign: Optional[str] = None
     cubic_capacity: Optional[int] = None
     year: Optional[int] = None
-    flag: List[Flag] = Field(default_factory=list)
-    scrubber: List[Scrubber] = Field(default_factory=list)
+    flag: List[Flag] = None
+    scrubber: List[Scrubber] = None
     ice_class: Optional[str] = None
     propulsion: Optional[str] = None
-    tags: List[Tag] = Field(default_factory=list)
+    tags: List[Tag] = None
     vessel_risk_level: Optional[str] = None
 
 
@@ -80,14 +80,14 @@ class VoyageVesselEvent(BaseModel):
     activity: Optional[str] = None
     odometer_start: Optional[int] = None
     odometer_end: Optional[int] = None
-    location_layer: Optional[List[str]] = Field(default_factory=list)
+    location_layer: Optional[List[str]] = None
     cargo_movement_id: Optional[List[str]] = None
     sts_event_counterparty_vessel_id: Optional[str] = None
     waiting_event_target_geography_id: Optional[str] = None
     fixture_event_fixing_timestamp: Optional[ISODate] = None
-    tags: Optional[List[Tag]] = Field(default_factory=list)
+    tags: Optional[List[Tag]] = None
     probability: Optional[int] = None
-    location_details: Optional[List[EntityWithSingleLayer]] = Field(default_factory=list)
+    location_details: Optional[List[EntityWithSingleLayer]] = None
     is_open_event: Optional[bool] = None
     waiting_event_target_geography_details: Optional[
         List[EntityWithSingleLayer]
@@ -119,13 +119,9 @@ class VoyageCargoEvent(BaseModel):
     odometer_end: Optional[int] = None
     cargo_destination_id: Optional[str] = None
     tonne_miles: Optional[int] = None
-    product_details: Optional[List[EntityWithSingleLayer]] = Field(default_factory=list)
-    cargo_origin_details: Optional[List[EntityWithSingleLayer]] = Field(
-        default_factory=list
-    )
-    cargo_destination_details: Optional[List[EntityWithSingleLayer]] = Field(
-        default_factory=list
-    )
+    product_details: Optional[List[EntityWithSingleLayer]] = None
+    cargo_origin_details: Optional[List[EntityWithSingleLayer]] = None
+    cargo_destination_details: Optional[List[EntityWithSingleLayer]] = None
     is_open_event: Optional[bool] = None
 
 
@@ -170,17 +166,23 @@ class VoyageEnrichedItem(BaseModel):
     end_event_id: Optional[ID] = None
     previous_voyage_id: Optional[ID] = None
     next_voyage_id: Optional[ID] = None
-    latest_product_ids: Optional[List[ID]] = Field(default_factory=list)
-    tags: Optional[List[Tag]] = Field(default_factory=list)
+    latest_product_ids: Optional[List[ID]] = None
+    tags: Optional[List[Tag]] = None
     tonne_miles: Optional[int] = None
-    corporate_entities:Optional[List[EntityWithSingleLayerAndTimespan]] = Field(
-        default_factory=list
-    )
+    corporate_entities:Optional[List[EntityWithSingleLayerAndTimespan]] = None
     odometer_start: Optional[int] = None
     odometer_end: Optional[int] = None
+    """
+    In voyage events there is no single key we can use to discriminate which exact type
+    each event is, as is done in CargoMovements. As such, pydantic will try to figure out
+    which model each event is an instance of, by trial an error.
+    In order to give that process the highest chance of success, we need to list
+    the Models in order of MOST specific -> LEAST specific.
+    This means that the order of the models in the Union actually has meaning.
+    At the time of writing, that order is:
+    `Union[VoyageVesselEvent, VoyageCargoEvent, VoyageStatusEvent]`
+    """
     events: Optional[List[
         Optional[Union[VoyageVesselEvent, VoyageCargoEvent, VoyageStatusEvent]]
-    ]] = Field(default_factory=list)
-    latest_product_details: Optional[List[EntityWithSingleLayer]] = Field(
-        default_factory=list
-    )
+    ]] = None
+    latest_product_details: Optional[List[EntityWithSingleLayer]] = None

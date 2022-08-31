@@ -1,4 +1,3 @@
-from pydantic import BaseModel
 from typing import List, Optional
 
 
@@ -10,7 +9,7 @@ from vortexasdk.api.shared_types import (
 )
 
 
-class Product(Node, BaseModel):
+class Product(Node):
     """
     Represent a Product reference record returned by the API.
 
@@ -22,9 +21,7 @@ class Product(Node, BaseModel):
     hierarchy: Optional[List[EntityWithSingleLayer]] = None
 
 
-class ProductEntityWithSingleLayer(
-    EntityWithSingleLayerAndProbability, BaseModel
-):
+class ProductEntityWithSingleLayer(EntityWithSingleLayerAndProbability):
     """
 
     Represents a single product layer of a hierarchical product tree.
@@ -33,7 +30,7 @@ class ProductEntityWithSingleLayer(
     """
 
 
-class ProductEntityWithListLayer(EntityWithListLayerAndProbability, BaseModel):
+class ProductEntityWithListLayer(EntityWithListLayerAndProbability):
     """
 
     Represents a single product layer of a hierarchical product tree.

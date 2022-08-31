@@ -6,12 +6,11 @@ from vortexasdk.api.search_result import Result
 from vortexasdk.api.voyages import VoyageEnrichedItem
 from vortexasdk.logger import get_logger
 from vortexasdk.result_conversions import create_list
-from pydantic import BaseModel
 
 logger = get_logger(__name__)
 
 
-class VoyagesSearchEnrichedFlattenedResult(Result, BaseModel):
+class VoyagesSearchEnrichedFlattenedResult(Result):
     """
     Container class holdings search results returned from the voyages endpoint.
 
@@ -26,7 +25,7 @@ class VoyagesSearchEnrichedFlattenedResult(Result, BaseModel):
             f"to_list method is not supported for search results in the flattened format (i.e. when the `columns` API param is provided). Please use to_df() instead."
         )
 
-    def to_df(self, columns: Optional[List[str]] = None) -> pd.DataFrame:
+    def to_df(self, columns = None) -> pd.DataFrame:
         """
         Represent voyages as a `pd.DataFrame`.
 
@@ -41,7 +40,7 @@ class VoyagesSearchEnrichedFlattenedResult(Result, BaseModel):
         return pd.DataFrame(data=super().to_list())
 
 
-class VoyagesSearchEnrichedListResult(Result, BaseModel):
+class VoyagesSearchEnrichedListResult(Result):
     """
     Container class holdings search results returned from the voyages endpoint.
 
@@ -55,7 +54,7 @@ class VoyagesSearchEnrichedListResult(Result, BaseModel):
         # noinspection PyTypeChecker
         return create_list(super().to_list(), VoyageEnrichedItem)
 
-    def to_df(self, columns: Optional[List[str]] = None) -> pd.DataFrame:
+    def to_df(self, columns = None) -> pd.DataFrame:
         # noinspection PyTypeChecker
         raise Exception(
             f"to_df method is not supported for search results in the list format (i.e. when the `columns` API param is not provided). Please use to_list() instead."
