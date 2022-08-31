@@ -15,19 +15,19 @@ from vortexasdk.api.shared_types import (
 
 
 class VesselEntityCorporateEntity(BaseModel):
-    id: ID
-    label: str
-    layer: str
+    id: Optional[ID] = None
+    label: Optional[str] = None
+    layer: Optional[str] = None
     end_timestamp: Optional[datetime] = None
     start_timestamp: Optional[datetime] = None
 
 
 class VesselEntityCorporateEntityWithConfidence(BaseModel):
-    probability: float
-    source: str
-    id: ID
-    label: str
-    layer: str
+    probability: Optional[float] = None
+    source: Optional[str] = None
+    id: Optional[ID] = None
+    label: Optional[str] = None
+    layer: Optional[str] = None
     end_timestamp: Optional[datetime] = None
     start_timestamp: Optional[datetime] = None
 
@@ -39,15 +39,15 @@ class Vessel(Node, BaseModel):
     [Vessels Further Documentation](https://docs.vortexa.com/reference/GET/reference/vessels/%7Bid%7D)
     """
 
-    related_names: List[str]
-    mmsi: int
-    layer: List[str]
+    related_names: Optional[List[str]] = None
+    mmsi: Optional[int] = None
+    layer: Optional[List[str]] = None
 
-    tags: List[Tag]
-    current_product_type: List
+    tags: Optional[List[Tag]] = None
+    current_product_type: Optional[List] = None
 
-    vessel_class: str
-    vessel_status: str
+    vessel_class: Optional[str] = None
+    vessel_status: Optional[str] = None
 
     corporate_entities: Optional[List[VesselEntityCorporateEntity]] = None
     dead_weight: Optional[int] = None
@@ -74,17 +74,17 @@ class VesselEntity(IDName, BaseModel):
     [Vessel Entities Further Documentation](https://docs.vortexa.com/reference/intro-vessel-entities)
     """
 
-    id: ID
-    name: str
-    mmsi: int
-    imo: Optional[int]
+    id: Optional[ID] = None
+    name: Optional[str] = None
+    mmsi: Optional[int] = None
+    imo: Optional[int] = None
 
-    dwt: int
+    dwt: Optional[int] = None
 
-    vessel_class: str
-    corporate_entities: List[VesselEntityCorporateEntityWithConfidence]
-    tags: List[Tag]
-    status: str
+    vessel_class: Optional[str] = None
+    corporate_entities: Optional[List[VesselEntityCorporateEntityWithConfidence]] = None
+    tags: Optional[List[Tag]] = None
+    status: Optional[str] = None
     year: Optional[int] = None
 
     start_timestamp: Optional[ISODate] = None
@@ -95,7 +95,7 @@ class VesselEntity(IDName, BaseModel):
     end_timestamp: Optional[ISODate] = None
     fixture_id: Optional[str] = None
 
-    scrubber: List[Scrubber] = Field(default_factory=list)
-    flag: List[Flag] = Field(default_factory=list)
+    scrubber: Optional[List[Scrubber]] = Field(default_factory=list)
+    flag: Optional[List[Flag]] = Field(default_factory=list)
     ice_class: Optional[str] = None
     propulsion: Optional[str] = None

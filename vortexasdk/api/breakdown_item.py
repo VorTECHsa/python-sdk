@@ -13,8 +13,8 @@ class BreakdownItem(BaseModel):
     and `value` and `count` correspond to numeric values of the returned record.
     """
 
-    key: str
-    count: int
+    key: Optional[str] = None
+    count: Optional[int] = None
     label: Optional[str] = None
     value: Optional[float] = None
     breakdown: Optional[List[Dict]] = None

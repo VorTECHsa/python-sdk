@@ -12,38 +12,38 @@ from vortexasdk.api.vessel import VesselEntity
 
 
 class RawLocations(BaseModel):
-    probability: float
-    location_id: str
+    probability: Optional[float] = None
+    location_id: Optional[str] = None
 
 
 class CargoPortLoadEvent(BaseModel):
-    vessel_id: ID
-    start_timestamp: ISODate
-    event_type: Literal["cargo_port_load_event"]
-    location: List[GeographyEntity]
-    probability: float
+    vessel_id: Optional[ID] = None
+    start_timestamp: Optional[ISODate] = None
+    event_type: Optional[Literal["cargo_port_load_event"]] = Literal["cargo_port_load_event"]
+    location: Optional[List[GeographyEntity]] = None
+    probability: Optional[float] = None
     end_timestamp: Optional[ISODate] = None
     pos: Optional[List[float]] = None
 
 
 class CargoFSOLoadEvent(BaseModel):
-    start_timestamp: ISODate
-    event_type: Literal["cargo_fso_load_event"]
-    location: List[GeographyEntity]
-    probability: float
-    fso_vessel_id: ID
-    fso_vessel_name: str
-    to_vessel_id: ID
-    to_vessel_name: str
+    start_timestamp: Optional[ISODate] = None
+    event_type: Optional[Literal["cargo_fso_load_event"]] = Literal["cargo_fso_load_event"]
+    location: Optional[List[GeographyEntity]] = None
+    probability: Optional[float] = None
+    fso_vessel_id: Optional[ID] = None
+    fso_vessel_name: Optional[str] = None
+    to_vessel_id: Optional[ID] = None
+    to_vessel_name: Optional[str] = None
     end_timestamp: Optional[ISODate] = None
     pos: Optional[List[float]] = None
 
 
 class CargoPortUnloadEvent(BaseModel):
-    vessel_id: ID
-    event_type: Literal["cargo_port_unload_event"]
-    location: List[GeographyEntity]
-    probability: float
+    vessel_id: Optional[ID] = None
+    event_type: Optional[Literal["cargo_port_unload_event"]] = Literal["cargo_port_unload_event"]
+    location: Optional[List[GeographyEntity]] = None
+    probability: Optional[float] = None
     end_timestamp: Optional[ISODate] = None
     raw_locations: Optional[List[RawLocations]] = None
     pos: Optional[List[float]] = None
@@ -52,65 +52,65 @@ class CargoPortUnloadEvent(BaseModel):
 
 
 class CargoFSOUnloadEvent(BaseModel):
-    start_timestamp: ISODate
-    event_type: Literal["cargo_fso_unload_event"]
-    location: List[GeographyEntity]
-    probability: float
-    fso_vessel_id: str
-    fso_vessel_name: str
-    from_vessel_id: str
-    from_vessel_name: str
+    start_timestamp: Optional[ISODate] = None
+    event_type: Optional[Literal["cargo_fso_unload_event"]] = Literal["cargo_fso_unload_event"]
+    location: Optional[List[GeographyEntity]] = None
+    probability: Optional[float] = None
+    fso_vessel_id: Optional[str] = None
+    fso_vessel_name: Optional[str] = None
+    from_vessel_id: Optional[str] = None
+    from_vessel_name: Optional[str] = None
     end_timestamp: Optional[ISODate] = None
     pos: Optional[List[float]] = None
 
 
 class CargoFixtureEvent(BaseModel):
-    start_timestamp: ISODate
-    event_type: Literal["cargo_fixture_event"]
+    start_timestamp: Optional[ISODate] = None
+    event_type: Optional[Literal["cargo_fixture_event"]] = Literal["cargo_fixture_event"]
     end_timestamp: Optional[ISODate] = None
 
 
 class CargoSTSEvent(BaseModel):
-    start_timestamp: ISODate
-    event_type: Literal["cargo_sts_event"]
-    location: List[GeographyEntity]
-    to_vessel_id: str
-    to_vessel_name: str
-    from_vessel_id: str
-    from_vessel_name: str
+    start_timestamp: Optional[ISODate] = None
+    event_type: Optional[Literal["cargo_sts_event"]] = Literal["cargo_sts_event"]
+    location: Optional[List[GeographyEntity]] = None
+    to_vessel_id: Optional[str] = None
+    to_vessel_name: Optional[str] = None
+    from_vessel_id: Optional[str] = None
+    from_vessel_name: Optional[str] = None
     end_timestamp: Optional[ISODate] = None
     pos: Optional[List[float]] = None
 
 
 class CargoStorageEvent(BaseModel):
-    vessel_id: ID
-    start_timestamp: ISODate
-    event_type: Literal["cargo_storage_event"]
-    location: List[GeographyEntity]
+    vessel_id: Optional[ID] = None
+    start_timestamp: Optional[ISODate] = None
+    event_type: Optional[Literal["cargo_storage_event"]] = Literal["cargo_storage_event"]
+    location: Optional[List[GeographyEntity]] = None
     vessel_class: Optional[str] = None
     end_timestamp: Optional[ISODate] = None
     pos: Optional[List[float]] = None
 
 
 class CargoWaypointEvent(BaseModel):
-    vessel_id: ID
-    start_timestamp: ISODate
-    event_type: Literal["cargo_waypoint_event"]
-    location: List[GeographyEntity]
-    probability: float
+    vessel_id: Optional[ID] = None
+    start_timestamp: Optional[ISODate] = None
+    event_type: Optional[Literal["cargo_waypoint_event"]] = Literal["cargo_waypoint_event"]
+    location: Optional[List[GeographyEntity]] = None
+    probability: Optional[float] = None
     end_timestamp: Optional[ISODate] = None
     pos: Optional[List[float]] = None
 
 
 class CargoTransitingEvent(BaseModel):
-    start_timestamp: ISODate
-    event_type: Literal["cargo_transiting_event"]
+    start_timestamp: Optional[ISODate] = None
+    event_type: Optional[Literal["cargo_transiting_event"]] = Literal["cargo_transiting_event"]
     end_timestamp: Optional[ISODate] = None
 
 
 class CargoOilOnWaterEvent(BaseModel):
-    start_timestamp: ISODate
-    event_type: Literal["cargo_oil_on_water_event"]
+    start_timestamp: Optional[ISODate] = None
+    event_type: Optional[Literal["cargo_oil_on_water_event"]] = Literal["cargo_oil_on_water_event"]
     end_timestamp: Optional[ISODate] = None
 
 
@@ -124,14 +124,14 @@ class ParentID(BaseModel):
 
     """
 
-    id: str
-    splinter_timestamp: ISODate
+    id: Optional[str] = None
+    splinter_timestamp: Optional[ISODate] = None
 
 
 class CargoMovementProductEntry(BaseModel):
-    probability: float
-    source: str
-    id: ID
+    probability: Optional[float] = None
+    source: Optional[str] = None
+    id: Optional[ID] = None
     layer: Optional[str] = None
     label: Optional[str] = None
 
@@ -147,26 +147,28 @@ class CargoMovement(BaseModel):
 
     """
 
-    cargo_movement_id: ID
-    quantity: int
-    status: str
-    vessels: List[VesselEntity]
-    product: List[CargoMovementProductEntry]
-    parent_ids: List[ParentID]
-    events: List[
-        Annotated[
-            Union[
-                CargoPortLoadEvent,
-                CargoFSOLoadEvent,
-                CargoPortUnloadEvent,
-                CargoFSOUnloadEvent,
-                CargoFixtureEvent,
-                CargoSTSEvent,
-                CargoStorageEvent,
-                CargoWaypointEvent,
-                CargoTransitingEvent,
-                CargoOilOnWaterEvent,
-            ],
-            Field(discriminator="event_type"),
+    cargo_movement_id: Optional[ID] = None
+    quantity: Optional[int] = None
+    status: Optional[str] = None
+    vessels: Optional[List[VesselEntity]] = None
+    product: Optional[List[CargoMovementProductEntry]] = None
+    parent_ids: Optional[List[ParentID]] = None
+    events: Optional[
+        List[
+            Annotated[
+                Union[
+                    CargoPortLoadEvent,
+                    CargoFSOLoadEvent,
+                    CargoPortUnloadEvent,
+                    CargoFSOUnloadEvent,
+                    CargoFixtureEvent,
+                    CargoSTSEvent,
+                    CargoStorageEvent,
+                    CargoWaypointEvent,
+                    CargoTransitingEvent,
+                    CargoOilOnWaterEvent,
+                ],
+                Field(discriminator="event_type"),
+            ]
         ]
-    ]
+    ] = None

@@ -5,10 +5,10 @@ from vortexasdk.api import ISODate
 
 
 class TimeSeriesBreakdownItem(BaseModel):
-    id: str
-    label: str
-    value: float
-    count: int
+    id: Optional[str] = None
+    label: Optional[str] = None
+    value: Optional[float] = None
+    count: Optional[int] = None
 
 
 class TimeSeriesItem(BaseModel):
@@ -19,7 +19,7 @@ class TimeSeriesItem(BaseModel):
     movements contributing to this tonnage aggregate, ie the number of cargo movements on this day (count).
     """
 
-    key: ISODate
-    count: int
+    key: Optional[ISODate] = None
+    count: Optional[int] = None
     breakdown: Optional[List[TimeSeriesBreakdownItem]] = None
     value: Optional[float] = None

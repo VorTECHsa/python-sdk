@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import List
+from typing import List, Optional
 
 
 from vortexasdk.api.shared_types import (
@@ -17,9 +17,9 @@ class Product(Node, BaseModel):
     [Product Further Documentation](https://docs.vortexa.com/reference/GET/reference/products/%7Bid%7D)
     """
 
-    layer: List[str]
-    meta: dict
-    hierarchy: List[EntityWithSingleLayer]
+    layer: Optional[List[str]] = None
+    meta: Optional[dict] = None
+    hierarchy: Optional[List[EntityWithSingleLayer]] = None
 
 
 class ProductEntityWithSingleLayer(

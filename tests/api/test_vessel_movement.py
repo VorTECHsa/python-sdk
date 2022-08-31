@@ -251,7 +251,7 @@ class TestVesselMovement(TestCase):
     def test_deserialize(self):
         vm1 = example_vessel_movements[0]
 
-        deserialized = VesselMovement(**vm1)
+        deserialized = VesselMovement.parse_obj(vm1)
 
         assert self.vm == deserialized
 

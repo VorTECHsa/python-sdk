@@ -12,8 +12,8 @@ from vortexasdk.api.vessel import VesselEntity
 class VesselEvent(BaseModel):
     """Represent an event that occurred to a vessel during a vessel movement."""
 
-    event_type: str
-    location: List[GeographyEntity]
+    event_type: Optional[str] = None
+    location: Optional[List[GeographyEntity]] = None
     pos: Optional[List[float]] = None
 
     event_id: Optional[ID] = None
@@ -22,9 +22,9 @@ class VesselEvent(BaseModel):
 
 
 class VesselMovementCargo(BaseModel):
-    cargo_movement_id: ID
-    quantity: float
-    product: List[ProductEntityWithSingleLayer]
+    cargo_movement_id: Optional[ID] = None
+    quantity: Optional[float] = None
+    product: Optional[List[ProductEntityWithSingleLayer]] = None
 
 
 class VesselMovement(BaseModel):
@@ -33,13 +33,13 @@ class VesselMovement(BaseModel):
 
     """
 
-    vessel_movement_id: ID
-    voyage_id: ID
-    vessel: VesselEntity
+    vessel_movement_id: Optional[ID] = None
+    voyage_id: Optional[ID] = None
+    vessel: Optional[VesselEntity] = None
 
-    origin: VesselEvent
-    destination: VesselEvent
-    cargoes: List[VesselMovementCargo]
+    origin: Optional[VesselEvent] = None
+    destination: Optional[VesselEvent] = None
+    cargoes: Optional[List[VesselMovementCargo]] = None
 
     start_timestamp: Optional[ISODate] = None
     end_timestamp: Optional[ISODate] = None

@@ -1,3 +1,4 @@
+from typing import Optional
 from pydantic import BaseModel
 
 
@@ -9,6 +10,6 @@ class Attribute(Node, BaseModel):
     Represent an Attribute reference record returned by the API.
     """
 
-    id: str
-    name: str
-    type: str
+    id: Optional[str] = None
+    name: Optional[str] = None
+    type: Optional[str] = None

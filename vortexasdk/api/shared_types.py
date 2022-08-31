@@ -22,14 +22,14 @@ def to_ISODate_Array(days: List[datetime]) -> List[str]:
 class EntityWithSingleLayer(BaseModel):
     """Holds commonly used properties."""
 
-    id: ID
-    layer: Optional[str]
+    id: Optional[ID] = None
+    layer: Optional[str] = None
     label: Optional[str] = None
 
 
 class EntityWithSingleLayerAndTimespan(BaseModel):
-    id: ID
-    layer: Optional[str]
+    id: Optional[ID] = None
+    layer: Optional[str] = None
     label: Optional[str] = None
     start_timestamp: Optional[ISODate] = None
     end_timestamp: Optional[ISODate] = None
@@ -38,8 +38,8 @@ class EntityWithSingleLayerAndTimespan(BaseModel):
 class EntityWithListLayer(BaseModel):
     """Holds commonly used properties."""
 
-    id: ID
-    layer: Optional[List[str]]
+    id: Optional[ID] = None
+    layer: Optional[List[str]] = None
     label: Optional[str] = None
 
 
@@ -51,9 +51,9 @@ class EntityWithSingleLayerAndProbability(BaseModel):
     - `source` the source of this entity, (is typically one of `['model', 'external_data']`
     """
 
-    probability: float
-    source: str
-    id: ID
+    probability: Optional[float] = None
+    source: Optional[str] = None
+    id: Optional[ID] = None
     layer: Optional[str] = None
     label: Optional[str] = None
 
@@ -66,9 +66,9 @@ class EntityWithListLayerAndProbability(BaseModel):
     - `source` the source of this entity, (is typically one of `['model', 'external_data']`
     """
 
-    probability: float
-    source: str
-    id: ID
+    probability: Optional[float] = None
+    source: Optional[str] = None
+    id: Optional[ID] = None
     layer: Optional[List[str]]
     label: Optional[str] = None
 
@@ -76,24 +76,24 @@ class EntityWithListLayerAndProbability(BaseModel):
 class IDName(BaseModel):
     """Tuple containing `id` and `name`."""
 
-    id: ID
-    name: str
+    id: Optional[ID] = None
+    name: Optional[str] = None
 
 
 class IDLayer(BaseModel):
     """Tuple containing `id` and `layer`."""
 
-    id: ID
-    layer: str
-    label: str
+    id: Optional[ID] = None
+    layer: Optional[str] = None
+    label: Optional[str] = None
 
 
 class IDNameLayer(BaseModel):
     """Triple holding `id`, `name`, and `layer`."""
 
-    id: ID
-    layer: List[str]
-    name: str
+    id: Optional[ID] = None
+    layer: Optional[List[str]] = None
+    name: Optional[str] = None
 
 
 class Node(ABC, IDName, BaseModel):
@@ -101,15 +101,15 @@ class Node(ABC, IDName, BaseModel):
     Abstract Base Class holding a node of a tree.
 
     # Attributes:
-        ref_type: Identifies the reference type data
+        ref_type: Optional[Identifies the reference type data] = None
         leaf: Is this node a leaf of the hierarchical tree?
         parent: List of parents
 
     """
 
-    ref_type: str
-    leaf: bool
-    parent: List[IDNameLayer]
+    ref_type: Optional[str] = None
+    leaf: Optional[bool] = None
+    parent: Optional[List[IDNameLayer]] = None
 
 
 class Tag(BaseModel):
@@ -123,7 +123,7 @@ class Tag(BaseModel):
 
     """
 
-    tag: str
+    tag: Optional[str] = None
     start_timestamp: Optional[ISODate] = None
     end_timestamp: Optional[ISODate] = None
 
@@ -140,8 +140,8 @@ class Flag(BaseModel):
 
     """
 
-    tag: str
-    flag: str
+    tag: Optional[str] = None
+    flag: Optional[str] = None
     flag_country: Optional[str] = None
 
 
@@ -157,6 +157,6 @@ class Scrubber(BaseModel):
 
     """
 
-    tag: str
-    scrubber: str
-    planned: bool
+    tag: Optional[str] = None
+    scrubber: Optional[str] = None
+    planned: Optional[bool] = None

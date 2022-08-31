@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import List, Tuple
+from typing import List, Optional, Tuple
 
 
 from vortexasdk.api.shared_types import (
@@ -16,19 +16,19 @@ Position = Tuple[float, float]
 class BoundingBox(BaseModel):
     """Polygon with list of bounding lon lat coords."""
 
-    type: str
-    coordinates: List[Position]
+    type: Optional[str] = None
+    coordinates: Optional[List[Position]] = None
 
 
 class Geography(Node, BaseModel):
     """Represent a Geography reference record returned by the API."""
 
-    id: ID
-    name: str
-    layer: List[str]
-    exclusion_rule: List[IDNameLayer]
-    hierarchy: List[IDLayer]
-    pos: List[str]
+    id: Optional[ID] = None
+    name: Optional[str] = None
+    layer: Optional[List[str]] = None
+    exclusion_rule: Optional[List[IDNameLayer]] = None
+    hierarchy: Optional[List[IDLayer]] = None
+    pos: Optional[List[str]] = None
 
 
 class GeographyEntity(EntityWithSingleLayerAndProbability, BaseModel):

@@ -1,3 +1,4 @@
+from typing import Optional
 from pydantic import BaseModel
 
 
@@ -11,7 +12,7 @@ class AggregationBreakdownItem(BaseModel):
     and `value` and `count` correspond to numeric values of the returned record.
     """
 
-    id: str
-    count: int
-    value: float
-    label: str
+    id: Optional[str] = None
+    count: Optional[int] = None
+    value: Optional[float] = None
+    label: Optional[str] = None

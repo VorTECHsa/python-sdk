@@ -28,7 +28,7 @@ class TestVoyageEvents:
             "probability": 1,
         }
 
-        VoyageVesselEvent(**event)
+        VoyageVesselEvent.parse_obj(event)
 
     def test_serialize_voyage_status_event(self):
         event = {
@@ -43,7 +43,7 @@ class TestVoyageEvents:
             "source_event_id": "9fd5917dc61b15d4",
         }
 
-        VoyageStatusEvent(**event)
+        VoyageStatusEvent.parse_obj(event)
 
     def test_serialize_voyage_cargo_event(self):
         event = {
@@ -209,4 +209,4 @@ class TestVoyageEvents:
             "tonne_miles": 871910281.4416846,
         }
 
-        VoyageCargoEvent(**event)
+        VoyageCargoEvent.parse_obj(event)

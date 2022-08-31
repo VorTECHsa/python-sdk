@@ -22,7 +22,7 @@ class TestProducts(TestCaseUsingMockAPI):
             ],
         }
 
-        Product(**crude_dict)
+        Product.parse_obj(crude_dict)
 
     def test_serialize_with_missing_fields(self):
         crude_dict = {
@@ -33,7 +33,7 @@ class TestProducts(TestCaseUsingMockAPI):
             "ref_type": "product",
         }
 
-        Product.construct(**crude_dict)
+        Product.construct.parse_obj(crude_dict)
 
 
     def test_search_ids_retreives_names(self):

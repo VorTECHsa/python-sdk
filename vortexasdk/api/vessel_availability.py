@@ -12,9 +12,9 @@ class DeclaredDestination(BaseModel):
 
     """
 
-    eta: Optional[ISODate]
-    name: str
-    vessel_id: str
+    eta: Optional[ISODate] = None
+    name: Optional[str] = None
+    vessel_id: Optional[str] = None
 
 
 class VesselFixtures(BaseModel):
@@ -24,12 +24,12 @@ class VesselFixtures(BaseModel):
 
     """
 
-    origin: Optional[str]
-    destination: Optional[str]
-    charterer: Optional[str]
-    fixing_timestamp: ISODate
-    laycan_from: ISODate
-    laycan_to: ISODate
+    origin: Optional[str] = None
+    destination: Optional[str] = None
+    charterer: Optional[str] = None
+    fixing_timestamp: Optional[ISODate] = None
+    laycan_from: Optional[ISODate] = None
+    laycan_to: Optional[ISODate] = None
 
 
 class VesselAvailability(BaseModel):
@@ -39,21 +39,21 @@ class VesselAvailability(BaseModel):
 
     """
 
-    available_at: ISODate
-    evaluated_at: ISODate
-    vessel_class: str
-    vessel_declared_destination: List[DeclaredDestination]
-    vessel_dwt: int
-    vessel_fixtures: List[VesselFixtures]
-    vessel_id: str
-    vessel_last_cargo: List[EntityWithListLayer]
-    vessel_location: List[EntityWithListLayer]
-    vessel_name: Optional[str]
-    vessel_owner_id: Optional[str]
-    vessel_owner_name: Optional[str]
-    vessel_predicted_destination: List[EntityWithListLayer]
-    vessel_scrubber: Optional[bool]
-    vessel_status: str
-    vessel_year_built: Optional[int]
-    last_activity_at: Optional[ISODate]
-    last_activity: Optional[int]
+    available_at: Optional[ISODate] = None
+    evaluated_at: Optional[ISODate] = None
+    vessel_class: Optional[str] = None
+    vessel_declared_destination: Optional[List[DeclaredDestination]] = None
+    vessel_dwt: Optional[int] = None
+    vessel_fixtures: Optional[List[VesselFixtures]] = None
+    vessel_id: Optional[str] = None
+    vessel_last_cargo: Optional[List[EntityWithListLayer]] = None
+    vessel_location: Optional[List[EntityWithListLayer]] = None
+    vessel_name: Optional[str] = None
+    vessel_owner_id: Optional[str] = None
+    vessel_owner_name: Optional[str] = None
+    vessel_predicted_destination: Optional[List[EntityWithListLayer]] = None
+    vessel_scrubber: Optional[bool] = None
+    vessel_status: Optional[str] = None
+    vessel_year_built: Optional[int] = None
+    last_activity_at: Optional[ISODate] = None
+    last_activity: Optional[int] = None
