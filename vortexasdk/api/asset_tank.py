@@ -23,6 +23,7 @@ class AssetTank(FromDictMixin):
     """
     Represents an Asset Tank reference record returned by the API.
     """
+
     id: str
     capacity_bbl: int
     capacity_cbm: int

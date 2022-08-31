@@ -39,4 +39,13 @@ class AssetTankResult(Result):
         )
 
 
-DEFAULT_COLUMNS = ["id", "capacity_bbl", "crude_confidence", "location_id", "name", "storage_type", "lat", "lon"]
+DEFAULT_COLUMNS = [
+    "id",
+    "capacity_bbl",
+    "crude_confidence",
+    "location_id",
+    "name",
+    "storage_type",
+    "lat",
+    "lon",
+]

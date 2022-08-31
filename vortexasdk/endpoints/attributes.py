@@ -12,35 +12,35 @@ from vortexasdk.utils import convert_to_list
 
 class Attributes(Reference, Search):
     """
-        Attributes endpoint.
+    Attributes endpoint.
 
-        An Attribute is a reference value that corresponds to an ID associated with other entities.
+    An Attribute is a reference value that corresponds to an ID associated with other entities.
 
-        For example, a vessel object from the Vessel reference endpoint may have the following keys:
+    For example, a vessel object from the Vessel reference endpoint may have the following keys:
 
-        ```json
-        {
-            "ice_class": "b09ed4e2bd6904dd",
-            "propulsion": "3ace0e050724707b"
-        }
-        ```
+    ```json
+    {
+        "ice_class": "b09ed4e2bd6904dd",
+        "propulsion": "3ace0e050724707b"
+    }
+    ```
 
-        These IDs represent attributes which can be found via the Attributes reference endpoint.
+    These IDs represent attributes which can be found via the Attributes reference endpoint.
 
-        When the attributes endpoint is searched with those ids as parameters:
+    When the attributes endpoint is searched with those ids as parameters:
 
-        ```python
-            >>> from vortexasdk import Attributes
-            >>> df = Attributes().search(ids=["b09ed4e2bd6904dd", "3ace0e050724707b"]).to_df()
+    ```python
+        >>> from vortexasdk import Attributes
+        >>> df = Attributes().search(ids=["b09ed4e2bd6904dd", "3ace0e050724707b"]).to_df()
 
-        ```
+    ```
 
-        Returns
+    Returns
 
-        |    | id               | type       | label    |
-        |---:|:-----------------|:-----------|:---------|
-        |  0 | b09ed4e2bd6904dd | ice_class  | UNKNOWN  |
-        |  1 | 3ace0e050724707b | propulsion | DFDE     |
+    |    | id               | type       | label    |
+    |---:|:-----------------|:-----------|:---------|
+    |  0 | b09ed4e2bd6904dd | ice_class  | UNKNOWN  |
+    |  1 | 3ace0e050724707b | propulsion | DFDE     |
 
 
     """
@@ -51,7 +51,7 @@ class Attributes(Reference, Search):
 
     def load_all(self) -> AttributeResult:
         """
-            Load all attributes.
+        Load all attributes.
         """
         return self.search()
 

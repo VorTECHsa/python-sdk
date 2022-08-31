@@ -9,7 +9,9 @@ from vortexasdk.api.shared_types import to_ISODate
 
 from vortexasdk.api import ID
 from datetime import datetime
-from vortexasdk.endpoints.endpoints import VESSEL_AVAILABILITY_TIMERSERIES_RESOURCE
+from vortexasdk.endpoints.endpoints import (
+    VESSEL_AVAILABILITY_TIMERSERIES_RESOURCE,
+)
 from vortexasdk.logger import get_logger
 from vortexasdk.operations import Search
 from vortexasdk.utils import convert_to_list
@@ -57,98 +59,98 @@ class VesselAvailabilityTimeseries(Search):
         exclude_destination: Union[ID, List[ID]] = None,
     ) -> TimeSeriesResult:
         """
-        Time series of the number of vessels that can be available to load a given cargo at a given port for
-        every day in the specified range.
+         Time series of the number of vessels that can be available to load a given cargo at a given port for
+         every day in the specified range.
 
-        # Arguments
+         # Arguments
 
-            filter_time_min: The UTC start date of the time filter.
+             filter_time_min: The UTC start date of the time filter.
 
-            filter_time_max: The UTC end date of the time filter.
+             filter_time_max: The UTC end date of the time filter.
 
-            filter_owners: An corporation ID, or list of corporation IDs to filter on.
+             filter_owners: An corporation ID, or list of corporation IDs to filter on.
 
-            filter_destination: A geography ID, or list of geography IDs to filter on.
+             filter_destination: A geography ID, or list of geography IDs to filter on.
 
-            filter_products: A product ID, or list of product IDs to filter on.
+             filter_products: A product ID, or list of product IDs to filter on.
 
-            filter_vessels: A vessel ID, or list of vessel IDs to filter on.
+             filter_vessels: A vessel ID, or list of vessel IDs to filter on.
 
-            filter_vessel_classes: A vessel class, or list of vessel classes to filter on.
+             filter_vessel_classes: A vessel class, or list of vessel classes to filter on.
 
-            filter_vessel_status: The vessel status on which to base the filter. Enter 'vessel_status_ballast' for ballast vessels, 'vessel_status_laden_known' for laden vessels with known cargo (i.e. a type of cargo that Vortexa currently tracks) or 'any_activity' for any other vessels
+             filter_vessel_status: The vessel status on which to base the filter. Enter 'vessel_status_ballast' for ballast vessels, 'vessel_status_laden_known' for laden vessels with known cargo (i.e. a type of cargo that Vortexa currently tracks) or 'any_activity' for any other vessels
 
-            filter_vessel_location: A location ID, or list of location IDs to filter on.
+             filter_vessel_location: A location ID, or list of location IDs to filter on.
 
-            filter_port: Filter by port ID.
+             filter_port: Filter by port ID.
 
-            filter_region: Filter by region ID - takes precedence over filter_port if provided. This should be used in conjunction with `use_reference_port`
+             filter_region: Filter by region ID - takes precedence over filter_port if provided. This should be used in conjunction with `use_reference_port`
 
-            filter_days_to_arrival: Filter availability by time to arrival in days`
+             filter_days_to_arrival: Filter availability by time to arrival in days`
 
-            use_reference_port: If this flag is enabled, we will return data for
-            the reference port instead of the user selected one,
+             use_reference_port: If this flag is enabled, we will return data for
+             the reference port instead of the user selected one,
 
-            filter_vessel_age_min: A number between 1 and 100 (representing years).
+             filter_vessel_age_min: A number between 1 and 100 (representing years).
 
-            filter_vessel_age_max: A number between 1 and 100 (representing years).
+             filter_vessel_age_max: A number between 1 and 100 (representing years).
 
-            filter_vessel_idle_min: A number greater than 0 (representing idle days).
+             filter_vessel_idle_min: A number greater than 0 (representing idle days).
 
-            filter_vessel_idle_max: A number greater than 0 and filter_vessel_idle_min (representing idle days).
+             filter_vessel_idle_max: A number greater than 0 and filter_vessel_idle_min (representing idle days).
 
-            filter_vessel_dwt_min: A number between 0 and 550000.
+             filter_vessel_dwt_min: A number between 0 and 550000.
 
-            filter_vessel_dwt_max: A number between 0 and 550000.
+             filter_vessel_dwt_max: A number between 0 and 550000.
 
-            filter_vessel_scrubbers: Either inactive 'disabled', or included 'inc' or excluded 'exc'.
+             filter_vessel_scrubbers: Either inactive 'disabled', or included 'inc' or excluded 'exc'.
 
-            filter_recent_visits: Filter availability by each vessel's recent visits
+             filter_recent_visits: Filter availability by each vessel's recent visits
 
-            exclude_products: A product ID, or list of product IDs to exclude.
+             exclude_products: A product ID, or list of product IDs to exclude.
 
-            exclude_vessels: A vessel ID, or list of vessel IDs to exclude.
+             exclude_vessels: A vessel ID, or list of vessel IDs to exclude.
 
-            exclude_vessel_classes: A vessel class, or list of vessel classes to exclude.
+             exclude_vessel_classes: A vessel class, or list of vessel classes to exclude.
 
-            exclude_vessel_status: The vessel status on which to base the filter. Enter 'vessel_status_ballast' for ballast vessels, 'vessel_status_laden_known' for laden vessels with known cargo (i.e. a type of cargo that Vortexa currently tracks) or 'any_activity' for any other vessels
+             exclude_vessel_status: The vessel status on which to base the filter. Enter 'vessel_status_ballast' for ballast vessels, 'vessel_status_laden_known' for laden vessels with known cargo (i.e. a type of cargo that Vortexa currently tracks) or 'any_activity' for any other vessels
 
-            exclude_owners: An owner ID, or list of owner IDs to exclude.
+             exclude_owners: An owner ID, or list of owner IDs to exclude.
 
-            exclude_vessel_location: A location ID, or list of location IDs to filter on.
+             exclude_vessel_location: A location ID, or list of location IDs to filter on.
 
-            exclude_destination: A location ID, or list of location IDs to filter on.
+             exclude_destination: A location ID, or list of location IDs to filter on.
 
-        # Returns
-        `TimeSeriesResult`
+         # Returns
+         `TimeSeriesResult`
 
 
-        # Example
-       _Time series for the number of vessels available between 0 to 5 days, at port Rotterdam, over 4 days._
+         # Example
+        _Time series for the number of vessels available between 0 to 5 days, at port Rotterdam, over 4 days._
 
-        ```python
-        >>> from vortexasdk import VesselAvailabilityTimeseries, Geographies
-        >>> from datetime import datetime
-        >>> rotterdam = "68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e"
-        >>> start = datetime(2021, 6, 17)
-        >>> end = datetime(2021, 6, 21)
-        >>> df = (VesselAvailabilityTimeseries().search(
-        ...     filter_time_min=start,
-        ...     filter_time_max=end,
-        ...     filter_port=rotterdam,
-        ...     filter_days_to_arrival={"min": 0, "max": 5},
-        ... ).to_df())
+         ```python
+         >>> from vortexasdk import VesselAvailabilityTimeseries, Geographies
+         >>> from datetime import datetime
+         >>> rotterdam = "68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e"
+         >>> start = datetime(2021, 6, 17)
+         >>> end = datetime(2021, 6, 21)
+         >>> df = (VesselAvailabilityTimeseries().search(
+         ...     filter_time_min=start,
+         ...     filter_time_max=end,
+         ...     filter_port=rotterdam,
+         ...     filter_days_to_arrival={"min": 0, "max": 5},
+         ... ).to_df())
 
-        ```
+         ```
 
-        Gives the following:
+         Gives the following:
 
-        |    | key                      |     value |     count |
-        |---:|:-------------------------|----------:|----------:|
-        |  0 | 2021-06-23 00:00:00+00:00| 19225923  | 224       |
-        |  1 | 2021-06-24 00:00:00+00:00| 19634766  | 233       |
-        |  2 | 2021-06-25 00:00:00+00:00| 19154857  | 228       |
-        |  3 | 2021-06-26 00:00:00+00:00| 18410395  | 225       |
+         |    | key                      |     value |     count |
+         |---:|:-------------------------|----------:|----------:|
+         |  0 | 2021-06-23 00:00:00+00:00| 19225923  | 224       |
+         |  1 | 2021-06-24 00:00:00+00:00| 19634766  | 233       |
+         |  2 | 2021-06-25 00:00:00+00:00| 19154857  | 228       |
+         |  3 | 2021-06-26 00:00:00+00:00| 18410395  | 225       |
 
 
         """
@@ -160,9 +162,7 @@ class VesselAvailabilityTimeseries(Search):
             "filter_vessel_classes": convert_to_list(exclude_vessel_classes),
             "filter_owners": convert_to_list(exclude_owners),
             "filter_vessel_status": convert_to_list(exclude_vessel_status),
-            "filter_vessel_location": convert_to_list(
-                exclude_vessel_location
-            ),
+            "filter_vessel_location": convert_to_list(exclude_vessel_location),
         }
 
         api_params = {
@@ -170,9 +170,7 @@ class VesselAvailabilityTimeseries(Search):
             "filter_time_max": to_ISODate(filter_time_max),
             "filter_products": convert_to_list(filter_products),
             "filter_vessels": convert_to_list(filter_vessels),
-            "filter_vessel_classes": convert_to_list(
-                filter_vessel_classes
-            ),
+            "filter_vessel_classes": convert_to_list(filter_vessel_classes),
             "filter_vessel_status": filter_vessel_status,
             "filter_vessel_location": convert_to_list(filter_vessel_location),
             "filter_owners": convert_to_list(filter_owners),
@@ -180,9 +178,7 @@ class VesselAvailabilityTimeseries(Search):
             "filter_region": filter_region,
             "filter_port": filter_port,
             "use_reference_port": use_reference_port,
-            "filter_days_to_arrival": convert_to_list(
-                filter_days_to_arrival
-            ),
+            "filter_days_to_arrival": convert_to_list(filter_days_to_arrival),
             "filter_vessel_dwt_min": filter_vessel_dwt_min,
             "filter_vessel_dwt_max": filter_vessel_dwt_max,
             "filter_vessel_age_min": filter_vessel_age_min,
@@ -194,4 +190,6 @@ class VesselAvailabilityTimeseries(Search):
             "exclude": exclude_params,
         }
 
-        return TimeSeriesResult(super().search(response_type="breakdown", **api_params))
+        return TimeSeriesResult(
+            super().search(response_type="breakdown", **api_params)
+        )

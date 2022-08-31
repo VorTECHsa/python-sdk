@@ -124,7 +124,7 @@ class TestCargoTimeSeries(TestCaseUsingRealAPI):
         start = datetime(2019, 1, 1)
         end = datetime(2019, 1, 20)
 
-        vlcc_plus = 'vlcc_plus'
+        vlcc_plus = "vlcc_plus"
 
         vlcc_plus_timeseries = (
             CargoTimeSeries()
@@ -134,7 +134,7 @@ class TestCargoTimeSeries(TestCaseUsingRealAPI):
                 timeseries_frequency="month",
                 filter_time_min=start,
                 filter_time_max=end,
-                filter_vessel_classes=[vlcc_plus]
+                filter_vessel_classes=[vlcc_plus],
             )
             .to_df()
         )

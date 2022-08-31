@@ -5,7 +5,9 @@ Try me out in your browser:
 """
 from datetime import datetime, timedelta
 from typing import Dict, List, Union
-from vortexasdk.endpoints.onshore_inventories_result import OnshoreInventoriesResult
+from vortexasdk.endpoints.onshore_inventories_result import (
+    OnshoreInventoriesResult,
+)
 
 from vortexasdk.api.shared_types import to_ISODate
 from vortexasdk.api import ID

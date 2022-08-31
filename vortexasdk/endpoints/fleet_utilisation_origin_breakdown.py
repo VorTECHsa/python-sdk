@@ -5,7 +5,9 @@ Try me out in your browser:
 """
 from typing import List, Union
 from datetime import datetime
-from vortexasdk.endpoints.reference_breakdown_result import ReferenceBreakdownResult
+from vortexasdk.endpoints.reference_breakdown_result import (
+    ReferenceBreakdownResult,
+)
 
 from vortexasdk.api import ID
 from vortexasdk.endpoints.endpoints import FLEET_UTILISATION_ORIGIN_BREAKDOWN
@@ -18,6 +20,7 @@ class FleetUtilisationOriginBreakdown(Search):
     """
     Please note: you will require a subscription to our Freight module to access this endpoint.
     """
+
     def __init__(self):
         Search.__init__(self, FLEET_UTILISATION_ORIGIN_BREAKDOWN)
 
@@ -114,7 +117,7 @@ class FleetUtilisationOriginBreakdown(Search):
             filter_vessel_propulsion: An attribute ID, or list of attribute IDs to filter on.
 
             filter_charterer_exists: A boolean to include or exclude the records to those that have a charterer.
-            
+
             filter_ship_to_ship: A boolean to include or exclude the records to those that are involved in an STS.
 
             exclude_origins: A geography ID, or list of geography IDs to exclude.
@@ -167,15 +170,14 @@ class FleetUtilisationOriginBreakdown(Search):
         |4     | 3267ef2a83a749052c87e981f1bb12c6396acf590b4b1cd3316cf8f8c5aeb7bc | Malaysia      |1607        |4597  |
 
         """
-        
+
         sts_filter = sts_param_value(filter_ship_to_ship)
 
         crossfilters = {
             "filter_ship_to_ship": sts_filter["x_filter"],
             # if charterer toggle is True, apply cross filter
             # else make it false
-            "filter_charterer_exists": filter_charterer_exists == True
-
+            "filter_charterer_exists": filter_charterer_exists == True,
         }
 
         exclude_params = {
@@ -193,7 +195,7 @@ class FleetUtilisationOriginBreakdown(Search):
             "filter_vessel_propulsion": convert_to_list(
                 exclude_vessel_propulsion
             ),
-            "filter_ship_to_ship": sts_filter["exclude"]
+            "filter_ship_to_ship": sts_filter["exclude"],
         }
 
         api_params = {
@@ -225,7 +227,9 @@ class FleetUtilisationOriginBreakdown(Search):
                 filter_vessel_propulsion
             ),
             "crossfilters": crossfilters,
-            "exclude": exclude_params
+            "exclude": exclude_params,
         }
 
-        return ReferenceBreakdownResult(super().search(response_type="breakdown", **api_params))
+        return ReferenceBreakdownResult(
+            super().search(response_type="breakdown", **api_params)
+        )

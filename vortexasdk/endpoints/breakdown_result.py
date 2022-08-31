@@ -47,18 +47,18 @@ class BreakdownResult(Result):
         By default, the columns returned are something along the lines of.
         ```python
         DEFAULT_COLUMNS = [
-            'key', 
-            'value', 
-            'count', 
-            'breakdown.0.label', 
-            'breakdown.0.count', 
+            'key',
+            'value',
+            'count',
+            'breakdown.0.label',
+            'breakdown.0.count',
             'breakdown.0.value'
         ]
         ```
 
         Note that there can be more than one breakdown entry in the response. To access further
-        breakdown objects, replace the index 0 with another number (1,2,3 etc.), such as 
-        ['breakdown.1.label', 'breakdown.2.label',  'breakdown.3.label] etc.' 
+        breakdown objects, replace the index 0 with another number (1,2,3 etc.), such as
+        ['breakdown.1.label', 'breakdown.2.label',  'breakdown.3.label] etc.'
 
         """
 
@@ -66,9 +66,7 @@ class BreakdownResult(Result):
             columns = DEFAULT_COLUMNS
 
         logger.debug("Converting each breakdown to a flat dictionary")
-        flatten = functools.partial(
-            convert_to_flat_dict, cols=columns
-        )
+        flatten = functools.partial(convert_to_flat_dict, cols=columns)
 
         with Pool(os.cpu_count()) as pool:
             records = pool.map(flatten, super().to_list())
@@ -85,4 +83,11 @@ class BreakdownResult(Result):
         return df
 
 
-DEFAULT_COLUMNS = ["key", "value", "count", "breakdown.0.label", "breakdown.0.count", "breakdown.0.value"]
+DEFAULT_COLUMNS = [
+    "key",
+    "value",
+    "count",
+    "breakdown.0.label",
+    "breakdown.0.count",
+    "breakdown.0.value",
+]

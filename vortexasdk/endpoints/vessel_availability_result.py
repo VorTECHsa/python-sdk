@@ -190,10 +190,10 @@ class VesselAvailabilityResult(Result):
         if columns is None:
             columns = DEFAULT_COLUMNS
 
-        logger.debug("Converting each Vessel Availability to a flat dictionary")
-        flatten = functools.partial(
-            convert_to_flat_dict, cols=columns
+        logger.debug(
+            "Converting each Vessel Availability to a flat dictionary"
         )
+        flatten = functools.partial(convert_to_flat_dict, cols=columns)
 
         with Pool(os.cpu_count()) as pool:
             records = pool.map(flatten, super().to_list())
@@ -207,15 +207,15 @@ class VesselAvailabilityResult(Result):
 
 
 DEFAULT_COLUMNS = [
-    'available_at',
-    'vessel_name',
-    'vessel_class',
-    'vessel_declared_destination.0.eta',
-    'vessel_declared_destination.0.name',
-    'vessel_owner_name',
-    'vessel_status',
-    'vessel_last_cargo.0.label',
-    'vessel_last_cargo.0.layer',
-    'vessel_predicted_destination.0.label',
-    'vessel_predicted_destination.0.layer',
+    "available_at",
+    "vessel_name",
+    "vessel_class",
+    "vessel_declared_destination.0.eta",
+    "vessel_declared_destination.0.name",
+    "vessel_owner_name",
+    "vessel_status",
+    "vessel_last_cargo.0.label",
+    "vessel_last_cargo.0.layer",
+    "vessel_predicted_destination.0.label",
+    "vessel_predicted_destination.0.layer",
 ]

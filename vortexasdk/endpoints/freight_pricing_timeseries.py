@@ -17,8 +17,8 @@ logger = get_logger(__name__)
 
 
 class FreightPricingTimeseries(Search):
-    """
-    """
+    """ """
+
     def __init__(self):
         Search.__init__(self, FREIGHT_PRICING_TIMESERIES)
 
@@ -28,54 +28,54 @@ class FreightPricingTimeseries(Search):
         time_max: datetime = datetime(2021, 11, 1),
         routes: Union[List[str], str] = None,
         breakdown_frequency: str = None,
-        breakdown_property: str = None
+        breakdown_property: str = None,
     ) -> TimeSeriesResult:
         """
-        Time series of the selected pricing information for given routes in the specified time range.
+         Time series of the selected pricing information for given routes in the specified time range.
 
-        # Arguments
+         # Arguments
 
-            time_min: The UTC start date of the time filter.
+             time_min: The UTC start date of the time filter.
 
-            time_max: The UTC end date of the time filter.
+             time_max: The UTC end date of the time filter.
 
-            breakdown_frequency: Must be one of: `'day'`, `'week'`, `'doe_week'`, `'month'`, `'quarter'` or `'year'`.
+             breakdown_frequency: Must be one of: `'day'`, `'week'`, `'doe_week'`, `'month'`, `'quarter'` or `'year'`.
 
-            breakdown_property: Property used to build the value of the aggregation. Must be one of the following: `route`, `cost`, `tce`.
+             breakdown_property: Property used to build the value of the aggregation. Must be one of the following: `route`, `cost`, `tce`.
 
-            routes: Used to filter by specific routes. Must be one of the following:
-            - Clean routes - `TC1`, `TC2_37`, `TC5`, `TC6`, `TC7`, `TC8`, `TC9`, `TC10`, `TC11`, `TC12`, `TC14`, `TC15`, `TC16`, `TC17`, `TC18`, `TC19`.
-            - Dirty routes - `TD1`, `TD2`, `TD3C`, `TD6`, `TD7`, `TD8`, `TD9`, `TD12`, `TD14`, `TD15`, `TD17`, `TD18`, `TD19`, `TD20`, `TD21`, `TD22`, `TD23`, `TD24`, `TD25`, `TD26`.
-            - BLPG routes - `BLPG1`, `BLPG2`, `BLPG3`.
+             routes: Used to filter by specific routes. Must be one of the following:
+             - Clean routes - `TC1`, `TC2_37`, `TC5`, `TC6`, `TC7`, `TC8`, `TC9`, `TC10`, `TC11`, `TC12`, `TC14`, `TC15`, `TC16`, `TC17`, `TC18`, `TC19`.
+             - Dirty routes - `TD1`, `TD2`, `TD3C`, `TD6`, `TD7`, `TD8`, `TD9`, `TD12`, `TD14`, `TD15`, `TD17`, `TD18`, `TD19`, `TD20`, `TD21`, `TD22`, `TD23`, `TD24`, `TD25`, `TD26`.
+             - BLPG routes - `BLPG1`, `BLPG2`, `BLPG3`.
 
-        # Returns
-        `TimeSeriesResult`
+         # Returns
+         `TimeSeriesResult`
 
 
-        # Example
-       Time series for the WS rate of the TD3C route between 1st and 15th November 2021.
+         # Example
+        Time series for the WS rate of the TD3C route between 1st and 15th November 2021.
 
-        ```python
-        >>> from vortexasdk import FreightPricingTimeseries
-        >>> from datetime import datetime
-        >>> start = datetime(2021, 11, 1)
-        >>> end = datetime(2021, 11, 15)
-        >>> df = (FreightPricingTimeseries().search(
-        ...     time_min=start,
-        ...     time_max=end,
-        ...     routes=['TD3C'],
-        ...     breakdown_property='rate',
-        ...     breakdown_frequency='day')
-        ... .to_df()).head(2)
+         ```python
+         >>> from vortexasdk import FreightPricingTimeseries
+         >>> from datetime import datetime
+         >>> start = datetime(2021, 11, 1)
+         >>> end = datetime(2021, 11, 15)
+         >>> df = (FreightPricingTimeseries().search(
+         ...     time_min=start,
+         ...     time_max=end,
+         ...     routes=['TD3C'],
+         ...     breakdown_property='rate',
+         ...     breakdown_frequency='day')
+         ... .to_df()).head(2)
 
-        ```
+         ```
 
-        Gives the following:
+         Gives the following:
 
-        |    | key                      |              value |   count |
-        |---:|:-------------------------|-------------------:|--------:|
-        |  0 | 2021-11-01 00:00:00+00:00| 46.04999923706055  | 1       |
-        |  1 | 2021-11-02 00:00:00+00:00| 45.13999938964844  | 1       |
+         |    | key                      |              value |   count |
+         |---:|:-------------------------|-------------------:|--------:|
+         |  0 | 2021-11-01 00:00:00+00:00| 46.04999923706055  | 1       |
+         |  1 | 2021-11-02 00:00:00+00:00| 45.13999938964844  | 1       |
 
 
         """
@@ -85,7 +85,9 @@ class FreightPricingTimeseries(Search):
             "time_max": to_ISODate(time_max),
             "routes": convert_to_list(routes),
             "breakdown_frequency": breakdown_frequency,
-            "breakdown_property": breakdown_property
+            "breakdown_property": breakdown_property,
         }
 
-        return TimeSeriesResult(super().search(response_type="breakdown", **api_params))
+        return TimeSeriesResult(
+            super().search(response_type="breakdown", **api_params)
+        )
