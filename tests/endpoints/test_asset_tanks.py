@@ -1,4 +1,3 @@
-from weakref import ref
 from tests.testcases import TestCaseUsingMockAPI
 from vortexasdk.endpoints.asset_tanks import AssetTanks
 
