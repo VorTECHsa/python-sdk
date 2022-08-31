@@ -1,12 +1,50 @@
 
 from datetime import datetime
 from tests.testcases import TestCaseUsingRealAPI
+from vortexasdk.api.freight_pricing import FreightPricing
 from vortexasdk.endpoints.freight_pricing_search import FreightPricingSearch
 
 day = datetime(2021, 11, 1)
 
 
 class TestFreightPricingReal(TestCaseUsingRealAPI):
+    def test_deserialisation(self):
+        dictionary = {
+			"id": "abc123",
+			"short_code": "a_route_code",
+			"record_date": "2022-08-19T00:00:00.000Z",
+			"rate": 100,
+			"rate_precision": 2,
+			"rate_unit": "WS",
+			"cost": 100,
+			"cost_precision": 2,
+			"cost_unit": "$/ton",
+			"tce": 100,
+			"tce_precision": 0,
+			"tce_unit": "$/day",
+			"predictions": [
+				{
+					"prediction": "firm",
+					"prediction_type": "outlook_4d",
+					"rating": "low"
+				},
+				{
+					"prediction": "firm",
+					"prediction_type": "outlook_2d",
+					"rating": "low"
+				},
+				{
+					"prediction": "soft",
+					"prediction_type": "outlook_1d",
+					"rating": "medium"
+				}
+			]
+		}
+
+        p = FreightPricing(**dictionary)
+
+        assert p.short_code == "a_route_code"
+
     def test_default_search(self):
         results = FreightPricingSearch().search(
             routes=["TD3C"]
