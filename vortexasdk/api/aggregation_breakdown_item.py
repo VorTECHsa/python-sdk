@@ -1,6 +1,8 @@
 from typing import Optional
 from pydantic import BaseModel
 
+from vortexasdk.api.id import ID
+
 
 class AggregationBreakdownItem(BaseModel):
     """
@@ -12,7 +14,7 @@ class AggregationBreakdownItem(BaseModel):
     and `value` and `count` correspond to numeric values of the returned record.
     """
 
-    id: Optional[str] = None
+    id: ID
     count: Optional[int] = None
     value: Optional[float] = None
     label: Optional[str] = None
