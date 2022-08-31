@@ -26,6 +26,7 @@ class TestProducts(TestCaseUsingMockAPI):
 
     def test_serialize_with_missing_fields(self):
         crude_dict = {
+            "id": "abc123",
             "name": "Crude",
             "layer": ["group"],
             "parent": [],
