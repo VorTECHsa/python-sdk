@@ -2,6 +2,7 @@
 from datetime import datetime
 from tests.testcases import TestCaseUsingRealAPI
 from vortexasdk.api.freight_pricing import FreightPricing
+from vortexasdk.endpoints.freight_pricing_result import FreightPricingResult
 from vortexasdk.endpoints.freight_pricing_search import FreightPricingSearch
 
 day = datetime(2021, 11, 1)
@@ -82,6 +83,45 @@ class TestFreightPricingReal(TestCaseUsingRealAPI):
     def test_df(self):
         df = FreightPricingSearch().search(
             routes=["TD3C"]
-        ).to_df(columns=['short_code', 'rate', 'rate_unit']).head(2)
+        ).to_df(columns=['short_code', 'rate', 'rate_unit', 'prediction.outlook_1d.prediction']).head(2)
         assert len(df) == 2
-        assert list(df.columns) == ['short_code', 'rate', 'rate_unit']
+        assert list(df.columns) == ['short_code', 'rate', 'rate_unit', 'prediction.outlook_1d.prediction']
+
+    def test_format_prediction_outlooks(self):
+        input = [
+            {
+                "predictions": [
+                    {
+                        "prediction_type": "outlook_1d",
+                        "prediction": "firm",
+                        "rating": "medium"
+                    },
+                    {
+                        "prediction_type": "outlook_4d",
+                        "prediction": "firm",
+                        "rating": "low"
+                    }
+                ]
+            }
+        ]
+
+        expected_result = [
+            {
+                "predictions": {
+                    "outlook_1d": {
+                        "prediction": "firm",
+                        "rating": "medium",
+                        "prediction_type": "outlook_1d"
+                    },
+                    "outlook_4d": {
+                        "prediction": "firm",
+                        "rating": "low",
+                        "prediction_type": "outlook_4d"
+                    }
+                }
+            }
+        ]
+
+        result = FreightPricingResult.format_prediction_outlooks(input)
+
+        assert(result == expected_result)
