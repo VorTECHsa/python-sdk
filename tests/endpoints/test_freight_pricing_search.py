@@ -45,6 +45,33 @@ class TestFreightPricingReal(TestCaseUsingRealAPI):
 
         assert p.short_code == "a_route_code"
 
+    def test_deserialisation_with_missing_keys(self):
+        dictionary = {
+            "id": "abc123",
+            "short_code": "a_route_code",
+            "record_date": "2022-08-19T00:00:00.000Z",
+            "rate": 100,
+            "tce_unit": "$/day",
+            "predictions": [
+                {
+                    "prediction": "firm",
+                    "rating": "low",
+                },
+                {
+                    "prediction": "firm",
+                    "prediction_type": "outlook_2d",
+                },
+                {
+                    "prediction_type": "outlook_1d",
+                    "rating": "medium",
+                },
+            ],
+        }
+
+        p = FreightPricing(**dictionary)
+
+        assert p.id == "abc123"
+
     def test_default_search(self):
         results = FreightPricingSearch().search(routes=["TD3C"]).to_list()
         assert len(results) > 10
