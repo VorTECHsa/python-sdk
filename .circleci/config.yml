@@ -23,7 +23,7 @@ jobs:
             - ~/project/.venv
             - ~/.cache/pip
 
-  lint:
+  check_linting:
     working_directory: ~/project
     docker:
       - image: cimg/python:3.7
@@ -36,7 +36,37 @@ jobs:
           name: "Check Linting"
           command: |
             . .venv/bin/activate
-            mypy docs/examples
+            flake8 vortexasdk tests docs
+
+  check_types:
+    working_directory: ~/project
+    docker:
+      - image: cimg/python:3.7
+    steps:
+      - checkout
+      - restore_cache: &restore_cache
+          keys:
+            - v3-{{ .Branch }}-{{ checksum "setup.py" }}
+      - run:
+          name: "Check Types"
+          command: |
+            . .venv/bin/activate
+            mypy vortexasdk tests docs
+
+  check_formatting:
+    working_directory: ~/project
+    docker:
+      - image: cimg/python:3.7
+    steps:
+      - checkout
+      - restore_cache: &restore_cache
+          keys:
+            - v3-{{ .Branch }}-{{ checksum "setup.py" }}
+      - run:
+          name: "Check Formatting"
+          command: |
+            . .venv/bin/activate
+            black --check vortexasdk tests
 
   test-documentation:
     working_directory: ~/project
@@ -190,7 +220,15 @@ workflows:
     jobs:
       - build
 
-      - lint:
+      - check_types:
+          requires:
+            - build
+
+      - check_linting:
+          requires:
+            - build
+
+      - check_formatting:
           requires:
             - build
 
@@ -219,5 +257,7 @@ workflows:
             - test
             - test-documentation
             - run-examples
-            - lint
+            - check_types
+            - check_linting
+            - check_formatting
             - check-release-version

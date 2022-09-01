@@ -7,11 +7,11 @@ from datetime import datetime
 from typing import Any, Dict, List, Union
 
 from vortexasdk.api import ID
-from vortexasdk.api.shared_types import Tag, to_ISODate
+from vortexasdk.api.shared_types import to_ISODate
 from vortexasdk.endpoints.breakdown_result import BreakdownResult
 from vortexasdk.endpoints.endpoints import CRUDE_ONSHORE_INVENTORIES_TIMESERIES
 from vortexasdk.operations import Search
-from vortexasdk.utils import convert_to_list, sts_param_value
+from vortexasdk.utils import convert_to_list
 
 
 class OnshoreInventoriesTimeseries(Search):

@@ -1,6 +1,4 @@
-from typing import Dict, List
-
-import pandas as pd
+from typing import Dict
 
 from vortexasdk.api.id import ID
 from vortexasdk.client import default_client

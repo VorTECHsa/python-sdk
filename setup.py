@@ -37,6 +37,7 @@ setuptools.setup(
     extras_require={
         "tests": [
             "flake8==3.7.9",
+            "black==22.8.0",
             "mkdocs==1.2.4",
             "mypy==0.971",
             "pre-commit==1.20.0",
@@ -50,7 +51,8 @@ setuptools.setup(
             "types-requests==2.28.9",
             "types-urllib3==1.26.23",
             "types-tabulate==0.8.11",
-            "types-python-dateutil==2.8.19"
+            "types-python-dateutil==2.8.19",
+            "types-six==1.16.19"
         ],
         "deploy": ["wheel==0.36.2", "twine==3.3.0"],
     },

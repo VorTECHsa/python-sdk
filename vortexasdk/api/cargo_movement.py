@@ -4,7 +4,6 @@ from typing import List, Optional, Union
 from typing_extensions import Annotated, Literal
 
 from vortexasdk.api.geography import GeographyEntity
-from vortexasdk.api.product import ProductEntityWithSingleLayer
 
 from vortexasdk.api.shared_types import ISODate
 from vortexasdk.api.id import ID

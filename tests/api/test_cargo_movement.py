@@ -1,6 +1,5 @@
 from unittest import TestCase
 
-from typing import List
 import json
 
 from vortexasdk.api import (
