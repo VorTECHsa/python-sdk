@@ -252,36 +252,36 @@
 
 <h2 id="vortexasdk.api.voyages.CongestionBreakdownItem">CongestionBreakdownItem</h2>
 
-<pre><code class="language-python">CongestionBreakdownItem(self, avg_waiting_time: int, vessel_dwt: int, vessel_cubic_capacity: int, vessel_count: int, cargo_quantity: int, avg_waiting_time_laden: int, vessel_dwt_laden: int, vessel_cubic_capacity_laden: int, vessel_count_laden: int, avg_waiting_time_ballast: int, vessel_dwt_ballast: int, vessel_cubic_capacity_ballast: int, vessel_count_ballast: int, location_details: List[vortexasdk.api.shared_types.Entity]) -&gt; None
+<pre><code class="language-python">CongestionBreakdownItem(__pydantic_self__, **data: Any) -&gt; None
 </code></pre>
 <p>Congestion breakdown shows various stats of vessels in congestion.</p>
 <h2 id="vortexasdk.api.voyages.VoyagesVesselEntity">VoyagesVesselEntity</h2>
 
-<pre><code class="language-python">VoyagesVesselEntity(self, id: str, name: str, dead_weight: int, vessel_class: str, imo: Union[int, NoneType], mmsi: Union[int, NoneType], call_sign: Union[str, NoneType], cubic_capacity: Union[int, NoneType], year: Union[int, NoneType], flag: List[vortexasdk.api.shared_types.Flag], scrubber: List[vortexasdk.api.shared_types.Scrubber], ice_class: Union[str, NoneType], propulsion: Union[str, NoneType], tags: List[vortexasdk.api.shared_types.Tag], vessel_risk_level: Union[str, NoneType]) -&gt; None
+<pre><code class="language-python">VoyagesVesselEntity(__pydantic_self__, **data: Any) -&gt; None
 </code></pre>
 <p>A VoyagesVesselEntity represents a vessel record used in Voyages.</p>
 <p><a href="https://docs.vortexa.com/reference/intro-vessel-entities">Vessel Entities Further Documentation</a></p>
 <h2 id="vortexasdk.api.voyages.VoyageVesselEvent">VoyageVesselEvent</h2>
 
-<pre><code class="language-python">VoyageVesselEvent(self, event_id: str, start_timestamp: Union[str, NoneType], end_timestamp: Union[str, NoneType], event_group: str, event_type: str, activity: Union[str, NoneType], odometer_start: Union[int, NoneType], odometer_end: Union[int, NoneType], location_id: str, location_layer: List[str], cargo_movement_id: Union[List[str], NoneType], sts_event_counterparty_vessel_id: Union[str, NoneType], waiting_event_target_geography_id: Union[str, NoneType], fixture_event_fixing_timestamp: Union[str, NoneType], tags: List[vortexasdk.api.shared_types.Tag], probability: Union[int, NoneType], location_details: List[vortexasdk.api.shared_types.Entity], waiting_event_target_geography_details: Union[List[vortexasdk.api.shared_types.Entity], NoneType]) -&gt; None
+<pre><code class="language-python">VoyageVesselEvent(__pydantic_self__, **data: Any) -&gt; None
 </code></pre>
 <p>A vessel event represents an activity that a vessel has performed during a voyage</p>
 <p><a href="https://docs.vortexa.com/reference/intro-voyage-events">Voyage Events Further Documentation</a></p>
 <h2 id="vortexasdk.api.voyages.VoyageCargoEvent">VoyageCargoEvent</h2>
 
-<pre><code class="language-python">VoyageCargoEvent(self, event_id: str, start_timestamp: Union[str, NoneType], end_timestamp: Union[str, NoneType], event_group: str, event_type: str, activity: None, odometer_start: Union[int, NoneType], odometer_end: Union[int, NoneType], cargo_movement_id: str, cargo_origin_id: str, cargo_destination_id: Union[str, NoneType], product_id: str, quantity_tonnes: int, quantity_barrels: int, quantity_cubic_metres: int, tonne_miles: Union[int, NoneType], product_details: List[vortexasdk.api.shared_types.Entity], cargo_origin_details: List[vortexasdk.api.shared_types.Entity], cargo_destination_details: List[vortexasdk.api.shared_types.Entity]) -&gt; None
+<pre><code class="language-python">VoyageCargoEvent(__pydantic_self__, **data: Any) -&gt; None
 </code></pre>
 <p>Cargo events relate to the movement of cargo during the voyage.</p>
 <p><a href="https://docs.vortexa.com/reference/intro-voyage-events">Voyage Events Further Documentation</a></p>
 <h2 id="vortexasdk.api.voyages.VoyageStatusEvent">VoyageStatusEvent</h2>
 
-<pre><code class="language-python">VoyageStatusEvent(self, event_id: str, start_timestamp: Union[str, NoneType], end_timestamp: Union[str, NoneType], event_group: str, event_type: str, activity: str, value: str, source_event_id: str) -&gt; None
+<pre><code class="language-python">VoyageStatusEvent(__pydantic_self__, **data: Any) -&gt; None
 </code></pre>
 <p>Status events describe the status of the voyage at a given period.</p>
 <p><a href="https://docs.vortexa.com/reference/intro-voyage-events">Voyage Events Further Documentation</a></p>
 <h2 id="vortexasdk.api.voyages.VoyageEnrichedItem">VoyageEnrichedItem</h2>
 
-<pre><code class="language-python">VoyageEnrichedItem(self, schema_version: str, voyage_id: str, start_timestamp: Union[str, NoneType], end_timestamp: Union[str, NoneType], start_event_id: str, end_event_id: Union[str, NoneType], vessel_id: str, previous_voyage_id: Union[str, NoneType], next_voyage_id: Union[str, NoneType], latest_product_ids: List[str], tags: List[vortexasdk.api.shared_types.Tag], tonne_miles: Union[int, NoneType], vessel: vortexasdk.api.voyages.VoyagesVesselEntity, corporate_entities: List[vortexasdk.api.shared_types.Entity], odometer_start: Union[int, NoneType], odometer_end: Union[int, NoneType], events: List[Union[vortexasdk.api.voyages.VoyageStatusEvent, vortexasdk.api.voyages.VoyageVesselEvent, vortexasdk.api.voyages.VoyageCargoEvent, NoneType]], latest_product_details: List[vortexasdk.api.shared_types.Entity]) -&gt; None
+<pre><code class="language-python">VoyageEnrichedItem(__pydantic_self__, **data: Any) -&gt; None
 </code></pre>
 <p>A voyage is defined as a continuous period of time when the vessel is either laden or ballast.</p>
 <p>Each voyage is made up of multiple voyage events which describe the activity of the vessel while it is laden or ballast.</p>

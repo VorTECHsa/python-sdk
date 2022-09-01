@@ -252,17 +252,17 @@
 
 <h2 id="vortexasdk.api.vessel_availability.DeclaredDestination">DeclaredDestination</h2>
 
-<pre><code class="language-python">DeclaredDestination(self, eta: Union[str, NoneType], name: str, vessel_id: str) -&gt; None
+<pre><code class="language-python">DeclaredDestination(__pydantic_self__, **data: Any) -&gt; None
 </code></pre>
 <p>Current destination location, as reported by the available vessel</p>
 <h2 id="vortexasdk.api.vessel_availability.VesselFixtures">VesselFixtures</h2>
 
-<pre><code class="language-python">VesselFixtures(self, origin: Union[str, NoneType], destination: Union[str, NoneType], charterer: Union[str, NoneType], fixing_timestamp: str, laycan_from: str, laycan_to: str) -&gt; None
+<pre><code class="language-python">VesselFixtures(__pydantic_self__, **data: Any) -&gt; None
 </code></pre>
 <p>Current fixture information for the available vessel</p>
 <h2 id="vortexasdk.api.vessel_availability.VesselAvailability">VesselAvailability</h2>
 
-<pre><code class="language-python">VesselAvailability(self, available_at: str, evaluated_at: str, vessel_class: str, vessel_declared_destination: List[vortexasdk.api.vessel_availability.DeclaredDestination], vessel_dwt: int, vessel_fixtures: List[vortexasdk.api.vessel_availability.VesselFixtures], vessel_id: str, vessel_last_cargo: List[vortexasdk.api.shared_types.Entity], vessel_location: List[vortexasdk.api.shared_types.Entity], vessel_name: Union[str, NoneType], vessel_owner_id: Union[str, NoneType], vessel_owner_name: Union[str, NoneType], vessel_predicted_destination: List[vortexasdk.api.shared_types.Entity], vessel_scrubber: Union[bool, NoneType], vessel_status: str, vessel_year_built: Union[int, NoneType], last_activity_at: Union[str, NoneType], last_activity: Union[int, NoneType]) -&gt; None
+<pre><code class="language-python">VesselAvailability(__pydantic_self__, **data: Any) -&gt; None
 </code></pre>
 <p>Vessel Availability shows vessels that are available to load a given cargo at a given port within a specified time range.</p>
               

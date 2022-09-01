@@ -250,22 +250,16 @@
               
                 <h1 id="vortexasdk.api.cargo_movement">vortexasdk.api.cargo_movement</h1>
 
-<h2 id="vortexasdk.api.cargo_movement.CargoEvent">CargoEvent</h2>
-
-<pre><code class="language-python">CargoEvent(self, event_type: str, location: List[vortexasdk.api.geography.GeographyEntity], probability: Union[float, NoneType] = None, pos: Union[List[float], NoneType] = None, vessel_id: Union[str, NoneType] = None, start_timestamp: Union[str, NoneType] = None, end_timestamp: Union[str, NoneType] = None) -&gt; None
-</code></pre>
-<p>A CargoEvent represents an event that occurred to a cargo during a cargo movement.</p>
-<p><a href="https://docs.vortexa.com/reference/intro-cargo-events">Cargo Event Entities Further Documentation</a></p>
 <h2 id="vortexasdk.api.cargo_movement.ParentID">ParentID</h2>
 
-<pre><code class="language-python">ParentID(self, id: str, splinter_timestamp: str) -&gt; None
+<pre><code class="language-python">ParentID(__pydantic_self__, **data: Any) -&gt; None
 </code></pre>
 <p><code>cargo_movement_id</code> may change under certain conditions. <code>ParentID</code> contains an <code>id</code>,
 a previous id of the cargo movement, and a <code>splinter_timestamp</code>, the time at which the id change occurred.</p>
 <p><a href="https://docs.vortexa.com/reference/intro-cargo-movement">Cargo Movement Further Documentation</a></p>
 <h2 id="vortexasdk.api.cargo_movement.CargoMovement">CargoMovement</h2>
 
-<pre><code class="language-python">CargoMovement(self, cargo_movement_id: str, quantity: int, status: str, vessels: List[vortexasdk.api.vessel.VesselEntity], product: List[vortexasdk.api.product.ProductEntity], events: List[vortexasdk.api.cargo_movement.CargoEvent], parent_ids: List[vortexasdk.api.cargo_movement.ParentID]) -&gt; None
+<pre><code class="language-python">CargoMovement(__pydantic_self__, **data: Any) -&gt; None
 </code></pre>
 <p>Cargo movements are the base data set the Vortexa API is centred around.</p>
 <p>Each movement represents a journey of a certain quantity of a product between places.</p>
