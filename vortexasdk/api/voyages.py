@@ -169,7 +169,7 @@ class VoyageEnrichedItem(BaseModel):
     latest_product_ids: Optional[List[ID]] = None
     tags: Optional[List[Tag]] = None
     tonne_miles: Optional[int] = None
-    corporate_entities:Optional[List[EntityWithSingleLayerAndTimespan]] = None
+    corporate_entities: Optional[List[EntityWithSingleLayerAndTimespan]] = None
     odometer_start: Optional[int] = None
     odometer_end: Optional[int] = None
     """
@@ -182,7 +182,11 @@ class VoyageEnrichedItem(BaseModel):
     At the time of writing, that order is:
     `Union[VoyageVesselEvent, VoyageCargoEvent, VoyageStatusEvent]`
     """
-    events: Optional[List[
-        Optional[Union[VoyageVesselEvent, VoyageCargoEvent, VoyageStatusEvent]]
-    ]] = None
+    events: Optional[
+        List[
+            Optional[
+                Union[VoyageVesselEvent, VoyageCargoEvent, VoyageStatusEvent]
+            ]
+        ]
+    ] = None
     latest_product_details: Optional[List[EntityWithSingleLayer]] = None

@@ -81,7 +81,9 @@ class VesselEntity(IDName):
     dwt: Optional[int] = None
 
     vessel_class: Optional[str] = None
-    corporate_entities: Optional[List[VesselEntityCorporateEntityWithConfidence]] = None
+    corporate_entities: Optional[
+        List[VesselEntityCorporateEntityWithConfidence]
+    ] = None
     tags: Optional[List[Tag]] = None
     status: Optional[str] = None
     year: Optional[int] = None

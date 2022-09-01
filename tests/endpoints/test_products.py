@@ -36,7 +36,6 @@ class TestProducts(TestCaseUsingMockAPI):
 
         Product.parse_obj(crude_dict)
 
-
     def test_search_ids_retreives_names(self):
         products = Products().search().to_df()
         assert len(products) > 0
