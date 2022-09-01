@@ -114,7 +114,7 @@ class FreightPricingResult(Result):
         DEFAULT_COLUMNS = [
             'short_code',
             'record_date',
-            'rate'
+            'rate',
             'rate_unit',
             'cost',
             'cost_unit',
@@ -131,7 +131,7 @@ class FreightPricingResult(Result):
         [
             'id',
             'short_code',
-            'rate'
+            'rate',
             'rate_precision',
             'rate_unit',
             'cost',
