@@ -29,7 +29,7 @@ class FreightPricingResult(Result):
     @staticmethod
     def format_prediction_outlooks(records: List):
         """
-        This private method formats the freight_pricing records to replace a list of predictions
+        This method formats the freight_pricing records to replace a list of predictions
         with a dictionary where each key is the prediction outlook.
 
         We do this so that when the freight pricing object is flattened to be consumed in a dataframe,
