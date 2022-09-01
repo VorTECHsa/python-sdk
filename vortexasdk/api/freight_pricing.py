@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 from typing import List, Optional
 from vortexasdk.api.id import ID
-from vortexasdk.api.serdes import FromDictMixin
+from vortexasdk.api.shared_types import ISODate
 
 
 class FreightPricingPrediction(BaseModel):
