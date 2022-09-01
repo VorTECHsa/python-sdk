@@ -6,9 +6,7 @@ Try me out in your browser:
 from typing import List, Union
 from datetime import datetime
 from vortexasdk.api.shared_types import Tag, to_ISODate
-from vortexasdk.endpoints.reference_breakdown_result import (
-    ReferenceBreakdownResult,
-)
+from vortexasdk.endpoints.reference_breakdown_result import ReferenceBreakdownResult
 
 from vortexasdk.api import ID
 from vortexasdk.endpoints.endpoints import DESTINATION_BREAKDOWN_RESOURCE
@@ -70,123 +68,123 @@ class DestinationBreakdown(Search):
     ) -> ReferenceBreakdownResult:
 
         """
-         Destination locations breakdown aggregation by geographic area
+        Destination locations breakdown aggregation by geographic area
 
-         # Arguments
+        # Arguments
 
-             breakdown_unit_average_basis: Per day metrics only - movement activity on which to base the average metric. Can be one of state properties of a cargo movement: `identified_for_loading_state`, `loading_state`, `transiting_state`, `storing_state`, `ship_to_ship`, `unloading_state`, `unloaded_state`, `oil_on_water_state`, `unknown_state`, or one of time properties of a cargo movement: `identified_for_loading_at`, `loading_start`, `loading_end`, `storing_start`, `storing_end`, `ship_to_ship_start`, `ship_to_ship_end`, `unloading_start`, `unloading_end`.
+            breakdown_unit_average_basis: Per day metrics only - movement activity on which to base the average metric. Can be one of state properties of a cargo movement: `identified_for_loading_state`, `loading_state`, `transiting_state`, `storing_state`, `ship_to_ship`, `unloading_state`, `unloaded_state`, `oil_on_water_state`, `unknown_state`, or one of time properties of a cargo movement: `identified_for_loading_at`, `loading_start`, `loading_end`, `storing_start`, `storing_end`, `ship_to_ship_start`, `ship_to_ship_end`, `unloading_start`, `unloading_end`.
 
-             breakdown_unit: Units to aggregate upon. Must be one of the following: `'b'`, `'t'`, `'cbm'`, `'bpd'`, `'tpd'`, `'mpd'`.
+            breakdown_unit: Units to aggregate upon. Must be one of the following: `'b'`, `'t'`, `'cbm'`, `'bpd'`, `'tpd'`, `'mpd'`.
 
-             breakdown_geography: Geography hierarchy of the origin to aggregate upon. Must be one of the following: `'terminal'`, `'port'`,`'country'`, `'shipping_region'`,
-             `'region'`,`'trading_block'`,`'trading_region'`,`'trading_subregion'`,`'sts_zone'`,`'waypoint'`.
+            breakdown_geography: Geography hierarchy of the origin to aggregate upon. Must be one of the following: `'terminal'`, `'port'`,`'country'`, `'shipping_region'`,
+            `'region'`,`'trading_block'`,`'trading_region'`,`'trading_subregion'`,`'sts_zone'`,`'waypoint'`.
 
-             breakdown_size: Number of top geographies to return. Default is 5.
+            breakdown_size: Number of top geographies to return. Default is 5.
 
-             disable_geographic_exclusion_rules: A boolean which specifies whether certain movements should be excluded, based on a combination of their origin and destination.
+            disable_geographic_exclusion_rules: A boolean which specifies whether certain movements should be excluded, based on a combination of their origin and destination.
 
-             filter_activity: Cargo movement activity on which to base the time filter. The endpoint only includes cargo
-             movements matching that match this filter in the aggregations. Must be one of ['loading_state',
-              'loading_start', 'loading_end', 'identified_for_loading_state', 'unloading_state', 'unloading_start',
-               'unloading_end', 'storing_state', 'storing_start', 'storing_end', 'transiting_state'].
+            filter_activity: Cargo movement activity on which to base the time filter. The endpoint only includes cargo
+            movements matching that match this filter in the aggregations. Must be one of ['loading_state',
+             'loading_start', 'loading_end', 'identified_for_loading_state', 'unloading_state', 'unloading_start',
+              'unloading_end', 'storing_state', 'storing_start', 'storing_end', 'transiting_state'].
 
-             filter_time_min: The UTC start date of the time filter.
+            filter_time_min: The UTC start date of the time filter.
 
-             filter_time_max: The UTC end date of the time filter.
+            filter_time_max: The UTC end date of the time filter.
 
-             filter_owners: An corporation ID, or list of corporation IDs to filter on.
+            filter_owners: An corporation ID, or list of corporation IDs to filter on.
 
-             filter_vessel_flags: A vessel flag ID, or list of vessel flag IDs to filter on.
+            filter_vessel_flags: A vessel flag ID, or list of vessel flag IDs to filter on.
 
-             filter_vessel_ice_class: An ice class ID, or list of ice class IDs to filter on.
+            filter_vessel_ice_class: An ice class ID, or list of ice class IDs to filter on.
 
-             filter_vessel_propulsion: An propulsion means ID, or list of propulsion means IDs to filter on.
+            filter_vessel_propulsion: An propulsion means ID, or list of propulsion means IDs to filter on.
 
-             filter_charterers: An commercial entity ID, or list of commercial entity IDs to filter on.
+            filter_charterers: An commercial entity ID, or list of commercial entity IDs to filter on.
 
-             filter_origins: A geography ID, or list of geography IDs to filter on.
+            filter_origins: A geography ID, or list of geography IDs to filter on.
 
-             filter_destinations: A geography ID, or list of geography IDs to filter on.
+            filter_destinations: A geography ID, or list of geography IDs to filter on.
 
-             filter_storage_locations: A geography ID, or list of geography IDs to filter on.
+            filter_storage_locations: A geography ID, or list of geography IDs to filter on.
 
-             filter_waypoints: A geography ID, or list of geography IDs to filter on.
+            filter_waypoints: A geography ID, or list of geography IDs to filter on.
 
-             filter_ship_to_ship_locations: A geography ID, or list of geography IDs to filter on.
+            filter_ship_to_ship_locations: A geography ID, or list of geography IDs to filter on.
 
-             filter_products: A product ID, or list of product IDs to filter on.
+            filter_products: A product ID, or list of product IDs to filter on.
 
-             filter_vessels: A vessel ID, or list of vessel IDs to filter on.
+            filter_vessels: A vessel ID, or list of vessel IDs to filter on.
 
-             filter_vessel_classes: A vessel class, or list of vessel classes to filter on.
+            filter_vessel_classes: A vessel class, or list of vessel classes to filter on.
 
-             filter_vessel_age_min: A number between 1 and 100 (representing years).
+            filter_vessel_age_min: A number between 1 and 100 (representing years).
 
-             filter_vessel_age_max: A number between 1 and 100 (representing years).
+            filter_vessel_age_max: A number between 1 and 100 (representing years).
 
-             filter_vessel_scrubbers: Either inactive 'disabled', or included 'inc' or excluded 'exc'.
+            filter_vessel_scrubbers: Either inactive 'disabled', or included 'inc' or excluded 'exc'.
 
-             filter_vessel_tags: A time bound vessel tag, or list of time bound vessel tags to filter on.
+            filter_vessel_tags: A time bound vessel tag, or list of time bound vessel tags to filter on.
 
-             exclude_products: A product ID, or list of product IDs to exclude.
+            exclude_products: A product ID, or list of product IDs to exclude.
 
-             exclude_vessel_flags: A vessel flag ID, or list of vessel flag IDs to exclude.
+            exclude_vessel_flags: A vessel flag ID, or list of vessel flag IDs to exclude.
 
-             exclude_vessel_ice_class: An ice class ID, or list of ice class IDs to exclude.
+            exclude_vessel_ice_class: An ice class ID, or list of ice class IDs to exclude.
 
-             exclude_vessel_propulsion: An propulsion means ID, or list of propulsion means IDs to exclude.
+            exclude_vessel_propulsion: An propulsion means ID, or list of propulsion means IDs to exclude.
 
-             exclude_vessels: A vessel ID, or list of vessel IDs to exclude.
+            exclude_vessels: A vessel ID, or list of vessel IDs to exclude.
 
-             exclude_vessel_classes: A vessel class, or list of vessel classes to exclude.
+            exclude_vessel_classes: A vessel class, or list of vessel classes to exclude.
 
-             exclude_owners: An owner ID, or list of owner IDs to exclude.
+            exclude_owners: An owner ID, or list of owner IDs to exclude.
 
-             exclude_vessel_location: A location ID, or list of location IDs to exclude.
+            exclude_vessel_location: A location ID, or list of location IDs to exclude.
 
-             exclude_destinations: A location ID, or list of location IDs to exclude.
+            exclude_destinations: A location ID, or list of location IDs to exclude.
 
-             exclude_origins: A location ID, or list of location IDs to exclude.
+            exclude_origins: A location ID, or list of location IDs to exclude.
 
-             exclude_storage_locations: A location ID, or list of location IDs to exclude.
+            exclude_storage_locations: A location ID, or list of location IDs to exclude.
 
-             exclude_waypoints: A location ID, or list of location IDs to exclude.
+            exclude_waypoints: A location ID, or list of location IDs to exclude.
 
-             exclude_ship_to_ship_locations: A location ID, or list of location IDs to exclude.
+            exclude_ship_to_ship_locations: A location ID, or list of location IDs to exclude.
 
-             exclude_vessel_tags: A time bound vessel tag, or list of time bound vessel tags to exclude.
+            exclude_vessel_tags: A time bound vessel tag, or list of time bound vessel tags to exclude.
 
-         # Returns
-         `ReferenceBreakdownResult`
+        # Returns
+        `ReferenceBreakdownResult`
 
 
-         # Example
-        _Breakdown by destination terminal of cargoes departing from the port of origin over the last 5 days, in tonnes.
+        # Example
+       _Breakdown by destination terminal of cargoes departing from the port of origin over the last 5 days, in tonnes.
 
-         ```python
-         >>> from vortexasdk import DestinationBreakdown, Geographies
-         >>> start = datetime(2019, 11, 10)
-         >>> end = datetime(2019, 11, 15)
-         >>> df = DestinationBreakdown().search(
-         ...        filter_activity="loading_end",
-         ...        breakdown_geography="terminal",
-         ...        breakdown_unit="t",
-         ...        breakdown_size=5,
-         ...        filter_time_min=start,
-         ...        filter_time_max=end
-         ... ).to_df()
+        ```python
+        >>> from vortexasdk import DestinationBreakdown, Geographies
+        >>> start = datetime(2019, 11, 10)
+        >>> end = datetime(2019, 11, 15)
+        >>> df = DestinationBreakdown().search(
+        ...        filter_activity="loading_end",
+        ...        breakdown_geography="terminal",
+        ...        breakdown_unit="t",
+        ...        breakdown_size=5,
+        ...        filter_time_min=start,
+        ...        filter_time_max=end
+        ... ).to_df()
 
-         ```
+        ```
 
-         Gives the following:
+        Gives the following:
 
-         |    | key                                                             | label                                       | value    | count     |
-         |---:|:----------------------------------------------------------------|--------------------------------------------:|---------:|----------:|
-         |  0 | 606e73162cfd0492919ef96b04dae1bfddda09d148d03bafc1dc3eab979a9b0a| SPSE - DPF - G.I.E. Petroleum Terminal	     | 785819   | 12        |
-         |  1 | 844756c877c680ce0ff582a46b5bb1cf34cc33179df977a609b2c10838d9db5d| SK Energy (Ulsan)	                         | 288529   | 11        |
-         |  2 | a5269f5a20759b3a120af66a298fa2385a2b81d8b248aec590db73ecd984f8b7| Dongying CNOOC Oil & Petrochemicals Shandong| 201283   | 11        |
-         |  3 | 78fcabe3bb6a47f2aa019ae9948be43c5ebbe08a2d1cba7b113315c85362cb7c| Kandla Oil Terminal	                     | 121762   | 15        |
-         |  4 | 15db6ca55a3b13d3c4b135afcaf87f5d605680ac75177412af05be37fc3fec38| Pirpau Island	                             | 62933    | 12        |
+        |    | key                                                             | label                                       | value    | count     |
+        |---:|:----------------------------------------------------------------|--------------------------------------------:|---------:|----------:|
+        |  0 | 606e73162cfd0492919ef96b04dae1bfddda09d148d03bafc1dc3eab979a9b0a| SPSE - DPF - G.I.E. Petroleum Terminal	     | 785819   | 12        |
+        |  1 | 844756c877c680ce0ff582a46b5bb1cf34cc33179df977a609b2c10838d9db5d| SK Energy (Ulsan)	                         | 288529   | 11        |
+        |  2 | a5269f5a20759b3a120af66a298fa2385a2b81d8b248aec590db73ecd984f8b7| Dongying CNOOC Oil & Petrochemicals Shandong| 201283   | 11        |
+        |  3 | 78fcabe3bb6a47f2aa019ae9948be43c5ebbe08a2d1cba7b113315c85362cb7c| Kandla Oil Terminal	                     | 121762   | 15        |
+        |  4 | 15db6ca55a3b13d3c4b135afcaf87f5d605680ac75177412af05be37fc3fec38| Pirpau Island	                             | 62933    | 12        |
 
         """
         exclude_params = {
@@ -198,19 +196,11 @@ class DestinationBreakdown(Search):
             "filter_owners": convert_to_list(exclude_owners),
             "filter_origins": convert_to_list(exclude_origins),
             "filter_flags": convert_to_list(exclude_vessel_flags),
-            "filter_vessel_ice_class": convert_to_list(
-                exclude_vessel_ice_class
-            ),
-            "filter_vessel_propulsion": convert_to_list(
-                exclude_vessel_propulsion
-            ),
-            "filter_storage_locations": convert_to_list(
-                exclude_storage_locations
-            ),
+            "filter_vessel_ice_class": convert_to_list(exclude_vessel_ice_class),
+            "filter_vessel_propulsion": convert_to_list(exclude_vessel_propulsion),
+            "filter_storage_locations": convert_to_list(exclude_storage_locations),
             "filter_waypoints": convert_to_list(exclude_waypoints),
-            "filter_ship_to_ship": convert_to_list(
-                exclude_ship_to_ship_locations
-            ),
+            "filter_ship_to_ship": convert_to_list(exclude_ship_to_ship_locations),
         }
 
         api_params = {
@@ -225,25 +215,19 @@ class DestinationBreakdown(Search):
             "filter_products": convert_to_list(filter_products),
             "filter_charterers": convert_to_list(filter_charterers),
             "filter_vessels": convert_to_list(filter_vessels),
-            "filter_vessel_classes": convert_to_list(filter_vessel_classes),
+            "filter_vessel_classes": convert_to_list(
+                filter_vessel_classes
+            ),
             "filter_vessel_flags": convert_to_list(filter_vessel_flags),
-            "filter_vessel_ice_class": convert_to_list(
-                filter_vessel_ice_class
-            ),
-            "filter_vessel_propulsion": convert_to_list(
-                filter_vessel_propulsion
-            ),
+            "filter_vessel_ice_class": convert_to_list(filter_vessel_ice_class),
+            "filter_vessel_propulsion": convert_to_list(filter_vessel_propulsion),
             "filter_owners": convert_to_list(filter_owners),
             "filter_destinations": convert_to_list(filter_destinations),
             "filter_origins": convert_to_list(filter_origins),
             "filter_waypoints": convert_to_list(filter_waypoints),
             "filter_charterers": convert_to_list(filter_charterers),
-            "filter_storage_locations": convert_to_list(
-                filter_storage_locations
-            ),
-            "filter_ship_to_ship_locations": convert_to_list(
-                filter_ship_to_ship_locations
-            ),
+            "filter_storage_locations": convert_to_list(filter_storage_locations),
+            "filter_ship_to_ship_locations": convert_to_list(filter_ship_to_ship_locations),
             "filter_vessel_age_min": filter_vessel_age_min,
             "filter_vessel_age_max": filter_vessel_age_max,
             "filter_vessel_scrubbers": filter_vessel_scrubbers,
@@ -253,6 +237,4 @@ class DestinationBreakdown(Search):
             "include_reference": self._INCLUDE_REFERENCE_DATA,
         }
 
-        return ReferenceBreakdownResult(
-            super().search(response_type="breakdown", **api_params)
-        )
+        return ReferenceBreakdownResult(super().search(response_type="breakdown", **api_params))

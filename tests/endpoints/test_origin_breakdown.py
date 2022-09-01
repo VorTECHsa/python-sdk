@@ -28,7 +28,7 @@ class TestOriginBreakdownReal(TestCaseUsingRealAPI):
             breakdown_unit="b",
             filter_time_min=start,
             filter_time_max=end,
-            breakdown_size=100,
+            breakdown_size=100
         )
 
         assert len(result["data"]) == 100
@@ -48,9 +48,7 @@ class TestOriginBreakdownReal(TestCaseUsingRealAPI):
 
     def test_search_returns_excluded_params(self):
         date = datetime(2019, 11, 10)
-        rotterdam = (
-            "68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e"
-        )
+        rotterdam = "68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e"
 
         result = OriginBreakdown().search(
             filter_activity="any_activity",
@@ -58,7 +56,7 @@ class TestOriginBreakdownReal(TestCaseUsingRealAPI):
             breakdown_unit="b",
             filter_time_min=date,
             filter_time_max=date,
-            exclude_origins=rotterdam,
+            exclude_origins=rotterdam
         )
 
         assert len(result["data"]) == 5
@@ -73,7 +71,7 @@ class TestOriginBreakdownReal(TestCaseUsingRealAPI):
                 breakdown_geography="country",
                 breakdown_unit="b",
                 filter_time_min=date,
-                filter_time_max=date,
+                filter_time_max=date
             )
             .to_df()
         )

@@ -13,7 +13,6 @@ class CongestionBreakdownItem(FromDictMixin):
     Congestion breakdown shows various stats of vessels in congestion.
 
     """
-
     avg_waiting_time: int
     vessel_dwt: int
     vessel_cubic_capacity: int
@@ -64,7 +63,6 @@ class VoyageVesselEvent:
 
 
     """
-
     event_id: str
     start_timestamp: Optional[ISODate]
     end_timestamp: Optional[ISODate]
@@ -94,7 +92,6 @@ class VoyageCargoEvent:
 
 
     """
-
     event_id: str
     start_timestamp: Optional[ISODate]
     end_timestamp: Optional[ISODate]
@@ -125,7 +122,6 @@ class VoyageStatusEvent:
 
 
     """
-
     event_id: str
     start_timestamp: Optional[ISODate]
     end_timestamp: Optional[ISODate]
@@ -164,7 +160,5 @@ class VoyageEnrichedItem(FromDictMixin):
     corporate_entities: List[Entity]
     odometer_start: Optional[int]
     odometer_end: Optional[int]
-    events: List[
-        Optional[Union[VoyageStatusEvent, VoyageVesselEvent, VoyageCargoEvent]]
-    ]
+    events: List[Optional[Union[VoyageStatusEvent, VoyageVesselEvent, VoyageCargoEvent]]]
     latest_product_details: List[Entity]

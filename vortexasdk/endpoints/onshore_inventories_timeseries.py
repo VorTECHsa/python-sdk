@@ -129,9 +129,7 @@ class OnshoreInventoriesTimeseries(Search):
         """
 
         exclude_params = {
-            "corporate_entity_ids": convert_to_list(
-                exclude_corporate_entity_ids
-            ),
+            "corporate_entity_ids": convert_to_list(exclude_corporate_entity_ids),
             "crude_confidence": convert_to_list(exclude_crude_confidence),
             "location_ids": convert_to_list(exclude_location_ids),
             "storage_types": convert_to_list(exclude_storage_types),
@@ -152,6 +150,4 @@ class OnshoreInventoriesTimeseries(Search):
             "exclude": exclude_params,
         }
 
-        return BreakdownResult(
-            super().search(response_type="breakdown", **api_params)
-        )
+        return BreakdownResult(super().search(response_type="breakdown", **api_params))

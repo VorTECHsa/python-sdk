@@ -192,7 +192,8 @@ class FleetUtilisationTimeseries(Search):
             "filter_ship_to_ship": sts_filter["x_filter"],
             # if charterer toggle is True, apply cross filter
             # else make it false
-            "filter_charterer_exists": filter_charterer_exists == True,
+            "filter_charterer_exists": filter_charterer_exists == True
+
         }
 
         exclude_params = {
@@ -204,16 +205,10 @@ class FleetUtilisationTimeseries(Search):
             "filter_origins": convert_to_list(exclude_origins),
             "filter_charterers": convert_to_list(exclude_charterers),
             "filter_vessel_flags": convert_to_list(exclude_vessel_flags),
-            "filter_vessel_ice_class": convert_to_list(
-                exclude_vessel_ice_class
-            ),
-            "filter_vessel_propulsion": convert_to_list(
-                exclude_vessel_propulsion
-            ),
-            "filter_vessel_risk_levels": convert_to_list(
-                exclude_vessel_risk_levels
-            ),
-            "filter_ship_to_ship": sts_filter["exclude"],
+            "filter_vessel_ice_class": convert_to_list(exclude_vessel_ice_class),
+            "filter_vessel_propulsion": convert_to_list(exclude_vessel_propulsion),
+            "filter_vessel_risk_levels": convert_to_list(exclude_vessel_risk_levels),
+            "filter_ship_to_ship": sts_filter["exclude"]
         }
 
         api_params = {
@@ -235,21 +230,15 @@ class FleetUtilisationTimeseries(Search):
             "filter_vessel_flags": convert_to_list(filter_vessel_flags),
             "filter_destinations": convert_to_list(filter_destinations),
             "filter_origins": convert_to_list(filter_origins),
-            "filter_vessel_ice_class": convert_to_list(
-                filter_vessel_ice_class
-            ),
-            "filter_vessel_propulsion": convert_to_list(
-                filter_vessel_propulsion
-            ),
+            "filter_vessel_ice_class": convert_to_list(filter_vessel_ice_class),
+            "filter_vessel_propulsion": convert_to_list(filter_vessel_propulsion),
             "vessel_tags": convert_to_list(filter_vessel_tags),
             "vessel_tags_excluded": convert_to_list(exclude_vessel_tags),
-            "filter_vessel_risk_levels": convert_to_list(
-                filter_vessel_risk_levels
-            ),
+            "filter_vessel_risk_levels": convert_to_list(filter_vessel_risk_levels),
             "filter_ship_to_ship": filter_ship_to_ship,
             "filter_vessel_scrubbers": filter_vessel_scrubbers,
             "exclude": exclude_params,
-            "crossfilters": crossfilters,
+            "crossfilters": crossfilters
         }
 
         return BreakdownResult(super().search(**api_params))

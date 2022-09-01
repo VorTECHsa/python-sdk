@@ -13,9 +13,7 @@ def get_latest_sdk_version() -> str:
 
     versions = [StrictVersion(release) for release in data["releases"].keys()]
 
-    filtered_out_prerelease_versions = [
-        v for v in versions if v.prerelease is None
-    ]
+    filtered_out_prerelease_versions = [v for v in versions if v.prerelease is None]
 
     latest_version = sorted(filtered_out_prerelease_versions)[-1]
 
@@ -29,3 +27,5 @@ def is_sdk_version_outdated():
         return latest_version, True
     else:
         return latest_version, False
+
+

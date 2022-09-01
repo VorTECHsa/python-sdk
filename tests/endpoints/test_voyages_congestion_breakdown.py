@@ -10,7 +10,9 @@ class TestVoyagesCongestionBreakdown(TestCaseUsingRealAPI):
         end_date = datetime(2019, 11, 11)
 
         result = VoyagesCongestionBreakdown().search(
-            time_min=date, time_max=end_date, breakdown_size=1
+            time_min=date,
+            time_max=end_date,
+            breakdown_size=1
         )
 
         assert len(result) == 1
@@ -20,7 +22,9 @@ class TestVoyagesCongestionBreakdown(TestCaseUsingRealAPI):
         end = datetime(2019, 11, 10)
 
         result = VoyagesCongestionBreakdown().search(
-            time_min=start, time_max=end, breakdown_size=10
+            time_min=start,
+            time_max=end,
+            breakdown_size=10
         )
 
         assert len(result) == 10
@@ -33,7 +37,7 @@ class TestVoyagesCongestionBreakdown(TestCaseUsingRealAPI):
             breakdown_property="terminal",
             time_min=start,
             time_max=end,
-            breakdown_size=10,
+            breakdown_size=10
         )
 
         assert len(result) == 10
@@ -43,7 +47,9 @@ class TestVoyagesCongestionBreakdown(TestCaseUsingRealAPI):
         end = datetime(2019, 11, 10)
 
         result = VoyagesCongestionBreakdown().search(
-            time_min=start, time_max=end, breakdown_size=100
+            time_min=start,
+            time_max=end,
+            breakdown_size=100
         )
 
         assert len(result) == 100
@@ -54,27 +60,16 @@ class TestVoyagesCongestionBreakdown(TestCaseUsingRealAPI):
 
         df = (
             VoyagesCongestionBreakdown()
-            .search(time_min=start, time_max=end, breakdown_size=10)
+            .search(
+                time_min=start,
+                time_max=end,
+                breakdown_size=10
+            )
             .to_df()
         )
 
         assert len(df) == 10
-        assert list(df.columns) == [
-            "avg_waiting_time",
-            "vessel_dwt",
-            "vessel_cubic_capacity",
-            "vessel_count",
-            "cargo_quantity",
-            "avg_waiting_time_laden",
-            "vessel_dwt_laden",
-            "vessel_cubic_capacity_laden",
-            "vessel_count_laden",
-            "avg_waiting_time_ballast",
-            "vessel_dwt_ballast",
-            "vessel_cubic_capacity_ballast",
-            "vessel_count_ballast",
-            "location_details.0.label",
-        ]
+        assert list(df.columns) == ['avg_waiting_time', 'vessel_dwt', 'vessel_cubic_capacity', 'vessel_count', 'cargo_quantity', 'avg_waiting_time_laden', 'vessel_dwt_laden', 'vessel_cubic_capacity_laden', 'vessel_count_laden', 'avg_waiting_time_ballast', 'vessel_dwt_ballast', 'vessel_cubic_capacity_ballast', 'vessel_count_ballast', 'location_details.0.label']
 
     def test_with_params(self):
 
@@ -86,26 +81,10 @@ class TestVoyagesCongestionBreakdown(TestCaseUsingRealAPI):
                 time_min=datetime(2020, 12, 19),
                 time_max=datetime(2021, 1, 18),
             )
-            .to_df()
-            .head()
+            .to_df().head()
         )
 
-        assert list(df.columns) == [
-            "avg_waiting_time",
-            "vessel_dwt",
-            "vessel_cubic_capacity",
-            "vessel_count",
-            "cargo_quantity",
-            "avg_waiting_time_laden",
-            "vessel_dwt_laden",
-            "vessel_cubic_capacity_laden",
-            "vessel_count_laden",
-            "avg_waiting_time_ballast",
-            "vessel_dwt_ballast",
-            "vessel_cubic_capacity_ballast",
-            "vessel_count_ballast",
-            "location_details.0.label",
-        ]
+        assert list(df.columns) == ['avg_waiting_time', 'vessel_dwt', 'vessel_cubic_capacity', 'vessel_count', 'cargo_quantity', 'avg_waiting_time_laden', 'vessel_dwt_laden', 'vessel_cubic_capacity_laden', 'vessel_count_laden', 'avg_waiting_time_ballast', 'vessel_dwt_ballast', 'vessel_cubic_capacity_ballast', 'vessel_count_ballast', 'location_details.0.label']
 
     def test_to_list(self):
         start = datetime(2019, 11, 1)
@@ -113,7 +92,11 @@ class TestVoyagesCongestionBreakdown(TestCaseUsingRealAPI):
 
         time_series_list = (
             VoyagesCongestionBreakdown()
-            .search(time_min=start, time_max=end, breakdown_size=10)
+            .search(
+                time_min=start,
+                time_max=end,
+                breakdown_size=10
+            )
             .to_list()
         )
 
@@ -121,16 +104,12 @@ class TestVoyagesCongestionBreakdown(TestCaseUsingRealAPI):
 
     def test_from_docs(self):
 
-        search_result = (
-            VoyagesCongestionBreakdown()
-            .search(
-                time_min=datetime(2022, 4, 26),
-                time_max=datetime(2022, 4, 26, 23, 59),
-                movement_status="congestion",
-                breakdown_property="shipping_region",
-                breakdown_size=2,
-            )
-            .to_df()
-        )
+        search_result = VoyagesCongestionBreakdown().search(
+            time_min=datetime(2022, 4, 26),
+            time_max=datetime(2022, 4, 26, 23, 59),
+            movement_status="congestion",
+            breakdown_property="shipping_region",
+            breakdown_size=2,
+        ).to_df()
 
         assert len(search_result) == 2

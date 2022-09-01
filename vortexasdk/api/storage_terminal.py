@@ -24,7 +24,6 @@ class StorageTerminal(FromDictMixin):
     """
     Represents a Storage Terminal reference record returned by the API.
     """
-
     id: str
     exclusion_rule: List[str]
     hierarchy: List[TerminalHierarchy]

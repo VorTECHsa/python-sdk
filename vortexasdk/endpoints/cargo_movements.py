@@ -241,7 +241,9 @@ class CargoMovements(Search):
             "filter_owners": convert_to_list(filter_owners),
             "filter_products": convert_to_list(filter_products),
             "filter_vessels": convert_to_list(filter_vessels),
-            "filter_vessel_classes": convert_to_list(filter_vessel_classes),
+            "filter_vessel_classes": convert_to_list(
+                filter_vessel_classes
+            ),
             "filter_destinations": convert_to_list(filter_destinations),
             "filter_origins": convert_to_list(filter_origins),
             "filter_storage_locations": convert_to_list(

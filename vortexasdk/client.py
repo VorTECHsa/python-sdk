@@ -51,16 +51,12 @@ class VortexaClient(AbstractVortexaClient):
         url = self._create_url(resource)
         payload = self._cleanse_payload(data)
         # use default headers if none are provided
-        headers = (
-            payload["headers"] if "headers" in payload else default_headers
-        )
+        headers = payload['headers'] if 'headers' in payload else default_headers
         logger.info(f"Payload: {payload}")
         # breakdowns do not support paging, the breakdown size is specified explicitly as a request parameter
         if response_type == "breakdown":
             size = payload.get("breakdown_size", 1000)
-            response = _send_post_request(
-                url, payload, size=size, offset=0, headers=headers
-            )
+            response = _send_post_request(url, payload, size=size, offset=0, headers=headers)
 
             ref = response.get("reference", {})
 
@@ -69,9 +65,7 @@ class VortexaClient(AbstractVortexaClient):
             else:
                 return response["data"]
 
-        probe_response = _send_post_request(
-            url, payload, size=1, offset=0, headers=headers
-        )
+        probe_response = _send_post_request(url, payload, size=1, offset=0, headers=headers)
         total = self._calculate_total(probe_response)
 
         if total > self._MAX_ALLOWED_TOTAL:
@@ -85,11 +79,7 @@ class VortexaClient(AbstractVortexaClient):
         else:
             # Multiple pages available, create offsets and fetch all responses
             responses = self._process_multiple_pages(
-                total=total,
-                url=url,
-                payload=payload,
-                data=data,
-                headers=headers,
+                total=total, url=url, payload=payload, data=data, headers=headers
             )
 
             flattened = self._flatten_response(responses)
@@ -127,7 +117,7 @@ class VortexaClient(AbstractVortexaClient):
                     payload=payload,
                     size=size,
                     progress_bar=pbar,
-                    headers=headers,
+                    headers=headers
                 )
 
                 return pool.map(func, offsets)
@@ -141,7 +131,7 @@ class VortexaClient(AbstractVortexaClient):
 
     @staticmethod
     def _calculate_total(response: Dict) -> int:
-        """Get total number of pages, if total key does not exist, return 1"""
+        """ Get total number of pages, if total key does not exist, return 1 """
         return response.get("total", 1)
 
     @staticmethod
@@ -178,9 +168,7 @@ def _send_post_request(url, payload, size, offset, headers) -> Dict:
     return _handle_response(response, headers, payload_with_offset)
 
 
-def _handle_response(
-    response: Response, headers: Dict = None, payload: Dict = None
-) -> Dict:
+def _handle_response(response: Response, headers: Dict = None, payload: Dict = None) -> Dict:
     if not response.ok:
         logger.error(response.reason)
         logger.error(response.status_code)
@@ -201,13 +189,9 @@ def _handle_response(
 
     else:
         try:
-            if (
-                headers is not None
-                and "accept" in headers
-                and headers["accept"] == "text/csv"
-            ):
+            if headers is not None and 'accept' in headers and headers['accept'] == 'text/csv':
                 # decode
-                raw = response.content.decode("utf-8")
+                raw = response.content.decode('utf-8')
 
                 # convert to dictionaries
                 reader = csv.DictReader(raw.splitlines())
@@ -215,10 +199,7 @@ def _handle_response(
                 # convert to JSON
                 data = [dict(line) for line in reader]
 
-                decoded = {
-                    "data": data,
-                    "total": int(response.headers["x-total"]),
-                }
+                decoded = {"data": data, "total": int(response.headers['x-total'])}
 
             else:
                 decoded = response.json()

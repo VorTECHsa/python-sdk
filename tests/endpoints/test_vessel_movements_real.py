@@ -31,16 +31,12 @@ class TestVesselMovementsReal(TestCaseUsingRealAPI):
         assert len(v) > 50
 
     def test_search_laden_status_arr(self):
-        laden_df = (
-            VesselMovements()
-            .search(
-                filter_time_min=datetime(2019, 6, 8),
-                filter_time_max=datetime.now(),
-                filter_vessels="65aca91fb81cf212c0fb4e13e894bf46fa4ef9d99d256e88c6b3ac0e35aff71f",
-                filter_vessel_status=["vessel_status_laden_known"],
-            )
-            .to_df()
-        )
+        laden_df = VesselMovements().search(
+            filter_time_min=datetime(2019, 6, 8),
+            filter_time_max=datetime.now(),
+            filter_vessels="65aca91fb81cf212c0fb4e13e894bf46fa4ef9d99d256e88c6b3ac0e35aff71f",
+            filter_vessel_status=['vessel_status_laden_known'],
+        ).to_df()
 
         assert len(laden_df) > 20
 

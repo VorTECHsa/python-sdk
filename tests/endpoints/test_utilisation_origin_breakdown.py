@@ -11,7 +11,8 @@ class TestFleetUtilisationOriginBreakdownReal(TestCaseUsingRealAPI):
         date = datetime(2019, 11, 10)
 
         result = FleetUtilisationOriginBreakdown().search(
-            filter_time_min=date, filter_time_max=date
+            filter_time_min=date,
+            filter_time_max=date
         )
 
         assert len(result) > 0
@@ -22,7 +23,10 @@ class TestFleetUtilisationOriginBreakdownReal(TestCaseUsingRealAPI):
 
         df = (
             FleetUtilisationOriginBreakdown()
-            .search(filter_time_min=start, filter_time_max=end)
+            .search(
+                filter_time_min=start,
+                filter_time_max=end
+            )
             .to_df()
         )
 
@@ -37,8 +41,8 @@ class TestFleetUtilisationOriginBreakdownReal(TestCaseUsingRealAPI):
             .search(
                 filter_time_min=start,
                 filter_time_max=end,
-                breakdown_size="5",
-                breakdown_geography="country",
+                breakdown_size='5',
+                breakdown_geography='country'
             )
             .to_df()
         )
@@ -51,7 +55,10 @@ class TestFleetUtilisationOriginBreakdownReal(TestCaseUsingRealAPI):
 
         time_series_list = (
             FleetUtilisationOriginBreakdown()
-            .search(filter_time_min=start, filter_time_max=end)
+            .search(
+                filter_time_min=start,
+                filter_time_max=end
+            )
             .to_list()
         )
 

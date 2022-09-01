@@ -4,9 +4,7 @@ from vortexasdk.api.serdes import FromDictMixin
 from vortexasdk.api.shared_types import Node
 
 
-@dataclass(
-    frozen=True,
-)
+@dataclass(frozen=True,)
 class Attribute(Node, FromDictMixin):
     """
     Represent an Attribute reference record returned by the API.

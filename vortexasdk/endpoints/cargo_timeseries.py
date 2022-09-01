@@ -172,7 +172,9 @@ class CargoTimeSeries(Search):
             "filter_owners": convert_to_list(filter_owners),
             "filter_products": convert_to_list(filter_products),
             "filter_vessels": convert_to_list(filter_vessels),
-            "filter_vessel_classes": convert_to_list(filter_vessel_classes),
+            "filter_vessel_classes": convert_to_list(
+                filter_vessel_classes
+            ),
             "filter_vessel_age_min": filter_vessel_age_min,
             "filter_vessel_age_max": filter_vessel_age_max,
             "filter_destinations": convert_to_list(filter_destinations),

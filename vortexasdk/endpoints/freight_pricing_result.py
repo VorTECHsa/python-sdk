@@ -77,7 +77,7 @@ class FreightPricingResult(Result):
         for record in records:
             formatted_predictions = None
             new_record = {}
-
+            
             if record["predictions"]:
                 formatted_predictions = {}
 
@@ -93,7 +93,8 @@ class FreightPricingResult(Result):
 
             formatted_records.append(new_record)
 
-        return formatted_records
+        return formatted_records        
+
 
     def to_df(self, columns=None) -> pd.DataFrame:
         """
@@ -157,15 +158,13 @@ class FreightPricingResult(Result):
         if columns is None:
             columns = DEFAULT_COLUMNS
 
-        logger.debug(
-            "Converting each Freight Pricing object to a flat dictionary"
+        logger.debug("Converting each Freight Pricing object to a flat dictionary")
+        flatten = functools.partial(
+            convert_to_flat_dict, cols=columns
         )
-        flatten = functools.partial(convert_to_flat_dict, cols=columns)
 
         with Pool(os.cpu_count()) as pool:
-            records = pool.map(
-                flatten, self.format_prediction_outlooks(super().to_list())
-            )
+            records = pool.map(flatten, self.format_prediction_outlooks(super().to_list()))
 
         return create_dataframe(
             columns=columns,
@@ -173,17 +172,17 @@ class FreightPricingResult(Result):
             data=records,
             logger_description="FreightPricing",
         )
-
+    
 
 DEFAULT_COLUMNS = [
-    "short_code",
-    "record_date",
-    "rate",
-    "rate_unit",
-    "cost",
-    "cost_unit",
-    "tce",
-    "tce_unit",
-    "predictions.outlook_1d.prediction",
-    "predictions.outlook_1d.rating",
+    'short_code',
+    'record_date',
+    'rate',
+    'rate_unit',
+    'cost',
+    'cost_unit',
+    'tce',
+    'tce_unit',
+    'predictions.outlook_1d.prediction',
+    'predictions.outlook_1d.rating',
 ]

@@ -5,12 +5,8 @@ Try me out in your browser:
 """
 from typing import List, Union
 from datetime import datetime
-from vortexasdk.endpoints.endpoints import (
-    FLEET_UTILISATION_DESTINATION_BREAKDOWN,
-)
-from vortexasdk.endpoints.reference_breakdown_result import (
-    ReferenceBreakdownResult,
-)
+from vortexasdk.endpoints.endpoints import FLEET_UTILISATION_DESTINATION_BREAKDOWN
+from vortexasdk.endpoints.reference_breakdown_result import ReferenceBreakdownResult
 
 from vortexasdk.api import ID
 from vortexasdk.operations import Search
@@ -22,7 +18,6 @@ class FleetUtilisationDestinationBreakdown(Search):
     """
     Please note: you will require a subscription to our Freight module to access this endpoint.
     """
-
     def __init__(self):
         Search.__init__(self, FLEET_UTILISATION_DESTINATION_BREAKDOWN)
 
@@ -62,7 +57,7 @@ class FleetUtilisationDestinationBreakdown(Search):
         exclude_owners: Union[ID, List[ID]] = None,
         exclude_vessel_flags: Union[ID, List[ID]] = None,
         exclude_vessel_ice_class: Union[ID, List[ID]] = None,
-        exclude_vessel_propulsion: Union[ID, List[ID]] = None,
+        exclude_vessel_propulsion: Union[ID, List[ID]] = None
     ) -> ReferenceBreakdownResult:
         """
         Number of unique vessels by destination.
@@ -119,7 +114,7 @@ class FleetUtilisationDestinationBreakdown(Search):
             filter_vessel_propulsion: An attribute ID, or list of attribute IDs to filter on.
 
             filter_charterer_exists: A boolean to include or exclude the records to those that have a charterer.
-
+            
             filter_ship_to_ship: A boolean to include or exclude the records to those that are involved in an STS.
 
             exclude_origins: A geography ID, or list of geography IDs to exclude.
@@ -179,7 +174,8 @@ class FleetUtilisationDestinationBreakdown(Search):
             "filter_ship_to_ship": sts_filter["x_filter"],
             # if charterer toggle is True, apply cross filter
             # else make it false
-            "filter_charterer_exists": filter_charterer_exists == True,
+            "filter_charterer_exists": filter_charterer_exists == True
+
         }
 
         exclude_params = {
@@ -228,9 +224,7 @@ class FleetUtilisationDestinationBreakdown(Search):
                 filter_vessel_propulsion
             ),
             "crossfilters": crossfilters,
-            "exclude": exclude_params,
+            "exclude": exclude_params
         }
 
-        return ReferenceBreakdownResult(
-            super().search(response_type="breakdown", **api_params)
-        )
+        return ReferenceBreakdownResult(super().search(response_type="breakdown", **api_params))

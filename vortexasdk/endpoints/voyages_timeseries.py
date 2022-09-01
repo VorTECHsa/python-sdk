@@ -77,7 +77,7 @@ class VoyagesTimeseries(Search):
         vessel_risk_level: Union[str, List[str]] = None,
         vessel_risk_level_excluded: Union[str, List[str]] = None,
         has_ship_to_ship: bool = None,
-        has_charterer: bool = None,
+        has_charterer: bool = None
     ) -> BreakdownResult:
         """
 
@@ -263,38 +263,22 @@ class VoyagesTimeseries(Search):
             "breakdown_property": breakdown_property,
             "voyage_status_excluded": convert_to_list(voyage_status_excluded),
             "cargo_status_excluded": convert_to_list(cargo_status_excluded),
-            "location_status_excluded": convert_to_list(
-                location_status_excluded
-            ),
-            "commitment_status_excluded": convert_to_list(
-                commitment_status_excluded
-            ),
-            "movement_status_excluded": convert_to_list(
-                movement_status_excluded
-            ),
+            "location_status_excluded": convert_to_list(location_status_excluded),
+            "commitment_status_excluded": convert_to_list(commitment_status_excluded),
+            "movement_status_excluded": convert_to_list(movement_status_excluded),
             "products_excluded": convert_to_list(products_excluded),
-            "latest_products_excluded": convert_to_list(
-                latest_products_excluded
-            ),
+            "latest_products_excluded": convert_to_list(latest_products_excluded),
             "charterers_excluded": convert_to_list(charterers_excluded),
-            "effective_controllers_excluded": convert_to_list(
-                effective_controllers_excluded
-            ),
+            "effective_controllers_excluded": convert_to_list(effective_controllers_excluded),
             "origins_excluded": convert_to_list(origins_excluded),
             "destinations_excluded": convert_to_list(destinations_excluded),
             "locations_excluded": convert_to_list(locations_excluded),
             "flags_excluded": convert_to_list(flags_excluded),
             "ice_class_excluded": convert_to_list(ice_class_excluded),
-            "vessel_propulsion_excluded": convert_to_list(
-                vessel_propulsion_excluded
-            ),
+            "vessel_propulsion_excluded": convert_to_list(vessel_propulsion_excluded),
             "vessels_excluded": convert_to_list(vessels_excluded),
             "vessels_tags_excluded": convert_to_list(vessels_tags_excluded),
-            "vessel_risk_level_excluded": convert_to_list(
-                vessel_risk_level_excluded
-            ),
+            "vessel_risk_level_excluded": convert_to_list(vessel_risk_level_excluded),
         }
 
-        return BreakdownResult(
-            super().search(response_type="breakdown", **api_params)
-        )
+        return BreakdownResult(super().search(response_type="breakdown", **api_params))

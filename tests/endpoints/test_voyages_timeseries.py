@@ -14,7 +14,11 @@ class TestVoyagesTimeseries(TestCaseUsingRealAPI):
 
         df = (
             VoyagesTimeseries()
-            .search(time_min=start, time_max=end, origins=rotterdam)
+            .search(
+                time_min=start,
+                time_max=end,
+                origins=rotterdam
+            )
             .to_df()
         )
         assert len(df) == 5
@@ -23,11 +27,7 @@ class TestVoyagesTimeseries(TestCaseUsingRealAPI):
         start = datetime(2022, 4, 26)
         end = datetime(2022, 4, 28, 23, 59)
 
-        rotterdam = [
-            g.id
-            for g in Geographies().search("rotterdam").to_list()
-            if "port" in g.layer
-        ]
+        rotterdam = [g.id for g in Geographies().search("rotterdam").to_list() if "port" in g.layer]
 
         df = (
             VoyagesTimeseries()
@@ -37,7 +37,7 @@ class TestVoyagesTimeseries(TestCaseUsingRealAPI):
                 time_max=end,
                 breakdown_frequency="day",
                 breakdown_property="vessel_count",
-                breakdown_split_property="location_country",
+                breakdown_split_property="location_country"
             )
             .to_df()
         )
