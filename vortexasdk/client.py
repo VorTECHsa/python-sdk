@@ -6,7 +6,7 @@ import os
 from json import JSONDecodeError
 from multiprocessing.pool import ThreadPool
 from random import shuffle
-from typing import Any, Dict, List, Optional, Union
+from typing import Dict, List, Optional
 import uuid
 
 from requests import Response

@@ -237,7 +237,6 @@ class DestinationBreakdown(Search):
             "filter_destinations": convert_to_list(filter_destinations),
             "filter_origins": convert_to_list(filter_origins),
             "filter_waypoints": convert_to_list(filter_waypoints),
-            "filter_charterers": convert_to_list(filter_charterers),
             "filter_storage_locations": convert_to_list(
                 filter_storage_locations
             ),

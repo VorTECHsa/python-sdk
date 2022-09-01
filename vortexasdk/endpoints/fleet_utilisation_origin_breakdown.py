@@ -177,7 +177,7 @@ class FleetUtilisationOriginBreakdown(Search):
             "filter_ship_to_ship": sts_filter["x_filter"],
             # if charterer toggle is True, apply cross filter
             # else make it false
-            "filter_charterer_exists": filter_charterer_exists == True,
+            "filter_charterer_exists": filter_charterer_exists is True,
         }
 
         exclude_params: Dict[str, Any] = {

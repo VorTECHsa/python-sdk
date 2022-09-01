@@ -5,7 +5,6 @@ Try me out in your browser:
 """
 from datetime import datetime
 from typing import Any, Dict, List, Union
-from urllib import response
 
 from vortexasdk.api import ID
 from vortexasdk.api.shared_types import to_ISODate

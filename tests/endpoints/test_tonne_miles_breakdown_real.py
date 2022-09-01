@@ -1,9 +1,7 @@
 from datetime import datetime
 
-from docs.utils import to_markdown
 from tests.testcases import TestCaseUsingRealAPI
 from vortexasdk import TonneMilesBreakdown
-from docs.utils import to_markdown
 
 
 class TestTonneMilesBreakdownReal(TestCaseUsingRealAPI):

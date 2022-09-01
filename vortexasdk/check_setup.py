@@ -44,7 +44,7 @@ def check_can_import_vortexasdk():
     global all_tests_pass
 
     try:
-        import vortexasdk
+        import vortexasdk  # noqa: F401
 
         print("Python successfully imported vortexasdk")
     except ImportError:

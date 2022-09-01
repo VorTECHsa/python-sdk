@@ -2,7 +2,7 @@ from pydantic import BaseModel
 from typing import List, Optional
 
 
-from vortexasdk.api.shared_types import IDNameLayer, ISODate
+from vortexasdk.api.shared_types import IDNameLayer
 
 
 class TerminalHierarchy(BaseModel):

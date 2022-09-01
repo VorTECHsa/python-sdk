@@ -1,4 +1,3 @@
-from dataclasses import dataclass
 import functools
 import os
 from multiprocessing.pool import Pool

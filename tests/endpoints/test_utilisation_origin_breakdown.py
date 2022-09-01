@@ -2,7 +2,6 @@ from datetime import datetime
 from vortexasdk import FleetUtilisationOriginBreakdown
 
 
-from docs.utils import to_markdown
 from tests.testcases import TestCaseUsingRealAPI
 
 

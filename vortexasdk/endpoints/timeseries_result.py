@@ -7,6 +7,8 @@ from vortexasdk.api.timeseries_item import TimeSeriesItem
 from vortexasdk.logger import get_logger
 from vortexasdk.result_conversions import create_dataframe, create_list
 
+logger = get_logger(__name__)
+
 
 class TimeSeriesResult(Result):
     """Container class that holds the result obtained from calling a time series endpoint."""

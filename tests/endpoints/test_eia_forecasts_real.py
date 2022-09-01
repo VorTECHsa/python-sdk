@@ -1,8 +1,6 @@
 from tests.testcases import TestCaseUsingRealAPI
 from datetime import datetime
-from tests.timer import Timer
 from vortexasdk.endpoints.eia_forecasts import EIAForecasts
-from docs.utils import to_markdown
 
 
 class TestEIAForecastsReal(TestCaseUsingRealAPI):

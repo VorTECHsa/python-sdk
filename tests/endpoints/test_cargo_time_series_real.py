@@ -1,6 +1,5 @@
 from datetime import datetime
 
-from docs.utils import to_markdown
 from tests.testcases import TestCaseUsingRealAPI
 from vortexasdk import Geographies, Products
 from vortexasdk.endpoints.cargo_timeseries import CargoTimeSeries

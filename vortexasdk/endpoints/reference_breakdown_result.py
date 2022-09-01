@@ -7,7 +7,6 @@ from vortexasdk.logger import get_logger
 from vortexasdk.result_conversions import create_dataframe, create_list
 from vortexasdk.api.breakdown_item import BreakdownItem
 from vortexasdk.api.entity_flattening import convert_to_flat_dict
-import pandas as pd
 import functools
 import os
 from multiprocessing.pool import Pool

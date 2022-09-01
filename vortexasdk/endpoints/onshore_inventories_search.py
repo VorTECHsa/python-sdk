@@ -5,7 +5,6 @@ Try me out in your browser:
 """
 from datetime import datetime, timedelta
 from typing import Any, Dict, List, Union
-from urllib import response
 from vortexasdk.endpoints.onshore_inventories_result import (
     OnshoreInventoriesResult,
 )

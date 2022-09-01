@@ -68,7 +68,7 @@ class TestVesselsReal(TestCaseUsingRealAPI):
             result.to_list()
 
         with Timer("Dataframe"):
-            df = result.to_df()
+            result.to_df()
 
         assert len(result) >= 1_000
 

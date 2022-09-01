@@ -223,7 +223,6 @@ class OriginBreakdown(Search):
             "filter_time_max": to_ISODate(filter_time_max),
             "filter_activity": filter_activity,
             "filter_products": convert_to_list(filter_products),
-            "filter_charterers": convert_to_list(filter_charterers),
             "filter_vessels": convert_to_list(filter_vessels),
             "filter_vessel_classes": convert_to_list(filter_vessel_classes),
             "filter_vessel_flags": convert_to_list(filter_vessel_flags),
