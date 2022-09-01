@@ -11,11 +11,11 @@ ISODate = str
 
 
 # noinspection PyPep8Naming
-def to_ISODate(utc_datetime: datetime) -> str:
+def to_ISODate(utc_datetime: datetime) -> ISODate:
     return utc_datetime.strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3] + "Z"
 
 
-def to_ISODate_Array(days: List[datetime]) -> List[str]:
+def to_ISODate_Array(days: List[datetime]) -> List[ISODate]:
     return [to_ISODate(date) for date in days]
 
 

@@ -68,6 +68,10 @@ class Search:
         """
         self._resource = resource
 
+    """
+    This method has been renamed from `search` to `search_with_client` to avoid type signature
+    issues with the `search` method in each endpoint class.
+    """
     def search_with_client(
         self,
         exact_term_match: bool = None,
