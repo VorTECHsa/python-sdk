@@ -175,7 +175,7 @@ class VoyageEnrichedItem(BaseModel):
     """
     In voyage events there is no single key we can use to discriminate which exact type
     each event is, as is done in CargoMovements. As such, pydantic will try to figure out
-    which model each event is an instance of, by trial an error.
+    which model each event is an instance of, by trial and error.
     In order to give that process the highest chance of success, we need to list
     the Models in order of MOST specific -> LEAST specific.
     This means that the order of the models in the Union actually has meaning.
