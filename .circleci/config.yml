@@ -33,7 +33,7 @@ jobs:
           keys:
             - v3-{{ .Branch }}-{{ checksum "setup.py" }}
       - run:
-          name: "Check Types"
+          name: "Check Linting"
           command: |
             . .venv/bin/activate
             flake8 vortexasdk tests docs
