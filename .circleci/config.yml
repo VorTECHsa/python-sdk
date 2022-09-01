@@ -23,7 +23,7 @@ jobs:
             - ~/project/.venv
             - ~/.cache/pip
 
-  linting:
+  check_linting:
     working_directory: ~/project
     docker:
       - image: cimg/python:3.7
@@ -38,7 +38,7 @@ jobs:
             . .venv/bin/activate
             flake8 vortexasdk tests docs
 
-  type_checking:
+  check_types:
     working_directory: ~/project
     docker:
       - image: cimg/python:3.7
@@ -220,11 +220,11 @@ workflows:
     jobs:
       - build
 
-      - type_checking:
+      - check_types:
           requires:
             - build
 
-      - linting:
+      - check_linting:
           requires:
             - build
 
@@ -257,5 +257,7 @@ workflows:
             - test
             - test-documentation
             - run-examples
-            - lint
+            - check_types
+            - check_linting
+            - check_formatting
             - check-release-version
