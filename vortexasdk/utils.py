@@ -45,9 +45,9 @@ def sts_param_value(param):
 
     Else - don't apply any filters
     """
-    if param:
+    if param == True:
         return {"exclude": False, "x_filter": True}
-    elif not param:
+    elif param == False:
         return {"exclude": True, "x_filter": False}
     else:
         return {"exclude": False, "x_filter": False}
