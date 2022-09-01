@@ -5,9 +5,7 @@ from vortexasdk import Corporations
 
 class TestCorporationsReal(TestCaseUsingRealAPI):
     def test_search(self):
-        df = Corporations().search().to_df()
-
-        print(to_markdown(df.head(2)))
+        Corporations().search().to_df()
 
     def test_load_all(self):
         all_corporations = Corporations().load_all()

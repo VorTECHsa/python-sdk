@@ -18,7 +18,7 @@ def _requests_retry_session(
     retry = Retry(
         raise_on_redirect=False,
         raise_on_status=False,
-        method_whitelist=["POST", "GET"],
+        allowed_methods=["POST", "GET"],
         status=retries,
         total=retries,
         read=retries,

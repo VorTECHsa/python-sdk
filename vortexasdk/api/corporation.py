@@ -1,22 +1,23 @@
-from dataclasses import dataclass
-from typing import List
-
-from vortexasdk.api.serdes import FromDictMixin
-from vortexasdk.api.shared_types import IDName, EntityWithProbability
+from typing import List, Optional
 
 
-@dataclass(frozen=True)
-class Corporation(IDName, FromDictMixin):
+from vortexasdk.api.shared_types import (
+    EntityWithSingleLayerAndProbability,
+    IDName,
+)
+
+
+class Corporation(IDName):
     """Represent a Corporation reference record returned by the API."""
 
-    corporate_entity_type: List[str]
-    ref_type: str
-    leaf: bool
-    parent: List[str]
+    corporate_entity_type: Optional[List[str]] = None
+    ref_type: Optional[str] = None
+    leaf: Optional[bool] = None
+    parent: Optional[List[str]] = None
+    filterable: Optional[bool] = None
 
 
-@dataclass(frozen=True)
-class CorporateEntity(EntityWithProbability):
+class CorporateEntity(EntityWithSingleLayerAndProbability):
     """
     Represents a relationship between a corporation and another entity like a vessel.
 

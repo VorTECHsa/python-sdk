@@ -1,19 +1,19 @@
-from dataclasses import dataclass
+from pydantic import BaseModel
 from typing import List, Optional
 
 from vortexasdk.api.geography import GeographyEntity
 from vortexasdk.api.id import ID
-from vortexasdk.api.serdes import FromDictMixin
+from vortexasdk.api.product import ProductEntityWithSingleLayer
+
 from vortexasdk.api.shared_types import ISODate
 from vortexasdk.api.vessel import VesselEntity
 
 
-@dataclass(frozen=True)
-class VesselEvent:
+class VesselEvent(BaseModel):
     """Represent an event that occurred to a vessel during a vessel movement."""
 
-    event_type: str
-    location: List[GeographyEntity]
+    event_type: Optional[str] = None
+    location: Optional[List[GeographyEntity]] = None
     pos: Optional[List[float]] = None
 
     event_id: Optional[ID] = None
@@ -21,18 +21,25 @@ class VesselEvent:
     end_timestamp: Optional[ISODate] = None
 
 
-@dataclass(frozen=True)
-class VesselMovement(FromDictMixin):
+class VesselMovementCargo(BaseModel):
+    cargo_movement_id: Optional[ID] = None
+    quantity: Optional[float] = None
+    product: Optional[List[ProductEntityWithSingleLayer]] = None
+
+
+class VesselMovement(BaseModel):
     """
     [Vessel Movement Further Documentation](https://docs.vortexa.com/reference/intro-vessel-movement)
 
     """
 
-    vessel_movement_id: ID
-    voyage_id: ID
-    vessel: VesselEntity
+    vessel_movement_id: Optional[ID] = None
+    voyage_id: Optional[ID] = None
+    vessel: Optional[VesselEntity] = None
 
-    origin: VesselEvent
-    destination: VesselEvent
+    origin: Optional[VesselEvent] = None
+    destination: Optional[VesselEvent] = None
+    cargoes: Optional[List[VesselMovementCargo]] = None
+
     start_timestamp: Optional[ISODate] = None
     end_timestamp: Optional[ISODate] = None

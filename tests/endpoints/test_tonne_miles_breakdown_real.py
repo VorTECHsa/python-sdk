@@ -63,8 +63,6 @@ class TestTonneMilesBreakdownReal(TestCaseUsingRealAPI):
             .to_df()
         )
 
-        print(to_markdown(df.head()))
-
         n_days = (end - start).days + 1
 
         assert len(df) == n_days

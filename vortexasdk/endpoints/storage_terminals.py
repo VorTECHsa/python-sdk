@@ -12,37 +12,37 @@ from vortexasdk.utils import convert_to_list
 
 class StorageTerminals(Reference, Search):
     """
-        Storage Terminals endpoint.
+    Storage Terminals endpoint.
 
-        A Storage Terminal is a reference value that corresponds to an ID associated with other entities.
+    A Storage Terminal is a reference value that corresponds to an ID associated with other entities.
 
-        For example, a storage terminal object may have the following keys:
+    For example, a storage terminal object may have the following keys:
 
-        ```json
-        {
-            "name": "Military Oil Depot",
-            "parent": {
-                "name": "Bandar Khomeini, Bandar Mahshahr [IR]"
-            }
-            ...
+    ```json
+    {
+        "name": "Military Oil Depot",
+        "parent": {
+            "name": "Bandar Khomeini, Bandar Mahshahr [IR]"
         }
-        ```
+        ...
+    }
+    ```
 
-        These IDs represent storage terminals which can be found via the Storage Terminal reference endpoint.
+    These IDs represent storage terminals which can be found via the Storage Terminal reference endpoint.
 
-        When the storage terminals endpoint is searched with those ids as parameters:
+    When the storage terminals endpoint is searched with those ids as parameters:
 
-        ```python
-            >>> from vortexasdk import StorageTerminals
-            >>> df = StorageTerminals().search(ids=["08bbaf7a67ab30036d73b9604b932352a73905e16b8342b27f02ae34941b7db5"]).to_df()
+    ```python
+        >>> from vortexasdk import StorageTerminals
+        >>> df = StorageTerminals().search(ids=["08bbaf7a67ab30036d73b9604b932352a73905e16b8342b27f02ae34941b7db5"]).to_df()
 
-        ```
+    ```
 
-        Returns
+    Returns
 
-        |    | id                      | name               | lat | lon |
-        |---:|:------------------------|:-------------------|-----|-----|
-        |  0 | 08bbaf7a67ab30036d73... | Military Oil Depot |  90 | 180 |
+    |    | id                      | name               | lat | lon |
+    |---:|:------------------------|:-------------------|-----|-----|
+    |  0 | 08bbaf7a67ab30036d73... | Military Oil Depot |  90 | 180 |
 
 
     """
@@ -53,7 +53,7 @@ class StorageTerminals(Reference, Search):
 
     def load_all(self) -> StorageTerminalResult:
         """
-            Load all storage terminals.
+        Load all storage terminals.
         """
         return self.search()
 
@@ -92,7 +92,16 @@ class StorageTerminals(Reference, Search):
 
         search_params = {
             "term": convert_to_list(term),
-            "ids": convert_to_list(ids)
+            "ids": convert_to_list(ids),
         }
 
-        return StorageTerminalResult(super().search(**search_params))
+        response = super().search_with_client(
+            exact_term_match=None,
+            response_type=None,
+            headers=None,
+            **search_params
+        )
+
+        return StorageTerminalResult(
+            records=response["data"], reference=response["reference"]
+        )

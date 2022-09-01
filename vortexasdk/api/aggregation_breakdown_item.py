@@ -1,10 +1,10 @@
-from dataclasses import dataclass
+from typing import Optional
+from pydantic import BaseModel
 
-from vortexasdk.api.serdes import FromDictMixin
+from vortexasdk.api.id import ID
 
 
-@dataclass(frozen=True)
-class AggregationBreakdownItem(FromDictMixin):
+class AggregationBreakdownItem(BaseModel):
     """
     Generic container class holding a `id <> value` pair, a `count` a `label`.
 
@@ -14,7 +14,7 @@ class AggregationBreakdownItem(FromDictMixin):
     and `value` and `count` correspond to numeric values of the returned record.
     """
 
-    id: str
-    count: int
-    value: float
-    label: str
+    id: ID
+    count: Optional[int] = None
+    value: Optional[float] = None
+    label: Optional[str] = None

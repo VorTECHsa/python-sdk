@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 
 import pandas as pd
 
@@ -21,9 +21,11 @@ class VoyagesSearchEnrichedFlattenedResult(Result):
 
     def to_list(self) -> List[VoyageEnrichedItem]:
         # noinspection PyTypeChecker
-        raise Exception(f"to_list method is not supported for search results in the flattened format (i.e. when the `columns` API param is provided). Please use to_df() instead.")
+        raise Exception(
+            f"to_list method is not supported for search results in the flattened format (i.e. when the `columns` API param is provided). Please use to_df() instead."
+        )
 
-    def to_df(self) -> pd.DataFrame:
+    def to_df(self, columns=None) -> pd.DataFrame:
         """
         Represent voyages as a `pd.DataFrame`.
 
@@ -52,6 +54,8 @@ class VoyagesSearchEnrichedListResult(Result):
         # noinspection PyTypeChecker
         return create_list(super().to_list(), VoyageEnrichedItem)
 
-    def to_df(self) -> pd.DataFrame:
+    def to_df(self, columns=None) -> pd.DataFrame:
         # noinspection PyTypeChecker
-        raise Exception(f"to_df method is not supported for search results in the list format (i.e. when the `columns` API param is not provided). Please use to_list() instead.")
+        raise Exception(
+            f"to_df method is not supported for search results in the list format (i.e. when the `columns` API param is not provided). Please use to_list() instead."
+        )

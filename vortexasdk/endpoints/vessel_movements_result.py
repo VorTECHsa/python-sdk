@@ -4,7 +4,6 @@ from multiprocessing.pool import Pool
 from typing import List
 
 import pandas as pd
-
 from vortexasdk.api import VesselMovement
 from vortexasdk.api.entity_flattening import (
     convert_vessel_movement_to_flat_dict,

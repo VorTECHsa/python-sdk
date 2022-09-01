@@ -1,7 +1,20 @@
 """Vortexa API."""
 from vortexasdk.api.asset_tank import AssetTank
 from vortexasdk.api.attribute import Attribute
-from vortexasdk.api.cargo_movement import CargoEvent, CargoMovement, ParentID
+from vortexasdk.api.cargo_movement import (
+    CargoMovement,
+    ParentID,
+    CargoPortLoadEvent,
+    CargoFSOLoadEvent,
+    CargoPortUnloadEvent,
+    CargoFSOUnloadEvent,
+    CargoFixtureEvent,
+    CargoSTSEvent,
+    CargoStorageEvent,
+    CargoWaypointEvent,
+    CargoTransitingEvent,
+    CargoOilOnWaterEvent,
+)
 from vortexasdk.api.corporation import CorporateEntity, Corporation
 from vortexasdk.api.geography import (
     BoundingBox,
@@ -11,10 +24,10 @@ from vortexasdk.api.geography import (
 )
 from vortexasdk.api.id import ID
 from vortexasdk.api.onshore_inventory import OnshoreInventory
-from vortexasdk.api.product import Product, ProductEntity
+from vortexasdk.api.product import Product, ProductEntityWithSingleLayer
 from vortexasdk.api.shared_types import (
-    Entity,
-    EntityWithProbability,
+    EntityWithListLayer,
+    EntityWithListLayerAndProbability,
     IDName,
     IDNameLayer,
     ISODate,

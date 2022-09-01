@@ -1,9 +1,8 @@
 from typing import List, Dict
 
-import jsons
+import json
 
 from vortexasdk.api import ID
-from vortexasdk.abstract_client import AbstractVortexaClient
 from vortexasdk.endpoints.endpoints import (
     ASSET_TANKS_REFERENCE,
     ATTRIBUTES_REFERENCE,
@@ -14,11 +13,12 @@ from vortexasdk.endpoints.endpoints import (
     VESSEL_MOVEMENTS_RESOURCE,
     VESSELS_REFERENCE,
 )
+from vortexasdk.search_response import SearchResponse
 
 
 def _read(example_file) -> List[Dict]:
     with open(f"tests/api/examples/{example_file}", "r") as f:
-        return jsons.loads(f.read(), List)
+        return json.load(f)
 
 
 example_asset_tanks: List[Dict] = _read("asset_tanks.json")
@@ -32,7 +32,7 @@ example_vessel_movements: List[Dict] = _read("vessel_movements.json")
 example_vessels: List[Dict] = _read("vessels.json")
 
 
-class MockVortexaClient(AbstractVortexaClient):
+class MockVortexaClient:
     _results = {
         ASSET_TANKS_REFERENCE: example_asset_tanks,
         ATTRIBUTES_REFERENCE: example_attributes,
@@ -48,5 +48,7 @@ class MockVortexaClient(AbstractVortexaClient):
         entities = MockVortexaClient._results[resource]
         return [e for e in entities if e["id"] == id]
 
-    def search(self, resource: str, response_type=None, **data) -> List:
-        return MockVortexaClient._results[resource]
+    def search(
+        self, resource: str, response_type=None, **data
+    ) -> SearchResponse:
+        return {"data": MockVortexaClient._results[resource], "reference": {}}

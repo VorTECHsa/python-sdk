@@ -22,8 +22,6 @@ class TestEIAForecastsReal(TestCaseUsingRealAPI):
 
         assert "2020-01-24T00:00:00.000Z" in values
 
-        print(to_markdown(forecasts.to_df()))
-
     def test_search_preset_gasoline_exports(self):
 
         preset = "us-gasoline-exports"
@@ -43,5 +41,3 @@ class TestEIAForecastsReal(TestCaseUsingRealAPI):
         assert "2020-04-03T00:00:00.000Z" in values
         assert "2020-03-27T00:00:00.000Z" in values
         assert "2020-03-20T00:00:00.000Z" in values
-
-        print(to_markdown(forecasts.to_df()))
