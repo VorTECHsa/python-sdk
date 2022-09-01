@@ -36,7 +36,22 @@ jobs:
           name: "Check Linting"
           command: |
             . .venv/bin/activate
-            mypy docs/examples
+            mypy vortexasdk tests docs
+
+  formatting:
+    working_directory: ~/project
+    docker:
+      - image: cimg/python:3.7
+    steps:
+      - checkout
+      - restore_cache: &restore_cache
+          keys:
+            - v3-{{ .Branch }}-{{ checksum "setup.py" }}
+      - run:
+          name: "Check Formatting"
+          command: |
+            . .venv/bin/activate
+            black --check vortexasdk tests docs
 
   test-documentation:
     working_directory: ~/project
@@ -191,6 +206,10 @@ workflows:
       - build
 
       - lint:
+          requires:
+            - build
+
+      - check_formatting:
           requires:
             - build
 
