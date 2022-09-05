@@ -31,7 +31,7 @@ setuptools.setup(
         "pandas>=0.25.2",
         "requests==2.28.1",
         "statsmodels==0.12.2",
-        "tqdm==4.38.0",
+        "tqdm==4.64.1",
         "pydantic==1.9.2",
     ],
     extras_require={
