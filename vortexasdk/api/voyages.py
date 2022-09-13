@@ -189,4 +189,4 @@ class VoyageEnrichedItem(BaseModel):
             ]
         ]
     ] = None
-    latest_product_details: Optional[List[EntityWithSingleLayer]] = None
+    latest_product_details: Optional[List[List[EntityWithSingleLayer]]] = None
