@@ -1,13 +1,18 @@
+import functools
+import os
+from multiprocessing import Pool
 from typing import List
 
 import pandas as pd
-
+from vortexasdk.api.entity_flattening import convert_to_flat_dict
 from vortexasdk.api.search_result import Result
 from vortexasdk.api.timeseries_item import TimeSeriesItem
 from vortexasdk.logger import get_logger
 from vortexasdk.result_conversions import create_dataframe, create_list
 
 logger = get_logger(__name__)
+
+DEFAULT_COLUMNS = ["key", "value", "count"]
 
 
 class TimeSeriesResult(Result):
@@ -18,7 +23,7 @@ class TimeSeriesResult(Result):
         # noinspection PyTypeChecker
         return create_list(super().to_list(), TimeSeriesItem)
 
-    def to_df(self, columns=None) -> pd.DataFrame:
+    def to_df(self, columns=DEFAULT_COLUMNS) -> pd.DataFrame:
         """Represents the timeseries as a dataframe.
 
         Returns a `pd.DataFrame`, of time series items with columns:
@@ -33,16 +38,20 @@ class TimeSeriesResult(Result):
         the number of cargo movements contributing towards this day's tonnage.
 
         """
+
+        logger.debug("Converting each breakdown to a flat dictionary")
+        flatten = functools.partial(convert_to_flat_dict, cols=columns)
+
+        with Pool(os.cpu_count()) as pool:
+            records = pool.map(flatten, super().to_list())
+
         df = create_dataframe(
             columns=columns,
             default_columns=DEFAULT_COLUMNS,
-            data=super().to_list(),
+            data=records,
             logger_description="TimeSeries",
         )
 
         df["key"] = pd.to_datetime(df["key"])
 
         return df
-
-
-DEFAULT_COLUMNS = ["key", "value", "count"]
