@@ -5,6 +5,7 @@ Try me out in your browser:
 """
 from datetime import datetime
 from typing import Any, Dict, List, Union
+from typing_extensions import Literal
 
 from vortexasdk.api import ID
 from vortexasdk.api.shared_types import Tag, to_ISODate
@@ -85,8 +86,8 @@ class VoyagesSearchEnriched(Search):
         vessels_tags_excluded: Union[Tag, List[Tag]] = None,
         vessel_risk_level: Union[str, List[str]] = None,
         vessel_risk_level_excluded: Union[str, List[str]] = None,
-        has_ship_to_ship: bool = None,
-        has_charterer: bool = None,
+        has_ship_to_ship: Literal["inc", "exc", "disabled"] = None,
+        has_charterer: Literal["inc", "exc", "disabled"] = None,
     ) -> Union[
         VoyagesSearchEnrichedFlattenedResult, VoyagesSearchEnrichedListResult
     ]:
@@ -193,9 +194,9 @@ class VoyagesSearchEnriched(Search):
 
             vessel_risk_level_excluded: A vessel risk level, or list of vessel risk levels to exclude.
 
-            has_ship_to_ship: A boolean to show data where at least one STS transfer occurs.
+            has_ship_to_ship: Filter data where at least one STS transfer occurs, or none. - one of `disabled`, `inc`, `exc`. Passing disabled means the filter is not active.
 
-            has_charterer: A boolean to show data where at least one charterer is specified.
+            has_charterer: Filter data where at least one charterer is specified, or none. - one of `disabled`, `inc`, `exc`. Passing disabled means the filter is not active.
 
             order: Used to sort the returned results. Can be one of:`'vessel_name'`,`'vessel_dwt'`,`'vessel_class'`,
             `'start_date'`,`'end_date'`.
