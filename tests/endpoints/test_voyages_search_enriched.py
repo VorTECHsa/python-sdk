@@ -81,16 +81,13 @@ class TestVoyagesSearchEnrichedEnriched(TestCaseUsingRealAPI):
         end = datetime(2022, 4, 26, 23, 59)
 
         try:
-            res = (
-                VoyagesSearchEnriched()
-                .search(
-                    time_min=start,
-                    time_max=end,
-                    origins=rotterdam,
-                    has_charterer=False,
-                )
-                .to_list()
-            )
+            VoyagesSearchEnriched().search(
+                time_min=start,
+                time_max=end,
+                origins=rotterdam,
+                has_charterer=False,
+            ).to_list()
+
         except ValueError as error:
             print(error)
 
@@ -99,15 +96,12 @@ class TestVoyagesSearchEnrichedEnriched(TestCaseUsingRealAPI):
         end = datetime(2022, 4, 26, 23, 59)
 
         try:
-            res = (
-                VoyagesSearchEnriched()
-                .search(
-                    time_min=start,
-                    time_max=end,
-                    origins=rotterdam,
-                    has_ship_to_ship=False,
-                )
-                .to_list()
-            )
+            VoyagesSearchEnriched().search(
+                time_min=start,
+                time_max=end,
+                origins=rotterdam,
+                has_ship_to_ship=False,
+            ).to_list()
+
         except ValueError as error:
             print(error)
