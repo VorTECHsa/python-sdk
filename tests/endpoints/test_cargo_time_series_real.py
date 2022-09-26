@@ -151,6 +151,18 @@ class TestCargoTimeSeries(TestCaseUsingRealAPI):
             > vlcc_plus_timeseries["value"].sum()
         )
 
+    def test_timeseries_property_breakdown(self):
+        start = datetime(2019, 1, 1)
+        end = datetime(2019, 1, 10, 23, 59)
+        res = CargoTimeSeries().search(
+            filter_activity="loading_end",
+            filter_time_min=start,
+            filter_time_max=end,
+            timeseries_property="destination_region",
+        )
+        breakdowns = [len(r.breakdown) > 1 for r in res.to_list()]
+        assert all(breakdowns)
+
     def test_search_filters_on_timeseries_max_activity(self):
         df = (
             CargoTimeSeries()
