@@ -5,7 +5,6 @@ Try me out in your browser:
 """
 from datetime import datetime
 from typing import Any, Dict, List, Union
-from typing_extensions import Literal
 
 from vortexasdk.api import ID
 from vortexasdk.api.shared_types import Tag, to_ISODate
@@ -86,8 +85,8 @@ class VoyagesSearchEnriched(Search):
         vessels_tags_excluded: Union[Tag, List[Tag]] = None,
         vessel_risk_level: Union[str, List[str]] = None,
         vessel_risk_level_excluded: Union[str, List[str]] = None,
-        has_ship_to_ship: Literal["inc", "exc", "disabled"] = None,
-        has_charterer: Literal["inc", "exc", "disabled"] = None,
+        has_ship_to_ship: str = None,
+        has_charterer: str = None,
     ) -> Union[
         VoyagesSearchEnrichedFlattenedResult, VoyagesSearchEnrichedListResult
     ]:
