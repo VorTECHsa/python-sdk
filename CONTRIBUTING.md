@@ -17,6 +17,8 @@ ideal report includes:
 
 ## Setting up your environment
 
+**`Users of ARM-based Apple machines, please refer to the note at the end!`**
+
 First, clone the repo, then `cd` into the repo.
 
 ```bash
@@ -78,6 +80,16 @@ $ pre-commit install
 ```
 
 :tada: Now you're ready to create a new branch, add a feature or fix a bug, then send us a pull request! :tada:
+
+### Note about Apple ARM-based chips
+
+To run the SDK on an Apple ARM chip, upgrade your Python version to 3.8 or higher and use the latest version of pip.
+
+The set up is almost identical as above except one command; to create a virtual environment for Python 3.8 you should run:
+
+```bash
+$ python3.8 -m venv venv
+```
 
 ## Contributing Code
 
