@@ -83,7 +83,7 @@ $ pre-commit install
 
 ### Note about Apple ARM-based chips
 
-To run the SDK on an Apple ARM chip, upgrade your Python version to 3.8 or higher and use the latest version of pip.
+To run the SDK on an Apple ARM chip, upgrade your Python version to 3.8 or higher and use the latest version of pip. This works for the SDK version 0.41.0 or higher.
 
 The set up is almost identical as above except one command; to create a virtual environment for Python 3.8 you should run:
 
