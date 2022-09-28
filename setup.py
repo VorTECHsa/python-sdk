@@ -27,12 +27,12 @@ setuptools.setup(
     install_requires=[
         "flatten-dict==0.4.2",
         "jupyter==1.0.0",
-        "matplotlib==3.3.4",
+        "matplotlib==3.5.3",
         "pandas>=0.25.2",
         "requests==2.28.1",
-        "statsmodels==0.12.2",
-        "tqdm==4.38.0",
-        "pydantic==1.9.2",
+        "statsmodels==0.13.2",
+        "tqdm==4.64.1",
+        "pydantic==1.10.2",
     ],
     extras_require={
         "tests": [
@@ -54,6 +54,6 @@ setuptools.setup(
             "types-python-dateutil==2.8.19",
             "types-six==1.16.19"
         ],
-        "deploy": ["wheel==0.36.2", "twine==3.3.0"],
+        "deploy": ["wheel==0.37.1", "twine==4.0.1"],
     },
 )
