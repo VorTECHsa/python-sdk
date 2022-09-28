@@ -36,7 +36,7 @@ setuptools.setup(
     ],
     extras_require={
         "tests": [
-            "flake8==3.7.9",
+            "flake8==5.0.4",
             "black==22.8.0",
             "mkdocs==1.2.4",
             "mypy==0.971",
