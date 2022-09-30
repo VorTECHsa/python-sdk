@@ -75,3 +75,33 @@ class TestVoyagesSearchEnrichedEnriched(TestCaseUsingRealAPI):
         assert res[0].vessel is not None
         assert len(res[0].events) > 0
         assert res[0].events[0].event_group is not None
+
+    def test_has_charterer_param(self):
+        start = datetime(2022, 4, 26)
+        end = datetime(2022, 4, 26, 23, 59)
+
+        try:
+            VoyagesSearchEnriched().search(
+                time_min=start,
+                time_max=end,
+                origins=rotterdam,
+                has_charterer=False,
+            ).to_list()
+
+        except ValueError as error:
+            print(error)
+
+    def test_has_ship_to_ship_param(self):
+        start = datetime(2022, 4, 26)
+        end = datetime(2022, 4, 26, 23, 59)
+
+        try:
+            VoyagesSearchEnriched().search(
+                time_min=start,
+                time_max=end,
+                origins=rotterdam,
+                has_ship_to_ship=False,
+            ).to_list()
+
+        except ValueError as error:
+            print(error)
