@@ -190,10 +190,5 @@ class VoyageEnrichedItem(BaseModel):
         ]
     ] = None
     latest_product_details: Optional[
-        Union[
-            List[
-                List[EntityWithSingleLayer]
-            ],
-            List[EntityWithSingleLayer]
-        ]
+        Union[List[List[EntityWithSingleLayer]], List[EntityWithSingleLayer]]
     ] = None
