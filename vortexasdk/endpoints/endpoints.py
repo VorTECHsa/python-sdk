@@ -43,5 +43,5 @@ VOYAGES_TOP_HITS = "/voyages/top-hits"
 VOYAGES_CONGESTION_BREAKDOWN = "/voyages/congestion-breakdown"
 VOYAGES_TIMESERIES = "/voyages/timeseries"
 
-API_FQDN = "https://api-feat-product-structure.public.kube.develop.vortexa.com"
+API_FQDN = "https://api.vortexa.com"
 API_URL = f"{API_FQDN}/v5"
