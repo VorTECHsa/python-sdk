@@ -45,7 +45,7 @@ setuptools.setup(
             "pydoc-markdown==2.0.5",
             "pyyaml<6.0.0",
             "six==1.12.0",
-            "tabulate==0.8.7",
+            "tabulate==0.9.0",
             "xlrd==1.2.0",
             "openpyxl==3.0.7",
             "types-requests==2.28.9",
