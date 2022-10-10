@@ -1,25 +1,36 @@
-from dataclasses import dataclass
-from typing import List
-
-from vortexasdk.api.serdes import FromDictMixin
-from vortexasdk.api.shared_types import Entity, EntityWithProbability, Node
+from typing import List, Optional
 
 
-@dataclass(frozen=True)
-class Product(Node, FromDictMixin):
+from vortexasdk.api.shared_types import (
+    EntityWithListLayerAndProbability,
+    EntityWithSingleLayer,
+    EntityWithSingleLayerAndProbability,
+    Node,
+)
+
+
+class Product(Node):
     """
     Represent a Product reference record returned by the API.
 
     [Product Further Documentation](https://docs.vortexa.com/reference/GET/reference/products/%7Bid%7D)
     """
 
-    layer: List[str]
-    meta: dict
-    hierarchy: List[Entity]
+    layer: Optional[List[str]] = None
+    meta: Optional[dict] = None
+    hierarchy: Optional[List[EntityWithSingleLayer]] = None
 
 
-@dataclass(frozen=True)
-class ProductEntity(EntityWithProbability):
+class ProductEntityWithSingleLayer(EntityWithSingleLayerAndProbability):
+    """
+
+    Represents a single product layer of a hierarchical product tree.
+
+    [Further Documentation](https://docs.vortexa.com/reference/intro-product-entities)
+    """
+
+
+class ProductEntityWithListLayer(EntityWithListLayerAndProbability):
     """
 
     Represents a single product layer of a hierarchical product tree.

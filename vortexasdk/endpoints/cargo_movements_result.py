@@ -2,7 +2,6 @@ import functools
 import os
 from multiprocessing.pool import Pool
 from typing import List
-
 import pandas as pd
 
 from vortexasdk.api import CargoMovement
@@ -17,6 +16,7 @@ logger = get_logger(__name__)
 
 
 class CargoMovementsResult(Result):
+
     """
     Container class holdings search results returns from the cargo movements endpoint.
 

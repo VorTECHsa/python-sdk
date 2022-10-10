@@ -1,5 +1,5 @@
 from abc import ABC
-from dataclasses import dataclass
+from pydantic import BaseModel
 from datetime import datetime
 from typing import List, Optional, Union
 
@@ -11,7 +11,7 @@ ISODate = str
 
 
 # noinspection PyPep8Naming
-def to_ISODate(utc_datetime: datetime) -> str:
+def to_ISODate(utc_datetime: datetime) -> ISODate:
     return utc_datetime.strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3] + "Z"
 
 
@@ -19,17 +19,31 @@ def to_ISODate_Array(days: List[datetime]) -> List[ISODate]:
     return [to_ISODate(date) for date in days]
 
 
-@dataclass(frozen=True)
-class Entity:
+class EntityWithSingleLayer(BaseModel):
     """Holds commonly used properties."""
 
     id: ID
-    label: Optional[str]
-    layer: Optional[str]
+    layer: Optional[str] = None
+    label: Optional[str] = None
 
 
-@dataclass(frozen=True)
-class EntityWithProbability(Entity):
+class EntityWithSingleLayerAndTimespan(BaseModel):
+    id: ID
+    layer: Optional[str] = None
+    label: Optional[str] = None
+    start_timestamp: Optional[ISODate] = None
+    end_timestamp: Optional[ISODate] = None
+
+
+class EntityWithListLayer(BaseModel):
+    """Holds commonly used properties."""
+
+    id: ID
+    layer: Optional[List[str]] = None
+    label: Optional[str] = None
+
+
+class EntityWithSingleLayerAndProbability(BaseModel):
     """
     Extension of `Entity`, containing additional properties.
 
@@ -37,54 +51,68 @@ class EntityWithProbability(Entity):
     - `source` the source of this entity, (is typically one of `['model', 'external_data']`
     """
 
-    probability: float
-    source: str
+    id: ID
+    probability: Optional[float] = None
+    source: Optional[str] = None
+    layer: Optional[str] = None
+    label: Optional[str] = None
 
 
-@dataclass(frozen=True)
-class IDName:
+class EntityWithListLayerAndProbability(BaseModel):
+    """
+    Extension of `Entity`, containing additional properties.
+
+    - `probability` the probability of an entity occurring.
+    - `source` the source of this entity, (is typically one of `['model', 'external_data']`
+    """
+
+    id: ID
+    probability: Optional[float] = None
+    source: Optional[str] = None
+    layer: Optional[List[str]]
+    label: Optional[str] = None
+
+
+class IDName(BaseModel):
     """Tuple containing `id` and `name`."""
 
     id: ID
-    name: str
+    name: Optional[str] = None
 
 
-@dataclass(frozen=True)
-class IDLayer:
+class IDLayer(BaseModel):
     """Tuple containing `id` and `layer`."""
 
     id: ID
-    layer: str
+    layer: Optional[str] = None
+    label: Optional[str] = None
 
 
-@dataclass(frozen=True)
-class IDNameLayer:
+class IDNameLayer(BaseModel):
     """Triple holding `id`, `name`, and `layer`."""
 
     id: ID
-    layer: List[str]
-    name: str
+    layer: Optional[List[str]] = None
+    name: Optional[str] = None
 
 
-@dataclass(frozen=True)
-class Node(ABC, IDName):
+class Node(ABC, IDName, BaseModel):
     """
     Abstract Base Class holding a node of a tree.
 
     # Attributes:
-        ref_type: Identifies the reference type data
+        ref_type: Optional[Identifies the reference type data] = None
         leaf: Is this node a leaf of the hierarchical tree?
         parent: List of parents
 
     """
 
-    ref_type: str
-    leaf: bool
-    parent: List[IDNameLayer]
+    ref_type: Optional[str] = None
+    leaf: Optional[bool] = None
+    parent: Optional[List[IDNameLayer]] = None
 
 
-@dataclass(frozen=True)
-class Tag:
+class Tag(BaseModel):
     """
 
     Represents a property that is associated with a period of time.
@@ -95,13 +123,12 @@ class Tag:
 
     """
 
-    tag: str
+    tag: Optional[str] = None
     start_timestamp: Optional[ISODate] = None
     end_timestamp: Optional[ISODate] = None
 
 
-@dataclass(frozen=True)
-class Flag:
+class Flag(BaseModel):
     """
 
     Represents a property that is associated with a vessel's flag.
@@ -113,13 +140,12 @@ class Flag:
 
     """
 
-    tag: str
-    flag: str
-    flag_country: Optional[str]
+    tag: Optional[str] = None
+    flag: Optional[str] = None
+    flag_country: Optional[str] = None
 
 
-@dataclass(frozen=True)
-class Scrubber:
+class Scrubber(BaseModel):
     """
 
     Represents information about scrubbers fitted to a vessel.
@@ -131,6 +157,6 @@ class Scrubber:
 
     """
 
-    tag: str
-    scrubber: str
-    planned: bool
+    tag: Optional[str] = None
+    scrubber: Optional[str] = None
+    planned: Optional[bool] = None

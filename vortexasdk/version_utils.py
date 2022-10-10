@@ -9,11 +9,13 @@ def get_latest_sdk_version() -> str:
     """Retrieves the latest SDK version from PyPI."""
     url = f"https://pypi.python.org/pypi/{sdk_pkg_name}/json"
     with urlopen(url) as u:
-        data = json.loads(u.read())
+        data = json.load(u)
 
     versions = [StrictVersion(release) for release in data["releases"].keys()]
 
-    filtered_out_prerelease_versions = [v for v in versions if v.prerelease is None]
+    filtered_out_prerelease_versions = [
+        v for v in versions if v.prerelease is None
+    ]
 
     latest_version = sorted(filtered_out_prerelease_versions)[-1]
 
@@ -27,5 +29,3 @@ def is_sdk_version_outdated():
         return latest_version, True
     else:
         return latest_version, False
-
-

@@ -1,35 +1,34 @@
-from dataclasses import dataclass
-from typing import List, Tuple
-
-from vortexasdk.api.serdes import FromDictMixin
-from vortexasdk.api.shared_types import ISODate
+from pydantic import BaseModel
+from typing import List, Optional
 
 
-@dataclass(frozen=True)
-class TerminalHierarchy:
-    id: str
-    label: str
-    layer: str
+from vortexasdk.api.shared_types import IDNameLayer
 
 
-@dataclass(frozen=True)
-class TerminalParent:
-    id: str
-    layer: List[str]
-    name: str
+class TerminalHierarchy(BaseModel):
+    id: Optional[str] = None
+    label: Optional[str] = None
+    layer: Optional[str] = None
 
 
-@dataclass(frozen=True)
-class StorageTerminal(FromDictMixin):
+class TerminalParent(BaseModel):
+    id: Optional[str] = None
+    layer: Optional[List[str]] = None
+    name: Optional[str] = None
+
+
+class StorageTerminal(BaseModel):
     """
     Represents a Storage Terminal reference record returned by the API.
     """
-    id: str
-    exclusion_rule: List[str]
-    hierarchy: List[TerminalHierarchy]
-    layer: List[str]
-    lat: float
-    lon: float
-    leaf: bool
-    name: str
-    parent: List[TerminalParent]
+
+    id: Optional[str] = None
+    exclusion_rule: Optional[List[IDNameLayer]] = None
+    hierarchy: Optional[List[TerminalHierarchy]] = None
+    layer: Optional[List[str]] = None
+    lat: Optional[float] = None
+    lon: Optional[float] = None
+    leaf: Optional[bool] = None
+    name: Optional[str] = None
+    parent: Optional[List[TerminalParent]] = None
+    ref_type: Optional[str] = None

@@ -1,6 +1,5 @@
 from datetime import datetime
 
-from docs.utils import to_markdown
 from tests.testcases import TestCaseUsingRealAPI
 from tests.timer import Timer
 from vortexasdk import Geographies, Corporations, Products
@@ -9,8 +8,7 @@ from vortexasdk.endpoints.cargo_movements import CargoMovements
 
 class TestCargoMovementsReal(TestCaseUsingRealAPI):
     def test_default_search(self):
-        results = CargoMovements().search(filter_activity="loading_state")
-        print(len(results))
+        CargoMovements().search(filter_activity="loading_state")
 
     def test_search_returns_unique_results(self):
         result = CargoMovements().search(
@@ -22,13 +20,9 @@ class TestCargoMovementsReal(TestCaseUsingRealAPI):
             filter_time_max=datetime(2017, 10, 29),
         )
 
-        print("---------------------------------")
         n_results = len(result)
-        print(f"Received {n_results} results")
 
-        print(result[0])
         n_unique_results = len(set([str(k) for k in result]))
-        print(f"Received {n_unique_results} unique results")
 
         assert n_results == n_unique_results
 
@@ -260,7 +254,6 @@ class TestCargoMovementsReal(TestCaseUsingRealAPI):
         )
 
         assert len(df) == 2
-        print(to_markdown(df))
 
     def test_search_to_list(self):
         CargoMovements().search(

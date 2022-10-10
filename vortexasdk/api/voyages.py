@@ -1,36 +1,44 @@
-from dataclasses import dataclass
-from typing import Any, List, Optional, Union
+from pydantic import BaseModel
+from typing import List, Optional, Union
+from typing_extensions import Literal
 from vortexasdk.api.id import ID
 
-from vortexasdk.api.serdes import FromDictMixin
-from vortexasdk.api.shared_types import Entity, Flag, ISODate, Scrubber, Tag
+
+from vortexasdk.api.shared_types import (
+    EntityWithListLayer,
+    EntityWithSingleLayer,
+    EntityWithSingleLayerAndTimespan,
+    Flag,
+    ISODate,
+    Scrubber,
+    Tag,
+)
 
 
-@dataclass(frozen=True)
-class CongestionBreakdownItem(FromDictMixin):
+class CongestionBreakdownItem(BaseModel):
     """
 
     Congestion breakdown shows various stats of vessels in congestion.
 
     """
-    avg_waiting_time: int
-    vessel_dwt: int
-    vessel_cubic_capacity: int
-    vessel_count: int
-    cargo_quantity: int
-    avg_waiting_time_laden: int
-    vessel_dwt_laden: int
-    vessel_cubic_capacity_laden: int
-    vessel_count_laden: int
-    avg_waiting_time_ballast: int
-    vessel_dwt_ballast: int
-    vessel_cubic_capacity_ballast: int
-    vessel_count_ballast: int
-    location_details: List[Entity]
+
+    avg_waiting_time: Optional[int] = None
+    vessel_dwt: Optional[int] = None
+    vessel_cubic_capacity: Optional[int] = None
+    vessel_count: Optional[int] = None
+    cargo_quantity: Optional[int] = None
+    avg_waiting_time_laden: Optional[int] = None
+    vessel_dwt_laden: Optional[int] = None
+    vessel_cubic_capacity_laden: Optional[int] = None
+    vessel_count_laden: Optional[int] = None
+    avg_waiting_time_ballast: Optional[int] = None
+    vessel_dwt_ballast: Optional[int] = None
+    vessel_cubic_capacity_ballast: Optional[int] = None
+    vessel_count_ballast: Optional[int] = None
+    location_details: Optional[List[EntityWithListLayer]] = None
 
 
-@dataclass(frozen=True)
-class VoyagesVesselEntity:
+class VoyagesVesselEntity(BaseModel):
     """
     A VoyagesVesselEntity represents a vessel record used in Voyages.
 
@@ -38,24 +46,23 @@ class VoyagesVesselEntity:
     """
 
     id: ID
-    name: str
-    dead_weight: int
-    vessel_class: str
-    imo: Optional[int]
-    mmsi: Optional[int]
-    call_sign: Optional[str]
-    cubic_capacity: Optional[int]
-    year: Optional[int]
-    flag: List[Flag]
-    scrubber: List[Scrubber]
-    ice_class: Optional[str]
-    propulsion: Optional[str]
-    tags: List[Tag]
-    vessel_risk_level: Optional[str]
+    name: Optional[str] = None
+    dead_weight: Optional[int] = None
+    vessel_class: Optional[str] = None
+    imo: Optional[int] = None
+    mmsi: Optional[int] = None
+    call_sign: Optional[str] = None
+    cubic_capacity: Optional[int] = None
+    year: Optional[int] = None
+    flag: Optional[List[Flag]] = None
+    scrubber: Optional[List[Scrubber]] = None
+    ice_class: Optional[str] = None
+    propulsion: Optional[str] = None
+    tags: Optional[List[Tag]] = None
+    vessel_risk_level: Optional[str] = None
 
 
-@dataclass(frozen=True)
-class VoyageVesselEvent:
+class VoyageVesselEvent(BaseModel):
     """
     A vessel event represents an activity that a vessel has performed during a voyage
 
@@ -63,28 +70,31 @@ class VoyageVesselEvent:
 
 
     """
-    event_id: str
-    start_timestamp: Optional[ISODate]
-    end_timestamp: Optional[ISODate]
-    event_group: str
-    event_type: str
-    activity: Optional[str]
-    odometer_start: Optional[int]
-    odometer_end: Optional[int]
-    location_id: str
-    location_layer: List[str]
-    cargo_movement_id: Optional[List[str]]
-    sts_event_counterparty_vessel_id: Optional[str]
-    waiting_event_target_geography_id: Optional[str]
-    fixture_event_fixing_timestamp: Optional[ISODate]
-    tags: List[Tag]
-    probability: Optional[int]
-    location_details: List[Entity]
-    waiting_event_target_geography_details: Optional[List[Entity]]
+
+    event_id: Optional[str] = None
+    event_group: Optional[str] = None
+    event_type: Optional[str] = None
+    location_id: Optional[str] = None
+    start_timestamp: Optional[ISODate] = None
+    end_timestamp: Optional[ISODate] = None
+    activity: Optional[str] = None
+    odometer_start: Optional[int] = None
+    odometer_end: Optional[int] = None
+    location_layer: Optional[List[str]] = None
+    cargo_movement_id: Optional[List[str]] = None
+    sts_event_counterparty_vessel_id: Optional[str] = None
+    waiting_event_target_geography_id: Optional[str] = None
+    fixture_event_fixing_timestamp: Optional[ISODate] = None
+    tags: Optional[List[Tag]] = None
+    probability: Optional[int] = None
+    location_details: Optional[List[EntityWithSingleLayer]] = None
+    is_open_event: Optional[bool] = None
+    waiting_event_target_geography_details: Optional[
+        List[EntityWithSingleLayer]
+    ] = None
 
 
-@dataclass(frozen=True)
-class VoyageCargoEvent:
+class VoyageCargoEvent(BaseModel):
     """
     Cargo events relate to the movement of cargo during the voyage.
 
@@ -92,29 +102,30 @@ class VoyageCargoEvent:
 
 
     """
-    event_id: str
-    start_timestamp: Optional[ISODate]
-    end_timestamp: Optional[ISODate]
-    event_group: str
-    event_type: str
-    activity: None
-    odometer_start: Optional[int]
-    odometer_end: Optional[int]
-    cargo_movement_id: str
-    cargo_origin_id: str
-    cargo_destination_id: Optional[str]
-    product_id: str
-    quantity_tonnes: int
-    quantity_barrels: int
-    quantity_cubic_metres: int
-    tonne_miles: Optional[int]
-    product_details: List[Entity]
-    cargo_origin_details: List[Entity]
-    cargo_destination_details: List[Entity]
+
+    event_id: Optional[str] = None
+    event_group: Literal["derived"]
+    event_type: Optional[str] = None
+    cargo_movement_id: Optional[str] = None
+    cargo_origin_id: Optional[str] = None
+    product_id: Optional[str] = None
+    quantity_tonnes: Optional[int] = None
+    quantity_barrels: Optional[int] = None
+    quantity_cubic_metres: Optional[int] = None
+    start_timestamp: Optional[ISODate] = None
+    end_timestamp: Optional[ISODate] = None
+    activity: Optional[str] = None
+    odometer_start: Optional[int] = None
+    odometer_end: Optional[int] = None
+    cargo_destination_id: Optional[str] = None
+    tonne_miles: Optional[int] = None
+    product_details: Optional[List[EntityWithSingleLayer]] = None
+    cargo_origin_details: Optional[List[EntityWithSingleLayer]] = None
+    cargo_destination_details: Optional[List[EntityWithSingleLayer]] = None
+    is_open_event: Optional[bool] = None
 
 
-@dataclass(frozen=True)
-class VoyageStatusEvent:
+class VoyageStatusEvent(BaseModel):
     """
     Status events describe the status of the voyage at a given period.
 
@@ -122,18 +133,19 @@ class VoyageStatusEvent:
 
 
     """
-    event_id: str
-    start_timestamp: Optional[ISODate]
-    end_timestamp: Optional[ISODate]
-    event_group: str
-    event_type: str
-    activity: str
-    value: str
-    source_event_id: str
+
+    event_id: Optional[str] = None
+    event_group: Literal["derived"]
+    event_type: Optional[str] = None
+    activity: Optional[str] = None
+    value: Optional[str] = None
+    source_event_id: Optional[str] = None
+    end_timestamp: Optional[ISODate] = None
+    start_timestamp: Optional[ISODate] = None
+    is_open_event: Optional[bool] = None
 
 
-@dataclass(frozen=True)
-class VoyageEnrichedItem(FromDictMixin):
+class VoyageEnrichedItem(BaseModel):
     """
 
     A voyage is defined as a continuous period of time when the vessel is either laden or ballast.
@@ -144,21 +156,39 @@ class VoyageEnrichedItem(FromDictMixin):
 
     """
 
-    schema_version: str
     voyage_id: ID
-    start_timestamp: Optional[ISODate]
-    end_timestamp: Optional[ISODate]
-    start_event_id: ID
-    end_event_id: Optional[ID]
     vessel_id: ID
-    previous_voyage_id: Optional[ID]
-    next_voyage_id: Optional[ID]
-    latest_product_ids: List[ID]
-    tags: List[Tag]
-    tonne_miles: Optional[int]
-    vessel: VoyagesVesselEntity
-    corporate_entities: List[Entity]
-    odometer_start: Optional[int]
-    odometer_end: Optional[int]
-    events: List[Optional[Union[VoyageStatusEvent, VoyageVesselEvent, VoyageCargoEvent]]]
-    latest_product_details: List[Entity]
+    schema_version: Optional[str] = None
+    start_event_id: Optional[ID] = None
+    vessel: Optional[VoyagesVesselEntity] = None
+    start_timestamp: Optional[ISODate] = None
+    end_timestamp: Optional[ISODate] = None
+    end_event_id: Optional[ID] = None
+    previous_voyage_id: Optional[ID] = None
+    next_voyage_id: Optional[ID] = None
+    latest_product_ids: Optional[List[ID]] = None
+    tags: Optional[List[Tag]] = None
+    tonne_miles: Optional[int] = None
+    corporate_entities: Optional[List[EntityWithSingleLayerAndTimespan]] = None
+    odometer_start: Optional[int] = None
+    odometer_end: Optional[int] = None
+    """
+    In voyage events there is no single key we can use to discriminate which exact type
+    each event is, as is done in CargoMovements. As such, pydantic will try to figure out
+    which model each event is an instance of, by trial and error.
+    In order to give that process the highest chance of success, we need to list
+    the Models in order of MOST specific -> LEAST specific.
+    This means that the order of the models in the Union actually has meaning.
+    At the time of writing, that order is:
+    `Union[VoyageVesselEvent, VoyageCargoEvent, VoyageStatusEvent]`
+    """
+    events: Optional[
+        List[
+            Optional[
+                Union[VoyageVesselEvent, VoyageCargoEvent, VoyageStatusEvent]
+            ]
+        ]
+    ] = None
+    latest_product_details: Optional[
+        Union[List[List[EntityWithSingleLayer]], List[EntityWithSingleLayer]]
+    ] = None

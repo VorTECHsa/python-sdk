@@ -4,7 +4,6 @@ from multiprocessing.pool import Pool
 from typing import List
 
 import pandas as pd
-
 from vortexasdk.api.entity_flattening import convert_to_flat_dict
 from vortexasdk.api.search_result import Result
 from vortexasdk.api.voyages import CongestionBreakdownItem
@@ -95,10 +94,10 @@ class CongestionBreakdownResult(Result):
         if columns is None:
             columns = DEFAULT_COLUMNS
 
-        logger.debug("Converting each Voyage Congestion Breakdown to a flat dictionary")
-        flatten = functools.partial(
-            convert_to_flat_dict, cols=columns
+        logger.debug(
+            "Converting each Voyage Congestion Breakdown to a flat dictionary"
         )
+        flatten = functools.partial(convert_to_flat_dict, cols=columns)
 
         with Pool(os.cpu_count()) as pool:
             records = pool.map(flatten, super().to_list())
@@ -112,18 +111,18 @@ class CongestionBreakdownResult(Result):
 
 
 DEFAULT_COLUMNS = [
-    'avg_waiting_time',
-    'vessel_dwt',
-    'vessel_cubic_capacity',
-    'vessel_count',
-    'cargo_quantity',
-    'avg_waiting_time_laden',
-    'vessel_dwt_laden',
-    'vessel_cubic_capacity_laden',
-    'vessel_count_laden',
-    'avg_waiting_time_ballast',
-    'vessel_dwt_ballast',
-    'vessel_cubic_capacity_ballast',
-    'vessel_count_ballast',
-    'location_details.0.label'
+    "avg_waiting_time",
+    "vessel_dwt",
+    "vessel_cubic_capacity",
+    "vessel_count",
+    "cargo_quantity",
+    "avg_waiting_time_laden",
+    "vessel_dwt_laden",
+    "vessel_cubic_capacity_laden",
+    "vessel_count_laden",
+    "avg_waiting_time_ballast",
+    "vessel_dwt_ballast",
+    "vessel_cubic_capacity_ballast",
+    "vessel_count_ballast",
+    "location_details.0.label",
 ]

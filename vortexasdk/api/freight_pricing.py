@@ -1,24 +1,30 @@
-from dataclasses import dataclass
-from typing import Optional
+from pydantic import BaseModel
+from typing import List, Optional
 from vortexasdk.api.id import ID
-from vortexasdk.api.serdes import FromDictMixin
+from vortexasdk.api.shared_types import ISODate
 
 
-@dataclass(frozen=True)
-class FreightPricing(FromDictMixin):
+class FreightPricingPrediction(BaseModel):
+    prediction: Optional[str] = None
+    prediction_type: Optional[str] = None
+    rating: Optional[str] = None
+
+
+class FreightPricing(BaseModel):
     """
     Freight pricing shows pricing information applicable to a selected route on a given day.
     """
+
     id: ID
-    short_code: str
-    rate: float
-    rate_precision: int
-    rate_unit: str
-    cost: float
-    cost_precision: int
-    cost_unit: str
-    tce: Optional[float]
-    tce_precision: Optional[int]
-    tce_unit: Optional[str]
-    source: Optional[str]
-    route_prediction: Optional[str]
+    short_code: Optional[str] = None
+    rate: Optional[float] = None
+    record_date: Optional[ISODate] = None
+    rate_precision: Optional[int] = None
+    rate_unit: Optional[str] = None
+    cost: Optional[float] = None
+    cost_precision: Optional[int] = None
+    cost_unit: Optional[str] = None
+    tce: Optional[float] = None
+    tce_precision: Optional[int] = None
+    tce_unit: Optional[str] = None
+    predictions: Optional[List[FreightPricingPrediction]] = None

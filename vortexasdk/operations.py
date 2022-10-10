@@ -1,11 +1,10 @@
-from typing import Dict, List
-
-import pandas as pd
+from typing import Dict
 
 from vortexasdk.api.id import ID
 from vortexasdk.client import default_client
 from vortexasdk.exceptions import InvalidAPIDataResponseException
 from vortexasdk.logger import get_logger
+from vortexasdk.search_response import SearchResponse
 from vortexasdk.utils import filter_exact_match
 
 logger = get_logger(__name__)
@@ -67,9 +66,15 @@ class Search:
         """
         self._resource = resource
 
-    def search(
-        self, exact_term_match: bool = None, response_type: str = None, headers: dict = None, **api_params
-    ) -> List[dict]:
+    # This method has been renamed from `search` to `search_with_client` to avoid type signature
+    # issues with the `search` method in each endpoint class.
+    def search_with_client(
+        self,
+        exact_term_match: bool = None,
+        response_type: str = None,
+        headers: dict = None,
+        **api_params,
+    ) -> SearchResponse:
         """
         Search Reference data filtering on `params`.
 
@@ -87,7 +92,12 @@ class Search:
 
         """
         logger.info(f"Searching {self.__class__.__name__}")
-        api_result = default_client().search(self._resource, response_type, headers=headers, **api_params)
+        api_result = default_client().search(
+            self._resource,
+            response_type=response_type,
+            headers=headers,
+            **api_params,
+        )
 
         logger.debug(
             f"{len(api_result)} results received from {self._resource}"
@@ -95,6 +105,11 @@ class Search:
 
         if exact_term_match:
             logger.debug("Filtering results on exact term match")
-            return filter_exact_match(api_params["term"], api_result)
+            return {
+                "reference": api_result["reference"],
+                "data": filter_exact_match(
+                    api_params["term"], api_result["data"]
+                ),
+            }
         else:
             return api_result

@@ -1,14 +1,13 @@
-from dataclasses import dataclass
+from pydantic import BaseModel
 from typing import Optional
 
 from vortexasdk.api.asset_tank import AssetTank
-from vortexasdk.api.serdes import FromDictMixin
+
 from vortexasdk.api.shared_types import ISODate
 from vortexasdk.api.id import ID
 
 
-@dataclass(frozen=True)
-class OnshoreInventory(FromDictMixin):
+class OnshoreInventory(BaseModel):
     """
 
     Land Storage measurements are the base data set the Vortexa API is centred around.
@@ -19,14 +18,14 @@ class OnshoreInventory(FromDictMixin):
 
     """
 
-    measurement_id: ID
-    tank_id: ID
-    tank_details: AssetTank
-    measurement_timestamp: Optional[ISODate]
-    publish_timestamp: Optional[ISODate]
-    report_timestamp: ISODate
-    carry_forward: bool
-    fill_bbl: int
-    fill_tons: float
-    fill_cbm: float
-    reference_data_version: str
+    measurement_id: Optional[ID] = None
+    tank_id: Optional[ID] = None
+    tank_details: Optional[AssetTank] = None
+    measurement_timestamp: Optional[ISODate] = None
+    publish_timestamp: Optional[ISODate] = None
+    report_timestamp: Optional[ISODate] = None
+    carry_forward: Optional[bool] = None
+    fill_bbl: Optional[int] = None
+    fill_tons: Optional[float] = None
+    fill_cbm: Optional[float] = None
+    reference_data_version: Optional[str] = None

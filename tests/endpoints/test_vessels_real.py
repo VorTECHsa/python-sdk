@@ -14,8 +14,6 @@ class TestVesselsReal(TestCaseUsingRealAPI):
         vessels = Vessels().search(ids=ids).to_list()
         assert len(vessels) == 2
 
-        print([x.name for x in vessels])
-
     def test_search_filters_vessel_class(self):
         vessel_classes = ["vlcc_plus", "aframax"]
 
@@ -70,8 +68,7 @@ class TestVesselsReal(TestCaseUsingRealAPI):
             result.to_list()
 
         with Timer("Dataframe"):
-            df = result.to_df()
-            print(df.head())
+            result.to_df()
 
         assert len(result) >= 1_000
 

@@ -1,8 +1,6 @@
 from tests.testcases import TestCaseUsingRealAPI
 from datetime import datetime
-from tests.timer import Timer
 from vortexasdk.endpoints.eia_forecasts import EIAForecasts
-from docs.utils import to_markdown
 
 
 class TestEIAForecastsReal(TestCaseUsingRealAPI):
@@ -21,8 +19,6 @@ class TestEIAForecastsReal(TestCaseUsingRealAPI):
         values = [g.date for g in forecasts.to_list()]
 
         assert "2020-01-24T00:00:00.000Z" in values
-
-        print(to_markdown(forecasts.to_df()))
 
     def test_search_preset_gasoline_exports(self):
 
@@ -43,5 +39,3 @@ class TestEIAForecastsReal(TestCaseUsingRealAPI):
         assert "2020-04-03T00:00:00.000Z" in values
         assert "2020-03-27T00:00:00.000Z" in values
         assert "2020-03-20T00:00:00.000Z" in values
-
-        print(to_markdown(forecasts.to_df()))

@@ -1,9 +1,8 @@
-from dataclasses import dataclass
+from pydantic import BaseModel
 from typing import List, Optional
 
-from vortexasdk.api.corporation import CorporateEntity
 from vortexasdk.api.id import ID
-from vortexasdk.api.serdes import FromDictMixin
+
 from vortexasdk.api.shared_types import (
     IDName,
     ISODate,
@@ -14,22 +13,42 @@ from vortexasdk.api.shared_types import (
 )
 
 
-@dataclass(frozen=True,)
-class Vessel(Node, FromDictMixin):
+class VesselEntityCorporateEntity(BaseModel):
+    id: ID
+    label: Optional[str] = None
+    layer: Optional[str] = None
+    end_timestamp: Optional[ISODate] = None
+    start_timestamp: Optional[ISODate] = None
+
+
+class VesselEntityCorporateEntityWithConfidence(BaseModel):
+    probability: Optional[float] = None
+    source: Optional[str] = None
+    id: Optional[ID] = None
+    label: Optional[str] = None
+    layer: Optional[str] = None
+    end_timestamp: Optional[ISODate] = None
+    start_timestamp: Optional[ISODate] = None
+
+
+class Vessel(Node):
     """
     Represent a Vessel reference record returned by the API.
 
     [Vessels Further Documentation](https://docs.vortexa.com/reference/GET/reference/vessels/%7Bid%7D)
     """
 
-    related_names: List[str]
-    mmsi: int
+    related_names: Optional[List[str]] = None
+    mmsi: Optional[int] = None
+    layer: Optional[List[str]] = None
 
-    tags: List[Tag]
-    current_product_type: List
+    tags: Optional[List[Tag]] = None
+    current_product_type: Optional[List] = None
 
-    vessel_class: str
+    vessel_class: Optional[str] = None
+    vessel_status: Optional[str] = None
 
+    corporate_entities: Optional[List[VesselEntityCorporateEntity]] = None
     dead_weight: Optional[int] = None
     cubic_capacity: Optional[int] = None
     to_bow: Optional[str] = None
@@ -41,13 +60,12 @@ class Vessel(Node, FromDictMixin):
     imo: Optional[int] = None
     gross_tonnage: Optional[int] = None
 
-    scrubber: Optional[Scrubber] = None
-    flag: Optional[Flag] = None
+    scrubber: Optional[List[Scrubber]] = None
+    flag: Optional[List[Flag]] = None
     ice_class: Optional[str] = None
     propulsion: Optional[str] = None
 
 
-@dataclass(frozen=True)
 class VesselEntity(IDName):
     """
     A VesselEntity represents a vessel record used in CargoMovements and VesselMovements.
@@ -56,16 +74,18 @@ class VesselEntity(IDName):
     """
 
     id: ID
-    name: str
-    mmsi: int
-    imo: Optional[int]
+    name: Optional[str] = None
+    mmsi: Optional[int] = None
+    imo: Optional[int] = None
 
-    dwt: int
+    dwt: Optional[int] = None
 
-    vessel_class: str
-    corporate_entities: List[CorporateEntity]
-    tags: List[Tag]
-    status: str
+    vessel_class: Optional[str] = None
+    corporate_entities: Optional[
+        List[VesselEntityCorporateEntityWithConfidence]
+    ] = None
+    tags: Optional[List[Tag]] = None
+    status: Optional[str] = None
     year: Optional[int] = None
 
     start_timestamp: Optional[ISODate] = None
@@ -76,7 +96,7 @@ class VesselEntity(IDName):
     end_timestamp: Optional[ISODate] = None
     fixture_id: Optional[str] = None
 
-    scrubber: Optional[Scrubber] = None
-    flag: Optional[Flag] = None
+    scrubber: Optional[List[Scrubber]] = None
+    flag: Optional[List[Flag]] = None
     ice_class: Optional[str] = None
     propulsion: Optional[str] = None

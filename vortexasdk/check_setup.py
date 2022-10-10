@@ -44,7 +44,7 @@ def check_can_import_vortexasdk():
     global all_tests_pass
 
     try:
-        import vortexasdk
+        import vortexasdk  # noqa: F401
 
         print("Python successfully imported vortexasdk")
     except ImportError:
@@ -64,9 +64,7 @@ def check_can_retrieve_geographies():
         )
         geography = Geographies().reference(europe)
         assert geography["id"] == europe
-        print(
-            "Python successfully retrieved a sample piece of reference data"
-        )
+        print("Python successfully retrieved a sample piece of reference data")
     except Exception as e:
         all_tests_pass = False
         print(e)

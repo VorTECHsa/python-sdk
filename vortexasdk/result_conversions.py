@@ -1,6 +1,5 @@
 from typing import Union, List
 
-from vortexasdk.api.serdes import FromDictMixin
 from vortexasdk.logger import get_logger
 
 import pandas as pd
@@ -8,10 +7,11 @@ import pandas as pd
 logger = get_logger(__name__)
 
 
-def create_list(list_of_dicts, output_class: FromDictMixin) -> List:
+def create_list(list_of_dicts, output_class) -> List:
     """Convert each list element into an instance of the output class."""
     logger.debug(f"Converting list of dictionaries to list of {output_class}")
-    return [output_class.from_dict(d) for d in list_of_dicts]
+
+    return [output_class.parse_obj(d) for d in list_of_dicts]
 
 
 def format_datatypes(df: pd.DataFrame) -> pd.DataFrame:
@@ -40,10 +40,10 @@ def create_dataframe(
     logger.debug(f"Creating DataFrame of {logger_description}")
 
     if columns is None:
-        df = pd.DataFrame(data=data, columns=default_columns)
+        df = pd.DataFrame(data=data, columns=default_columns).fillna("")
     elif columns == "all":
-        df = pd.DataFrame(data=data)
+        df = pd.DataFrame(data=data).fillna("")
     else:
-        df = pd.DataFrame(data=data, columns=columns)
+        df = pd.DataFrame(data=data, columns=columns).fillna("")
 
     return format_datatypes(df)

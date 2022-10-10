@@ -1,16 +1,13 @@
-from dataclasses import dataclass
+from pydantic import BaseModel
 from typing import Optional
 
-from vortexasdk.api.serdes import FromDictMixin
 
-
-@dataclass(frozen=True)
-class EIAForecast(FromDictMixin):
+class EIAForecast(BaseModel):
     """Represent a EIA forecast record returned by the API."""
 
-    date: str
-    forecast_fri: float
-    value: Optional[int]
-    stocks: Optional[int]
-    cover: Optional[float]
-    runs: Optional[float]
+    date: Optional[str] = None
+    forecast_fri: Optional[float] = None
+    value: Optional[int] = None
+    stocks: Optional[int] = None
+    cover: Optional[float] = None
+    runs: Optional[float] = None

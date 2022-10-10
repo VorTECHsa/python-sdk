@@ -2,7 +2,6 @@ from datetime import datetime
 from vortexasdk import FleetUtilisationDestinationBreakdown
 
 
-from docs.utils import to_markdown
 from tests.testcases import TestCaseUsingRealAPI
 
 
@@ -41,8 +40,8 @@ class TestFleetUtilisationDestinationBreakdownReal(TestCaseUsingRealAPI):
             .search(
                 filter_time_min=start,
                 filter_time_max=end,
-                breakdown_size='5',
-                breakdown_geography='country'
+                breakdown_size="5",
+                breakdown_geography="country",
             )
             .to_df()
         )
