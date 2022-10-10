@@ -86,8 +86,8 @@ class VoyagesTimeseries(Search):
         # Arguments
             breakdown_frequency: Frequency denoting the granularity of the time series. Must be one of the following: `'day'`, `'week'`, `'doe_week'`, `'month'`, `'quarter'`, `'year'`.
 
-            breakdown_property: Property to aggregate upon. Can be one of: `'vessel_count'`, `'cargo_quantity'`, `'avg_wait_time'`,`'dwt'`, `'cubic_capacity'`,
-            `'tonne_miles'`.
+            breakdown_property: Property to aggregate upon. Can be one of: `'vessel_count'`, `'utilisation'`, `'cargo_quantity'`, `'avg_wait_time'`,`'dwt'`, `'cubic_capacity'`,
+            `'tonne_miles'`, `'avg_distance'`, `'avg_speed'`.
 
             breakdown_split_property: Property to split results by. Can be one of: `'vessel_status'`, `'vessel_class'`, `'vessel_flag'`,`'fixture_status'`, `'origin_region'`,
             `'origin_shipping_region'`,`'origin_trading_region'`,`'origin_trading_sub_region'`,`'origin_trading_block'`,`'origin_country'`,`'origin_port'`,
