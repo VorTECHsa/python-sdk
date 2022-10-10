@@ -27,7 +27,7 @@ setuptools.setup(
     install_requires=[
         "flatten-dict==0.4.2",
         "jupyter==1.0.0",
-        "matplotlib==3.5.3",
+        "matplotlib==3.6.1",
         "pandas>=0.25.2",
         "requests==2.28.1",
         "statsmodels==0.13.2",
