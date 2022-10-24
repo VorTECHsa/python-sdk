@@ -2,6 +2,7 @@ from tests.testcases import TestCaseUsingRealAPI
 from vortexasdk import Geographies
 from itertools import chain
 
+
 class TestGeographiesReal(TestCaseUsingRealAPI):
     def test_load_all(self):
         all_geogs = Geographies().load_all()
