@@ -72,4 +72,3 @@ class TestProductsReal(TestCaseUsingRealAPI):
             .to_df()
 
         assert list(df['layer.0'].unique()) == [prodType]
-    
