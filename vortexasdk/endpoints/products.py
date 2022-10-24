@@ -30,6 +30,7 @@ class Products(Reference, Search):
         ids: Union[str, List[str]] = None,
         product_parent: Union[str, List[str]] = None,
         exact_term_match: bool = False,
+        filter_layer: str = None,
     ) -> ProductResult:
         """
         Find all products matching given search terms.
@@ -44,6 +45,8 @@ class Products(Reference, Search):
             exact_term_match: By default, the SDK returns all products which name _includes_ the search term. For example, searching for "Gasoil" will return
                 results including "Gasoil", "Gasoil 0.4pc", "Gasoil 500ppm" etc. Setting `exact_search_match` to true ensure that only exact term matches are
                 returned, ie just "Gasoil" in this case.
+
+            filter_layer: Must be one of product types ['group', 'group_product', 'category', 'grade'].
 
         # Returns
         List of products matching the search arguments.
@@ -77,6 +80,7 @@ class Products(Reference, Search):
             "ids": convert_to_list(ids),
             "product_parent": convert_to_list(product_parent),
             "allowTopLevelProducts": True,
+            "filter_layer": convert_to_list(filter_layer),
         }
 
         response = super().search_with_client(

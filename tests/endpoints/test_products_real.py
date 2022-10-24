@@ -64,3 +64,12 @@ class TestProductsReal(TestCaseUsingRealAPI):
         }
 
         assert expected_columns.issubset(set(df.columns))
+
+    def test_search_with_filter_layer(self):
+        prodType = 'group_product'
+        df = Products()\
+            .search(filter_layer=prodType)\
+            .to_df()
+
+        assert list(df['layer.0'].unique()) == [prodType]
+    
