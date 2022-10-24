@@ -9,7 +9,7 @@ from vortexasdk.api import ID
 from vortexasdk.endpoints.endpoints import GEOGRAPHIES_REFERENCE
 from vortexasdk.endpoints.geographies_result import GeographyResult
 from vortexasdk.operations import Reference, Search
-from vortexasdk.utils import convert_values_to_list
+from vortexasdk.utils import convert_to_list
 
 
 class Geographies(Reference, Search):
@@ -27,6 +27,7 @@ class Geographies(Reference, Search):
         self,
         term: Union[str, List[str]] = None,
         exact_term_match: bool = False,
+        filter_layer: str = None,
     ) -> GeographyResult:
         """
         Find all geographies matching given search terms.
@@ -38,6 +39,8 @@ class Geographies(Reference, Search):
                 e.g. When searching for "China" with `exact_term_match=False`, then the SDK will yield geographies named
                 ['China', 'South China', 'China Energy Services Ningbo'...] etc. When `exact_term_match=True`,
                 the SDK will only yield the geography named `China`.
+
+            filter_layer: Must be one of geographical type ['scrapyard', 'anchoring', 'berth', 'terminal', 'port', 'country', 'shipping_region', 'region', 'trading_block', 'trading_region', 'trading_subregion', 'sts_zone', 'waypoint', 'storage', 'storage_terminal', 'fragment', 'root', 'legacy_sr'].
 
 
         # Returns
@@ -68,7 +71,10 @@ class Geographies(Reference, Search):
         |  2 | 8b4273e3181f2d... | Liverpool Docks        | ['terminal'] |
         |  3 | 98c50b0d2ee2b1... | Liverpool Bulk Liquids | ['terminal'] |
         """
-        api_params: Dict[str, Any] = convert_values_to_list({"term": term})
+        api_params: Dict[str, Any] = {
+            "term": convert_to_list(term),
+            "filter_layer": convert_to_list(filter_layer),
+        }
 
         response = super().search_with_client(
             exact_term_match=exact_term_match, **api_params

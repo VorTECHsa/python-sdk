@@ -1,6 +1,6 @@
 from tests.testcases import TestCaseUsingRealAPI
 from vortexasdk import Geographies
-
+from itertools import chain
 
 class TestGeographiesReal(TestCaseUsingRealAPI):
     def test_load_all(self):
@@ -20,3 +20,13 @@ class TestGeographiesReal(TestCaseUsingRealAPI):
         )
         names = [g.name for g in geographies]
         assert "Liverpool [GB]" in names
+
+    def test_search_with_filter_layer(self):
+        geoType = 'port'
+        df = Geographies()\
+            .search(filter_layer=geoType)\
+            .to_list()
+        allLayers = [g.layer for g in df]
+        flatten_list = set(chain.from_iterable(allLayers))
+
+        assert geoType in flatten_list
