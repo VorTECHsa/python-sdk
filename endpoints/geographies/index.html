@@ -264,7 +264,7 @@
 <p>Load all geographies.</p>
 <h3 id="vortexasdk.endpoints.geographies.Geographies.search">search</h3>
 
-<pre><code class="language-python">Geographies.search(self, term: Union[str, List[str]] = None, exact_term_match: bool = False) -&gt; vortexasdk.endpoints.geographies_result.GeographyResult
+<pre><code class="language-python">Geographies.search(self, term: Union[str, List[str]] = None, exact_term_match: bool = False, filter_layer: str = None) -&gt; vortexasdk.endpoints.geographies_result.GeographyResult
 </code></pre>
 <p>Find all geographies matching given search terms.</p>
 <p><strong>Arguments</strong></p>
@@ -277,6 +277,9 @@
         e.g. When searching for "China" with <code>exact_term_match=False</code>, then the SDK will yield geographies named
         ['China', 'South China', 'China Energy Services Ningbo'...] etc. When <code>exact_term_match=True</code>,
         the SDK will only yield the geography named <code>China</code>.</p>
+</li>
+<li>
+<p><strong>filter_layer</strong>: Must be one of geographical type ['terminal', 'port', 'country', 'shipping_region', 'region', 'trading_block', 'trading_region', 'trading_subregion', 'sts_zone', 'waypoint', 'storage', 'root'].</p>
 </li>
 </ul>
 <p><strong>Returns</strong></p>
