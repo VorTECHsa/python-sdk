@@ -264,7 +264,7 @@
 <p>Load all products.</p>
 <h3 id="vortexasdk.endpoints.products.Products.search">search</h3>
 
-<pre><code class="language-python">Products.search(self, term: Union[str, List[str]] = None, ids: Union[str, List[str]] = None, product_parent: Union[str, List[str]] = None, exact_term_match: bool = False) -&gt; vortexasdk.endpoints.products_result.ProductResult
+<pre><code class="language-python">Products.search(self, term: Union[str, List[str]] = None, ids: Union[str, List[str]] = None, product_parent: Union[str, List[str]] = None, exact_term_match: bool = False, filter_layer: str = None) -&gt; vortexasdk.endpoints.products_result.ProductResult
 </code></pre>
 <p>Find all products matching given search terms.</p>
 <p><strong>Arguments</strong></p>
@@ -282,6 +282,9 @@
 <p><strong>exact_term_match</strong>: By default, the SDK returns all products which name <em>includes</em> the search term. For example, searching for "Gasoil" will return
         results including "Gasoil", "Gasoil 0.4pc", "Gasoil 500ppm" etc. Setting <code>exact_search_match</code> to true ensure that only exact term matches are
         returned, ie just "Gasoil" in this case.</p>
+</li>
+<li>
+<p><strong>filter_layer</strong>: Must be one of product types ['group', 'group_product', 'category', 'grade'].</p>
 </li>
 </ul>
 <p><strong>Returns</strong></p>
