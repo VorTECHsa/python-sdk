@@ -93,7 +93,8 @@ class VoyagesTimeseries(Search):
             `'origin_shipping_region'`,`'origin_trading_region'`,`'origin_trading_sub_region'`,`'origin_trading_block'`,`'origin_country'`,`'origin_port'`,
             `'origin_terminal'`,`'destination_region'`,`'destination_shipping_region'`,`'destination_trading_region'`,`'destination_trading_sub_region'`,`'destination_trading_block'`,
             `'destination_country'`,`'destination_port'`,`'destination_terminal'`,`'location_port'`,`'location_country'`,`'location_shipping_region'`,
-            `'congestion_location_port'`,`'congestion_location_country'`,`'congestion_location_shipping_region'`,`'product_group'`,`'product_group_product'`,`'product_category'`, `'product_grade'`, `'none'` or not provided.
+            `'congestion_location_port'`,`'congestion_location_country'`,`'congestion_location_shipping_region'`,`'product_group'`,`'product_group_product'`,`'product_category'`, `'product_grade'`,
+            `'charterer'`, `'effective_controller'`, `'none'` or not provided.
 
             time_min: The UTC start date of the time filter.
 
