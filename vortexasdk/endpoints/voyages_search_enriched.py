@@ -197,7 +197,7 @@ class VoyagesSearchEnriched(Search):
 
             has_charterer: Filter data where at least one charterer is specified, or none. - one of `disabled`, `inc`, `exc`. Passing disabled means the filter is not active.
 
-            order: Used to sort the returned results. Can be one of:`'vessel_name'`,`'vessel_dwt'`,`'vessel_class'`,
+            order: Used to sort the returned results. Can be one of:`'vessel_name'`,`'dwt'`,`'vessel_class'`,
             `'start_date'`,`'end_date'`.
 
             order_direction: Determines the direction of sorting. ‘asc’ for ascending, ‘desc’ for descending.
