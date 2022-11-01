@@ -81,6 +81,7 @@ class VesselAvailabilityResult(Result):
             'vessel_fixtures.0.laycan_to',
             'vessel_fixtures.0.laycan_from',
             'vessel_id',
+            'vessel_imo',
             'vessel_last_cargo.0.id',
             'vessel_last_cargo.0.label',
             'vessel_last_cargo.0.layer',
@@ -137,7 +138,8 @@ class VesselAvailabilityResult(Result):
             'vessel_location.13.layer',
             'vessel_name',
             'vessel_owner_id',
-            'vessel_owner_name'
+            'vessel_owner_name',
+            'vessel_risk_level',
             'vessel_predicted_destination.0.id',
             'vessel_predicted_destination.0.label',
             'vessel_predicted_destination.0.layer',
