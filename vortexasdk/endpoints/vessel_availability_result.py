@@ -74,6 +74,7 @@ class VesselAvailabilityResult(Result):
             'vessel_declared_destination.0.eta',
             'vessel_declared_destination.0.vessel_id',
             'vessel_dwt',
+            'vessel_cubic_capacity',
             'vessel_fixtures.0.origin',
             'vessel_fixtures.0.destination',
             'vessel_fixtures.0.charterer',

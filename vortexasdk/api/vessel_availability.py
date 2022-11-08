@@ -44,6 +44,7 @@ class VesselAvailability(BaseModel):
     vessel_class: Optional[str] = None
     vessel_declared_destination: Optional[List[DeclaredDestination]] = None
     vessel_dwt: Optional[int] = None
+    vessel_cubic_capacity: Optional[int] = None
     vessel_fixtures: Optional[List[VesselFixtures]] = None
     vessel_id: Optional[str] = None
     vessel_imo: Optional[str] = None
