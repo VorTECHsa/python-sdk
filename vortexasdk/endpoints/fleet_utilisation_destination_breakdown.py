@@ -39,6 +39,7 @@ class FleetUtilisationDestinationBreakdown(Search):
         filter_destinations: Union[ID, List[ID]] = None,
         filter_origins: Union[ID, List[ID]] = None,
         filter_owners: Union[ID, List[ID]] = None,
+        filter_effective_controllers: Union[ID, List[ID]] = None,
         filter_products: Union[ID, List[ID]] = None,
         filter_vessels: Union[ID, List[ID]] = None,
         filter_vessel_classes: Union[str, List[str]] = None,
@@ -60,6 +61,7 @@ class FleetUtilisationDestinationBreakdown(Search):
         exclude_vessel_classes: Union[str, List[str]] = None,
         exclude_charterers: Union[ID, List[ID]] = None,
         exclude_owners: Union[ID, List[ID]] = None,
+        exclude_effective_controllers: Union[ID, List[ID]] = None,
         exclude_vessel_flags: Union[ID, List[ID]] = None,
         exclude_vessel_ice_class: Union[ID, List[ID]] = None,
         exclude_vessel_propulsion: Union[ID, List[ID]] = None,
@@ -92,7 +94,7 @@ class FleetUtilisationDestinationBreakdown(Search):
 
             filter_origins: A geography ID, or list of geography IDs to filter on.
 
-            filter_owners: An corporation ID, or list of corporation IDs to filter on.
+            filter_effective_controllers: An effective controller ID, or list of effective controller IDs to filter on.
 
             filter_products: A product ID, or list of product IDs to filter on.
 
@@ -134,7 +136,7 @@ class FleetUtilisationDestinationBreakdown(Search):
 
             exclude_charterers: A charterer ID, or list of charterer IDs to exclude.
 
-            exclude_owners: An owner ID, or list of owner IDs to exclude.
+            exclude_effective_controllers: An effective controller ID, or list of effective controller IDs to exclude.
 
             exclude_vessel_flags: A geography ID, or list of geography IDs to exclude.
 
@@ -190,6 +192,9 @@ class FleetUtilisationDestinationBreakdown(Search):
             "filter_vessel_classes": convert_to_list(exclude_vessel_classes),
             "filter_charterers": convert_to_list(exclude_charterers),
             "filter_owners": convert_to_list(exclude_owners),
+            "filter_effective_controllers": convert_to_list(
+                exclude_effective_controllers
+            ),
             "filter_vessel_flags": convert_to_list(exclude_vessel_flags),
             "filter_vessel_ice_class": convert_to_list(
                 exclude_vessel_ice_class
@@ -209,6 +214,9 @@ class FleetUtilisationDestinationBreakdown(Search):
             "unit": unit,
             "filter_charterers": convert_to_list(filter_charterers),
             "filter_owners": convert_to_list(filter_owners),
+            "filter_effective_controllers": convert_to_list(
+                filter_effective_controllers
+            ),
             "filter_destinations": convert_to_list(filter_destinations),
             "filter_origins": convert_to_list(filter_origins),
             "filter_products": convert_to_list(filter_products),

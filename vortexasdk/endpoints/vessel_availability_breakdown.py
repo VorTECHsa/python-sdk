@@ -33,6 +33,7 @@ class VesselAvailabilityBreakdown(Search):
         filter_vessel_status: str = None,
         filter_vessel_location: Union[ID, List[ID]] = None,
         filter_owners: Union[ID, List[ID]] = None,
+        filter_effective_controllers: Union[ID, List[ID]] = None,
         filter_destination: Union[ID, List[ID]] = None,
         filter_region: str = None,
         filter_port: str = None,
@@ -52,6 +53,7 @@ class VesselAvailabilityBreakdown(Search):
         exclude_vessel_status: str = None,
         exclude_vessel_location: Union[ID, List[ID]] = None,
         exclude_owners: Union[ID, List[ID]] = None,
+        exclude_effective_controllers: Union[ID, List[ID]] = None,
         exclude_destination: Union[ID, List[ID]] = None,
     ) -> TimeSeriesResult:
         """
@@ -60,7 +62,7 @@ class VesselAvailabilityBreakdown(Search):
 
          # Arguments
 
-             filter_owners: An corporation ID, or list of corporation IDs to filter on.
+             filter_effective_controllers: An effective controller ID, or list of effective controller IDs to filter on.
 
              filter_destination: A geography ID, or list of geography IDs to filter on.
 
@@ -107,7 +109,7 @@ class VesselAvailabilityBreakdown(Search):
 
              exclude_vessel_status: The vessel status on which to base the filter. Enter 'vessel_status_ballast' for ballast vessels, 'vessel_status_laden_known' for laden vessels with known cargo (i.e. a type of cargo that Vortexa currently tracks) or 'any_activity' for any other vessels
 
-             exclude_owners: An owner ID, or list of owner IDs to exclude.
+             exclude_effective_controllers: An effective controller ID, or list of effective controller IDs to exclude.
 
              exclude_vessel_location: A location ID, or list of location IDs to filter on.
 
@@ -149,6 +151,9 @@ class VesselAvailabilityBreakdown(Search):
             "filter_vessels": convert_to_list(exclude_vessels),
             "filter_vessel_classes": convert_to_list(exclude_vessel_classes),
             "filter_owners": convert_to_list(exclude_owners),
+            "filter_effective_controllers": convert_to_list(
+                exclude_effective_controllers
+            ),
             "filter_vessel_status": convert_to_list(exclude_vessel_status),
             "filter_vessel_location": convert_to_list(exclude_vessel_location),
         }
@@ -160,6 +165,9 @@ class VesselAvailabilityBreakdown(Search):
             "filter_vessel_status": filter_vessel_status,
             "filter_vessel_location": convert_to_list(filter_vessel_location),
             "filter_owners": convert_to_list(filter_owners),
+            "filter_effective_controllers": convert_to_list(
+                filter_effective_controllers
+            ),
             "filter_destination": convert_to_list(filter_destination),
             "filter_region": filter_region,
             "filter_port": filter_port,

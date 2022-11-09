@@ -33,6 +33,7 @@ class CargoTimeSeries(Search):
         filter_destinations: Union[ID, List[ID]] = None,
         filter_origins: Union[ID, List[ID]] = None,
         filter_owners: Union[ID, List[ID]] = None,
+        filter_effective_controllers: Union[ID, List[ID]] = None,
         filter_products: Union[ID, List[ID]] = None,
         filter_vessels: Union[ID, List[ID]] = None,
         filter_vessel_classes: Union[ID, List[ID]] = None,
@@ -71,7 +72,7 @@ class CargoTimeSeries(Search):
 
             filter_origins: A geography ID, or list of geography IDs to filter on.
 
-            filter_owners: An owner ID, or list of owner IDs to filter on.
+            filter_effective_controllers: An effective controller ID, or list of effective controller IDs to filter on.
 
             filter_products: A product ID, or list of product IDs to filter on.
 
@@ -170,6 +171,9 @@ class CargoTimeSeries(Search):
             "timeseries_activity_time_span_max": timeseries_activity_time_span_max,
             "filter_charterers": convert_to_list(filter_charterers),
             "filter_owners": convert_to_list(filter_owners),
+            "filter_effective_controllers": convert_to_list(
+                filter_effective_controllers
+            ),
             "filter_products": convert_to_list(filter_products),
             "filter_vessels": convert_to_list(filter_vessels),
             "filter_vessel_classes": convert_to_list(filter_vessel_classes),
