@@ -44,13 +44,16 @@ class VesselAvailability(BaseModel):
     vessel_class: Optional[str] = None
     vessel_declared_destination: Optional[List[DeclaredDestination]] = None
     vessel_dwt: Optional[int] = None
+    vessel_cubic_capacity: Optional[int] = None
     vessel_fixtures: Optional[List[VesselFixtures]] = None
     vessel_id: Optional[str] = None
+    vessel_imo: Optional[str] = None
     vessel_last_cargo: Optional[List[EntityWithListLayer]] = None
     vessel_location: Optional[List[EntityWithListLayer]] = None
     vessel_name: Optional[str] = None
     vessel_owner_id: Optional[str] = None
     vessel_owner_name: Optional[str] = None
+    vessel_risk_level: Optional[str] = None
     vessel_predicted_destination: Optional[List[EntityWithListLayer]] = None
     vessel_scrubber: Optional[bool] = None
     vessel_status: Optional[str] = None
