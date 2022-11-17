@@ -93,9 +93,11 @@ class VortexaClient:
             flattened = self._flatten_response(responses)
 
             if len(flattened) != total:
-                warn(f"Incorrect number of records returned from API. This could be because data upstream updated during your request.")
+                warn(
+                    f"Incorrect number of records returned from API. This could be because data upstream updated during your request."
+                )
                 warn(f"Actual: {len(flattened)}, expected: {total}")
-            
+
             return {"reference": {}, "data": flattened}
 
     def _create_url(self, path: str) -> str:
