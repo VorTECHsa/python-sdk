@@ -72,6 +72,8 @@ class VoyagesTopHits(Search):
         vessel_age_max: int = None,
         vessel_dwt_min: int = None,
         vessel_dwt_max: int = None,
+        vessel_cbm_min: int = None,
+        vessel_cbm_max: int = None,
         vessel_wait_time_min: int = None,
         vessel_wait_time_max: int = None,
         vessel_scrubbers: str = None,
@@ -180,6 +182,10 @@ class VoyagesTopHits(Search):
 
             vessel_dwt_max: A number representing maximum deadweight tonnage of a vessel.
 
+            vessel_cbm_min: A number representing minimum cubic capacity of a vessel.
+
+            vessel_cbm_max: A number representing maximum cubic capacity of a vessel.
+
             vessel_wait_time_min: A number representing a minimum number of days until a vessel becomes available.
 
             vessel_wait_time_max: A number representing a maximum number of days until a vessel becomes available.
@@ -283,6 +289,8 @@ class VoyagesTopHits(Search):
             "vessel_age_max": vessel_age_max,
             "vessel_dwt_min": vessel_dwt_min,
             "vessel_dwt_max": vessel_dwt_max,
+            "vessel_cbm_min": vessel_cbm_min,
+            "vessel_cbm_max": vessel_cbm_max,
             "vessel_wait_time_min": vessel_wait_time_min,
             "vessel_wait_time_max": vessel_wait_time_max,
             "vessel_scrubbers": vessel_scrubbers,
