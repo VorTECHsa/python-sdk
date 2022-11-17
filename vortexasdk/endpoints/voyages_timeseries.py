@@ -179,7 +179,7 @@ class VoyagesTimeseries(Search):
             vessel_dwt_min: A number representing minimum deadweight tonnage of a vessel.
 
             vessel_dwt_max: A number representing maximum deadweight tonnage of a vessel.
-            
+
             vessel_cbm_min: A number representing minimum cubic capacity of a vessel.
 
             vessel_cbm_max: A number representing maximum cubic capacity of a vessel.
