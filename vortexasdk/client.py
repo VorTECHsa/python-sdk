@@ -11,6 +11,7 @@ import uuid
 
 from requests import Response
 from tqdm import tqdm
+from warnings import warn
 
 from vortexasdk.search_response import SearchResponse
 from vortexasdk.api.id import ID
@@ -90,10 +91,13 @@ class VortexaClient:
             )
 
             flattened = self._flatten_response(responses)
-            assert len(flattened) == total, (
-                f"Incorrect number of records returned from API. "
-                f"Actual: {len(flattened)}, expected: {total}"
-            )
+
+            if len(flattened) != total:
+                warn(
+                    f"Incorrect number of records returned from API. This could be because data upstream updated during your request."
+                )
+                warn(f"Actual: {len(flattened)}, expected: {total}")
+
             return {"reference": {}, "data": flattened}
 
     def _create_url(self, path: str) -> str:
