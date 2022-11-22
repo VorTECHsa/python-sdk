@@ -41,6 +41,7 @@ class OriginBreakdown(Search):
         filter_vessels: Union[ID, List[ID]] = None,
         filter_vessel_classes: Union[str, List[str]] = None,
         filter_owners: Union[ID, List[ID]] = None,
+        filter_effective_controllers: Union[ID, List[ID]] = None,
         filter_vessel_flags: Union[ID, List[ID]] = None,
         filter_vessel_ice_class: Union[ID, List[ID]] = None,
         filter_vessel_propulsion: Union[ID, List[ID]] = None,
@@ -57,6 +58,7 @@ class OriginBreakdown(Search):
         exclude_vessels: Union[ID, List[ID]] = None,
         exclude_vessel_classes: Union[str, List[str]] = None,
         exclude_owners: Union[ID, List[ID]] = None,
+        exclude_effective_controllers: Union[ID, List[ID]] = None,
         exclude_charterers: Union[ID, List[ID]] = None,
         exclude_vessel_flags: Union[ID, List[ID]] = None,
         exclude_destinations: Union[ID, List[ID]] = None,
@@ -94,7 +96,7 @@ class OriginBreakdown(Search):
 
              filter_time_max: The UTC end date of the time filter.
 
-             filter_owners: An corporation ID, or list of corporation IDs to filter on.
+             filter_effective_controllers: An effective controller ID, or list of effective controller IDs to filter on.
 
              filter_vessel_flags: A vessel flag ID, or list of vessel flag IDs to filter on.
 
@@ -140,7 +142,7 @@ class OriginBreakdown(Search):
 
              exclude_vessel_classes: A vessel class, or list of vessel classes to exclude.
 
-             exclude_owners: An owner ID, or list of owner IDs to exclude.
+             exclude_effective_controllers: An effective controller ID, or list of effective controller IDs to exclude.
 
              exclude_vessel_location: A location ID, or list of location IDs to exclude.
 
@@ -196,6 +198,9 @@ class OriginBreakdown(Search):
             "filter_charterers": convert_to_list(exclude_charterers),
             "filter_vessel_classes": convert_to_list(exclude_vessel_classes),
             "filter_owners": convert_to_list(exclude_owners),
+            "filter_effective_controllers": convert_to_list(
+                exclude_effective_controllers
+            ),
             "filter_origins": convert_to_list(exclude_origins),
             "filter_flags": convert_to_list(exclude_vessel_flags),
             "filter_vessel_ice_class": convert_to_list(
@@ -233,6 +238,9 @@ class OriginBreakdown(Search):
                 filter_vessel_propulsion
             ),
             "filter_owners": convert_to_list(filter_owners),
+            "filter_effective_controllers": convert_to_list(
+                filter_effective_controllers
+            ),
             "filter_destinations": convert_to_list(filter_destinations),
             "filter_origins": convert_to_list(filter_origins),
             "filter_waypoints": convert_to_list(filter_waypoints),

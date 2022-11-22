@@ -36,6 +36,7 @@ class FleetUtilisationCapacityTimeseries(Search):
         filter_products: Union[ID, List[ID]] = None,
         filter_charterers: Union[ID, List[ID]] = None,
         filter_owners: Union[ID, List[ID]] = None,
+        filter_effective_controllers: Union[ID, List[ID]] = None,
         filter_origins: Union[ID, List[ID]] = None,
         filter_destinations: Union[ID, List[ID]] = None,
         filter_vessels: Union[ID, List[ID]] = None,
@@ -61,6 +62,7 @@ class FleetUtilisationCapacityTimeseries(Search):
         exclude_vessel_classes: Union[ID, List[ID]] = None,
         exclude_charterers: Union[ID, List[ID]] = None,
         exclude_owners: Union[ID, List[ID]] = None,
+        exclude_effective_controllers: Union[ID, List[ID]] = None,
         exclude_vessel_flags: Union[ID, List[ID]] = None,
         exclude_vessel_ice_class: Union[ID, List[ID]] = None,
         exclude_vessel_propulsion: Union[ID, List[ID]] = None,
@@ -90,7 +92,7 @@ class FleetUtilisationCapacityTimeseries(Search):
 
             filter_charterers: A charterer entity ID, or list of product IDs to filter on.
 
-            filter_owners: An owner ID, or list of owner IDs to filter on.
+            filter_effective_controllers: An effective controller ID, or list of effective controller IDs to filter on.
 
             filter_origins: A geography ID, or list of geography IDs to filter on.
 
@@ -133,7 +135,7 @@ class FleetUtilisationCapacityTimeseries(Search):
 
             exclude_charterers: A charterer entity ID, or list of product IDs to exclude.
 
-            exclude_owners: An owner ID, or list of owner IDs to exclude.
+            exclude_effective_controllers: An effective controller ID, or list of effective controller IDs to exclude.
 
             exclude_origins: A geography ID, or list of geography IDs to exclude.
 
@@ -201,6 +203,9 @@ class FleetUtilisationCapacityTimeseries(Search):
             "filter_products": convert_to_list(exclude_products),
             "filter_charterers": convert_to_list(exclude_charterers),
             "filter_owners": convert_to_list(exclude_owners),
+            "filter_effective_controllers": convert_to_list(
+                exclude_effective_controllers
+            ),
             "filter_destinations": convert_to_list(exclude_destinations),
             "filter_origins": convert_to_list(exclude_origins),
             "filter_vessels": convert_to_list(exclude_vessels),
@@ -230,6 +235,9 @@ class FleetUtilisationCapacityTimeseries(Search):
             "filter_vessel_status": convert_to_list(filter_vessel_status),
             "filter_charterers": convert_to_list(filter_charterers),
             "filter_owners": convert_to_list(filter_owners),
+            "filter_effective_controllers": convert_to_list(
+                filter_effective_controllers
+            ),
             "filter_products": convert_to_list(filter_products),
             "filter_vessels": convert_to_list(filter_vessels),
             "filter_vessel_classes": convert_to_list(filter_vessel_classes),
