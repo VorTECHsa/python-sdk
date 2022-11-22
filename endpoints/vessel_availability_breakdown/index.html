@@ -263,14 +263,14 @@
 <p>Please note: you will require a subscription to our Freight module to access this endpoint.</p>
 <h3 id="vortexasdk.endpoints.vessel_availability_breakdown.VesselAvailabilityBreakdown.search">search</h3>
 
-<pre><code class="language-python">VesselAvailabilityBreakdown.search(self, filter_products: Union[str, List[str]] = None, filter_vessels: Union[str, List[str]] = None, filter_vessel_classes: Union[str, List[str]] = None, filter_vessel_status: str = None, filter_vessel_location: Union[str, List[str]] = None, filter_owners: Union[str, List[str]] = None, filter_destination: Union[str, List[str]] = None, filter_region: str = None, filter_port: str = None, use_reference_port: bool = False, filter_days_to_arrival: List[Dict[str, int]] = None, filter_vessel_dwt_min: int = None, filter_vessel_dwt_max: int = None, filter_vessel_age_min: int = None, filter_vessel_age_max: int = None, filter_vessel_idle_min: int = None, filter_vessel_idle_max: int = None, filter_vessel_scrubbers: str = 'disabled', filter_recent_visits: str = None, exclude_products: Union[str, List[str]] = None, exclude_vessels: Union[str, List[str]] = None, exclude_vessel_classes: Union[str, List[str]] = None, exclude_vessel_status: str = None, exclude_vessel_location: Union[str, List[str]] = None, exclude_owners: Union[str, List[str]] = None, exclude_destination: Union[str, List[str]] = None) -&gt; vortexasdk.endpoints.timeseries_result.TimeSeriesResult
+<pre><code class="language-python">VesselAvailabilityBreakdown.search(self, filter_products: Union[str, List[str]] = None, filter_vessels: Union[str, List[str]] = None, filter_vessel_classes: Union[str, List[str]] = None, filter_vessel_status: str = None, filter_vessel_location: Union[str, List[str]] = None, filter_owners: Union[str, List[str]] = None, filter_effective_controllers: Union[str, List[str]] = None, filter_destination: Union[str, List[str]] = None, filter_region: str = None, filter_port: str = None, use_reference_port: bool = False, filter_days_to_arrival: List[Dict[str, int]] = None, filter_vessel_dwt_min: int = None, filter_vessel_dwt_max: int = None, filter_vessel_age_min: int = None, filter_vessel_age_max: int = None, filter_vessel_idle_min: int = None, filter_vessel_idle_max: int = None, filter_vessel_scrubbers: str = 'disabled', filter_recent_visits: str = None, exclude_products: Union[str, List[str]] = None, exclude_vessels: Union[str, List[str]] = None, exclude_vessel_classes: Union[str, List[str]] = None, exclude_vessel_status: str = None, exclude_vessel_location: Union[str, List[str]] = None, exclude_owners: Union[str, List[str]] = None, exclude_effective_controllers: Union[str, List[str]] = None, exclude_destination: Union[str, List[str]] = None) -&gt; vortexasdk.endpoints.timeseries_result.TimeSeriesResult
 </code></pre>
 <p>Number and DWT of all vessels that can be available to load a given cargo at a given port,
 grouped by the number of days to arrival.</p>
 <p><strong>Arguments</strong></p>
 <ul>
 <li>
-<p><strong>filter_owners</strong>: An corporation ID, or list of corporation IDs to filter on.</p>
+<p><strong>filter_effective_controllers</strong>: An effective controller ID, or list of effective controller IDs to filter on.</p>
 </li>
 <li>
 <p><strong>filter_destination</strong>: A geography ID, or list of geography IDs to filter on.</p>
@@ -340,7 +340,7 @@ grouped by the number of days to arrival.</p>
 <p><strong>exclude_vessel_status</strong>: The vessel status on which to base the filter. Enter 'vessel_status_ballast' for ballast vessels, 'vessel_status_laden_known' for laden vessels with known cargo (i.e. a type of cargo that Vortexa currently tracks) or 'any_activity' for any other vessels</p>
 </li>
 <li>
-<p><strong>exclude_owners</strong>: An owner ID, or list of owner IDs to exclude.</p>
+<p><strong>exclude_effective_controllers</strong>: An effective controller ID, or list of effective controller IDs to exclude.</p>
 </li>
 <li>
 <p><strong>exclude_vessel_location</strong>: A location ID, or list of location IDs to filter on.</p>
