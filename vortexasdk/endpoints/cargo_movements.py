@@ -252,12 +252,8 @@ class CargoMovements(Search):
             "filter_vessel_propulsion": convert_to_list(
                 exclude_vessel_propulsion
             ),
-            "filter_buyer": convert_to_list(
-                exclude_filter_buyer
-            ),
-            "filter_seller": convert_to_list(
-                exclude_filter_seller
-            ),
+            "filter_buyer": convert_to_list(exclude_filter_buyer),
+            "filter_seller": convert_to_list(exclude_filter_seller),
             "filter_contract_type": convert_to_list(
                 exclude_filter_contract_type
             ),
