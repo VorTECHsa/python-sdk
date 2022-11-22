@@ -51,6 +51,10 @@ class CargoMovements(Search):
         filter_vessel_flags: Union[ID, List[ID]] = None,
         filter_vessel_ice_class: Union[ID, List[ID]] = None,
         filter_vessel_propulsion: Union[ID, List[ID]] = None,
+        filter_buyer: Union[ID, List[ID]] = None,
+        filter_seller: Union[ID, List[ID]] = None,
+        filter_contract_type: Union[ID, List[ID]] = None,
+        filter_delivery_method: Union[ID, List[ID]] = None,
         exclude_origins: Union[ID, List[ID]] = None,
         exclude_destinations: Union[ID, List[ID]] = None,
         exclude_products: Union[ID, List[ID]] = None,
@@ -61,6 +65,10 @@ class CargoMovements(Search):
         exclude_vessel_flags: Union[ID, List[ID]] = None,
         exclude_vessel_ice_class: Union[ID, List[ID]] = None,
         exclude_vessel_propulsion: Union[ID, List[ID]] = None,
+        exclude_filter_buyer: Union[ID, List[ID]] = None,
+        exclude_filter_seller: Union[ID, List[ID]] = None,
+        exclude_filter_contract_type: Union[ID, List[ID]] = None,
+        exclude_filter_delivery_method: Union[ID, List[ID]] = None,
         disable_geographic_exclusion_rules: bool = None,
         timeseries_activity_time_span_min: int = None,
         timeseries_activity_time_span_max: int = None,
@@ -113,6 +121,14 @@ class CargoMovements(Search):
 
             filter_vessel_propulsion: An attribute ID, or list of attribute IDs to filter on.
 
+            filter_buyer: An attribute ID, or list of attribute IDs to filter on.
+
+            filter_seller: An attribute ID, or list of attribute IDs to filter on.
+
+            filter_contract_type: Type of contract. Must be at least one of: ['spot', 'term'].
+
+            filter_delivery_method: Type of delivery method. Must be at least one of: ['FOB', 'DES', 'CFR', 'CIF']
+
             exclude_origins: A geography ID, or list of geography IDs to exclude.
 
             exclude_destinations: A geography ID, or list of geography IDs to exclude.
@@ -132,6 +148,14 @@ class CargoMovements(Search):
             exclude_vessel_ice_class: An attribute ID, or list of attribute IDs to exclude.
 
             exclude_vessel_propulsion: An attribute ID, or list of attribute IDs to exclude.
+
+            exclude_filter_buyer: An attribute ID, or list of attribute IDs to filter on.
+
+            exclude_filter_seller: An attribute ID, or list of attribute IDs to filter on.
+
+            exclude_filter_contract_type: Type of contract. Must be at least one of: ['spot', 'term'].
+
+            exclude_filter_delivery_method: Type of delivery method. Must be at least one of: ['FOB', 'DES', 'CFR', 'CIF']
 
             disable_geographic_exclusion_rules: This controls a popular industry term "intra-movements" and determines
              the filter behaviour for cargo leaving then entering the same geographic area.
@@ -228,6 +252,18 @@ class CargoMovements(Search):
             "filter_vessel_propulsion": convert_to_list(
                 exclude_vessel_propulsion
             ),
+            "filter_buyer": convert_to_list(
+                exclude_filter_buyer
+            ),
+            "filter_seller": convert_to_list(
+                exclude_filter_seller
+            ),
+            "filter_contract_type": convert_to_list(
+                exclude_filter_contract_type
+            ),
+            "filter_delivery_method": convert_to_list(
+                exclude_filter_delivery_method
+            ),
         }
 
         api_params: Dict[str, Any] = {
@@ -261,6 +297,10 @@ class CargoMovements(Search):
             "filter_vessel_propulsion": convert_to_list(
                 filter_vessel_propulsion
             ),
+            "filter_buyer": convert_to_list(filter_buyer),
+            "filter_seller": convert_to_list(filter_seller),
+            "filter_contract_type": convert_to_list(filter_contract_type),
+            "filter_delivery_method": convert_to_list(filter_delivery_method),
             "exclude": exclude_params,
             "disable_geographic_exclusion_rules": disable_geographic_exclusion_rules,
             "size": self._MAX_PAGE_RESULT_SIZE,
