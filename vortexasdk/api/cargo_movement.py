@@ -4,6 +4,7 @@ from typing import List, Optional, Union
 from typing_extensions import Annotated, Literal
 
 from vortexasdk.api.geography import GeographyEntity
+from vortexasdk.api.trade import Trade
 
 from vortexasdk.api.shared_types import ISODate
 from vortexasdk.api.id import ID
@@ -152,6 +153,7 @@ class CargoMovement(BaseModel):
     vessels: Optional[List[VesselEntity]] = None
     product: Optional[List[CargoMovementProductEntry]] = None
     parent_ids: Optional[List[ParentID]] = None
+    trades: Optional[List[Trade]] = None
     events: Optional[
         List[
             Annotated[
