@@ -16,7 +16,7 @@ class ContractType(Enum):
 
 
 class TradeType(Enum):
-    Load = "load",
+    Load = "load"
     Discharge = "discharge"
 
 
