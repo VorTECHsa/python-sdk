@@ -9,15 +9,15 @@ from typing import Any, Dict, List, Union
 from vortexasdk.api import ID
 from vortexasdk.api.shared_types import to_ISODate
 from vortexasdk.endpoints.cargo_movements_result import CargoMovementsResult
-from vortexasdk.endpoints.endpoints import CARGO_MOVEMENTS_RESOURCE
+from vortexasdk.endpoints.endpoints import CARGO_MOVEMENTS_RESOURCE, CARGO_MOVEMENT_RESOURCE
 from vortexasdk.logger import get_logger
-from vortexasdk.operations import Search
+from vortexasdk.operations import Reference, Search
 from vortexasdk.utils import convert_to_list
 
 logger = get_logger(__name__)
 
 
-class CargoMovements(Search):
+class CargoMovements(Reference, Search):
     """
     Cargo Movements Endpoint, use this to search through Vortexa's cargo movements.
 
@@ -27,7 +27,8 @@ class CargoMovements(Search):
     _MAX_PAGE_RESULT_SIZE = 500
 
     def __init__(self):
-        Search.__init__(self, CARGO_MOVEMENTS_RESOURCE)
+        Reference.__init__(self, CARGO_MOVEMENTS_RESOURCE)
+        Search.__init__(self, CARGO_MOVEMENT_RESOURCE)
 
     def search(
         self,
@@ -279,3 +280,19 @@ class CargoMovements(Search):
         return CargoMovementsResult(
             records=response["data"], reference=response["reference"]
         )
+    
+    def reference(self, id: ID) -> Dict:
+        """
+        Perform a cargo movement lookup.
+
+        # Arguments
+            id: Cargo movement ID to lookup
+
+        # Returns
+        Cargo movement record matching the ID
+
+        # Further Documentation:
+        [VortexaAPI Cargo movement Reference](https://docs.vortexa.com/reference/GET/reference/)
+
+        """
+        return super().reference(id)
