@@ -27,8 +27,8 @@ class CargoMovements(Reference, Search):
     _MAX_PAGE_RESULT_SIZE = 500
 
     def __init__(self):
-        Reference.__init__(self, CARGO_MOVEMENTS_RESOURCE)
-        Search.__init__(self, CARGO_MOVEMENT_RESOURCE)
+        Reference.__init__(self, CARGO_MOVEMENT_RESOURCE)
+        Search.__init__(self, CARGO_MOVEMENTS_RESOURCE)
 
     def search(
         self,
