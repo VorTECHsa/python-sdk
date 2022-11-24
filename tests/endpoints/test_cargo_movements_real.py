@@ -284,3 +284,10 @@ class TestCargoMovementsReal(TestCaseUsingRealAPI):
         assert t_search.interval < 10
         assert t_to_list.interval < 10
         assert t_to_df.interval < 5
+
+
+    def test_get_single_cargo_movement_by_id(self):
+        id = "a3867edfde55365538b9e3aff92e8ac9a3867edfde55365538b9e3aff92e8ac9"
+        cm = CargoMovements().reference(id)
+
+        assert cm["cargo_movement_id"] == id
