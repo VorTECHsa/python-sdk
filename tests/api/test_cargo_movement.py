@@ -161,6 +161,7 @@ class TestCargoMovement(TestCase):
             "vessels.0.voyage_id": "401f0e74fc42401248a484aca2e9955dea885378796f7f4d0bc8e92c35ea270a",
             "parent_ids.0.id": "9d52ede1cff0421a8cd7283b0171afe8d23f519dca5f4e489734522f9cdf804c",
             "parent_ids.0.splinter_timestamp": "2019-10-20T16:41:49+0000",
+            "trades": None
         }
 
         assert flat == expected
