@@ -9,7 +9,10 @@ from typing import Any, Dict, List, Union
 from vortexasdk.api import ID
 from vortexasdk.api.shared_types import to_ISODate
 from vortexasdk.endpoints.cargo_movements_result import CargoMovementsResult
-from vortexasdk.endpoints.endpoints import CARGO_MOVEMENTS_RESOURCE, CARGO_MOVEMENT_RESOURCE
+from vortexasdk.endpoints.endpoints import (
+    CARGO_MOVEMENTS_RESOURCE,
+    CARGO_MOVEMENT_RESOURCE,
+)
 from vortexasdk.logger import get_logger
 from vortexasdk.operations import Reference, Search
 from vortexasdk.utils import convert_to_list
@@ -280,7 +283,7 @@ class CargoMovements(Reference, Search):
         return CargoMovementsResult(
             records=response["data"], reference=response["reference"]
         )
-    
+
     def reference(self, id: ID) -> Dict:
         """
         Perform a cargo movement lookup.
