@@ -113,3 +113,46 @@ class Search:
             }
         else:
             return api_result
+
+
+class Entity:
+    """Lookup Vortexa Data using an entity ID."""
+
+    def __init__(self, resource):
+        """
+        Init.
+
+        # Arguments
+            resource: The Vortexa endpoint used for entity lookups.
+
+        """
+        self._api_resource = resource
+
+    def entity(self, id: ID) -> Dict:
+        """
+        Lookup for single entity using ID.
+
+        # Arguments
+            id: ID of the entity we're looking up
+
+        # Returns
+        An entity matching the ID
+
+        # Examples
+
+        >>> Entity("/cargo-movement/").entity(id='cfb8c4ef76585c3a37792b643791a0f4ff6d5656d5508927d8017319e21f2fca') # doctest: +SKIP
+
+        """
+        logger.info(
+            f"Looking up {self.__class__.__name__} single entity data with id: {id}"
+        )
+
+        data = default_client().get_entity(self._api_resource, id)
+
+        assert len(data) <= 1, InvalidAPIDataResponseException(
+            f"Server error: more than one record returned matching ID {id}"
+        )
+        try:
+            return data[0]
+        except IndexError:
+            return {}
