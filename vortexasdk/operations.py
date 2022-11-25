@@ -21,7 +21,7 @@ class Reference:
             resource: The vortexa endpoint used for reference lookups.
 
         """
-        self._ref_resource = resource
+        self._resource = resource
 
     def reference(self, id: ID) -> Dict:
         """
@@ -42,7 +42,7 @@ class Reference:
             f"Looking up {self.__class__.__name__} reference data with id: {id}"
         )
 
-        data = default_client().get_reference(self._ref_resource, id)
+        data = default_client().get_reference(self._resource, id)
 
         assert len(data) <= 1, InvalidAPIDataResponseException(
             f"Server error: more than one record returned matching ID {id}"
