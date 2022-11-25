@@ -287,6 +287,6 @@ class TestCargoMovementsReal(TestCaseUsingRealAPI):
 
     def test_get_single_cargo_movement_by_id(self):
         id = "a3867edfde55365538b9e3aff92e8ac9a3867edfde55365538b9e3aff92e8ac9"
-        cm = CargoMovements().reference(id)
+        cm = CargoMovements().entity(id)
 
         assert cm["cargo_movement_id"] == id
