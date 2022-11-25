@@ -14,13 +14,13 @@ from vortexasdk.endpoints.endpoints import (
     CARGO_MOVEMENT_RESOURCE,
 )
 from vortexasdk.logger import get_logger
-from vortexasdk.operations import Reference, Search
+from vortexasdk.operations import Entity, Search
 from vortexasdk.utils import convert_to_list
 
 logger = get_logger(__name__)
 
 
-class CargoMovements(Reference, Search):
+class CargoMovements(Entity, Search):
     """
     Cargo Movements Endpoint, use this to search through Vortexa's cargo movements.
 
@@ -30,7 +30,7 @@ class CargoMovements(Reference, Search):
     _MAX_PAGE_RESULT_SIZE = 500
 
     def __init__(self):
-        Reference.__init__(self, CARGO_MOVEMENT_RESOURCE)
+        Entity.__init__(self, CARGO_MOVEMENT_RESOURCE)
         Search.__init__(self, CARGO_MOVEMENTS_RESOURCE)
 
     def search(
@@ -284,7 +284,7 @@ class CargoMovements(Reference, Search):
             records=response["data"], reference=response["reference"]
         )
 
-    def reference(self, id: ID) -> Dict:
+    def entity(self, id: ID) -> Dict:
         """
         Perform a cargo movement lookup.
 
@@ -298,4 +298,4 @@ class CargoMovements(Reference, Search):
         [VortexaAPI Cargo movement Reference](https://docs.vortexa.com/reference/GET/reference/)
 
         """
-        return super().reference(id)
+        return super().entity(id)
