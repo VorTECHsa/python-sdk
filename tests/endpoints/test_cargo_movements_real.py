@@ -287,20 +287,20 @@ class TestCargoMovementsReal(TestCaseUsingRealAPI):
 
     def test_get_single_cargo_movement_by_long_id(self):
         cms = CargoMovements().search(
-                filter_activity="loading_state",
-                filter_time_min=datetime(2019, 8, 29),
-                filter_time_max=datetime(2019, 8, 29, 0, 10),
-            )
+            filter_activity="loading_state",
+            filter_time_min=datetime(2019, 8, 29),
+            filter_time_max=datetime(2019, 8, 29, 0, 10),
+        )
         longId = cms[0]["cargo_movement_id"]
         cm = CargoMovements().entity(longId)
         assert cm["cargo_movement_id"] == longId
 
     def test_get_single_cargo_movement_by_short_id(self):
         cms = CargoMovements().search(
-                filter_activity="loading_state",
-                filter_time_min=datetime(2019, 8, 29),
-                filter_time_max=datetime(2019, 8, 29, 0, 10),
-            )
+            filter_activity="loading_state",
+            filter_time_min=datetime(2019, 8, 29),
+            filter_time_max=datetime(2019, 8, 29, 0, 10),
+        )
         shortId = cms[0]["cargo_movement_id"][:16]
         cm = CargoMovements().entity(shortId)
         assert cm["cargo_movement_id"] == cms[0]["cargo_movement_id"]
