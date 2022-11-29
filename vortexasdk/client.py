@@ -7,6 +7,7 @@ from json import JSONDecodeError
 from multiprocessing.pool import ThreadPool
 from random import shuffle
 from typing import Dict, List, Optional
+from urllib.parse import urlencode
 import uuid
 
 from requests import Response
@@ -110,6 +111,13 @@ class VortexaClient:
         return (
             f"{API_URL}{path}?_sdk=python_v{__version__}&apikey={self.api_key}"
         )
+
+    def _create_url_with_params(self, path: str, params: Dict) -> str:
+        stringParams = urlencode(params)
+        if len(stringParams) > 0:
+            return f"{API_URL}{path}?_sdk=python_v{__version__}&apikey={self.api_key}&{stringParams}"
+        else:
+            return f"{API_URL}{path}?_sdk=python_v{__version__}&apikey={self.api_key}"
 
     def _process_multiple_pages(
         self, total: int, url: str, payload: Dict, data: Dict, headers
