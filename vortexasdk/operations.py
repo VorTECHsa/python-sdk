@@ -157,7 +157,7 @@ class Entity:
         except IndexError:
             return {}
 
-    def entity_with_params(self, id: ID, params: Dict = {}) -> Dict:
+    def entity_with_params(self, id: ID, params: Dict) -> Dict:
         """
         Lookup for single entity using ID and search params.
 
@@ -165,7 +165,7 @@ class Entity:
             id: Cargo movement ID to lookup (long_id or short_id)
 
             params: Supported search params:
-                'unit': enter 'b' for barrels and 't' for tonnes
+                'unit': enter 'b' for barrels, 't' for tonnes and 'cbm' for cubic meters
 
         # Returns
         An entity matching the ID

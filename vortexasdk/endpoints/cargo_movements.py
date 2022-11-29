@@ -292,7 +292,7 @@ class CargoMovements(Entity, Search):
             id: Cargo movement ID to lookup (long_id or short_id)
 
             params: Supported search params:
-                unit: enter 'b' for barrels and 'b' for tonnes
+                'unit': enter 'b' for barrels, 't' for tonnes and 'cbm' for cubic meters
 
         # Returns
         Cargo movement record matching the ID
