@@ -113,3 +113,80 @@ class Search:
             }
         else:
             return api_result
+
+
+class Record:
+    """Lookup Vortexa Data using an record ID."""
+
+    def __init__(self, resource):
+        """
+        Init.
+
+        # Arguments
+            resource: The Vortexa endpoint used for record lookups.
+
+        """
+        self._api_resource = resource
+
+    def record(self, id: ID) -> Dict:
+        """
+        Lookup for single record using ID.
+
+        # Arguments
+            id: ID of the record we're looking up
+
+        # Returns
+        A record matching the ID
+
+        # Examples
+
+        >>> Record("/cargo-movement/").record(id='cfb8c4ef76585c3a37792b643791a0f4ff6d5656d5508927d8017319e21f2fca') # doctest: +SKIP
+
+        """
+        logger.info(
+            f"Looking up {self.__class__.__name__} single record data with id: {id}"
+        )
+
+        data = default_client().get_record(self._api_resource, id)
+
+        assert len(data) <= 1, InvalidAPIDataResponseException(
+            f"Server error: more than one record returned matching ID {id}"
+        )
+        try:
+            return data[0]
+        except IndexError:
+            return {}
+
+    def record_with_params(self, id: ID, params: Dict) -> Dict:
+        """
+        Lookup for single record using ID and search params.
+
+        # Arguments
+            id: Cargo movement ID to lookup (long_id or short_id)
+
+            params: Supported search params:
+                'unit': enter 'b' for barrels, 't' for tonnes and 'cbm' for cubic meters
+
+        # Returns
+        A record matching the ID
+
+        # Examples
+
+        >>> Record("/cargo-movement").record(id='cfb8c4ef76585c3a37792b643791a0f4ff6d5656d5508927d8017319e21f2fca', {'unit': 'b'}) # doctest: +SKIP
+
+        """
+        logger.info(
+            f"Looking up {self.__class__.__name__} single record data with id: {id}"
+        )
+
+        data = default_client().get_record_with_params(
+            self._api_resource, id, params
+        )
+
+        assert len(data) <= 1, InvalidAPIDataResponseException(
+            f"Server error: more than one record returned matching ID {id}"
+        )
+        try:
+            return data[0]
+        except IndexError:
+            return {}

@@ -7,6 +7,7 @@ from json import JSONDecodeError
 from multiprocessing.pool import ThreadPool
 from random import shuffle
 from typing import Dict, List, Optional
+from urllib.parse import urlencode
 import uuid
 
 from requests import Response
@@ -43,6 +44,20 @@ class VortexaClient:
     def get_reference(self, resource: str, id: ID) -> List[Dict]:
         """Lookup reference data."""
         url = self._create_url(f"{resource}/{id}")
+        response = retry_get(url)
+        return _handle_response(response)["data"]
+
+    def get_record(self, resource: str, id: ID) -> Dict:
+        """Lookup single record data."""
+        url = self._create_url(f"{resource}/{id}")
+        response = retry_get(url)
+        return _handle_response(response)["data"]
+
+    def get_record_with_params(
+        self, resource: str, id: ID, params: Dict
+    ) -> Dict:
+        """Lookup single record data."""
+        url = self._create_url_with_params(f"{resource}/{id}", params)
         response = retry_get(url)
         return _handle_response(response)["data"]
 
@@ -104,6 +119,13 @@ class VortexaClient:
         return (
             f"{API_URL}{path}?_sdk=python_v{__version__}&apikey={self.api_key}"
         )
+
+    def _create_url_with_params(self, path: str, params: Dict) -> str:
+        stringParams = urlencode(params)
+        if len(stringParams) > 0:
+            return f"{API_URL}{path}?_sdk=python_v{__version__}&apikey={self.api_key}&{stringParams}"
+        else:
+            return f"{API_URL}{path}?_sdk=python_v{__version__}&apikey={self.api_key}"
 
     def _process_multiple_pages(
         self, total: int, url: str, payload: Dict, data: Dict, headers

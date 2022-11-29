@@ -9,15 +9,18 @@ from typing import Any, Dict, List, Union
 from vortexasdk.api import ID
 from vortexasdk.api.shared_types import to_ISODate
 from vortexasdk.endpoints.cargo_movements_result import CargoMovementsResult
-from vortexasdk.endpoints.endpoints import CARGO_MOVEMENTS_RESOURCE
+from vortexasdk.endpoints.endpoints import (
+    CARGO_MOVEMENTS_RESOURCE,
+    CARGO_MOVEMENT_RESOURCE,
+)
 from vortexasdk.logger import get_logger
-from vortexasdk.operations import Search
+from vortexasdk.operations import Record, Search
 from vortexasdk.utils import convert_to_list
 
 logger = get_logger(__name__)
 
 
-class CargoMovements(Search):
+class CargoMovements(Record, Search):
     """
     Cargo Movements Endpoint, use this to search through Vortexa's cargo movements.
 
@@ -27,6 +30,7 @@ class CargoMovements(Search):
     _MAX_PAGE_RESULT_SIZE = 500
 
     def __init__(self):
+        Record.__init__(self, CARGO_MOVEMENT_RESOURCE)
         Search.__init__(self, CARGO_MOVEMENTS_RESOURCE)
 
     def search(
@@ -279,3 +283,22 @@ class CargoMovements(Search):
         return CargoMovementsResult(
             records=response["data"], reference=response["reference"]
         )
+
+    def record(self, id: ID, params: Dict = {}) -> Dict:
+        """
+        Perform a cargo movement lookup.
+
+        # Arguments
+            id: Cargo movement ID to lookup (long_id or short_id)
+
+            params: Supported search params:
+                'unit': enter 'b' for barrels, 't' for tonnes and 'cbm' for cubic meters
+
+        # Returns
+        Cargo movement record matching the ID
+
+        # Further Documentation:
+        [VortexaAPI Cargo Movement](https://docs.vortexa.com/reference/GET/cargo-movements/%7Bid%7D)
+
+        """
+        return super().record_with_params(id, params)
