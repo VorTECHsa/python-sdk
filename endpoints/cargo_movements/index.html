@@ -564,6 +564,25 @@ This lets us view all vessels present in any STS operations.</p>
 </tbody>
 </table>
 <p><a href="https://docs.vortexa.com/reference/POST/cargo-movements/search">Cargo Movements Endpoint Further Documentation</a></p>
+<h3 id="vortexasdk.endpoints.cargo_movements.CargoMovements.record">record</h3>
+
+<pre><code class="language-python">CargoMovements.record(self, id: str, params: Dict = {}) -&gt; Dict
+</code></pre>
+<p>Perform a cargo movement lookup.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li>
+<p><strong>id</strong>: Cargo movement ID to lookup (long_id or short_id)</p>
+</li>
+<li>
+<p><strong>params</strong>: Supported search params:</p>
+</li>
+<li><strong>'unit'</strong>: enter 'b' for barrels, 't' for tonnes and 'cbm' for cubic meters</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p>Cargo movement record matching the ID</p>
+<p><strong>Further Documentation:</strong></p>
+<p><a href="https://docs.vortexa.com/reference/GET/cargo-movements/%7Bid%7D">VortexaAPI Cargo Movement</a></p>
 <h1 id="vortexasdk.endpoints.cargo_movements_result">vortexasdk.endpoints.cargo_movements_result</h1>
 
 <h2 id="vortexasdk.endpoints.cargo_movements_result.CargoMovementsResult">CargoMovementsResult</h2>
