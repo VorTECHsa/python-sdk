@@ -284,18 +284,21 @@ class CargoMovements(Entity, Search):
             records=response["data"], reference=response["reference"]
         )
 
-    def entity(self, id: ID) -> Dict:
+    def entity(self, id: ID, params: Dict = {}) -> Dict:
         """
         Perform a cargo movement lookup.
 
         # Arguments
-            id: Cargo movement ID to lookup
+            id: Cargo movement ID to lookup (long_id or short_id)
+
+            params: Supported search params:
+                unit: enter 'b' for barrels and 'b' for tonnes
 
         # Returns
         Cargo movement record matching the ID
 
         # Further Documentation:
-        [VortexaAPI Cargo movement Reference](https://docs.vortexa.com/reference/GET/reference/)
+        [VortexaAPI Cargo movement](https://docs.vortexa.com/reference/GET/cargo-movements/%7Bid%7D)
 
         """
-        return super().entity(id)
+        return super().entity_with_params(id, params)
