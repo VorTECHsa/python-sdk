@@ -314,7 +314,10 @@ class TestCargoMovementsReal(TestCaseUsingRealAPI):
         shortId = cms[0]["cargo_movement_id"][:16]
         unitT = {"unit": "t"}
         unitB = {"unit": "b"}
+        unitCBM = {"unit": "cbm"}
         cmT = CargoMovements().entity(shortId, unitT)
         cmB = CargoMovements().entity(shortId, unitB)
+        cmCBM = CargoMovements().entity(shortId, unitCBM)
 
         assert cmT["quantity"] != cmB["quantity"]
+        assert cmT["quantity"] != cmCBM["quantity"]
