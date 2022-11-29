@@ -292,7 +292,7 @@ class TestCargoMovementsReal(TestCaseUsingRealAPI):
             filter_time_max=datetime(2019, 8, 29, 0, 10),
         )
         longId = cms[0]["cargo_movement_id"]
-        cm = CargoMovements().entity(longId)
+        cm = CargoMovements().record(longId)
         assert cm["cargo_movement_id"] == longId
 
     def test_get_single_cargo_movement_by_short_id(self):
@@ -302,7 +302,7 @@ class TestCargoMovementsReal(TestCaseUsingRealAPI):
             filter_time_max=datetime(2019, 8, 29, 0, 10),
         )
         shortId = cms[0]["cargo_movement_id"][:16]
-        cm = CargoMovements().entity(shortId)
+        cm = CargoMovements().record(shortId)
         assert cm["cargo_movement_id"] == cms[0]["cargo_movement_id"]
 
     def test_get_single_cargo_movement_with_unit_param(self):
@@ -315,9 +315,9 @@ class TestCargoMovementsReal(TestCaseUsingRealAPI):
         unitT = {"unit": "t"}
         unitB = {"unit": "b"}
         unitCBM = {"unit": "cbm"}
-        cmT = CargoMovements().entity(shortId, unitT)
-        cmB = CargoMovements().entity(shortId, unitB)
-        cmCBM = CargoMovements().entity(shortId, unitCBM)
+        cmT = CargoMovements().record(shortId, unitT)
+        cmB = CargoMovements().record(shortId, unitB)
+        cmCBM = CargoMovements().record(shortId, unitCBM)
 
         assert cmT["quantity"] != cmB["quantity"]
         assert cmT["quantity"] != cmCBM["quantity"]

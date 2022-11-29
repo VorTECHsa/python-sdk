@@ -14,13 +14,13 @@ from vortexasdk.endpoints.endpoints import (
     CARGO_MOVEMENT_RESOURCE,
 )
 from vortexasdk.logger import get_logger
-from vortexasdk.operations import Entity, Search
+from vortexasdk.operations import Record, Search
 from vortexasdk.utils import convert_to_list
 
 logger = get_logger(__name__)
 
 
-class CargoMovements(Entity, Search):
+class CargoMovements(Record, Search):
     """
     Cargo Movements Endpoint, use this to search through Vortexa's cargo movements.
 
@@ -30,7 +30,7 @@ class CargoMovements(Entity, Search):
     _MAX_PAGE_RESULT_SIZE = 500
 
     def __init__(self):
-        Entity.__init__(self, CARGO_MOVEMENT_RESOURCE)
+        Record.__init__(self, CARGO_MOVEMENT_RESOURCE)
         Search.__init__(self, CARGO_MOVEMENTS_RESOURCE)
 
     def search(
@@ -284,7 +284,7 @@ class CargoMovements(Entity, Search):
             records=response["data"], reference=response["reference"]
         )
 
-    def entity(self, id: ID, params: Dict = {}) -> Dict:
+    def record(self, id: ID, params: Dict = {}) -> Dict:
         """
         Perform a cargo movement lookup.
 
@@ -298,7 +298,7 @@ class CargoMovements(Entity, Search):
         Cargo movement record matching the ID
 
         # Further Documentation:
-        [VortexaAPI Cargo movement](https://docs.vortexa.com/reference/GET/cargo-movements/%7Bid%7D)
+        [VortexaAPI Cargo Movement](https://docs.vortexa.com/reference/GET/cargo-movements/%7Bid%7D)
 
         """
-        return super().entity_with_params(id, params)
+        return super().record_with_params(id, params)

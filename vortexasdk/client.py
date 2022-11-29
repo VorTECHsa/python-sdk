@@ -47,16 +47,16 @@ class VortexaClient:
         response = retry_get(url)
         return _handle_response(response)["data"]
 
-    def get_entity(self, resource: str, id: ID) -> Dict:
-        """Lookup single entity data."""
+    def get_record(self, resource: str, id: ID) -> Dict:
+        """Lookup single record data."""
         url = self._create_url(f"{resource}/{id}")
         response = retry_get(url)
         return _handle_response(response)["data"]
 
-    def get_entity_with_params(
+    def get_record_with_params(
         self, resource: str, id: ID, params: Dict
     ) -> Dict:
-        """Lookup single entity data."""
+        """Lookup single record data."""
         url = self._create_url_with_params(f"{resource}/{id}", params)
         response = retry_get(url)
         return _handle_response(response)["data"]
