@@ -136,7 +136,7 @@ class Record:
             id: ID of the record we're looking up
 
         # Returns
-        An record matching the ID
+        A record matching the ID
 
         # Examples
 
@@ -168,7 +168,7 @@ class Record:
                 'unit': enter 'b' for barrels, 't' for tonnes and 'cbm' for cubic meters
 
         # Returns
-        An record matching the ID
+        A record matching the ID
 
         # Examples
 
