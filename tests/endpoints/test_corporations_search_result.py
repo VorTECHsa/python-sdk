@@ -16,8 +16,8 @@ class TestCorporationsSearchResult(TestCase):
             {
                 "name": {0: "3J", 1: "5XJAPANESE"},
                 "corporate_entity_type": {
-                    0: ["commercial_owner"],
-                    1: ["commercial_owner"],
+                    0: ["effective_controller"],
+                    1: ["effective_controller"],
                 },
             }
         )

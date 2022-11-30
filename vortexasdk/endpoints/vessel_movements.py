@@ -127,7 +127,7 @@ class VesselMovements(Search):
 
             exclude_charterers: A charterer ID, or list of charterer IDs to exclude.
 
-            exclude_effective_controllers: An owner ID, or list of owner IDs to exclude.
+            exclude_effective_controllers: An effective controller ID, or list of effective controller IDs to exclude.
 
             exclude_vessel_flags: A geography ID, or list of geography IDs to exclude.
 

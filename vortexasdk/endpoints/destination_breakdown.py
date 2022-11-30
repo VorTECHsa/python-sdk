@@ -142,7 +142,7 @@ class DestinationBreakdown(Search):
 
              exclude_vessel_classes: A vessel class, or list of vessel classes to exclude.
 
-             exclude_effective_controllers: An owner ID, or list of owner IDs to exclude.
+             exclude_effective_controllers: An effective controller ID, or list of effective controller IDs to exclude.
 
              exclude_vessel_location: A location ID, or list of location IDs to exclude.
 

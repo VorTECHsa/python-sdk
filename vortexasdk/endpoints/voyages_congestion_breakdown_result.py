@@ -46,17 +46,20 @@ class CongestionBreakdownResult(Result):
         By default, the columns returned are something along the lines of.
         ```python
         DEFAULT_COLUMNS = [
-            'available_at',
-            'vessel_name',
-            'vessel_class',
-            'vessel_declared_destination.0.name'
-            'vessel_declared_destination.0.eta',
-            'vessel_owner_name',
-            'vessel_status',
-            'vessel_last_cargo.0.label',
-            'vessel_last_cargo.0.layer',
-            'vessel_predicted_destination.0.label',
-            'vessel_predicted_destination.0.layer',
+            'avg_waiting_time',
+            'vessel_dwt',
+            'vessel_cubic_capacity',
+            'vessel_count',
+            'cargo_quantity',
+            'avg_waiting_time_laden',
+            'vessel_dwt_laden',
+            'vessel_cubic_capacity_laden',
+            'vessel_count_laden',
+            'avg_waiting_time_ballast',
+            'vessel_dwt_ballast',
+            'vessel_cubic_capacity_ballast',
+            'vessel_count_ballast',
+            'location_details.0.label',
         ]
         ```
         The exact default columns used can be found at `voyages_congestion_breakdown_result.DEFAULT_COLUMNS`

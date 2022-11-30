@@ -210,7 +210,7 @@ class TestCargoMovementsReal(TestCaseUsingRealAPI):
             CargoMovements()
             .search(
                 filter_activity="loading_state",
-                filter_owners=[
+                filter_effective_controllers=[
                     c.id for c in Corporations().search(term="DHT").to_list()
                 ],
                 filter_time_min=datetime(2018, 10, 12, 0),
