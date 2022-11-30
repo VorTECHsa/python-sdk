@@ -163,7 +163,7 @@ class TestCargoMovementsReal(TestCaseUsingRealAPI):
             .search(
                 filter_activity="storing_state",
                 filter_time_min=datetime(2019, 8, 29),
-                filter_time_max=datetime(2019, 8, 29, 0, 10)
+                filter_time_max=datetime(2019, 8, 29, 0, 10),
             )
             .to_df()
             .head(2)
