@@ -164,8 +164,6 @@ class TestCargoMovementsReal(TestCaseUsingRealAPI):
                 filter_activity="storing_state",
                 filter_time_min=datetime(2019, 8, 29),
                 filter_time_max=datetime(2019, 8, 29, 0, 10),
-                timeseries_activity_time_span_min=1000 * 60 * 60 * 24 * 14,
-                timeseries_activity_time_span_max=1000 * 60 * 60 * 24 * 60,
             )
             .to_df()
             .head(2)
