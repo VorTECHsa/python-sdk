@@ -68,8 +68,6 @@ class CargoMovements(Record, Search):
         exclude_vessel_ice_class: Union[ID, List[ID]] = None,
         exclude_vessel_propulsion: Union[ID, List[ID]] = None,
         disable_geographic_exclusion_rules: bool = None,
-        timeseries_activity_time_span_min: int = None,
-        timeseries_activity_time_span_max: int = None,
     ) -> CargoMovementsResult:
         """
 
@@ -141,18 +139,6 @@ class CargoMovements(Record, Search):
 
             disable_geographic_exclusion_rules: This controls a popular industry term "intra-movements" and determines
              the filter behaviour for cargo leaving then entering the same geographic area.
-
-            timeseries_activity_time_span_min: The minimum amount of time in milliseconds accounted for in a time series
-             activity. Can be used to request long-term floating storage. For example, to only return floating storage
-             movements that occured for _more_ than 14 days enter
-             `timeseries_activity_time_span_min=1000 * 60 * 60 * 24 * 14` in conjunction with
-             `filter_activity='storing_state'`.
-
-            timeseries_activity_time_span_max: The maximum amount of time in milliseconds accounted for in a time series
-             activity. Can be used to request short-term floating storage. For example, to only return floating storage
-             movements that occured for _less_ than 14 days enter
-             `timeseries_activity_time_span_max=1000 * 60 * 60 * 24 * 14`
-             in conjunction with `filter_activity='storing_state'`.
 
         # Returns
         `CargoMovementsResult`, containing all the cargo movements matching the given search terms.
@@ -243,8 +229,6 @@ class CargoMovements(Record, Search):
             "filter_activity": filter_activity,
             "filter_time_min": to_ISODate(filter_time_min),
             "filter_time_max": to_ISODate(filter_time_max),
-            "timeseries_activity_time_span_min": timeseries_activity_time_span_min,
-            "timeseries_activity_time_span_max": timeseries_activity_time_span_max,
             "cm_unit": cm_unit,
             "filter_charterers": convert_to_list(filter_charterers),
             "filter_owners": convert_to_list(filter_owners),
