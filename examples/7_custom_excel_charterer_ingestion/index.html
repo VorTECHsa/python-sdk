@@ -271,7 +271,7 @@ endpoint to find all recent vessel movements charterered by these firms.</p>
 <th style="text-align: left;">cargoes.0.product.group.label</th>
 <th style="text-align: left;">vessel.corporate_entities.charterer.label</th>
 <th style="text-align: right;">vessel.corporate_entities.time_charterer.label</th>
-<th style="text-align: left;">vessel.corporate_entities.commercial_owner.label</th>
+<th style="text-align: left;">vessel.corporate_entities.effective_controller.label</th>
 </tr>
 </thead>
 <tbody>
@@ -325,23 +325,38 @@ from vortexasdk.api import ID
 
 def convert_to_corporation_ids(corporation_name: str) -&gt; List[ID]:
     # The search returns all corporations with exactly the same name.
-    return [c.id for c in Corporations().search(corporation_name, exact_term_match=True).to_list()]
+    return [
+        c.id
+        for c in Corporations()
+        .search(corporation_name, exact_term_match=True)
+        .to_list()
+    ]
 
 
 if __name__ == &quot;__main__&quot;:
     # Read our excel sheet of charterers into a dataframe
-    charterers_df = pd.read_excel(&quot;./docs/examples/resources/my_charterers.xlsx&quot;)
+    charterers_df = pd.read_excel(
+        &quot;./docs/examples/resources/my_charterers.xlsx&quot;
+    )
 
     # Convert the charterer names into ids
-    charterers_list_of_lists = charterers_df['charterers'].apply(convert_to_corporation_ids).to_list()
-    charterers = [item for sublist in charterers_list_of_lists for item in sublist]
+    charterers_list_of_lists = (
+        charterers_df[&quot;charterers&quot;].apply(convert_to_corporation_ids).to_list()
+    )
+    charterers = [
+        item for sublist in charterers_list_of_lists for item in sublist
+    ]
 
     # Query API
-    df = VesselMovements().search(
-        filter_charterers=charterers,
-        filter_time_min=datetime.now() - timedelta(weeks=1),
-        filter_time_max=datetime.now(),
-    ).to_df()
+    df = (
+        VesselMovements()
+        .search(
+            filter_charterers=charterers,
+            filter_time_min=datetime.now() - timedelta(weeks=1),
+            filter_time_max=datetime.now(),
+        )
+        .to_df()
+    )
 
     print(df)
 </code></pre>
