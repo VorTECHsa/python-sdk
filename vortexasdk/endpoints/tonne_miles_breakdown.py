@@ -16,6 +16,8 @@ from vortexasdk.endpoints.timeseries_result import TimeSeriesResult
 
 class TonneMilesBreakdown(Search):
     """
+    _<span style="color:red">DEPRECATION NOTE: This endpoint is deprecated. Please refer to Freight Metrics for the new endpoint</span>._
+
     The Tonne-miles Breakdown Endpoint is used to retrieve the tonne-miles data as a time series. The aggregation is done on the Vessel Movements data hence very similar search parameters are accepted (minus: `unit`, `size`, `offset`).
     Additionally a parameter named `breakdown_frequency` can be used to specify the time series frequency.
 
