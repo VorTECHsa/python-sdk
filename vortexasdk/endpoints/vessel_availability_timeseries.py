@@ -117,7 +117,7 @@ class VesselAvailabilityTimeseries(Search):
 
              exclude_vessel_status: The vessel status on which to base the filter. Enter 'vessel_status_ballast' for ballast vessels, 'vessel_status_laden_known' for laden vessels with known cargo (i.e. a type of cargo that Vortexa currently tracks) or 'any_activity' for any other vessels
 
-             exclude_effective_controllers: An owner ID, or list of owner IDs to exclude.
+             exclude_effective_controllers: An effective controller ID, or list of effective controller IDs to exclude.
 
              exclude_vessel_location: A location ID, or list of location IDs to filter on.
 

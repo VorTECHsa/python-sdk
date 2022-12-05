@@ -140,9 +140,9 @@ class VoyagesTimeseries(Search):
 
             charterers_excluded: A charterer ID, or list of charterer IDs to exclude.
 
-            effective_controllers: A vessel owner ID, or list of vessel owner IDs to filter on.
+            effective_controllers: A vessel effective controller ID, or list of vessel effective controller IDs to filter on.
 
-            effective_controllers_excluded: A vessel owner ID, or list of vessel owner IDs to exclude.
+            effective_controllers_excluded: A effective controller ID, or list of effective controller IDs to exclude.
 
             origins: An origin ID, or list of origin IDs to filter on.
 

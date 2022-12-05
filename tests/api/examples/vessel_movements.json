@@ -23,7 +23,7 @@
         {
           "id": "01ec474e7324c7633ffaf2a5c92bb7348cc02adc4d10b85daa3dd2cc5458df59",
           "label": "CORE PETROLEUM",
-          "layer": "commercial_owner",
+          "layer": "effective_controller",
           "probability": 1,
           "source": "external"
         }
