@@ -6,13 +6,29 @@ The Voyages Time Series Endpoint, using `breakdown_property: dwt`, is used to re
 
 You can find more information regarding the methodology for DWT here (link to API docs).
 
-Example:
+Example - daily DWT of vessels leaving Rotterdam between 26th and 30th April 2022:
+
+```python
+from vortexasdk import VoyagesTimeseries, Geographies
+from datetime import datetime
+rotterdam = [g.id for g in Geographies().search("rotterdam").to_list() if "port" in g.layer]
+search_result = VoyagesTimeseries().search(
+    origins=rotterdam,
+    time_min=datetime(2022, 4, 26),
+    time_max=datetime(2022, 4, 30, 23, 59),
+    breakdown_property="dwt"
+    ).to_df()
 
 ```
-res = VoyagesTimeseries()
-    .search(
-        time_min=datetime(2022, 4, 26),
-        time_max=datetime(2022, 4, 28, 23, 59),
-        breakdown_property="dwt",
-    ).to_df()
+
+|     | key                       |    value | count | breakdown.0.label | breakdown.0.count | breakdown.0.value |
+| --: | :------------------------ | -------: | ----: | :---------------- | :---------------- | :---------------- |
+|   0 | 2022-04-26 00:00:00+00:00 | 12000720 |   215 |                   |                   |                   |
+|   1 | 2022-04-27 00:00:00+00:00 | 11542671 |   214 |                   |                   |                   |
+|   2 | 2022-04-28 00:00:00+00:00 | 11654845 |   211 |                   |                   |                   |
+|   3 | 2022-04-29 00:00:00+00:00 | 11949494 |   207 |                   |                   |                   |
+|   4 | 2022-04-30 00:00:00+00:00 | 12466167 |   211 |                   |                   |                   |
+
+```
+
 ```
