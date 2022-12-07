@@ -4,7 +4,7 @@ _Please note: you will require a subscription to our Freight module to access th
 
 The Voyages Time Series Endpoint, using `breakdown_property: ‘tonne-miles’`, is used to retrieve the tonne-miles data as a time series. You can find detailed information regarding the Voyages Time Series Endpoint [here](/endpoints/voyages_timeseries).
 
-You can find more information regarding the methodology for tonne-miles here (link to API docs).
+You can find more information regarding the methodology for tonne-miles here [here](https://docs.vortexa.com/reference/intro-freight-metrics).
 
 Example - daily tonne miles for vessels leaving Rotterdam between 26th and 30th April 2022:
 
