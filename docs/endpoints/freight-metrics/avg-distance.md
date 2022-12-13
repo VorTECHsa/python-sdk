@@ -2,7 +2,7 @@
 
 _Please note: you will require a subscription to our Freight module to access this endpoint._
 
-The Voyages Time Series Endpoint, using `breakdown_property: avg_distance`, is used to retrieve the average distance data as a time series. You can find detailed information regarding the Voyages Time Series Endpoint [here](/endpoints/voyages_timeseries).
+The Voyages Time Series Endpoint, using `breakdown_property: avg_distance`, is used to retrieve the average distance data as a time series. You can find detailed information regarding the Voyages Time Series Endpoint [here](/python-sdk/endpoints/voyages_timeseries).
 
 You can find more information regarding the methodology for average distance here [here](https://docs.vortexa.com/reference/intro-freight-metrics).
 
