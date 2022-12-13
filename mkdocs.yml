@@ -19,12 +19,20 @@ pages:
     Products: endpoints/products.md
     Vessel Movements: endpoints/vessel_movements.md
     Vessels: endpoints/vessels.md
-    Tonne-miles Breakdown: endpoints/tonne_miles_breakdown.md
+    Freight Metrics:
+        Tonne Miles Time Series: endpoints/tonne_miles_timeseries.md
+        Tonne Days Time Series: endpoints/tonne_days_timeseries.md
+        Utilisation Time Series: endpoints/utilisation_timeseries.md
+        Average Distance Time Series: endpoints/avg_distance_timeseries.md
+        Average Speed Time Series: endpoints/avg_speed_timeseries.md
+        Origin Breakdown: endpoints/freight_origin_breakdown.md
+        Destination Breakdown: endpoints/freight_destination_breakdown.md
+    Tonne-miles Breakdown (Legacy): endpoints/tonne_miles_breakdown.md
     Vessel Availability: 
         Search: endpoints/vessel_availability_search.md
         Time Series: endpoints/vessel_availability_timeseries.md
         Breakdown: endpoints/vessel_availability_breakdown.md
-    Fleet Utilisation:
+    Fleet Utilisation (Legacy):
         Speed Breakdown: endpoints/fleet_utilisation_speed_breakdown.md
         Time Series: endpoints/fleet_utilisation_timeseries.md
         Avg Distance Time Series: endpoints/fleet_utilisation_avg_distance_timeseries.md

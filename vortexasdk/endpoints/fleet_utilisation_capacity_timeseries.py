@@ -20,6 +20,8 @@ from vortexasdk.utils import convert_to_list, sts_param_value
 class FleetUtilisationCapacityTimeseries(Search):
 
     """
+    _<span style="color:red">DEPRECATION NOTE: This endpoint is deprecated. Please refer to Freight Metrics for the new endpoint</span>._
+
     Please note: you will require a subscription to our Freight module to access this endpoint.
     """
 

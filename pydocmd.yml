@@ -127,6 +127,14 @@ pages:
       Voyages Time Series: endpoints/voyages_timeseries.md
       Voyages Top Hits: endpoints/voyages_top_hits.md
       Voyages Congestion Breakdown: endpoints/voyages_congestion_breakdown.md
+  - Freight Metrics:
+      Tonne Miles Time Series: endpoints/tonne_miles_timeseries.md << docs/endpoints/freight-metrics/tonne-miles.md
+      Tonne Days Time Series: endpoints/tonne_days_timeseries.md << docs/endpoints/freight-metrics/quantity.md
+      Utilisation Time Series: endpoints/utilisation_timeseries.md << docs/endpoints/freight-metrics/utilisation.md
+      Average Distance Time Series: endpoints/avg_distance_timeseries.md << docs/endpoints/freight-metrics/avg-distance.md
+      Average Speed Time Series: endpoints/avg_speed_timeseries.md << docs/endpoints/freight-metrics/avg-speed.md
+      Origin Breakdown: endpoints/freight_origin_breakdown.md << docs/endpoints/freight-metrics/origin.md
+      Destination Breakdown: endpoints/freight_destination_breakdown.md << docs/endpoints/freight-metrics/destination.md
   - Entities:
       Breakdown Item: entities/breakdown_result.md
       Cargo Movement: entities/cargo_movement.md
