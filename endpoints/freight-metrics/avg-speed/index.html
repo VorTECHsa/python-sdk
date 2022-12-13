@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <title>Average Speed Time Series - VortexaSDK</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../../css/theme.css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Average Speed Time Series";
+    var mkdocs_page_input_path = "endpoints/freight-metrics/avg-speed.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-153895438-1', 'vortechsa.github.io');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../../.." class="icon icon-home"> VortexaSDK</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Endpoints</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../about-endpoints/">About Endpoints</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../attributes/">Attributes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cargo_movements/">Cargo Movements</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../origin_breakdown/">Origin Breakdown</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../destination_breakdown/">Destination Breakdown</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cargo_timeseries/">Cargo Time Series</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../corporations/">Corporations</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../eia_forecasts/">EIA Forecasts</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../geographies/">Geographies</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../products/">Products</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../vessel_movements/">Vessel Movements</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../vessels/">Vessels</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Freight Metrics</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../tonne_miles_timeseries/">Tonne Miles Time Series</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tonne_days_timeseries/">Tonne Days Time Series</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../utilisation_timeseries/">Utilisation Time Series</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../avg_distance_timeseries/">Average Distance Time Series</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../avg_speed_timeseries/">Average Speed Time Series</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../freight_origin_breakdown/">Origin Breakdown</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../freight_destination_breakdown/">Destination Breakdown</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../tonne_miles_breakdown/">Tonne-miles Breakdown (Legacy)</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Vessel Availability</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../vessel_availability_search/">Search</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../vessel_availability_timeseries/">Time Series</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../vessel_availability_breakdown/">Breakdown</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Fleet Utilisation (Legacy)</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../fleet_utilisation_speed_breakdown/">Speed Breakdown</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../fleet_utilisation_timeseries/">Time Series</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../fleet_utilisation_avg_distance_timeseries/">Avg Distance Time Series</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../fleet_utilisation_quantity_timeseries/">Quantity Time Series</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../fleet_utilisation_capacity_timeseries/">Capacity Time Series</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../fleet_utilisation_origin_breakdown/">Origin Breakdown</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../fleet_utilisation_destination_breakdown/">Destination Breakdown</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Crude Onshore Inventories</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../onshore_inventories_search/">Search</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../onshore_inventories_timeseries/">Time Series</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">Reference Data</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../asset_tanks/">Asset Tanks</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../storage_terminals/">Storage Terminals</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Freight Pricing</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../freight_pricing_search/">Search</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../freight_pricing_timeseries/">Time Series</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Voyages</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../voyages_search_enriched/">Search Enriched</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../voyages_timeseries/">Time Series</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../voyages_top_hits/">Top Hits</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../voyages_congestion_breakdown/">Congestion Breakdown</a>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Entities</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../entities/cargo_movement/">Cargo Movement</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../entities/corporation/">Corporation</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../entities/geography/">Geography</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../entities/product/">Product</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../entities/vessel/">Vessel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../entities/vessel_movement/">Vessel Movement</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../entities/voyages/">Voyages</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../entities/vessel_availability/">Vessel Availability</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../entities/timeseries_item/">Time Series Item</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../entities/breakdown_item/">Breakdown Item</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../config/">Config</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">FAQ</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../faq/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../faq_setup/">Setup</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Examples</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../examples/0_sample_load_cargo_movements/">0 Simple Load Cargo Movements</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../examples/1_china/">1 China VLCC Discharges</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../examples/2_all_vessel_movements/">2 Laden Vessel Movements</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../examples/3_crude_from_saudi_arabia_to_india/">3 Crude movements from Saudi Arabia to India</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../examples/4_ballast_movements/">4 Ballast Movements</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../examples/5_chinese_daily_imports/">5 Chinese Daily Crude Imports</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../examples/6_medium_sour_floating_storage/">6 Floating Storage Medium Sour Crude</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../examples/7_custom_excel_charterer_ingestion/">7 Ingest Custom Excel Charterers</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../examples/jupyter_notebooks/">Jupyter Notebooks</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">VortexaSDK</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Average Speed Time Series</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/vortechsa/python-sdk/edit/master/docs/endpoints/freight-metrics/avg-speed.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="average-speed-time-series">Average Speed Time Series</h1>
+<p><em>Please note: you will require a subscription to our Freight module to access this endpoint.</em></p>
+<p>The Voyages Time Series Endpoint, using <code>breakdown_property: avg_speed</code>, is used to retrieve the average speed data as a time series. You can find detailed information regarding the Voyages Time Series Endpoint <a href="/endpoints/voyages_timeseries">here</a>.</p>
+<p>You can find more information regarding the methodology for average speed here <a href="https://docs.vortexa.com/reference/intro-freight-metrics">here</a>.</p>
+<p>Example - daily average speed of vessels leaving Rotterdam between 26th and 30th April 2022:</p>
+<pre><code class="language-python">from vortexasdk import VoyagesTimeseries, Geographies
+from datetime import datetime
+rotterdam = [g.id for g in Geographies().search(&quot;rotterdam&quot;).to_list() if &quot;port&quot; in g.layer]
+search_result = VoyagesTimeseries().search(
+    origins=rotterdam,
+    time_min=datetime(2022, 4, 26),
+    time_max=datetime(2022, 4, 30, 23, 59),
+    breakdown_property=&quot;avg_speed&quot;
+    ).to_df(columns=['key', 'value', 'count'])
+
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;"></th>
+<th style="text-align: left;">key</th>
+<th style="text-align: right;">value</th>
+<th style="text-align: right;">count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">2022-04-26 00:00:00+00:00</td>
+<td style="text-align: right;">27874.1</td>
+<td style="text-align: right;">215</td>
+</tr>
+<tr>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">2022-04-27 00:00:00+00:00</td>
+<td style="text-align: right;">25878.7</td>
+<td style="text-align: right;">227</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">2022-04-28 00:00:00+00:00</td>
+<td style="text-align: right;">25569</td>
+<td style="text-align: right;">228</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">2022-04-29 00:00:00+00:00</td>
+<td style="text-align: right;">26389.5</td>
+<td style="text-align: right;">226</td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">2022-04-30 00:00:00+00:00</td>
+<td style="text-align: right;">26366.6</td>
+<td style="text-align: right;">221</td>
+</tr>
+</tbody>
+</table>
+<pre><code>
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/vortechsa/python-sdk/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme_extra.js" defer></script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
