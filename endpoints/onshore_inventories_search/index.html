@@ -282,7 +282,7 @@
 Please note: you will require a subscription to our Crude Onshore Inventories module to access this endpoint.</p>
 <h3 id="vortexasdk.endpoints.onshore_inventories_search.OnshoreInventoriesSearch.search">search</h3>
 
-<pre><code class="language-python">OnshoreInventoriesSearch.search(self, corporate_entity_ids: Union[str, List[str]] = None, crude_confidence: List[str] = None, location_ids: Union[str, List[str]] = None, storage_types: List[str] = None, time_min: datetime.datetime = datetime.datetime(2022, 12, 28, 9, 18, 5, 604607), time_max: datetime.datetime = datetime.datetime(2023, 1, 4, 9, 18, 5, 604616)) -&gt; vortexasdk.endpoints.onshore_inventories_result.OnshoreInventoriesResult
+<pre><code class="language-python">OnshoreInventoriesSearch.search(self, corporate_entity_ids: Union[str, List[str]] = None, crude_confidence: List[str] = None, location_ids: Union[str, List[str]] = None, storage_types: List[str] = None, time_min: datetime.datetime = datetime.datetime(2022, 12, 28, 10, 3, 24, 223043), time_max: datetime.datetime = datetime.datetime(2023, 1, 4, 10, 3, 24, 223051)) -&gt; vortexasdk.endpoints.onshore_inventories_result.OnshoreInventoriesResult
 </code></pre>
 <p>List of crude onshore inventories across the globe.</p>
 <p><strong>Arguments</strong></p>
@@ -292,7 +292,9 @@ Please note: you will require a subscription to our Crude Onshore Inventories mo
 <li><strong>location_ids</strong>: An array of geography ID(s) to filter on.</li>
 <li><strong>measurement_ids</strong>: An array of unique measurements (each COI measurement) to filter on.</li>
 <li><strong>size</strong>: Used to page results. The size of the result set. Between 0 and 500.</li>
-<li><strong>storage_types</strong>: An array of storage types to filter on. Possible values are: <code>'refinery'</code>, <code>'non-refinery'</code>, <code>'commercial'</code>, <code>'spr'</code>, <code>'tbd'</code></li>
+<li><strong>storage_types</strong>: An array of storage types to filter on. Possible values are: <code>'refinery'</code>, <code>'non-refinery'</code>, <code>'commercial'</code>, <code>'spr'</code>, <code>'tbd'</code>,.</li>
+<li><strong>time_min</strong>: The UTC start date of the time filter.</li>
+<li><strong>time_max</strong>: The UTC end date of the time filter.</li>
 </ul>
 <p><strong>Returns</strong></p>
 <p><code>OnshoreInventoriesResult</code></p>
