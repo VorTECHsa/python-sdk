@@ -274,7 +274,8 @@ search_result = VoyagesTimeseries().search(
     origins=rotterdam,
     time_min=datetime(2022, 4, 26),
     time_max=datetime(2022, 4, 30, 23, 59),
-    breakdown_property=&quot;avg_speed&quot;
+    breakdown_property=&quot;avg_speed&quot;,
+    breakdown_unit_operator=&quot;avg&quot;,
     ).to_df(columns=['key', 'value', 'count'])
 
 </code></pre>
@@ -291,31 +292,31 @@ search_result = VoyagesTimeseries().search(
 <tr>
 <td style="text-align: right;">0</td>
 <td style="text-align: left;">2022-04-26 00:00:00+00:00</td>
-<td style="text-align: right;">27874.1</td>
+<td style="text-align: right;">11.737703</td>
 <td style="text-align: right;">215</td>
 </tr>
 <tr>
 <td style="text-align: right;">1</td>
 <td style="text-align: left;">2022-04-27 00:00:00+00:00</td>
-<td style="text-align: right;">25878.7</td>
+<td style="text-align: right;">11.736763</td>
 <td style="text-align: right;">227</td>
 </tr>
 <tr>
 <td style="text-align: right;">2</td>
 <td style="text-align: left;">2022-04-28 00:00:00+00:00</td>
-<td style="text-align: right;">25569</td>
+<td style="text-align: right;">11.44699</td>
 <td style="text-align: right;">228</td>
 </tr>
 <tr>
 <td style="text-align: right;">3</td>
 <td style="text-align: left;">2022-04-29 00:00:00+00:00</td>
-<td style="text-align: right;">26389.5</td>
+<td style="text-align: right;">11.586345</td>
 <td style="text-align: right;">226</td>
 </tr>
 <tr>
 <td style="text-align: right;">4</td>
 <td style="text-align: left;">2022-04-30 00:00:00+00:00</td>
-<td style="text-align: right;">26366.6</td>
+<td style="text-align: right;">11.398125</td>
 <td style="text-align: right;">221</td>
 </tr>
 </tbody>
