@@ -28,6 +28,7 @@ class VoyagesTimeseries(Search):
         breakdown_frequency: str = None,
         breakdown_property: str = None,
         breakdown_split_property: str = None,
+        breakdown_unit_operator: str = None,
         time_min: datetime = datetime(2022, 1, 1, 0),
         time_max: datetime = datetime(2022, 1, 1, 1),
         voyage_id: Union[ID, List[ID]] = None,
@@ -97,6 +98,8 @@ class VoyagesTimeseries(Search):
             `'destination_country'`,`'destination_port'`,`'destination_terminal'`,`'location_port'`,`'location_country'`,`'location_shipping_region'`,
             `'congestion_location_port'`,`'congestion_location_country'`,`'congestion_location_shipping_region'`,`'product_group'`,`'product_group_product'`,`'product_category'`, `'product_grade'`,
             `'charterer'`, `'effective_controller'`, `'none'` or not provided.
+
+            breakdown_unit_operator: Denotes the type of the aggregation calculation. Can be one of `'sum'` or `'avg'`.
 
             time_min: The UTC start date of the time filter.
 
@@ -270,6 +273,7 @@ class VoyagesTimeseries(Search):
             "breakdown_frequency": breakdown_frequency,
             "breakdown_split_property": breakdown_split_property,
             "breakdown_property": breakdown_property,
+            "breakdown_unit_operator": breakdown_unit_operator,
             "voyage_status_excluded": convert_to_list(voyage_status_excluded),
             "cargo_status_excluded": convert_to_list(cargo_status_excluded),
             "location_status_excluded": convert_to_list(

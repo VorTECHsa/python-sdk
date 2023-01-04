@@ -43,3 +43,29 @@ class TestVoyagesTimeseries(TestCaseUsingRealAPI):
         )
 
         assert len(df) > 0
+
+    def test_avg_unit_operator(self):
+        start = datetime(2022, 4, 26)
+        end = datetime(2022, 4, 28, 23, 59)
+
+        rotterdam = [
+            g.id
+            for g in Geographies().search("rotterdam").to_list()
+            if "port" in g.layer
+        ]
+
+        df = (
+            VoyagesTimeseries()
+            .search(
+                origins=rotterdam,
+                time_min=start,
+                time_max=end,
+                breakdown_frequency="day",
+                breakdown_property="avg_distance",
+                breakdown_split_property="location_country",
+                breakdown_unit_operator="avg",
+            )
+            .to_df()
+        )
+
+        assert len(df) > 0
