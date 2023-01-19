@@ -50,6 +50,8 @@ generate:
       - vortexasdk.api.voyages++
   - endpoints/origin_breakdown.md:
       - vortexasdk.endpoints.origin_breakdown++
+  - endpoints/vessel_class_breakdown.md:
+      - vortexasdk.endpoints.vessel_class_breakdown++
   - endpoints/destination_breakdown.md:
       - vortexasdk.endpoints.destination_breakdown++
   - endpoints/tonne_miles_breakdown.md:
@@ -97,6 +99,7 @@ pages:
       About Endpoints: endpoints/about-endpoints.md << docs/endpoints/about-endpoints.md
       Cargo Movements: endpoints/cargo_movements.md
       Origin Breakdown: endpoints/origin_breakdown.md
+      Vessel Class Breakdown: endpoints/vessel_class_breakdown.md
       Destination Breakdown: endpoints/destination_breakdown.md
       Cargo Time Series: endpoints/cargo_timeseries.md
       Vessel Movements: endpoints/vessel_movements.md
