@@ -159,7 +159,7 @@ class ParentProductBreakdown(Search):
 
 
          # Example
-        _Breakdown by origin terminal of cargoes departing from the port of origin over the last 5 days, in tonnes._
+        _Breakdown by product of the cargoes in tonnes._
 
          ```python
          >>> from vortexasdk import ParentProductBreakdown

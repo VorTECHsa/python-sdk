@@ -162,7 +162,7 @@ class MovementStatusBreakdown(Search):
 
 
          # Example
-        _Breakdown by origin terminal of cargoes departing from the port of origin over the last 5 days, in tonnes._
+        _Breakdown by movement status of cargoes in tonnes._
 
          ```python
          >>> from vortexasdk import MovementStatusBreakdown
