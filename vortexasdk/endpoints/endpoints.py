@@ -13,13 +13,6 @@ PARENT_PRODUCT_BREAKDOWN_RESOURCE = "/breakdown/parent-product"
 
 MOVEMENT_STATUS_BREAKDOWN_RESOURCE = "/breakdown/movement-status"
 
-CHARTERER_BREAKDOWN_RESOURCE = "/breakdown/charterer"
-
-FLOATING_STORAGE_LOCATION_BREAKDOWN_RESOURCE = "/breakdown/floating-storage-location"
-
-SHIP_TO_SHIP_LOCATION_BREAKDOWN_RESOURCE = "/breakdown/ship-to-ship-location',"
-
-VESSEL_ID_BREAKDOWN_RESOURCE = "/breakdown/vessel-id"
 VESSEL_CLASS_BREAKDOWN_RESOURCE = "/breakdown/vessel-class"
 
 VESSEL_AVAILABILITY_SEARCH_RESOURCE = "/vessel-availability/search"
