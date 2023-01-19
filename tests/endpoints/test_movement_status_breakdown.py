@@ -10,7 +10,6 @@ class TestMovementStatusBreakdownReal(TestCaseUsingRealAPI):
 
         result = MovementStatusBreakdown().search(
             timestamp=date,
-            breakdown_geography="country",
             breakdown_unit="b",
             filter_time_min=date,
             filter_time_max=date,
