@@ -27,7 +27,7 @@ def replace_keys(result: Result):
 def key_from_ref(datum, refs):
     # Reads the label from references and adds the label to the output
     key = datum["key"]
-    if refs[key]:
+    if key in refs:
         name = refs[key]["label"]
         return {**datum, "label": name}
     else:
