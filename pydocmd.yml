@@ -53,7 +53,7 @@ generate:
   - endpoints/destination_breakdown.md:
       - vortexasdk.endpoints.destination_breakdown++
   - endpoints/product_breakdown.md:
-      - vortexasdk.endpoints.product_breakdown_breakdown++
+      - vortexasdk.endpoints.product_breakdown++
   - endpoints/parent_product_breakdown.md:
       - vortexasdk.endpoints.parent_product_breakdown++
   - endpoints/movement_status_breakdown.md:
