@@ -177,7 +177,7 @@ class VesselClassBreakdown(Search):
 
          Gives the following:
 
-         |    | key                 | value    | cpunt     |
+         |    | key                 | value    | count     |
          |---:|:--------------------|---------:|----------:|
          |  0 | vlcc_plus           | 94855526 | 24        |
          |  1 | aframax             | 776599   | 17        |

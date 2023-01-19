@@ -181,13 +181,14 @@ class MovementStatusBreakdown(Search):
 
          Gives the following:
 
-         |    | key                                                             | label                                    | value    | count     |
-         |---:|:----------------------------------------------------------------|-----------------------------------------:|---------:|----------:|
-         |  0 | c3daea3cc9c5b3bd91c90882d42c2a418c4cf17b90ff12da3ac78444282a238a| Juaymah Crude Oil Terminal               | 3009799  | 24        |
-         |  1 | 3a39cf841ece0c7cb879f72af01cb634191142e0de8010d5ef877fd66c2e8605| Houston Enterprise Terminal              | 776599   | 17        |
-         |  2 | 345b7661310bc82a04e0a4edffd02c286c410c023b53edfb90ed3386640c0476| Arzew GL1Z/GL2Z LNG Terminal             | 381359   | 24        |
-         |  3 | 9dfa3be1b42d1f5e80361b6f442b5217b486876ad0c25e382055887c9e231ad2| SabTank (PCQ-1) Al Jubail                | 238723   | 21        |
-         |  4 | 4813dd7209e85b128cc2fbc7c08fef08d26259550210f28a5c7ff3ccd7b2ba61| Mailiao Industrial Park-Formosa Plastics | 118285   | 18        |
+         |    | key                             | value    | count     |
+         |---:|:--------------------------------|---------:|----------:|
+         |  0 | transiting_state                | 3009799  | 24        |
+         |  1 | identified_for_loading_state    | 776599   | 17        |
+         |  2 | loading_state                   | 381359   | 24        |
+         |  3 | unloading_state                 | 238723   | 21        |
+         |  4 | storing_state                   | 118285   | 18        |
+         |  4 | ship_to_ship                    | 118285   | 18        |
 
         """
         exclude_params: Dict[str, Any] = {
