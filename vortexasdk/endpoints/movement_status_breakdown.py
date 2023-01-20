@@ -222,7 +222,7 @@ class MovementStatusBreakdown(Search):
             "breakdown_unit_average_basis": breakdown_unit_average_basis,
             "breakdown_unit": breakdown_unit,
             "breakdown_size": breakdown_size,
-            "timestamp": timestamp,
+            "timestamp": to_ISODate(timestamp),
             "disable_geographic_exclusion_rules": disable_geographic_exclusion_rules,
             "filter_time_min": to_ISODate(filter_time_min),
             "filter_time_max": to_ISODate(filter_time_max),

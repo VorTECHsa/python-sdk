@@ -6,7 +6,7 @@ from tests.testcases import TestCaseUsingRealAPI
 
 class TestMovementStatusBreakdownReal(TestCaseUsingRealAPI):
     def test_search_returns_one_day(self):
-        date = datetime(2019, 11, 10)
+        date = datetime(2019, 1, 1)
 
         result = MovementStatusBreakdown().search(
             timestamp=date,
