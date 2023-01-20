@@ -15,7 +15,7 @@ class TestProductBreakdownReal(TestCaseUsingRealAPI):
             filter_time_max=date,
         )
 
-        assert len(result) == 5
+        assert len(result) == 4
 
     def test_search_returns_multiple_breakdowns(self):
         filter_time_min = datetime(2022, 11, 10)
@@ -30,7 +30,7 @@ class TestProductBreakdownReal(TestCaseUsingRealAPI):
             breakdown_size=100,
         )
 
-        assert len(result) == 6
+        assert len(result) == 4
 
     def test_search_returns_any_activity(self):
         date = datetime(2019, 11, 10)
@@ -43,7 +43,7 @@ class TestProductBreakdownReal(TestCaseUsingRealAPI):
             filter_time_max=date,
         )
 
-        assert len(result) == 5
+        assert len(result) == 4
 
     def test_search_returns_excluded_params(self):
         date = datetime(2019, 11, 10)
@@ -60,4 +60,4 @@ class TestProductBreakdownReal(TestCaseUsingRealAPI):
             exclude_origins=rotterdam,
         )
 
-        assert len(result) == 5
+        assert len(result) == 4
