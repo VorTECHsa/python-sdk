@@ -167,7 +167,7 @@ class MovementStatusBreakdown(Search):
          ```python
          >>> from vortexasdk import MovementStatusBreakdown
          >>> start = datetime(2019, 11, 10)
-         >>> timestamp = datetime(2019, 01, 19)
+         >>> timestamp = datetime(2019, 1, 19)
          >>> end = datetime(2033, 11, 15)
          >>> df = MovementStatusBreakdown().search(
          ...        filter_activity="loading_end",
