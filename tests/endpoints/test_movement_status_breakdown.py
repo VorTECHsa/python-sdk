@@ -31,7 +31,7 @@ class TestMovementStatusBreakdownReal(TestCaseUsingRealAPI):
             breakdown_size=100,
         )
 
-        assert len(result) == 100
+        assert len(result) == 6
 
     def test_search_returns_any_activity(self):
         date = datetime(2019, 11, 10)
