@@ -43,6 +43,14 @@ from vortexasdk.endpoints.fleet_utilisation_timeseries import (
 from vortexasdk.endpoints.eia_forecasts import EIAForecasts
 from vortexasdk.endpoints.origin_breakdown import OriginBreakdown
 from vortexasdk.endpoints.destination_breakdown import DestinationBreakdown
+from vortexasdk.endpoints.movement_status_breakdown import (
+    MovementStatusBreakdown,
+)
+from vortexasdk.endpoints.vessel_class_breakdown import VesselClassBreakdown
+from vortexasdk.endpoints.product_breakdown import ProductBreakdown
+from vortexasdk.endpoints.parent_product_breakdown import (
+    ParentProductBreakdown,
+)
 from vortexasdk.endpoints.onshore_inventories_timeseries import (
     OnshoreInventoriesTimeseries,
 )

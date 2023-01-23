@@ -9,6 +9,10 @@ pages:
     About Endpoints: endpoints/about-endpoints.md
     Attributes: endpoints/attributes.md
     Cargo Movements: endpoints/cargo_movements.md
+    Movement Status Breakdown: endpoints/movement_status_breakdown.md
+    Product Breakdown: endpoints/product_breakdown.md
+    Parent Product Breakdown: endpoints/parent_product_breakdown.md
+    Vessel Class Breakdown: endpoints/vessel_class_breakdown.md
     Origin Breakdown: endpoints/origin_breakdown.md
     Destination Breakdown: endpoints/destination_breakdown.md
     Cargo Movements: endpoints/cargo_movements.md

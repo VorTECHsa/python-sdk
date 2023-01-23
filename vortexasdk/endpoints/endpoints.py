@@ -8,6 +8,13 @@ EIA_FORECASTS_RESOURCE = "/search/eia-forecasts"
 ORIGIN_BREAKDOWN_RESOURCE = "/breakdown/origin"
 DESTINATION_BREAKDOWN_RESOURCE = "/breakdown/destination"
 
+PRODUCT_BREAKDOWN_RESOURCE = "/breakdown/product"
+PARENT_PRODUCT_BREAKDOWN_RESOURCE = "/breakdown/parent-product"
+
+MOVEMENT_STATUS_BREAKDOWN_RESOURCE = "/breakdown/movement-status"
+
+VESSEL_CLASS_BREAKDOWN_RESOURCE = "/breakdown/vessel-class"
+
 VESSEL_AVAILABILITY_SEARCH_RESOURCE = "/vessel-availability/search"
 VESSEL_AVAILABILITY_TIMERSERIES_RESOURCE = "/vessel-availability/timeseries"
 VESSEL_AVAILABILITY_BREAKDOWN_RESOURCE = "/vessel-availability/breakdown"
