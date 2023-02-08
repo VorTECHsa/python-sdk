@@ -14,8 +14,6 @@ class VoyagesSearchEnrichedFlattenedResult(Result):
     """
     Container class holdings search results returned from the voyages endpoint.
 
-    Please note: you will require a subscription to our Freight module to access Voyages.
-
     This class has a `to_df()` method, allowing search results to be represented as a `pd.DataFrame`.
     """
 
@@ -43,8 +41,6 @@ class VoyagesSearchEnrichedFlattenedResult(Result):
 class VoyagesSearchEnrichedListResult(Result):
     """
     Container class holdings search results returned from the voyages endpoint.
-
-    Please note: you will require a subscription to our Freight module to access Voyages.
 
     This class has a `to_list()` method, allowing search results to be represented as a raw JSON response.
     """
