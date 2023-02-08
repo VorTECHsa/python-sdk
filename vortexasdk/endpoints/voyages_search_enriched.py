@@ -19,9 +19,6 @@ from vortexasdk.utils import convert_to_list
 
 
 class VoyagesSearchEnriched(Search):
-    """
-    Please note: you will require a subscription to our Freight module to access this endpoint.
-    """
 
     _MAX_PAGE_RESULT_SIZE = 500
     _CSV_HEADERS = {"Content-Type": "application/json", "accept": "text/csv"}

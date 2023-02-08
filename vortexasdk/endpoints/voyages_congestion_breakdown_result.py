@@ -17,7 +17,7 @@ class CongestionBreakdownResult(Result):
     """
     Container class holdings search results returns from the voyages congestion breakdown endpoint.
 
-    Please note: you will require a subscription to our Freight module to access Voyages.
+    Please note: you will require a subscription to our Freight module to access this endpoint.
 
     This class has two methods, `to_list()`, and `to_df()`, allowing search results to be represented as a list of `CongestionBreakdownResult`(ies),
      or as a `pd.DataFrame` , respectively.
