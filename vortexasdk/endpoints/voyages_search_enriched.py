@@ -215,7 +215,7 @@ class VoyagesSearchEnriched(Search):
             `'destination'`,`'destination_shipping_region'`,`'destination_region'`,`'destination_country'`,`'destination_port'`,`'destination_terminal'`,`'destination_eta'`,
             `'charterer'`,`'effective_controller'`,`'voyage_type'`,`'quantity'`,`'latest_product'`,`'latest_product_group'`,`'latest_product_category'`,`'latest_product_grade'`,
             `'time_charterer'`,`'flag'`,`'scrubber'`,`'build_year'`,`'risk_rating'`,`'coating'`,`'start_date'`,`'end_date'`,`'tonne_miles'`,`'distance'`,
-            `'voyage_id'`,`'previous_voyage_id'`,`'next_voyage_id'`,`'duration'`, 
+            `'voyage_id'`,`'previous_voyage_id'`,`'next_voyage_id'`,`'duration'`,
             `'first_origin'`,`'first_origin_shipping_region'`,`'first_origin_country'`,`'first_origin_port'`,`'first_origin_terminal'`,
             `'final_destination'`,`'final_destination_shipping_region'`,`'final_destination_country'`,`'final_destination_port'`,`'final_destination_terminal'`.
 
