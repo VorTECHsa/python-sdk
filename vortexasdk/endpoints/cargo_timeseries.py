@@ -60,7 +60,7 @@ class CargoTimeSeries(Search):
             filter_activity: Cargo movement activity on which to base the time filter. The endpoint only includes cargo
             movements matching that match this filter in the aggregations. Must be one of ['loading_state',
              'loading_start', 'loading_end', 'identified_for_loading_state', 'unloading_state', 'unloading_start',
-              'unloading_end', 'storing_state', 'storing_start', 'storing_end', 'transiting_state'].
+              'unloading_end', 'storing_state', 'storing_start', 'storing_end', 'transiting_state', 'oil_on_water_state'].
 
             filter_time_min: The UTC start date of the time filter.
 
