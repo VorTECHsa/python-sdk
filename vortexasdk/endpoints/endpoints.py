@@ -30,18 +30,18 @@ PRODUCTS_REFERENCE = "/reference/products"
 STORAGE_TERMINALS_REFERENCE = "/reference/storage-terminals"
 VESSELS_REFERENCE = "/reference/vessels"
 
-TONNE_MILES_BREAKDOWN = "/vessel-journey/breakdown/tonne-miles"
-FLEET_UTILISATION_ORIGIN_BREAKDOWN = "/vessel-journey/breakdown/origin"
-FLEET_UTILISATION_DESTINATION_BREAKDOWN = (
-    "/vessel-journey/breakdown/destination"
-)
-FLEET_UTILISATION_SPEED_BREAKDOWN = "/vessel-journey/breakdown/speed"
-FLEET_UTILISATION_TIMESERIES_QUANTITY = "/vessel-journey/timeseries/quantity"
-FLEET_UTILISATION_TIMESERIES_CAPACITY = "/vessel-journey/timeseries/capacity"
-FLEET_UTILISATION_TIMESERIES = "/vessel-journey/timeseries/utilisation"
-FLEET_UTILISATION_TIMESERIES_AVG_DISTANCE = (
-    "/vessel-journey/timeseries/avg-distance"
-)
+# TONNE_MILES_BREAKDOWN = "/vessel-journey/breakdown/tonne-miles"
+# FLEET_UTILISATION_ORIGIN_BREAKDOWN = "/vessel-journey/breakdown/origin"
+# FLEET_UTILISATION_DESTINATION_BREAKDOWN = (
+#     "/vessel-journey/breakdown/destination"
+# )
+# FLEET_UTILISATION_SPEED_BREAKDOWN = "/vessel-journey/breakdown/speed"
+# FLEET_UTILISATION_TIMESERIES_QUANTITY = "/vessel-journey/timeseries/quantity"
+# FLEET_UTILISATION_TIMESERIES_CAPACITY = "/vessel-journey/timeseries/capacity"
+# FLEET_UTILISATION_TIMESERIES = "/vessel-journey/timeseries/utilisation"
+# FLEET_UTILISATION_TIMESERIES_AVG_DISTANCE = (
+#     "/vessel-journey/timeseries/avg-distance"
+# )
 
 FREIGHT_PRICING_SEARCH = "/freight-pricing/rates"
 FREIGHT_PRICING_TIMESERIES = "/freight-pricing/timeseries"
