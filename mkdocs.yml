@@ -31,19 +31,10 @@ pages:
         Average Speed Time Series: endpoints/avg_speed_timeseries.md
         Origin Breakdown: endpoints/freight_origin_breakdown.md
         Destination Breakdown: endpoints/freight_destination_breakdown.md
-    # Tonne-miles Breakdown (Legacy): endpoints/tonne_miles_breakdown.md
     Vessel Availability: 
         Search: endpoints/vessel_availability_search.md
         Time Series: endpoints/vessel_availability_timeseries.md
         Breakdown: endpoints/vessel_availability_breakdown.md
-    # Fleet Utilisation (Legacy):
-    #     Speed Breakdown: endpoints/fleet_utilisation_speed_breakdown.md
-    #     Time Series: endpoints/fleet_utilisation_timeseries.md
-    #     Avg Distance Time Series: endpoints/fleet_utilisation_avg_distance_timeseries.md
-    #     Quantity Time Series: endpoints/fleet_utilisation_quantity_timeseries.md
-    #     Capacity Time Series: endpoints/fleet_utilisation_capacity_timeseries.md
-    #     Origin Breakdown: endpoints/fleet_utilisation_origin_breakdown.md
-    #     Destination Breakdown: endpoints/fleet_utilisation_destination_breakdown.md
     Crude Onshore Inventories:
         Search: endpoints/onshore_inventories_search.md
         Time Series: endpoints/onshore_inventories_timeseries.md

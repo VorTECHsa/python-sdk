@@ -9,6 +9,7 @@ from vortexasdk.endpoints.geographies import Geographies
 from vortexasdk.endpoints.products import Products
 from vortexasdk.endpoints.vessels import Vessels
 from vortexasdk.endpoints.storage_terminals import StorageTerminals
+from vortexasdk.endpoints.tonne_miles_breakdown import TonneMilesBreakdown
 from vortexasdk.endpoints.vessel_availability_breakdown import (
     VesselAvailabilityBreakdown,
 )
@@ -17,6 +18,27 @@ from vortexasdk.endpoints.vessel_availability_timeseries import (
 )
 from vortexasdk.endpoints.vessel_availability_search import (
     VesselAvailabilitySearch,
+)
+from vortexasdk.endpoints.fleet_utilisation_avg_distance_timeseries import (
+    FleetUtilisationAvgDistanceTimeseries,
+)
+from vortexasdk.endpoints.fleet_utilisation_capacity_timeseries import (
+    FleetUtilisationCapacityTimeseries,
+)
+from vortexasdk.endpoints.fleet_utilisation_quantity_timeseries import (
+    FleetUtilisationQuantityTimeseries,
+)
+from vortexasdk.endpoints.fleet_utilisation_speed_breakdown import (
+    FleetUtilisationSpeedBreakdown,
+)
+from vortexasdk.endpoints.fleet_utilisation_origin_breakdown import (
+    FleetUtilisationOriginBreakdown,
+)
+from vortexasdk.endpoints.fleet_utilisation_destination_breakdown import (
+    FleetUtilisationDestinationBreakdown,
+)
+from vortexasdk.endpoints.fleet_utilisation_timeseries import (
+    FleetUtilisationTimeseries,
 )
 from vortexasdk.endpoints.eia_forecasts import EIAForecasts
 from vortexasdk.endpoints.origin_breakdown import OriginBreakdown
