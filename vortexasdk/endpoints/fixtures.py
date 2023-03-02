@@ -155,7 +155,6 @@ class Fixtures(Search):
             "filter_effective_controllers": convert_to_list(
                 filter_effective_controllers
             ),
-            "filter_products": convert_to_list(filter_products),
             "filter_vessels": convert_to_list(filter_vessels),
             "filter_vessel_classes": convert_to_list(filter_vessel_classes),
             "filter_destinations": convert_to_list(filter_destinations),
