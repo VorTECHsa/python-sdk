@@ -20,7 +20,6 @@ logger = get_logger(__name__)
 
 
 class DestinationBreakdown(Search):
-
     _INCLUDE_REFERENCE_DATA = True
 
     def __init__(self):
@@ -70,7 +69,6 @@ class DestinationBreakdown(Search):
         exclude_vessel_propulsion: Union[ID, List[ID]] = None,
         exclude_vessel_tags: Union[List[Tag], Tag] = None,
     ) -> ReferenceBreakdownResult:
-
         """
          Destination locations breakdown aggregation by geographic area
 

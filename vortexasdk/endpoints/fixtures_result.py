@@ -38,4 +38,17 @@ class FixtureResult(Result):
         )
 
 
-DEFAULT_COLUMNS = ["id", "vessel", "laycan_from", "laycan_to", "tones", "fixing_timestamp", 'fulfilled', 'vtx_fulfilled', 'destination', 'origin', 'product', 'charterer']
+DEFAULT_COLUMNS = [
+    "id",
+    "vessel",
+    "laycan_from",
+    "laycan_to",
+    "tones",
+    "fixing_timestamp",
+    "fulfilled",
+    "vtx_fulfilled",
+    "destination",
+    "origin",
+    "product",
+    "charterer",
+]

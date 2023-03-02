@@ -11,6 +11,7 @@ class Entity(BaseModel):
 
 class Fixture(BaseModel):
     """Represent a Fixture record returned by the API."""
+
     id: ID
     vessel: Optional[VesselEntity] = None
     laycan_from: Optional[str] = None

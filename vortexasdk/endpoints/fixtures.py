@@ -13,7 +13,7 @@ from datetime import datetime
 class Fixtures(Search):
     """Fixtures Endpoint, use this to search through Vortexa's Fixtures data.
 
-        A detailed explanation of Cargo/Vessel Movements can be found [here](https://docs.vortexa.com/reference/intro-fixtures).
+    A detailed explanation of Cargo/Vessel Movements can be found [here](https://docs.vortexa.com/reference/intro-fixtures).
 
     """
 

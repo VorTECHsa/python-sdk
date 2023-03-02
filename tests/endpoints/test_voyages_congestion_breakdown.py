@@ -77,7 +77,6 @@ class TestVoyagesCongestionBreakdown(TestCaseUsingRealAPI):
         ]
 
     def test_with_params(self):
-
         df = (
             VoyagesCongestionBreakdown()
             .search(
@@ -120,7 +119,6 @@ class TestVoyagesCongestionBreakdown(TestCaseUsingRealAPI):
         assert len(time_series_list) == 10
 
     def test_from_docs(self):
-
         search_result = (
             VoyagesCongestionBreakdown()
             .search(

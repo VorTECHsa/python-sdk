@@ -13,7 +13,6 @@ class TestSearchReal(TestCaseUsingRealAPI):
     def test_search_exact_match_yields_fewer_results_than_non_exact_match(
         self,
     ):
-
         for endpoint, term in endpoints_and_searchterms:
             result_loose_match = endpoint.search(
                 term=term, exact_term_match=False
@@ -25,7 +24,6 @@ class TestSearchReal(TestCaseUsingRealAPI):
             assert len(result_exact_match) < len(result_loose_match)
 
     def test_search_exact_match_yields_exact_matches_only(self):
-
         for endpoint, term in endpoints_and_searchterms:
             result_exact_match = endpoint.search(
                 term=term, exact_term_match=True
