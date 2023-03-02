@@ -12,15 +12,14 @@ class Entity(BaseModel):
 class Fixture(BaseModel):
     """Represent a Fixture record returned by the API."""
     id: ID
-    vessel: VesselEntity = None
-    laycan_from: str = None
-    laycan_to: str = None
-    tones: int = None
-    fixing_timestamp: str = None
-    fulfilled: bool = None
-    vtx_fulfilled: bool = None
+    vessel: Optional[VesselEntity] = None
+    laycan_from: Optional[str] = None
+    laycan_to: Optional[str] = None
+    tones: Optional[int] = None
+    fixing_timestamp: Optional[str] = None
+    fulfilled: Optional[bool] = None
+    vtx_fulfilled: Optional[bool] = None
     origin: Optional[Entity] = None
     destination: Optional[Entity] = None
     product: Optional[Entity] = None
     charterer: Optional[Entity] = None
-    origin: Optional[Entity] = None
