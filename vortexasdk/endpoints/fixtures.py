@@ -8,7 +8,9 @@ from vortexasdk.endpoints.endpoints import FIXTURES
 from vortexasdk.operations import Search
 from vortexasdk.api.shared_types import to_ISODate
 from datetime import datetime
-from typing import Any, Dict
+from typing import Any, Dict, List, Union
+from vortexasdk.api import ID
+from vortexasdk.utils import convert_to_list
 
 
 class Fixtures(Search):
@@ -28,6 +30,28 @@ class Fixtures(Search):
         filter_time_field: str = "fixing_timestamp",
         filter_time_min: datetime = datetime(2020, 1, 1),
         filter_time_max: datetime = datetime(2020, 1, 2),
+        ids: Union[ID, List[ID]] = None,
+        filter_charterers: Union[ID, List[ID]] = None,
+        filter_destinations: Union[ID, List[ID]] = None,
+        filter_origins: Union[ID, List[ID]] = None,
+        filter_owners: Union[ID, List[ID]] = None,
+        filter_effective_controllers: Union[ID, List[ID]] = None,
+        filter_products: Union[ID, List[ID]] = None,
+        filter_vessels: Union[ID, List[ID]] = None,
+        filter_vessel_classes: Union[str, List[str]] = None,
+        filter_vessel_age_min: int = None,
+        filter_vessel_age_max: int = None,
+        filter_vessel_scrubbers: str = "disabled",
+        filter_vessel_flags: Union[ID, List[ID]] = None,
+        exclude_origins: Union[ID, List[ID]] = None,
+        exclude_destinations: Union[ID, List[ID]] = None,
+        exclude_products: Union[ID, List[ID]] = None,
+        exclude_vessels: Union[ID, List[ID]] = None,
+        exclude_vessel_classes: Union[str, List[str]] = None,
+        exclude_charterers: Union[ID, List[ID]] = None,
+        exclude_vessel_flags: Union[ID, List[ID]] = None,
+        order: str = None,
+        order_direction: str = None,
     ) -> FixtureResult:
         """
         Find Fixtures for a given preset and date range.
@@ -68,10 +92,39 @@ class Fixtures(Search):
 
         """
 
+        exclude_params: Dict[str, Any] = {
+            "filter_origins": convert_to_list(exclude_origins),
+            "filter_destinations": convert_to_list(exclude_destinations),
+            "filter_products": convert_to_list(exclude_products),
+            "filter_vessels": convert_to_list(exclude_vessels),
+            "filter_vessel_classes": convert_to_list(exclude_vessel_classes),
+            "filter_charterers": convert_to_list(exclude_charterers),
+            "filter_vessel_flags": convert_to_list(exclude_vessel_flags),
+        }
+
         api_params: Dict[str, Any] = {
             filter_time_field: filter_time_field,
             "filter_time_min": to_ISODate(filter_time_min),
             "filter_time_max": to_ISODate(filter_time_max),
+            "ids": convert_to_list(ids),
+            "filter_products": convert_to_list(filter_products),
+            "filter_charterers": convert_to_list(filter_charterers),
+            "filter_owners": convert_to_list(filter_owners),
+            "filter_effective_controllers": convert_to_list(
+                filter_effective_controllers
+            ),
+            "filter_products": convert_to_list(filter_products),
+            "filter_vessels": convert_to_list(filter_vessels),
+            "filter_vessel_classes": convert_to_list(filter_vessel_classes),
+            "filter_destinations": convert_to_list(filter_destinations),
+            "filter_origins": convert_to_list(filter_origins),
+            "filter_vessel_age_min": filter_vessel_age_min,
+            "filter_vessel_age_max": filter_vessel_age_max,
+            "filter_vessel_scrubbers": filter_vessel_scrubbers,
+            "filter_vessel_flags": convert_to_list(filter_vessel_flags),
+            "order": order,
+            "order_direction": order_direction,
+            "exclude": exclude_params,
             "size": self._MAX_PAGE_RESULT_SIZE,
         }
 
