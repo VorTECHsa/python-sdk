@@ -53,5 +53,6 @@ VOYAGES_TIMESERIES = "/voyages/timeseries"
 
 FIXTURES = "/search/fixtures"
 
-API_FQDN = "https://api.vortexa.com"
+# API_FQDN = "https://api.vortexa.com"
+API_FQDN = "http://localhost:3010"
 API_URL = f"{API_FQDN}/v5"

@@ -8,6 +8,7 @@ from vortexasdk.endpoints.endpoints import FIXTURES
 from vortexasdk.operations import Search
 from vortexasdk.api.shared_types import to_ISODate
 from datetime import datetime
+from typing import Any, Dict
 
 
 class Fixtures(Search):
@@ -17,6 +18,8 @@ class Fixtures(Search):
 
     """
 
+    _MAX_PAGE_RESULT_SIZE = 500
+
     def __init__(self):
         Search.__init__(self, FIXTURES)
 
@@ -24,7 +27,7 @@ class Fixtures(Search):
         self,
         filter_time_field: str = "fixing_timestamp",
         filter_time_min: datetime = datetime(2020, 1, 1),
-        filter_time_max: datetime = datetime(2020, 1, 31),
+        filter_time_max: datetime = datetime(2020, 1, 2),
     ) -> FixtureResult:
         """
         Find Fixtures for a given preset and date range.
@@ -44,7 +47,7 @@ class Fixtures(Search):
         >>> df = Fixtures().search(
         ...     filter_time_field="fixing_timestamp",
         ...     filter_time_min=datetime(2020, 1, 1),
-        ...     filter_time_max=datetime(2020, 1, 31)
+        ...     filter_time_max=datetime(2020, 1, 2),
         ... ).to_df()
 
         ```
@@ -64,18 +67,15 @@ class Fixtures(Search):
         - The fixture scope is needed to access this endpoint.
 
         """
-        search_params = {
+
+        api_params: Dict[str, Any] = {
             filter_time_field: filter_time_field,
             "filter_time_min": to_ISODate(filter_time_min),
             "filter_time_max": to_ISODate(filter_time_max),
+            "size": self._MAX_PAGE_RESULT_SIZE,
         }
 
-        response = super().search_with_client(
-            exact_term_match=None,
-            response_type=None,
-            headers=None,
-            **search_params
-        )
+        response = super().search_with_client(**api_params)
 
         return FixtureResult(
             records=response["data"], reference=response["reference"]
