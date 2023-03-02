@@ -5,8 +5,8 @@ from vortexasdk.api.vessel import VesselEntity
 
 
 class Entity(BaseModel):
-    id: str = None
-    label: str = None
+    id: Optional[str] = None
+    label: Optional[str] = None
 
 
 class Fixture(BaseModel):

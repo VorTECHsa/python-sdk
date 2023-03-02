@@ -67,3 +67,4 @@ from vortexasdk.endpoints.voyages_congestion_breakdown import (
 )
 from vortexasdk.endpoints.voyages_top_hits import VoyagesTopHits
 from vortexasdk.endpoints.voyages_search_enriched import VoyagesSearchEnriched
+from vortexasdk.endpoints.fixtures import Fixtures

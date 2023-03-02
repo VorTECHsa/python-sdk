@@ -14,6 +14,7 @@ from vortexasdk.endpoints import (
     VesselAvailabilitySearch,
     VesselAvailabilityTimeseries,
     VesselAvailabilityBreakdown,
+    Fixtures,
     FleetUtilisationTimeseries,
     FleetUtilisationSpeedBreakdown,
     FleetUtilisationAvgDistanceTimeseries,
