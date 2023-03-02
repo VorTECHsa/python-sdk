@@ -23,9 +23,76 @@ class FixtureResult(Result):
         Represent Fixtures as a `pd.DataFrame`.
 
         # Arguments
-            columns: The Fixtures columns we want in the dataframe. Enter `columns='all'` to include all columns.
-            Defaults to `columns = ["id", "vessel", "laycan_from", "laycan_to", "tones", "fixing_timestamp", 'fulfilled', 'vtx_fulfilled', 'destination','origin', 'product', 'charterer']`.
+            columns: The Fixtures columns we want in the dataframe.
+            Defaults to `columns = [
+                "id",
+                'vessels.corporate_entities.charterer.id',
+                'vessels.corporate_entities.charterer.label',
+                'vessels.corporate_entities.charterer.layer',
+                'vessels.corporate_entities.charterer.probability',
+                'vessels.corporate_entities.charterer.source',
+                'vessels.corporate_entities.effective_controller.id',
+                'vessels.corporate_entities.effective_controller.label',
+                'vessels.corporate_entities.effective_controller.layer',
+                'vessels.corporate_entities.effective_controller.probability',
+                'vessels.corporate_entities.effective_controller.source',
+                'vessels.corporate_entities.time_charterer.end_timestamp',
+                'vessels.corporate_entities.time_charterer.id',
+                'vessels.corporate_entities.time_charterer.label',
+                'vessels.corporate_entities.time_charterer.layer',
+                'vessels.corporate_entities.time_charterer.probability',
+                'vessels.corporate_entities.time_charterer.source',
+                'vessels.corporate_entities.time_charterer.start_timestamp',
+                'vessels.cubic_capacity',
+                'vessels.dwt',
+                'vessels.end_timestamp',
+                'vessels.fixture_fulfilled',
+                'vessels.fixture_id',
+                'vessels.id',
+                'vessels.imo',
+                'vessels.mmsi',
+                'vessels.name',
+                'vessels.start_timestamp',
+                'vessels.status',
+                'vessels.tags.end_timestamp',
+                'vessels.tags.start_timestamp',
+                'vessels.tags.tag',
+                'vessels.vessel_class',
+                'vessels.voyage_id',
+                "laycan_from",
+                "laycan_to",
+                "tones",
+                "fixing_timestamp",
+                "fulfilled",
+                "vtx_fulfilled",
+                "destination.label",
+                "destination.id",
+                "origin.label",
+                "origin.id",
+                "product.label",
+                "product.id",
+                "charterer.label",
+                "charterer.id",
+            ]`.
 
+        A near complete list of columns is given below
+        ```python
+        [
+            "id",
+            "vessel.id",
+            "vessel.name",
+            "laycan_from",
+            "laycan_to",
+            "tones",
+            "fixing_timestamp",
+            "fulfilled",
+            "vtx_fulfilled",
+            "destination.label",
+            "origin.label",
+            "product.label",
+            "charterer.label",
+        ]
+        ```
 
         # Returns
         `pd.DataFrame` of Fixtures.
@@ -40,15 +107,16 @@ class FixtureResult(Result):
 
 DEFAULT_COLUMNS = [
     "id",
-    "vessel",
+    "vessel.id",
+    "vessel.name",
     "laycan_from",
     "laycan_to",
     "tones",
     "fixing_timestamp",
     "fulfilled",
     "vtx_fulfilled",
-    "destination",
-    "origin",
-    "product",
-    "charterer",
+    "destination.label",
+    "origin.label",
+    "product.label",
+    "charterer.label",
 ]

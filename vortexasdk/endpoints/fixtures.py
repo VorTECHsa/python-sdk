@@ -57,7 +57,53 @@ class Fixtures(Search):
         Find Fixtures for a given preset and date range.
 
         # Arguments
+        filter_time_field: The field that the time range should be filtered against.
 
+        filter_time_min: The UTC start date of the time filter.
+
+        filter_time_max: The UTC end date of the time filter.
+
+        ids: Filter specific fixtures.
+
+        filter_charterers: A charterer ID, or list of charterer IDs to filter on.
+
+        filter_destinations: A geography ID, or list of geography IDs to filter on.
+
+        filter_origins: A geography ID, or list of geography IDs to filter on.
+
+        filter_effective_controllers: An effective controller ID, or list of effective controller IDs to filter on.
+
+        filter_products: A product ID, or list of product IDs to filter on.
+
+        filter_vessels: A vessel ID, or list of vessel IDs to filter on.
+
+        filter_vessel_classes: A vessel class, or list of vessel classes to filter on.
+
+        filter_vessel_age_min: A number between 1 and 100 (representing years).
+
+        filter_vessel_age_max: A number between 1 and 100 (representing years).
+
+        filter_vessel_scrubbers: Either inactive 'disabled', or included 'inc' or excluded 'exc'.
+
+        filter_vessel_flags: A vessel flag, or list of vessel flags to filter on.
+
+        exclude_origins: A geography ID, or list of geography IDs to exclude.
+
+        exclude_destinations: A geography ID, or list of geography IDs to exclude.
+
+        exclude_products: A product ID, or list of product IDs to exclude.
+
+        exclude_vessels: A vessel ID, or list of vessel IDs to exclude.
+
+        exclude_vessel_classes: A vessel class, or list of vessel classes to exclude.
+
+        exclude_charterers: A charterer ID, or list of charterer IDs to exclude.
+
+        exclude_vessel_flags: A geography ID, or list of geography IDs to exclude.
+
+        order: Used to sort the returned results.
+
+        order_direction: Determines the direction of sorting.
 
         # Returns
         List of Fixtures objects.
@@ -78,13 +124,9 @@ class Fixtures(Search):
 
         returns
 
-        | date                     | forecast_fri     | value | stocks | cover | runs |
-        | ------------------------ | ---------------- | ----- | ------ | ----- | ---- |
-        | 2020-01-31T00:00:00.000Z | 454.96048964485  | 323   | 9541   | 26.5  | 65.9 |
-        | 2020-01-24T00:00:00.000Z | 545.453497230504 | 579   | 10461  | 25.9  | 61.5 |
-        | 2020-01-17T00:00:00.000Z | 510.289752707662 | 549   | 10325  | 25.2  | 64.7 |
-        | 2020-01-10T00:00:00.000Z | 469.841470826967 |       |        |       |      |
-        | 2020-01-03T00:00:00.000Z | 640.443229654771 |       |        |       |      |
+        | vessel.name              | tones            | origin.label | product.label |
+        | ------------------------ | ---------------- | ------------ | ------------- |
+        | ALPINE EAGLE             | 454.96048964485  | UK           | Crude         |
 
         Some values can be NULL: value, stocks, cover, runs. It can happen when:
 
