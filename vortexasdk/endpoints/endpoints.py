@@ -51,5 +51,7 @@ VOYAGES_TOP_HITS = "/voyages/top-hits"
 VOYAGES_CONGESTION_BREAKDOWN = "/voyages/congestion-breakdown"
 VOYAGES_TIMESERIES = "/voyages/timeseries"
 
+FIXTURES = "/search/fixtures"
+
 API_FQDN = "https://api.vortexa.com"
 API_URL = f"{API_FQDN}/v5"
