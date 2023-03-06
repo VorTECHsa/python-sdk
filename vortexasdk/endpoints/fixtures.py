@@ -16,7 +16,7 @@ from vortexasdk.utils import convert_to_list
 class Fixtures(Search):
     """Fixtures Endpoint, use this to search through Vortexa's Fixtures data.
 
-    A detailed explanation of Cargo/Vessel Movements can be found [here](https://docs.vortexa.com/reference/intro-fixtures).
+    A detailed explanation of the fixtures can be found [here](https://docs.vortexa.com/reference/intro-fixtures).
 
     """
 
@@ -54,7 +54,7 @@ class Fixtures(Search):
         order_direction: str = None,
     ) -> FixtureResult:
         """
-        Find Fixtures for a given preset and date range.
+        Find Fixtures matching filters and date range.
 
         # Arguments
         filter_time_field: The field that the time range should be filtered against.
