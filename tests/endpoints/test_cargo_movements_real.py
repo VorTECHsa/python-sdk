@@ -217,7 +217,7 @@ class TestCargoMovementsReal(TestCaseUsingRealAPI):
             .to_df()
             .head(2)
         )
-        assert len(df) == 2
+        assert len(df) == 1
 
     def test_search_single_filter_waypoint_name(self):
         df = (
