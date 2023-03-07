@@ -52,6 +52,7 @@ class Fixtures(Search):
         exclude_vessel_flags: Union[ID, List[ID]] = None,
         order: str = None,
         order_direction: str = None,
+        size: int = None,
     ) -> FixtureResult:
         """
         Find Fixtures matching filters and date range.
@@ -166,7 +167,7 @@ class Fixtures(Search):
             "order": order,
             "order_direction": order_direction,
             "exclude": exclude_params,
-            "size": self._MAX_PAGE_RESULT_SIZE,
+            "size": size if size is not None else self._MAX_PAGE_RESULT_SIZE,
         }
 
         response = super().search_with_client(**api_params)
