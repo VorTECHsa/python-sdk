@@ -68,7 +68,6 @@ class TestVoyagesTopHits(TestCaseUsingRealAPI):
         assert list(df.columns) == ["id", "value", "count", "label"]
 
     def test_with_params(self):
-
         df = (
             VoyagesTopHits()
             .search(

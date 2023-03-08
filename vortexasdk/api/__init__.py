@@ -39,3 +39,4 @@ from vortexasdk.api.eia_forecast import EIAForecast
 from vortexasdk.api.vessel_availability import VesselAvailability
 from vortexasdk.api.voyages import CongestionBreakdownItem
 from vortexasdk.api.aggregation_breakdown_item import AggregationBreakdownItem
+from vortexasdk.api.fixture import Fixture

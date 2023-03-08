@@ -94,7 +94,6 @@ class TestFleetUtilisationSpeedBreakdownReal(TestCaseUsingRealAPI):
         ]
 
     def test_with_params(self):
-
         df = (
             FleetUtilisationSpeedBreakdown()
             .search(

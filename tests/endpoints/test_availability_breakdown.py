@@ -4,7 +4,6 @@ from tests.testcases import TestCaseUsingRealAPI
 
 class TestVesselAvailabilityBreakdown(TestCaseUsingRealAPI):
     def test_search(self):
-
         rotterdam = (
             "68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e"
         )
