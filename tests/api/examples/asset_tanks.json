@@ -1,19 +1,19 @@
 [
 	{
-		"id": "5a00414227f80d50153c7aa632bb2a73e0bdf1b5dfda4809cb11508f17e533dc",
-		"name": "AAM002",
+		"id": "6114b93026e61993797db33a46a5d2acbeacdbd63238a4271efaeafcee94b1d2",
+		"name": "AAM001",
 		"storage_terminal_name": "South Pars Kangan Site - Phase 14",
 		"storage_terminal_id": "0f04619ee6f579bef68e8a02e50fc40607743c0cf058f28822daf55e95b94109",
 		"storage_type": "commercial",
-		"radius": 38.5,
-		"capacity_bbl": 583145,
-		"capacity_ton": 79732.832705,
-		"capacity_cbm": 92713.05726,
+		"radius": 39,
+		"capacity_bbl": 645201,
+		"capacity_ton": 88217.68752899999,
+		"capacity_cbm": 102579.216588,
 		"leaf": true,
-		"lon": 52.161814,
-		"lat": 27.746083,
+		"lat": 52.2186,
+		"lon": 27.7103,
 		"crude_confidence": "confirmed",
-		"last_updated": "2021-09-20T09:31:25.221Z",
+		"last_updated": "2021-08-03T14:34:18.533Z",
 		"location_id": "b839dc5fee39ff7efd5e1cf2494b3b59f448cfee7e515491a98cb898df9f73ef",
 		"location_details": [
 			{

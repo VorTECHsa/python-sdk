@@ -41,7 +41,7 @@ class AssetTanks(Reference, Search):
 
     |    | id                      | capacity_bbl | crude_confidence | location_id                     | name   | storage_type | lat | lon |
     |---:|:------------------------|:-------------|:-----------------|:--------------------------------|:-------|:-------------|-----|-----|
-    |  0 | 6114b93026e61993797d... | 645201       | confirmed         | b839dc5fee39ff7efd5e1cf2494... | AAM001 | tbd          |  90 | 180 |
+    |  0 | 6114b93026e61993797d... | 645201       | confirmed         | b839dc5fee39ff7efd5e1cf2494... | AAM001 | commercial   |  90 | 180 |
 
 
     """
