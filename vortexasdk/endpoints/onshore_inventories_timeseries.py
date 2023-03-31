@@ -52,7 +52,7 @@ class OnshoreInventoriesTimeseries(Search):
             corporate_entity_ids: An array of owner ID(s) to filter on.
             crude_confidence: An array of confidence metrics to filter on. Possible values are: `'confirmed’`, `‘probable’`, `‘unlikely’`
             location_ids: An array of geography ID(s) to filter on.
-            storage_types: An array of storage types to filter on. Possible values are: `'refinery'`, `'non-refinery'`, `'commercial'`, `'spr'`, `'tbd'`
+            storage_types: An array of storage types to filter on. Possible values are: `'refinery'`, `'commercial'`, `'spr'`.
             asset_tank_ids: An array of unique Asset Tanks ID(s) to filter on - linked to the Asset Tank Reference data.
             time_min: The UTC start date of the time filter.
             time_max: The UTC end date of the time filter.

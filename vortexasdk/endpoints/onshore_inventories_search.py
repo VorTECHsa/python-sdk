@@ -49,7 +49,7 @@ class OnshoreInventoriesSearch(Search):
             location_ids: An array of geography ID(s) to filter on.
             measurement_ids: An array of unique measurements (each COI measurement) to filter on.
             size: Used to page results. The size of the result set. Between 0 and 500.
-            storage_types: An array of storage types to filter on. Possible values are: `'refinery'`, `'non-refinery'`, `'commercial'`, `'spr'`, `'tbd'`,.
+            storage_types: An array of storage types to filter on. Possible values are: `'refinery'`, `'commercial'`, `'spr'`.
             time_min: The UTC start date of the time filter.
             time_max: The UTC end date of the time filter.
 
