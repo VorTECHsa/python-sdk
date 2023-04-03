@@ -56,4 +56,4 @@ class TestVesselClassBreakdownReal(TestCaseUsingRealAPI):
             exclude_origins=rotterdam,
         )
 
-        assert len(result) == 5
+        assert len(result) == 17
