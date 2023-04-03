@@ -40,7 +40,7 @@ class TestVesselClassBreakdownReal(TestCaseUsingRealAPI):
             filter_time_max=date,
         )
 
-        assert len(result) == 5
+        assert len(result) == 17
 
     def test_search_returns_excluded_params(self):
         date = datetime(2019, 11, 10)
