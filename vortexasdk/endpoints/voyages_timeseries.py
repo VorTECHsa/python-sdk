@@ -58,6 +58,8 @@ class VoyagesTimeseries(Search):
         destinations_excluded: Union[ID, List[ID]] = None,
         locations: Union[ID, List[ID]] = None,
         locations_excluded: Union[ID, List[ID]] = None,
+        congestion_target_location: Union[str, List[str]] = None,
+        congestion_target_location_excluded: Union[str, List[str]] = None,
         vessels: Union[ID, List[ID]] = None,
         vessels_excluded: Union[ID, List[ID]] = None,
         flags: Union[ID, List[ID]] = None,
@@ -159,6 +161,10 @@ class VoyagesTimeseries(Search):
 
             locations_excluded: A location ID, or list of location IDs to exclude.
 
+            congestion_target_location: A congestion location ID, or list of congestion location IDs to filter on.
+
+            congestion_target_location_excluded: A congestion location ID, or list of congestion location IDs to exclude.
+
             vessels: A vessel ID or vessel class, or list of vessel IDs/vessel classes to filter on.
 
             vessels_excluded: A vessel ID or vessel class, or list of vessel IDs/vessel classes to exclude.
@@ -250,6 +256,9 @@ class VoyagesTimeseries(Search):
             "origins": convert_to_list(origins),
             "destinations": convert_to_list(destinations),
             "locations": convert_to_list(locations),
+            "congestion_target_location": convert_to_list(
+                congestion_target_location
+            ),
             "flags": convert_to_list(flags),
             "ice_class": convert_to_list(ice_class),
             "vessel_propulsion": convert_to_list(vessel_propulsion),
@@ -296,6 +305,9 @@ class VoyagesTimeseries(Search):
             "origins_excluded": convert_to_list(origins_excluded),
             "destinations_excluded": convert_to_list(destinations_excluded),
             "locations_excluded": convert_to_list(locations_excluded),
+            "congestion_target_location_excluded": convert_to_list(
+                congestion_target_location_excluded
+            ),
             "flags_excluded": convert_to_list(flags_excluded),
             "ice_class_excluded": convert_to_list(ice_class_excluded),
             "vessel_propulsion_excluded": convert_to_list(
