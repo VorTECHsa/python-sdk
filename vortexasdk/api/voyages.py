@@ -72,6 +72,7 @@ class VoyageVesselEvent(BaseModel):
     """
 
     event_id: Optional[str] = None
+    value: Optional[str] = None
     event_group: Optional[str] = None
     event_type: Optional[str] = None
     location_id: Optional[str] = None
@@ -104,6 +105,7 @@ class VoyageCargoEvent(BaseModel):
     """
 
     event_id: Optional[str] = None
+    value: Optional[str] = None
     event_group: Literal["derived"]
     event_type: Optional[str] = None
     cargo_movement_id: Optional[str] = None
