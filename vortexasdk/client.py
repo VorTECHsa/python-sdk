@@ -96,14 +96,26 @@ class VortexaClient:
             # Only one page response, no need to send another request, so return flattened response
             return {"reference": {}, "data": probe_response["data"]}
         else:
-            # Multiple pages available, create offsets and fetch all responses
-            responses = self._process_multiple_pages(
-                total=total,
-                url=url,
-                payload=payload,
-                data=data,
-                headers=headers,
-            )
+            pagination_strategy = _load_pagination_strategy()
+            logger.debug(f"Sending post request with pagination: {pagination_strategy}")
+            if pagination_strategy == 'SEARCH_AFTER':
+                # Wait for the response to retrieve new request
+                responses = self._process_multiple_pages_with_search_after(
+                    total=total,
+                    url=url,
+                    payload=payload,
+                    data=data,
+                    headers=headers,
+                )
+            else:
+                # Multiple pages available, create offsets and fetch all responses
+                responses = self._process_multiple_pages(
+                    total=total,
+                    url=url,
+                    payload=payload,
+                    data=data,
+                    headers=headers,
+                )
 
             flattened = self._flatten_response(responses)
 
@@ -112,6 +124,8 @@ class VortexaClient:
                     f"Incorrect number of records returned from API. This could be because data upstream updated during your request."
                 )
                 warn(f"Actual: {len(flattened)}, expected: {total}")
+
+            logger.info(f"Total records returned: {total}")
 
             return {"reference": {}, "data": flattened}
 
@@ -154,6 +168,24 @@ class VortexaClient:
                 )
 
                 return pool.map(func, offsets)
+
+    def _process_multiple_pages_with_search_after(
+        self, total: int, url: str, payload: Dict, data: Dict, headers
+    ) -> List:
+        responses = []
+        size = data.get("size", 500)
+
+        first_response = _send_post_request(url, payload, size, 0, headers)
+        responses.append(first_response.get("data", []))
+        next_request = first_response.get("next_request")
+
+        while next_request:
+            logger.warn(f"Sending post request with search_after")
+            dict_response = _send_post_request(url, next_request, size, 0, headers)
+            responses.append(dict_response.get("data", []))
+            next_request = dict_response.get("next_request")
+
+        return responses
 
     @staticmethod
     def _cleanse_payload(payload: Dict) -> Dict:
@@ -314,6 +346,14 @@ def _load_api_key():
             "You must either set the VORTEXA_API_KEY environment variable, or interactively enter your Vortexa API key."
             " Your API key can be found at https://docs.vortexa.com"
         )
+
+
+def _load_pagination_strategy():
+    """Read pagination strategy from environment variables"""
+    try:
+        return os.environ["VORTEXA_API_PAGINATION_STRATEGY"]
+    except KeyError:
+        return 'OFFSET'
 
 
 def verify_api_key_format(api_key: str) -> None:

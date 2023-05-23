@@ -1,14 +1,29 @@
+import pytest
 from datetime import datetime
+import os
 
 from tests.testcases import TestCaseUsingRealAPI
 from tests.timer import Timer
 from vortexasdk import Geographies, Corporations, Products
 from vortexasdk.endpoints.cargo_movements import CargoMovements
 
-
 class TestCargoMovementsReal(TestCaseUsingRealAPI):
+    @pytest.fixture(autouse=True)
+    def setup_before_each(self):
+        # Perform setup actions before each test
+        print("Before each test: Setup actions")
+        os.environ["VORTEXA_API_PAGINATION_STRATEGY"] = "OFFSET"
+
     def test_default_search(self):
         CargoMovements().search(filter_activity="loading_state")
+
+    def test_full_search_with_search_after(self):
+        os.environ["VORTEXA_API_PAGINATION_STRATEGY"] = "SEARCH_AFTER"
+        CargoMovements().search(filter_activity="loading_state", filter_time_min=datetime(2023, 4, 30), filter_time_max=datetime(2023, 5, 1))
+
+    def test_full_search_with_offset(self):
+        os.environ["VORTEXA_API_PAGINATION_STRATEGY"] = "OFFSET"
+        CargoMovements().search(filter_activity="loading_state", filter_time_min=datetime(2023, 4, 30), filter_time_max=datetime(2023, 5, 1))
 
     def test_search_returns_unique_results(self):
         result = CargoMovements().search(
