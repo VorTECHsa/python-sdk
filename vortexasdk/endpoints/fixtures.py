@@ -19,33 +19,33 @@ class Fixtures(Search):
     A detailed explanation of the fixtures can be found [here](https://docs.vortexa.com/reference/intro-fixtures).
     Limitation
 
-    Fixtures are available through the UI, API & SDK only by permission from our shipbroker partner only. 
+    Fixtures are available through the UI, API & SDK only by permission from our shipbroker partner only.
     If we limit API access to certain products then you can only pull the fixtures data for said product e.g. CPP only, then they only have access to CPP fixtures.
-    
+
     For an API key to have access to the endpoint, it needs the scopes "v.r.fix" and "v.r.ais".
 
     # What conditions produce a Fixture 'fulfilled' status? - Internal
 
     In terms of the data, we use the laycan and the mapped fixture 'origin'.
- 
-    Historical movements: The start timestamp of the loading event must be within the 5-day laycan window 
-    (even if the laycan window is less than 5 days, we expand it to 5), or the laycan must be within the start and end 
-    timestamp of the loading event and the fixture's origin hierarchy must agree with the actual loading polygon's 
+
+    Historical movements: The start timestamp of the loading event must be within the 5-day laycan window
+    (even if the laycan window is less than 5 days, we expand it to 5), or the laycan must be within the start and end
+    timestamp of the loading event and the fixture's origin hierarchy must agree with the actual loading polygon's
     hierarchy.
 
-    Future movements: The vessel can be in the reported fixture origin within the laycan window give or take 3 days. 
-    We also compare the predicted destination's hierarchy with the fixture's origin hierarchy. 
-    An agreement (given that the previous feasibility condition is met) is a sufficient condition to create a movement. 
-    When there is disagreement or we don't have a predicted destination, we take into account other factors 
+    Future movements: The vessel can be in the reported fixture origin within the laycan window give or take 3 days.
+    We also compare the predicted destination's hierarchy with the fixture's origin hierarchy.
+    An agreement (given that the previous feasibility condition is met) is a sufficient condition to create a movement.
+    When there is disagreement or we don't have a predicted destination, we take into account other factors
     (e.g. if the destination is a waypoint, we treat them as agreeing).
 
     # Fixture status
     Fixture status indicates the point that the deal has reached in its evolution from "Subs" for vessels on subjects,
-    to "Fxd" for fixed vessels or sometimes "Failed" or "FLD" for failed fixtures or sometimes "RPLC" for a 
+    to "Fxd" for fixed vessels or sometimes "Failed" or "FLD" for failed fixtures or sometimes "RPLC" for a
     replacement fixture or "Conf" for confirmed and "Corr" for corrected.
 
     #### What does the model do in the case of exact duplicates?
-    
+
     - For historical movements, we don't have a particular logic.
     - For future movements, we apply our own internal sorting procedure.
 
