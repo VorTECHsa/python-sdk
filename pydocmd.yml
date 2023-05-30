@@ -19,6 +19,9 @@ generate:
   - endpoints/vessels.md:
       - vortexasdk.endpoints.vessels++
       - vortexasdk.endpoints.vessels_result++
+  - endpoints/fixtures.md:
+      - vortexasdk.endpoints.fixtures++
+      - vortexasdk.endpoints.fixtures_result++
   - endpoints/geographies.md:
       - vortexasdk.endpoints.geographies++
       - vortexasdk.endpoints.geographies_result++
