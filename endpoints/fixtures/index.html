@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Fleet utilisation quantity timeseries - VortexaSDK</title>
+  <title>Fixtures - VortexaSDK</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Fleet utilisation quantity timeseries";
-    var mkdocs_page_input_path = "endpoints/fleet_utilisation_quantity_timeseries.md";
+    var mkdocs_page_name = "Fixtures";
+    var mkdocs_page_input_path = "endpoints/fixtures.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -61,7 +61,7 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Endpoints</span></p>
-                <ul>
+                <ul class="current">
                     <li class="toctree-l1"><a class="reference internal" href="../about-endpoints/">About Endpoints</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../attributes/">Attributes</a>
@@ -94,7 +94,9 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../vessels/">Vessels</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../fixtures/">Fixtures</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Fixtures</a>
+    <ul class="current">
+    </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="#">Freight Metrics</a>
     <ul>
@@ -236,11 +238,15 @@
     <li><a href="../..">Docs</a> &raquo;</li>
     
       
+        
+          <li>Endpoints &raquo;</li>
+        
+      
     
-    <li>Fleet utilisation quantity timeseries</li>
+    <li>Fixtures</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/vortechsa/python-sdk/edit/master/docs/endpoints/fleet_utilisation_quantity_timeseries.md"
+        <a href="https://github.com/vortechsa/python-sdk/edit/master/docs/endpoints/fixtures.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -252,38 +258,54 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="vortexasdk.endpoints.fleet_utilisation_quantity_timeseries">vortexasdk.endpoints.fleet_utilisation_quantity_timeseries</h1>
+                <h1 id="vortexasdk.endpoints.fixtures">vortexasdk.endpoints.fixtures</h1>
 
 <p>Try me out in your browser:</p>
-<p><a href="https://mybinder.org/v2/gh/VorTECHsa/python-sdk/master?filepath=docs%2Fexamples%2Ftry_me_out%2Futilisation_quantity_timeseries.ipynb"><img alt="Binder" src="https://img.shields.io/badge/try%20me%20out-launch%20notebook-579ACA.svg?logo=data:image/png;base64,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" /></a></p>
-<h2 id="vortexasdk.endpoints.fleet_utilisation_quantity_timeseries.FleetUtilisationQuantityTimeseries">FleetUtilisationQuantityTimeseries</h2>
+<p><a href="https://mybinder.org/v2/gh/VorTECHsa/python-sdk/master?filepath=docs%2Fexamples%2Ftry_me_out%2Ffixtures.ipynb"><img alt="Binder" src="https://img.shields.io/badge/try%20me%20out-launch%20notebook-579ACA.svg?logo=data:image/png;base64,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" /></a></p>
+<h2 id="vortexasdk.endpoints.fixtures.Fixtures">Fixtures</h2>
 
-<pre><code class="language-python">FleetUtilisationQuantityTimeseries(self)
+<pre><code class="language-python">Fixtures(self)
 </code></pre>
-<p><em><span style="color:red">DEPRECATION NOTE: This endpoint is deprecated. Please refer to Freight Metrics for the new endpoint</span>.</em></p>
-<p>Please note: you will require a subscription to our Freight module to access this endpoint.</p>
-<h3 id="vortexasdk.endpoints.fleet_utilisation_quantity_timeseries.FleetUtilisationQuantityTimeseries.search">search</h3>
+<p>Fixtures Endpoint, use this to search through Vortexa's Fixtures data.</p>
+<p>A detailed explanation of the fixtures can be found <a href="https://docs.vortexa.com/reference/intro-fixtures">here</a>.
+Limitation</p>
+<p>Fixtures are available through the UI, API &amp; SDK only by permission from our shipbroker partner only.
+If we limit API access to certain products then you can only pull the fixtures data for said product e.g. CPP only, then they only have access to CPP fixtures.</p>
+<p>For an API key to have access to the endpoint, it needs the scopes "v.r.fix" and "v.r.ais".</p>
+<p><strong>What conditions produce a Fixture 'fulfilled' status? - Internal</strong></p>
+<p>In terms of the data, we use the laycan and the mapped fixture 'origin'.</p>
+<p>Historical movements: The start timestamp of the loading event must be within the 5-day laycan window
+(even if the laycan window is less than 5 days, we expand it to 5), or the laycan must be within the start and end
+timestamp of the loading event and the fixture's origin hierarchy must agree with the actual loading polygon's
+hierarchy.</p>
+<p>Future movements: The vessel can be in the reported fixture origin within the laycan window give or take 3 days.
+We also compare the predicted destination's hierarchy with the fixture's origin hierarchy.
+An agreement (given that the previous feasibility condition is met) is a sufficient condition to create a movement.
+When there is disagreement or we don't have a predicted destination, we take into account other factors
+(e.g. if the destination is a waypoint, we treat them as agreeing).</p>
+<p><strong>Fixture status</strong></p>
+<p>Fixture status indicates the point that the deal has reached in its evolution from "Subs" for vessels on subjects,
+to "Fxd" for fixed vessels or sometimes "Failed" or "FLD" for failed fixtures or sometimes "RPLC" for a
+replacement fixture or "Conf" for confirmed and "Corr" for corrected.</p>
+<h4 id="what-does-the-model-do-in-the-case-of-exact-duplicates">What does the model do in the case of exact duplicates?</h4>
+<ul>
+<li>For historical movements, we don't have a particular logic.</li>
+<li>For future movements, we apply our own internal sorting procedure.</li>
+</ul>
+<h4 id="when-we-have-2-fixtures-that-are-near-exact-duplicates-but-with-different-freight-rates-or-different-charterers-how-does-the-model-pick">When we have 2 fixtures that are near exact duplicates but with different freight rates or different charterers, how does the model pick?</h4>
+<ul>
+<li>For historical movements, randomly.</li>
+<li>For future movements, we apply our own internal sorting procedure.</li>
+</ul>
+<h3 id="vortexasdk.endpoints.fixtures.Fixtures.search">search</h3>
 
-<pre><code class="language-python">FleetUtilisationQuantityTimeseries.search(self, timeseries_frequency: str = None, timeseries_unit: str = None, timeseries_property: str = None, filter_products: Union[str, List[str]] = None, filter_charterers: Union[str, List[str]] = None, filter_owners: Union[str, List[str]] = None, filter_effective_controllers: Union[str, List[str]] = None, filter_origins: Union[str, List[str]] = None, filter_destinations: Union[str, List[str]] = None, filter_vessels: Union[str, List[str]] = None, filter_vessel_classes: Union[str, List[str]] = None, filter_vessel_flags: Union[str, List[str]] = None, filter_vessel_ice_class: Union[str, List[str]] = None, filter_vessel_propulsion: Union[str, List[str]] = None, filter_vessel_tags: Union[List[vortexasdk.api.shared_types.Tag], vortexasdk.api.shared_types.Tag] = None, filter_vessel_risk_levels: Union[str, List[str]] = None, filter_vessel_scrubbers: str = 'disabled', filter_vessel_age_min: int = None, filter_vessel_age_max: int = None, filter_vessel_dwt_min: int = None, filter_vessel_dwt_max: int = None, filter_ship_to_ship: bool = None, filter_charterer_exists: bool = None, filter_activity: str = None, filter_time_min: datetime.datetime = datetime.datetime(2019, 10, 1, 0, 0), filter_time_max: datetime.datetime = datetime.datetime(2019, 10, 1, 1, 0), filter_vessel_status: Union[str, List[str]] = None, exclude_origins: Union[str, List[str]] = None, exclude_destinations: Union[str, List[str]] = None, exclude_products: Union[str, List[str]] = None, exclude_vessels: Union[str, List[str]] = None, exclude_vessel_classes: Union[str, List[str]] = None, exclude_charterers: Union[str, List[str]] = None, exclude_owners: Union[str, List[str]] = None, exclude_effective_controllers: Union[str, List[str]] = None, exclude_vessel_flags: Union[str, List[str]] = None, exclude_vessel_ice_class: Union[str, List[str]] = None, exclude_vessel_propulsion: Union[str, List[str]] = None, exclude_vessel_tags: Union[List[vortexasdk.api.shared_types.Tag], vortexasdk.api.shared_types.Tag] = None, exclude_vessel_risk_levels: Union[str, List[str]] = None) -&gt; vortexasdk.endpoints.breakdown_result.BreakdownResult
+<pre><code class="language-python">Fixtures.search(self, filter_time_field: str = 'fixing_timestamp', filter_time_min: datetime.datetime = datetime.datetime(2020, 1, 1, 0, 0), filter_time_max: datetime.datetime = datetime.datetime(2020, 1, 2, 0, 0), ids: Union[str, List[str]] = None, filter_charterers: Union[str, List[str]] = None, filter_destinations: Union[str, List[str]] = None, filter_origins: Union[str, List[str]] = None, filter_owners: Union[str, List[str]] = None, filter_effective_controllers: Union[str, List[str]] = None, filter_products: Union[str, List[str]] = None, filter_vessels: Union[str, List[str]] = None, filter_vessel_classes: Union[str, List[str]] = None, filter_vessel_age_min: int = None, filter_vessel_age_max: int = None, filter_vessel_scrubbers: str = 'disabled', filter_vessel_flags: Union[str, List[str]] = None, exclude_origins: Union[str, List[str]] = None, exclude_destinations: Union[str, List[str]] = None, exclude_products: Union[str, List[str]] = None, exclude_vessels: Union[str, List[str]] = None, exclude_vessel_classes: Union[str, List[str]] = None, exclude_charterers: Union[str, List[str]] = None, exclude_vessel_flags: Union[str, List[str]] = None, order: str = None, order_direction: str = None, size: int = None) -&gt; vortexasdk.endpoints.fixtures_result.FixtureResult
 </code></pre>
-<p>Sum of cargoes quantity for each day. For frequencies other than ‘day’, the values returned are
-calculated by summing each daily cargo quantity bucket and returning the total.</p>
+<p>Find Fixtures matching filters and date range.</p>
 <p><strong>Arguments</strong></p>
 <ul>
 <li>
-<p><strong>timeseries_unit</strong>: A numeric metric to be calculated for each time bucket. Must be one of <code>'b'</code>, <code>'bpd'</code>, <code>'t'</code>,
-    <code>'tpd'</code>, <code>'c'</code>, <code>'cpd'</code>, corresponding to barrels, barrels per day, metric tonnes, metric tonnes per day,
-    cargo movement count, cargo movement count per day, respectively.</p>
-</li>
-<li>
-<p><strong>timeseries_frequency</strong>: Frequency denoting the granularity of the time series. Must be one of the following: <code>'day'</code>, <code>'week'</code>, <code>'doe_week'</code>, <code>'month'</code>, <code>'quarter'</code>, <code>'year'</code>.</p>
-</li>
-<li>
-<p><strong>timeseries_property</strong>: Property on the vessel movement used to build the value of the aggregation. By default it is “quantity”. Must be one of the following: <code>'quantity’</code>, <code>‘vessel_class’</code>,
-    <code>‘vessel_flag’</code>, <code>‘origin_region’</code>, <code>‘origin_trading_region’</code>, <code>‘origin_trading_sub_region’</code>, <code>‘origin_country’</code>,
-    <code>‘origin_port’</code>, <code>‘origin_terminal’</code>, <code>‘destination_region’</code>, <code>‘destination_trading_region’</code>,
-    <code>‘destination_trading_sub_region’</code>, <code>‘destination_country’</code>, <code>‘destination_port’</code>, <code>‘destination_terminal’</code>,
-    <code>'product_group'</code>, <code>'product_group_product'</code>, <code>'product_category'</code>, <code>'product_grade'</code>.</p>
+<p><strong>filter_time_field</strong>: The field that the time range should be filtered against.</p>
 </li>
 <li>
 <p><strong>filter_time_min</strong>: The UTC start date of the time filter.</p>
@@ -292,19 +314,22 @@ calculated by summing each daily cargo quantity bucket and returning the total.<
 <p><strong>filter_time_max</strong>: The UTC end date of the time filter.</p>
 </li>
 <li>
-<p><strong>filter_products</strong>: A product ID, or list of product IDs to filter on.</p>
+<p><strong>ids</strong>: Filter specific fixtures.</p>
 </li>
 <li>
-<p><strong>filter_charterers</strong>: A charterer entity ID, or list of product IDs to filter on.</p>
+<p><strong>filter_charterers</strong>: A charterer ID, or list of charterer IDs to filter on.</p>
 </li>
 <li>
-<p><strong>filter_effective_controllers</strong>: An effective controller ID, or list of effective controller IDs to filter on.</p>
+<p><strong>filter_destinations</strong>: A geography ID, or list of geography IDs to filter on.</p>
 </li>
 <li>
 <p><strong>filter_origins</strong>: A geography ID, or list of geography IDs to filter on.</p>
 </li>
 <li>
-<p><strong>filter_destinations</strong>: A geography ID, or list of geography IDs to filter on.</p>
+<p><strong>filter_effective_controllers</strong>: An effective controller ID, or list of effective controller IDs to filter on.</p>
+</li>
+<li>
+<p><strong>filter_products</strong>: A product ID, or list of product IDs to filter on.</p>
 </li>
 <li>
 <p><strong>filter_vessels</strong>: A vessel ID, or list of vessel IDs to filter on.</p>
@@ -313,191 +338,184 @@ calculated by summing each daily cargo quantity bucket and returning the total.<
 <p><strong>filter_vessel_classes</strong>: A vessel class, or list of vessel classes to filter on.</p>
 </li>
 <li>
-<p><strong>filter_vessel_flags</strong>: A vessel flag ID, or list of vessel flag IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_vessel_ice_class</strong>: A vessel ice class ID, or list of vessel ice class IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_vessel_propulsion</strong>: A vessel propulsion ID, or list of vessel propulsion IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_vessel_tag</strong>: A time bound vessel tag, or list of time bound vessel tags to filter on.</p>
-</li>
-<li>
-<p><strong>filter_vessel_risk_levels</strong>: A vessel risk level, or list of vessel risk levels to filter on.</p>
-</li>
-<li>
-<p><strong>filter_vessel_scrubbers</strong>: Either inactive 'disabled', or included 'inc' or excluded 'exc'.</p>
-</li>
-<li>
 <p><strong>filter_vessel_age_min</strong>: A number between 1 and 100 (representing years).</p>
 </li>
 <li>
 <p><strong>filter_vessel_age_max</strong>: A number between 1 and 100 (representing years).</p>
 </li>
 <li>
-<p><strong>filter_vessel_age_min</strong>: A number between 0 and 550000.</p>
+<p><strong>filter_vessel_scrubbers</strong>: Either inactive 'disabled', or included 'inc' or excluded 'exc'.</p>
 </li>
 <li>
-<p><strong>filter_vessel_age_max</strong>: A number between 0 and 550000.</p>
+<p><strong>filter_vessel_flags</strong>: A vessel flag, or list of vessel flags to filter on.</p>
 </li>
 <li>
-<p><strong>filter_activity</strong>: Movement activity on which to base the time filter. Must be one of: <code>'loading_state'</code>,
-     <code>'oil_on_water_state'</code>, <code>'unloading_state'</code>, <code>'ship_to_ship'</code>, <code>'storing_state'</code>, <code>'transiting_state'</code></p>
+<p><strong>exclude_origins</strong>: A geography ID, or list of geography IDs to exclude.</p>
 </li>
 <li>
-<p><strong>filter_vessel_status</strong>: The vessel status on which to base the filter. Enter 'vessel_status_ballast' for ballast vessels, 'vessel_status_laden_known' for laden vessels with known cargo (i.e. a type of cargo that Vortexa currently tracks) or 'any_activity' for any other vessels.</p>
+<p><strong>exclude_destinations</strong>: A geography ID, or list of geography IDs to exclude.</p>
 </li>
 <li>
-<p><strong>filter_charterer_exists</strong>: A boolean to include or exclude the records to those that have a charterer.</p>
+<p><strong>exclude_products</strong>: A product ID, or list of product IDs to exclude.</p>
 </li>
 <li>
-<p><strong>filter_ship_to_ship</strong>: A boolean to include or exclude the records to those that are involved in an STS.</p>
+<p><strong>exclude_vessels</strong>: A vessel ID, or list of vessel IDs to exclude.</p>
 </li>
 <li>
-<p><strong>exclude_filter_products</strong>: A product ID, or list of product IDs to exclude.</p>
+<p><strong>exclude_vessel_classes</strong>: A vessel class, or list of vessel classes to exclude.</p>
 </li>
 <li>
-<p><strong>exclude_filter_charterers</strong>: A charterer entity ID, or list of product IDs to exclude.</p>
+<p><strong>exclude_charterers</strong>: A charterer ID, or list of charterer IDs to exclude.</p>
 </li>
 <li>
-<p><strong>exclude_effective_controllers</strong>: An effective controller ID, or list of effective controller IDs to exclude.</p>
+<p><strong>exclude_vessel_flags</strong>: A geography ID, or list of geography IDs to exclude.</p>
 </li>
 <li>
-<p><strong>exclude_filter_origins</strong>: A geography ID, or list of geography IDs to exclude.</p>
+<p><strong>order</strong>: Used to sort the returned results.</p>
 </li>
 <li>
-<p><strong>exclude_filter_destinations</strong>: A geography ID, or list of geography IDs to exclude.</p>
-</li>
-<li>
-<p><strong>exclude_filter_vessels</strong>: A vessel ID, or list of vessel IDs to exclude.</p>
-</li>
-<li>
-<p><strong>exclude_filter_vessel_classes</strong>: A vessel class, or list of vessel classes to exclude.</p>
-</li>
-<li>
-<p><strong>exclude_filter_vessel_ice_class</strong>: A vessel ice class ID, or list of vessel ice class IDs to exclude.</p>
-</li>
-<li>
-<p><strong>exclude_filter_vessel_propulsion</strong>: A vessel propulsion ID, or list of vessel propulsion IDs to exclude.</p>
-</li>
-<li>
-<p><strong>exclude_filter_vessel_tag</strong>: A time bound vessel tag, or list of time bound vessel tags to exclude.</p>
-</li>
-<li>
-<p><strong>exclude_filter_vessel_risk_levels</strong>: A vessel risk level, or list of vessel risk levels to exclude.</p>
+<p><strong>order_direction</strong>: Determines the direction of sorting.</p>
 </li>
 </ul>
 <p><strong>Returns</strong></p>
-<p><code>BreakdownResult</code></p>
-<p><strong>Example</strong></p>
-<p><em>Ton days demand of vessels from the Middle East over the last 7 days.</em></p>
-<pre><code class="language-python">&gt;&gt;&gt; from vortexasdk import FleetUtilisationQuantityTimeseries
-&gt;&gt;&gt; from datetime import datetime
-&gt;&gt;&gt; search_result = FleetUtilisationQuantityTimeseries().search(
-...    filter_vessel_status=&quot;vessel_status_laden_known&quot;,
-...    filter_origins=&quot;80aa9e4f3014c3d96559c8e642157edbb2b684ea0144ed76cd20b3af75110877&quot;,
-...    filter_time_min=datetime(2021, 1, 11),
-...    filter_time_max=datetime(2021, 1, 18),
-...    timeseries_unit=&quot;t&quot;,
-...    timeseries_frequency=&quot;day&quot;,
-...    timeseries_property=&quot;quantity&quot;)
-&gt;&gt;&gt; df = search_result.to_df()
+<p>List of Fixtures objects.</p>
+<p><strong>Examples</strong></p>
+<p>Find Fixtures from January 2020.</p>
+<pre><code class="language-python">&gt;&gt;&gt; from datetime import datetime
+&gt;&gt;&gt; from vortexasdk import Fixtures
+&gt;&gt;&gt; df = Fixtures().search(
+...     filter_time_field=&quot;fixing_timestamp&quot;,
+...     filter_time_min=datetime(2020, 1, 1),
+...     filter_time_max=datetime(2020, 1, 2),
+... ).to_df()
 
 </code></pre>
-<p>Gives the following:</p>
+<p>returns</p>
 <table>
 <thead>
 <tr>
-<th style="text-align: right;"></th>
-<th style="text-align: left;">key</th>
-<th style="text-align: right;">value</th>
-<th style="text-align: right;">count</th>
-<th style="text-align: right;">breakdown.0.label</th>
-<th style="text-align: right;">breakdown.0.value</th>
-<th style="text-align: right;">breakdown.0.count</th>
+<th>vessel.name</th>
+<th>tones</th>
+<th>origin.label</th>
+<th>product.label</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;">7</td>
-<td style="text-align: left;">2021-01-18 00:00:00+00:00</td>
-<td style="text-align: right;">69661114</td>
-<td style="text-align: right;">688</td>
-<td style="text-align: right;">"quantity"</td>
-<td style="text-align: right;">69661114</td>
-<td style="text-align: right;">688</td>
-</tr>
-<tr>
-<td style="text-align: right;">0</td>
-<td style="text-align: left;">2021-01-11 00:00:00+00:00</td>
-<td style="text-align: right;">73208724</td>
-<td style="text-align: right;">738</td>
-<td style="text-align: right;">"quantity"</td>
-<td style="text-align: right;">73208724</td>
-<td style="text-align: right;">738</td>
-</tr>
-<tr>
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">2021-01-12 00:00:00+00:00</td>
-<td style="text-align: right;">73586280</td>
-<td style="text-align: right;">732</td>
-<td style="text-align: right;">"quantity"</td>
-<td style="text-align: right;">73586280</td>
-<td style="text-align: right;">732</td>
-</tr>
-<tr>
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">2021-01-13 00:00:00+00:00</td>
-<td style="text-align: right;">74638888</td>
-<td style="text-align: right;">736</td>
-<td style="text-align: right;">"quantity"</td>
-<td style="text-align: right;">74638888</td>
-<td style="text-align: right;">736</td>
-</tr>
-<tr>
-<td style="text-align: right;">3</td>
-<td style="text-align: left;">2021-01-14 00:00:00+00:00</td>
-<td style="text-align: right;">74958932</td>
-<td style="text-align: right;">746</td>
-<td style="text-align: right;">"quantity"</td>
-<td style="text-align: right;">74958932</td>
-<td style="text-align: right;">746</td>
-</tr>
-<tr>
-<td style="text-align: right;">4</td>
-<td style="text-align: left;">2021-01-15 00:00:00+00:00</td>
-<td style="text-align: right;">74230202</td>
-<td style="text-align: right;">737</td>
-<td style="text-align: right;">"quantity"</td>
-<td style="text-align: right;">74230202</td>
-<td style="text-align: right;">737</td>
-</tr>
-<tr>
-<td style="text-align: right;">5</td>
-<td style="text-align: left;">2021-01-16 00:00:00+00:00</td>
-<td style="text-align: right;">73723336</td>
-<td style="text-align: right;">738</td>
-<td style="text-align: right;">"quantity"</td>
-<td style="text-align: right;">73723336</td>
-<td style="text-align: right;">738</td>
-</tr>
-<tr>
-<td style="text-align: right;">6</td>
-<td style="text-align: left;">2021-01-17 00:00:00+00:00</td>
-<td style="text-align: right;">74216473</td>
-<td style="text-align: right;">751</td>
-<td style="text-align: right;">"quantity"</td>
-<td style="text-align: right;">74216473</td>
-<td style="text-align: right;">751</td>
+<td>ALPINE EAGLE</td>
+<td>454.96048964485</td>
+<td>UK</td>
+<td>Crude</td>
 </tr>
 </tbody>
 </table>
+<p>Some values can be NULL: value, stocks, cover, runs. It can happen when:</p>
+<ul>
+<li>The fixture scope is needed to access this endpoint.</li>
+</ul>
+<h1 id="vortexasdk.endpoints.fixtures_result">vortexasdk.endpoints.fixtures_result</h1>
+
+<h2 id="vortexasdk.endpoints.fixtures_result.FixtureResult">FixtureResult</h2>
+
+<pre><code class="language-python">FixtureResult(__pydantic_self__, **data: Any) -&gt; None
+</code></pre>
+<p>Container class that holds the result obtained from calling the <code>Fixtures</code> endpoint.</p>
+<h3 id="vortexasdk.endpoints.fixtures_result.FixtureResult.to_list">to_list</h3>
+
+<pre><code class="language-python">FixtureResult.to_list(self) -&gt; List[vortexasdk.api.fixture.Fixture]
+</code></pre>
+<p>Represent Fixtures data as a list.</p>
+<h3 id="vortexasdk.endpoints.fixtures_result.FixtureResult.to_df">to_df</h3>
+
+<pre><code class="language-python">FixtureResult.to_df(self, columns=None) -&gt; pandas.core.frame.DataFrame
+</code></pre>
+<p>Represent Fixtures as a <code>pd.DataFrame</code>.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>columns</strong>: The Fixtures columns we want in the dataframe.
+    Defaults to <code>columns = [
+        "id",
+        'vessels.corporate_entities.charterer.id',
+        'vessels.corporate_entities.charterer.label',
+        'vessels.corporate_entities.charterer.layer',
+        'vessels.corporate_entities.charterer.probability',
+        'vessels.corporate_entities.charterer.source',
+        'vessels.corporate_entities.effective_controller.id',
+        'vessels.corporate_entities.effective_controller.label',
+        'vessels.corporate_entities.effective_controller.layer',
+        'vessels.corporate_entities.effective_controller.probability',
+        'vessels.corporate_entities.effective_controller.source',
+        'vessels.corporate_entities.time_charterer.end_timestamp',
+        'vessels.corporate_entities.time_charterer.id',
+        'vessels.corporate_entities.time_charterer.label',
+        'vessels.corporate_entities.time_charterer.layer',
+        'vessels.corporate_entities.time_charterer.probability',
+        'vessels.corporate_entities.time_charterer.source',
+        'vessels.corporate_entities.time_charterer.start_timestamp',
+        'vessels.cubic_capacity',
+        'vessels.dwt',
+        'vessels.end_timestamp',
+        'vessels.fixture_fulfilled',
+        'vessels.fixture_id',
+        'vessels.id',
+        'vessels.imo',
+        'vessels.mmsi',
+        'vessels.name',
+        'vessels.start_timestamp',
+        'vessels.status',
+        'vessels.tags.end_timestamp',
+        'vessels.tags.start_timestamp',
+        'vessels.tags.tag',
+        'vessels.vessel_class',
+        'vessels.voyage_id',
+        "laycan_from",
+        "laycan_to",
+        "tones",
+        "fixing_timestamp",
+        "fulfilled",
+        "vtx_fulfilled",
+        "destination.label",
+        "destination.id",
+        "origin.label",
+        "origin.id",
+        "product.label",
+        "product.id",
+        "charterer.label",
+        "charterer.id",
+    ]</code>.</li>
+</ul>
+<p>A near complete list of columns is given below</p>
+<pre><code class="language-python">[
+    &quot;id&quot;,
+    &quot;vessel.id&quot;,
+    &quot;vessel.name&quot;,
+    &quot;laycan_from&quot;,
+    &quot;laycan_to&quot;,
+    &quot;tones&quot;,
+    &quot;fixing_timestamp&quot;,
+    &quot;fulfilled&quot;,
+    &quot;vtx_fulfilled&quot;,
+    &quot;destination.label&quot;,
+    &quot;origin.label&quot;,
+    &quot;product.label&quot;,
+    &quot;charterer.label&quot;,
+]
+</code></pre>
+<p><strong>Returns</strong></p>
+<p><code>pd.DataFrame</code> of Fixtures.</p>
               
             </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../tonne_miles_timeseries/" class="btn btn-neutral float-right" title="Tonne Miles Time Series">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../vessels/" class="btn btn-neutral" title="Vessels"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -525,6 +543,10 @@ calculated by summing each daily cargo quantity bucket and returning the total.<
         </span>
     
     
+      <span><a href="../vessels/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../tonne_miles_timeseries/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
