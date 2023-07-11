@@ -8,7 +8,6 @@ from vortexasdk.endpoints import (
     Corporations,
     Geographies,
     Products,
-    VesselMovements,
     Vessels,
     TonneMilesBreakdown,
     VesselAvailabilitySearch,

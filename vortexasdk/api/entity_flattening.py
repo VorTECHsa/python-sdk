@@ -41,39 +41,6 @@ def convert_cargo_movement_to_flat_dict(cme: Dict, cols="all") -> Dict:
     else:
         return {k: v for k, v in formatted.items() if k in cols}
 
-
-def convert_vessel_movement_to_flat_dict(vm: Dict, cols="all") -> Dict:
-    """Convert nested `VesselMovement` dict to flat dictionary, keeping *cols*."""
-    as_dict = _group_vessel_movement_attributes_by_layer(vm)
-
-    formatted = flatten_dictionary(as_dict)
-
-    if cols == "all":
-        return formatted
-    else:
-        return {k: v for k, v in formatted.items() if k in cols}
-
-
-def _group_vessel_movement_attributes_by_layer(vm: Dict) -> Dict:
-    """Group relevant `VesselMovement` attributes by `Entity.layer`."""
-    if "origin" in vm.keys():
-        flat_origin = _flatten_attributes(vm["origin"], "location")
-        vm["origin"] = flat_origin
-
-    if "destination" in vm.keys():
-        flat_destination = _flatten_attributes(vm["destination"], "location")
-        vm["destination"] = flat_destination
-
-    if "cargoes" in vm.keys():
-        flat_cargoes = [
-            _flatten_attributes(cargo, "product") for cargo in vm["cargoes"]
-        ]
-        vm["cargoes"] = flat_cargoes
-
-    vm["vessel"] = _flatten_vessel_entity(vm["vessel"])
-    return vm
-
-
 def _group_cargo_movement_attributes_by_layer(cm: Dict) -> Dict:
     """Group relevant `CargoMovement` attributes by `Entity.layer`."""
     vessels = [_flatten_vessel_entity(ve) for ve in cm["vessels"]]
