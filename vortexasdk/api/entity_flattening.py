@@ -41,6 +41,7 @@ def convert_cargo_movement_to_flat_dict(cme: Dict, cols="all") -> Dict:
     else:
         return {k: v for k, v in formatted.items() if k in cols}
 
+
 def _group_cargo_movement_attributes_by_layer(cm: Dict) -> Dict:
     """Group relevant `CargoMovement` attributes by `Entity.layer`."""
     vessels = [_flatten_vessel_entity(ve) for ve in cm["vessels"]]

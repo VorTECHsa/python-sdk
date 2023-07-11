@@ -38,8 +38,6 @@ generate:
       - vortexasdk.api.vessel++
   - entities/cargo_movement.md:
       - vortexasdk.api.cargo_movement++
-  - entities/vessel_movement.md:
-      - vortexasdk.api.vessel_movement++
   - entities/vessel_availability.md:
       - vortexasdk.api.vessel_availability++
   - entities/timeseries_item.md:

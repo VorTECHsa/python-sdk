@@ -22,7 +22,7 @@ def _read(example_file) -> List[Dict]:
 
 example_asset_tanks: List[Dict] = _read("asset_tanks.json")
 example_attributes: List[Dict] = _read("attributes.json")
-example_cargo_movements: List[Dict] = _read("vessel_movements.json")
+example_cargo_movements: List[Dict] = _read("cargo_movements.json")
 example_corporations: List[Dict] = _read("corporations.json")
 example_products: List[Dict] = _read("products.json")
 example_storage_terminals: List[Dict] = _read("storage_terminals.json")
