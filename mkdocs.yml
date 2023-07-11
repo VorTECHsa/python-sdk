@@ -20,7 +20,6 @@ pages:
     EIA Forecasts: endpoints/eia_forecasts.md
     Geographies: endpoints/geographies.md
     Products: endpoints/products.md
-    Vessel Movements: endpoints/vessel_movements.md
     Vessels: endpoints/vessels.md
     Fixtures: endpoints/fixtures.md
     Freight Metrics:

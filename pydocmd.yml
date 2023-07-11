@@ -8,9 +8,6 @@ generate:
   - endpoints/cargo_movements.md:
       - vortexasdk.endpoints.cargo_movements++
       - vortexasdk.endpoints.cargo_movements_result++
-  - endpoints/vessel_movements.md:
-      - vortexasdk.endpoints.vessel_movements++
-      - vortexasdk.endpoints.vessel_movements_result++
   - endpoints/cargo_timeseries.md:
       - vortexasdk.endpoints.cargo_timeseries++
   - endpoints/corporations.md:
@@ -114,7 +111,6 @@ pages:
       Origin Breakdown: endpoints/origin_breakdown.md
       Destination Breakdown: endpoints/destination_breakdown.md
       Cargo Time Series: endpoints/cargo_timeseries.md
-      Vessel Movements: endpoints/vessel_movements.md
       Attributes: endpoints/attributes.md
       Corporations: endpoints/corporations.md
       Geographies: endpoints/geographies.md
