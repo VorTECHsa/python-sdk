@@ -5,6 +5,7 @@ from tests.testcases import TestCaseUsingRealAPI
 
 totalVesselClassBreakdown = 17
 
+
 class TestMovementStatusBreakdownReal(TestCaseUsingRealAPI):
     def test_search_returns_one_day(self):
         date = datetime(2019, 1, 1)
