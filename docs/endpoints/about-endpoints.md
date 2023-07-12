@@ -14,9 +14,8 @@ The VortexaSDK currently contains the following endpoints:
 8. EIA Forecasts
 9. Tonne-miles
 10. Vessel Availability
-11. Fleet Utilisation
-12. Crude Onshore Inventories
-13. Freight Pricing
+11. Crude Onshore Inventories
+12. Freight Pricing
 
 Each endpoint offers either one, or both, of two different functionalities:
 
