@@ -3,6 +3,7 @@ from vortexasdk import MovementStatusBreakdown
 
 from tests.testcases import TestCaseUsingRealAPI
 
+totalVesselClassBreakdown = 17
 
 class TestMovementStatusBreakdownReal(TestCaseUsingRealAPI):
     def test_search_returns_one_day(self):
@@ -15,7 +16,7 @@ class TestMovementStatusBreakdownReal(TestCaseUsingRealAPI):
             filter_time_max=date,
         )
 
-        assert len(result) == 5
+        assert len(result) == totalVesselClassBreakdown
 
     def test_search_returns_multiple_breakdowns(self):
         filter_time_min = datetime(2022, 11, 10)
@@ -44,7 +45,7 @@ class TestMovementStatusBreakdownReal(TestCaseUsingRealAPI):
             filter_time_max=date,
         )
 
-        assert len(result) == 5
+        assert len(result) == totalVesselClassBreakdown
 
     def test_search_returns_excluded_params(self):
         date = datetime(2019, 11, 10)
@@ -61,4 +62,4 @@ class TestMovementStatusBreakdownReal(TestCaseUsingRealAPI):
             exclude_origins=rotterdam,
         )
 
-        assert len(result) == 5
+        assert len(result) == totalVesselClassBreakdown
