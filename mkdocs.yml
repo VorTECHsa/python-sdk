@@ -15,22 +15,13 @@ pages:
     Vessel Class Breakdown: endpoints/vessel_class_breakdown.md
     Origin Breakdown: endpoints/origin_breakdown.md
     Destination Breakdown: endpoints/destination_breakdown.md
-    Cargo Movements: endpoints/cargo_movements.md
     Cargo Time Series: endpoints/cargo_timeseries.md
     Corporations: endpoints/corporations.md
     EIA Forecasts: endpoints/eia_forecasts.md
     Geographies: endpoints/geographies.md
     Products: endpoints/products.md
-    Vessel Movements: endpoints/vessel_movements.md
     Vessels: endpoints/vessels.md
-    Freight Metrics:
-        Tonne Miles Time Series: endpoints/tonne_miles_timeseries.md
-        Tonne Days Time Series: endpoints/tonne_days_timeseries.md
-        Utilisation Time Series: endpoints/utilisation_timeseries.md
-        Average Distance Time Series: endpoints/avg_distance_timeseries.md
-        Average Speed Time Series: endpoints/avg_speed_timeseries.md
-        Origin Breakdown: endpoints/freight_origin_breakdown.md
-        Destination Breakdown: endpoints/freight_destination_breakdown.md
+    Fixtures: endpoints/fixtures.md
     Vessel Availability: 
         Search: endpoints/vessel_availability_search.md
         Time Series: endpoints/vessel_availability_timeseries.md
