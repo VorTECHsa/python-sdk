@@ -10,6 +10,8 @@ from typing import Dict, List, Optional
 from urllib.parse import urlencode
 import uuid
 
+import json
+
 from requests import Response
 from tqdm import tqdm
 from warnings import warn
@@ -195,8 +197,14 @@ class VortexaClient:
         size = data.get("size", 500)
 
         first_response = _send_post_request(url, payload, size, 0, headers)
+
         responses.append(first_response.get("data", []))
         next_request = first_response.get("next_request")
+        search_after = first_response.get("search_after")
+
+        if not next_request and search_after:
+            next_request = dict(payload)
+            next_request["search_after"] = search_after
 
         while next_request:
             logger.warn(f"Sending post request with search_after")
@@ -205,6 +213,10 @@ class VortexaClient:
             )
             responses.append(dict_response.get("data", []))
             next_request = dict_response.get("next_request")
+            search_after = dict_response.get("search_after")
+            if not next_request and search_after:
+                next_request = dict(payload)
+                next_request["search_after"] = search_after
 
         return responses
 
@@ -295,7 +307,13 @@ def _handle_response(
                     "data": data,
                     "total": int(response.headers["x-total"]),
                 }
-
+                if response.headers["x-next-request"] != "undefined":
+                    try:
+                        decoded["search_after"] = json.loads(
+                            response.headers["x-next-request"]
+                        )
+                    except Exception as e:
+                        logger.error(f"error parsing search_after: {e}")
             else:
                 decoded = response.json()
         except JSONDecodeError:
