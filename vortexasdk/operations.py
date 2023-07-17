@@ -123,7 +123,13 @@ class Search:
         headers: dict = None,
         **api_params,
     ) -> SearchResponse:
-        return self.search_with_client_base(exact_term_match, response_type, headers, PAGINATION_STRATEGIES.OFFSET, **api_params)
+        return self.search_with_client_base(
+            exact_term_match,
+            response_type,
+            headers,
+            PAGINATION_STRATEGIES.OFFSET,
+            **api_params,
+        )
 
     def search_with_client_with_search_after(
         self,
@@ -132,7 +138,13 @@ class Search:
         headers: dict = None,
         **api_params,
     ) -> SearchResponse:
-        return self.search_with_client_base(exact_term_match, response_type, headers, PAGINATION_STRATEGIES.SEARCH_AFTER, **api_params)
+        return self.search_with_client_base(
+            exact_term_match,
+            response_type,
+            headers,
+            PAGINATION_STRATEGIES.SEARCH_AFTER,
+            **api_params,
+        )
 
 
 class Record:

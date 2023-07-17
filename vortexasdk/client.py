@@ -61,9 +61,12 @@ class VortexaClient:
         response = retry_get(url)
         return _handle_response(response)["data"]
 
-
     def search_base(
-        self, resource: str, response_type: Optional[str], pagination_strategy: Optional[PAGINATION_STRATEGIES] = None, **data
+        self,
+        resource: str,
+        response_type: Optional[str],
+        pagination_strategy: Optional[PAGINATION_STRATEGIES] = None,
+        **data,
     ) -> SearchResponse:
         """Search using `resource` using `**data` as filter params."""
         url = self._create_url(resource)
@@ -97,7 +100,9 @@ class VortexaClient:
             # Only one page response, no need to send another request, so return flattened response
             return {"reference": {}, "data": probe_response["data"]}
         else:
-            logger.debug(f"Sending post request with pagination: {pagination_strategy}")
+            logger.debug(
+                f"Sending post request with pagination: {pagination_strategy}"
+            )
             if pagination_strategy == PAGINATION_STRATEGIES.SEARCH_AFTER:
                 # Wait for the response to retrieve new request
                 responses = self._process_multiple_pages_with_search_after(
@@ -128,17 +133,21 @@ class VortexaClient:
             logger.info(f"Total records returned: {total}")
 
             return {"reference": {}, "data": flattened}
-    
+
     def search(
         self, resource: str, response_type: Optional[str], **data
     ) -> SearchResponse:
-        return self.search_base(resource, response_type, PAGINATION_STRATEGIES.OFFSET, **data)
+        return self.search_base(
+            resource, response_type, PAGINATION_STRATEGIES.OFFSET, **data
+        )
 
     def searchWithSearchAfter(
         self, resource: str, response_type: Optional[str], **data
     ) -> SearchResponse:
-        return self.search_base(resource, response_type, PAGINATION_STRATEGIES.SEARCH_AFTER, **data)
-    
+        return self.search_base(
+            resource, response_type, PAGINATION_STRATEGIES.SEARCH_AFTER, **data
+        )
+
     def _create_url(self, path: str) -> str:
         return (
             f"{API_URL}{path}?_sdk=python_v{__version__}&apikey={self.api_key}"
@@ -191,7 +200,9 @@ class VortexaClient:
 
         while next_request:
             logger.warn(f"Sending post request with search_after")
-            dict_response = _send_post_request(url, next_request, size, 0, headers)
+            dict_response = _send_post_request(
+                url, next_request, size, 0, headers
+            )
             responses.append(dict_response.get("data", []))
             next_request = dict_response.get("next_request")
 
