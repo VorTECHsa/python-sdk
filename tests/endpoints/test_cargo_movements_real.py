@@ -1,6 +1,4 @@
-import pytest
 from datetime import datetime
-import os
 
 from tests.testcases import TestCaseUsingRealAPI
 from tests.timer import Timer
