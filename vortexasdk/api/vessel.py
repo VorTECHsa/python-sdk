@@ -68,7 +68,7 @@ class Vessel(Node):
 
 class VesselEntity(IDName):
     """
-    A VesselEntity represents a vessel record used in CargoMovements and VesselMovements.
+    A VesselEntity represents a vessel record used in CargoMovements.
 
     [Vessel Entities Further Documentation](https://docs.vortexa.com/reference/intro-vessel-entities)
     """

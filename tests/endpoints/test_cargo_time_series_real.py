@@ -70,7 +70,7 @@ class TestCargoTimeSeries(TestCaseUsingRealAPI):
 
     def test_filter_geographies_and_products(self):
         start = datetime(2019, 1, 1)
-        end = datetime(2019, 11, 1)
+        end = datetime(2019, 10, 31)
 
         rotterdam = [
             g.id
