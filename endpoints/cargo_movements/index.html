@@ -92,29 +92,9 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../products/">Products</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../vessel_movements/">Vessel Movements</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../vessels/">Vessels</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../fixtures/">Fixtures</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="#">Freight Metrics</a>
-    <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../tonne_miles_timeseries/">Tonne Miles Time Series</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../tonne_days_timeseries/">Tonne Days Time Series</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../utilisation_timeseries/">Utilisation Time Series</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../avg_distance_timeseries/">Average Distance Time Series</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../avg_speed_timeseries/">Average Speed Time Series</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../freight_origin_breakdown/">Origin Breakdown</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../freight_destination_breakdown/">Destination Breakdown</a>
-                </li>
-    </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="#">Vessel Availability</a>
     <ul>
@@ -175,7 +155,7 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/vessel/">Vessel</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../entities/vessel_movement/">Vessel Movement</a>
+                    <li class="toctree-l1"><a class="" href="../../entities/vessel_movement.md">Vessel Movement</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/voyages/">Voyages</a>
                     </li>
@@ -203,17 +183,17 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../examples/1_china/">1 China VLCC Discharges</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../examples/2_all_vessel_movements/">2 Laden Vessel Movements</a>
+                    <li class="toctree-l1"><a class="" href="../../examples/2_all_vessel_movements.md">2 Laden Vessel Movements</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../examples/3_crude_from_saudi_arabia_to_india/">3 Crude movements from Saudi Arabia to India</a>
+                    <li class="toctree-l1"><a class="" href="../../examples/3_crude_from_saudi_arabia_to_india.md">3 Crude movements from Saudi Arabia to India</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../examples/4_ballast_movements/">4 Ballast Movements</a>
+                    <li class="toctree-l1"><a class="" href="../../examples/4_ballast_movements.md">4 Ballast Movements</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../examples/5_chinese_daily_imports/">5 Chinese Daily Crude Imports</a>
+                    <li class="toctree-l1"><a class="" href="../../examples/5_chinese_daily_imports.md">5 Chinese Daily Crude Imports</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../examples/6_medium_sour_floating_storage/">6 Floating Storage Medium Sour Crude</a>
+                    <li class="toctree-l1"><a class="" href="../../examples/6_medium_sour_floating_storage.md">6 Floating Storage Medium Sour Crude</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../examples/7_custom_excel_charterer_ingestion/">7 Ingest Custom Excel Charterers</a>
+                    <li class="toctree-l1"><a class="" href="../../examples/7_custom_excel_charterer_ingestion.md">7 Ingest Custom Excel Charterers</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../examples/jupyter_notebooks/">Jupyter Notebooks</a>
                     </li>
@@ -270,7 +250,7 @@
 <p>A detailed explanation of Cargo/Vessel Movements can be found <a href="https://docs.vortexa.com/reference/intro-movement-difference">here</a>.</p>
 <h3 id="vortexasdk.endpoints.cargo_movements.CargoMovements.search">search</h3>
 
-<pre><code class="language-python">CargoMovements.search(self, filter_activity: str = None, filter_time_min: datetime.datetime = datetime.datetime(2023, 5, 30, 9, 30, 29, 702838), filter_time_max: datetime.datetime = datetime.datetime(2023, 5, 30, 9, 30, 29, 702841), cm_unit: str = 'b', filter_charterers: Union[str, List[str]] = None, filter_destinations: Union[str, List[str]] = None, filter_origins: Union[str, List[str]] = None, filter_owners: Union[str, List[str]] = None, filter_effective_controllers: Union[str, List[str]] = None, filter_products: Union[str, List[str]] = None, filter_vessels: Union[str, List[str]] = None, filter_vessel_classes: Union[str, List[str]] = None, filter_storage_locations: Union[str, List[str]] = None, filter_ship_to_ship_locations: Union[str, List[str]] = None, filter_waypoints: Union[str, List[str]] = None, filter_vessel_age_min: int = None, filter_vessel_age_max: int = None, filter_vessel_scrubbers: str = 'disabled', filter_vessel_flags: Union[str, List[str]] = None, filter_vessel_ice_class: Union[str, List[str]] = None, filter_vessel_propulsion: Union[str, List[str]] = None, exclude_origins: Union[str, List[str]] = None, exclude_destinations: Union[str, List[str]] = None, exclude_products: Union[str, List[str]] = None, exclude_vessels: Union[str, List[str]] = None, exclude_vessel_classes: Union[str, List[str]] = None, exclude_charterers: Union[str, List[str]] = None, exclude_owners: Union[str, List[str]] = None, exclude_effective_controllers: Union[str, List[str]] = None, exclude_vessel_flags: Union[str, List[str]] = None, exclude_vessel_ice_class: Union[str, List[str]] = None, exclude_vessel_propulsion: Union[str, List[str]] = None, disable_geographic_exclusion_rules: bool = None) -&gt; vortexasdk.endpoints.cargo_movements_result.CargoMovementsResult
+<pre><code class="language-python">CargoMovements.search(self, filter_activity: str = None, filter_time_min: datetime.datetime = datetime.datetime(2023, 7, 17, 8, 18, 20, 387377), filter_time_max: datetime.datetime = datetime.datetime(2023, 7, 17, 8, 18, 20, 387380), cm_unit: str = 'b', filter_charterers: Union[str, List[str]] = None, filter_destinations: Union[str, List[str]] = None, filter_origins: Union[str, List[str]] = None, filter_owners: Union[str, List[str]] = None, filter_effective_controllers: Union[str, List[str]] = None, filter_products: Union[str, List[str]] = None, filter_vessels: Union[str, List[str]] = None, filter_vessel_classes: Union[str, List[str]] = None, filter_storage_locations: Union[str, List[str]] = None, filter_ship_to_ship_locations: Union[str, List[str]] = None, filter_waypoints: Union[str, List[str]] = None, filter_vessel_age_min: int = None, filter_vessel_age_max: int = None, filter_vessel_scrubbers: str = 'disabled', filter_vessel_flags: Union[str, List[str]] = None, filter_vessel_ice_class: Union[str, List[str]] = None, filter_vessel_propulsion: Union[str, List[str]] = None, exclude_origins: Union[str, List[str]] = None, exclude_destinations: Union[str, List[str]] = None, exclude_products: Union[str, List[str]] = None, exclude_vessels: Union[str, List[str]] = None, exclude_vessel_classes: Union[str, List[str]] = None, exclude_charterers: Union[str, List[str]] = None, exclude_owners: Union[str, List[str]] = None, exclude_effective_controllers: Union[str, List[str]] = None, exclude_vessel_flags: Union[str, List[str]] = None, exclude_vessel_ice_class: Union[str, List[str]] = None, exclude_vessel_propulsion: Union[str, List[str]] = None, disable_geographic_exclusion_rules: bool = None) -&gt; vortexasdk.endpoints.cargo_movements_result.CargoMovementsResult
 </code></pre>
 <p>Find CargoMovements matching the given search parameters.</p>
 <p><strong>Arguments</strong></p>
