@@ -23,7 +23,7 @@ from vortexasdk.retry_session import (
     retry_get,
     retry_post,
 )
-from vortexasdk.utils import filter_empty_values
+from vortexasdk.utils import filter_empty_values, PAGINATION_STRATEGIES
 from vortexasdk.version_utils import is_sdk_version_outdated
 from vortexasdk.version import __version__
 from vortexasdk import __name__ as sdk_pkg_name
@@ -61,8 +61,9 @@ class VortexaClient:
         response = retry_get(url)
         return _handle_response(response)["data"]
 
-    def search(
-        self, resource: str, response_type: Optional[str], **data
+
+    def search_base(
+        self, resource: str, response_type: Optional[str], pagination_strategy: Optional[PAGINATION_STRATEGIES] = None, **data
     ) -> SearchResponse:
         """Search using `resource` using `**data` as filter params."""
         url = self._create_url(resource)
@@ -96,9 +97,8 @@ class VortexaClient:
             # Only one page response, no need to send another request, so return flattened response
             return {"reference": {}, "data": probe_response["data"]}
         else:
-            pagination_strategy = _load_pagination_strategy()
             logger.debug(f"Sending post request with pagination: {pagination_strategy}")
-            if pagination_strategy == 'SEARCH_AFTER':
+            if pagination_strategy == PAGINATION_STRATEGIES.SEARCH_AFTER:
                 # Wait for the response to retrieve new request
                 responses = self._process_multiple_pages_with_search_after(
                     total=total,
@@ -128,7 +128,17 @@ class VortexaClient:
             logger.info(f"Total records returned: {total}")
 
             return {"reference": {}, "data": flattened}
+    
+    def search(
+        self, resource: str, response_type: Optional[str], **data
+    ) -> SearchResponse:
+        return self.search_base(resource, response_type, PAGINATION_STRATEGIES.OFFSET, **data)
 
+    def searchWithSearchAfter(
+        self, resource: str, response_type: Optional[str], **data
+    ) -> SearchResponse:
+        return self.search_base(resource, response_type, PAGINATION_STRATEGIES.SEARCH_AFTER, **data)
+    
     def _create_url(self, path: str) -> str:
         return (
             f"{API_URL}{path}?_sdk=python_v{__version__}&apikey={self.api_key}"
@@ -346,14 +356,6 @@ def _load_api_key():
             "You must either set the VORTEXA_API_KEY environment variable, or interactively enter your Vortexa API key."
             " Your API key can be found at https://docs.vortexa.com"
         )
-
-
-def _load_pagination_strategy():
-    """Read pagination strategy from environment variables"""
-    try:
-        return os.environ["VORTEXA_API_PAGINATION_STRATEGY"]
-    except KeyError:
-        return 'OFFSET'
 
 
 def verify_api_key_format(api_key: str) -> None:

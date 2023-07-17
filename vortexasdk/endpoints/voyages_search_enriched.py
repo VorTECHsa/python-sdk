@@ -326,12 +326,12 @@ class VoyagesSearchEnriched(Search):
         }
 
         if columns is None:
-            response = super().search_with_client(**api_params)
+            response = super().search_with_client_with_search_after(**api_params)
             return VoyagesSearchEnrichedListResult(
                 records=response["data"], reference=response["reference"]
             )
         else:
-            response = super().search_with_client(
+            response = super().search_with_client_with_search_after(
                 headers=self._CSV_HEADERS, **api_params
             )
             return VoyagesSearchEnrichedFlattenedResult(

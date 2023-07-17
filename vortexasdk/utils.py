@@ -1,5 +1,5 @@
 from typing import Dict, List, Union
-
+from enum import Enum
 
 def convert_to_list(a) -> List:
     """Convert wraps element in list if element isn't a list already."""
@@ -51,3 +51,8 @@ def sts_param_value(param):
         return {"exclude": True, "x_filter": False}
     else:
         return {"exclude": False, "x_filter": False}
+
+
+class PAGINATION_STRATEGIES(Enum):
+    OFFSET = 'OFFSET'
+    SEARCH_AFTER = 'SEARCH_AFTER'
