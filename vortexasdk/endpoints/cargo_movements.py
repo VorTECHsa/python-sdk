@@ -262,7 +262,7 @@ class CargoMovements(Record, Search):
             "size": self._MAX_PAGE_RESULT_SIZE,
         }
 
-        response = super().search_with_client(**api_params)
+        response = super().search_with_client_with_search_after(**api_params)
 
         return CargoMovementsResult(
             records=response["data"], reference=response["reference"]

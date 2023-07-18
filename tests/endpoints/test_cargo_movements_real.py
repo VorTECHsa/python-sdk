@@ -10,6 +10,13 @@ class TestCargoMovementsReal(TestCaseUsingRealAPI):
     def test_default_search(self):
         CargoMovements().search(filter_activity="loading_state")
 
+    def test_full_search_with_pagination(self):
+        CargoMovements().search(
+            filter_activity="loading_state",
+            filter_time_min=datetime(2023, 4, 30),
+            filter_time_max=datetime(2023, 5, 1),
+        )
+
     def test_search_returns_unique_results(self):
         result = CargoMovements().search(
             filter_activity="loading_state",
