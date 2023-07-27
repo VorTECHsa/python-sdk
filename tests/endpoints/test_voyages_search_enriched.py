@@ -22,6 +22,32 @@ class TestVoyagesSearchEnrichedEnriched(TestCaseUsingRealAPI):
 
         assert len(df) == 2
 
+    def test_search_pagination_on_df(self):
+        start = datetime(2021, 1, 1)
+        end = datetime(2021, 2, 28)
+
+        res = (
+            VoyagesSearchEnriched()
+            .search(
+                time_min=start, time_max=end, origins=rotterdam, columns="all"
+            )
+            .to_df()
+        )
+
+        assert len(res) > 1000
+
+    def test_search_pagination_on_lists(self):
+        start = datetime(2021, 1, 1)
+        end = datetime(2021, 2, 28)
+
+        res = (
+            VoyagesSearchEnriched()
+            .search(time_min=start, time_max=end, origins=rotterdam)
+            .to_list()
+        )
+
+        assert len(res) > 1000
+
     def test_search_returns_some_cols(self):
         start = datetime(2021, 6, 17)
         end = datetime(2021, 6, 21)

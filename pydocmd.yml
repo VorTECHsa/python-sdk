@@ -8,9 +8,6 @@ generate:
   - endpoints/cargo_movements.md:
       - vortexasdk.endpoints.cargo_movements++
       - vortexasdk.endpoints.cargo_movements_result++
-  - endpoints/vessel_movements.md:
-      - vortexasdk.endpoints.vessel_movements++
-      - vortexasdk.endpoints.vessel_movements_result++
   - endpoints/cargo_timeseries.md:
       - vortexasdk.endpoints.cargo_timeseries++
   - endpoints/corporations.md:
@@ -41,8 +38,6 @@ generate:
       - vortexasdk.api.vessel++
   - entities/cargo_movement.md:
       - vortexasdk.api.cargo_movement++
-  - entities/vessel_movement.md:
-      - vortexasdk.api.vessel_movement++
   - entities/vessel_availability.md:
       - vortexasdk.api.vessel_availability++
   - entities/timeseries_item.md:
@@ -63,28 +58,12 @@ generate:
       - vortexasdk.endpoints.movement_status_breakdown++
   - endpoints/vessel_class_breakdown.md:
       - vortexasdk.endpoints.vessel_class_breakdown++
-  - endpoints/tonne_miles_breakdown.md:
-      - vortexasdk.endpoints.tonne_miles_breakdown++
   - endpoints/vessel_availability_search.md:
       - vortexasdk.endpoints.vessel_availability_search++
   - endpoints/vessel_availability_timeseries.md:
       - vortexasdk.endpoints.vessel_availability_timeseries++
   - endpoints/vessel_availability_breakdown.md:
       - vortexasdk.endpoints.vessel_availability_breakdown++
-  - endpoints/fleet_utilisation_speed_breakdown.md:
-      - vortexasdk.endpoints.fleet_utilisation_speed_breakdown++
-  - endpoints/fleet_utilisation_timeseries.md:
-      - vortexasdk.endpoints.fleet_utilisation_timeseries++
-  - endpoints/fleet_utilisation_avg_distance_timeseries.md:
-      - vortexasdk.endpoints.fleet_utilisation_avg_distance_timeseries++
-  - endpoints/fleet_utilisation_quantity_timeseries.md:
-      - vortexasdk.endpoints.fleet_utilisation_quantity_timeseries++
-  - endpoints/fleet_utilisation_capacity_timeseries.md:
-      - vortexasdk.endpoints.fleet_utilisation_capacity_timeseries++
-  - endpoints/fleet_utilisation_origin_breakdown.md:
-      - vortexasdk.endpoints.fleet_utilisation_origin_breakdown++
-  - endpoints/fleet_utilisation_destination_breakdown.md:
-      - vortexasdk.endpoints.fleet_utilisation_destination_breakdown++
   - endpoints/eia_forecasts.md:
       - vortexasdk.endpoints.eia_forecasts++
       - vortexasdk.endpoints.eia_forecasts_result++
@@ -114,24 +93,15 @@ pages:
       Origin Breakdown: endpoints/origin_breakdown.md
       Destination Breakdown: endpoints/destination_breakdown.md
       Cargo Time Series: endpoints/cargo_timeseries.md
-      Vessel Movements: endpoints/vessel_movements.md
       Attributes: endpoints/attributes.md
       Corporations: endpoints/corporations.md
       Geographies: endpoints/geographies.md
       Products: endpoints/products.md
       Vessels: endpoints/vessels.md
       EIA Forecasts: endpoints/eia_forecasts.md
-      Tonne-miles Breakdown: endpoints/tonne_miles_breakdown.md
       Vessel Availability: endpoints/vessel_availability_search.md
       Vessel Availability Time Series: endpoints/vessel_availability_timeseries.md
       Vessel Availability Breakdown: endpoints/vessel_availability_breakdown.md
-      Fleet Utilisation Speed Breakdown: endpoints/fleet_utilisation_speed_breakdown.md
-      Fleet Utilisation Time Series: endpoints/fleet_utilisation_timeseries.md
-      Fleet Utilisation Avg Distance Time Series: endpoints/fleet_utilisation_avg_distance_timeseries.md
-      Fleet Utilisation Quantity Time Series: endpoints/fleet_utilisation_quantity_timeseries.md
-      Fleet Utilisation Capacity Time Series: endpoints/fleet_utilisation_capacity_timeseries.md
-      Fleet Utilisation Origin Breakdown: endpoints/fleet_utilisation_origin_breakdown.md
-      Fleet Utilisation Destination Breakdown: endpoints/fleet_utilisation_destination_breakdown.md
       Asset Tanks: endpoints/asset_tanks.md
       Storage Terminals: endpoints/storage_terminals.md
       Crude Onshore Inventories Search: endpoints/onshore_inventories_search.md
@@ -142,14 +112,6 @@ pages:
       Voyages Time Series: endpoints/voyages_timeseries.md
       Voyages Top Hits: endpoints/voyages_top_hits.md
       Voyages Congestion Breakdown: endpoints/voyages_congestion_breakdown.md
-  - Freight Metrics:
-      Tonne Miles Time Series: endpoints/tonne_miles_timeseries.md << docs/endpoints/freight-metrics/tonne-miles.md
-      Tonne Days Time Series: endpoints/tonne_days_timeseries.md << docs/endpoints/freight-metrics/quantity.md
-      Utilisation Time Series: endpoints/utilisation_timeseries.md << docs/endpoints/freight-metrics/utilisation.md
-      Average Distance Time Series: endpoints/avg_distance_timeseries.md << docs/endpoints/freight-metrics/avg-distance.md
-      Average Speed Time Series: endpoints/avg_speed_timeseries.md << docs/endpoints/freight-metrics/avg-speed.md
-      Origin Breakdown: endpoints/freight_origin_breakdown.md << docs/endpoints/freight-metrics/origin.md
-      Destination Breakdown: endpoints/freight_destination_breakdown.md << docs/endpoints/freight-metrics/destination.md
   - Entities:
       Breakdown Item: entities/breakdown_result.md
       Cargo Movement: entities/cargo_movement.md

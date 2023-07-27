@@ -10,10 +10,10 @@ from vortexasdk.endpoints.endpoints import (
     CORPORATIONS_REFERENCE,
     PRODUCTS_REFERENCE,
     STORAGE_TERMINALS_REFERENCE,
-    VESSEL_MOVEMENTS_RESOURCE,
     VESSELS_REFERENCE,
 )
 from vortexasdk.search_response import SearchResponse
+from vortexasdk.utils import PAGINATION_STRATEGIES
 
 
 def _read(example_file) -> List[Dict]:
@@ -23,12 +23,11 @@ def _read(example_file) -> List[Dict]:
 
 example_asset_tanks: List[Dict] = _read("asset_tanks.json")
 example_attributes: List[Dict] = _read("attributes.json")
-example_cargo_movements: List[Dict] = _read("vessel_movements.json")
+example_cargo_movements: List[Dict] = _read("cargo_movements.json")
 example_corporations: List[Dict] = _read("corporations.json")
 example_products: List[Dict] = _read("products.json")
 example_storage_terminals: List[Dict] = _read("storage_terminals.json")
 example_time_series = _read("cargo_time_series.json")
-example_vessel_movements: List[Dict] = _read("vessel_movements.json")
 example_vessels: List[Dict] = _read("vessels.json")
 
 
@@ -40,7 +39,6 @@ class MockVortexaClient:
         CORPORATIONS_REFERENCE: example_corporations,
         PRODUCTS_REFERENCE: example_products,
         STORAGE_TERMINALS_REFERENCE: example_storage_terminals,
-        VESSEL_MOVEMENTS_RESOURCE: example_vessel_movements,
         VESSELS_REFERENCE: example_vessels,
     }
 
@@ -50,5 +48,14 @@ class MockVortexaClient:
 
     def search(
         self, resource: str, response_type=None, **data
+    ) -> SearchResponse:
+        return {"data": MockVortexaClient._results[resource], "reference": {}}
+
+    def search_base(
+        self,
+        resource: str,
+        response_type=None,
+        pagination_strategy: PAGINATION_STRATEGIES = None,
+        **data,
     ) -> SearchResponse:
         return {"data": MockVortexaClient._results[resource], "reference": {}}
