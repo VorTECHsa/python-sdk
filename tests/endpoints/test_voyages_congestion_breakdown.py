@@ -42,11 +42,12 @@ class TestVoyagesCongestionBreakdown(TestCaseUsingRealAPI):
         start = datetime(2019, 1, 1)
         end = datetime(2019, 11, 10)
 
+        # Limit breakdown to 25 to prevent too many ES buckets down-the-line
         result = VoyagesCongestionBreakdown().search(
-            time_min=start, time_max=end, breakdown_size=100
+            time_min=start, time_max=end, breakdown_size=25
         )
 
-        assert len(result) == 100
+        assert len(result) == 25
 
     def test_to_df(self):
         start = datetime(2019, 11, 1)
