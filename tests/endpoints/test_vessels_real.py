@@ -1,6 +1,5 @@
 from tests.testcases import TestCaseUsingRealAPI
 from tests.timer import Timer
-from vortexasdk import Products
 from vortexasdk.endpoints.vessels import Vessels
 
 
