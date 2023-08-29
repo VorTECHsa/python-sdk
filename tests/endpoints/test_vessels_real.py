@@ -1,5 +1,6 @@
 from tests.testcases import TestCaseUsingRealAPI
 from tests.timer import Timer
+from vortexasdk import Products
 from vortexasdk.endpoints.vessels import Vessels
 
 
@@ -45,15 +46,14 @@ class TestVesselsReal(TestCaseUsingRealAPI):
         assert list(df.columns) == ["id", "name", "imo", "vessel_class"]
         assert len(df) == 2
 
-    # TODO: This test fails. Reason is unknown. Removing for now.
-    # def test_find_crude_vessels(self):
-    #     crude = [
-    #         p.id
-    #         for p in Products().search("crude").to_list()
-    #         if "group" in p.layer
-    #     ]
-    #     df = Vessels().search(vessel_product_types=crude).to_df()
-    #     assert len(df) > 1000
+    def test_find_crude_vessels(self):
+        crude = [
+            p.id
+            for p in Products().search("crude").to_list()
+            if "group" in p.layer
+        ]
+        df = Vessels().search(vessel_product_types=crude).to_df()
+        assert len(df) > 1000
 
     def test_load_all(self):
         all_products = Vessels().load_all()
