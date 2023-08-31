@@ -48,10 +48,9 @@ Try me out in your browser:
 $ pip install vortexasdk
 ```
 
-The SDK requires Python version 3.7 or above, see
-[Setup FAQ](https://vortechsa.github.io/python-sdk/faq_setup/) for more details.
+The SDK requires Python versions between 3.7 and 3.10. See [Setup FAQ](https://vortechsa.github.io/python-sdk/faq_setup/) for more details.
 
-To install the SDK on an Apple ARM-based machine, use Python version to 3.8 or higher and use the latest version of pip. This is supported in the SDK versions 0.41.0 or higher.
+To install the SDK on an Apple ARM-based machine, use Python versions between 3.7 and 3.10 and use the latest version of pip. This is supported in the SDK versions 0.41.0 or higher.
 
 ##### Authentication
 
