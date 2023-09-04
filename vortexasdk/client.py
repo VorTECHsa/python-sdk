@@ -207,7 +207,6 @@ class VortexaClient:
             next_request["search_after"] = search_after
 
         while next_request:
-            logger.warn(f"Sending post request with search_after")
             dict_response = _send_post_request(
                 url, next_request, size, 0, headers
             )
