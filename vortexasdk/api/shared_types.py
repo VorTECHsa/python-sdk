@@ -162,7 +162,7 @@ class Scrubber(BaseModel):
     planned: Optional[bool] = None
 
 
-class VesselClassEntry:
+class VesselClassEntry(BaseModel):
     """
 
     Represents a property that is associated with  the classes of a vessel.
