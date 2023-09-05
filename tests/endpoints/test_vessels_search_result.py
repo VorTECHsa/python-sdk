@@ -105,6 +105,52 @@ class TestVesselsSearchResult(TestCase):
                 "corporate_entities": {0: [], 1: []},
                 "leaf": {0: True, 1: True},
                 "vessel_class": {0: "tiny_tanker", 1: "tiny_tanker"},
+                "classes": {
+                    0: [
+                        {
+                            "id": "vlcc_plus",
+                            "label": "VLCC+",
+                            "layer": "legacy",
+                        },
+                        {
+                            "id": "oil",
+                            "label": "Oil Tankers",
+                            "layer": "group",
+                        },
+                        {
+                            "id": "oil_vlcc",
+                            "label": "VLCC+",
+                            "layer": "coarse",
+                        },
+                        {
+                            "id": "oil_vlcc",
+                            "label": "VLCC+",
+                            "layer": "granular",
+                        },
+                    ],
+                    1: [
+                        {
+                            "id": "vlcc_plus",
+                            "label": "VLCC+",
+                            "layer": "legacy",
+                        },
+                        {
+                            "id": "oil",
+                            "label": "Oil Tankers",
+                            "layer": "group",
+                        },
+                        {
+                            "id": "oil_vlcc",
+                            "label": "VLCC+",
+                            "layer": "coarse",
+                        },
+                        {
+                            "id": "oil_vlcc",
+                            "label": "VLCC+",
+                            "layer": "granular",
+                        },
+                    ],
+                },
                 "cubic_capacity": {0: 7060, 1: 6318},
                 "tags": {
                     0: [
