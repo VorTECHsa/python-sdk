@@ -160,3 +160,9 @@ class Scrubber(BaseModel):
     tag: Optional[str] = None
     scrubber: Optional[str] = None
     planned: Optional[bool] = None
+
+
+class VesselClassEntry:
+    id: Optional[str] = None
+    layer: Optional[str] = None
+    label: Optional[str] = None
