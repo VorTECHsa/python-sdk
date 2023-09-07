@@ -9,3 +9,4 @@ forecasting models. Those notebooks include:
 2. [US Crude Exports Exploration & Forecasting](https://github.com/VorTECHsa/python-sdk/blob/master/docs/examples/US_Crude_Exports.ipynb)
 3. [China Oil Flows during the Covid-19 Outbreak](https://github.com/VorTECHsa/python-sdk/blob/master/docs/examples/China_Flows.ipynb)
 4. [Crude Floating Storage and its relation to Prices](https://github.com/VorTECHsa/python-sdk/blob/master/docs/examples/Crude_Floating_Storage.ipynb)
+5. [Financial services use cases notebook](https://github.com/VorTECHsa/dat-support/blob/master/eda/notebooks/Financial_service_SDK_use_cases.ipynb)
