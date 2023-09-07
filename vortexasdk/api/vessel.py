@@ -10,6 +10,7 @@ from vortexasdk.api.shared_types import (
     Tag,
     Scrubber,
     Flag,
+    VesselClassEntry,
 )
 
 
@@ -46,6 +47,7 @@ class Vessel(Node):
     current_product_type: Optional[List] = None
 
     vessel_class: Optional[str] = None
+    classes: Optional[List[VesselClassEntry]] = None
     vessel_status: Optional[str] = None
 
     corporate_entities: Optional[List[VesselEntityCorporateEntity]] = None
@@ -81,6 +83,7 @@ class VesselEntity(IDName):
     dwt: Optional[int] = None
 
     vessel_class: Optional[str] = None
+    classes: Optional[List[VesselClassEntry]] = None
     corporate_entities: Optional[
         List[VesselEntityCorporateEntityWithConfidence]
     ] = None

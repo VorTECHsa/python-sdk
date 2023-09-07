@@ -6,6 +6,28 @@
   "dwt": 298855,
   "cubic_capacity": 327310,
   "vessel_class": "vlcc_plus",
+  "classes": [
+    {
+      "id": "vlcc_plus",
+      "label": "VLCC+",
+      "layer": "legacy"
+    },
+    {
+      "id": "oil",
+      "label": "Oil Tankers",
+      "layer": "group"
+    },
+    {
+      "id": "oil_vlcc",
+      "label": "VLCC+",
+      "layer": "coarse"
+    },
+    {
+      "id": "oil_vlcc",
+      "label": "VLCC+",
+      "layer": "granular"
+    }
+  ],
   "corporate_entities": [
     {
       "id": "cbd7dfe8a9fb0fa0ce3252ce7643437db6a32d0947a0c23d68dc5dea2f2d65d7",

@@ -12,6 +12,7 @@ from vortexasdk.api.shared_types import (
     ISODate,
     Scrubber,
     Tag,
+    VesselClassEntry,
 )
 
 
@@ -49,6 +50,7 @@ class VoyagesVesselEntity(BaseModel):
     name: Optional[str] = None
     dead_weight: Optional[int] = None
     vessel_class: Optional[str] = None
+    classes: Optional[List[VesselClassEntry]] = None
     imo: Optional[int] = None
     mmsi: Optional[int] = None
     call_sign: Optional[str] = None

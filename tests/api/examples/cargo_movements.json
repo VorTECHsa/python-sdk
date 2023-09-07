@@ -12,6 +12,28 @@
 				"dwt": 5260,
 				"cubic_capacity": 6100,
 				"vessel_class": "tiny_tanker",
+				"classes": [
+					{
+						"id": "vlcc_plus",
+						"label": "VLCC+",
+						"layer": "legacy"
+					},
+					{
+						"id": "oil",
+						"label": "Oil Tankers",
+						"layer": "group"
+					},
+					{
+						"id": "oil_vlcc",
+						"label": "VLCC+",
+						"layer": "coarse"
+					},
+					{
+						"id": "oil_vlcc",
+						"label": "VLCC+",
+						"layer": "granular"
+					}
+				],
 				"corporate_entities": [
 					{
 						"id": "f9bd45e65e292909a7b751b0026dcf7795c6194b3c0712910a241caee32c99b8",
@@ -66,7 +88,10 @@
 				],
 				"vessel_id": "9cbf7c0fc6ccf1dfeacde02b87f3b6b1653030f560d4fc677bf1d7d0be8f8449",
 				"probability": 1,
-				"pos": [4.29914090037834, 51.87936163368058],
+				"pos": [
+					4.29914090037834,
+					51.87936163368058
+				],
 				"start_timestamp": "2019-10-18T21:38:34+0000",
 				"end_timestamp": "2019-10-20T16:41:49+0000"
 			}

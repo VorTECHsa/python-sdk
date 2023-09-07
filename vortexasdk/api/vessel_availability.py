@@ -2,7 +2,11 @@ from pydantic import BaseModel
 from typing import List, Optional
 
 
-from vortexasdk.api.shared_types import EntityWithListLayer, ISODate
+from vortexasdk.api.shared_types import (
+    EntityWithListLayer,
+    ISODate,
+    VesselClassEntry,
+)
 
 
 class DeclaredDestination(BaseModel):
@@ -42,6 +46,7 @@ class VesselAvailability(BaseModel):
     available_at: Optional[ISODate] = None
     evaluated_at: Optional[ISODate] = None
     vessel_class: Optional[str] = None
+    vessel_class_hierarchy: Optional[List[VesselClassEntry]] = None
     vessel_declared_destination: Optional[List[DeclaredDestination]] = None
     vessel_dwt: Optional[int] = None
     vessel_cubic_capacity: Optional[int] = None
