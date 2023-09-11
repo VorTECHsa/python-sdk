@@ -129,12 +129,6 @@ pages:
   - Examples:
       0 Simple Load Cargo Movements: examples/0_sample_load_cargo_movements.md
       1 China VLCC Discharges: examples/1_china.md
-      2 Laden Vessel Movements: examples/2_all_vessel_movements.md
-      3 Crude movements from Saudi Arabia to India: examples/3_crude_from_saudi_arabia_to_india.md
-      4 Ballast Movements: examples/4_ballast_movements.md
-      5 Chinese Daily Crude Imports: examples/5_chinese_daily_imports.md
-      6 Floating Storage Medium Sour Crude: examples/6_medium_sour_floating_storage.md
-      7 Ingest Custom Excel Charterers: examples/7_custom_excel_charterer_ingestion.md
       Jupyter Notebooks: examples/jupyter_notebooks.md
 theme:
   name: readthedocs
