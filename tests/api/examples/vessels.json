@@ -44,6 +44,28 @@
     "corporate_entities": [],
     "leaf": true,
     "vessel_class": "tiny_tanker",
+    "classes": [
+      {
+        "id": "vlcc_plus",
+        "label": "VLCC+",
+        "layer": "legacy"
+      },
+      {
+        "id": "oil",
+        "label": "Oil Tankers",
+        "layer": "group"
+      },
+      {
+        "id": "oil_vlcc",
+        "label": "VLCC+",
+        "layer": "coarse"
+      },
+      {
+        "id": "oil_vlcc",
+        "label": "VLCC+",
+        "layer": "granular"
+      }
+    ],
     "cubic_capacity": 7060,
     "tags": [
       {
@@ -55,7 +77,7 @@
       "vessel"
     ]
   },
-    {
+  {
     "call_sign": "839",
     "dead_weight": 5000,
     "id": "1761da4fb069cd6ce153b6ad1c48e15cdb994eb386e4aafbe8f1bbde993cbaef",
@@ -116,6 +138,28 @@
     "corporate_entities": [],
     "leaf": true,
     "vessel_class": "tiny_tanker",
+    "classes": [
+      {
+        "id": "vlcc_plus",
+        "label": "VLCC+",
+        "layer": "legacy"
+      },
+      {
+        "id": "oil",
+        "label": "Oil Tankers",
+        "layer": "group"
+      },
+      {
+        "id": "oil_vlcc",
+        "label": "VLCC+",
+        "layer": "coarse"
+      },
+      {
+        "id": "oil_vlcc",
+        "label": "VLCC+",
+        "layer": "granular"
+      }
+    ],
     "cubic_capacity": 6318,
     "tags": [
       {

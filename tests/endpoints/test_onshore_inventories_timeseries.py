@@ -22,7 +22,7 @@ class TestOnshoreInventoriesTimeseries(TestCaseUsingRealAPI):
             .to_df()
         )
 
-        assert len(df) == 3
+        assert len(df) == 4
 
     def test_timeseries_breakdowns_by_country_should_contain_over_100_unique_splits(
         self,

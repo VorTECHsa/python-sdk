@@ -10,6 +10,8 @@ from typing import Dict, List, Optional
 from urllib.parse import urlencode
 import uuid
 
+import json
+
 from requests import Response
 from tqdm import tqdm
 from warnings import warn
@@ -23,7 +25,7 @@ from vortexasdk.retry_session import (
     retry_get,
     retry_post,
 )
-from vortexasdk.utils import filter_empty_values
+from vortexasdk.utils import filter_empty_values, PAGINATION_STRATEGIES
 from vortexasdk.version_utils import is_sdk_version_outdated
 from vortexasdk.version import __version__
 from vortexasdk import __name__ as sdk_pkg_name
@@ -61,8 +63,12 @@ class VortexaClient:
         response = retry_get(url)
         return _handle_response(response)["data"]
 
-    def search(
-        self, resource: str, response_type: Optional[str], **data
+    def search_base(
+        self,
+        resource: str,
+        response_type: Optional[str],
+        pagination_strategy: Optional[PAGINATION_STRATEGIES] = None,
+        **data,
     ) -> SearchResponse:
         """Search using `resource` using `**data` as filter params."""
         url = self._create_url(resource)
@@ -96,14 +102,27 @@ class VortexaClient:
             # Only one page response, no need to send another request, so return flattened response
             return {"reference": {}, "data": probe_response["data"]}
         else:
-            # Multiple pages available, create offsets and fetch all responses
-            responses = self._process_multiple_pages(
-                total=total,
-                url=url,
-                payload=payload,
-                data=data,
-                headers=headers,
+            logger.debug(
+                f"Sending post request with pagination: {pagination_strategy}"
             )
+            if pagination_strategy == PAGINATION_STRATEGIES.SEARCH_AFTER:
+                # Wait for the response to retrieve new request
+                responses = self._process_multiple_pages_with_search_after(
+                    total=total,
+                    url=url,
+                    payload=payload,
+                    data=data,
+                    headers=headers,
+                )
+            else:
+                # Multiple pages available, create offsets and fetch all responses
+                responses = self._process_multiple_pages(
+                    total=total,
+                    url=url,
+                    payload=payload,
+                    data=data,
+                    headers=headers,
+                )
 
             flattened = self._flatten_response(responses)
 
@@ -113,7 +132,23 @@ class VortexaClient:
                 )
                 warn(f"Actual: {len(flattened)}, expected: {total}")
 
+            logger.info(f"Total records returned: {total}")
+
             return {"reference": {}, "data": flattened}
+
+    def search(
+        self, resource: str, response_type: Optional[str], **data
+    ) -> SearchResponse:
+        return self.search_base(
+            resource, response_type, PAGINATION_STRATEGIES.OFFSET, **data
+        )
+
+    def searchWithSearchAfter(
+        self, resource: str, response_type: Optional[str], **data
+    ) -> SearchResponse:
+        return self.search_base(
+            resource, response_type, PAGINATION_STRATEGIES.SEARCH_AFTER, **data
+        )
 
     def _create_url(self, path: str) -> str:
         return (
@@ -154,6 +189,35 @@ class VortexaClient:
                 )
 
                 return pool.map(func, offsets)
+
+    def _process_multiple_pages_with_search_after(
+        self, total: int, url: str, payload: Dict, data: Dict, headers
+    ) -> List:
+        responses = []
+        size = data.get("size", 500)
+
+        first_response = _send_post_request(url, payload, size, 0, headers)
+
+        responses.append(first_response.get("data", []))
+        next_request = first_response.get("next_request")
+        search_after = first_response.get("search_after")
+
+        if not next_request and search_after:
+            next_request = dict(payload)
+            next_request["search_after"] = search_after
+
+        while next_request:
+            dict_response = _send_post_request(
+                url, next_request, size, 0, headers
+            )
+            responses.append(dict_response.get("data", []))
+            next_request = dict_response.get("next_request")
+            search_after = dict_response.get("search_after")
+            if not next_request and search_after:
+                next_request = dict(payload)
+                next_request["search_after"] = search_after
+
+        return responses
 
     @staticmethod
     def _cleanse_payload(payload: Dict) -> Dict:
@@ -242,7 +306,13 @@ def _handle_response(
                     "data": data,
                     "total": int(response.headers["x-total"]),
                 }
-
+                if response.headers["x-next-request"] != "undefined":
+                    try:
+                        decoded["search_after"] = json.loads(
+                            response.headers["x-next-request"]
+                        )
+                    except Exception as e:
+                        logger.error(f"error parsing search_after: {e}")
             else:
                 decoded = response.json()
         except JSONDecodeError:

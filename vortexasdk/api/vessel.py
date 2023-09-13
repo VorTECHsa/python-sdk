@@ -10,6 +10,7 @@ from vortexasdk.api.shared_types import (
     Tag,
     Scrubber,
     Flag,
+    VesselClassEntry,
 )
 
 
@@ -46,6 +47,7 @@ class Vessel(Node):
     current_product_type: Optional[List] = None
 
     vessel_class: Optional[str] = None
+    classes: Optional[List[VesselClassEntry]] = None
     vessel_status: Optional[str] = None
 
     corporate_entities: Optional[List[VesselEntityCorporateEntity]] = None
@@ -68,7 +70,7 @@ class Vessel(Node):
 
 class VesselEntity(IDName):
     """
-    A VesselEntity represents a vessel record used in CargoMovements and VesselMovements.
+    A VesselEntity represents a vessel record used in CargoMovements.
 
     [Vessel Entities Further Documentation](https://docs.vortexa.com/reference/intro-vessel-entities)
     """
@@ -81,6 +83,7 @@ class VesselEntity(IDName):
     dwt: Optional[int] = None
 
     vessel_class: Optional[str] = None
+    classes: Optional[List[VesselClassEntry]] = None
     corporate_entities: Optional[
         List[VesselEntityCorporateEntityWithConfidence]
     ] = None

@@ -1,11 +1,10 @@
-from typing import Dict
-
+from typing import Dict, Optional
 from vortexasdk.api.id import ID
 from vortexasdk.client import default_client
 from vortexasdk.exceptions import InvalidAPIDataResponseException
 from vortexasdk.logger import get_logger
 from vortexasdk.search_response import SearchResponse
-from vortexasdk.utils import filter_exact_match
+from vortexasdk.utils import filter_exact_match, PAGINATION_STRATEGIES
 
 logger = get_logger(__name__)
 
@@ -68,11 +67,12 @@ class Search:
 
     # This method has been renamed from `search` to `search_with_client` to avoid type signature
     # issues with the `search` method in each endpoint class.
-    def search_with_client(
+    def search_with_client_base(
         self,
         exact_term_match: bool = None,
         response_type: str = None,
         headers: dict = None,
+        pagination_strategy: Optional[PAGINATION_STRATEGIES] = None,
         **api_params,
     ) -> SearchResponse:
         """
@@ -92,9 +92,11 @@ class Search:
 
         """
         logger.info(f"Searching {self.__class__.__name__}")
-        api_result = default_client().search(
+
+        api_result = default_client().search_base(
             self._resource,
             response_type=response_type,
+            pagination_strategy=pagination_strategy,
             headers=headers,
             **api_params,
         )
@@ -113,6 +115,36 @@ class Search:
             }
         else:
             return api_result
+
+    def search_with_client(
+        self,
+        exact_term_match: bool = None,
+        response_type: str = None,
+        headers: dict = None,
+        **api_params,
+    ) -> SearchResponse:
+        return self.search_with_client_base(
+            exact_term_match,
+            response_type,
+            headers,
+            PAGINATION_STRATEGIES.OFFSET,
+            **api_params,
+        )
+
+    def search_with_client_with_search_after(
+        self,
+        exact_term_match: bool = None,
+        response_type: str = None,
+        headers: dict = None,
+        **api_params,
+    ) -> SearchResponse:
+        return self.search_with_client_base(
+            exact_term_match,
+            response_type,
+            headers,
+            PAGINATION_STRATEGIES.SEARCH_AFTER,
+            **api_params,
+        )
 
 
 class Record:

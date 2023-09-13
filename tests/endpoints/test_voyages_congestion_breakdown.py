@@ -43,10 +43,10 @@ class TestVoyagesCongestionBreakdown(TestCaseUsingRealAPI):
         end = datetime(2019, 11, 10)
 
         result = VoyagesCongestionBreakdown().search(
-            time_min=start, time_max=end, breakdown_size=100
+            time_min=start, time_max=end, breakdown_size=25
         )
 
-        assert len(result) == 100
+        assert len(result) == 25
 
     def test_to_df(self):
         start = datetime(2019, 11, 1)

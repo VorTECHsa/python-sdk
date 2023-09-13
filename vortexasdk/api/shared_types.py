@@ -160,3 +160,19 @@ class Scrubber(BaseModel):
     tag: Optional[str] = None
     scrubber: Optional[str] = None
     planned: Optional[bool] = None
+
+
+class VesselClassEntry(BaseModel):
+    """
+
+    Represents a property that is associated with  the classes of a vessel.
+
+    - `id` key will be a Vessel class Entity ID.
+    - `layer` key will be the layer, e.g. class, sub-class, type or legacy.
+    - `label` key will be the commercial name of the entity.
+
+    """
+
+    id: Optional[str] = None
+    layer: Optional[str] = None
+    label: Optional[str] = None

@@ -12,6 +12,7 @@ from vortexasdk.api.shared_types import (
     ISODate,
     Scrubber,
     Tag,
+    VesselClassEntry,
 )
 
 
@@ -49,6 +50,7 @@ class VoyagesVesselEntity(BaseModel):
     name: Optional[str] = None
     dead_weight: Optional[int] = None
     vessel_class: Optional[str] = None
+    classes: Optional[List[VesselClassEntry]] = None
     imo: Optional[int] = None
     mmsi: Optional[int] = None
     call_sign: Optional[str] = None
@@ -72,6 +74,7 @@ class VoyageVesselEvent(BaseModel):
     """
 
     event_id: Optional[str] = None
+    value: Optional[str] = None
     event_group: Optional[str] = None
     event_type: Optional[str] = None
     location_id: Optional[str] = None
@@ -104,6 +107,7 @@ class VoyageCargoEvent(BaseModel):
     """
 
     event_id: Optional[str] = None
+    value: Optional[str] = None
     event_group: Literal["derived"]
     event_type: Optional[str] = None
     cargo_movement_id: Optional[str] = None

@@ -36,8 +36,8 @@ class CargoMovements(Record, Search):
     def search(
         self,
         filter_activity: str = None,
-        filter_time_min: datetime = datetime(2019, 10, 1, 0),
-        filter_time_max: datetime = datetime(2019, 10, 1, 1),
+        filter_time_min: datetime = datetime.now(),
+        filter_time_max: datetime = datetime.now(),
         cm_unit: str = "b",
         filter_charterers: Union[ID, List[ID]] = None,
         filter_destinations: Union[ID, List[ID]] = None,
@@ -262,7 +262,7 @@ class CargoMovements(Record, Search):
             "size": self._MAX_PAGE_RESULT_SIZE,
         }
 
-        response = super().search_with_client(**api_params)
+        response = super().search_with_client_with_search_after(**api_params)
 
         return CargoMovementsResult(
             records=response["data"], reference=response["reference"]

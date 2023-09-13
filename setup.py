@@ -27,7 +27,7 @@ setuptools.setup(
     install_requires=[
         "flatten-dict==0.4.2",
         "pandas>=0.25.2",
-        "requests==2.28.1",
+        "requests==2.31.0",
         "tqdm==4.64.1",
         "pydantic==1.10.2",
     ],
