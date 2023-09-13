@@ -26,7 +26,6 @@ setuptools.setup(
     python_requires=">=3.7",
     install_requires=[
         "flatten-dict==0.4.2",
-        "matplotlib>=3.5.3",
         "pandas>=0.25.2",
         "requests==2.31.0",
         "tqdm==4.64.1",
@@ -52,7 +51,8 @@ setuptools.setup(
             "types-python-dateutil==2.8.19",
             "types-six==1.16.19",
             "jupyter==1.0.0",
-            "statsmodels==0.13.2"
+            "statsmodels==0.13.2",
+            "matplotlib>=3.5.3"
         ],
         "deploy": ["wheel==0.37.1", "twine==4.0.1"],
     },

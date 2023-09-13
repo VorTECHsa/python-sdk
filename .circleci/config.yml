@@ -132,6 +132,7 @@ jobs:
             pip install -e .
             pip install jupyter==1.0.0
             pip install statsmodels==0.13.2
+            pip install matplotlib>=3.5.3,
 
       - run:
           name: "Run all mybinder try-me-out notebooks"
