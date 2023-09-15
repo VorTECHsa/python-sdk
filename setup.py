@@ -28,7 +28,7 @@ setuptools.setup(
         "flatten-dict==0.4.2",
         "pandas>=0.25.2",
         "requests==2.31.0",
-        "pydantic>=1.10.2,<3"
+        "pydantic>=1.10.2,<2"
     ],
     extras_require={
         "tests": [
