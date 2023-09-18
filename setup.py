@@ -28,7 +28,8 @@ setuptools.setup(
         "flatten-dict==0.4.2",
         "pandas>=0.25.2",
         "requests==2.31.0",
-        "pydantic>=1.10.2,<2"
+        "pydantic>=1.10.2,<2",
+        "tqdm==4.64.1"
     ],
     extras_require={
         "tests": [
@@ -51,14 +52,12 @@ setuptools.setup(
             "types-six==1.16.19",
             "jupyter==1.0.0",
             "statsmodels==0.13.2",
-            "matplotlib>=3.5.3",
-            "tqdm==4.64.1",
+            "matplotlib>=3.5.3"
         ],
         "binder": [
             "jupyter==1.0.0",
             "statsmodels==0.13.2",
-            "matplotlib>=3.5.3",
-            "tqdm==4.64.1",
+            "matplotlib>=3.5.3"
         ],
         "deploy": ["wheel==0.37.1", "twine==4.0.1"],
     },
