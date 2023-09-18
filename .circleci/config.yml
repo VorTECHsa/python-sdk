@@ -129,8 +129,7 @@ jobs:
             python3.7 -m venv .mybinder_venv;
             . .mybinder_venv/bin/activate
             pip install -U pip
-            pip install -e .
-            pip install jupyter==1.0.0
+            pip install -e .[binder]
 
       - run:
           name: "Run all mybinder try-me-out notebooks"
