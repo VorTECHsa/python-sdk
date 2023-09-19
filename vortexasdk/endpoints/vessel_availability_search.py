@@ -7,7 +7,9 @@ from typing import Any, Dict, List, Union
 from vortexasdk.endpoints.vessel_availability_result import (
     VesselAvailabilityResult,
 )
-
+from vortexasdk.api.shared_types import (
+    Tag,
+)
 from vortexasdk.api import ID
 from vortexasdk.endpoints.endpoints import VESSEL_AVAILABILITY_SEARCH_RESOURCE
 from vortexasdk.logger import get_logger
@@ -50,6 +52,10 @@ class VesselAvailabilitySearch(Search):
         filter_vessel_idle_max: int = None,
         filter_vessel_scrubbers: str = "disabled",
         filter_recent_visits: str = None,
+        filter_vessel_flags: Union[ID, List[ID]] = None,
+        filter_vessel_ice_class: Union[ID, List[ID]] = None,
+        filter_vessel_tags: Union[List[Tag], Tag] = None,
+        filter_vessel_risk_level: Union[str, List[str]] = None,
         exclude_products: Union[ID, List[ID]] = None,
         exclude_vessels: Union[ID, List[ID]] = None,
         exclude_vessel_classes: Union[str, List[str]] = None,
@@ -58,9 +64,14 @@ class VesselAvailabilitySearch(Search):
         exclude_owners: Union[ID, List[ID]] = None,
         exclude_effective_controllers: Union[ID, List[ID]] = None,
         exclude_destination: Union[ID, List[ID]] = None,
+        exclude_filter_vessel_flags: Union[ID, List[ID]] = None,
+        exclude_filter_vessel_ice_class: Union[ID, List[ID]] = None,
+        exclude_filter_vessel_tags: Union[List[Tag], Tag] = None,
+        exclude_filter_vessel_risk_level: Union[str, List[str]] = None,
         offset: int = None,
         order: str = None,
         order_direction: str = None,
+        size: int = None,
     ) -> VesselAvailabilityResult:
         """
         List of vessels that can be available to load a given cargo at a given port on a future date.
@@ -114,6 +125,14 @@ class VesselAvailabilitySearch(Search):
 
             filter_vessel_scrubbers: Either inactive 'disabled', or included 'inc' or excluded 'exc'.
 
+            filter_vessel_flags: A flag ID, or list of flag IDs to filter on.
+
+            filter_vessel_ice_class: An ice class ID, or list of ice class IDs to filter on.
+
+            filter_vessel_tags: A tag ID, or list of tag IDs to filter on.
+
+            filter_vessel_risk_level: A risk level ID, or list of risk level IDs to filter on.
+
             filter_recent_visits: Filter availability by each vessel's recent visits
 
             exclude_products: A product ID, or list of product IDs to exclude.
@@ -130,6 +149,13 @@ class VesselAvailabilitySearch(Search):
 
             exclude_destination: A location ID, or list of location IDs to filter on.
 
+            exclude_vessel_flags: A flag ID, or list of flag IDs to exclude.
+
+            exclude_vessel_ice_class: An ice class ID, or list of ice class IDs to exclude.
+
+            exclude_vessel_tags: A tag ID, or list of tag IDs to exclude.
+
+            exclude_vessel_risk_level: A risk level ID, or list of risk level IDs to exclude.
 
         # Returns
         `VesselAvailabilityResult`
@@ -166,6 +192,16 @@ class VesselAvailabilitySearch(Search):
             ),
             "filter_vessel_status": convert_to_list(exclude_vessel_status),
             "filter_vessel_location": convert_to_list(exclude_vessel_location),
+            "filter_vessel_flags": convert_to_list(
+                exclude_filter_vessel_flags
+            ),
+            "filter_vessel_ice_class": convert_to_list(
+                exclude_filter_vessel_ice_class
+            ),
+            "filter_vessel_tags": convert_to_list(exclude_filter_vessel_tags),
+            "filter_vessel_risk_level": convert_to_list(
+                exclude_filter_vessel_risk_level
+            ),
         }
 
         api_params: Dict[str, Any] = {
@@ -191,11 +227,19 @@ class VesselAvailabilitySearch(Search):
             "filter_vessel_idle_max": filter_vessel_idle_max,
             "filter_vessel_scrubbers": filter_vessel_scrubbers,
             "filter_recent_visits": filter_recent_visits,
+            "filter_vessel_flags": convert_to_list(filter_vessel_flags),
+            "filter_vessel_ice_class": convert_to_list(
+                filter_vessel_ice_class
+            ),
+            "filter_vessel_tags": convert_to_list(filter_vessel_tags),
+            "filter_vessel_risk_level": convert_to_list(
+                filter_vessel_risk_level
+            ),
             "exclude": exclude_params,
             "offset": offset,
             "order": order,
             "order_direction": order_direction,
-            "size": self._MAX_PAGE_RESULT_SIZE,
+            "size": size if size is not None else self._MAX_PAGE_RESULT_SIZE,
         }
 
         response = super().search_with_client(**api_params)
