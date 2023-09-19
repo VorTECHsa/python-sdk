@@ -6,6 +6,8 @@ from vortexasdk.api.shared_types import (
     EntityWithListLayer,
     ISODate,
     VesselClassEntry,
+    Tag,
+    Flag,
 )
 
 
@@ -65,3 +67,6 @@ class VesselAvailability(BaseModel):
     vessel_year_built: Optional[int] = None
     last_activity_at: Optional[ISODate] = None
     last_activity: Optional[int] = None
+    vessel_flags: Optional[List[Flag]] = None
+    vessel_tags: Optional[List[Tag]] = None
+    vessel_ice_class: Optional[str] = None

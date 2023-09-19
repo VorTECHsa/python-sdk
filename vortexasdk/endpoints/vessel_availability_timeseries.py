@@ -12,6 +12,9 @@ from datetime import datetime
 from vortexasdk.endpoints.endpoints import (
     VESSEL_AVAILABILITY_TIMERSERIES_RESOURCE,
 )
+from vortexasdk.api.shared_types import (
+    Tag,
+)
 from vortexasdk.logger import get_logger
 from vortexasdk.operations import Search
 from vortexasdk.utils import convert_to_list
@@ -51,6 +54,10 @@ class VesselAvailabilityTimeseries(Search):
         filter_vessel_idle_max: int = None,
         filter_vessel_scrubbers: str = "disabled",
         filter_recent_visits: str = None,
+        filter_vessel_flags: Union[ID, List[ID]] = None,
+        filter_vessel_ice_class: Union[ID, List[ID]] = None,
+        filter_vessel_tags: Union[List[Tag], Tag] = None,
+        filter_vessel_risk_level: Union[str, List[str]] = None,
         exclude_products: Union[ID, List[ID]] = None,
         exclude_vessels: Union[ID, List[ID]] = None,
         exclude_vessel_classes: Union[str, List[str]] = None,
@@ -59,6 +66,10 @@ class VesselAvailabilityTimeseries(Search):
         exclude_owners: Union[ID, List[ID]] = None,
         exclude_effective_controllers: Union[ID, List[ID]] = None,
         exclude_destination: Union[ID, List[ID]] = None,
+        exclude_filter_vessel_flags: Union[ID, List[ID]] = None,
+        exclude_filter_vessel_ice_class: Union[ID, List[ID]] = None,
+        exclude_filter_vessel_tags: Union[List[Tag], Tag] = None,
+        exclude_filter_vessel_risk_level: Union[str, List[str]] = None,
     ) -> TimeSeriesResult:
         """
          Time series of the number of vessels that can be available to load a given cargo at a given port for
@@ -109,6 +120,14 @@ class VesselAvailabilityTimeseries(Search):
 
              filter_recent_visits: Filter availability by each vessel's recent visits
 
+             filter_vessel_flags: A flag ID, or list of flag IDs to filter on.
+
+             filter_vessel_ice_class: An ice class ID, or list of ice class IDs to filter on.
+
+             filter_vessel_tags: A tag ID, or list of tag IDs to filter on.
+
+             filter_vessel_risk_level: A risk level ID, or list of risk level IDs to filter on.
+
              exclude_products: A product ID, or list of product IDs to exclude.
 
              exclude_vessels: A vessel ID, or list of vessel IDs to exclude.
@@ -122,6 +141,14 @@ class VesselAvailabilityTimeseries(Search):
              exclude_vessel_location: A location ID, or list of location IDs to filter on.
 
              exclude_destination: A location ID, or list of location IDs to filter on.
+
+             exclude_vessel_flags: A flag ID, or list of flag IDs to exclude.
+
+             exclude_vessel_ice_class: An ice class ID, or list of ice class IDs to exclude.
+
+             exclude_vessel_tags: A tag ID, or list of tag IDs to exclude.
+
+             exclude_vessel_risk_level: A risk level ID, or list of risk level IDs to exclude.
 
          # Returns
          `TimeSeriesResult`
@@ -168,6 +195,16 @@ class VesselAvailabilityTimeseries(Search):
             ),
             "filter_vessel_status": convert_to_list(exclude_vessel_status),
             "filter_vessel_location": convert_to_list(exclude_vessel_location),
+            "filter_vessel_flags": convert_to_list(
+                exclude_filter_vessel_flags
+            ),
+            "filter_vessel_ice_class": convert_to_list(
+                exclude_filter_vessel_ice_class
+            ),
+            "filter_vessel_tags": convert_to_list(exclude_filter_vessel_tags),
+            "filter_vessel_risk_level": convert_to_list(
+                exclude_filter_vessel_risk_level
+            ),
         }
 
         api_params: Dict[str, Any] = {
@@ -195,6 +232,14 @@ class VesselAvailabilityTimeseries(Search):
             "filter_vessel_idle_max": filter_vessel_idle_max,
             "filter_vessel_scrubbers": filter_vessel_scrubbers,
             "filter_recent_visits": filter_recent_visits,
+            "filter_vessel_flags": convert_to_list(filter_vessel_flags),
+            "filter_vessel_ice_class": convert_to_list(
+                filter_vessel_ice_class
+            ),
+            "filter_vessel_tags": convert_to_list(filter_vessel_tags),
+            "filter_vessel_risk_level": convert_to_list(
+                filter_vessel_risk_level
+            ),
             "exclude": exclude_params,
         }
 
