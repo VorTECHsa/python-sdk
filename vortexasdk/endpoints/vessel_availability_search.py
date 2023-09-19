@@ -71,6 +71,7 @@ class VesselAvailabilitySearch(Search):
         offset: int = None,
         order: str = None,
         order_direction: str = None,
+        size: int = None,
     ) -> VesselAvailabilityResult:
         """
         List of vessels that can be available to load a given cargo at a given port on a future date.
@@ -238,7 +239,7 @@ class VesselAvailabilitySearch(Search):
             "offset": offset,
             "order": order,
             "order_direction": order_direction,
-            "size": self._MAX_PAGE_RESULT_SIZE,
+            "size": size if size is not None else self._MAX_PAGE_RESULT_SIZE,
         }
 
         response = super().search_with_client(**api_params)
