@@ -240,7 +240,7 @@
 Please note: you will require a subscription to our Freight module to access this endpoint.</p>
 <h3 id="vortexasdk.endpoints.vessel_availability_search.VesselAvailabilitySearch.search">search</h3>
 
-<pre><code class="language-python">VesselAvailabilitySearch.search(self, filter_region: str = None, filter_port: str = None, use_reference_port: bool = None, filter_products: Union[str, List[str]] = None, filter_vessels: Union[str, List[str]] = None, filter_vessel_classes: Union[str, List[str]] = None, filter_vessel_status: str = None, filter_vessel_location: Union[str, List[str]] = None, filter_owners: Union[str, List[str]] = None, filter_effective_controllers: Union[str, List[str]] = None, filter_destination: Union[str, List[str]] = None, filter_days_to_arrival: List[Dict[str, int]] = None, filter_vessel_dwt_min: int = None, filter_vessel_dwt_max: int = None, filter_vessel_age_min: int = None, filter_vessel_age_max: int = None, filter_vessel_idle_min: int = None, filter_vessel_idle_max: int = None, filter_vessel_scrubbers: str = 'disabled', filter_recent_visits: str = None, exclude_products: Union[str, List[str]] = None, exclude_vessels: Union[str, List[str]] = None, exclude_vessel_classes: Union[str, List[str]] = None, exclude_vessel_status: str = None, exclude_vessel_location: Union[str, List[str]] = None, exclude_owners: Union[str, List[str]] = None, exclude_effective_controllers: Union[str, List[str]] = None, exclude_destination: Union[str, List[str]] = None, offset: int = None, order: str = None, order_direction: str = None) -&gt; vortexasdk.endpoints.vessel_availability_result.VesselAvailabilityResult
+<pre><code class="language-python">VesselAvailabilitySearch.search(self, filter_region: str = None, filter_port: str = None, use_reference_port: bool = None, filter_products: Union[str, List[str]] = None, filter_vessels: Union[str, List[str]] = None, filter_vessel_classes: Union[str, List[str]] = None, filter_vessel_status: str = None, filter_vessel_location: Union[str, List[str]] = None, filter_owners: Union[str, List[str]] = None, filter_effective_controllers: Union[str, List[str]] = None, filter_destination: Union[str, List[str]] = None, filter_days_to_arrival: List[Dict[str, int]] = None, filter_vessel_dwt_min: int = None, filter_vessel_dwt_max: int = None, filter_vessel_age_min: int = None, filter_vessel_age_max: int = None, filter_vessel_idle_min: int = None, filter_vessel_idle_max: int = None, filter_vessel_scrubbers: str = 'disabled', filter_recent_visits: str = None, filter_vessel_flags: Union[str, List[str]] = None, filter_vessel_ice_class: Union[str, List[str]] = None, filter_vessel_tags: Union[List[vortexasdk.api.shared_types.Tag], vortexasdk.api.shared_types.Tag] = None, filter_vessel_risk_level: Union[str, List[str]] = None, exclude_products: Union[str, List[str]] = None, exclude_vessels: Union[str, List[str]] = None, exclude_vessel_classes: Union[str, List[str]] = None, exclude_vessel_status: str = None, exclude_vessel_location: Union[str, List[str]] = None, exclude_owners: Union[str, List[str]] = None, exclude_effective_controllers: Union[str, List[str]] = None, exclude_destination: Union[str, List[str]] = None, exclude_filter_vessel_flags: Union[str, List[str]] = None, exclude_filter_vessel_ice_class: Union[str, List[str]] = None, exclude_filter_vessel_tags: Union[List[vortexasdk.api.shared_types.Tag], vortexasdk.api.shared_types.Tag] = None, exclude_filter_vessel_risk_level: Union[str, List[str]] = None, offset: int = None, order: str = None, order_direction: str = None, size: int = None) -&gt; vortexasdk.endpoints.vessel_availability_result.VesselAvailabilityResult
 </code></pre>
 <p>List of vessels that can be available to load a given cargo at a given port on a future date.</p>
 <p><strong>Arguments</strong></p>
@@ -315,6 +315,18 @@ Please note: you will require a subscription to our Freight module to access thi
 <p><strong>filter_vessel_scrubbers</strong>: Either inactive 'disabled', or included 'inc' or excluded 'exc'.</p>
 </li>
 <li>
+<p><strong>filter_vessel_flags</strong>: A flag ID, or list of flag IDs to filter on.</p>
+</li>
+<li>
+<p><strong>filter_vessel_ice_class</strong>: An ice class ID, or list of ice class IDs to filter on.</p>
+</li>
+<li>
+<p><strong>filter_vessel_tags</strong>: A tag ID, or list of tag IDs to filter on.</p>
+</li>
+<li>
+<p><strong>filter_vessel_risk_level</strong>: A risk level ID, or list of risk level IDs to filter on.</p>
+</li>
+<li>
 <p><strong>filter_recent_visits</strong>: Filter availability by each vessel's recent visits</p>
 </li>
 <li>
@@ -337,6 +349,18 @@ Please note: you will require a subscription to our Freight module to access thi
 </li>
 <li>
 <p><strong>exclude_destination</strong>: A location ID, or list of location IDs to filter on.</p>
+</li>
+<li>
+<p><strong>exclude_vessel_flags</strong>: A flag ID, or list of flag IDs to exclude.</p>
+</li>
+<li>
+<p><strong>exclude_vessel_ice_class</strong>: An ice class ID, or list of ice class IDs to exclude.</p>
+</li>
+<li>
+<p><strong>exclude_vessel_tags</strong>: A tag ID, or list of tag IDs to exclude.</p>
+</li>
+<li>
+<p><strong>exclude_vessel_risk_level</strong>: A risk level ID, or list of risk level IDs to exclude.</p>
 </li>
 </ul>
 <p><strong>Returns</strong></p>

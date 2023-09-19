@@ -239,7 +239,7 @@
 <p>Please note: you will require a subscription to our Freight module to access this endpoint.</p>
 <h3 id="vortexasdk.endpoints.vessel_availability_timeseries.VesselAvailabilityTimeseries.search">search</h3>
 
-<pre><code class="language-python">VesselAvailabilityTimeseries.search(self, filter_time_min: datetime.datetime = datetime.datetime(2019, 10, 1, 0, 0), filter_time_max: datetime.datetime = datetime.datetime(2019, 10, 1, 1, 0), filter_products: Union[str, List[str]] = None, filter_vessels: Union[str, List[str]] = None, filter_vessel_classes: Union[str, List[str]] = None, filter_vessel_status: str = None, filter_vessel_location: Union[str, List[str]] = None, filter_owners: Union[str, List[str]] = None, filter_effective_controllers: Union[str, List[str]] = None, filter_destination: Union[str, List[str]] = None, filter_region: str = None, filter_port: str = None, use_reference_port: bool = False, filter_days_to_arrival: List[Dict[str, int]] = None, filter_vessel_dwt_min: int = None, filter_vessel_dwt_max: int = None, filter_vessel_age_min: int = None, filter_vessel_age_max: int = None, filter_vessel_idle_min: int = None, filter_vessel_idle_max: int = None, filter_vessel_scrubbers: str = 'disabled', filter_recent_visits: str = None, exclude_products: Union[str, List[str]] = None, exclude_vessels: Union[str, List[str]] = None, exclude_vessel_classes: Union[str, List[str]] = None, exclude_vessel_status: str = None, exclude_vessel_location: Union[str, List[str]] = None, exclude_owners: Union[str, List[str]] = None, exclude_effective_controllers: Union[str, List[str]] = None, exclude_destination: Union[str, List[str]] = None) -&gt; vortexasdk.endpoints.timeseries_result.TimeSeriesResult
+<pre><code class="language-python">VesselAvailabilityTimeseries.search(self, filter_time_min: datetime.datetime = datetime.datetime(2019, 10, 1, 0, 0), filter_time_max: datetime.datetime = datetime.datetime(2019, 10, 1, 1, 0), filter_products: Union[str, List[str]] = None, filter_vessels: Union[str, List[str]] = None, filter_vessel_classes: Union[str, List[str]] = None, filter_vessel_status: str = None, filter_vessel_location: Union[str, List[str]] = None, filter_owners: Union[str, List[str]] = None, filter_effective_controllers: Union[str, List[str]] = None, filter_destination: Union[str, List[str]] = None, filter_region: str = None, filter_port: str = None, use_reference_port: bool = False, filter_days_to_arrival: List[Dict[str, int]] = None, filter_vessel_dwt_min: int = None, filter_vessel_dwt_max: int = None, filter_vessel_age_min: int = None, filter_vessel_age_max: int = None, filter_vessel_idle_min: int = None, filter_vessel_idle_max: int = None, filter_vessel_scrubbers: str = 'disabled', filter_recent_visits: str = None, filter_vessel_flags: Union[str, List[str]] = None, filter_vessel_ice_class: Union[str, List[str]] = None, filter_vessel_tags: Union[List[vortexasdk.api.shared_types.Tag], vortexasdk.api.shared_types.Tag] = None, filter_vessel_risk_level: Union[str, List[str]] = None, exclude_products: Union[str, List[str]] = None, exclude_vessels: Union[str, List[str]] = None, exclude_vessel_classes: Union[str, List[str]] = None, exclude_vessel_status: str = None, exclude_vessel_location: Union[str, List[str]] = None, exclude_owners: Union[str, List[str]] = None, exclude_effective_controllers: Union[str, List[str]] = None, exclude_destination: Union[str, List[str]] = None, exclude_filter_vessel_flags: Union[str, List[str]] = None, exclude_filter_vessel_ice_class: Union[str, List[str]] = None, exclude_filter_vessel_tags: Union[List[vortexasdk.api.shared_types.Tag], vortexasdk.api.shared_types.Tag] = None, exclude_filter_vessel_risk_level: Union[str, List[str]] = None) -&gt; vortexasdk.endpoints.timeseries_result.TimeSeriesResult
 </code></pre>
 <p>Time series of the number of vessels that can be available to load a given cargo at a given port for
 every day in the specified range.</p>
@@ -310,6 +310,18 @@ every day in the specified range.</p>
 <p><strong>filter_recent_visits</strong>: Filter availability by each vessel's recent visits</p>
 </li>
 <li>
+<p><strong>filter_vessel_flags</strong>: A flag ID, or list of flag IDs to filter on.</p>
+</li>
+<li>
+<p><strong>filter_vessel_ice_class</strong>: An ice class ID, or list of ice class IDs to filter on.</p>
+</li>
+<li>
+<p><strong>filter_vessel_tags</strong>: A tag ID, or list of tag IDs to filter on.</p>
+</li>
+<li>
+<p><strong>filter_vessel_risk_level</strong>: A risk level ID, or list of risk level IDs to filter on.</p>
+</li>
+<li>
 <p><strong>exclude_products</strong>: A product ID, or list of product IDs to exclude.</p>
 </li>
 <li>
@@ -329,6 +341,18 @@ every day in the specified range.</p>
 </li>
 <li>
 <p><strong>exclude_destination</strong>: A location ID, or list of location IDs to filter on.</p>
+</li>
+<li>
+<p><strong>exclude_vessel_flags</strong>: A flag ID, or list of flag IDs to exclude.</p>
+</li>
+<li>
+<p><strong>exclude_vessel_ice_class</strong>: An ice class ID, or list of ice class IDs to exclude.</p>
+</li>
+<li>
+<p><strong>exclude_vessel_tags</strong>: A tag ID, or list of tag IDs to exclude.</p>
+</li>
+<li>
+<p><strong>exclude_vessel_risk_level</strong>: A risk level ID, or list of risk level IDs to exclude.</p>
 </li>
 </ul>
 <p><strong>Returns</strong></p>
