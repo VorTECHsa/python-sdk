@@ -75,7 +75,7 @@ class AssetTanks(Reference, Search):
             corporate_entity_ids: An array of owner ID(s) to filter on.
             crude_confidence: An array of confidence metrics to filter on. Possible values are: `'confirmed’`, `‘probable’`, `‘unlikely’`
             location_ids: An array of geography ID(s) to filter on.
-            storage_types: An array of storage types to filter on. Possible values are: `'refinery'`, `'non-refinery'`, `'commercial'`, `'spr'`, `'tbd'`
+            storage_types: An array of storage types to filter on. Possible values are: `'refinery'`, `'commercial'`, `'spr'`
 
 
         # Returns

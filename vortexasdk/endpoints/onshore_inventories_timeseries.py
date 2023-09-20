@@ -52,11 +52,11 @@ class OnshoreInventoriesTimeseries(Search):
             corporate_entity_ids: An array of owner ID(s) to filter on.
             crude_confidence: An array of confidence metrics to filter on. Possible values are: `'confirmed’`, `‘probable’`, `‘unlikely’`
             location_ids: An array of geography ID(s) to filter on.
-            storage_types: An array of storage types to filter on. Possible values are: `'refinery'`, `'non-refinery'`, `'commercial'`, `'spr'`, `'tbd'`
+            storage_types: An array of storage types to filter on. Possible values are: `'refinery'`, `'commercial'`, `'spr'`
             asset_tank_ids: An array of unique Asset Tanks ID(s) to filter on - linked to the Asset Tank Reference data.
             time_min: The UTC start date of the time filter.
             time_max: The UTC end date of the time filter.
-            timeseries_frequency: Frequency denoting the granularity of the time series. Must be one of the following: `'week'`, `'month'`, `'year'`.
+            timeseries_frequency: Frequency denoting the granularity of the time series. Must be one of the following: `'day'`, `'week'`, `'doe_week'`, `'month'`, `'year'`.
             timeseries_split_property: Property used to breakdown the aggregation. By default 'quantity' is used which returns only the total, but aggregations can be broken down
             by either `'crude_confidence'`, `'storage_type'`, `'location_country'`, `'location_port'`, `'location_region'`, `'location_shipping_region'`, `'location_trading_region'`,
             `'location_trading_subregion'`

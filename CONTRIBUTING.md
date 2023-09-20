@@ -44,6 +44,19 @@ install the required dependencies
 $ pip install -e '.[tests]'
 ```
 
+**If you have any issues installing Vortechsa packages, run the following:**
+  - ```bash
+    $ aws sso login```
+  - ```bash
+    $ aws codeartifact login --tool pip --repository snakes \
+    --domain vortexa --domain-owner 874568069660 --profile root```
+
+**If the packages fail to install still, then you may need to manually install pyaml (cython). Conversations are in this [thread](https://vortexa.slack.com/archives/CE4C35PN3/p1690363056489269).**
+
+`pip install "cython<3.0.0" wheel && pip install pyyaml==5.4.1 --no-build-isolation`
+(You may need to run twice)
+
+
 To run the live tests, you'll need to have the `VORTEXA_API_KEY` environment variable set - `export VORTEXA_API_KEY=xyz`
 
 run tests
