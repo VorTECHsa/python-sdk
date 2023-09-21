@@ -248,11 +248,11 @@ calculated by returning the final weekly onshore inventories 'quantity' bucket f
 <li><strong>corporate_entity_ids</strong>: An array of owner ID(s) to filter on.</li>
 <li><strong>crude_confidence</strong>: An array of confidence metrics to filter on. Possible values are: <code>'confirmed’</code>, <code>‘probable’</code>, <code>‘unlikely’</code></li>
 <li><strong>location_ids</strong>: An array of geography ID(s) to filter on.</li>
-<li><strong>storage_types</strong>: An array of storage types to filter on. Possible values are: <code>'refinery'</code>, <code>'non-refinery'</code>, <code>'commercial'</code>, <code>'spr'</code>, <code>'tbd'</code></li>
+<li><strong>storage_types</strong>: An array of storage types to filter on. Possible values are: <code>'refinery'</code>, <code>'commercial'</code>, <code>'spr'</code></li>
 <li><strong>asset_tank_ids</strong>: An array of unique Asset Tanks ID(s) to filter on - linked to the Asset Tank Reference data.</li>
 <li><strong>time_min</strong>: The UTC start date of the time filter.</li>
 <li><strong>time_max</strong>: The UTC end date of the time filter.</li>
-<li><strong>timeseries_frequency</strong>: Frequency denoting the granularity of the time series. Must be one of the following: <code>'week'</code>, <code>'month'</code>, <code>'year'</code>.</li>
+<li><strong>timeseries_frequency</strong>: Frequency denoting the granularity of the time series. Must be one of the following: <code>'day'</code>, <code>'week'</code>, <code>'doe_week'</code>, <code>'month'</code>, <code>'year'</code>.</li>
 <li>
 <p><strong>timeseries_split_property</strong>: Property used to breakdown the aggregation. By default 'quantity' is used which returns only the total, but aggregations can be broken down
     by either <code>'crude_confidence'</code>, <code>'storage_type'</code>, <code>'location_country'</code>, <code>'location_port'</code>, <code>'location_region'</code>, <code>'location_shipping_region'</code>, <code>'location_trading_region'</code>,

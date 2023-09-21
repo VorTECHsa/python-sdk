@@ -240,7 +240,7 @@
 Please note: you will require a subscription to our Crude Onshore Inventories module to access this endpoint.</p>
 <h3 id="vortexasdk.endpoints.onshore_inventories_search.OnshoreInventoriesSearch.search">search</h3>
 
-<pre><code class="language-python">OnshoreInventoriesSearch.search(self, corporate_entity_ids: Union[str, List[str]] = None, crude_confidence: List[str] = None, location_ids: Union[str, List[str]] = None, storage_types: List[str] = None, time_min: datetime.datetime = datetime.datetime(2023, 9, 12, 15, 33, 13, 345344), time_max: datetime.datetime = datetime.datetime(2023, 9, 19, 15, 33, 13, 345357)) -&gt; vortexasdk.endpoints.onshore_inventories_result.OnshoreInventoriesResult
+<pre><code class="language-python">OnshoreInventoriesSearch.search(self, corporate_entity_ids: Union[str, List[str]] = None, crude_confidence: List[str] = None, location_ids: Union[str, List[str]] = None, storage_types: List[str] = None, time_min: datetime.datetime = datetime.datetime(2023, 9, 14, 16, 7, 37, 358361), time_max: datetime.datetime = datetime.datetime(2023, 9, 21, 16, 7, 37, 358373)) -&gt; vortexasdk.endpoints.onshore_inventories_result.OnshoreInventoriesResult
 </code></pre>
 <p>List of crude onshore inventories across the globe.</p>
 <p><strong>Arguments</strong></p>
@@ -250,7 +250,7 @@ Please note: you will require a subscription to our Crude Onshore Inventories mo
 <li><strong>location_ids</strong>: An array of geography ID(s) to filter on.</li>
 <li><strong>measurement_ids</strong>: An array of unique measurements (each COI measurement) to filter on.</li>
 <li><strong>size</strong>: Used to page results. The size of the result set. Between 0 and 500.</li>
-<li><strong>storage_types</strong>: An array of storage types to filter on. Possible values are: <code>'refinery'</code>, <code>'non-refinery'</code>, <code>'commercial'</code>, <code>'spr'</code>, <code>'tbd'</code>,.</li>
+<li><strong>storage_types</strong>: An array of storage types to filter on. Possible values are: <code>'refinery'</code>, <code>'commercial'</code>, <code>'spr'</code>.</li>
 <li><strong>time_min</strong>: The UTC start date of the time filter.</li>
 <li><strong>time_max</strong>: The UTC end date of the time filter.</li>
 </ul>
@@ -376,8 +376,6 @@ Please note: you will require a subscription to our Crude Onshore Inventories mo
     },
     measurement_timestamp: '2021-09-06T17: 50: 12',
     publish_timestamp: '2021-09-08T13: 59: 45',
-    report_timestamp: '2021-09-09T14: 00: 00',
-    carry_forward: False,
     fill_bbl: 732345,
     fill_tons: 100132.79950499999,
     fill_cbm: 116434.06685999999,
