@@ -23,8 +23,6 @@ class OnshoreInventory(BaseModel):
     tank_details: Optional[AssetTank] = None
     measurement_timestamp: Optional[ISODate] = None
     publish_timestamp: Optional[ISODate] = None
-    report_timestamp: Optional[ISODate] = None
-    carry_forward: Optional[bool] = None
     fill_bbl: Optional[int] = None
     fill_tons: Optional[float] = None
     fill_cbm: Optional[float] = None
