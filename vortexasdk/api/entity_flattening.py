@@ -45,7 +45,7 @@ def _group_cargo_movement_attributes_by_layer(cm: Dict) -> Dict:
     """Group relevant `CargoMovement` attributes by `Entity.layer`."""
     vessels = [_flatten_vessel_entity(ve) for ve in cm["vessels"]]
 
-    events = {}
+    events: Dict[str, list] = {}
     for event in cm["events"]:
         if event["event_type"] not in events:
             events[event["event_type"]] = []
