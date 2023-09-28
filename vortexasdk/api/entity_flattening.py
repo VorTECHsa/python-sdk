@@ -1,4 +1,3 @@
-from itertools import groupby
 from typing import Dict, List
 
 # noinspection PyProtectedMember
@@ -46,10 +45,11 @@ def _group_cargo_movement_attributes_by_layer(cm: Dict) -> Dict:
     """Group relevant `CargoMovement` attributes by `Entity.layer`."""
     vessels = [_flatten_vessel_entity(ve) for ve in cm["vessels"]]
 
-    events = {
-        event_type: list(g)
-        for event_type, g in groupby(cm["events"], lambda x: x["event_type"])
-    }
+    events: Dict[str, list] = {}
+    for event in cm["events"]:
+        if event["event_type"] not in events:
+            events[event["event_type"]] = []
+        events[event["event_type"]].append(event)
 
     events_attributes = {
         event_type: [_flatten_attributes(ce, "location") for ce in es]
