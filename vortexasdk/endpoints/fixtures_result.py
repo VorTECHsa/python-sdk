@@ -1,13 +1,33 @@
+import functools
+import os
+from multiprocessing import Pool
 from typing import List
 
 import pandas as pd
 
 from vortexasdk.api import Fixture
+from vortexasdk.api.entity_flattening import convert_to_flat_dict
 from vortexasdk.api.search_result import Result
 from vortexasdk.logger import get_logger
 from vortexasdk.result_conversions import create_dataframe, create_list
 
 logger = get_logger(__name__)
+
+DEFAULT_COLUMNS = [
+    "id",
+    "vessel.id",
+    "vessel.name",
+    "laycan_from",
+    "laycan_to",
+    "tones",
+    "fixing_timestamp",
+    "fulfilled",
+    "vtx_fulfilled",
+    "destination.label",
+    "origin.label",
+    "product.label",
+    "charterer.label",
+]
 
 
 class FixtureResult(Result):
@@ -18,7 +38,7 @@ class FixtureResult(Result):
         # noinspection PyTypeChecker
         return create_list(super().to_list(), Fixture)
 
-    def to_df(self, columns=None) -> pd.DataFrame:
+    def to_df(self, columns=DEFAULT_COLUMNS) -> pd.DataFrame:
         """
         Represent Fixtures as a `pd.DataFrame`.
 
@@ -97,26 +117,15 @@ class FixtureResult(Result):
         # Returns
         `pd.DataFrame` of Fixtures.
         """
+
+        flatten = functools.partial(convert_to_flat_dict, cols=columns)
+
+        with Pool(os.cpu_count()) as pool:
+            records = pool.map(flatten, super().to_list())
+
         return create_dataframe(
             columns=columns,
             default_columns=DEFAULT_COLUMNS,
-            data=super().to_list(),
+            data=records,
             logger_description="Fixtures",
         )
-
-
-DEFAULT_COLUMNS = [
-    "id",
-    "vessel.id",
-    "vessel.name",
-    "laycan_from",
-    "laycan_to",
-    "tones",
-    "fixing_timestamp",
-    "fulfilled",
-    "vtx_fulfilled",
-    "destination.label",
-    "origin.label",
-    "product.label",
-    "charterer.label",
-]
