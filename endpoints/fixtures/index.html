@@ -395,7 +395,7 @@ replacement fixture or "Conf" for confirmed and "Corr" for corrected.</p>
 <p>Represent Fixtures data as a list.</p>
 <h3 id="vortexasdk.endpoints.fixtures_result.FixtureResult.to_df">to_df</h3>
 
-<pre><code class="language-python">FixtureResult.to_df(self, columns=None) -&gt; pandas.core.frame.DataFrame
+<pre><code class="language-python">FixtureResult.to_df(self, columns=['id', 'vessel.id', 'vessel.name', 'laycan_from', 'laycan_to', 'tones', 'fixing_timestamp', 'fulfilled', 'vtx_fulfilled', 'destination.label', 'origin.label', 'product.label', 'charterer.label']) -&gt; pandas.core.frame.DataFrame
 </code></pre>
 <p>Represent Fixtures as a <code>pd.DataFrame</code>.</p>
 <p><strong>Arguments</strong></p>
