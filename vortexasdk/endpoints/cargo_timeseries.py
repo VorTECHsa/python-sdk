@@ -10,8 +10,11 @@ from vortexasdk.api import ID
 from vortexasdk.api.shared_types import to_ISODate
 from vortexasdk.endpoints.endpoints import CARGO_TIMESERIES_RESOURCE
 from vortexasdk.endpoints.timeseries_result import TimeSeriesResult
+from vortexasdk.logger import get_logger
 from vortexasdk.operations import Search
 from vortexasdk.utils import convert_to_list
+
+logger = get_logger(__name__)
 
 
 class CargoTimeSeries(Search):
@@ -43,6 +46,7 @@ class CargoTimeSeries(Search):
         filter_ship_to_ship_locations: Union[ID, List[ID]] = None,
         filter_waypoints: Union[ID, List[ID]] = None,
         disable_geographic_exclusion_rules: bool = None,
+        intra_movements: str = None,
         timeseries_activity_time_span_min: int = None,
         timeseries_activity_time_span_max: int = None,
     ) -> TimeSeriesResult:
@@ -92,6 +96,9 @@ class CargoTimeSeries(Search):
 
             disable_geographic_exclusion_rules: This controls a popular industry term "intra-movements" and determines
              the filter behaviour for cargo leaving then entering the same geographic area.
+
+            intra_movements: This enum controls a popular industry term intra-movements and determines the filter behaviour for cargo leaving then entering the same geographic area.
+             One of `all`, `exclude_intra_country` or `exclude_intra_geography`
 
             timeseries_activity: The cargo movement activity we want to aggregate on. This param defaults to
             `filter_activity` if left blank. For example, Let's say we want to aggregate the unloading timestamps of
@@ -163,6 +170,12 @@ class CargoTimeSeries(Search):
 
 
         """
+
+        if disable_geographic_exclusion_rules is not None:
+            logger.warning(
+                f"You are using the disable_geographic_exclusion_rules parameter. It will be deprecated in March 2024 in favour of the `intra_movements` filter.\n"
+            )
+
         api_params: Dict[str, Any] = {
             "filter_activity": filter_activity,
             "filter_time_min": to_ISODate(filter_time_min),
@@ -189,6 +202,7 @@ class CargoTimeSeries(Search):
             ),
             "filter_waypoints": convert_to_list(filter_waypoints),
             "disable_geographic_exclusion_rules": disable_geographic_exclusion_rules,
+            "intra_movements": intra_movements,
             "timeseries_frequency": timeseries_frequency,
             "timeseries_unit": timeseries_unit,
             "timeseries_activity": timeseries_activity or filter_activity,

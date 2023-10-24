@@ -68,6 +68,7 @@ class DestinationBreakdown(Search):
         exclude_vessel_ice_class: Union[ID, List[ID]] = None,
         exclude_vessel_propulsion: Union[ID, List[ID]] = None,
         exclude_vessel_tags: Union[List[Tag], Tag] = None,
+        intra_movements: str = None,
     ) -> ReferenceBreakdownResult:
         """
          Destination locations breakdown aggregation by geographic area
@@ -156,6 +157,9 @@ class DestinationBreakdown(Search):
 
              exclude_vessel_tags: A time bound vessel tag, or list of time bound vessel tags to exclude.
 
+             intra_movements: This enum controls a popular industry term intra-movements and determines the filter behaviour for cargo leaving then entering the same geographic area.
+              One of `all`, `exclude_intra_country` or `exclude_intra_geography`
+
          # Returns
          `ReferenceBreakdownResult`
 
@@ -189,6 +193,12 @@ class DestinationBreakdown(Search):
          |  4 | 15db6ca55a3b13d3c4b135afcaf87f5d605680ac75177412af05be37fc3fec38| Pirpau Island	                             | 62933    | 12        |
 
         """
+
+        if disable_geographic_exclusion_rules is not None:
+            logger.warning(
+                f"You are using the disable_geographic_exclusion_rules parameter. It will be deprecated in March 2024 in favour of the `intra_movements` filter.\n"
+            )
+
         exclude_params: Dict[str, Any] = {
             "filter_destinations": convert_to_list(exclude_destinations),
             "filter_products": convert_to_list(exclude_products),
@@ -222,6 +232,7 @@ class DestinationBreakdown(Search):
             "breakdown_size": breakdown_size,
             "breakdown_geography": breakdown_geography,
             "disable_geographic_exclusion_rules": disable_geographic_exclusion_rules,
+            "intra_movements": intra_movements,
             "filter_time_min": to_ISODate(filter_time_min),
             "filter_time_max": to_ISODate(filter_time_max),
             "filter_activity": filter_activity,

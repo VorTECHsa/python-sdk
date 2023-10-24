@@ -68,6 +68,7 @@ class OriginBreakdown(Search):
         exclude_vessel_ice_class: Union[ID, List[ID]] = None,
         exclude_vessel_propulsion: Union[ID, List[ID]] = None,
         exclude_vessel_tags: Union[List[Tag], Tag] = None,
+        intra_movements: str = None,
     ) -> ReferenceBreakdownResult:
         """
          Origin locations breakdown aggregation by geographic area
@@ -84,6 +85,9 @@ class OriginBreakdown(Search):
              breakdown_size: Number of top geographies to return. Default is 5.
 
              disable_geographic_exclusion_rules: A boolean which specifies whether certain movements should be excluded, based on a combination of their origin and destination.
+
+             intra_movements: This enum controls a popular industry term intra-movements and determines the filter behaviour for cargo leaving then entering the same geographic area.
+              One of `all`, `exclude_intra_country` or `exclude_intra_geography`
 
              filter_activity: Cargo movement activity on which to base the time filter. The endpoint only includes cargo
              movements matching that match this filter in the aggregations. Must be one of ['loading_state',
@@ -189,6 +193,12 @@ class OriginBreakdown(Search):
          |  4 | 4813dd7209e85b128cc2fbc7c08fef08d26259550210f28a5c7ff3ccd7b2ba61| Mailiao Industrial Park-Formosa Plastics | 118285   | 18        |
 
         """
+
+        if disable_geographic_exclusion_rules is not None:
+            logger.warning(
+                f"You are using the disable_geographic_exclusion_rules parameter. It will be deprecated in March 2024 in favour of the `intra_movements` filter.\n"
+            )
+
         exclude_params: Dict[str, Any] = {
             "filter_destinations": convert_to_list(exclude_destinations),
             "filter_products": convert_to_list(exclude_products),
@@ -222,6 +232,7 @@ class OriginBreakdown(Search):
             "breakdown_size": breakdown_size,
             "breakdown_geography": breakdown_geography,
             "disable_geographic_exclusion_rules": disable_geographic_exclusion_rules,
+            "intra_movements": intra_movements,
             "filter_time_min": to_ISODate(filter_time_min),
             "filter_time_max": to_ISODate(filter_time_max),
             "filter_activity": filter_activity,

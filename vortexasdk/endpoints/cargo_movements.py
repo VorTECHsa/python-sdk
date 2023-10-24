@@ -68,6 +68,7 @@ class CargoMovements(Record, Search):
         exclude_vessel_ice_class: Union[ID, List[ID]] = None,
         exclude_vessel_propulsion: Union[ID, List[ID]] = None,
         disable_geographic_exclusion_rules: bool = None,
+        intra_movements: str = None,
     ) -> CargoMovementsResult:
         """
 
@@ -140,6 +141,9 @@ class CargoMovements(Record, Search):
             disable_geographic_exclusion_rules: This controls a popular industry term "intra-movements" and determines
              the filter behaviour for cargo leaving then entering the same geographic area.
 
+            intra_movements: This enum controls a popular industry term intra-movements and determines the filter behaviour for cargo leaving then entering the same geographic area.
+             One of `all`, `exclude_intra_country` or `exclude_intra_geography`
+
         # Returns
         `CargoMovementsResult`, containing all the cargo movements matching the given search terms.
 
@@ -205,6 +209,12 @@ class CargoMovements(Record, Search):
         [Cargo Movements Endpoint Further Documentation](https://docs.vortexa.com/reference/POST/cargo-movements/search)
 
         """
+
+        if disable_geographic_exclusion_rules is not None:
+            logger.warning(
+                f"You are using the disable_geographic_exclusion_rules parameter. It will be deprecated in March 2024 in favour of the `intra_movements` filter.\n"
+            )
+
         exclude_params: Dict[str, Any] = {
             "filter_origins": convert_to_list(exclude_origins),
             "filter_destinations": convert_to_list(exclude_destinations),
@@ -259,6 +269,7 @@ class CargoMovements(Record, Search):
             ),
             "exclude": exclude_params,
             "disable_geographic_exclusion_rules": disable_geographic_exclusion_rules,
+            "intra_movements": intra_movements,
             "size": self._MAX_PAGE_RESULT_SIZE,
         }
 
