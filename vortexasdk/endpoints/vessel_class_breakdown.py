@@ -194,7 +194,7 @@ class VesselClassBreakdown(Search):
 
         if disable_geographic_exclusion_rules is not None:
             logger.warning(
-                f"You are using the disable_geographic_exclusion_rules parameter. It will be deprecated in March 2024 in favour of the `intra_movements` filter.\n"
+                f"\nYou are using the disable_geographic_exclusion_rules parameter. It will be deprecated in March 2024 in favour of the `intra_movements` filter.\nPlease refer to https://docs.vortexa.com/reference/intro-cargo-filters for more information.\n"
             )
 
         exclude_params: Dict[str, Any] = {
