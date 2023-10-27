@@ -152,11 +152,11 @@ class OnshoreInventoriesSearch(Search):
             "time_max": to_ISODate(time_max),
         }
 
-        print('api params', api_params)
+        print("api params", api_params)
 
         response = super().search_with_client(**api_params)
 
-        print('response: ', response)
+        print("response: ", response)
 
         return OnshoreInventoriesResult(
             records=response["data"], reference=response["reference"]
