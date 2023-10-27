@@ -37,6 +37,8 @@ class OnshoreInventoriesSearch(Search):
         crude_confidence: List[str] = None,
         location_ids: Union[ID, List[ID]] = None,
         measurement_ids: Union[ID, List[ID]] = None,
+        offset: int = None,
+        size: int = None,
         storage_types: List[str] = None,
         time_min: datetime = datetime.now() - timedelta(weeks=1),
         time_max: datetime = datetime.now(),
@@ -51,6 +53,7 @@ class OnshoreInventoriesSearch(Search):
             crude_confidence: An array of confidence metrics to filter on. Possible values are: `'confirmed’`, `‘probable’`, `‘unlikely’`
             location_ids: An array of geography ID(s) to filter on.
             measurement_ids: An array of unique measurements (each COI measurement) to filter on.
+            offset: Used to page results. The offset from which records should be returned.
             size: Used to page results. The size of the result set. Between 0 and 500.
             storage_types: An array of storage types to filter on. Possible values are: `'refinery'`, `'commercial'`, `'spr'`.
             time_min: The UTC start date of the time filter.
@@ -146,8 +149,9 @@ class OnshoreInventoriesSearch(Search):
             "crude_confidence": convert_to_list(crude_confidence),
             "location_ids": convert_to_list(location_ids),
             "measurement_ids": convert_to_list(measurement_ids),
+            "offset": offset,
+            "size": size if size is not None else self._MAX_PAGE_RESULT_SIZE,
             "storage_types": convert_to_list(storage_types),
-            "size": self._MAX_PAGE_RESULT_SIZE,
             "time_min": to_ISODate(time_min),
             "time_max": to_ISODate(time_max),
         }
