@@ -32,9 +32,11 @@ class OnshoreInventoriesSearch(Search):
 
     def search(
         self,
+        asset_tank_ids: Union[ID, List[ID]] = None,
         corporate_entity_ids: Union[ID, List[ID]] = None,
         crude_confidence: List[str] = None,
         location_ids: Union[ID, List[ID]] = None,
+        measurement_ids: Union[ID, List[ID]] = None,
         storage_types: List[str] = None,
         time_min: datetime = datetime.now() - timedelta(weeks=1),
         time_max: datetime = datetime.now(),
@@ -44,6 +46,7 @@ class OnshoreInventoriesSearch(Search):
 
         # Arguments
 
+            asset_tank_ids: An array of tank IDs to filter on.
             corporate_entity_ids: An array of owner ID(s) to filter on.
             crude_confidence: An array of confidence metrics to filter on. Possible values are: `'confirmed’`, `‘probable’`, `‘unlikely’`
             location_ids: An array of geography ID(s) to filter on.
@@ -138,16 +141,22 @@ class OnshoreInventoriesSearch(Search):
         """
 
         api_params: Dict[str, Any] = {
+            "asset_tank_ids": convert_to_list(asset_tank_ids),
             "corporate_entity_ids": convert_to_list(corporate_entity_ids),
             "crude_confidence": convert_to_list(crude_confidence),
             "location_ids": convert_to_list(location_ids),
+            "measurement_ids": convert_to_list(measurement_ids),
             "storage_types": convert_to_list(storage_types),
             "size": self._MAX_PAGE_RESULT_SIZE,
             "time_min": to_ISODate(time_min),
             "time_max": to_ISODate(time_max),
         }
 
+        print('api params', api_params)
+
         response = super().search_with_client(**api_params)
+
+        print('response: ', response)
 
         return OnshoreInventoriesResult(
             records=response["data"], reference=response["reference"]

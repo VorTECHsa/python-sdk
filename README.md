@@ -122,6 +122,7 @@ Thanks goes to these wonderful contributors
   </tr>
   <tr>
     <td align="center"><a href="http://pawelpietruszka.net"><img src="https://avatars0.githubusercontent.com/u/17066202?v=4" width="100px;" alt=""/><br /><sub><b>Pawel Pietruszka</b></sub></a><br /><a href="https://github.com/VorTECHsa/python-sdk/commits?author=Selerski" title="Code">💻</a></td>
+    <td align="center"><a href="https://www.ollydesousa.com"><img src="https://avatars.githubusercontent.com/u/25864106?v=4" width="100px;" alt=""/><br /><sub><b>Olly De Sousa</b></sub></a><br /><a href="https://github.com/VorTECHsa/python-sdk/commits?author=OllyDS" title="Code">💻</a></td>
   </tr>
 </table>
 
