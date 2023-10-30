@@ -194,3 +194,4 @@ class VoyageEnrichedItem(BaseModel):
         ]
     ] = None
     latest_product_details: Optional[List[List[EntityWithSingleLayer]]] = None
+    voyage_status: str
