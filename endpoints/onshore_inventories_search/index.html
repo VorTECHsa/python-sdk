@@ -240,15 +240,17 @@
 Please note: you will require a subscription to our Crude Onshore Inventories module to access this endpoint.</p>
 <h3 id="vortexasdk.endpoints.onshore_inventories_search.OnshoreInventoriesSearch.search">search</h3>
 
-<pre><code class="language-python">OnshoreInventoriesSearch.search(self, corporate_entity_ids: Union[str, List[str]] = None, crude_confidence: List[str] = None, location_ids: Union[str, List[str]] = None, storage_types: List[str] = None, time_min: datetime.datetime = datetime.datetime(2023, 10, 17, 15, 59, 26, 359887), time_max: datetime.datetime = datetime.datetime(2023, 10, 24, 15, 59, 26, 359896)) -&gt; vortexasdk.endpoints.onshore_inventories_result.OnshoreInventoriesResult
+<pre><code class="language-python">OnshoreInventoriesSearch.search(self, asset_tank_ids: Union[str, List[str]] = None, corporate_entity_ids: Union[str, List[str]] = None, crude_confidence: List[str] = None, location_ids: Union[str, List[str]] = None, measurement_ids: Union[str, List[str]] = None, offset: int = None, size: int = None, storage_types: List[str] = None, time_min: datetime.datetime = datetime.datetime(2023, 10, 23, 9, 5, 51, 444255), time_max: datetime.datetime = datetime.datetime(2023, 10, 30, 9, 5, 51, 444265)) -&gt; vortexasdk.endpoints.onshore_inventories_result.OnshoreInventoriesResult
 </code></pre>
 <p>List of crude onshore inventories across the globe.</p>
 <p><strong>Arguments</strong></p>
 <ul>
+<li><strong>asset_tank_ids</strong>: An array of tank IDs to filter on.</li>
 <li><strong>corporate_entity_ids</strong>: An array of owner ID(s) to filter on.</li>
 <li><strong>crude_confidence</strong>: An array of confidence metrics to filter on. Possible values are: <code>'confirmed’</code>, <code>‘probable’</code>, <code>‘unlikely’</code></li>
 <li><strong>location_ids</strong>: An array of geography ID(s) to filter on.</li>
 <li><strong>measurement_ids</strong>: An array of unique measurements (each COI measurement) to filter on.</li>
+<li><strong>offset</strong>: Used to page results. The offset from which records should be returned.</li>
 <li><strong>size</strong>: Used to page results. The size of the result set. Between 0 and 500.</li>
 <li><strong>storage_types</strong>: An array of storage types to filter on. Possible values are: <code>'refinery'</code>, <code>'commercial'</code>, <code>'spr'</code>.</li>
 <li><strong>time_min</strong>: The UTC start date of the time filter.</li>
