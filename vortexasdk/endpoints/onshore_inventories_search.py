@@ -159,9 +159,13 @@ class OnshoreInventoriesSearch(Search):
             "size": size if size is not None else self._MAX_PAGE_RESULT_SIZE,
             "storage_types": convert_to_list(storage_types),
             # prevents default time params being applied to queries using 'measurement_ids' param
-            "time_min": to_ISODate(time_min) if measurement_ids is None else None,
+            "time_min": to_ISODate(time_min)
+            if measurement_ids is None
+            else None,
             # prevents default time params being applied to queries using 'measurement_ids' param
-            "time_max": to_ISODate(time_max) if measurement_ids is None else None,
+            "time_max": to_ISODate(time_max)
+            if measurement_ids is None
+            else None,
         }
 
         response = super().search_with_client_with_search_after(**api_params)
