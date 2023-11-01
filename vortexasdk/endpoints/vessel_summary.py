@@ -53,6 +53,17 @@ class VesselSummary(Search):
         |  ...to >800 results
 
         Note that we will show you all fields by default if you don't set the columns argument.
+        ```
+
+        - Now let's find summaries for vessels carrying crude, using the Vessels and Product Reference endpoints
+
+        ```python
+        >>> from vortexasdk import Vessels, Products
+        >>> crude = [p.id for p in Products().search(term="crude").to_list() if 'group' in p.layer]
+        >>> vessels_list = Vessels().search(vessel_product_types=crude).to_list()
+        >>> vessel_ids = [v.id for v in vessels_list]
+        >>> crude_summaries = VesselSummary().search(vessel_id=vessel_ids).to_df()
+
 
         ```
 

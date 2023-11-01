@@ -24,7 +24,7 @@ class VesselSummaryResult(Result):
 
         # Arguments
             columns: The vessel features we want in the dataframe. Enter `columns='all'` to include all features.
-            Defaults to `columns = ['vessel_id', 'timestamp', 'lat', 'lon', 'speed', 'draught', 'declared_destination', 'decared_eta']`.
+            Defaults to `columns = ['vessel_id', 'timestamp', 'lat', 'lon', 'speed', 'draught', 'declared_destination', 'declared_eta']`.
 
         # Returns
         `pd.DataFrame` of vessels.
@@ -46,5 +46,5 @@ DEFAULT_COLUMNS = [
     "speed",
     "draught",
     "declared_destination",
-    "decared_eta",
+    "declared_eta",
 ]
