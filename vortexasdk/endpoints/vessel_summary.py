@@ -39,7 +39,6 @@ class VesselSummary(Search):
         # Returns
         List of vessel summaries matching the search arguments.
 
-
         # Examples
 
         - Let's find all summaries for all LNG vessels, from the week prior to October 31st, 2023.
@@ -64,7 +63,7 @@ class VesselSummary(Search):
         >>> crude = [p.id for p in Products().search(term="crude").to_list() if 'group' in p.layer]
         >>> vessel_ids = [v.id for v in Vessels().search(vessel_product_types=crude).to_list()]
         >>> vessel_summary_df = VesselSummary().search(vessel_id=[vessel_ids]).to_df()
-        
+
         Prints vessel summaries for all vessels carrying crude.
 
         ```
@@ -76,19 +75,14 @@ class VesselSummary(Search):
         """
         api_params: Dict[str, Any] = {
             "vessel_id": convert_to_list(vessel_id),
-            "vessel_class":  [
-                v.lower() for v in convert_to_list(vessel_class)
-            ],
+            "vessel_class": [v.lower() for v in convert_to_list(vessel_class)],
             "timestamp": timestamp,
         }
 
-        response = super().search_with_client(
-            **api_params
-        )
+        response = super().search_with_client(**api_params)
 
-        return VesselSummaryResult(
-            records=response["data"]
-        )
+        return VesselSummaryResult(records=response["data"])
+
 
 AVAILABLE_VESSEL_CLASSES = [
     "oil",
@@ -154,5 +148,5 @@ AVAILABLE_VESSEL_CLASSES = [
     "conventional",
     "qflex",
     "qmax",
-    "legacy"
+    "legacy",
 ]

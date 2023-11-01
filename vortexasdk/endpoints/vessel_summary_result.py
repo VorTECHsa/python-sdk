@@ -1,11 +1,11 @@
-			# "vessel_id": "000dc8b4d0ff3209",
-			# "timestamp": "2023-10-27T14:06:39.000Z",
-			# "lat": 25.44333333333333,
-			# "lon": 129.67833333333334,
-			# "speed": 11,
-			# "draught": 9,
-			# "declared_destination": "JPKZU > SGSIN",
-			# "declared_eta": "2023-11-03T12:00:00.000Z"
+# "vessel_id": "000dc8b4d0ff3209",
+# "timestamp": "2023-10-27T14:06:39.000Z",
+# "lat": 25.44333333333333,
+# "lon": 129.67833333333334,
+# "speed": 11,
+# "draught": 9,
+# "declared_destination": "JPKZU > SGSIN",
+# "declared_eta": "2023-11-03T12:00:00.000Z"
 
 from typing import List
 
@@ -35,7 +35,6 @@ class VesselSummaryResult(Result):
             columns: The vessel features we want in the dataframe. Enter `columns='all'` to include all features.
             Defaults to `columns = ['vessel_id', 'timestamp', 'lat', 'lon', 'speed', 'draught', 'declared_destination', 'decared_eta']`.
 
-
         # Returns
         `pd.DataFrame` of vessels.
 
@@ -48,4 +47,13 @@ class VesselSummaryResult(Result):
         )
 
 
-DEFAULT_COLUMNS = ['vessel_id', 'timestamp', 'lat', 'lon', 'speed', 'draught', 'declared_destination', 'decared_eta']
+DEFAULT_COLUMNS = [
+    "vessel_id",
+    "timestamp",
+    "lat",
+    "lon",
+    "speed",
+    "draught",
+    "declared_destination",
+    "decared_eta",
+]
