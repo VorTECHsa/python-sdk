@@ -44,7 +44,7 @@ class VesselSummary(Search):
 
         ```python
         >>> from vortexasdk import VesselSummary
-        >>> vessel_summary_df = VesselSummary().search(vessel_class=['lng', 'vlcc_plus], timestamp='2023-10-31T23:59:59.000Z').to_df(columns=['vessel_id', 'timestamp', 'lat', 'lon', 'speed', 'heading', 'declared_destination', 'draught'])
+        >>> vessel_summary_df = VesselSummary().search(vessel_class=['lng', 'vlcc_plus'], timestamp='2023-10-31T23:59:59.000Z').to_df(columns=['vessel_id', 'timestamp', 'lat', 'lon', 'speed', 'heading', 'declared_destination', 'draught'])
 
         ```
         |    | vessel_id        |     lat  |      lon   | timestamp                | speed  | heading | declared_destination | draught |
