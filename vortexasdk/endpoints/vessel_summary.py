@@ -5,7 +5,6 @@ Try me out in your browser:
 """
 from typing import Any, Dict, List, Union
 
-from vortexasdk.api.id import ID
 from vortexasdk.api.shared_types import ISODate
 from vortexasdk.endpoints.endpoints import VESSEL_SUMMARY
 from vortexasdk.endpoints.vessel_summary_result import VesselSummaryResult
