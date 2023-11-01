@@ -41,30 +41,19 @@ class VesselSummary(Search):
 
         # Examples
 
-        - Let's find all summaries for all LNG vessels, from the week prior to October 31st, 2023.
+        - Let's find all summaries for all LNG and VLCC_PLUS vessels, from the week prior to October 31st, 2023.
 
         ```python
         >>> from vortexasdk import VesselSummary
-        >>> vessel_summary_df = VesselSummary().search(vessel_class=['lng'], timestamp='2023-10-31T23:59:59.000Z').to_df(columns=['vessel_id', 'timestamp', 'lat', 'lon', 'speed', 'heading', 'declared_destination', 'draught'])
+        >>> vessel_summary_df = VesselSummary().search(vessel_class=['lng', 'vlcc_plus], timestamp='2023-10-31T23:59:59.000Z').to_df(columns=['vessel_id', 'timestamp', 'lat', 'lon', 'speed', 'heading', 'declared_destination', 'draught'])
 
         ```
         |    | vessel_id        |     lat  |      lon   | timestamp                | speed  | heading | declared_destination | draught |
         |---:|:----------------:|---------:|-----------:|:-------------------------|-------:|--------:|---------------------:|--------:|
         |  0 | bc49bed3d600b394 | 17.36560 | -161.39080 | 2023-10-31T23:57:11.000Z | 19.299 | 308     | >JP KZU XX           | 11      |
-        |  ...to >300 results
+        |  ...to >800 results
 
-        Note that we will show all fields by default.
-
-
-        - Let's find summaries for all the vessels currently carrying Crude.
-
-        ```python
-        >>> from vortexasdk import Vessels, Products
-        >>> crude = [p.id for p in Products().search(term="crude").to_list() if 'group' in p.layer]
-        >>> vessel_ids = [v.id for v in Vessels().search(vessel_product_types=crude).to_list()]
-        >>> vessel_summary_df = VesselSummary().search(vessel_id=[vessel_ids]).to_df()
-
-        Prints vessel summaries for all vessels carrying crude.
+        Note that we will show you all fields by default if you don't set the columns argument.
 
         ```
 
