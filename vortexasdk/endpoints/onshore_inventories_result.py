@@ -104,6 +104,7 @@ DEFAULT_COLUMNS = [
     "tank_details.storage_terminal_id",
     "tank_details.storage_terminal_name",
     "tank_details.last_updated",
+    "measurement_timestamp",
     "fill_bbl",
     "fill_tons",
     "fill_cbm",
