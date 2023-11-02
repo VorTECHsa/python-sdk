@@ -40,11 +40,11 @@ class VesselSummary(Search):
 
         # Examples
 
-        - Let's find all summaries for all LNG and VLCC_PLUS vessels, from the week prior to October 31st, 2023.
+        - Let's find all summaries for all Aframax and VLCC_PLUS vessels, from the week prior to October 31st, 2023.
 
         ```python
         >>> from vortexasdk import VesselSummary
-        >>> vessel_summary_df = VesselSummary().search(vessel_class=['lng', 'vlcc_plus'], timestamp='2023-10-31T23:59:59.000Z').to_df(columns=['vessel_id', 'timestamp', 'lat', 'lon', 'speed', 'heading', 'declared_destination', 'draught'])
+        >>> vessel_summary_df = VesselSummary().search(vessel_class=['aframax', 'vlcc_plus'], timestamp='2023-10-31T23:59:59.000Z').to_df(columns=['vessel_id', 'timestamp', 'lat', 'lon', 'speed', 'heading', 'declared_destination', 'draught'])
 
         ```
         |    | vessel_id        |     lat  |      lon   | timestamp                | speed  | heading | declared_destination | draught |
@@ -64,7 +64,6 @@ class VesselSummary(Search):
         >>> vessel_ids = [v.id for v in vessels_list]
         >>> crude_summaries = VesselSummary().search(vessel_id=vessel_ids).to_df()
 
-
         ```
 
         # Further Documentation
@@ -76,6 +75,9 @@ class VesselSummary(Search):
             "vessel_id": convert_to_list(vessel_id),
             "vessel_class": [v.lower() for v in convert_to_list(vessel_class)],
             "timestamp": timestamp,
+            "size": 10000,
+            # High size param is workaround for pagination, since summary does not support it.
+            # If we don't set this, py sdk defaults size to 1000, and so will re-run the call total / 1000 times...
         }
 
         response = super().search_with_client(**api_params)
