@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Search - VortexaSDK</title>
+  <title>Vessel summary - VortexaSDK</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Search";
-    var mkdocs_page_input_path = "endpoints/onshore_inventories_search.md";
+    var mkdocs_page_name = "Vessel summary";
+    var mkdocs_page_input_path = "endpoints/vessel_summary.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -61,7 +61,7 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Endpoints</span></p>
-                <ul class="current">
+                <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../about-endpoints/">About Endpoints</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../attributes/">Attributes</a>
@@ -104,9 +104,9 @@
                 </li>
     </ul>
                     </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="#">Crude Onshore Inventories</a>
-    <ul class="current">
-                <li class="toctree-l2 current"><a class="reference internal current" href="./">Search</a>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Crude Onshore Inventories</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../onshore_inventories_search/">Search</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../onshore_inventories_timeseries/">Time Series</a>
                 </li>
@@ -204,19 +204,11 @@
     <li><a href="../..">Docs</a> &raquo;</li>
     
       
-        
-          <li>Endpoints &raquo;</li>
-        
-      
-        
-          <li>Crude Onshore Inventories &raquo;</li>
-        
-      
     
-    <li>Search</li>
+    <li>Vessel summary</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/vortechsa/python-sdk/edit/master/docs/endpoints/onshore_inventories_search.md"
+        <a href="https://github.com/vortechsa/python-sdk/edit/master/docs/endpoints/vessel_summary.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -228,177 +220,123 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="vortexasdk.endpoints.onshore_inventories_search">vortexasdk.endpoints.onshore_inventories_search</h1>
+                <h1 id="vortexasdk.endpoints.vessel_summary">vortexasdk.endpoints.vessel_summary</h1>
 
 <p>Try me out in your browser:</p>
-<p><a href="https://mybinder.org/v2/gh/VorTECHsa/python-sdk/master?filepath=docs%2Fexamples%2Ftry_me_out%2Favailability_search.ipynb"><img alt="Binder" src="https://img.shields.io/badge/try%20me%20out-launch%20notebook-579ACA.svg?logo=data:image/png;base64,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" /></a></p>
-<h2 id="vortexasdk.endpoints.onshore_inventories_search.OnshoreInventoriesSearch">OnshoreInventoriesSearch</h2>
+<p><a href="https://mybinder.org/v2/gh/VorTECHsa/python-sdk/master?filepath=docs%2Fexamples%2Ftry_me_out%2Fvessel_summary.ipynb"><img alt="Binder" src="https://img.shields.io/badge/try%20me%20out-launch%20notebook-579ACA.svg?logo=data:image/png;base64,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" /></a></p>
+<h2 id="vortexasdk.endpoints.vessel_summary.VesselSummary">VesselSummary</h2>
 
-<pre><code class="language-python">OnshoreInventoriesSearch(self)
+<pre><code class="language-python">VesselSummary(self)
 </code></pre>
-<p>Crude Onshore Inventories Endpoint, use this to search through Vortexa's Onshore Inventory data.
-Please note: you will require a subscription to our Crude Onshore Inventories module to access this endpoint.</p>
-<h3 id="vortexasdk.endpoints.onshore_inventories_search.OnshoreInventoriesSearch.search">search</h3>
+<p>Vessels endpoint.</p>
+<h3 id="vortexasdk.endpoints.vessel_summary.VesselSummary.search">search</h3>
 
-<pre><code class="language-python">OnshoreInventoriesSearch.search(self, asset_tank_ids: Union[str, List[str]] = None, corporate_entity_ids: Union[str, List[str]] = None, crude_confidence: List[str] = None, location_ids: Union[str, List[str]] = None, measurement_ids: Union[str, List[str]] = None, offset: int = None, order: str = None, order_direction: str = None, size: int = None, storage_types: List[str] = None, time_min: datetime.datetime = datetime.datetime(2023, 10, 26, 10, 34, 20, 324998), time_max: datetime.datetime = datetime.datetime(2023, 11, 2, 10, 34, 20, 325006)) -&gt; vortexasdk.endpoints.onshore_inventories_result.OnshoreInventoriesResult
+<pre><code class="language-python">VesselSummary.search(self, vessel_id: Union[str, List[str]] = None, vessel_class: Union[str, List[str]] = None, timestamp: str = None) -&gt; vortexasdk.endpoints.vessel_summary_result.VesselSummaryResult
 </code></pre>
-<p>List of crude onshore inventories across the globe.</p>
+<p>Find all latest summary of vessels matching given search arguments. Search arguments are combined in an AND manner.</p>
 <p><strong>Arguments</strong></p>
 <ul>
-<li><strong>asset_tank_ids</strong>: An array of tank IDs to filter on.</li>
-<li><strong>corporate_entity_ids</strong>: An array of owner ID(s) to filter on.</li>
-<li><strong>crude_confidence</strong>: An array of confidence metrics to filter on. Possible values are: <code>'confirmed'</code>, <code>'probable'</code>, <code>'unlikely'</code></li>
-<li><strong>location_ids</strong>: An array of geography ID(s) to filter on.</li>
-<li><strong>measurement_ids</strong>: An array of unique measurements (each COI measurement) to filter on.</li>
-<li><strong>offset</strong>: Used to page results. The offset from which records should be returned.</li>
-<li><strong>order</strong>: Used to sort the returned results. Can be one of:<code>'measurement_id'</code>, <code>'tank_id'</code>.</li>
-<li><strong>order_direction</strong>: Determines the direction of sorting. ‘asc’ for ascending, ‘desc’ for descending.</li>
-<li><strong>size</strong>: Used to page results. The size of the result set. Between 0 and 500.</li>
-<li><strong>storage_types</strong>: An array of storage types to filter on. Possible values are: <code>'refinery'</code>, <code>'commercial'</code>, <code>'spr'</code>.</li>
-<li><strong>time_min</strong>: The UTC start date of the time filter.</li>
-<li><strong>time_max</strong>: The UTC end date of the time filter.</li>
+<li>
+<p><strong>timestamp</strong>: The earliest timestamp before which you'd like your summaries sourced from</p>
+</li>
+<li>
+<p><strong>vessel_id</strong>: ID or IDs of vessels we'd like to search</p>
+</li>
+<li>
+<p><strong>vessel_class</strong>: vessel_class (or list of vessel classes) we'd like to search. This will give you summaries for all vessels within this class. Each vessel class must be one of <code>"tiny_tanker", "general_purpose", "handysize", "handymax", "panamax", "aframax", "suezmax", "vlcc_plus", "vlcc", "sgc", "mgc", "lgc", "vlgc", "oil_coastal", "oil_intermediate", "oil_flexi", "oil_handysize", "oil_mr1","oil_handymax", "oil_mr2", "oil_panamax", "oil_lr1", "oil_aframax", "oil_lr2", "oil_suezmax","oil_lr3", "oil_vlcc","lpg_coasters", "lpg_handysize", "lpg_mgc", "lpg_lgc", "lpg_vlgc", "lpg_vlec", "lng_small_scale_lng", "lng_mid_scale_lng", "lng_two_stroke", "lng_tfde_dfde", "lng_steam", "lng_ssd", "lng_q_flex", "lng_q_max", "oil_coastal", "oil_specialised", "oil_handysize_mr1", "oil_handymax_mr2", "oil_panamax_lr1", "oil_aframax_lr2", "oil_aframax_lr3", "oil_suezmax_lr3", "oil_vlcc","lpg_sgc", "lpg_mgc", "lpg_lgc", "lpg_vlgc_vlec","lng_small_scale_lng", "lng_mid_scale_lng","lng_conventional_lng", "lng_q_fleet", "oil", "lpg", "lng","vlcc", "ulcc", "small_tanker",</code>. Refer to <a href="https://docs.vortexa.com/reference/intro-vessel-entities">VortexaAPI Vessel Entities</a> for the most up-to-date list of vessel classes.</p>
+</li>
 </ul>
 <p><strong>Returns</strong></p>
-<p><code>OnshoreInventoriesResult</code></p>
-<p><strong>Data frame example</strong></p>
-<p>Top 5 Crude Onshore Inventories where 'crude_confidence' status is 'confirmed'.</p>
-<pre><code class="language-python">&gt;&gt;&gt; from vortexasdk import OnshoreInventoriesSearch
-&gt;&gt;&gt; df = OnshoreInventoriesSearch().search(crude_confidence=['confirmed']).to_df().head(5)
+<p>List of vessel summaries matching the search arguments.</p>
+<p><strong>Examples</strong></p>
+<ul>
+<li>Let's find all summaries for all Aframax and VLCC_PLUS vessels, from the week prior to October 31st, 2023.</li>
+</ul>
+<pre><code class="language-python">&gt;&gt;&gt; from vortexasdk import VesselSummary
+&gt;&gt;&gt; vessel_summary_df = VesselSummary().search(vessel_class=['aframax', 'vlcc_plus'], timestamp='2023-10-31T23:59:59.000Z').to_df(columns=['vessel_id', 'timestamp', 'lat', 'lon', 'speed', 'heading', 'declared_destination', 'draught'])
 
 </code></pre>
 <table>
 <thead>
 <tr>
 <th style="text-align: right;"></th>
-<th style="text-align: left;">measurement_id</th>
-<th style="text-align: left;">tank_id</th>
-<th style="text-align: right;">tank_details.capacity_bbl</th>
-<th>...</th>
-<th>fill_bbl</th>
-<th>fill_tons</th>
-<th>fill_cbm</th>
+<th style="text-align: center;">vessel_id</th>
+<th style="text-align: right;">lat</th>
+<th style="text-align: right;">lon</th>
+<th style="text-align: left;">timestamp</th>
+<th style="text-align: right;">speed</th>
+<th style="text-align: right;">heading</th>
+<th style="text-align: right;">declared_destination</th>
+<th style="text-align: right;">draught</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: right;">0</td>
-<td style="text-align: left;">1e41bdfc8fa21a1f3d874d41a</td>
-<td style="text-align: left;">af83f5475ebd45b9167254667</td>
-<td style="text-align: right;">225055</td>
-<td>...</td>
-<td>194898</td>
-<td>26648.208642</td>
-<td>30986.443224</td>
+<td style="text-align: center;">bc49bed3d600b394</td>
+<td style="text-align: right;">17.36560</td>
+<td style="text-align: right;">-161.39080</td>
+<td style="text-align: left;">2023-10-31T23:57:11.000Z</td>
+<td style="text-align: right;">19.299</td>
+<td style="text-align: right;">308</td>
+<td style="text-align: right;">&gt;JP KZU XX</td>
+<td style="text-align: right;">11</td>
 </tr>
 <tr>
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">211d96e43ff6893d555f8e7e0</td>
-<td style="text-align: left;">f7c583b26ff8d4e50d4ba9da5</td>
-<td style="text-align: right;">658327</td>
-<td>...</td>
-<td>131804</td>
-<td>18021.429116</td>
-<td>20955.254352</td>
-</tr>
-<tr>
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">5ef5595cadf0161f6b59a0769</td>
-<td style="text-align: left;">7047360864070b7a08802ae82</td>
-<td style="text-align: right;">209196</td>
-<td>...</td>
-<td>468790</td>
-<td>64097.187910</td>
-<td>74531.984520</td>
-</tr>
-<tr>
-<td style="text-align: right;">3</td>
-<td style="text-align: left;">b70f105d6309fb1acdb4b18c5</td>
-<td style="text-align: left;">2ae82a3b79f32105716725460</td>
-<td style="text-align: right;">664169</td>
-<td>...</td>
-<td>105934</td>
-<td>14484.249886</td>
-<td>16842.234792</td>
-</tr>
-<tr>
-<td style="text-align: right;">4</td>
-<td style="text-align: left;">72841f54183a082de91d9er43</td>
-<td style="text-align: left;">802ae82a3b79f321167254667</td>
-<td style="text-align: right;">75669</td>
-<td>...</td>
-<td>474814</td>
-<td>64920.843406</td>
-<td>75489.728232</td>
+<td style="text-align: right;">...to &gt;800 results</td>
+<td style="text-align: center;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
 </tr>
 </tbody>
 </table>
-<p><strong>List example</strong></p>
-<p>First COI object in the list where 'crude_confidence' status is 'confirmed'.</p>
-<pre><code class="language-python">&gt;&gt;&gt; from vortexasdk import OnshoreInventoriesSearch
-&gt;&gt;&gt; list = OnshoreInventoriesSearch().search(crude_confidence='confirmed').to_list()[0]
+<p>Note that we will show you all fields by default if you don't set the columns argument.</p>
+<pre><code>
+- Now let's find summaries for vessels carrying crude, using the Vessels and Product Reference endpoints
+
+```python
+&gt;&gt;&gt; from vortexasdk import Vessels, Products
+&gt;&gt;&gt; crude = [p.id for p in Products().search(term=&quot;crude&quot;).to_list() if 'group' in p.layer]
+&gt;&gt;&gt; vessels_list = Vessels().search(vessel_product_types=crude).to_list()
+&gt;&gt;&gt; vessel_ids = [v.id for v in vessels_list]
+&gt;&gt;&gt; crude_summaries = VesselSummary().search(vessel_id=vessel_ids).to_df()
 
 </code></pre>
-<pre><code>{
-    measurement_id: '5731385e7b0ce8',
-    tank_id: 'c5a6bf5e95e969cf7',
-    tank_details: {
-        id: 'c5a6bf5e95e969cf7',
-        capacity_bbl: 875573,
-        capacity_cbm: 139205,
-        capacity_ton: 119716,
-        corporate_entity_details: {
-            id: 'b25523ae823b9e38bb11a161eb60d42194f1a886e58dfe39592dcc324f06f60e',
-            label: 'Repsol'
-        },
-        corporate_entity_id: 'b25523ae823b9e38bb11a161eb60d42194f1a886e58dfe39592dcc324f06f60e',
-        crude_confidence: 'confirmed',
-        last_updated: '2021-08-03T14: 34: 18.533Z',
-        leaf: True,
-        location_id: 'a98c21d06633d86c8c55',
-        location_details: [
-            {
-                id: 'a98c21d06633d86c8c55',
-                label: 'CartagenaLNGTerminal(Enagas)',
-                layer: 'terminal'
-            },
-            {
-                id: 'c7baa1cfb2a11e7c2eca',
-                label: 'Cartagena[
-                    ES
-                ]',
-                layer: 'port'
-            }
-        ],
-        name: 'CGA030',
-        pos: (-0.926539,
-        37.574),
-        radius: 45,
-        ref_type: 'asset_tank',
-        storage_terminal_id: 'e757382d4aa5a8aa77d0f11ac7f535fb32993bae89bdf581771f155d1c0149b8',
-        storage_terminal_name: 'RepsolCartagenaRefinery',
-        storage_type: 'refinery'
-    },
-    measurement_timestamp: '2021-09-06T17: 50: 12',
-    publish_timestamp: '2021-09-08T13: 59: 45',
-    fill_bbl: 732345,
-    fill_tons: 100132.79950499999,
-    fill_cbm: 116434.06685999999,
-    reference_data_version: '20210906-1631611377217'
-}
+<h1 id="further-documentation">Further Documentation</h1>
+<p><a href="https://docs.vortexa.com/reference/POST/signals/vessel-summary">VortexaAPI Vessel Summary Reference</a></p>
+<h1 id="vortexasdk.endpoints.vessel_summary_result">vortexasdk.endpoints.vessel_summary_result</h1>
+
+<h2 id="vortexasdk.endpoints.vessel_summary_result.VesselSummaryResult">VesselSummaryResult</h2>
+
+<pre><code class="language-python">VesselSummaryResult(__pydantic_self__, **data: Any) -&gt; None
 </code></pre>
+<p>Container class that holds the result obtained from calling the <code>Vessel-Summary</code> endpoint.</p>
+<h3 id="vortexasdk.endpoints.vessel_summary_result.VesselSummaryResult.to_list">to_list</h3>
+
+<pre><code class="language-python">VesselSummaryResult.to_list(self) -&gt; List[vortexasdk.api.vessel_summary.VesselSummary]
+</code></pre>
+<p>Represent vessels as a list.</p>
+<h3 id="vortexasdk.endpoints.vessel_summary_result.VesselSummaryResult.to_df">to_df</h3>
+
+<pre><code class="language-python">VesselSummaryResult.to_df(self, columns=None) -&gt; pandas.core.frame.DataFrame
+</code></pre>
+<p>Represent vessels as a <code>pd.DataFrame</code>.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>columns</strong>: The vessel features we want in the dataframe. Enter <code>columns='all'</code> to include all features.
+    Defaults to <code>columns = ['vessel_id', 'timestamp', 'lat', 'lon', 'speed', 'draught', 'declared_destination', 'declared_eta']</code>.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p><code>pd.DataFrame</code> of vessels.</p>
               
             </div>
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../onshore_inventories_timeseries/" class="btn btn-neutral float-right" title="Time Series">Next <span class="icon icon-circle-arrow-right"></span></a>
-      
-      
-        <a href="../vessel_availability_breakdown/" class="btn btn-neutral" title="Breakdown"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>
@@ -426,10 +364,6 @@ Please note: you will require a subscription to our Crude Onshore Inventories mo
         </span>
     
     
-      <span><a href="../vessel_availability_breakdown/" style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="../onshore_inventories_timeseries/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
