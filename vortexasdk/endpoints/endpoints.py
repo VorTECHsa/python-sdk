@@ -1,43 +1,47 @@
-CARGO_TIMESERIES_RESOURCE = "/time-series"
+CARGO_TIMESERIES_RESOURCE = "/v5/time-series"
 
-CARGO_MOVEMENTS_RESOURCE = "/cargo-movements/search"
-CARGO_MOVEMENT_RESOURCE = "/cargo-movements"
-EIA_FORECASTS_RESOURCE = "/search/eia-forecasts"
+CARGO_MOVEMENTS_RESOURCE = "/v5/cargo-movements/search"
+CARGO_MOVEMENT_RESOURCE = "/v5/cargo-movements"
+EIA_FORECASTS_RESOURCE = "/v5/search/eia-forecasts"
 
-ORIGIN_BREAKDOWN_RESOURCE = "/breakdown/origin"
-DESTINATION_BREAKDOWN_RESOURCE = "/breakdown/destination"
+ORIGIN_BREAKDOWN_RESOURCE = "/v5/breakdown/origin"
+DESTINATION_BREAKDOWN_RESOURCE = "/v5/breakdown/destination"
 
-PRODUCT_BREAKDOWN_RESOURCE = "/breakdown/product"
-PARENT_PRODUCT_BREAKDOWN_RESOURCE = "/breakdown/parent-product"
+PRODUCT_BREAKDOWN_RESOURCE = "/v5/breakdown/product"
+PARENT_PRODUCT_BREAKDOWN_RESOURCE = "/v5/breakdown/parent-product"
 
-MOVEMENT_STATUS_BREAKDOWN_RESOURCE = "/breakdown/movement-status"
+MOVEMENT_STATUS_BREAKDOWN_RESOURCE = "/v5/breakdown/movement-status"
 
-VESSEL_CLASS_BREAKDOWN_RESOURCE = "/breakdown/vessel-class"
+VESSEL_CLASS_BREAKDOWN_RESOURCE = "/v5/breakdown/vessel-class"
 
-VESSEL_AVAILABILITY_SEARCH_RESOURCE = "/vessel-availability/search"
-VESSEL_AVAILABILITY_TIMERSERIES_RESOURCE = "/vessel-availability/timeseries"
-VESSEL_AVAILABILITY_BREAKDOWN_RESOURCE = "/vessel-availability/breakdown"
+VESSEL_AVAILABILITY_SEARCH_RESOURCE = "/v5/vessel-availability/search"
+VESSEL_AVAILABILITY_TIMERSERIES_RESOURCE = "/v5/vessel-availability/timeseries"
+VESSEL_AVAILABILITY_BREAKDOWN_RESOURCE = "/v5/vessel-availability/breakdown"
 
-CRUDE_ONSHORE_INVENTORIES_SEARCH = "/onshore-inventories/search"
-CRUDE_ONSHORE_INVENTORIES_TIMESERIES = "/onshore-inventories/timeseries"
+CRUDE_ONSHORE_INVENTORIES_SEARCH = "/v5/onshore-inventories/search"
+CRUDE_ONSHORE_INVENTORIES_TIMESERIES = "/v5/onshore-inventories/timeseries"
 
-ASSET_TANKS_REFERENCE = "/reference/asset-tanks"
-ATTRIBUTES_REFERENCE = "/reference/attributes"
-CORPORATIONS_REFERENCE = "/reference/charterers"
-GEOGRAPHIES_REFERENCE = "/reference/geographies"
-PRODUCTS_REFERENCE = "/reference/products"
-STORAGE_TERMINALS_REFERENCE = "/reference/storage-terminals"
-VESSELS_REFERENCE = "/reference/vessels"
+ASSET_TANKS_REFERENCE = "/v5/reference/asset-tanks"
+ATTRIBUTES_REFERENCE = "/v5/reference/attributes"
+CORPORATIONS_REFERENCE = "/v5/reference/charterers"
+GEOGRAPHIES_REFERENCE = "/v5/reference/geographies"
+PRODUCTS_REFERENCE = "/v5/reference/products"
+STORAGE_TERMINALS_REFERENCE = "/v5/reference/storage-terminals"
+VESSELS_REFERENCE = "/v5/reference/vessels"
 
-FREIGHT_PRICING_SEARCH = "/freight-pricing/rates"
-FREIGHT_PRICING_TIMESERIES = "/freight-pricing/timeseries"
+FREIGHT_PRICING_SEARCH = "/v5/freight-pricing/rates"
+FREIGHT_PRICING_TIMESERIES = "/v5/freight-pricing/timeseries"
 
-VOYAGES_SEARCH_ENRICHED = "/voyages/search-enriched"
-VOYAGES_TOP_HITS = "/voyages/top-hits"
-VOYAGES_CONGESTION_BREAKDOWN = "/voyages/congestion-breakdown"
-VOYAGES_TIMESERIES = "/voyages/timeseries"
+VOYAGES_SEARCH_ENRICHED = "/v5/voyages/search-enriched"
+VOYAGES_TOP_HITS = "/v5/voyages/top-hits"
+VOYAGES_CONGESTION_BREAKDOWN = "/v5/voyages/congestion-breakdown"
+VOYAGES_TIMESERIES = "/v5/voyages/timeseries"
 
-FIXTURES = "/search/fixtures"
+VESSEL_SUMMARY = "/v6/signals/vessel-summary"
+
+FIXTURES = "/v5/search/fixtures"
 
 API_FQDN = "https://api.vortexa.com"
-API_URL = f"{API_FQDN}/v5"
+
+
+API_URL = f"{API_FQDN}"

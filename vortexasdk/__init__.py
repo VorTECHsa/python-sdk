@@ -29,6 +29,7 @@ from vortexasdk.endpoints import (
     VoyagesCongestionBreakdown,
     VoyagesTopHits,
     VoyagesSearchEnriched,
+    VesselSummary,
 )
 
 # noinspection PyUnresolvedReferences
