@@ -40,7 +40,7 @@ class TestVoyagesCongestionBreakdown(TestCaseUsingRealAPI):
 
     def test_search_returns_larger_size(self):
         start = datetime(2019, 1, 1)
-        end = datetime(2019, 11, 10)
+        end = datetime(2019, 3, 1)
 
         result = VoyagesCongestionBreakdown().search(
             time_min=start, time_max=end, breakdown_size=25
