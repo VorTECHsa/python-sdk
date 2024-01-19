@@ -15,14 +15,19 @@ class TestOnshoreInventoriesSearch(TestCaseUsingRealAPI):
         assert len(df) > 100
 
     def test_filter_by_measurement_ids(self):
+        """
+        This test can be a little flaky!
+        Sometimes the `measurement_id` might get recycled and disappear.
+        If this happens, you may need to find a new one and replace.
+        Also consider removing this test if it happens periodically.
+        """
+
         df = (
             OnshoreInventoriesSearch()
             .search(
                 measurement_ids=[
-                    "71c138f8c1f93b81e6a6c7d6429b71e5b4d8d2321a3a7cafa92ffedf430f5cf0"
-                ],
-                time_min=datetime(2022, 1, 1),
-                time_max=datetime(2022, 1, 14),
+                    "00010ff9d5d026fbcaa9196be69287a2caffcfd222af99d15724ecbbfe0f070e"
+                ]
             )
             .to_df()
         )
