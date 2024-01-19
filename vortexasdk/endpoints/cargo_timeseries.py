@@ -49,6 +49,7 @@ class CargoTimeSeries(Search):
         intra_movements: Optional[str] = None,
         timeseries_activity_time_span_min: Optional[int] = None,
         timeseries_activity_time_span_max: Optional[int] = None,
+        timeseries_property: Optional[str] = None,
     ) -> TimeSeriesResult:
         """
 
