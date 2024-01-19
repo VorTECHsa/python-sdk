@@ -1,4 +1,3 @@
-from datetime import datetime
 from vortexasdk import OnshoreInventoriesSearch
 
 from tests.testcases import TestCaseUsingRealAPI
