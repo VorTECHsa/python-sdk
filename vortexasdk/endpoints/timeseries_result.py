@@ -1,7 +1,11 @@
+import functools
+from multiprocessing.pool import Pool
+import os
 from typing import List
 
 import pandas as pd
 
+from vortexasdk.api.entity_flattening import convert_to_flat_dict
 from vortexasdk.api.search_result import Result
 from vortexasdk.api.timeseries_item import TimeSeriesItem
 from vortexasdk.logger import get_logger
@@ -33,10 +37,15 @@ class TimeSeriesResult(Result):
         the number of cargo movements contributing towards this day's tonnage.
 
         """
+        flatten = functools.partial(convert_to_flat_dict, cols="all")
+
+        with Pool(os.cpu_count()) as pool:
+            records = pool.map(flatten, super().to_list())
+
         df = create_dataframe(
-            columns=columns,
+            columns="all",
             default_columns=DEFAULT_COLUMNS,
-            data=super().to_list(),
+            data=records,
             logger_description="TimeSeries",
         )
 
