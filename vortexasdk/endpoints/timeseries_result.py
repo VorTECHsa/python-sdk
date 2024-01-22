@@ -1,7 +1,11 @@
+import functools
+from multiprocessing.pool import Pool
+import os
 from typing import List
 
 import pandas as pd
 
+from vortexasdk.api.entity_flattening import convert_to_flat_dict
 from vortexasdk.api.search_result import Result
 from vortexasdk.api.timeseries_item import TimeSeriesItem
 from vortexasdk.logger import get_logger
@@ -9,18 +13,15 @@ from vortexasdk.result_conversions import create_dataframe, create_list
 
 logger = get_logger(__name__)
 
-DEFAULT_COLUMNS = ["key", "value", "count"]
-
 
 class TimeSeriesResult(Result):
     """Container class that holds the result obtained from calling a time series endpoint."""
 
     def to_list(self) -> List[TimeSeriesItem]:
         """Represents time series as a list."""
-        # noinspection PyTypeChecker
         return create_list(super().to_list(), TimeSeriesItem)
 
-    def to_df(self, columns=DEFAULT_COLUMNS) -> pd.DataFrame:
+    def to_df(self, columns="all") -> pd.DataFrame:
         """Represents the timeseries as a dataframe.
 
         Returns a `pd.DataFrame`, of time series items with columns:
@@ -35,9 +36,14 @@ class TimeSeriesResult(Result):
         the number of cargo movements contributing towards this day's tonnage.
 
         """
+        flatten = functools.partial(convert_to_flat_dict, columns=columns)
+
+        with Pool(os.cpu_count()) as pool:
+            records = pool.map(flatten, super().to_list())
+
         df = create_dataframe(
             columns=columns,
-            data=super().to_list(),
+            data=records,
             logger_description="TimeSeries",
         )
 

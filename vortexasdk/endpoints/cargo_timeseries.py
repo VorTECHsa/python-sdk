@@ -23,7 +23,6 @@ class CargoTimeSeries(Search):
     def __init__(self):
         Search.__init__(self, CARGO_TIMESERIES_RESOURCE)
 
-    # noinspection PyUnresolvedReferences
     def search(
         self,
         filter_activity: str,
