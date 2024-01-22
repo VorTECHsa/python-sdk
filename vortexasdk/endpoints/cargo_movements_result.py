@@ -6,7 +6,9 @@ from typing import List
 import pandas as pd
 
 from vortexasdk.api import CargoMovement
-from vortexasdk.api.entity_flattening import convert_to_flat_dict
+from vortexasdk.api.entity_flattening import (
+    convert_cargo_movement_to_flat_dict,
+)
 from vortexasdk.api.search_result import Result
 from vortexasdk.logger import get_logger
 from vortexasdk.result_conversions import create_dataframe, create_list
@@ -550,7 +552,9 @@ class CargoMovementsResult(Result):
 
         """
 
-        flatten = functools.partial(convert_to_flat_dict, columns=columns)
+        flatten = functools.partial(
+            convert_cargo_movement_to_flat_dict, columns=columns
+        )
 
         logger.debug("Converting each CargoMovement to a flat dictionary")
         with Pool(os.cpu_count()) as pool:

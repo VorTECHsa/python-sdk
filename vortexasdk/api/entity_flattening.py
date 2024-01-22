@@ -32,16 +32,18 @@ def convert_to_flat_dict(
         return {k: v for k, v in formatted.items() if k in columns}
 
 
-def convert_cargo_movement_to_flat_dict(cme: Dict, cols="all") -> Dict:
+def convert_cargo_movement_to_flat_dict(
+    cme: Dict, columns: Union[Literal["all"], List[str]]
+) -> Dict:
     """Convert nested `CargoMovement` object to flat dictionary, keeping *cols*."""
     as_dict = _group_cargo_movement_attributes_by_layer(cme)
 
     formatted = flatten_dictionary(as_dict)
 
-    if cols == "all":
+    if columns == "all":
         return formatted
     else:
-        return {k: v for k, v in formatted.items() if k in cols}
+        return {k: v for k, v in formatted.items() if k in columns}
 
 
 def _group_cargo_movement_attributes_by_layer(cm: Dict) -> Dict:
