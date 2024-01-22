@@ -8,8 +8,8 @@ from typing import Any, Dict, List, Union
 
 from vortexasdk.api import ID
 from vortexasdk.api.shared_types import to_ISODate
-from vortexasdk.endpoints.breakdown_result import BreakdownResult
 from vortexasdk.endpoints.endpoints import CRUDE_ONSHORE_INVENTORIES_TIMESERIES
+from vortexasdk.endpoints.timeseries_result import TimeSeriesResult
 from vortexasdk.operations import Search
 from vortexasdk.utils import convert_to_list
 
@@ -40,7 +40,7 @@ class OnshoreInventoriesTimeseries(Search):
         exclude_crude_confidence: List[str] = None,
         exclude_location_ids: Union[ID, List[ID]] = None,
         exclude_storage_types: List[str] = None,
-    ) -> BreakdownResult:
+    ) -> TimeSeriesResult:
         """
 
         Sum of crude onshore inventories storage and total capacity updated weekly. For frequencies other than 'week', the values returned are
@@ -155,6 +155,6 @@ class OnshoreInventoriesTimeseries(Search):
             response_type="breakdown", **api_params
         )
 
-        return BreakdownResult(
+        return TimeSeriesResult(
             records=response["data"], ref=response["reference"]
         )
