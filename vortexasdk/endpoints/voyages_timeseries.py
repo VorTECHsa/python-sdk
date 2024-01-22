@@ -11,6 +11,7 @@ from vortexasdk.api.shared_types import Tag, to_ISODate
 from vortexasdk.endpoints.breakdown_result import BreakdownResult
 from vortexasdk.endpoints.endpoints import VOYAGES_TIMESERIES
 from vortexasdk.operations import Search
+from vortexasdk.search_response import SearchResponse
 from vortexasdk.utils import chunk_time_series, convert_to_list
 
 
@@ -361,7 +362,7 @@ class VoyagesTimeseries(Search):
                 records=response["data"], reference=response["reference"]
             )
 
-        combined_response = {"reference": {}, "data": []}
+        combined_response: SearchResponse = {"reference": {}, "data": []}
 
         for chunk in chunk_time_series(time_min, time_max):
             api_params["time_min"] = to_ISODate(chunk["time_min"])
