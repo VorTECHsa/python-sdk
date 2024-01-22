@@ -38,8 +38,6 @@ def create_dataframe(
     """
     logger.debug(f"Creating DataFrame of {logger_description}")
 
-    # if columns is None:
-    #     df = pd.DataFrame(data=data, columns=default_columns).fillna("")
     if columns == "all":
         df = pd.DataFrame(data=data).fillna("")
     else:

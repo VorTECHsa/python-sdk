@@ -169,8 +169,6 @@ class FreightPricingResult(Result):
         ```
 
         """
-        if columns is None:
-            columns = DEFAULT_COLUMNS
 
         logger.debug(
             "Converting each Freight Pricing object to a flat dictionary"

@@ -49,72 +49,70 @@ class CongestionBreakdownResult(Result):
         self, columns: Union[Literal["all"], List[str]] = DEFAULT_COLUMNS
     ) -> pd.DataFrame:
         """
-        Represent availability as a `pd.DataFrame`.
+            Represent availability as a `pd.DataFrame`.
 
         # Arguments
-            columns: Output columns present in the `pd.DataFrame`.
-            Enter `columns='all'` to return all available columns.
-            Enter `columns=None` to use `voyages_congestion_breakdown_result.DEFAULT_COLUMNS`.
+                columns: Output columns present in the `pd.DataFrame`.
+                Enter `columns='all'` to return all available columns.
+                Enter `columns=None` to use `voyages_congestion_breakdown_result.DEFAULT_COLUMNS`.
 
-        # Returns
-        `pd.DataFrame`, one row per `VesselAvailability`.
+            # Returns
+            `pd.DataFrame`, one row per `VesselAvailability`.
 
 
-        ## Notes
+            ## Notes
 
-        By default, the columns returned are something along the lines of.
-        ```python
-        DEFAULT_COLUMNS = [
-            'avg_waiting_time',
-            'vessel_dwt',
-            'vessel_cubic_capacity',
-            'vessel_count',
-            'cargo_quantity',
-            'avg_waiting_time_laden',
-            'vessel_dwt_laden',
-            'vessel_cubic_capacity_laden',
-            'vessel_count_laden',
-            'avg_waiting_time_ballast',
-            'vessel_dwt_ballast',
-            'vessel_cubic_capacity_ballast',
-            'vessel_count_ballast',
-            'location_details.0.label',
-        ]
-        ```
-        The exact default columns used can be found at `voyages_congestion_breakdown_result.DEFAULT_COLUMNS`
+            By default, the columns returned are something along the lines of.
+            ```python
+            DEFAULT_COLUMNS = [
+                'avg_waiting_time',
+                'vessel_dwt',
+                'vessel_cubic_capacity',
+                'vessel_count',
+                'cargo_quantity',
+                'avg_waiting_time_laden',
+                'vessel_dwt_laden',
+                'vessel_cubic_capacity_laden',
+                'vessel_count_laden',
+                'avg_waiting_time_ballast',
+                'vessel_dwt_ballast',
+                'vessel_cubic_capacity_ballast',
+                'vessel_count_ballast',
+                'location_details.0.label',
+            ]
+            ```
+            The exact default columns used can be found at `voyages_congestion_breakdown_result.DEFAULT_COLUMNS`
 
-        A near complete list of columns is given below
-        ```
-        [
-            'avg_waiting_time',
-            'vessel_dwt',
-            'vessel_cubic_capacity',
-            'vessel_count',
-            'cargo_quantity',
-            'avg_waiting_time_laden',
-            'vessel_dwt_laden',
-            'vessel_cubic_capacity_laden',
-            'vessel_count_laden',
-            'avg_waiting_time_ballast',
-            'vessel_dwt_ballast',
-            'vessel_cubic_capacity_ballast',
-            'vessel_count_ballast',
-            'location_details.0.label',
-            'location_details.0.id',
-            'location_details.0.layer.0'
-            'location_details.0.layer.1'
-            'location_details.0.layer.2',
-            'location_details.1.label',
-            'location_details.1.id',
-            'location_details.1.layer.0'
-            'location_details.1.layer.1'
-            'location_details.1.layer.2'
-        ]
-        ```
+            A near complete list of columns is given below
+            ```
+            [
+                'avg_waiting_time',
+                'vessel_dwt',
+                'vessel_cubic_capacity',
+                'vessel_count',
+                'cargo_quantity',
+                'avg_waiting_time_laden',
+                'vessel_dwt_laden',
+                'vessel_cubic_capacity_laden',
+                'vessel_count_laden',
+                'avg_waiting_time_ballast',
+                'vessel_dwt_ballast',
+                'vessel_cubic_capacity_ballast',
+                'vessel_count_ballast',
+                'location_details.0.label',
+                'location_details.0.id',
+                'location_details.0.layer.0'
+                'location_details.0.layer.1'
+                'location_details.0.layer.2',
+                'location_details.1.label',
+                'location_details.1.id',
+                'location_details.1.layer.0'
+                'location_details.1.layer.1'
+                'location_details.1.layer.2'
+            ]
+            ```
 
         """
-        if columns is None:
-            columns = DEFAULT_COLUMNS
 
         logger.debug(
             "Converting each Voyage Congestion Breakdown to a flat dictionary"

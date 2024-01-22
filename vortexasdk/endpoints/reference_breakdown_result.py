@@ -70,9 +70,6 @@ class ReferenceBreakdownResult(Result):
         # data enrichment step - labels from `reference` replace keys from `data`
         new_list = replace_keys(self)
 
-        if columns is None:
-            columns = DEFAULT_COLUMNS
-
         logger.debug("Converting each breakdown to a flat dictionary")
         flatten = functools.partial(convert_to_flat_dict, columns=columns)
 

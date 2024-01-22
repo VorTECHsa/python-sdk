@@ -203,8 +203,6 @@ class VesselAvailabilityResult(Result):
         ```
 
         """
-        if columns is None:
-            columns = DEFAULT_COLUMNS
 
         logger.debug(
             "Converting each Vessel Availability to a flat dictionary"

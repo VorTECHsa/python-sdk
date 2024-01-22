@@ -94,8 +94,6 @@ class OnshoreInventoriesResult(Result):
 
 
         """
-        if columns is None:
-            columns = DEFAULT_COLUMNS
 
         logger.debug(
             "Converting Crude Onshore Inventories to a flat dictionary"

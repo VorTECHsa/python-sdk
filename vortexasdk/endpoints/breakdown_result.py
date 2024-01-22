@@ -74,9 +74,6 @@ class BreakdownResult(Result):
 
         """
 
-        if columns is None:
-            columns = DEFAULT_COLUMNS
-
         logger.debug("Converting each breakdown to a flat dictionary")
         flatten = functools.partial(convert_to_flat_dict, columns=columns)
 

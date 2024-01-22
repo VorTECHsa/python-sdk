@@ -549,8 +549,6 @@ class CargoMovementsResult(Result):
         ```
 
         """
-        if columns is None:
-            columns = DEFAULT_COLUMNS
 
         flatten = functools.partial(convert_to_flat_dict, columns=columns)
 
