@@ -1,16 +1,27 @@
-from typing import List
-from vortexasdk.api.entity_flattening import convert_to_flat_dict
-from vortexasdk.api.breakdown_item import BreakdownItem
-import pandas as pd
 import functools
 import os
 from multiprocessing.pool import Pool
+from typing import List, Literal, Union
 
+import pandas as pd
+
+from vortexasdk.api.breakdown_item import BreakdownItem
+from vortexasdk.api.entity_flattening import convert_to_flat_dict
 from vortexasdk.api.search_result import Result
 from vortexasdk.logger import get_logger
 from vortexasdk.result_conversions import create_dataframe, create_list
 
 logger = get_logger(__name__)
+
+
+DEFAULT_COLUMNS = [
+    "key",
+    "value",
+    "count",
+    "breakdown.0.label",
+    "breakdown.0.count",
+    "breakdown.0.value",
+]
 
 
 class BreakdownResult(Result):
@@ -21,7 +32,9 @@ class BreakdownResult(Result):
         # noinspection PyTypeChecker
         return create_list(super().to_list(), BreakdownItem)
 
-    def to_df(self, columns=None) -> pd.DataFrame:
+    def to_df(
+        self, columns: Union[Literal["all"], List[str]] = DEFAULT_COLUMNS
+    ) -> pd.DataFrame:
         """Represents the timeseries as a dataframe.
 
         # Arguments
@@ -65,14 +78,13 @@ class BreakdownResult(Result):
             columns = DEFAULT_COLUMNS
 
         logger.debug("Converting each breakdown to a flat dictionary")
-        flatten = functools.partial(convert_to_flat_dict, cols=columns)
+        flatten = functools.partial(convert_to_flat_dict, columns=columns)
 
         with Pool(os.cpu_count()) as pool:
             records = pool.map(flatten, super().to_list())
 
         df = create_dataframe(
             columns=columns,
-            default_columns=DEFAULT_COLUMNS,
             data=records,
             logger_description="Breakdown",
         )
@@ -80,13 +92,3 @@ class BreakdownResult(Result):
         df["key"] = pd.to_datetime(df["key"])
 
         return df
-
-
-DEFAULT_COLUMNS = [
-    "key",
-    "value",
-    "count",
-    "breakdown.0.label",
-    "breakdown.0.count",
-    "breakdown.0.value",
-]

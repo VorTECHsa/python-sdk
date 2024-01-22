@@ -1,12 +1,22 @@
-from typing import List
+from typing import List, Literal, Union
 
-import pandas as pd
 from vortexasdk.api import AssetTank
 from vortexasdk.api.search_result import Result
-from vortexasdk.result_conversions import create_dataframe, create_list
 from vortexasdk.logger import get_logger
+from vortexasdk.result_conversions import create_dataframe, create_list
 
 logger = get_logger(__name__)
+
+DEFAULT_COLUMNS = [
+    "id",
+    "capacity_bbl",
+    "crude_confidence",
+    "location_id",
+    "name",
+    "storage_type",
+    "lat",
+    "lon",
+]
 
 
 class AssetTankResult(Result):
@@ -17,7 +27,9 @@ class AssetTankResult(Result):
         # noinspection PyTypeChecker
         return create_list(super().to_list(), AssetTank)
 
-    def to_df(self, columns=None) -> pd.DataFrame:
+    def to_df(
+        self, columns: Union[Literal["all"], List[str]] = DEFAULT_COLUMNS
+    ):
         """
         Represent asset tanks as a `pd.DataFrame`.
 
@@ -32,19 +44,6 @@ class AssetTankResult(Result):
         """
         return create_dataframe(
             columns=columns,
-            default_columns=DEFAULT_COLUMNS,
             data=super().to_list(),
             logger_description="AssetTanks",
         )
-
-
-DEFAULT_COLUMNS = [
-    "id",
-    "capacity_bbl",
-    "crude_confidence",
-    "location_id",
-    "name",
-    "storage_type",
-    "lat",
-    "lon",
-]

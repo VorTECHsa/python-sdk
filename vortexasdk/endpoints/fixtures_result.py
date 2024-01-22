@@ -1,7 +1,7 @@
 import functools
 import os
 from multiprocessing import Pool
-from typing import List
+from typing import List, Literal, Union
 
 import pandas as pd
 
@@ -38,7 +38,9 @@ class FixtureResult(Result):
         # noinspection PyTypeChecker
         return create_list(super().to_list(), Fixture)
 
-    def to_df(self, columns=DEFAULT_COLUMNS) -> pd.DataFrame:
+    def to_df(
+        self, columns: Union[Literal["all"], List[str]] = DEFAULT_COLUMNS
+    ) -> pd.DataFrame:
         """
         Represent Fixtures as a `pd.DataFrame`.
 
@@ -118,14 +120,13 @@ class FixtureResult(Result):
         `pd.DataFrame` of Fixtures.
         """
 
-        flatten = functools.partial(convert_to_flat_dict, cols=columns)
+        flatten = functools.partial(convert_to_flat_dict, columns=columns)
 
         with Pool(os.cpu_count()) as pool:
             records = pool.map(flatten, super().to_list())
 
         return create_dataframe(
             columns=columns,
-            default_columns=DEFAULT_COLUMNS,
             data=records,
             logger_description="Fixtures",
         )

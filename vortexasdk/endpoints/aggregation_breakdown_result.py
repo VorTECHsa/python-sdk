@@ -1,12 +1,15 @@
-from typing import List
+from typing import List, Literal, Union
 
 import pandas as pd
+
 from vortexasdk.api.aggregation_breakdown_item import AggregationBreakdownItem
 from vortexasdk.api.search_result import Result
 from vortexasdk.logger import get_logger
 from vortexasdk.result_conversions import create_dataframe, create_list
 
 logger = get_logger(__name__)
+
+DEFAULT_COLUMNS = ["id", "value", "count", "label"]
 
 
 class AggregationBreakdownResult(Result):
@@ -17,7 +20,9 @@ class AggregationBreakdownResult(Result):
         # noinspection PyTypeChecker
         return create_list(super().to_list(), AggregationBreakdownItem)
 
-    def to_df(self, columns=None) -> pd.DataFrame:
+    def to_df(
+        self, columns: Union[Literal["all"], List[str]] = DEFAULT_COLUMNS
+    ) -> pd.DataFrame:
         """Represents the aggregation breakdown as a dataframe.
 
         Returns a `pd.DataFrame`, of time series items with columns:
@@ -35,12 +40,8 @@ class AggregationBreakdownResult(Result):
         """
         df = create_dataframe(
             columns=columns,
-            default_columns=DEFAULT_COLUMNS,
             data=super().to_list(),
             logger_description="AggregationBreakdown",
         )
 
         return df
-
-
-DEFAULT_COLUMNS = ["id", "value", "count", "label"]

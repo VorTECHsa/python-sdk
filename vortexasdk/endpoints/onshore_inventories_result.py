@@ -1,7 +1,7 @@
 import functools
 import os
 from multiprocessing.pool import Pool
-from typing import List
+from typing import List, Literal, Union
 from vortexasdk.api.onshore_inventory import OnshoreInventory
 
 import pandas as pd
@@ -12,6 +12,28 @@ from vortexasdk.result_conversions import create_dataframe, create_list
 from vortexasdk.logger import get_logger
 
 logger = get_logger(__name__)
+
+
+DEFAULT_COLUMNS = [
+    "measurement_id",
+    "tank_id",
+    "tank_details.capacity_bbl",
+    "tank_details.capacity_cbm",
+    "tank_details.capacity_ton",
+    "tank_details.corporate_entity_details.id",
+    "tank_details.corporate_entity_details.label",
+    "tank_details.crude_confidence",
+    "tank_details.location_id",
+    "tank_details.name",
+    "tank_details.pos",
+    "tank_details.storage_terminal_id",
+    "tank_details.storage_terminal_name",
+    "tank_details.last_updated",
+    "measurement_timestamp",
+    "fill_bbl",
+    "fill_tons",
+    "fill_cbm",
+]
 
 
 class OnshoreInventoriesResult(Result):
@@ -29,7 +51,9 @@ class OnshoreInventoriesResult(Result):
         # noinspection PyTypeChecker
         return create_list(super().to_list(), OnshoreInventory)
 
-    def to_df(self, columns=None) -> pd.DataFrame:
+    def to_df(
+        self, columns: Union[Literal["all"], List[str]] = DEFAULT_COLUMNS
+    ) -> pd.DataFrame:
         """
         Represent onshore inventories as a `pd.DataFrame`.
 
@@ -76,36 +100,13 @@ class OnshoreInventoriesResult(Result):
         logger.debug(
             "Converting Crude Onshore Inventories to a flat dictionary"
         )
-        flatten = functools.partial(convert_to_flat_dict, cols=columns)
+        flatten = functools.partial(convert_to_flat_dict, columns=columns)
 
         with Pool(os.cpu_count()) as pool:
             records = pool.map(flatten, super().to_list())
 
         return create_dataframe(
             columns=columns,
-            default_columns=DEFAULT_COLUMNS,
             data=records,
             logger_description="OnshoreInventory",
         )
-
-
-DEFAULT_COLUMNS = [
-    "measurement_id",
-    "tank_id",
-    "tank_details.capacity_bbl",
-    "tank_details.capacity_cbm",
-    "tank_details.capacity_ton",
-    "tank_details.corporate_entity_details.id",
-    "tank_details.corporate_entity_details.label",
-    "tank_details.crude_confidence",
-    "tank_details.location_id",
-    "tank_details.name",
-    "tank_details.pos",
-    "tank_details.storage_terminal_id",
-    "tank_details.storage_terminal_name",
-    "tank_details.last_updated",
-    "measurement_timestamp",
-    "fill_bbl",
-    "fill_tons",
-    "fill_cbm",
-]

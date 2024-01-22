@@ -1,4 +1,4 @@
-from typing import Union, List
+from typing import Literal, Union, List
 
 from vortexasdk.logger import get_logger
 
@@ -25,8 +25,7 @@ def format_datatypes(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def create_dataframe(
-    columns: Union[None, List[str]],
-    default_columns: List[str],
+    columns: Union[Literal["all"], List[str]],
     data: List[dict],
     logger_description: str,
 ) -> pd.DataFrame:
@@ -39,9 +38,9 @@ def create_dataframe(
     """
     logger.debug(f"Creating DataFrame of {logger_description}")
 
-    if columns is None:
-        df = pd.DataFrame(data=data, columns=default_columns).fillna("")
-    elif columns == "all":
+    # if columns is None:
+    #     df = pd.DataFrame(data=data, columns=default_columns).fillna("")
+    if columns == "all":
         df = pd.DataFrame(data=data).fillna("")
     else:
         df = pd.DataFrame(data=data, columns=columns).fillna("")

@@ -1,12 +1,16 @@
-from typing import List
+from typing import List, Literal, Union
 
 import pandas as pd
+
 from vortexasdk.api import Attribute
 from vortexasdk.api.search_result import Result
-from vortexasdk.result_conversions import create_dataframe, create_list
 from vortexasdk.logger import get_logger
+from vortexasdk.result_conversions import create_dataframe, create_list
 
 logger = get_logger(__name__)
+
+
+DEFAULT_COLUMNS = ["id", "name", "type"]
 
 
 class AttributeResult(Result):
@@ -17,7 +21,9 @@ class AttributeResult(Result):
         # noinspection PyTypeChecker
         return create_list(super().to_list(), Attribute)
 
-    def to_df(self, columns=None) -> pd.DataFrame:
+    def to_df(
+        self, columns: Union[Literal["all"], List[str]] = DEFAULT_COLUMNS
+    ) -> pd.DataFrame:
         """
         Represent attributes as a `pd.DataFrame`.
 
@@ -32,10 +38,6 @@ class AttributeResult(Result):
         """
         return create_dataframe(
             columns=columns,
-            default_columns=DEFAULT_COLUMNS,
             data=super().to_list(),
             logger_description="Attributes",
         )
-
-
-DEFAULT_COLUMNS = ["id", "name", "type"]

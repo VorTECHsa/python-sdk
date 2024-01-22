@@ -1,4 +1,4 @@
-from typing import Dict, List
+from typing import Dict, List, Literal, Union
 
 # noinspection PyProtectedMember
 from flatten_dict import flatten
@@ -18,15 +18,17 @@ def _format_keys(dictionary):
     return flat_with_formatted_keys
 
 
-def convert_to_flat_dict(va: Dict, cols="all") -> Dict:
+def convert_to_flat_dict(
+    va: Dict, columns: Union[Literal["all"], List[str]] = "all"
+) -> Dict:
     """A generic function to convert nested object to flat dictionary, keeping *cols*."""
 
     formatted = flatten_dictionary(va)
 
-    if cols == "all":
+    if columns == "all":
         return formatted
     else:
-        return {k: v for k, v in formatted.items() if k in cols}
+        return {k: v for k, v in formatted.items() if k in columns}
 
 
 def convert_cargo_movement_to_flat_dict(cme: Dict, cols="all") -> Dict:
