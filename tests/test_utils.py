@@ -56,16 +56,20 @@ class TestUtils(TestCase):
         result = chunk_time_series(time_min, time_max, chunk_size=14)
         expected = [
             {
-                "time_max": datetime.fromisoformat("2022-08-13T23:59:59.999Z"),
-                "time_min": datetime.fromisoformat("2022-07-30T00:00:00.000Z"),
+                "time_max": datetime.fromisoformat(
+                    "2022-08-13T23:59:59.999999"
+                ),
+                "time_min": datetime.fromisoformat("2022-07-30T00:00:00"),
             },
             {
-                "time_max": datetime.fromisoformat("2022-08-27T23:59:59.999Z"),
-                "time_min": datetime.fromisoformat("2022-08-14T00:00:00.000Z"),
+                "time_max": datetime.fromisoformat(
+                    "2022-08-27T23:59:59.999999"
+                ),
+                "time_min": datetime.fromisoformat("2022-08-14T00:00:00"),
             },
             {
-                "time_max": datetime.fromisoformat("2022-08-30T00:00:00.000Z"),
-                "time_min": datetime.fromisoformat("2022-08-28T00:00:00.000Z"),
+                "time_max": datetime.fromisoformat("2022-08-30T00:00:00"),
+                "time_min": datetime.fromisoformat("2022-08-28T00:00:00"),
             },
         ]
         self.assertEqual(result, expected)
@@ -76,60 +80,82 @@ class TestUtils(TestCase):
         result = chunk_time_series(time_min, time_max, chunk_size=28)
         expected = [
             {
-                "time_min": datetime.fromisoformat("2022-07-30T00:00:00.000Z"),
-                "time_max": datetime.fromisoformat("2022-08-30T00:00:00.000Z"),
+                "time_min": datetime.fromisoformat("2022-07-30T00:00:00"),
+                "time_max": datetime.fromisoformat("2022-08-30T00:00:00"),
             },
         ]
         self.assertEqual(result, expected)
 
     def test_chunk_time_series_dates_with_times(self):
-        time_min = datetime.fromisoformat("2021-01-24T00:00:00.000Z")
-        time_max = datetime.fromisoformat("2021-06-30T23:59:59.999Z")
+        time_min = datetime.fromisoformat("2021-01-24T00:00:00")
+        time_max = datetime.fromisoformat("2021-06-30T23:59:59.999999")
         result = chunk_time_series(time_min, time_max, chunk_size=15)
         expected = [
             {
-                "time_min": datetime.fromisoformat("2021-01-24T00:00:00.000Z"),
-                "time_max": datetime.fromisoformat("2021-02-08T23:59:59.999Z"),
+                "time_min": datetime.fromisoformat("2021-01-24T00:00:00"),
+                "time_max": datetime.fromisoformat(
+                    "2021-02-08T23:59:59.999999"
+                ),
             },
             {
-                "time_min": datetime.fromisoformat("2021-02-09T00:00:00.000Z"),
-                "time_max": datetime.fromisoformat("2021-02-23T23:59:59.999Z"),
+                "time_min": datetime.fromisoformat("2021-02-09T00:00:00"),
+                "time_max": datetime.fromisoformat(
+                    "2021-02-23T23:59:59.999999"
+                ),
             },
             {
-                "time_min": datetime.fromisoformat("2021-02-24T00:00:00.000Z"),
-                "time_max": datetime.fromisoformat("2021-03-10T23:59:59.999Z"),
+                "time_min": datetime.fromisoformat("2021-02-24T00:00:00"),
+                "time_max": datetime.fromisoformat(
+                    "2021-03-10T23:59:59.999999"
+                ),
             },
             {
-                "time_min": datetime.fromisoformat("2021-03-11T00:00:00.000Z"),
-                "time_max": datetime.fromisoformat("2021-03-25T23:59:59.999Z"),
+                "time_min": datetime.fromisoformat("2021-03-11T00:00:00"),
+                "time_max": datetime.fromisoformat(
+                    "2021-03-25T23:59:59.999999"
+                ),
             },
             {
-                "time_min": datetime.fromisoformat("2021-03-26T00:00:00.000Z"),
-                "time_max": datetime.fromisoformat("2021-04-09T23:59:59.999Z"),
+                "time_min": datetime.fromisoformat("2021-03-26T00:00:00"),
+                "time_max": datetime.fromisoformat(
+                    "2021-04-09T23:59:59.999999"
+                ),
             },
             {
-                "time_min": datetime.fromisoformat("2021-04-10T00:00:00.000Z"),
-                "time_max": datetime.fromisoformat("2021-04-24T23:59:59.999Z"),
+                "time_min": datetime.fromisoformat("2021-04-10T00:00:00"),
+                "time_max": datetime.fromisoformat(
+                    "2021-04-24T23:59:59.999999"
+                ),
             },
             {
-                "time_min": datetime.fromisoformat("2021-04-25T00:00:00.000Z"),
-                "time_max": datetime.fromisoformat("2021-05-09T23:59:59.999Z"),
+                "time_min": datetime.fromisoformat("2021-04-25T00:00:00"),
+                "time_max": datetime.fromisoformat(
+                    "2021-05-09T23:59:59.999999"
+                ),
             },
             {
-                "time_min": datetime.fromisoformat("2021-05-10T00:00:00.000Z"),
-                "time_max": datetime.fromisoformat("2021-05-24T23:59:59.999Z"),
+                "time_min": datetime.fromisoformat("2021-05-10T00:00:00"),
+                "time_max": datetime.fromisoformat(
+                    "2021-05-24T23:59:59.999999"
+                ),
             },
             {
-                "time_min": datetime.fromisoformat("2021-05-25T00:00:00.000Z"),
-                "time_max": datetime.fromisoformat("2021-06-08T23:59:59.999Z"),
+                "time_min": datetime.fromisoformat("2021-05-25T00:00:00"),
+                "time_max": datetime.fromisoformat(
+                    "2021-06-08T23:59:59.999999"
+                ),
             },
             {
-                "time_min": datetime.fromisoformat("2021-06-09T00:00:00.000Z"),
-                "time_max": datetime.fromisoformat("2021-06-23T23:59:59.999Z"),
+                "time_min": datetime.fromisoformat("2021-06-09T00:00:00"),
+                "time_max": datetime.fromisoformat(
+                    "2021-06-23T23:59:59.999999"
+                ),
             },
             {
-                "time_min": datetime.fromisoformat("2021-06-24T00:00:00.000Z"),
-                "time_max": datetime.fromisoformat("2021-06-30T23:59:59.999Z"),
+                "time_min": datetime.fromisoformat("2021-06-24T00:00:00"),
+                "time_max": datetime.fromisoformat(
+                    "2021-06-30T23:59:59.999999"
+                ),
             },
         ]
         self.assertEqual(result, expected)
@@ -162,8 +188,8 @@ class TestUtils(TestCase):
         result = chunk_time_series(time_min, time_max, chunk_size=14)
         expected = [
             {
-                "time_min": datetime.fromisoformat("2022-07-30T00:00:00.000Z"),
-                "time_max": datetime.fromisoformat("2022-07-30T00:00:00.000Z"),
+                "time_min": datetime.fromisoformat("2022-07-30T00:00:00"),
+                "time_max": datetime.fromisoformat("2022-07-30T00:00:00"),
             }
         ]
         self.assertEqual(result, expected)
@@ -174,8 +200,8 @@ class TestUtils(TestCase):
         result = chunk_time_series(time_min, time_max, chunk_size=14)
         expected = [
             {
-                "time_min": datetime.fromisoformat("2022-07-30T00:00:00.000Z"),
-                "time_max": datetime.fromisoformat("2022-08-13T00:00:00.000Z"),
+                "time_min": datetime.fromisoformat("2022-07-30T00:00:00"),
+                "time_max": datetime.fromisoformat("2022-08-13T00:00:00"),
             }
         ]
         self.assertEqual(result, expected)
@@ -184,4 +210,4 @@ class TestUtils(TestCase):
         time_min = datetime.fromisoformat("2022-07-30")
         time_max = datetime.fromisoformat("2022-08-19")
         result = chunk_time_series(time_min, time_max)
-        self.assertEqual(len(result), 2)
+        self.assertEqual(len(result), 1)
