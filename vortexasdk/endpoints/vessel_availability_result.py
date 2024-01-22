@@ -42,7 +42,7 @@ class VesselAvailabilityResult(Result):
         # noinspection PyTypeChecker
         return create_list(super().to_list(), VesselAvailability)
 
-    def to_df(self, columns=None) -> pd.DataFrame:
+    def to_df(self, columns=DEFAULT_COLUMNS) -> pd.DataFrame:
         """
         Represent availability as a `pd.DataFrame`.
 
