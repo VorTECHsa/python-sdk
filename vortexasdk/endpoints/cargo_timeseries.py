@@ -113,6 +113,11 @@ class CargoTimeSeries(Search):
             timeseries_frequency: Frequency denoting the granularity of the time series. Must be one of ['day', 'week',
              'doe_week', 'month', 'quarter', 'year']
 
+            timeseries_property: Property to split results by. Can be one of: `quantity`, `vessel_class`, `vessel_flag`,
+             `origin_region`, `origin_shipping_region`, `origin_trading_region`, `origin_trading_sub_region`, `origin_country`, `origin_port`, `origin_terminal`,
+             `destination_region`, `destination_shipping_region`, `destination_trading_region`, `destination_trading_sub_region`, `destination_country`, `destination_port`, `destination_terminal`,
+             `product_group`, `product_group_product`, `product_category`, `product_grade`, `none` or not provided.
+
             timeseries_unit: A numeric metric to be calculated for each time bucket. Must be one of ['b', 'bpd', 't',
              'tpd', 'c', 'cpd'], corresponding to barrels, barrels per day, metric tonnes, metric tonnes per day,
               cargo movement count, cargo movement count per day, respectively.
@@ -207,6 +212,7 @@ class CargoTimeSeries(Search):
             "timeseries_frequency": timeseries_frequency,
             "timeseries_unit": timeseries_unit,
             "timeseries_activity": timeseries_activity or filter_activity,
+            "timeseries_property": timeseries_property,
             "size": self._MAX_PAGE_RESULT_SIZE,
         }
 
