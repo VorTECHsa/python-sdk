@@ -118,14 +118,13 @@ class FixtureResult(Result):
         `pd.DataFrame` of Fixtures.
         """
 
-        flatten = functools.partial(convert_to_flat_dict, cols=columns)
+        flatten = functools.partial(convert_to_flat_dict, columns=columns)
 
         with Pool(os.cpu_count()) as pool:
             records = pool.map(flatten, super().to_list())
 
         return create_dataframe(
             columns=columns,
-            default_columns=DEFAULT_COLUMNS,
             data=records,
             logger_description="Fixtures",
         )

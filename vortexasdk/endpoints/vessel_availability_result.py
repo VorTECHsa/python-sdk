@@ -12,6 +12,20 @@ from vortexasdk.logger import get_logger
 
 logger = get_logger(__name__)
 
+DEFAULT_COLUMNS = [
+    "available_at",
+    "vessel_name",
+    "vessel_class",
+    "vessel_declared_destination.0.eta",
+    "vessel_declared_destination.0.name",
+    "vessel_owner_name",
+    "vessel_status",
+    "vessel_last_cargo.0.label",
+    "vessel_last_cargo.0.layer",
+    "vessel_predicted_destination.0.label",
+    "vessel_predicted_destination.0.layer",
+]
+
 
 class VesselAvailabilityResult(Result):
     """
@@ -28,7 +42,7 @@ class VesselAvailabilityResult(Result):
         # noinspection PyTypeChecker
         return create_list(super().to_list(), VesselAvailability)
 
-    def to_df(self, columns=None) -> pd.DataFrame:
+    def to_df(self, columns=DEFAULT_COLUMNS) -> pd.DataFrame:
         """
         Represent availability as a `pd.DataFrame`.
 
@@ -189,35 +203,18 @@ class VesselAvailabilityResult(Result):
         ```
 
         """
-        if columns is None:
-            columns = DEFAULT_COLUMNS
 
         logger.debug(
             "Converting each Vessel Availability to a flat dictionary"
         )
-        flatten = functools.partial(convert_to_flat_dict, cols=columns)
+
+        flatten = functools.partial(convert_to_flat_dict, columns=columns)
 
         with Pool(os.cpu_count()) as pool:
             records = pool.map(flatten, super().to_list())
 
         return create_dataframe(
             columns=columns,
-            default_columns=DEFAULT_COLUMNS,
             data=records,
             logger_description="VesselAvailability",
         )
-
-
-DEFAULT_COLUMNS = [
-    "available_at",
-    "vessel_name",
-    "vessel_class",
-    "vessel_declared_destination.0.eta",
-    "vessel_declared_destination.0.name",
-    "vessel_owner_name",
-    "vessel_status",
-    "vessel_last_cargo.0.label",
-    "vessel_last_cargo.0.layer",
-    "vessel_predicted_destination.0.label",
-    "vessel_predicted_destination.0.layer",
-]

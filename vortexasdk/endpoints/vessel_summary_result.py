@@ -10,6 +10,18 @@ from vortexasdk.result_conversions import create_dataframe, create_list
 logger = get_logger(__name__)
 
 
+DEFAULT_COLUMNS = [
+    "vessel_id",
+    "timestamp",
+    "lat",
+    "lon",
+    "speed",
+    "draught",
+    "declared_destination",
+    "declared_eta",
+]
+
+
 class VesselSummaryResult(Result):
     """Container class that holds the result obtained from calling the `Vessel-Summary` endpoint."""
 
@@ -18,7 +30,7 @@ class VesselSummaryResult(Result):
         # noinspection PyTypeChecker
         return create_list(super().to_list(), VesselSummary)
 
-    def to_df(self, columns=None) -> pd.DataFrame:
+    def to_df(self, columns=DEFAULT_COLUMNS) -> pd.DataFrame:
         """
         Represent vessels as a `pd.DataFrame`.
 
@@ -32,19 +44,6 @@ class VesselSummaryResult(Result):
         """
         return create_dataframe(
             columns=columns,
-            default_columns=DEFAULT_COLUMNS,
             data=super().to_list(),
             logger_description="Vessel Summary",
         )
-
-
-DEFAULT_COLUMNS = [
-    "vessel_id",
-    "timestamp",
-    "lat",
-    "lon",
-    "speed",
-    "draught",
-    "declared_destination",
-    "declared_eta",
-]
