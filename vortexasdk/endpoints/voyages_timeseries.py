@@ -11,7 +11,8 @@ from vortexasdk.api.shared_types import Tag, to_ISODate
 from vortexasdk.endpoints.breakdown_result import BreakdownResult
 from vortexasdk.endpoints.endpoints import VOYAGES_TIMESERIES
 from vortexasdk.operations import Search
-from vortexasdk.utils import convert_to_list
+from vortexasdk.search_response import SearchResponse
+from vortexasdk.utils import chunk_time_series, convert_to_list
 
 
 class VoyagesTimeseries(Search):
@@ -21,6 +22,38 @@ class VoyagesTimeseries(Search):
 
     def __init__(self):
         Search.__init__(self, VOYAGES_TIMESERIES)
+
+    def __isMultiState__(self, **api_params):
+        """
+        Some states (e.g. cargo_status, commitment_status) will change across the timespan of a voyage,
+        when we are filtering in the aggregation stage, we cannot determine multiple states when just looking at 1 event.
+        """
+        has_multi_state_breakdown_property = False
+
+        if api_params.get("breakdown_property"):
+            has_multi_state_breakdown_property = api_params.get(
+                "breakdown_property"
+            ) in ["cargo_quantity", "avg_wait_time", "dwt", "cubic_capacity"]
+
+        if has_multi_state_breakdown_property:
+            return True
+
+        # exclusions are not needed because they will be handled at the filter level
+        state_param_keys = [
+            "cargo_status",
+            "location_status",
+            "movement_status",
+            "commitment_status",
+            "locations",
+        ]
+
+        effective_state_params_count = 0
+
+        for key in state_param_keys:
+            if api_params.get(key):
+                effective_state_params_count += 1
+
+        return effective_state_params_count > 1
 
     # noinspection PyUnresolvedReferences
     def search(
@@ -320,10 +353,29 @@ class VoyagesTimeseries(Search):
             ),
         }
 
-        response = super().search_with_client(
-            response_type="breakdown", **api_params
-        )
+        if not self.__isMultiState__(**api_params):
+            response = super().search_with_client(
+                response_type="breakdown", **api_params
+            )
+
+            return BreakdownResult(
+                records=response["data"], reference=response["reference"]
+            )
+
+        combined_response: SearchResponse = {"reference": {}, "data": []}
+
+        for chunk in chunk_time_series(time_min, time_max):
+            api_params["time_min"] = to_ISODate(chunk["time_min"])
+            api_params["time_max"] = to_ISODate(chunk["time_max"])
+
+            response = super().search_with_client(
+                response_type="breakdown", **api_params
+            )
+
+            combined_response["data"] = (
+                combined_response["data"] + response["data"]
+            )
 
         return BreakdownResult(
-            records=response["data"], reference=response["reference"]
+            records=combined_response["data"], reference=response["reference"]
         )
