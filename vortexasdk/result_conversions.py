@@ -1,8 +1,9 @@
-from typing import Literal, Union, List
-
-from vortexasdk.logger import get_logger
+from typing import List, Union
 
 import pandas as pd
+from typing_extensions import Literal
+
+from vortexasdk.logger import get_logger
 
 logger = get_logger(__name__)
 

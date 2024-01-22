@@ -1,4 +1,5 @@
-from typing import Dict, List, Literal, Union
+from typing import Dict, List, Union
+from typing_extensions import Literal
 
 # noinspection PyProtectedMember
 from flatten_dict import flatten

@@ -1,8 +1,8 @@
 import functools
 import os
 from multiprocessing.pool import Pool
-from typing import List, Literal, Union
-
+from typing import List, Union
+from typing_extensions import Literal
 import pandas as pd
 from vortexasdk.api.entity_flattening import convert_to_flat_dict
 from vortexasdk.api.search_result import Result

@@ -1,4 +1,5 @@
-from typing import List, Literal, Union
+from typing import List, Union
+from typing_extensions import Literal
 
 from vortexasdk.api import AssetTank
 from vortexasdk.api.search_result import Result

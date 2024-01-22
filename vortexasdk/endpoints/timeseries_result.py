@@ -1,4 +1,5 @@
-from typing import List, Literal, Union
+from typing import List, Union
+from typing_extensions import Literal
 
 import pandas as pd
 
