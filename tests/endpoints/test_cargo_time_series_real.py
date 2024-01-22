@@ -48,7 +48,7 @@ class TestCargoTimeSeries(TestCaseUsingRealAPI):
         n_days = (end - start).days + 1
 
         assert len(df) == n_days
-        assert list(df.columns) == ["key", "value", "count"]
+        assert list(df.columns) == ["key", "count", "value"]
 
     def test_to_list(self):
         start = datetime(2019, 11, 1)
