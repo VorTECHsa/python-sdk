@@ -1,5 +1,4 @@
-from typing import List, Union
-from typing_extensions import Literal
+from typing import List
 import pandas as pd
 
 from vortexasdk.api.search_result import Result
@@ -48,9 +47,7 @@ class ReferenceBreakdownResult(Result):
 
         return create_list(new_list, BreakdownItem)
 
-    def to_df(
-        self, columns: Union[Literal["all"], List[str]] = DEFAULT_COLUMNS
-    ) -> pd.DataFrame:
+    def to_df(self, columns=DEFAULT_COLUMNS) -> pd.DataFrame:
         """Represents the breakdown as a dataframe.
 
         Returns a `pd.DataFrame`, of breakdown items with columns:

@@ -1,5 +1,4 @@
-from typing import List, Union
-from typing_extensions import Literal
+from typing import List
 
 from vortexasdk.api import AssetTank
 from vortexasdk.api.search_result import Result
@@ -28,9 +27,7 @@ class AssetTankResult(Result):
         # noinspection PyTypeChecker
         return create_list(super().to_list(), AssetTank)
 
-    def to_df(
-        self, columns: Union[Literal["all"], List[str]] = DEFAULT_COLUMNS
-    ):
+    def to_df(self, columns=DEFAULT_COLUMNS):
         """
         Represent asset tanks as a `pd.DataFrame`.
 

@@ -1,8 +1,7 @@
 import functools
 import os
 from multiprocessing.pool import Pool
-from typing import List, Union
-from typing_extensions import Literal
+from typing import List
 
 import pandas as pd
 
@@ -40,7 +39,7 @@ class CargoMovementsResult(Result):
         # noinspection PyTypeChecker
         return create_list(super().to_list(), CargoMovement)
 
-    def to_df(self, columns: Union[Literal["all"], List[str]]) -> pd.DataFrame:
+    def to_df(self, columns=DEFAULT_COLUMNS) -> pd.DataFrame:
         """
         Represent cargo movements as a `pd.DataFrame`.
 

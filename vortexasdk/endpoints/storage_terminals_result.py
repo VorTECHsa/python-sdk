@@ -1,5 +1,4 @@
-from typing import List, Union
-from typing_extensions import Literal
+from typing import List
 
 import pandas as pd
 
@@ -21,9 +20,7 @@ class StorageTerminalResult(Result):
         # noinspection PyTypeChecker
         return create_list(super().to_list(), StorageTerminal)
 
-    def to_df(
-        self, columns: Union[Literal["all"], List[str]] = DEFAULT_COLUMNS
-    ) -> pd.DataFrame:
+    def to_df(self, columns=DEFAULT_COLUMNS) -> pd.DataFrame:
         """
         Represent storage terminals as a `pd.DataFrame`.
 

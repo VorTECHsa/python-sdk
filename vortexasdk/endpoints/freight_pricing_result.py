@@ -1,8 +1,7 @@
 import functools
 import os
 from multiprocessing.pool import Pool
-from typing import List, Union
-from typing_extensions import Literal
+from typing import List
 
 import pandas as pd
 
@@ -109,9 +108,7 @@ class FreightPricingResult(Result):
 
         return formatted_records
 
-    def to_df(
-        self, columns: Union[Literal["all"], List[str]] = "all"
-    ) -> pd.DataFrame:
+    def to_df(self, columns="all") -> pd.DataFrame:
         """
         Represent freight pricing as a `pd.DataFrame`.
 
