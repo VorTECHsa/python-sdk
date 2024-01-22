@@ -1,8 +1,7 @@
 import functools
 import os
 from multiprocessing.pool import Pool
-from typing import List, Union
-from typing_extensions import Literal
+from typing import List
 import pandas as pd
 from vortexasdk.api.entity_flattening import convert_to_flat_dict
 from vortexasdk.api.search_result import Result
@@ -45,9 +44,7 @@ class CongestionBreakdownResult(Result):
         # noinspection PyTypeChecker
         return create_list(super().to_list(), CongestionBreakdownItem)
 
-    def to_df(
-        self, columns: Union[Literal["all"], List[str]] = DEFAULT_COLUMNS
-    ) -> pd.DataFrame:
+    def to_df(self, columns=DEFAULT_COLUMNS) -> pd.DataFrame:
         """
             Represent availability as a `pd.DataFrame`.
 

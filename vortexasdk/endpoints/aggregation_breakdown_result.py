@@ -1,5 +1,4 @@
-from typing import List, Union
-from typing_extensions import Literal
+from typing import List
 import pandas as pd
 
 from vortexasdk.api.aggregation_breakdown_item import AggregationBreakdownItem
@@ -20,9 +19,7 @@ class AggregationBreakdownResult(Result):
         # noinspection PyTypeChecker
         return create_list(super().to_list(), AggregationBreakdownItem)
 
-    def to_df(
-        self, columns: Union[Literal["all"], List[str]] = DEFAULT_COLUMNS
-    ) -> pd.DataFrame:
+    def to_df(self, columns=DEFAULT_COLUMNS) -> pd.DataFrame:
         """Represents the aggregation breakdown as a dataframe.
 
         Returns a `pd.DataFrame`, of time series items with columns:
