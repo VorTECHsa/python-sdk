@@ -106,28 +106,32 @@ class TestVoyagesSearchEnrichedEnriched(TestCaseUsingRealAPI):
         start = datetime(2022, 4, 26)
         end = datetime(2022, 4, 26, 23, 59)
 
-        try:
-            VoyagesSearchEnriched().search(
+        res = (
+            VoyagesSearchEnriched()
+            .search(
                 time_min=start,
                 time_max=end,
                 origins=rotterdam,
-                has_charterer=False,
-            ).to_list()
+                has_charterer="inc",
+            )
+            .to_list()
+        )
 
-        except ValueError as error:
-            print(error)
+        assert len(res) > 0
 
     def test_has_ship_to_ship_param(self):
         start = datetime(2022, 4, 26)
         end = datetime(2022, 4, 26, 23, 59)
 
-        try:
-            VoyagesSearchEnriched().search(
+        res = (
+            VoyagesSearchEnriched()
+            .search(
                 time_min=start,
                 time_max=end,
                 origins=rotterdam,
-                has_ship_to_ship=False,
-            ).to_list()
+                has_ship_to_ship="inc",
+            )
+            .to_list()
+        )
 
-        except ValueError as error:
-            print(error)
+        assert len(res) > 0
