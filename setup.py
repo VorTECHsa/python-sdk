@@ -52,7 +52,9 @@ setuptools.setup(
             "types-six==1.16.19",
             "jupyter==1.0.0",
             "statsmodels==0.13.2",
-            "matplotlib>=3.5.3"
+            "matplotlib>=3.5.3",
+            "coveralls==3.3.1",
+            "coverage==6.5.0"
         ],
         "binder": [
             "jupyter==1.0.0",
