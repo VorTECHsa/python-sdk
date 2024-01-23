@@ -1,5 +1,4 @@
 from typing import List
-
 import pandas as pd
 
 from vortexasdk.api import EIAForecast
@@ -8,6 +7,8 @@ from vortexasdk.logger import get_logger
 from vortexasdk.result_conversions import create_dataframe, create_list
 
 logger = get_logger(__name__)
+
+DEFAULT_COLUMNS = ["date", "forecast_fri", "value", "stocks", "cover", "runs"]
 
 
 class EIAForecastResult(Result):
@@ -18,7 +19,7 @@ class EIAForecastResult(Result):
         # noinspection PyTypeChecker
         return create_list(super().to_list(), EIAForecast)
 
-    def to_df(self, columns=None) -> pd.DataFrame:
+    def to_df(self, columns=DEFAULT_COLUMNS) -> pd.DataFrame:
         """
         Represent EIA forecasts as a `pd.DataFrame`.
 
@@ -32,10 +33,6 @@ class EIAForecastResult(Result):
         """
         return create_dataframe(
             columns=columns,
-            default_columns=DEFAULT_COLUMNS,
             data=super().to_list(),
             logger_description="EIAForecasts",
         )
-
-
-DEFAULT_COLUMNS = ["date", "forecast_fri", "value", "stocks", "cover", "runs"]

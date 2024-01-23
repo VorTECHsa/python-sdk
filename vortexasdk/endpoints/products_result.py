@@ -1,5 +1,4 @@
 from typing import List
-
 import pandas as pd
 
 from vortexasdk.api import Product
@@ -11,6 +10,9 @@ from vortexasdk.result_conversions import create_dataframe, create_list
 logger = get_logger(__name__)
 
 
+DEFAULT_COLUMNS = ["id", "name", "layer.0", "parent.0.name"]
+
+
 class ProductResult(Result):
     """Container class that holds the result obtained from calling the `Product` endpoint."""
 
@@ -19,7 +21,7 @@ class ProductResult(Result):
         # noinspection PyTypeChecker
         return create_list(super().to_list(), Product)
 
-    def to_df(self, columns=None) -> pd.DataFrame:
+    def to_df(self, columns=DEFAULT_COLUMNS) -> pd.DataFrame:
         """
         Represent products as a `pd.DataFrame`.
 
@@ -36,10 +38,6 @@ class ProductResult(Result):
 
         return create_dataframe(
             columns=columns,
-            default_columns=DEFAULT_COLUMNS,
             data=flattened_dicts,
             logger_description="Products",
         )
-
-
-DEFAULT_COLUMNS = ["id", "name", "layer.0", "parent.0.name"]

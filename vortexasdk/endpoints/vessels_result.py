@@ -9,6 +9,8 @@ from vortexasdk.result_conversions import create_dataframe, create_list
 
 logger = get_logger(__name__)
 
+DEFAULT_COLUMNS = ["id", "name", "imo", "vessel_class"]
+
 
 class VesselsResult(Result):
     """Container class that holds the result obtained from calling the `Vessels` endpoint."""
@@ -18,7 +20,7 @@ class VesselsResult(Result):
         # noinspection PyTypeChecker
         return create_list(super().to_list(), Vessel)
 
-    def to_df(self, columns=None) -> pd.DataFrame:
+    def to_df(self, columns=DEFAULT_COLUMNS) -> pd.DataFrame:
         """
         Represent vessels as a `pd.DataFrame`.
 
@@ -33,10 +35,6 @@ class VesselsResult(Result):
         """
         return create_dataframe(
             columns=columns,
-            default_columns=DEFAULT_COLUMNS,
             data=super().to_list(),
             logger_description="Vessels",
         )
-
-
-DEFAULT_COLUMNS = ["id", "name", "imo", "vessel_class"]

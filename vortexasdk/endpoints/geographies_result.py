@@ -1,5 +1,4 @@
 from typing import List
-
 import pandas as pd
 
 from vortexasdk.api import Geography
@@ -10,6 +9,9 @@ from vortexasdk.result_conversions import create_dataframe, create_list
 logger = get_logger(__name__)
 
 
+DEFAULT_COLUMNS = ["id", "name", "layer"]
+
+
 class GeographyResult(Result):
     """Container class that holds the result obtained from calling the `Geography` endpoint."""
 
@@ -18,7 +20,7 @@ class GeographyResult(Result):
         # noinspection PyTypeChecker
         return create_list(super().to_list(), Geography)
 
-    def to_df(self, columns=None) -> pd.DataFrame:
+    def to_df(self, columns=DEFAULT_COLUMNS) -> pd.DataFrame:
         """
         Represent geographies as a `pd.DataFrame`.
 
@@ -34,9 +36,5 @@ class GeographyResult(Result):
         return create_dataframe(
             data=super().to_list(),
             columns=columns,
-            default_columns=DEFAULT_COLUMNS,
             logger_description="Geographies",
         )
-
-
-DEFAULT_COLUMNS = ["id", "name", "layer"]

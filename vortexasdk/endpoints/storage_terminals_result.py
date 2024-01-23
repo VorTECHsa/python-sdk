@@ -9,6 +9,8 @@ from vortexasdk.logger import get_logger
 
 logger = get_logger(__name__)
 
+DEFAULT_COLUMNS = ["id", "name", "lat", "lon"]
+
 
 class StorageTerminalResult(Result):
     """Container class that holds the result obtained from calling the `Storage Terminals` endpoint."""
@@ -18,7 +20,7 @@ class StorageTerminalResult(Result):
         # noinspection PyTypeChecker
         return create_list(super().to_list(), StorageTerminal)
 
-    def to_df(self, columns=None) -> pd.DataFrame:
+    def to_df(self, columns=DEFAULT_COLUMNS) -> pd.DataFrame:
         """
         Represent storage terminals as a `pd.DataFrame`.
 
@@ -33,10 +35,6 @@ class StorageTerminalResult(Result):
         """
         return create_dataframe(
             columns=columns,
-            default_columns=DEFAULT_COLUMNS,
             data=super().to_list(),
             logger_description="StorageTerminals",
         )
-
-
-DEFAULT_COLUMNS = ["id", "name", "lat", "lon"]

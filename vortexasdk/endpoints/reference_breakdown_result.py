@@ -1,5 +1,4 @@
 from typing import List
-
 import pandas as pd
 
 from vortexasdk.api.search_result import Result
@@ -35,6 +34,9 @@ def key_from_ref(datum, refs):
         return {**datum, "label": name}
 
 
+DEFAULT_COLUMNS = ["key", "label", "value", "count"]
+
+
 class ReferenceBreakdownResult(Result):
     """Container class that holds the result obtained from calling a breakdown endpoint enriched with reference data."""
 
@@ -45,7 +47,7 @@ class ReferenceBreakdownResult(Result):
 
         return create_list(new_list, BreakdownItem)
 
-    def to_df(self, columns=None) -> pd.DataFrame:
+    def to_df(self, columns=DEFAULT_COLUMNS) -> pd.DataFrame:
         """Represents the breakdown as a dataframe.
 
         Returns a `pd.DataFrame`, of breakdown items with columns:
@@ -65,23 +67,16 @@ class ReferenceBreakdownResult(Result):
         # data enrichment step - labels from `reference` replace keys from `data`
         new_list = replace_keys(self)
 
-        if columns is None:
-            columns = DEFAULT_COLUMNS
-
         logger.debug("Converting each breakdown to a flat dictionary")
-        flatten = functools.partial(convert_to_flat_dict, cols=columns)
+        flatten = functools.partial(convert_to_flat_dict, columns=columns)
 
         with Pool(os.cpu_count()) as pool:
             records = pool.map(flatten, new_list)
 
         df = create_dataframe(
             columns=columns,
-            default_columns=DEFAULT_COLUMNS,
             data=records,
             logger_description="ReferenceBreakdown",
         )
 
         return df
-
-
-DEFAULT_COLUMNS = ["key", "label", "value", "count"]
