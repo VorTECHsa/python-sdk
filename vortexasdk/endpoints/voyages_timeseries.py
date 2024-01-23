@@ -114,8 +114,8 @@ class VoyagesTimeseries(Search):
         vessels_tags_excluded: Union[Tag, List[Tag]] = None,
         vessel_risk_level: Union[str, List[str]] = None,
         vessel_risk_level_excluded: Union[str, List[str]] = None,
-        has_ship_to_ship: bool = None,
-        has_charterer: bool = None,
+        has_ship_to_ship: str = None,
+        has_charterer: str = None,
     ) -> TimeSeriesResult:
         """
 
@@ -240,9 +240,9 @@ class VoyagesTimeseries(Search):
 
             vessel_risk_level_excluded: A vessel risk level, or list of vessel risk levels to exclude.
 
-            has_ship_to_ship: A boolean to show data where at least one STS transfer occurs.
+            has_ship_to_ship: Filter data where at least one STS transfer occurs, or none. - one of: `'disabled'`, `'inc'`, `'exc'`. Passing disabled means the filter is not active.
 
-            has_charterer: A boolean to show data where at least one charterer is specified.
+            has_charterer: Filter data where at least one charterer is specified, or none. - one of: `'disabled'`, `'inc'`, `'exc'`. Passing disabled means the filter is not active.
 
         # Returns
         `BreakdownResult`
