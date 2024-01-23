@@ -13,6 +13,8 @@ from vortexasdk.result_conversions import create_dataframe, create_list
 
 logger = get_logger(__name__)
 
+DEFAULT_COLUMNS = ["key", "value", "count"]
+
 
 class TimeSeriesResult(Result):
     """Container class that holds the result obtained from calling a time series endpoint."""
