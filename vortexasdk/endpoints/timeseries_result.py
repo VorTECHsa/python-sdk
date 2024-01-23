@@ -44,12 +44,7 @@ class TimeSeriesResult(Result):
             - breakdown (dict): Additional aggregated information for each time interval.
 
         Notes:
-        - The method utilizes multiprocessing to efficiently flatten the time series data into a DataFrame.
         - The 'breakdown' column in the DataFrame provides aggregated data and can contain multiple entries. To access additional breakdown information, modify the column names in the 'columns' parameter (e.g., 'breakdown.1.label', 'breakdown.2.label').
-
-        Example:
-        >>> time_series_data.to_df(columns=['key', 'value', 'count', 'breakdown.0.label', 'breakdown.0.count', 'breakdown.0.value'])
-        # Returns a time series DataFrame with the top breakdown for each interval.
         """
         flatten = functools.partial(convert_to_flat_dict, columns=columns)
 
