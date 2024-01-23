@@ -158,7 +158,7 @@ jobs:
           command: |
             . .venv/bin/activate
             pip install tox
-            tox --verbose --source=vortexasdk
+            tox --verbose -- --source=vortexasdk
             COVERALLS_REPO_TOKEN=CCr4XrbcWBlDrv2pmF0p4Z0Rzmti2SSka coveralls                       
 
   check-release-version:
