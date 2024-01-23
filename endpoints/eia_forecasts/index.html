@@ -358,7 +358,7 @@
 <p>Represent EIAForecast data as a list.</p>
 <h3 id="vortexasdk.endpoints.eia_forecasts_result.EIAForecastResult.to_df">to_df</h3>
 
-<pre><code class="language-python">EIAForecastResult.to_df(self, columns=None) -&gt; pandas.core.frame.DataFrame
+<pre><code class="language-python">EIAForecastResult.to_df(self, columns=['date', 'forecast_fri', 'value', 'stocks', 'cover', 'runs']) -&gt; pandas.core.frame.DataFrame
 </code></pre>
 <p>Represent EIA forecasts as a <code>pd.DataFrame</code>.</p>
 <p><strong>Arguments</strong></p>
