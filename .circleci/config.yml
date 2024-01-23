@@ -159,6 +159,12 @@ jobs:
             . .venv/bin/activate
             pip install tox
             tox --verbose
+      - run:
+          name: "Get coverage report"
+          command: |
+            . .venv/bin/activate
+            coverage run --source=vortexasdk setup.py test  
+            COVERALLS_REPO_TOKEN=CCr4XrbcWBlDrv2pmF0p4Z0Rzmti2SSka coveralls                
 
   check-release-version:
     working_directory: ~/project
