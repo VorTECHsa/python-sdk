@@ -58,7 +58,7 @@ class TestOnshoreInventoriesTimeseries(TestCaseUsingRealAPI):
             .to_list()
         )
         assert result_list[0].breakdown is not None
-        assert result_list[0].breakdown[0]["label"] == "Italy"
+        assert result_list[0].breakdown[0].label == "Italy"
 
     def test_should_throw_an_error_when_invalid_params_are_passed(self):
         self.assertRaises(
