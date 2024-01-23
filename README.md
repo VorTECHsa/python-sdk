@@ -4,6 +4,8 @@
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![All Contributors](https://img.shields.io/badge/all_contributors-12-orange.svg?style=flat-square)](#contributors)
 
+[![Coverage Status](https://coveralls.io/repos/github/VorTECHsa/python-sdk/badge.svg?branch=master)](https://coveralls.io/github/VorTECHsa/python-sdk?branch=master)
+
 Welcome to Vortexa's Python Software Development Kit (SDK)! We built the SDK to
 provide fast, interactive, programmatic exploration of our data. The tool lets
 Data Scientists, Analysts and Developers efficiently explore the world’s
