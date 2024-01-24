@@ -9,7 +9,7 @@ _HEADERS = {"Content-Type": "application/json"}
 def _requests_retry_session(
     retries=6,
     backoff_factor=1,
-    status_forcelist=(500, 502, 504),
+    status_forcelist=(401, 500, 502, 504),
     session=None,
 ) -> Session:
     """Instantiate a session with Retry backoff."""
