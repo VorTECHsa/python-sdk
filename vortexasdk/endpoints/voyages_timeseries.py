@@ -8,8 +8,8 @@ from typing import Any, Dict, List, Union
 
 from vortexasdk.api import ID
 from vortexasdk.api.shared_types import Tag, to_ISODate
-from vortexasdk.endpoints.breakdown_result import BreakdownResult
 from vortexasdk.endpoints.endpoints import VOYAGES_TIMESERIES
+from vortexasdk.endpoints.timeseries_result import TimeSeriesResult
 from vortexasdk.operations import Search
 from vortexasdk.search_response import SearchResponse
 from vortexasdk.utils import chunk_time_series, convert_to_list
@@ -116,7 +116,7 @@ class VoyagesTimeseries(Search):
         vessel_risk_level_excluded: Union[str, List[str]] = None,
         has_ship_to_ship: str = None,
         has_charterer: str = None,
-    ) -> BreakdownResult:
+    ) -> TimeSeriesResult:
         """
 
         Returns a count of voyages per record for the requested date period
@@ -358,7 +358,7 @@ class VoyagesTimeseries(Search):
                 response_type="breakdown", **api_params
             )
 
-            return BreakdownResult(
+            return TimeSeriesResult(
                 records=response["data"], reference=response["reference"]
             )
 
@@ -376,6 +376,6 @@ class VoyagesTimeseries(Search):
                 combined_response["data"] + response["data"]
             )
 
-        return BreakdownResult(
+        return TimeSeriesResult(
             records=combined_response["data"], reference=response["reference"]
         )

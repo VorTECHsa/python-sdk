@@ -2,16 +2,64 @@
   {
     "key": "2017-07-11T13:42:37+0000",
     "value": 1.124,
-    "count": 100
+    "count": 100,
+      "breakdown": [
+        {
+          "id": "54af755a090118dcf9b0724c9a4e9f14745c26165385ffa7f1445bc768f06f11",
+          "label": "Crude/Condensates",
+          "value": 100,
+          "count": 20
+        },
+        {
+          "id": "b68cbb746f8b9098c50e2ba36bcad83001a53bd362e9031fb49085d02c36659c",
+          "label": "Clean Petroleum Products",
+          "value": 10,
+          "count": 150
+        }
+      ]
   },
   {
     "key": "2017-07-12T13:42:37+0000",
     "value": 2.124,
-    "count": 200
+    "count": 200,
+    "breakdown": [
+      {
+        "id": "54af755a090118dcf9b0724c9a4e9f14745c26165385ffa7f1445bc768f06f11",
+        "label": "Crude/Condensates",
+        "value": 200,
+        "count": 40
+      },
+      {
+        "id": "b68cbb746f8b9098c50e2ba36bcad83001a53bd362e9031fb49085d02c36659c",
+        "label": "Clean Petroleum Products",
+        "value": 100,
+        "count": 20
+      },
+      {
+        "id": "9b0f7f5de0b111910f9f8a71b4008d4e0fd7542c55750f21dc905cda5f76bc08",
+        "label": "Liquefied Natural Gas",
+        "value": 10,
+        "count": 10
+      },
+      {
+        "id": "5de0b00094e0fd7542c10f9f8a71b4008d55750f21dc905cda9b0f7f5f76bc08",
+        "label": "Dirty Petroleum Products",
+        "value": 5,
+        "count": 10
+      }
+    ]
   },
   {
     "key": "2017-07-12T13:42:37+0000",
     "value": 3.124,
-    "count": 300
+    "count": 300,
+    "breakdown": [
+      {
+        "id": "b68cbb746f8b9098c50e2ba36bcad83001a53bd362e9031fb49085d02c36659c",
+        "label": "Clean Petroleum Products",
+        "value": 100,
+        "count": 20
+      }
+    ]
   }
 ]
