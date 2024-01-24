@@ -240,7 +240,7 @@
 </code></pre>
 <h3 id="vortexasdk.endpoints.cargo_timeseries.CargoTimeSeries.search">search</h3>
 
-<pre><code class="language-python">CargoTimeSeries.search(self, filter_activity: str, timeseries_activity: str = None, timeseries_frequency: str = 'day', timeseries_unit: str = 'b', filter_time_min: datetime.datetime = datetime.datetime(2019, 10, 1, 0, 0), filter_time_max: datetime.datetime = datetime.datetime(2019, 10, 1, 1, 0), filter_charterers: Union[str, List[str]] = None, filter_destinations: Union[str, List[str]] = None, filter_origins: Union[str, List[str]] = None, filter_owners: Union[str, List[str]] = None, filter_effective_controllers: Union[str, List[str]] = None, filter_products: Union[str, List[str]] = None, filter_vessels: Union[str, List[str]] = None, filter_vessel_classes: Union[str, List[str]] = None, filter_vessel_age_min: int = None, filter_vessel_age_max: int = None, filter_storage_locations: Union[str, List[str]] = None, filter_ship_to_ship_locations: Union[str, List[str]] = None, filter_waypoints: Union[str, List[str]] = None, disable_geographic_exclusion_rules: bool = None, intra_movements: str = None, timeseries_activity_time_span_min: int = None, timeseries_activity_time_span_max: int = None) -&gt; vortexasdk.endpoints.timeseries_result.TimeSeriesResult
+<pre><code class="language-python">CargoTimeSeries.search(self, filter_activity: str, timeseries_activity: Union[str, NoneType] = None, timeseries_frequency: str = 'day', timeseries_unit: str = 'b', filter_time_min: datetime.datetime = datetime.datetime(2019, 10, 1, 0, 0), filter_time_max: datetime.datetime = datetime.datetime(2019, 10, 1, 1, 0), filter_charterers: Union[str, List[str], NoneType] = None, filter_destinations: Union[str, List[str], NoneType] = None, filter_origins: Union[str, List[str], NoneType] = None, filter_owners: Union[str, List[str], NoneType] = None, filter_effective_controllers: Union[str, List[str], NoneType] = None, filter_products: Union[str, List[str], NoneType] = None, filter_vessels: Union[str, List[str], NoneType] = None, filter_vessel_classes: Union[str, List[str], NoneType] = None, filter_vessel_age_min: Union[int, NoneType] = None, filter_vessel_age_max: Union[int, NoneType] = None, filter_storage_locations: Union[str, List[str], NoneType] = None, filter_ship_to_ship_locations: Union[str, List[str], NoneType] = None, filter_waypoints: Union[str, List[str], NoneType] = None, disable_geographic_exclusion_rules: Union[bool, NoneType] = None, intra_movements: Union[str, NoneType] = None, timeseries_activity_time_span_min: Union[int, NoneType] = None, timeseries_activity_time_span_max: Union[int, NoneType] = None, timeseries_property: Union[str, NoneType] = None) -&gt; vortexasdk.endpoints.timeseries_result.TimeSeriesResult
 </code></pre>
 <p>Find Aggregate flows between regions, for various products, for various vessels, or various corporations.</p>
 <p>Example questions that can be answered with this endpoint:</p>
@@ -320,6 +320,12 @@
 <li>
 <p><strong>timeseries_frequency</strong>: Frequency denoting the granularity of the time series. Must be one of ['day', 'week',
      'doe_week', 'month', 'quarter', 'year']</p>
+</li>
+<li>
+<p><strong>timeseries_property</strong>: Property to split results by. Can be one of: <code>quantity</code>, <code>vessel_class</code>, <code>vessel_flag</code>,
+     <code>origin_region</code>, <code>origin_shipping_region</code>, <code>origin_trading_region</code>, <code>origin_trading_sub_region</code>, <code>origin_country</code>, <code>origin_port</code>, <code>origin_terminal</code>,
+     <code>destination_region</code>, <code>destination_shipping_region</code>, <code>destination_trading_region</code>, <code>destination_trading_sub_region</code>, <code>destination_country</code>, <code>destination_port</code>, <code>destination_terminal</code>,
+     <code>product_group</code>, <code>product_group_product</code>, <code>product_category</code>, <code>product_grade</code>, <code>none</code> or not provided.</p>
 </li>
 <li>
 <p><strong>timeseries_unit</strong>: A numeric metric to be calculated for each time bucket. Must be one of ['b', 'bpd', 't',
