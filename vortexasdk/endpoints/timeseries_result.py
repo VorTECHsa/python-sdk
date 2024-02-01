@@ -25,7 +25,7 @@ def sort_breakdown(item: dict, biggest: list):
             continue
 
         item["breakdown"].append(
-            {"label": label, "id": b_item["id"], "value": 0, "count": 0}
+            {"label": label, "id": b_item["id"], "value": "", "count": ""}
         )
 
     item["breakdown"].sort(
@@ -67,7 +67,7 @@ class TimeSeriesResult(Result):
         flatten = functools.partial(convert_to_flat_dict, columns=columns)
         with Pool(os.cpu_count()) as pool:
             items = super().to_list()
-            biggest = []
+            biggest: list = []
             # there is a world where we can just get items[-1], as it seems reasonable to thing the most recent one would have the most regions
             for item in items:
                 if "breakdown" not in item:
