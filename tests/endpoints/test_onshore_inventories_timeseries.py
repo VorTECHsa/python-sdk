@@ -21,7 +21,6 @@ class TestOnshoreInventoriesTimeseries(TestCaseUsingRealAPI):
             )
             .to_df()
         )
-
         assert len(df) == 4
 
     def test_timeseries_breakdowns_by_country_should_contain_over_100_unique_splits(
@@ -71,3 +70,27 @@ class TestOnshoreInventoriesTimeseries(TestCaseUsingRealAPI):
                 timeseries_unit_operator="fill",
             ),
         )
+
+    def test_timeseries_breakdowns_by_day_and_region_columns_labels_are_all_uniques(
+        self,
+    ):
+        result = (
+            OnshoreInventoriesTimeseries()
+            .search(
+                crude_confidence=["confirmed", "probable"],
+                time_min=datetime(2018, 1, 1),
+                time_max=datetime(2024, 1, 26, 23, 59, 59),
+                location_ids=None,
+                timeseries_unit="b",
+                timeseries_frequency="day",
+                timeseries_split_property="location_trading_region",
+                timeseries_unit_operator="capacity",
+            )
+            .to_df(columns="all")
+        )
+
+        for i in range(0, 29):
+            assert (
+                len(list(result["breakdown." + str(i) + ".label"].unique()))
+                == 1
+            )

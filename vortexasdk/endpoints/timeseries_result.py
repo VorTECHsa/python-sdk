@@ -66,12 +66,14 @@ class TimeSeriesResult(Result):
         """
         flatten = functools.partial(convert_to_flat_dict, columns=columns)
         with Pool(os.cpu_count()) as pool:
+
             items = super().to_list()
+
             biggest: list = []
             # there is a world where we can just get items[-1], as it seems reasonable to thing the most recent one would have the most regions
             for item in items:
                 if "breakdown" not in item:
-                    return
+                    continue
                 if len(item["breakdown"]) > len(biggest):
                     biggest = item["breakdown"][:]
             sorted_list = map(
