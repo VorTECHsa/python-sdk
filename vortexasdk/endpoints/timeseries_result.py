@@ -15,6 +15,7 @@ logger = get_logger(__name__)
 
 DEFAULT_COLUMNS = ["key", "value", "count"]
 
+
 def sort_breakdown(item: dict, biggest: list):
     if "breakdown" not in item:
         return item
@@ -22,16 +23,15 @@ def sort_breakdown(item: dict, biggest: list):
         label = b_item["label"]
         if next((x for x in item["breakdown"] if x["label"] == label), None):
             continue
- 
-        item["breakdown"].append ({"label": label,
-                     "id": b_item["id"],
-                    "value": 0,
-                    "count": 0})
-    
-    item["breakdown"].sort(key=lambda x: x["label"] if "label" in x is not None else "" )
-    return item
 
-    
+        item["breakdown"].append(
+            {"label": label, "id": b_item["id"], "value": 0, "count": 0}
+        )
+
+    item["breakdown"].sort(
+        key=lambda x: x["label"] if "label" in x is not None else ""
+    )
+    return item
 
 
 class TimeSeriesResult(Result):
@@ -66,17 +66,17 @@ class TimeSeriesResult(Result):
         """
         flatten = functools.partial(convert_to_flat_dict, columns=columns)
         with Pool(os.cpu_count()) as pool:
-            items  = super().to_list()
+            items = super().to_list()
             biggest = []
             # there is a world where we can just get items[-1], as it seems reasonable to thing the most recent one would have the most regions
             for item in items:
-                if 'breakdown' not in item:
+                if "breakdown" not in item:
                     return
                 if len(item["breakdown"]) > len(biggest):
                     biggest = item["breakdown"][:]
-
-            sorted_list = map(lambda item: sort_breakdown(item, biggest), items)
-            
+            sorted_list = map(
+                lambda item: sort_breakdown(item, biggest), items
+            )
             records = pool.map(flatten, sorted_list)
 
         df = create_dataframe(
