@@ -16,10 +16,10 @@ logger = get_logger(__name__)
 DEFAULT_COLUMNS = ["key", "value", "count"]
 
 
-def sort_breakdown(item: dict, biggest: list):
+def sort_breakdown(item: dict, full_header_column: list):
     if "breakdown" not in item:
         return item
-    for b_item in biggest:
+    for b_item in full_header_column:
         label = b_item["label"]
         if next((x for x in item["breakdown"] if x["label"] == label), None):
             continue
@@ -69,15 +69,15 @@ class TimeSeriesResult(Result):
 
             items = super().to_list()
 
-            biggest: list = []
+            full_header_column: list = []
             # there is a world where we can just get items[-1], as it seems reasonable to thing the most recent one would have the most regions
             for item in items:
                 if "breakdown" not in item:
                     continue
-                if len(item["breakdown"]) > len(biggest):
-                    biggest = item["breakdown"][:]
+                if len(item["breakdown"]) > len(full_header_column):
+                    full_header_column = item["breakdown"][:]
             sorted_list = map(
-                lambda item: sort_breakdown(item, biggest), items
+                lambda item: sort_breakdown(item, full_header_column), items
             )
             records = pool.map(flatten, sorted_list)
 
