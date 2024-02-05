@@ -14,7 +14,6 @@ import json
 
 from requests import Response
 from tqdm import tqdm
-from warnings import warn
 
 from vortexasdk.search_response import SearchResponse
 from vortexasdk.api.id import ID
