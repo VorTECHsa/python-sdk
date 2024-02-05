@@ -128,11 +128,11 @@ class VortexaClient:
             threshold = 0.9999
 
             # As new data may come in during fetch we want to check for threshold
-            if (total - len(flattened)) > ((total - (total * threshold))):
-                warn(
-                    f"Incorrect number of records returned from API. This could be because data upstream updated during your request."
+            if len(flattened) != total:
+                logger.info(
+                    f"Recent updates to our data have impacted the number of records retrieved from the API since your query began."
                 )
-                warn(f"Actual: {len(flattened)}, expected: {total}")
+                logger.info(f"Actual: {len(flattened)}, expected: {total}")
 
             logger.info(f"Total records returned: {total}")
 
