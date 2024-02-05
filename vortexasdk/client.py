@@ -125,7 +125,6 @@ class VortexaClient:
                 )
 
             flattened = self._flatten_response(responses)
-            threshold = 0.9999
 
             # As new data may come in during fetch we want to check for threshold
             if len(flattened) != total:
