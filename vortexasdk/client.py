@@ -128,7 +128,7 @@ class VortexaClient:
             threshold = 0.9999
 
             # As new data may come in during fetch we want to check for threshold
-            if (total - len(flattened)) > (total * threshold):
+            if (total - len(flattened)) > ((total - (total * threshold))):
                 warn(
                     f"Incorrect number of records returned from API. This could be because data upstream updated during your request."
                 )
