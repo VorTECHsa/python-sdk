@@ -125,8 +125,10 @@ class VortexaClient:
                 )
 
             flattened = self._flatten_response(responses)
+            threshold = 0.9999
 
-            if len(flattened) != total:
+            # As new data may come in during fetch we want to check for threshold
+            if (total - len(flattened)) > (total * threshold):
                 warn(
                     f"Incorrect number of records returned from API. This could be because data upstream updated during your request."
                 )
