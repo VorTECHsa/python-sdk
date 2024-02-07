@@ -14,7 +14,6 @@ import json
 
 from requests import Response
 from tqdm import tqdm
-from warnings import warn
 
 from vortexasdk.search_response import SearchResponse
 from vortexasdk.api.id import ID
@@ -127,10 +126,10 @@ class VortexaClient:
             flattened = self._flatten_response(responses)
 
             if len(flattened) != total:
-                warn(
-                    f"Incorrect number of records returned from API. This could be because data upstream updated during your request."
+                logger.info(
+                    f"Live updates to our data have impacted the number of records retrieved from the API since your query began."
                 )
-                warn(f"Actual: {len(flattened)}, expected: {total}")
+                logger.info(f"Actual: {len(flattened)}, expected: {total}")
 
             logger.info(f"Total records returned: {total}")
 
