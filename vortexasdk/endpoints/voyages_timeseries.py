@@ -23,20 +23,103 @@ class VoyagesTimeseries(Search):
     def __init__(self):
         Search.__init__(self, VOYAGES_TIMESERIES)
 
-    def __isMultiState__(self, **api_params):
+    def __is_arrival_or_departure_mode__(self, voyage_date_range_activity):
+        """
+        When the mode is arrival or departure, we do not need a multi-state aggregation
+        This is because the arrival and departure doesn't need daily granularity,
+        because they are determined by only one type of event.
+
+        The breakdowns on departures and arrivals are the resume of the voyages properties and
+        do not require a daily progression to be displayed.
+
+        E.g. In arrival or departure, the tonne miles or the avg distance are the max value that voyage have.
+        indifferently of the moment when the cargo was loaded or unloaded.
+        """
+        return (
+            voyage_date_range_activity is not None
+            and voyage_date_range_activity in ["arrivals", "departures"]
+        )
+
+    def __is_breakdown_property_multi_state__(
+        self, breakdown_property, breakdown_split_property
+    ):
+        """
+        Check if the breakdown property should be considered as multi-state
+        Some breakdowns should be considered as multi-state even to ensure consistency in the data
+        """
+        if breakdown_property is None:
+            return False
+
+        """
+        Some breakdowns should always be considered as multi-state to ensure consistency in the data.
+        E.G. AvgSpeed and AvgDistance because they require daily granularity
+        """
+        if breakdown_property in [
+            "cargo_quantity",
+            "avg_wait_time",
+            "dwt",
+            "cubic_capacity",
+        ]:
+            return True
+
+        """
+        Some breakdowns should be considered as multi-state only when a valid breakdown split is provided
+        Tonne miles aggregations are multi-state when the breakdown is by tonne miles
+        and the split property is not "none", because the split require an aggregation accessing the
+        nested "metrics" property of the cargo events twice.
+        """
+        if (
+            breakdown_property in ["tonne_miles", "avg_distance", "avg_speed"]
+            and breakdown_split_property is not None
+            and breakdown_split_property != "none"
+        ):
+            return True
+
+        return False
+
+    def __is_multi_state__(self, **api_params):
         """
         Some states (e.g. cargo_status, commitment_status) will change across the timespan of a voyage,
         when we are filtering in the aggregation stage, we cannot determine multiple states when just looking at 1 event.
+        So what we need to do is to split the aggregation by 1 day, then only valid voyages will be filtered in the query stage,
+        and we don't need to do filtering in aggregation stage anymore.
+
+                        |-- day1 --|-- day2 --|-- day3 --|-- day4 --|-- day5  --|
+        Movement status:   |--- Moving ------|----waiting--|----- Moving ----------| from movement status event
+        Commitment status: |---unknown---------------|--------committed------------| from commitment status event
+        Location status:   |------- on the sea -------------------|------berth-----| from location status event
         """
-        has_multi_state_breakdown_property = False
 
-        if api_params.get("breakdown_property"):
-            has_multi_state_breakdown_property = api_params.get(
-                "breakdown_property"
-            ) in ["cargo_quantity", "avg_wait_time", "dwt", "cubic_capacity"]
+        """
+        If the mode is arrival or departure, we do not need a multi-state aggregation
+        no matter the other filters provided.
+        """
+        if self.__is_arrival_or_departure_mode__(
+            api_params.get("voyage_date_range_activity")
+        ):
+            return False
 
-        if has_multi_state_breakdown_property:
+        """
+        If some breakdown properties are provided, we need to do a multi-state aggregation
+        """
+        if self.__is_breakdown_property_multi_state__(
+            api_params.get("breakdown_property"),
+            api_params.get("breakdown_split_property"),
+        ):
             return True
+
+        effective_state_params_count = 0
+
+        """
+        These filters are determined by the cargo events, that means that the combination of all the filters
+        will determine if a multi state by cargo info is required.
+        """
+        if (
+            api_params.get("origins")
+            or api_params.get("destinations")
+            or api_params.get("products")
+        ):
+            effective_state_params_count += 1
 
         # exclusions are not needed because they will be handled at the filter level
         state_param_keys = [
@@ -46,8 +129,6 @@ class VoyagesTimeseries(Search):
             "commitment_status",
             "locations",
         ]
-
-        effective_state_params_count = 0
 
         for key in state_param_keys:
             if api_params.get(key):
@@ -353,7 +434,7 @@ class VoyagesTimeseries(Search):
             ),
         }
 
-        if not self.__isMultiState__(**api_params):
+        if not self.__is_multi_state__(**api_params):
             response = super().search_with_client(
                 response_type="breakdown", **api_params
             )
