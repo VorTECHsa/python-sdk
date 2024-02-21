@@ -288,8 +288,6 @@ class CargoMovements(Record, Search):
             "intra_movements": intra_movements,
             "size": self._MAX_PAGE_RESULT_SIZE,
         }
-        
-        print(api_params)
 
         response = super().search_with_client_with_search_after(**api_params)
 
