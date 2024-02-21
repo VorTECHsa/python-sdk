@@ -240,7 +240,7 @@
 </code></pre>
 <h3 id="vortexasdk.endpoints.cargo_timeseries.CargoTimeSeries.search">search</h3>
 
-<pre><code class="language-python">CargoTimeSeries.search(self, filter_activity: str, timeseries_activity: Union[str, NoneType] = None, timeseries_frequency: str = 'day', timeseries_unit: str = 'b', filter_time_min: datetime.datetime = datetime.datetime(2019, 10, 1, 0, 0), filter_time_max: datetime.datetime = datetime.datetime(2019, 10, 1, 1, 0), filter_charterers: Union[str, List[str], NoneType] = None, filter_destinations: Union[str, List[str], NoneType] = None, filter_origins: Union[str, List[str], NoneType] = None, filter_owners: Union[str, List[str], NoneType] = None, filter_effective_controllers: Union[str, List[str], NoneType] = None, filter_products: Union[str, List[str], NoneType] = None, filter_vessels: Union[str, List[str], NoneType] = None, filter_vessel_classes: Union[str, List[str], NoneType] = None, filter_vessel_age_min: Union[int, NoneType] = None, filter_vessel_age_max: Union[int, NoneType] = None, filter_storage_locations: Union[str, List[str], NoneType] = None, filter_ship_to_ship_locations: Union[str, List[str], NoneType] = None, filter_waypoints: Union[str, List[str], NoneType] = None, disable_geographic_exclusion_rules: Union[bool, NoneType] = None, intra_movements: Union[str, NoneType] = None, timeseries_activity_time_span_min: Union[int, NoneType] = None, timeseries_activity_time_span_max: Union[int, NoneType] = None, timeseries_property: Union[str, NoneType] = None) -&gt; vortexasdk.endpoints.timeseries_result.TimeSeriesResult
+<pre><code class="language-python">CargoTimeSeries.search(self, filter_activity: str, timeseries_activity: Union[str, NoneType] = None, timeseries_frequency: str = 'day', timeseries_unit: str = 'b', filter_time_min: datetime.datetime = datetime.datetime(2019, 10, 1, 0, 0), filter_time_max: datetime.datetime = datetime.datetime(2019, 10, 1, 1, 0), filter_charterers: Union[str, List[str], NoneType] = None, filter_destinations: Union[str, List[str], NoneType] = None, filter_origins: Union[str, List[str], NoneType] = None, filter_owners: Union[str, List[str], NoneType] = None, filter_vessel_owners: Union[str, List[str], NoneType] = None, filter_time_charterers: Union[str, List[str], NoneType] = None, filter_effective_controllers: Union[str, List[str], NoneType] = None, filter_products: Union[str, List[str], NoneType] = None, filter_vessels: Union[str, List[str], NoneType] = None, filter_vessel_classes: Union[str, List[str], NoneType] = None, filter_vessel_age_min: Union[int, NoneType] = None, filter_vessel_age_max: Union[int, NoneType] = None, filter_storage_locations: Union[str, List[str], NoneType] = None, filter_ship_to_ship_locations: Union[str, List[str], NoneType] = None, filter_waypoints: Union[str, List[str], NoneType] = None, disable_geographic_exclusion_rules: Union[bool, NoneType] = None, intra_movements: Union[str, NoneType] = None, timeseries_activity_time_span_min: Union[int, NoneType] = None, timeseries_activity_time_span_max: Union[int, NoneType] = None, timeseries_property: Union[str, NoneType] = None) -&gt; vortexasdk.endpoints.timeseries_result.TimeSeriesResult
 </code></pre>
 <p>Find Aggregate flows between regions, for various products, for various vessels, or various corporations.</p>
 <p>Example questions that can be answered with this endpoint:</p>
@@ -274,6 +274,12 @@
 </li>
 <li>
 <p><strong>filter_effective_controllers</strong>: An effective controller ID, or list of effective controller IDs to filter on.</p>
+</li>
+<li>
+<p><strong>filter_vessel_owners</strong>: An vessel owner ID, or list of vessel owners IDs to filter on.</p>
+</li>
+<li>
+<p><strong>filter_time_charterers</strong>: An time charterer ID, or list of time charterers IDs to filter on.</p>
 </li>
 <li>
 <p><strong>filter_products</strong>: A product ID, or list of product IDs to filter on.</p>
