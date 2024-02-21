@@ -66,6 +66,8 @@ class CargoMovements(Record, Search):
         exclude_charterers: Union[ID, List[ID]] = None,
         exclude_owners: Union[ID, List[ID]] = None,
         exclude_effective_controllers: Union[ID, List[ID]] = None,
+        exclude_filter_vessel_owners: Union[ID, List[ID]] = None,
+        exclude_filter_time_charterers: Union[ID, List[ID]] = None,
         exclude_vessel_flags: Union[ID, List[ID]] = None,
         exclude_vessel_ice_class: Union[ID, List[ID]] = None,
         exclude_vessel_propulsion: Union[ID, List[ID]] = None,
@@ -137,6 +139,10 @@ class CargoMovements(Record, Search):
             exclude_charterers: A charterer ID, or list of charterer IDs to exclude.
 
             exclude_filter_effective_controllers: An effective controller ID, or list of effective controller IDs to exclude.
+            
+            exclude_filter_vessel_owners: An vessel owner ID, or list of vessel owners IDs to filter on.
+
+            exclude_filter_time_charterers: An time charterer ID, or list of time charterers IDs to filter on.
 
             exclude_vessel_flags: A geography ID, or list of geography IDs to exclude.
 
@@ -232,8 +238,8 @@ class CargoMovements(Record, Search):
             "filter_effective_controllers": convert_to_list(
                 exclude_effective_controllers
             ),
-            "filter_vessel_owners": convert_to_list(filter_vessel_owners),
-            "filter_time_charterers": convert_to_list(filter_time_charterers),
+            "filter_vessel_owners": convert_to_list(exclude_filter_vessel_owners),
+            "filter_time_charterers": convert_to_list(exclude_filter_time_charterers),
             "filter_vessel_flags": convert_to_list(exclude_vessel_flags),
             "filter_vessel_ice_class": convert_to_list(
                 exclude_vessel_ice_class
@@ -282,6 +288,8 @@ class CargoMovements(Record, Search):
             "intra_movements": intra_movements,
             "size": self._MAX_PAGE_RESULT_SIZE,
         }
+        
+        print(api_params)
 
         response = super().search_with_client_with_search_after(**api_params)
 
