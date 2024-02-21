@@ -139,7 +139,7 @@ class CargoMovements(Record, Search):
             exclude_charterers: A charterer ID, or list of charterer IDs to exclude.
 
             exclude_filter_effective_controllers: An effective controller ID, or list of effective controller IDs to exclude.
-            
+
             exclude_filter_vessel_owners: An vessel owner ID, or list of vessel owners IDs to filter on.
 
             exclude_filter_time_charterers: An time charterer ID, or list of time charterers IDs to filter on.
@@ -238,8 +238,12 @@ class CargoMovements(Record, Search):
             "filter_effective_controllers": convert_to_list(
                 exclude_effective_controllers
             ),
-            "filter_vessel_owners": convert_to_list(exclude_filter_vessel_owners),
-            "filter_time_charterers": convert_to_list(exclude_filter_time_charterers),
+            "filter_vessel_owners": convert_to_list(
+                exclude_filter_vessel_owners
+            ),
+            "filter_time_charterers": convert_to_list(
+                exclude_filter_time_charterers
+            ),
             "filter_vessel_flags": convert_to_list(exclude_vessel_flags),
             "filter_vessel_ice_class": convert_to_list(
                 exclude_vessel_ice_class
