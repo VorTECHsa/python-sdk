@@ -95,11 +95,11 @@ class CargoMovements(Record, Search):
             filter_origins: A geography ID, or list of geography IDs to filter on.
 
             filter_effective_controllers: An effective controller ID, or list of effective controller IDs to filter on.
-            
+
             filter_vessel_owners: An vessel owner ID, or list of vessel owners IDs to filter on.
-            
+
             filter_time_charterers: An time charterer ID, or list of time charterers IDs to filter on.
-            
+
             filter_products: A product ID, or list of product IDs to filter on.
 
             filter_vessels: A vessel ID, or list of vessel IDs to filter on.
@@ -232,12 +232,8 @@ class CargoMovements(Record, Search):
             "filter_effective_controllers": convert_to_list(
                 exclude_effective_controllers
             ),
-            "filter_vessel_owners": convert_to_list(
-                filter_vessel_owners
-            ),
-            "filter_time_charterers": convert_to_list(
-                filter_time_charterers
-            ),
+            "filter_vessel_owners": convert_to_list(filter_vessel_owners),
+            "filter_time_charterers": convert_to_list(filter_time_charterers),
             "filter_vessel_flags": convert_to_list(exclude_vessel_flags),
             "filter_vessel_ice_class": convert_to_list(
                 exclude_vessel_ice_class
@@ -257,12 +253,8 @@ class CargoMovements(Record, Search):
             "filter_effective_controllers": convert_to_list(
                 filter_effective_controllers
             ),
-            "filter_vessel_owners": convert_to_list(
-                filter_vessel_owners
-            ),
-            "filter_time_charterers": convert_to_list(
-                filter_time_charterers
-            ),
+            "filter_vessel_owners": convert_to_list(filter_vessel_owners),
+            "filter_time_charterers": convert_to_list(filter_time_charterers),
             "filter_products": convert_to_list(filter_products),
             "filter_vessels": convert_to_list(filter_vessels),
             "filter_vessel_classes": convert_to_list(filter_vessel_classes),
