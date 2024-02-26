@@ -82,6 +82,7 @@ generate:
   - endpoints/freight_pricing_timeseries.md: vortexasdk.endpoints.freight_pricing_timeseries++
   - endpoints/voyages_search_enriched.md: vortexasdk.endpoints.voyages_search_enriched++
   - endpoints/voyages_timeseries.md: vortexasdk.endpoints.voyages_timeseries++
+  - endpoints/voyages_timeseries_v2.md: vortexasdk.endpoints.voyages_timeseries_v2++
   - endpoints/voyages_top_hits.md: vortexasdk.endpoints.voyages_top_hits++
   - endpoints/voyages_congestion_breakdown.md: vortexasdk.endpoints.voyages_congestion_breakdown++
 pages:
@@ -114,6 +115,7 @@ pages:
       Vessel Summary: endpoints/vessel_summary.md
       Voyages Search Enriched: endpoints/voyages_search_enriched.md
       Voyages Time Series: endpoints/voyages_timeseries.md
+      Voyages Time Series V2: endpoints/voyages_timeseries_v2.md
       Voyages Top Hits: endpoints/voyages_top_hits.md
       Voyages Congestion Breakdown: endpoints/voyages_congestion_breakdown.md
   - Entities:

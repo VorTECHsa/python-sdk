@@ -40,6 +40,7 @@ from vortexasdk.endpoints.freight_pricing_timeseries import (
     FreightPricingTimeseries,
 )
 from vortexasdk.endpoints.voyages_timeseries import VoyagesTimeseries
+from vortexasdk.endpoints.voyages_timeseries_v2 import VoyagesTimeseriesV2
 from vortexasdk.endpoints.voyages_congestion_breakdown import (
     VoyagesCongestionBreakdown,
 )
