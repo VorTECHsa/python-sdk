@@ -17,6 +17,7 @@ from vortexasdk.endpoints.voyages_breakdown_result import (
 from vortexasdk.operations import Search
 from vortexasdk.utils import convert_to_list
 
+
 # noinspection PyUnresolvedReferences
 class VoyagesRoutesBreakdown(Search):
     """

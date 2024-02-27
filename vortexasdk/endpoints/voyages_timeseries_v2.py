@@ -14,6 +14,7 @@ from vortexasdk.operations import Search
 from vortexasdk.search_response import SearchResponse
 from vortexasdk.utils import chunk_time_series, convert_to_list, is_multi_state
 
+
 # noinspection PyUnresolvedReferences
 class VoyagesTimeseriesV2(Search):
     """
