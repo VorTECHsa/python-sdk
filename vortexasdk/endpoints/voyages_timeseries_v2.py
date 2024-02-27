@@ -261,6 +261,7 @@ class VoyagesTimeseriesV2(Search):
         ...    breakdown_frequency="month",
         ...    exclude_overlapping_entries=False
         ... ).to_df()
+
         ```
         Gives the following result:
 

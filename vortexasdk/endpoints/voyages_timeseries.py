@@ -229,6 +229,7 @@ class VoyagesTimeseries(Search):
         ...    breakdown_property="vessel_count",
         ...    breakdown_split_property="location_country",
         ...    ).to_df()
+
         ```
         Gives the following result:
 
