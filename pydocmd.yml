@@ -122,6 +122,9 @@ pages:
       Voyages Time Series V2: endpoints/voyages_timeseries_v2.md
       Voyages Top Hits: endpoints/voyages_top_hits.md
       Voyages Geography Breakdown: endpoints/voyages_geography_breakdown.md
+      Voyages Vessel Class Breakdown: endpoints/voyages_vessel_class_breakdown.md
+      Voyages Product Breakdown: endpoints/voyages_product_breakdown.md
+      Voyages Routes Breakdown: endpoints/voyages_routes_breakdown.md
       Voyages Congestion Breakdown: endpoints/voyages_congestion_breakdown.md
   - Entities:
       Breakdown Item: entities/breakdown_result.md
