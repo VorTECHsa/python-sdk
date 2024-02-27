@@ -84,6 +84,9 @@ generate:
   - endpoints/voyages_timeseries.md: vortexasdk.endpoints.voyages_timeseries++
   - endpoints/voyages_timeseries_v2.md: vortexasdk.endpoints.voyages_timeseries_v2++
   - endpoints/voyages_geography_breakdown.md: vortexasdk.endpoints.voyages_geography_breakdown++
+  - endpoints/voyages_vessel_class_breakdown.md: vortexasdk.endpoints.voyages_vessel_class_breakdown++
+  - endpoints/voyages_product_breakdown.md: vortexasdk.endpoints.voyages_product_breakdown++
+  - endpoints/voyages_routes_breakdown.md: vortexasdk.endpoints.voyages_routes_breakdown++
   - endpoints/voyages_top_hits.md: vortexasdk.endpoints.voyages_top_hits++
   - endpoints/voyages_congestion_breakdown.md: vortexasdk.endpoints.voyages_congestion_breakdown++
 pages:

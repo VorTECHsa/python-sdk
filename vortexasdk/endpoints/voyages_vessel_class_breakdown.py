@@ -18,37 +18,34 @@ from vortexasdk.operations import Search
 from vortexasdk.utils import convert_to_list
 
 # noinspection PyUnresolvedReferences
-class VoyagesGeographyBreakdown(Search):
+class VoyagesVesselClassBreakdown(Search):
     """
-    VoyagesGeographyBreakdown class requires a _geography_property_ to be provided and has an optional _second_breakdown_ property.
+    VoyagesVesselClassBreakdown class has an optional _second_breakdown_ property.
 
     Please note: you will require a subscription to our Freight module to access this endpoint.
 
     # Arguments
-
-        geography_property: Determines a geography breakdown property. Can be one of: `'origin'`, `'destination'`, `'cargo-origin'`, `'cargo-destination'`.
 
         second_breakdown: An optional second breakdown property. Can be: `'status'`.
     """
 
     def __init__(
         self,
-        geography_property: str,  # path parameter
         second_breakdown: str = None,  # path parameter
     ):
+        vessel_class_property = "vessel-class"
+
         if second_breakdown:
-            endpoint = (
-                f"{VOYAGES_BREAKDOWN}/{geography_property}/{second_breakdown}"
-            )
+            endpoint = f"{VOYAGES_BREAKDOWN}/{vessel_class_property}/{second_breakdown}"
         else:
-            endpoint = f"{VOYAGES_BREAKDOWN}/{geography_property}"
+            endpoint = f"{VOYAGES_BREAKDOWN}/{vessel_class_property}"
 
         Search.__init__(self, endpoint)
 
     # noinspection PyUnresolvedReferences
     def search(
         self,
-        breakdown_geography: str,
+        breakdown_vessel_class: str,
         breakdown_size: int = None,
         time_min: datetime = datetime(2024, 1, 1, 0),
         time_max: datetime = datetime(2024, 3, 31, 1),
@@ -120,7 +117,7 @@ class VoyagesGeographyBreakdown(Search):
 
         # Arguments
 
-            breakdown_geography: Determines the geography layer of the breakdown.
+            breakdown_vessel_class: Determines vessel class layer of the breakdown.
 
             breakdown_size: Optional number of top hits to return.
 
@@ -254,18 +251,17 @@ class VoyagesGeographyBreakdown(Search):
         `BreakdownResult`
 
         # Example
-        _Sum of vessels split by status between 1st of January 2024 - 29th of Fabuary 2024 with a "country" layer breakdown._
+        _Sum of vessels split by status between 1st of January 2024 - 29th of Fabuary 2024 with a "coarse" layer breakdown._
 
         ```python
-        >>> from vortexasdk import VoyagesGeographyBreakdown
+        >>> from vortexasdk import VoyagesVesselClassBreakdown
         >>> from datetime import datetime
-        >>> search_result = VoyagesGeographyBreakdown(
-        ...    geography_property="cargo-origin",
+        >>> search_result = VoyagesVesselClassBreakdown(
         ...    second_breakdown="status",
         ... ).search(
         ...    time_min=datetime(2024, 1, 1),
         ...    time_max=datetime(2024, 2, 29, 23, 59),
-        ...    breakdown_geography="country",
+        ...    breakdown_vessel_class="coarse",
         ...    origins=["c4b606ff15bd9b86c37e4fbccf8b5f7e57890c6f675e7a250538e297b4c1303e"],
         ... ).to_df()
 
@@ -273,15 +269,15 @@ class VoyagesGeographyBreakdown(Search):
         Gives the following result:
 
         ```
-        |    | id               | label   |   value | breakdown.0.id   | breakdown.0.label   | breakdown.0.value   | breakdown.1.id   | breakdown.1.label   |   breakdown.1.value |
-        |---:|:-----------------|:--------|--------:|:-----------------|:--------------------|:--------------------|:-----------------|:--------------------|--------------------:|
-        |  0 | c4b606ff15bd9b86 | Ukraine |      55 | ballast          | ballast             | 6                   | laden            | laden               |                  45 |
-        |  1 | 65ab749279c8fbe6 | Romania |       1 | ballast          | ballast             |                     | laden            | laden               |                   1 |
-        |  2 | 69c53542ac9ee1fc | Turkey  |       1 | ballast          | ballast             |                     | laden            | laden               |                   1 |
+        |    | id               | label          |   value | breakdown.0.id   | breakdown.0.label   | breakdown.0.value   | breakdown.1.id   | breakdown.1.label   |   breakdown.1.value |
+        |---:|:-----------------|:---------------|--------:|:-----------------|:--------------------|:--------------------|:-----------------|:--------------------|--------------------:|
+        |  0 | oil_coastal      | Coastal        |      37 | ballast          | ballast             | 6                   | laden            | laden               |                  31 |
+        |  1 | oil_specialised  | Specialised    |      13 | ballast          | ballast             |                     | laden            | laden               |                  13 |
+        |  2 | oil_handymax_mr2 | Handymax / MR2 |       1 | ballast          | ballast             |                     | laden            | laden               |                   1 |
         ```
         """
         api_params: Dict[str, Any] = {
-            "breakdown_geography": breakdown_geography,
+            "breakdown_vessel_class": breakdown_vessel_class,
             "breakdown_size": breakdown_size,
             "voyage_id": convert_to_list(voyage_id),
             "cargo_movement_id": convert_to_list(cargo_movement_id),

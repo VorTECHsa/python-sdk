@@ -18,37 +18,36 @@ from vortexasdk.operations import Search
 from vortexasdk.utils import convert_to_list
 
 # noinspection PyUnresolvedReferences
-class VoyagesGeographyBreakdown(Search):
+class VoyagesRoutesBreakdown(Search):
     """
-    VoyagesGeographyBreakdown class requires a _geography_property_ to be provided and has an optional _second_breakdown_ property.
+    VoyagesRoutesBreakdown class has an optional _second_breakdown_ property.
 
     Please note: you will require a subscription to our Freight module to access this endpoint.
 
     # Arguments
-
-        geography_property: Determines a geography breakdown property. Can be one of: `'origin'`, `'destination'`, `'cargo-origin'`, `'cargo-destination'`.
 
         second_breakdown: An optional second breakdown property. Can be: `'status'`.
     """
 
     def __init__(
         self,
-        geography_property: str,  # path parameter
         second_breakdown: str = None,  # path parameter
     ):
+        routes_property = "routes"
+
         if second_breakdown:
             endpoint = (
-                f"{VOYAGES_BREAKDOWN}/{geography_property}/{second_breakdown}"
+                f"{VOYAGES_BREAKDOWN}/{routes_property}/{second_breakdown}"
             )
         else:
-            endpoint = f"{VOYAGES_BREAKDOWN}/{geography_property}"
+            endpoint = f"{VOYAGES_BREAKDOWN}/{routes_property}"
 
         Search.__init__(self, endpoint)
 
     # noinspection PyUnresolvedReferences
     def search(
         self,
-        breakdown_geography: str,
+        breakdown_route: str,
         breakdown_size: int = None,
         time_min: datetime = datetime(2024, 1, 1, 0),
         time_max: datetime = datetime(2024, 3, 31, 1),
@@ -120,7 +119,7 @@ class VoyagesGeographyBreakdown(Search):
 
         # Arguments
 
-            breakdown_geography: Determines the geography layer of the breakdown.
+            breakdown_route: Determines the route value of the breakdown.
 
             breakdown_size: Optional number of top hits to return.
 
@@ -257,15 +256,14 @@ class VoyagesGeographyBreakdown(Search):
         _Sum of vessels split by status between 1st of January 2024 - 29th of Fabuary 2024 with a "country" layer breakdown._
 
         ```python
-        >>> from vortexasdk import VoyagesGeographyBreakdown
+        >>> from vortexasdk import VoyagesRoutesBreakdown
         >>> from datetime import datetime
-        >>> search_result = VoyagesGeographyBreakdown(
-        ...    geography_property="cargo-origin",
+        >>> search_result = VoyagesRoutesBreakdown(
         ...    second_breakdown="status",
         ... ).search(
         ...    time_min=datetime(2024, 1, 1),
         ...    time_max=datetime(2024, 2, 29, 23, 59),
-        ...    breakdown_geography="country",
+        ...    breakdown_route="country",
         ...    origins=["c4b606ff15bd9b86c37e4fbccf8b5f7e57890c6f675e7a250538e297b4c1303e"],
         ... ).to_df()
 
@@ -273,15 +271,27 @@ class VoyagesGeographyBreakdown(Search):
         Gives the following result:
 
         ```
-        |    | id               | label   |   value | breakdown.0.id   | breakdown.0.label   | breakdown.0.value   | breakdown.1.id   | breakdown.1.label   |   breakdown.1.value |
-        |---:|:-----------------|:--------|--------:|:-----------------|:--------------------|:--------------------|:-----------------|:--------------------|--------------------:|
-        |  0 | c4b606ff15bd9b86 | Ukraine |      55 | ballast          | ballast             | 6                   | laden            | laden               |                  45 |
-        |  1 | 65ab749279c8fbe6 | Romania |       1 | ballast          | ballast             |                     | laden            | laden               |                   1 |
-        |  2 | 69c53542ac9ee1fc | Turkey  |       1 | ballast          | ballast             |                     | laden            | laden               |                   1 |
+        |    | id                                | label                    |   value | breakdown.0.id   | breakdown.0.label   | breakdown.0.value   | breakdown.1.id   | breakdown.1.label   |   breakdown.1.value |
+        |---:|:----------------------------------|:-------------------------|--------:|:-----------------|:--------------------|:--------------------|:-----------------|:--------------------|--------------------:|
+        |  0 | c4b606ff15bd9b86-c1698979b983b265 | Ukraine - Spain          |       9 | ballast          | ballast             | 1                   | laden            | laden               |                   8 |
+        |  1 | c4b606ff15bd9b86-69c53542ac9ee1fc | Ukraine - Turkey         |       8 | ballast          | ballast             | 1                   | laden            | laden               |                   7 |
+        |  2 | c4b606ff15bd9b86-65ab749279c8fbe6 | Ukraine - Romania        |       7 | ballast          | ballast             | 1                   | laden            | laden               |                   6 |
+        |  3 | c4b606ff15bd9b86-3eac69e760d9ec57 | Ukraine - Egypt          |       6 | ballast          | ballast             |                     | laden            | laden               |                   6 |
+        |  4 | c4b606ff15bd9b86-ee1de4914cc26e8f | Ukraine - Italy          |       5 | ballast          | ballast             |                     | laden            | laden               |                   5 |
+        |  5 | c4b606ff15bd9b86-b6be463f6999751d | Ukraine - Greece         |       4 | ballast          | ballast             | 2                   | laden            | laden               |                   2 |
+        |  6 | c4b606ff15bd9b86-a398152fa8e559b0 | Ukraine - Bulgaria       |       2 | ballast          | ballast             |                     | laden            | laden               |                   2 |
+        |  7 | 65ab749279c8fbe6-80ccd59a719f2767 | Romania - Lebanon        |       1 | ballast          | ballast             |                     | laden            | laden               |                   1 |
+        |  8 | 69c53542ac9ee1fc-69c53542ac9ee1fc | Turkey - Turkey          |       1 | ballast          | ballast             |                     | laden            | laden               |                   1 |
+        |  9 | c4b606ff15bd9b86-2aaad41b89dfad19 | Ukraine - United Kingdom |       1 | ballast          | ballast             |                     | laden            | laden               |                   1 |
+        | 10 | c4b606ff15bd9b86-43a70ba6b21894cd | Ukraine - Saudi Arabia   |       1 | ballast          | ballast             |                     | laden            | laden               |                   1 |
+        | 11 | c4b606ff15bd9b86-70425373a1836d6d | Ukraine - India          |       1 | ballast          | ballast             |                     | laden            | laden               |                   1 |
+        | 12 | c4b606ff15bd9b86-80ccd59a719f2767 | Ukraine - Lebanon        |       1 | ballast          | ballast             |                     | laden            | laden               |                   1 |
+        | 13 | c4b606ff15bd9b86-c4b606ff15bd9b86 | Ukraine - Ukraine        |       1 | ballast          | ballast             |                     | laden            | laden               |                   1 |
+        | 14 | c4b606ff15bd9b86-e9e556620469f46a | Ukraine - France         |       1 | ballast          | ballast             |                     | laden            | laden               |                   1 |
         ```
         """
         api_params: Dict[str, Any] = {
-            "breakdown_geography": breakdown_geography,
+            "breakdown_route": breakdown_route,
             "breakdown_size": breakdown_size,
             "voyage_id": convert_to_list(voyage_id),
             "cargo_movement_id": convert_to_list(cargo_movement_id),
