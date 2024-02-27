@@ -244,7 +244,7 @@
 <p>A detailed explanation of Cargo/Vessel Movements can be found <a href="https://docs.vortexa.com/reference/intro-movement-difference">here</a>.</p>
 <h3 id="vortexasdk.endpoints.cargo_movements.CargoMovements.search">search</h3>
 
-<pre><code class="language-python">CargoMovements.search(self, filter_activity: str = None, filter_time_min: datetime.datetime = datetime.datetime(2024, 2, 21, 14, 2, 15, 800797), filter_time_max: datetime.datetime = datetime.datetime(2024, 2, 21, 14, 2, 15, 800800), cm_unit: str = 'b', filter_charterers: Union[str, List[str]] = None, filter_destinations: Union[str, List[str]] = None, filter_origins: Union[str, List[str]] = None, filter_owners: Union[str, List[str]] = None, filter_vessel_owners: Union[str, List[str]] = None, filter_time_charterers: Union[str, List[str]] = None, filter_effective_controllers: Union[str, List[str]] = None, filter_products: Union[str, List[str]] = None, filter_vessels: Union[str, List[str]] = None, filter_vessel_classes: Union[str, List[str]] = None, filter_storage_locations: Union[str, List[str]] = None, filter_ship_to_ship_locations: Union[str, List[str]] = None, filter_waypoints: Union[str, List[str]] = None, filter_vessel_age_min: int = None, filter_vessel_age_max: int = None, filter_vessel_scrubbers: str = 'disabled', filter_vessel_flags: Union[str, List[str]] = None, filter_vessel_ice_class: Union[str, List[str]] = None, filter_vessel_propulsion: Union[str, List[str]] = None, exclude_origins: Union[str, List[str]] = None, exclude_destinations: Union[str, List[str]] = None, exclude_products: Union[str, List[str]] = None, exclude_vessels: Union[str, List[str]] = None, exclude_vessel_classes: Union[str, List[str]] = None, exclude_charterers: Union[str, List[str]] = None, exclude_owners: Union[str, List[str]] = None, exclude_effective_controllers: Union[str, List[str]] = None, exclude_filter_vessel_owners: Union[str, List[str]] = None, exclude_filter_time_charterers: Union[str, List[str]] = None, exclude_vessel_flags: Union[str, List[str]] = None, exclude_vessel_ice_class: Union[str, List[str]] = None, exclude_vessel_propulsion: Union[str, List[str]] = None, disable_geographic_exclusion_rules: bool = None, intra_movements: str = None) -&gt; vortexasdk.endpoints.cargo_movements_result.CargoMovementsResult
+<pre><code class="language-python">CargoMovements.search(self, filter_activity: str = None, filter_time_min: datetime.datetime = datetime.datetime(2024, 2, 27, 15, 17, 37, 32063), filter_time_max: datetime.datetime = datetime.datetime(2024, 2, 27, 15, 17, 37, 32066), cm_unit: str = 'b', filter_charterers: Union[str, List[str]] = None, filter_destinations: Union[str, List[str]] = None, filter_origins: Union[str, List[str]] = None, filter_owners: Union[str, List[str]] = None, filter_vessel_owners: Union[str, List[str]] = None, filter_time_charterers: Union[str, List[str]] = None, filter_effective_controllers: Union[str, List[str]] = None, filter_products: Union[str, List[str]] = None, filter_vessels: Union[str, List[str]] = None, filter_vessel_classes: Union[str, List[str]] = None, filter_storage_locations: Union[str, List[str]] = None, filter_ship_to_ship_locations: Union[str, List[str]] = None, filter_waypoints: Union[str, List[str]] = None, filter_vessel_age_min: int = None, filter_vessel_age_max: int = None, filter_vessel_scrubbers: str = 'disabled', filter_vessel_flags: Union[str, List[str]] = None, filter_vessel_ice_class: Union[str, List[str]] = None, filter_vessel_propulsion: Union[str, List[str]] = None, exclude_origins: Union[str, List[str]] = None, exclude_destinations: Union[str, List[str]] = None, exclude_products: Union[str, List[str]] = None, exclude_vessels: Union[str, List[str]] = None, exclude_vessel_classes: Union[str, List[str]] = None, exclude_charterers: Union[str, List[str]] = None, exclude_owners: Union[str, List[str]] = None, exclude_effective_controllers: Union[str, List[str]] = None, exclude_filter_vessel_owners: Union[str, List[str]] = None, exclude_filter_time_charterers: Union[str, List[str]] = None, exclude_vessel_flags: Union[str, List[str]] = None, exclude_vessel_ice_class: Union[str, List[str]] = None, exclude_vessel_propulsion: Union[str, List[str]] = None, disable_geographic_exclusion_rules: bool = None, intra_movements: str = None) -&gt; vortexasdk.endpoints.cargo_movements_result.CargoMovementsResult
 </code></pre>
 <p>Find CargoMovements matching the given search parameters.</p>
 <p><strong>Arguments</strong></p>
@@ -441,7 +441,7 @@ This lets us view all vessels present in any STS operations.</p>
 <pre><code class="language-python">&gt;&gt;&gt; from vortexasdk import CargoMovements, Geographies, Vessels
 &gt;&gt;&gt; suez = [g.id for g in Geographies().search(&quot;suez&quot;).to_list()]
 &gt;&gt;&gt; china = [g.id for g in Geographies().search(&quot;china&quot;).to_list() if &quot;country&quot; in g.layer]
-&gt;&gt;&gt; vlccs = [v.id for v in Vessels().search(vessel_classes=&quot;vlcc_plus&quot;).to_list()]
+&gt;&gt;&gt; vlccs = [v.id for v in Vessels().search(vessel_classes=&quot;oil_vlcc&quot;).to_list()]
 &gt;&gt;&gt; cargo_movement_search_result = CargoMovements().search(
 ...    filter_destinations=china,
 ...    filter_activity=&quot;loading_state&quot;,
@@ -471,9 +471,9 @@ This lets us view all vessels present in any STS operations.</p>
 <tr>
 <td style="text-align: right;">0</td>
 <td style="text-align: left;">MINERVA MARINA</td>
-<td style="text-align: left;">suezmax</td>
+<td style="text-align: left;">oil_suezmax</td>
 <td style="text-align: left;">COSGLORY LAKE</td>
-<td style="text-align: left;">vlcc_plus</td>
+<td style="text-align: left;">oil_vlcc</td>
 <td style="text-align: left;">nan</td>
 <td style="text-align: left;">nan</td>
 <td style="text-align: left;">Crude</td>
@@ -482,7 +482,7 @@ This lets us view all vessels present in any STS operations.</p>
 <tr>
 <td style="text-align: right;">1</td>
 <td style="text-align: left;">BUKHA</td>
-<td style="text-align: left;">vlcc_plus</td>
+<td style="text-align: left;">oil_vlcc</td>
 <td style="text-align: left;">nan</td>
 <td style="text-align: left;">nan</td>
 <td style="text-align: left;">nan</td>
@@ -493,7 +493,7 @@ This lets us view all vessels present in any STS operations.</p>
 <tr>
 <td style="text-align: right;">2</td>
 <td style="text-align: left;">ATHENIAN FREEDOM</td>
-<td style="text-align: left;">vlcc_plus</td>
+<td style="text-align: left;">oil_vlcc</td>
 <td style="text-align: left;">nan</td>
 <td style="text-align: left;">nan</td>
 <td style="text-align: left;">nan</td>
@@ -504,20 +504,20 @@ This lets us view all vessels present in any STS operations.</p>
 <tr>
 <td style="text-align: right;">3</td>
 <td style="text-align: left;">ATINA</td>
-<td style="text-align: left;">suezmax</td>
+<td style="text-align: left;">oil_suezmax</td>
 <td style="text-align: left;">DONAT</td>
-<td style="text-align: left;">suezmax</td>
+<td style="text-align: left;">oil_suezmax</td>
 <td style="text-align: left;">DS VISION</td>
-<td style="text-align: left;">vlcc_plus</td>
+<td style="text-align: left;">oil_vlcc</td>
 <td style="text-align: left;">Crude</td>
 <td style="text-align: right;">896773</td>
 </tr>
 <tr>
 <td style="text-align: right;">4</td>
 <td style="text-align: left;">MINERVA MARINA</td>
-<td style="text-align: left;">suezmax</td>
+<td style="text-align: left;">oil_suezmax</td>
 <td style="text-align: left;">COSGLORY LAKE</td>
-<td style="text-align: left;">vlcc_plus</td>
+<td style="text-align: left;">oil_vlcc</td>
 <td style="text-align: left;">nan</td>
 <td style="text-align: left;">nan</td>
 <td style="text-align: left;">Crude</td>
@@ -526,9 +526,9 @@ This lets us view all vessels present in any STS operations.</p>
 <tr>
 <td style="text-align: right;">5</td>
 <td style="text-align: left;">MASAL</td>
-<td style="text-align: left;">suezmax</td>
+<td style="text-align: left;">oil_suezmax</td>
 <td style="text-align: left;">EKTA</td>
-<td style="text-align: left;">vlcc_plus</td>
+<td style="text-align: left;">oil_vlcc</td>
 <td style="text-align: left;">nan</td>
 <td style="text-align: left;">nan</td>
 <td style="text-align: left;">Crude</td>
@@ -537,7 +537,7 @@ This lets us view all vessels present in any STS operations.</p>
 <tr>
 <td style="text-align: right;">6</td>
 <td style="text-align: left;">ATHENIAN FREEDOM</td>
-<td style="text-align: left;">vlcc_plus</td>
+<td style="text-align: left;">oil_vlcc</td>
 <td style="text-align: left;">nan</td>
 <td style="text-align: left;">nan</td>
 <td style="text-align: left;">nan</td>
