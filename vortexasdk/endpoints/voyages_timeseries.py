@@ -219,13 +219,12 @@ class VoyagesTimeseries(Search):
         _Sum of vessels departing from Ukraine between 1th-3rd Febuary 2024, split by location country._
 
         ```python
-        >>> from vortexasdk import VoyagesTimeseries, Geographies
+        >>> from vortexasdk import VoyagesTimeseries
         >>> from datetime import datetime
-        >>> ukraine = [g.id for g in Geographies().search("Ukraine").to_list() if "country" in g.layer]
         >>> search_result = VoyagesTimeseries().search(
-        ...    origins=ukraine,
-        ...    time_min=datetime(2024, 2, 3),
-        ...    time_max=datetime(2024, 2, 1, 23, 59),
+        ...    origins=["c4b606ff15bd9b86"],
+        ...    time_min=datetime(2024, 2, 1),
+        ...    time_max=datetime(2024, 2, 3, 23, 59),
         ...    breakdown_frequency="day",
         ...    breakdown_property="vessel_count",
         ...    breakdown_split_property="location_country",
@@ -320,7 +319,7 @@ class VoyagesTimeseries(Search):
             ),
         }
 
-        if not is_multi_state(api_params):
+        if not is_multi_state(**api_params):
             response = super().search_with_client(
                 response_type="breakdown", **api_params
             )
