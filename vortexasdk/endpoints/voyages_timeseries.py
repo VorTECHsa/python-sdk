@@ -208,7 +208,7 @@ class VoyagesTimeseries(Search):
             breakdown_property: Property to aggregate upon. Can be one of: `'vessel_count'`, `'utilisation'`, `'cargo_quantity'`, `'avg_wait_time'`,`'dwt'`, `'cubic_capacity'`,
             `'tonne_miles'`, `'avg_distance'`, `'avg_speed'`.
 
-            breakdown_split_property: Property to split results by. Can be one of: `'vessel_status'`, `'vessel_class'`, `'vessel_flag'`,`'fixture_status'`, `'origin_region'`,
+            breakdown_split_property: Property to split results by. Can be one of: `'vessel_status'`, `'vessel_class_group'`, `'vessel_class_coarse'`, `'vessel_class_granular'`, `'vessel_flag'`,`'fixture_status'`, `'origin_region'`,
             `'origin_shipping_region'`,`'origin_trading_region'`,`'origin_trading_sub_region'`,`'origin_trading_block'`,`'origin_country'`,`'origin_port'`,
             `'origin_terminal'`,`'destination_region'`,`'destination_shipping_region'`,`'destination_trading_region'`,`'destination_trading_sub_region'`,`'destination_trading_block'`,
             `'destination_country'`,`'destination_port'`,`'destination_terminal'`,`'location_port'`,`'location_country'`,`'location_shipping_region'`,
