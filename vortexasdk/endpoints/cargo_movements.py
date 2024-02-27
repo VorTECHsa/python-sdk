@@ -195,7 +195,7 @@ class CargoMovements(Record, Search):
         >>> from vortexasdk import CargoMovements, Geographies, Vessels
         >>> suez = [g.id for g in Geographies().search("suez").to_list()]
         >>> china = [g.id for g in Geographies().search("china").to_list() if "country" in g.layer]
-        >>> vlccs = [v.id for v in Vessels().search(vessel_classes="vlcc_plus").to_list()]
+        >>> vlccs = [v.id for v in Vessels().search(vessel_classes="oil_vlcc").to_list()]
         >>> cargo_movement_search_result = CargoMovements().search(
         ...    filter_destinations=china,
         ...    filter_activity="loading_state",
@@ -210,13 +210,13 @@ class CargoMovements(Record, Search):
 
         |    | vessels.0.name   | vessels.0.vessel_class   | vessels.1.name   | vessels.1.vessel_class   | vessels.2.name   | vessels.2.vessel_class   | product.group.label   |   quantity |
         |---:|:-----------------|:-------------------------|:-----------------|:-------------------------|:-----------------|:-------------------------|:----------------------|-----------:|
-        |  0 | MINERVA MARINA   | suezmax                  | COSGLORY LAKE    | vlcc_plus                | nan              | nan                      | Crude                 |     700614 |
-        |  1 | BUKHA            | vlcc_plus                | nan              | nan                      | nan              | nan                      | Crude                 |    1896374 |
-        |  2 | ATHENIAN FREEDOM | vlcc_plus                | nan              | nan                      | nan              | nan                      | Crude                 |     183537 |
-        |  3 | ATINA            | suezmax                  | DONAT            | suezmax                  | DS VISION        | vlcc_plus                | Crude                 |     896773 |
-        |  4 | MINERVA MARINA   | suezmax                  | COSGLORY LAKE    | vlcc_plus                | nan              | nan                      | Crude                 |     405724 |
-        |  5 | MASAL            | suezmax                  | EKTA             | vlcc_plus                | nan              | nan                      | Crude                 |     997896 |
-        |  6 | ATHENIAN FREEDOM | vlcc_plus                | nan              | nan                      | nan              | nan                      | Crude                 |     120812 |
+        |  0 | MINERVA MARINA   | oil_suezmax              | COSGLORY LAKE    | oil_vlcc                 | nan              | nan                      | Crude                 |     700614 |
+        |  1 | BUKHA            | oil_vlcc                 | nan              | nan                      | nan              | nan                      | Crude                 |    1896374 |
+        |  2 | ATHENIAN FREEDOM | oil_vlcc                 | nan              | nan                      | nan              | nan                      | Crude                 |     183537 |
+        |  3 | ATINA            | oil_suezmax              | DONAT            | oil_suezmax              | DS VISION        | oil_vlcc                 | Crude                 |     896773 |
+        |  4 | MINERVA MARINA   | oil_suezmax              | COSGLORY LAKE    | oil_vlcc                 | nan              | nan                      | Crude                 |     405724 |
+        |  5 | MASAL            | oil_suezmax              | EKTA             | oil_vlcc                 | nan              | nan                      | Crude                 |     997896 |
+        |  6 | ATHENIAN FREEDOM | oil_vlcc                 | nan              | nan                      | nan              | nan                      | Crude                 |     120812 |
 
         [Cargo Movements Endpoint Further Documentation](https://docs.vortexa.com/reference/POST/cargo-movements/search)
 
@@ -224,7 +224,7 @@ class CargoMovements(Record, Search):
 
         if disable_geographic_exclusion_rules is not None:
             logger.warning(
-                f"\nYou are using the disable_geographic_exclusion_rules parameter. It will be deprecated in March 2024 in favour of the `intra_movements` filter.\nPlease refer to https://docs.vortexa.com/reference/intro-cargo-filters for more information.\n"
+                "\nYou are using the disable_geographic_exclusion_rules parameter. It will be deprecated in March 2024 in favour of the `intra_movements` filter.\nPlease refer to https://docs.vortexa.com/reference/intro-cargo-filters for more information.\n"
             )
 
         exclude_params: Dict[str, Any] = {

@@ -23,7 +23,7 @@ class TestVesselAvailabilityReal(TestCaseUsingRealAPI):
         results = VesselAvailabilitySearch().search(
             filter_port=rotterdam,
             filter_days_to_arrival=days_to_arrival,
-            exclude_vessel_classes=["vlcc_plus"],
+            exclude_vessel_classes=["oil_vlcc"],
             exclude_products=[
                 "54af755a090118dcf9b0724c9a4e9f14745c26165385ffa7f1445bc768f06f11"
             ],
@@ -34,7 +34,7 @@ class TestVesselAvailabilityReal(TestCaseUsingRealAPI):
         results = VesselAvailabilitySearch().search(
             filter_port=rotterdam,
             filter_days_to_arrival=days_to_arrival,
-            filter_vessel_classes=["vlcc_plus", "suezmax"],
+            filter_vessel_classes=["oil_vlcc", "oil_suezmax"],
         )
 
         assert len(results) > 10
