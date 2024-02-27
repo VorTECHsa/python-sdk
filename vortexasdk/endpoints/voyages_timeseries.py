@@ -319,7 +319,7 @@ class VoyagesTimeseries(Search):
             ),
         }
 
-        if not is_multi_state(**api_params):
+        if not is_multi_state(api_params):
             response = super().search_with_client(
                 response_type="breakdown", **api_params
             )
