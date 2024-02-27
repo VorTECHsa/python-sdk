@@ -15,7 +15,7 @@ class TestVesselsReal(TestCaseUsingRealAPI):
         assert len(vessels) == 2
 
     def test_search_filters_vessel_class(self):
-        vessel_classes = ["vlcc_plus", "aframax"]
+        vessel_classes = ["oil_vlcc", "oil_aframax"]
 
         vessels = Vessels().search(vessel_classes=vessel_classes).to_list()
 
@@ -25,12 +25,13 @@ class TestVesselsReal(TestCaseUsingRealAPI):
 
     def test_search_terms_are_combined_with_AND(self):
         aframax = set(
-            v.id for v in Vessels().search(vessel_classes="aframax").to_list()
+            v.id
+            for v in Vessels().search(vessel_classes="oil_aframax").to_list()
         )
         aframax_called_zhen = set(
             v.id
             for v in Vessels()
-            .search(vessel_classes="aframax", term="zhen")
+            .search(vessel_classes="oil_aframax", term="zhen")
             .to_list()
         )
 
@@ -74,10 +75,12 @@ class TestVesselsReal(TestCaseUsingRealAPI):
 
     def test_search_is_case_agnostic(self):
         uppercase = {
-            v.id for v in Vessels().search(vessel_classes="Suezmax").to_list()
+            v.id
+            for v in Vessels().search(vessel_classes="oil_suezmax").to_list()
         }
         lowercase = {
-            v.id for v in Vessels().search(vessel_classes="suezmax").to_list()
+            v.id
+            for v in Vessels().search(vessel_classes="oil_suezmax").to_list()
         }
 
         assert uppercase == lowercase
