@@ -182,7 +182,7 @@ class TestCargoMovementsReal(TestCaseUsingRealAPI):
         start = datetime(2021, 1, 1)
         end = datetime(2021, 1, 11)
 
-        vlcc_plus = "vlcc_plus"
+        vlcc_plus = "oil_vlcc"
 
         vlcc_plus_movements = (
             CargoMovements()
