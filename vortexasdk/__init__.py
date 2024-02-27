@@ -27,6 +27,7 @@ from vortexasdk.endpoints import (
     FreightPricingTimeseries,
     VoyagesTimeseries,
     VoyagesTimeseriesV2,
+    VoyagesGeographyBreakdown,
     VoyagesCongestionBreakdown,
     VoyagesTopHits,
     VoyagesSearchEnriched,

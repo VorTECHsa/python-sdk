@@ -83,6 +83,7 @@ generate:
   - endpoints/voyages_search_enriched.md: vortexasdk.endpoints.voyages_search_enriched++
   - endpoints/voyages_timeseries.md: vortexasdk.endpoints.voyages_timeseries++
   - endpoints/voyages_timeseries_v2.md: vortexasdk.endpoints.voyages_timeseries_v2++
+  - endpoints/voyages_geography_breakdown.md: vortexasdk.endpoints.voyages_geography_breakdown++
   - endpoints/voyages_top_hits.md: vortexasdk.endpoints.voyages_top_hits++
   - endpoints/voyages_congestion_breakdown.md: vortexasdk.endpoints.voyages_congestion_breakdown++
 pages:
@@ -117,6 +118,7 @@ pages:
       Voyages Time Series: endpoints/voyages_timeseries.md
       Voyages Time Series V2: endpoints/voyages_timeseries_v2.md
       Voyages Top Hits: endpoints/voyages_top_hits.md
+      Voyages Geography Breakdown: endpoints/voyages_geography_breakdown.md
       Voyages Congestion Breakdown: endpoints/voyages_congestion_breakdown.md
   - Entities:
       Breakdown Item: entities/breakdown_result.md

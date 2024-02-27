@@ -39,6 +39,7 @@ pages:
         Search Enriched: endpoints/voyages_search_enriched.md
         Time Series: endpoints/voyages_timeseries.md
         Time Series V2: endpoints/voyages_timeseries_v2.md
+        Geography Breakdown: endpoints/voyages_geography_breakdown.md
         Top Hits: endpoints/voyages_top_hits.md
         Congestion Breakdown: endpoints/voyages_congestion_breakdown.md
       Signals:
