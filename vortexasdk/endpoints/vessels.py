@@ -66,7 +66,7 @@ class Vessels(Reference, Search):
 
         ```python
         >>> from vortexasdk import Vessels
-        >>> vessels_df = Vessels().search(vessel_classes='vlcc', term='ocean').to_df(columns=['name', 'imo', 'mmsi', 'related_names'])
+        >>> vessels_df = Vessels().search(vessel_classes='oil_vlcc', term='ocean').to_df(columns=['name', 'imo', 'mmsi', 'related_names'])
 
         ```
         |    | name         |     imo |      mmsi | related_names             |
@@ -181,7 +181,4 @@ AVAILABLE_VESSEL_CLASSES = [
     "oil",
     "lpg",
     "lng",
-    "vlcc",
-    "ulcc",
-    "small_tanker",
 ]
