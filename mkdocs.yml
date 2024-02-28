@@ -38,7 +38,12 @@ pages:
       Voyages:
         Search Enriched: endpoints/voyages_search_enriched.md
         Time Series: endpoints/voyages_timeseries.md
+        Time Series V2: endpoints/voyages_timeseries_v2.md
         Top Hits: endpoints/voyages_top_hits.md
+        Geography Breakdown: endpoints/voyages_geography_breakdown.md
+        Vessel Class Breakdown: endpoints/voyages_vessel_class_breakdown.md
+        Product Breakdown: endpoints/voyages_product_breakdown.md
+        Routes Breakdown: endpoints/voyages_routes_breakdown.md
         Congestion Breakdown: endpoints/voyages_congestion_breakdown.md
       Signals:
         Vessel Summary: endpoints/vessel_summary.md
