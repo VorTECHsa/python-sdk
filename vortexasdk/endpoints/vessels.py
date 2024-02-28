@@ -167,7 +167,6 @@ AVAILABLE_VESSEL_CLASSES = [
     "oil_handymax_mr2",
     "oil_panamax_lr1",
     "oil_aframax_lr2",
-    "oil_aframax_lr3",
     "oil_suezmax_lr3",
     "oil_vlcc",
     "lpg_sgc",
