@@ -1,6 +1,125 @@
-from typing import Dict, List, Union
+from typing import Any, Dict, List, Optional, Union
 from enum import Enum
 from datetime import datetime, timedelta
+
+
+def is_arrival_or_departure_mode(
+    voyage_date_range_activity: Optional[str] = None,
+):
+    """
+    When the mode is arrival or departure, we do not need a multi-state aggregation
+    This is because the arrival and departure doesn't need daily granularity,
+    because they are determined by only one type of event.
+
+    The breakdowns on departures and arrivals are the resume of the voyages properties and
+    do not require a daily progression to be displayed.
+
+    E.g. In arrival or departure, the tonne miles or the avg distance are the max value that voyage have.
+    indifferently of the moment when the cargo was loaded or unloaded.
+    """
+    return (
+        voyage_date_range_activity is not None
+        and voyage_date_range_activity in ["arrivals", "departures"]
+    )
+
+
+def is_breakdown_property_multi_state(
+    breakdown_property: Optional[str] = None,
+    breakdown_split_property: Optional[str] = None,
+) -> bool:
+    """
+    Check if the breakdown property should be considered as multi-state
+    Some breakdowns should be considered as multi-state even to ensure consistency in the data
+    """
+    if breakdown_property is None:
+        return False
+
+    """
+        Some breakdowns should always be considered as multi-state to ensure consistency in the data.
+        E.G. AvgSpeed and AvgDistance because they require daily granularity
+        """
+    if breakdown_property in [
+        "cargo_quantity",
+        "avg_wait_time",
+        "dwt",
+        "cubic_capacity",
+    ]:
+        return True
+
+    """
+        Some breakdowns should be considered as multi-state only when a valid breakdown split is provided
+        Tonne miles aggregations are multi-state when the breakdown is by tonne miles
+        and the split property is not "none", because the split require an aggregation accessing the
+        nested "metrics" property of the cargo events twice.
+        """
+    if (
+        breakdown_property in ["tonne_miles", "avg_distance", "avg_speed"]
+        and breakdown_split_property is not None
+        and breakdown_split_property != "none"
+    ):
+        return True
+
+    return False
+
+
+def is_multi_state(api_params: Dict[str, Any]) -> bool:
+    """
+    Some states (e.g. cargo_status, commitment_status) will change across the timespan of a voyage,
+    when we are filtering in the aggregation stage, we cannot determine multiple states when just looking at 1 event.
+    So what we need to do is to split the aggregation by 1 day, then only valid voyages will be filtered in the query stage,
+    and we don't need to do filtering in aggregation stage anymore.
+
+                       |-- day1 --|-- day2 --|-- day3 --|-- day4 --|-- day5  --|
+    Movement status:   |--- Moving ------|----waiting--|----- Moving ----------| from movement status event
+    Commitment status: |---unknown---------------|--------committed------------| from commitment status event
+    Location status:   |------- on the sea -------------------|------berth-----| from location status event
+    """
+
+    """
+        If the mode is arrival or departure, we do not need a multi-state aggregation
+        no matter the other filters provided.
+        """
+    if is_arrival_or_departure_mode(
+        api_params.get("voyage_date_range_activity")
+    ):
+        return False
+
+    """
+        If some breakdown properties are provided, we need to do a multi-state aggregation
+        """
+    if is_breakdown_property_multi_state(
+        api_params.get("breakdown_property"),
+        api_params.get("breakdown_split_property"),
+    ):
+        return True
+
+    effective_state_params_count = 0
+
+    """
+        These filters are determined by the cargo events, that means that the combination of all the filters
+        will determine if a multi state by cargo info is required.
+        """
+    if (
+        api_params.get("origins")
+        or api_params.get("destinations")
+        or api_params.get("products")
+    ):
+        effective_state_params_count += 1
+
+    # exclusions are not needed because they will be handled at the filter level
+    state_param_keys = [
+        "cargo_status",
+        "location_status",
+        "movement_status",
+        "commitment_status",
+        "locations",
+    ]
+
+    for key in state_param_keys:
+        if api_params.get(key):
+            effective_state_params_count += 1
+
+    return effective_state_params_count > 1
 
 
 def chunk_time_series(

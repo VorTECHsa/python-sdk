@@ -28,9 +28,8 @@ Find all aframax vessels
 
 ```python
 from vortexasdk import Vessels
-df = Vessels().search(vessel_classes='aframax').to_df()
+df = Vessels().search(vessel_classes='oil_aframax').to_df()
 ```
-
 
 Find the vessel that has with id 12345
 

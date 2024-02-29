@@ -118,7 +118,7 @@ class CargoTimeSeries(Search):
             timeseries_frequency: Frequency denoting the granularity of the time series. Must be one of ['day', 'week',
              'doe_week', 'month', 'quarter', 'year']
 
-            timeseries_property: Property to split results by. Can be one of: `quantity`, `vessel_class`, `vessel_flag`,
+            timeseries_property: Property to split results by. Can be one of: `quantity`, `'vessel_class_group'`, `'vessel_class_coarse'`, `'vessel_class_granular'`, `vessel_flag`,
              `origin_region`, `origin_shipping_region`, `origin_trading_region`, `origin_trading_sub_region`, `origin_country`, `origin_port`, `origin_terminal`,
              `destination_region`, `destination_shipping_region`, `destination_trading_region`, `destination_trading_sub_region`, `destination_country`, `destination_port`, `destination_terminal`,
              `product_group`, `product_group_product`, `product_category`, `product_grade`, `none` or not provided.

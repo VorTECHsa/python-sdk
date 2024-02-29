@@ -1,38 +1,50 @@
 """
 Try me out in your browser:
 
-[![Binder](https://img.shields.io/badge/try%20me%20out-launch%20notebook-579ACA.svg?logo=data:image/png;base64,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)](https://mybinder.org/v2/gh/VorTECHsa/python-sdk/master?filepath=docs%2Fexamples%2Ftry_me_out%2Fvoyages_top_hits.ipynb)
+[![Binder](https://img.shields.io/badge/try%20me%20out-launch%20notebook-579ACA.svg?logo=data:image/png;base64,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)](https://mybinder.org/v2/gh/VorTECHsa/python-sdk/master?filepath=docs%2Fexamples%2Ftry_me_out%2Fvoyages_timeseries_v2.ipynb)
 """
 from datetime import datetime
 from typing import Any, Dict, List, Union
 
 from vortexasdk.api import ID
 from vortexasdk.api.shared_types import Tag, to_ISODate
-from vortexasdk.endpoints.aggregation_breakdown_result import (
-    AggregationBreakdownResult,
-)
-from vortexasdk.endpoints.endpoints import VOYAGES_TOP_HITS
-
+from vortexasdk.endpoints.endpoints import VOYAGES_TIMESERIES
+from vortexasdk.endpoints.timeseries_result import TimeSeriesResult
 from vortexasdk.operations import Search
-from vortexasdk.utils import convert_to_list
+from vortexasdk.search_response import SearchResponse
+from vortexasdk.utils import chunk_time_series, convert_to_list, is_multi_state
 
 
-class VoyagesTopHits(Search):
+# noinspection PyUnresolvedReferences
+class VoyagesTimeseriesV2(Search):
     """
+    VoyagesTimeseriesV2 class requires a _metric_ and a _breakdown_property_ to be provided.
+
     Please note: you will require a subscription to our Freight module to access this endpoint.
+
+    # Arguments
+
+        metric: Used to build the value of the aggregation. Can be one of: `'voyage-count'`, `'tonne-miles-sum'`, `'distance-avg'`.
+
+        breakdown_property: Defines the voyage property to aggregate upon. Can be one of: `'status'`, `'vessel-class-legacy'`, `'vessel-class-group'`, `'vessel-class-coarse'`, `'vessel-class-granular'`, `'origin-region'`, `'origin-shipping-region'`, `'origin-trading-region'`, `'origin-trading-sub-region'`, `'origin-trading-block'`, `'origin-country'`, `'origin-port'`, `'origin-terminal'`, `'destination-region'`, `'destination-shipping-region'`, `'destination-trading-region'`, `'destination-trading-sub-region'`, `'destination-trading-block'`, `'destination-country'`, `'destination-port'`, `'destination-terminal'`, `'product-group'`, `'product-group-product'`, `'product-category'`, `'product-grade'`, `'corporate-entity-cargo-trader'`, `'corporate-entity-charterer'`, `'corporate-entity-effective-controller'`, `'corporate-entity-vessel-owner'`, `'corporate-entity-time-charterer'`.
     """
 
-    def __init__(self):
-        Search.__init__(self, VOYAGES_TOP_HITS)
+    def __init__(
+        self,
+        metric: str,  # path parameter
+        breakdown_property: str,  # path parameter,
+    ):
+        Search.__init__(
+            self, f"{VOYAGES_TIMESERIES}/{metric}/{breakdown_property}"
+        )
 
     # noinspection PyUnresolvedReferences
     def search(
         self,
-        breakdown_property: str = None,
-        breakdown_split_property: str = None,
+        breakdown_frequency: str = None,
         breakdown_size: int = None,
-        time_min: datetime = datetime(2022, 1, 1, 0),
-        time_max: datetime = datetime(2022, 1, 1, 1),
+        time_min: datetime = datetime(2024, 1, 1, 0),
+        time_max: datetime = datetime(2024, 3, 31, 1),
         voyage_id: Union[ID, List[ID]] = None,
         cargo_movement_id: Union[ID, List[ID]] = None,
         voyage_status: Union[str, List[str]] = None,
@@ -58,6 +70,10 @@ class VoyagesTopHits(Search):
         origins_excluded: Union[ID, List[ID]] = None,
         destinations: Union[ID, List[ID]] = None,
         destinations_excluded: Union[ID, List[ID]] = None,
+        voyage_origins: Union[ID, List[ID]] = None,
+        voyage_origins_excluded: Union[ID, List[ID]] = None,
+        voyage_destinations: Union[ID, List[ID]] = None,
+        voyage_destinations_excluded: Union[ID, List[ID]] = None,
         locations: Union[ID, List[ID]] = None,
         locations_excluded: Union[ID, List[ID]] = None,
         congestion_target_location: Union[str, List[str]] = None,
@@ -83,24 +99,23 @@ class VoyagesTopHits(Search):
         vessels_tags_excluded: Union[Tag, List[Tag]] = None,
         vessel_risk_level: Union[str, List[str]] = None,
         vessel_risk_level_excluded: Union[str, List[str]] = None,
-        has_ship_to_ship: str = None,
-        has_charterer: str = None,
-    ) -> AggregationBreakdownResult:
+        has_ship_to_ship: bool = None,
+        has_charterer: bool = None,
+        vessel_owners: Union[ID, List[ID]] = None,
+        vessel_owners_excluded: Union[ID, List[ID]] = None,
+        time_charterer: Union[ID, List[ID]] = None,
+        time_charterer_excluded: Union[ID, List[ID]] = None,
+        intra_movements: str = None,
+    ) -> TimeSeriesResult:
         """
 
-        Returns a count of voyages aggregated by a chosen `breakdown_property`.
-
+        Returns buckets by frequency of specified metric, each bucket includes breakdown by specified breakdown_property of a metric.
 
         # Arguments
-            breakdown_size: Number of top records to return.
 
-            breakdown_property: Property to aggregate upon. Must be `vessel_count` or not provided.
+            breakdown_frequency: Frequency denoting the granularity of the time series. Must be one of the following: `'day'`, `'week'`, `'doe_week'`, `'month'`, `'quarter'`, `'year'`.
 
-            breakdown_split_property: Property to split results by. Can be one of: `'vessel_status'`, `'vessel_class_group'`, `'vessel_class_coarse'`, `'vessel_class_granular'`, `'vessel_flag'`,`'fixture_status'`, `'origin_region'`,
-            `'origin_shipping_region'`,`'origin_trading_region'`,`'origin_trading_sub_region'`,`'origin_trading_block'`,`'origin_country'`,`'origin_port'`,
-            `'origin_terminal'`,`'destination_region'`,`'destination_shipping_region'`,`'destination_trading_region'`,`'destination_trading_sub_region'`,`'destination_trading_block'`,
-            `'destination_country'`,`'destination_port'`,`'destination_terminal'`,`'location_port'`,`'location_country'`,`'location_shipping_region'`,
-            `'congestion_location_port'`,`'congestion_location_country'`,`'congestion_location_shipping_region'`,`'product_group'`,`'product_group_product'`,`'product_category'`, `'product_grade'`.
+            breakdown_size: Optional number of top hits to return.
 
             time_min: The UTC start date of the time filter.
 
@@ -144,9 +159,17 @@ class VoyagesTopHits(Search):
 
             charterers_excluded: A charterer ID, or list of charterer IDs to exclude.
 
+            time_charterer: A time charterer ID, or list of time charterer IDs to filter on.
+
+            time_charterer_excluded: A time charterer ID, or list of time charterer IDs to exclude.
+
             effective_controllers: A vessel effective controller ID, or list of vessel effective controller IDs to filter on.
 
-            effective_controllers_excluded: A vessel effective controller ID, or list of vessel effective controller IDs to exclude.
+            effective_controllers_excluded: A effective controller ID, or list of effective controller IDs to exclude.
+
+            vessel_owners: A vessel owner ID, or list of vessel owners IDs to filter on.
+
+            vessel_owners_excluded: A vessel owner ID, or list of vessel owners IDs to exclude.
 
             origins: An origin ID, or list of origin IDs to filter on.
 
@@ -155,6 +178,14 @@ class VoyagesTopHits(Search):
             destinations: A destination ID, or list of destination IDs to filter on.
 
             destinations_excluded: A destination ID, or list of destination IDs to exclude.
+
+            voyage_origins: An origin ID, or list of origin IDs to filter on.
+
+            voyage_origins_excluded: An origin ID, or list of origin IDs to exclude.
+
+            voyage_destinations: A destination ID, or list of destination IDs to filter on.
+
+            voyage_destinations_excluded: A destination ID, or list of destination IDs to exclude.
 
             locations: A location ID, or list of location IDs to filter on.
 
@@ -210,67 +241,39 @@ class VoyagesTopHits(Search):
 
             has_charterer: Filter data where at least one charterer is specified, or none. - one of: `'disabled'`, `'inc'`, `'exc'`. Passing disabled means the filter is not active.
 
+            intra_movements: Filter movements based on whether the vessel started and ended in the same country, or geographical layer.
+
         # Returns
-        `AggregationBreakdownResult`
+        `BreakdownResult`
 
         # Example
-        _Top oritin countries for crude imports to Rotterdam on 8th August 2021._
+        _Sum of vessels split by status between 1st of January 2024 - 29th of Febuary 2024 with a month frequency._
 
         ```python
-        >>> from vortexasdk import VoyagesTopHits, Geographies, Products
+        >>> from vortexasdk import VoyagesTimeseriesV2
         >>> from datetime import datetime
-        >>> rotterdam = [g.id for g in Geographies().search("rotterdam").to_list() if "port" in g.layer]
-        >>> crude = [p.id for p in Products().search("crude").to_list() if "Crude" == p.name]
-        >>> start = datetime(2021, 8, 1)
-        >>> end = datetime(2021, 8, 1, 23, 59)
-        >>> search_result = VoyagesTopHits().search(
-        ...    time_min=start,
-        ...    time_max=end,
-        ...    destinations=rotterdam,
-        ...    products=crude,
-        ...    breakdown_size=5,
-        ...    breakdown_split_property="origin_country"
-        ... ).to_list()
+        >>> search_result = VoyagesTimeseriesV2(
+        ...    metric="voyage-count",
+        ...    breakdown_property="status"
+        ... ).search(
+        ...    time_min=datetime(2024, 1, 1),
+        ...    time_max=datetime(2024, 2, 29, 23, 59),
+        ...    breakdown_frequency="month",
+        ...    exclude_overlapping_entries=False
+        ... ).to_df()
 
         ```
         Gives the following result:
 
         ```
-        [
-            AggregationBreakdownItem(
-                id='b996521be9c996db',
-                count=8,
-                value=8.0,
-                label='Russia'
-            ),
-            AggregationBreakdownItem(
-                id='2d92cc08f22524db',
-                count=7,
-                value=7.0,
-                label='United States'
-            ),
-            AggregationBreakdownItem(
-                id='2aaad41b89dfad19',
-                count=4,
-                value=4.0,
-                label='United Kingdom'
-            ),
-            AggregationBreakdownItem(
-                id='430f0e467f3a408f',
-                count=2,
-                value=2.0,
-                label='Nigeria'
-            ),
-            AggregationBreakdownItem(
-                id='3eac69e760d9ec57',
-                count=1,
-                value=1.0,
-                label='Egypt'
-            )
-        ]
+        |    | key                       |   value |   count | breakdown.0.id   | breakdown.0.label   |   breakdown.0.value |   breakdown.0.count | breakdown.1.id   | breakdown.1.label   |   breakdown.1.value |   breakdown.1.count | breakdown.2.id   | breakdown.2.label   |   breakdown.2.value |   breakdown.2.count |
+        |---:|:--------------------------|--------:|--------:|:-----------------|:--------------------|--------------------:|--------------------:|:-----------------|:--------------------|--------------------:|--------------------:|:-----------------|:--------------------|--------------------:|--------------------:|
+        |  0 | 2024-01-01 00:00:00+00:00 |   39429 |   39429 | undetermined     | Undetermined        |                  76 |                  76 | ballast          | ballast             |               18933 |               18933 | laden            | laden               |               20420 |               20420 |
+        |  1 | 2024-02-01 00:00:00+00:00 |   35620 |   35620 | undetermined     | Undetermined        |                  46 |                  46 | ballast          | ballast             |               17152 |               17152 | laden            | laden               |               18422 |               18422 |
         ```
         """
         api_params: Dict[str, Any] = {
+            "breakdown_size": breakdown_size,
             "voyage_id": convert_to_list(voyage_id),
             "cargo_movement_id": convert_to_list(cargo_movement_id),
             "voyage_status": convert_to_list(voyage_status),
@@ -281,9 +284,13 @@ class VoyagesTopHits(Search):
             "products": convert_to_list(products),
             "latest_products": convert_to_list(latest_products),
             "charterers": convert_to_list(charterers),
+            "time_charterer": convert_to_list(time_charterer),
             "effective_controllers": convert_to_list(effective_controllers),
+            "vessel_owners": convert_to_list(vessel_owners),
             "origins": convert_to_list(origins),
             "destinations": convert_to_list(destinations),
+            "voyage_origins": convert_to_list(voyage_origins),
+            "voyage_destinations": convert_to_list(voyage_destinations),
             "locations": convert_to_list(locations),
             "congestion_target_location": convert_to_list(
                 congestion_target_location
@@ -308,9 +315,8 @@ class VoyagesTopHits(Search):
             "exclude_overlapping_entries": exclude_overlapping_entries,
             "time_max": to_ISODate(time_max) if time_max else None,
             "time_min": to_ISODate(time_min) if time_min else None,
-            "breakdown_property": breakdown_property,
-            "breakdown_split_property": breakdown_split_property,
-            "breakdown_size": breakdown_size,
+            "breakdown_frequency": breakdown_frequency,
+            "intra_movements": intra_movements,
             "voyage_status_excluded": convert_to_list(voyage_status_excluded),
             "cargo_status_excluded": convert_to_list(cargo_status_excluded),
             "location_status_excluded": convert_to_list(
@@ -327,11 +333,21 @@ class VoyagesTopHits(Search):
                 latest_products_excluded
             ),
             "charterers_excluded": convert_to_list(charterers_excluded),
+            "time_charterer_excluded": convert_to_list(
+                time_charterer_excluded
+            ),
             "effective_controllers_excluded": convert_to_list(
                 effective_controllers_excluded
             ),
+            "vessel_owners_excluded": convert_to_list(vessel_owners_excluded),
             "origins_excluded": convert_to_list(origins_excluded),
             "destinations_excluded": convert_to_list(destinations_excluded),
+            "voyage_origins_excluded": convert_to_list(
+                voyage_origins_excluded
+            ),
+            "voyage_destinations_excluded": convert_to_list(
+                voyage_destinations_excluded
+            ),
             "locations_excluded": convert_to_list(locations_excluded),
             "congestion_target_location_excluded": convert_to_list(
                 congestion_target_location_excluded
@@ -348,10 +364,29 @@ class VoyagesTopHits(Search):
             ),
         }
 
-        response = super().search_with_client(
-            response_type="breakdown", **api_params
-        )
+        if not is_multi_state(api_params):
+            response = super().search_with_client(
+                response_type="breakdown", **api_params
+            )
 
-        return AggregationBreakdownResult(
-            records=response["data"], reference=response["reference"]
+            return TimeSeriesResult(
+                records=response["data"], reference=response["reference"]
+            )
+
+        combined_response: SearchResponse = {"reference": {}, "data": []}
+
+        for chunk in chunk_time_series(time_min, time_max):
+            api_params["time_min"] = to_ISODate(chunk["time_min"])
+            api_params["time_max"] = to_ISODate(chunk["time_max"])
+
+            response = super().search_with_client(
+                response_type="breakdown", **api_params
+            )
+
+            combined_response["data"] = (
+                combined_response["data"] + response["data"]
+            )
+
+        return TimeSeriesResult(
+            records=combined_response["data"], reference=response["reference"]
         )
