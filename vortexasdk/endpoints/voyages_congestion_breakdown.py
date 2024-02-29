@@ -139,14 +139,22 @@ class VoyagesCongestionBreakdown(Search):
 
             effective_controllers_excluded: A effective controller ID, or list of effective controller IDs to exclude.
 
-            origins: An origin ID, or list of origin IDs to filter on.
+            origins: An origin ID, or list of origin IDs for all the cargoes of a voyage to filter on.
 
-            origins_excluded: An origin ID, or list of origin IDs to exclude.
+            origins_excluded: An origin ID, or list of origin IDs for all the cargoes of a voyage to exclude.
 
-            destinations: A destination ID, or list of destination IDs to filter on.
+            destinations: A destination ID, or list of destination IDs for all the cargoes of a voyage to filter on.
 
-            destinations_excluded: A destination ID, or list of destination IDs to exclude.
+            destinations_excluded: A destination ID, or list of destination IDs for all the cargoes of a voyage to exclude.
 
+            voyage_origins: An origin ID, or list of origin IDs for the first origin of voyage to filter on.
+
+            voyage_origins_excluded: An origin ID, or list of origin IDs for the first origin of voyage to exclude.
+
+            voyage_destinations: A destination ID, or list of destination IDs for the last destination of a voyage to filter on.
+
+            voyage_destinations_excluded: A destination ID, or list of destination IDs for the final destination of a voyage to exclude.
+            
             locations: A location ID, or list of location IDs to filter on.
 
             locations_excluded: A location ID, or list of location IDs to exclude.

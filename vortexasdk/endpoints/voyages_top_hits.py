@@ -148,13 +148,13 @@ class VoyagesTopHits(Search):
 
             effective_controllers_excluded: A vessel effective controller ID, or list of vessel effective controller IDs to exclude.
 
-            origins: An origin ID, or list of origin IDs to filter on.
+            origins: An origin ID, or list of origin IDs for all the cargoes of a voyage to filter on.
 
-            origins_excluded: An origin ID, or list of origin IDs to exclude.
+            origins_excluded: An origin ID, or list of origin IDs for all the cargoes of a voyage to exclude.
 
-            destinations: A destination ID, or list of destination IDs to filter on.
+            destinations: A destination ID, or list of destination IDs for all the cargoes of a voyage to filter on.
 
-            destinations_excluded: A destination ID, or list of destination IDs to exclude.
+            destinations_excluded: A destination ID, or list of destination IDs for all the cargoes of a voyage to exclude.
 
             locations: A location ID, or list of location IDs to filter on.
 
