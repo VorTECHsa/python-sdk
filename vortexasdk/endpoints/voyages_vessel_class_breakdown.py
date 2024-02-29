@@ -176,21 +176,21 @@ class VoyagesVesselClassBreakdown(Search):
 
             vessel_owners_excluded: A vessel owner ID, or list of vessel owners IDs to exclude.
 
-            origins: An origin ID, or list of origin IDs to filter on.
+            origins: An origin ID, or list of origin IDs for all the cargoes of a voyage to filter on.
 
-            origins_excluded: An origin ID, or list of origin IDs to exclude.
+            origins_excluded: An origin ID, or list of origin IDs for all the cargoes of a voyage to exclude.
 
-            destinations: A destination ID, or list of destination IDs to filter on.
+            destinations: A destination ID, or list of destination IDs for all the cargoes of a voyage to filter on.
 
-            destinations_excluded: A destination ID, or list of destination IDs to exclude.
+            destinations_excluded: A destination ID, or list of destination IDs for all the cargoes of a voyage to exclude.
 
-            voyage_origins: An origin ID, or list of origin IDs to filter on.
+            voyage_origins: An origin ID, or list of origin IDs for the first origin of voyage to filter on.
 
-            voyage_origins_excluded: An origin ID, or list of origin IDs to exclude.
+            voyage_origins_excluded: An origin ID, or list of origin IDs for the first origin of voyage to exclude.
 
-            voyage_destinations: A destination ID, or list of destination IDs to filter on.
+            voyage_destinations: A destination ID, or list of destination IDs for the last destination of a voyage to filter on.
 
-            voyage_destinations_excluded: A destination ID, or list of destination IDs to exclude.
+            voyage_destinations_excluded: A destination ID, or list of destination IDs for the final destination of a voyage to exclude.
 
             locations: A location ID, or list of location IDs to filter on.
 

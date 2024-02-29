@@ -85,7 +85,6 @@ class VoyagesBreakdownResult(Result):
         """
         flatten = functools.partial(convert_to_flat_dict, columns=columns)
         with Pool(os.cpu_count()) as pool:
-
             items = super().to_list()
 
             full_header_column: list = []
