@@ -154,7 +154,7 @@ class VoyagesCongestionBreakdown(Search):
             voyage_destinations: A destination ID, or list of destination IDs for the last destination of a voyage to filter on.
 
             voyage_destinations_excluded: A destination ID, or list of destination IDs for the final destination of a voyage to exclude.
-            
+
             locations: A location ID, or list of location IDs to filter on.
 
             locations_excluded: A location ID, or list of location IDs to exclude.
