@@ -11,8 +11,7 @@ from vortexasdk.api.shared_types import Tag, to_ISODate
 from vortexasdk.endpoints.endpoints import VOYAGES_TIMESERIES
 from vortexasdk.endpoints.timeseries_result import TimeSeriesResult
 from vortexasdk.operations import Search
-from vortexasdk.search_response import SearchResponse
-from vortexasdk.utils import chunk_time_series, convert_to_list, is_multi_state
+from vortexasdk.utils import convert_to_list
 
 
 class VoyagesTimeseries(Search):
@@ -320,29 +319,10 @@ class VoyagesTimeseries(Search):
             ),
         }
 
-        if not is_multi_state(api_params):
-            response = super().search_with_client(
-                response_type="breakdown", **api_params
-            )
-
-            return TimeSeriesResult(
-                records=response["data"], reference=response["reference"]
-            )
-
-        combined_response: SearchResponse = {"reference": {}, "data": []}
-
-        for chunk in chunk_time_series(time_min, time_max):
-            api_params["time_min"] = to_ISODate(chunk["time_min"])
-            api_params["time_max"] = to_ISODate(chunk["time_max"])
-
-            response = super().search_with_client(
-                response_type="breakdown", **api_params
-            )
-
-            combined_response["data"] = (
-                combined_response["data"] + response["data"]
-            )
+        response = super().search_with_client(
+            response_type="breakdown", **api_params
+        )
 
         return TimeSeriesResult(
-            records=combined_response["data"], reference=response["reference"]
+            records=response["data"], reference=response["reference"]
         )
