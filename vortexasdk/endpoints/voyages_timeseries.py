@@ -11,7 +11,6 @@ from vortexasdk.api.shared_types import Tag, to_ISODate
 from vortexasdk.endpoints.endpoints import VOYAGES_TIMESERIES
 from vortexasdk.endpoints.timeseries_result import TimeSeriesResult
 from vortexasdk.operations import Search
-from vortexasdk.search_response import SearchResponse
 from vortexasdk.utils import convert_to_list
 
 
