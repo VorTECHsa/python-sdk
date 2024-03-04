@@ -327,4 +327,3 @@ class VoyagesTimeseries(Search):
         return TimeSeriesResult(
             records=response["data"], reference=response["reference"]
         )
-
