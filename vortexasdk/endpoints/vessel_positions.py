@@ -79,6 +79,7 @@ class VesselPositions(Search):
             "vessel_class": [v.lower() for v in convert_to_list(vessel_class)],
             "time_max": time_max,
             "time_min": time_min,
+            "interval": interval,
         }
 
         response = super().search_with_client(**api_params)
