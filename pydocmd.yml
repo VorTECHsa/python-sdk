@@ -46,6 +46,8 @@ generate:
       - vortexasdk.api.breakdown_item++
   - entities/voyages.md:
       - vortexasdk.api.voyages++
+  - entities/signals.md
+    - vortexasdk.api.vessel_summary++
   - endpoints/origin_breakdown.md:
       - vortexasdk.endpoints.origin_breakdown++
   - endpoints/destination_breakdown.md:
@@ -76,6 +78,9 @@ generate:
   - endpoints/vessel_summary.md:
       - vortexasdk.endpoints.vessel_summary++
       - vortexasdk.endpoints.vessel_summary_result++
+  - endpoints/vessel_positions.md:
+      - vortexasdk.endpoints.vessel_positions++
+      - vortexasdk.endpoints.vessel_positions_result++
   - endpoints/onshore_inventories_search.md: vortexasdk.endpoints.onshore_inventories_search++
   - endpoints/onshore_inventories_timeseries.md: vortexasdk.endpoints.onshore_inventories_timeseries++
   - endpoints/freight_pricing_search.md: vortexasdk.endpoints.freight_pricing_search++

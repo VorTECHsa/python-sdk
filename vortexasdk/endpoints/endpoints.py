@@ -39,6 +39,7 @@ VOYAGES_TIMESERIES = "/v5/voyages/timeseries"
 VOYAGES_BREAKDOWN = "/v5/voyages/breakdown"
 
 VESSEL_SUMMARY = "/v6/signals/vessel-summary"
+VESSEL_POSITIONS = "/v6/signals/vessel-positions"
 
 FIXTURES = "/v5/search/fixtures"
 

@@ -16,6 +16,8 @@ The VortexaSDK currently contains the following endpoints:
 10. Vessel Availability
 11. Crude Onshore Inventories
 12. Freight Pricing
+13. Vessel Summary
+14. Vessel Positions
 
 Each endpoint offers either one, or both, of two different functionalities:
 

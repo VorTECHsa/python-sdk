@@ -1,4 +1,5 @@
 """Vortexa Python SDK."""
+
 # noinspection PyUnresolvedReferences
 from vortexasdk.endpoints import (
     AssetTanks,
@@ -35,6 +36,7 @@ from vortexasdk.endpoints import (
     VoyagesTopHits,
     VoyagesSearchEnriched,
     VesselSummary,
+    VesselPositions,
 )
 
 # noinspection PyUnresolvedReferences

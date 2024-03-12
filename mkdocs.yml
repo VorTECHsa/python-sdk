@@ -47,6 +47,7 @@ pages:
         Congestion Breakdown: endpoints/voyages_congestion_breakdown.md
       Signals:
         Vessel Summary: endpoints/vessel_summary.md
+        Vessel Positions: endpoints/vessel_positions.md
   - Entities:
       Cargo Movement: entities/cargo_movement.md
       Corporation: entities/corporation.md
@@ -58,6 +59,7 @@ pages:
       Vessel Availability: entities/vessel_availability.md
       Time Series Item: entities/timeseries_item.md
       Breakdown Item: entities/breakdown_item.md
+      Signals: entities/signals.md
   - Config: config.md
   - FAQ:
       General: faq.md
