@@ -10,7 +10,7 @@ from vortexasdk.result_conversions import create_dataframe, create_list
 logger = get_logger(__name__)
 
 
-DEFAULT_COLUMNS = ["vessel_id", "timestamp", "lat", "lon", "speed"]
+DEFAULT_COLUMNS = ["vessel_id", "timestamp", "lat", "lon", "speed", "heading"]
 
 
 class VesselPositionsResult(Result):
@@ -27,7 +27,7 @@ class VesselPositionsResult(Result):
 
         # Arguments
             columns: The vessel features we want in the dataframe. Enter `columns='all'` to include all features.
-            Defaults to `columns = ['vessel_id', 'timestamp', 'lat', 'lon', 'speed', 'draught', 'declared_destination', 'declared_eta']`.
+            Defaults to `columns = ['vessel_id', 'timestamp', 'lat', 'lon', 'speed', 'heading']`.
 
         # Returns
         `pd.DataFrame` of vessels.

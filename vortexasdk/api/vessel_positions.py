@@ -16,5 +16,5 @@ class VesselPositions(BaseModel):
     lat: Optional[float] = None
     lon: Optional[float] = None
     timestamp: Optional[ISODate] = None
+    speed: Optional[float] = None
     heading: Optional[float] = None
-    speed: Optional[str] = None

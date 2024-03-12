@@ -14,7 +14,7 @@ from vortexasdk.utils import convert_to_list
 
 
 class VesselPositions(Search):
-    """Vessels endpoint."""
+    """Vessel Positions endpoint."""
 
     def __init__(self):
         """Instantiate endpoint"""
@@ -43,11 +43,11 @@ class VesselPositions(Search):
 
         # Examples
 
-        - Let's find all positions for all Aframax and VLCC_PLUS vessels, from the week prior to October 31st, 2023.
+        - Let's find a position for all Aframax vessels, from the day of March 12th, 2024
 
         ```python
         >>> from vortexasdk import VesselPositions
-        >>> vessel_positions_df = VesselPositions().search(vessel_class=['oil_aframax', 'oil_vlcc'], timestamp='2023-10-31T23:59:59.000Z').to_df(columns=['vessel_id', 'timestamp', 'lat', 'lon', 'speed', 'heading', 'declared_destination', 'draught'])
+        >>> vessel_positions_df = VesselPositions().search(vessel_class=['oil_aframax'], time_max='2024-03-12T23:59:59.000Z', time_min='2024-03-12T00:00:00.000Z', interval='1d').to_df(columns=['vessel_id', 'timestsamp', 'lat', 'lon', 'speed', 'heading'])
 
         ```
         |    | vessel_id        |     lat  |      lon   | timestamp                | speed  | heading |
