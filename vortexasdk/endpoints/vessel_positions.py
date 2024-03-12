@@ -80,6 +80,9 @@ class VesselPositions(Search):
             "time_max": time_max,
             "time_min": time_min,
             "interval": interval,
+            "size": 10000,
+            # High size param is workaround for pagination, since summary does not support it.
+            # If we don't set this, py sdk defaults size to 1000, and so will re-run the call total / 1000 times...
         }
 
         response = super().search_with_client(**api_params)
