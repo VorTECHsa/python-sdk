@@ -17,20 +17,20 @@ class VesselPositionsResult(Result):
     """Container class that holds the result obtained from calling the `Vessel-Positions` endpoint."""
 
     def to_list(self) -> List[VesselPositions]:
-        """Represent vessels as a list."""
+        """Represent vessel positions as a list."""
         # noinspection PyTypeChecker
         return create_list(super().to_list(), VesselPositions)
 
     def to_df(self, columns=DEFAULT_COLUMNS) -> pd.DataFrame:
         """
-        Represent vessels as a `pd.DataFrame`.
+        Represent vessel positions as a `pd.DataFrame`.
 
         # Arguments
-            columns: The vessel features we want in the dataframe. Enter `columns='all'` to include all features.
+            columns: The vessel positions we want in the dataframe. Enter `columns='all'` to include all features.
             Defaults to `columns = ['vessel_id', 'timestamp', 'lat', 'lon', 'speed', 'heading']`.
 
         # Returns
-        `pd.DataFrame` of vessels.
+        `pd.DataFrame` of vessel positions.
 
         """
         return create_dataframe(
