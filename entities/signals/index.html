@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Config - VortexaSDK</title>
+  <title>Signals - VortexaSDK</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Config";
-    var mkdocs_page_input_path = "config/config.md";
+    var mkdocs_page_name = "Signals";
+    var mkdocs_page_input_path = "entities/signals.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -160,32 +160,32 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Entities</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../entities/cargo_movement/">Cargo Movement</a>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../cargo_movement/">Cargo Movement</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../entities/corporation/">Corporation</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../corporation/">Corporation</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../entities/geography/">Geography</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../geography/">Geography</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../entities/product/">Product</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../product/">Product</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../entities/vessel/">Vessel</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../vessel/">Vessel</a>
                     </li>
-                    <li class="toctree-l1"><a class="" href="../../entities/vessel_movement.md">Vessel Movement</a>
+                    <li class="toctree-l1"><a class="" href="../vessel_movement.md">Vessel Movement</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../entities/voyages/">Voyages</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../voyages/">Voyages</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../entities/vessel_availability/">Vessel Availability</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../vessel_availability/">Vessel Availability</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../entities/timeseries_item/">Time Series Item</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../timeseries_item/">Time Series Item</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../entities/breakdown_item/">Breakdown Item</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../breakdown_item/">Breakdown Item</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../entities/signals/">Signals</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Signals</a>
                     </li>
                 </ul>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../">Config</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../config/">Config</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">FAQ</span></p>
@@ -224,11 +224,15 @@
     <li><a href="../..">Docs</a> &raquo;</li>
     
       
+        
+          <li>Entities &raquo;</li>
+        
+      
     
-    <li>Config</li>
+    <li>Signals</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/vortechsa/python-sdk/edit/master/docs/config/config.md"
+        <a href="https://github.com/vortechsa/python-sdk/edit/master/docs/entities/signals.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -240,48 +244,27 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="config">Config</h2>
-<p>The VortexaSDK can be configured using environment variables.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Environment Variable</th>
-<th style="text-align: left;">Default</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">VORTEXA_API_KEY</td>
-<td style="text-align: left;">none</td>
-<td style="text-align: left;">API Key used to access the VortexaAPI. Refer to <a href="https://docs.vortexa.com/reference/intro-authentication">Vortexa API Authentication</a> for more details, including instructions on where to find your API key.</td>
-</tr>
-<tr>
-<td style="text-align: left;">LOG_FILE</td>
-<td style="text-align: left;">none</td>
-<td style="text-align: left;">Output log file</td>
-</tr>
-<tr>
-<td style="text-align: left;">LOG_LEVEL</td>
-<td style="text-align: left;">INFO</td>
-<td style="text-align: left;">Configure the level of must be one of <code>["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]</code></td>
-</tr>
-<tr>
-<td style="text-align: left;">HTTP_PROXY</td>
-<td style="text-align: left;">none</td>
-<td style="text-align: left;">Send API requests via a corporate http proxy. This environment variable is used by the requests library, <a href="https://requests.readthedocs.io/en/master/user/advanced/#proxies">see here for further details</a></td>
-</tr>
-<tr>
-<td style="text-align: left;">HTTPS_PROXY</td>
-<td style="text-align: left;">none</td>
-<td style="text-align: left;">Send API requests via a corporate https proxy. This environment variable is used by the requests library, <a href="https://requests.readthedocs.io/en/master/user/advanced/#proxies">see here for further details</a></td>
-</tr>
-</tbody>
-</table>
+                <h1 id="vortexasdk.api.vessel_summary">vortexasdk.api.vessel_summary</h1>
+
+<h2 id="vortexasdk.api.vessel_summary.VesselSummary">VesselSummary</h2>
+
+<pre><code class="language-python">VesselSummary(__pydantic_self__, **data: Any) -&gt; None
+</code></pre>
+<p>Represents a Vessel Summary record returned by the API.</p>
+<p><a href="https://docs.vortexa.com/reference/POST/signals/vessel-summary">Vessel Summary Further Documentation</a></p>
               
             </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../config/" class="btn btn-neutral float-right" title="Config">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../breakdown_item/" class="btn btn-neutral" title="Breakdown Item"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -309,6 +292,10 @@
         </span>
     
     
+      <span><a href="../breakdown_item/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../config/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

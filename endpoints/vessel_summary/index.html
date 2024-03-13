@@ -156,6 +156,8 @@
     <ul class="current">
     </ul>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../vessel_positions/">Vessel Positions</a>
+                </li>
     </ul>
                     </li>
                 </ul>
@@ -180,6 +182,8 @@
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/timeseries_item/">Time Series Item</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/breakdown_item/">Breakdown Item</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../entities/signals/">Signals</a>
                     </li>
                 </ul>
                 <ul>
@@ -346,19 +350,19 @@
 
 <pre><code class="language-python">VesselSummaryResult.to_list(self) -&gt; List[vortexasdk.api.vessel_summary.VesselSummary]
 </code></pre>
-<p>Represent vessels as a list.</p>
+<p>Represent vessel summaries as a list.</p>
 <h3 id="vortexasdk.endpoints.vessel_summary_result.VesselSummaryResult.to_df">to_df</h3>
 
 <pre><code class="language-python">VesselSummaryResult.to_df(self, columns=['vessel_id', 'timestamp', 'lat', 'lon', 'speed', 'draught', 'declared_destination', 'declared_eta']) -&gt; pandas.core.frame.DataFrame
 </code></pre>
-<p>Represent vessels as a <code>pd.DataFrame</code>.</p>
+<p>Represent vessel summaries as a <code>pd.DataFrame</code>.</p>
 <p><strong>Arguments</strong></p>
 <ul>
-<li><strong>columns</strong>: The vessel features we want in the dataframe. Enter <code>columns='all'</code> to include all features.
+<li><strong>columns</strong>: The vessel summaries we want in the dataframe. Enter <code>columns='all'</code> to include all features.
     Defaults to <code>columns = ['vessel_id', 'timestamp', 'lat', 'lon', 'speed', 'draught', 'declared_destination', 'declared_eta']</code>.</li>
 </ul>
 <p><strong>Returns</strong></p>
-<p><code>pd.DataFrame</code> of vessels.</p>
+<p><code>pd.DataFrame</code> of vessel summaries.</p>
               
             </div>
           </div>
@@ -366,7 +370,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../entities/cargo_movement/" class="btn btn-neutral float-right" title="Cargo Movement">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../vessel_positions/" class="btn btn-neutral float-right" title="Vessel Positions">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../voyages_congestion_breakdown/" class="btn btn-neutral" title="Congestion Breakdown"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -402,7 +406,7 @@
       <span><a href="../voyages_congestion_breakdown/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../../entities/cargo_movement/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../vessel_positions/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
