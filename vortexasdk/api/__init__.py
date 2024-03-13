@@ -1,4 +1,5 @@
 """Vortexa API."""
+
 from vortexasdk.api.asset_tank import AssetTank
 from vortexasdk.api.attribute import Attribute
 from vortexasdk.api.cargo_movement import (
@@ -40,3 +41,4 @@ from vortexasdk.api.voyages import CongestionBreakdownItem
 from vortexasdk.api.aggregation_breakdown_item import AggregationBreakdownItem
 from vortexasdk.api.fixture import Fixture
 from vortexasdk.api.vessel_summary import VesselSummary
+from vortexasdk.api.vessel_positions import VesselPositions

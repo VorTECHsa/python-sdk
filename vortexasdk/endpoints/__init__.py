@@ -1,4 +1,5 @@
 """Vortexa endpoints."""
+
 from vortexasdk.endpoints.asset_tanks import AssetTanks
 from vortexasdk.endpoints.attributes import Attributes
 from vortexasdk.endpoints.cargo_movements import CargoMovements
@@ -60,3 +61,4 @@ from vortexasdk.endpoints.voyages_top_hits import VoyagesTopHits
 from vortexasdk.endpoints.voyages_search_enriched import VoyagesSearchEnriched
 from vortexasdk.endpoints.fixtures import Fixtures
 from vortexasdk.endpoints.vessel_summary import VesselSummary
+from vortexasdk.endpoints.vessel_positions import VesselPositions

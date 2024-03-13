@@ -74,6 +74,12 @@ To check the SDK is setup correctly, run the following in a bash console:
 $ python -m vortexasdk.check_setup
 ```
 
+or
+
+```bash
+$ python3 -m vortexasdk.check_setup
+```
+
 A successful setup looks like this:
 
 ![check_setup.png](https://raw.githubusercontent.com/VorTECHsa/python-sdk/master/docs/img/check_setup.png)
