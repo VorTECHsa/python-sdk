@@ -46,8 +46,8 @@ generate:
       - vortexasdk.api.breakdown_item++
   - entities/voyages.md:
       - vortexasdk.api.voyages++
-  - entities/signals.md
-    - vortexasdk.api.vessel_summary++
+  - entities/signals.md:
+      - vortexasdk.api.vessel_summary++
   - endpoints/origin_breakdown.md:
       - vortexasdk.endpoints.origin_breakdown++
   - endpoints/destination_breakdown.md:
