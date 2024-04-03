@@ -66,7 +66,7 @@ class CargoTimeSeries(Search):
             filter_activity: Cargo movement activity on which to base the time filter. The endpoint only includes cargo
             movements matching that match this filter in the aggregations. Must be one of ['loading_state',
              'loading_start', 'loading_end', 'identified_for_loading_state', 'unloading_state', 'unloading_start',
-              'unloading_end', 'storing_state', 'storing_start', 'storing_end', 'transiting_state', 'oil_on_water_state'].
+              'unloading_end', 'storing_state', 'storing_start', 'storing_end', 'transiting_state', 'oil_on_water_state', 'waypoint_start`, `waypoint_end`].
 
             filter_time_min: The UTC start date of the time filter.
 
@@ -121,7 +121,7 @@ class CargoTimeSeries(Search):
             timeseries_property: Property to split results by. Can be one of: `quantity`, `'vessel_class_group'`, `'vessel_class_coarse'`, `'vessel_class_granular'`, `vessel_flag`,
              `origin_region`, `origin_shipping_region`, `origin_trading_region`, `origin_trading_sub_region`, `origin_country`, `origin_port`, `origin_terminal`,
              `destination_region`, `destination_shipping_region`, `destination_trading_region`, `destination_trading_sub_region`, `destination_country`, `destination_port`, `destination_terminal`,
-             `product_group`, `product_group_product`, `product_category`, `product_grade`, `none` or not provided.
+             `product_group`, `product_group_product`, `product_category`, `product_grade`, `waypoint_selected`, `none` or not provided.
 
             timeseries_unit: A numeric metric to be calculated for each time bucket. Must be one of ['b', 'bpd', 't',
              'tpd', 'c', 'cpd'], corresponding to barrels, barrels per day, metric tonnes, metric tonnes per day,

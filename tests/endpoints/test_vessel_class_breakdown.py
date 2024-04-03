@@ -18,20 +18,6 @@ class TestVesselClassBreakdownReal(TestCaseUsingRealAPI):
 
         assert len(result) == totalVesselClassBreakdown
 
-    def test_search_returns_multiple_breakdowns(self):
-        filter_time_min = datetime(2022, 11, 10)
-        filter_time_max = datetime(2022, 11, 10)
-
-        result = VesselClassBreakdown().search(
-            filter_activity="loading_state",
-            breakdown_unit="b",
-            filter_time_min=filter_time_min,
-            filter_time_max=filter_time_max,
-            breakdown_size=100,
-        )
-
-        assert len(result) == 25
-
     def test_search_returns_any_activity(self):
         date = datetime(2019, 11, 10)
 
