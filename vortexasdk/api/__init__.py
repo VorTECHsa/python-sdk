@@ -42,3 +42,4 @@ from vortexasdk.api.aggregation_breakdown_item import AggregationBreakdownItem
 from vortexasdk.api.fixture import Fixture
 from vortexasdk.api.vessel_summary import VesselSummary
 from vortexasdk.api.vessel_positions import VesselPositions
+from vortexasdk.api.canal_transit import CanalTransitRecord
