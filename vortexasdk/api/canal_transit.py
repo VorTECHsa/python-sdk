@@ -53,12 +53,12 @@ class CanalTransitRecord(BaseModel):
     vessel_name: Optional[str] = None
     vessel_imo: Optional[int] = None
     vessel_mmsi: Optional[int] = None
-    vessel_class: Optional[List[VesselClassEntry]] = (None,)
+    vessel_class: Optional[List[VesselClassEntry]] = None
     vessel_cubic_capacity: Optional[int] = None
     vessel_dead_weight: Optional[int] = None
-    canal: str = None
-    direction: str = None
-    lock: str = None
+    canal: str
+    direction: str
+    lock: str
     queue_arrival_time: Optional[ISODate] = None
     canal_entry_time: Optional[ISODate] = None
     canal_exit_time: Optional[ISODate] = None
