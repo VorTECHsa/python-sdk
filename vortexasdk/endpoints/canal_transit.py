@@ -144,12 +144,17 @@ class CanalTransits(Search):
             "filter_canal_entry_time_min": to_ISODate(
                 filter_canal_entry_time_min
             )
-            if filter_canal_exit_time_min
+            if filter_canal_entry_time_min
             else None,
             "filter_canal_exit_time_max": to_ISODate(
                 filter_canal_exit_time_max
             )
             if filter_canal_exit_time_max
+            else None,
+            "filter_canal_exit_time_min": to_ISODate(
+                filter_canal_exit_time_min
+            )
+            if filter_canal_exit_time_min
             else None,
             "filter_queue_arrival_time_max": to_ISODate(
                 filter_queue_arrival_time_max
