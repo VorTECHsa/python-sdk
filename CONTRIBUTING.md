@@ -121,7 +121,7 @@ A good pull request:
 
 Tips:
 
-- If you're adding a new endpoint, adapt and use `./docs/generate_stubs.sh` to generate sample json data used for tests.
+- If you're adding a new endpoint, adapt and use `./scripts/generate_stubs.sh` to generate sample json data used for tests.
 
 ### Contributing Jupyter Notebooks
 
