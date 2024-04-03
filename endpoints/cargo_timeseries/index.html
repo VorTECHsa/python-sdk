@@ -269,7 +269,7 @@
 <p><strong>filter_activity</strong>: Cargo movement activity on which to base the time filter. The endpoint only includes cargo
     movements matching that match this filter in the aggregations. Must be one of ['loading_state',
      'loading_start', 'loading_end', 'identified_for_loading_state', 'unloading_state', 'unloading_start',
-      'unloading_end', 'storing_state', 'storing_start', 'storing_end', 'transiting_state', 'oil_on_water_state'].</p>
+      'unloading_end', 'storing_state', 'storing_start', 'storing_end', 'transiting_state', 'oil_on_water_state', 'waypoint_start<code>,</code>waypoint_end`].</p>
 </li>
 <li>
 <p><strong>filter_time_min</strong>: The UTC start date of the time filter.</p>
@@ -345,7 +345,7 @@
 <p><strong>timeseries_property</strong>: Property to split results by. Can be one of: <code>quantity</code>, <code>'vessel_class_group'</code>, <code>'vessel_class_coarse'</code>, <code>'vessel_class_granular'</code>, <code>vessel_flag</code>,
      <code>origin_region</code>, <code>origin_shipping_region</code>, <code>origin_trading_region</code>, <code>origin_trading_sub_region</code>, <code>origin_country</code>, <code>origin_port</code>, <code>origin_terminal</code>,
      <code>destination_region</code>, <code>destination_shipping_region</code>, <code>destination_trading_region</code>, <code>destination_trading_sub_region</code>, <code>destination_country</code>, <code>destination_port</code>, <code>destination_terminal</code>,
-     <code>product_group</code>, <code>product_group_product</code>, <code>product_category</code>, <code>product_grade</code>, <code>none</code> or not provided.</p>
+     <code>product_group</code>, <code>product_group_product</code>, <code>product_category</code>, <code>product_grade</code>, <code>waypoint_selected</code>, <code>none</code> or not provided.</p>
 </li>
 <li>
 <p><strong>timeseries_unit</strong>: A numeric metric to be calculated for each time bucket. Must be one of ['b', 'bpd', 't',
