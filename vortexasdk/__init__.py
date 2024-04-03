@@ -4,6 +4,7 @@
 from vortexasdk.endpoints import (
     AssetTanks,
     Attributes,
+    CanalTransits,
     CargoMovements,
     CargoTimeSeries,
     Corporations,
