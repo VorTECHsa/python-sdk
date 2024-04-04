@@ -39,7 +39,7 @@ DEFAULT_COLUMNS = [
 class CanalTransitResult(Result):
 
     """
-    Container class holdings search results returns from the canal transit endpoint.
+    Container class holdings search results returns from the Canal transit endpoint.
 
     This class has two methods, `to_list()`, and `to_df()`, allowing search results to be represented as a list of `CanalTransitRecords`, or as a `pd.DataFrame` , respectively.
     """

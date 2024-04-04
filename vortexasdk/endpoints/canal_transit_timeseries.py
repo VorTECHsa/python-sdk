@@ -11,12 +11,6 @@ logger = get_logger(__name__)
 
 
 class CanalTransitTimeseries(Search):
-    """
-    Canal Transit Endpoint, use this to search through Vortexa's canal transit records.
-
-    A detailed explanation of what Canal Transit is can be found [here](https://docs.vortexa.com/reference/intro-canal-transit).
-    """
-
     _MAX_PAGE_RESULT_SIZE = 500
 
     def __init__(self):
@@ -32,7 +26,7 @@ class CanalTransitTimeseries(Search):
     ) -> TimeSeriesResult:
         """
 
-        Find CanalTransitRecords matching the given search parameters.
+        Aggregate Canal Transit records for various activities and frequencies.
 
         # Arguments
 
