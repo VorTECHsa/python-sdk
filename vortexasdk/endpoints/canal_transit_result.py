@@ -1,4 +1,5 @@
 import functools
+import os
 from multiprocessing.pool import Pool
 from typing import List
 
@@ -21,14 +22,17 @@ DEFAULT_COLUMNS = [
     "vessel_class.0.label",
     "vessel_cubic_capacity",
     "vessel_dead_weight",
+    "booked"
     "canal",
     "direction",
     "lock",
     "queue_arrival_time",
     "canal_entry_time",
-    "canal_exit_time",
     "cargoes.0.product.label",
-    "cargoes.quantity_barrels",
+    "cargoes.0.quantity_barrels",
+    "cargoes.0.quantity_tonnes",
+    "origin.0.label",
+    "destination.0.label",
 ]
 
 
@@ -37,8 +41,7 @@ class CanalTransitResult(Result):
     """
     Container class holdings search results returns from the canal transit endpoint.
 
-    This class has two methods, `to_list()`, and `to_df()`, allowing search results to be represented as a list of `CanalTransitRecords`,
-     or as a `pd.DataFrame` , respectively.
+    This class has two methods, `to_list()`, and `to_df()`, allowing search results to be represented as a list of `CanalTransitRecords`, or as a `pd.DataFrame` , respectively.
     """
 
     def to_list(self) -> List[CanalTransitRecord]:
@@ -61,9 +64,9 @@ class CanalTransitResult(Result):
         """
 
         flatten = functools.partial(convert_to_flat_dict, columns=columns)
-
         logger.debug("Converting each CanalTransitRecord to a flat dictionary")
-        with Pool(1) as pool:
+
+        with Pool(os.cpu_count()) as pool:
             records = pool.map(flatten, super().to_list())
 
         return create_dataframe(
