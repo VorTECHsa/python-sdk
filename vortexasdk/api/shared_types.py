@@ -15,6 +15,10 @@ def to_ISODate(utc_datetime: datetime) -> ISODate:
     return utc_datetime.strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3] + "Z"
 
 
+def to_ISODateOrNone(utc_datetime: datetime) -> Optional[ISODate]:
+    return to_ISODate(utc_datetime) if utc_datetime else None
+
+
 def to_ISODate_Array(days: List[datetime]) -> List[ISODate]:
     return [to_ISODate(date) for date in days]
 
