@@ -8,6 +8,8 @@ pages:
   - Endpoints:
       About Endpoints: endpoints/about-endpoints.md
       Attributes: endpoints/attributes.md
+      Canal Transit: endpoints/canal_transit.md
+      Canal Transit Timeseries: endpoints/canal_transit_timeseries.md
       Cargo Movements: endpoints/cargo_movements.md
       Movement Status Breakdown: endpoints/movement_status_breakdown.md
       Product Breakdown: endpoints/product_breakdown.md
@@ -49,6 +51,7 @@ pages:
         Vessel Summary: endpoints/vessel_summary.md
         Vessel Positions: endpoints/vessel_positions.md
   - Entities:
+      Canal Transit: entities/canal_transit.md
       Cargo Movement: entities/cargo_movement.md
       Corporation: entities/corporation.md
       Geography: entities/geography.md

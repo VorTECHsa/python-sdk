@@ -5,6 +5,11 @@ repo_url: https://github.com/vortechsa/python-sdk
 
 # Generate the individual markdown files from specified python modules
 generate:
+  - endpoints/canal_transit.md:
+      - vortexasdk.endpoints.canal_transit++
+      - vortexasdk.endpoints.canal_transit_result++
+  - endpoints/canal_transit_timeseries.md:
+      - vortexasdk.endpoints.canal_transit_timeseries++
   - endpoints/cargo_movements.md:
       - vortexasdk.endpoints.cargo_movements++
       - vortexasdk.endpoints.cargo_movements_result++
@@ -48,6 +53,8 @@ generate:
       - vortexasdk.api.voyages++
   - entities/signals.md:
       - vortexasdk.api.vessel_summary++
+  - entities/canal_transit.md:
+      - vortexasdk.api.canal_transit++
   - endpoints/origin_breakdown.md:
       - vortexasdk.endpoints.origin_breakdown++
   - endpoints/destination_breakdown.md:
