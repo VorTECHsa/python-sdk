@@ -22,7 +22,7 @@ DEFAULT_COLUMNS = [
     "vessel_class.0.label",
     "vessel_cubic_capacity",
     "vessel_dead_weight",
-    "booked"
+    "booked",
     "canal",
     "direction",
     "lock",

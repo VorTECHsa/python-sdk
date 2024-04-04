@@ -10,7 +10,7 @@ from vortexasdk.operations import Search
 logger = get_logger(__name__)
 
 
-class CanalTransitsTimeseries(Search):
+class CanalTransitTimeseries(Search):
     """
     Canal Transit Endpoint, use this to search through Vortexa's canal transit records.
 
@@ -22,14 +22,11 @@ class CanalTransitsTimeseries(Search):
     def __init__(self):
         Search.__init__(self, CANAL_TRANSIT_TIME_SERIES)
 
-    default_min_date = datetime.now() - timedelta(days=2)
-    default_max_date = datetime.now() + timedelta(days=2)
-
     def search(
         self,
-        time_min: datetime = default_min_date,
-        time_max: datetime = default_max_date,
-        timeseries_activity: str = 'started_waiting',
+        time_min: datetime = datetime.now() - timedelta(days=2),
+        time_max: datetime = datetime.now() + timedelta(days=2),
+        timeseries_activity: str = "started_waiting",
         metric: str = "count_of_vessels",
         timeseries_frequency: str = "day",
     ) -> TimeSeriesResult:
@@ -39,29 +36,20 @@ class CanalTransitsTimeseries(Search):
 
         # Arguments
 
-            metric: Aggregation metric. Must be one of ["count_of_vessels", "minimum_waiting_time", "maximum_waiting_time", "average_waiting_time"]
+            metric: Aggregation metric. Must be one of [`'count_of_vessels'`, `'minimum_waiting_time'`, `'maximum_waiting_time'`, `'average_waiting_time'`]
 
             time_min: The UTC date when `timeseries_activity` starts,
 
             time_max: The UTC date when `timeseries_activity` ends,
 
-            timeseries_activity: Activity of the vessel we want to aggregate on. Must be one of [
-                                                "started_waiting",
-                                                "waiting",
-                                                "started_transiting",
-                                                "transiting",
-                                                "transited"
-                                        ]
+            timeseries_activity: Activity of the vessel we want to aggregate on. Must be one of [`'started_waiting'`, `'waiting'`, `'started_transiting'`, `'transiting'`, `'transited'`]
 
-            timeseries_frequency: Frequency denoting the granularity of the time series. Must be one of [
-                                                "day",
-                                                "week"
-                                        ]
+            timeseries_frequency: Frequency denoting the granularity of the time series. Must be one of [`'day'`, `'week'`]
 
 
 
         # Returns
-        `CanalTransitsTimeseries`
+        `CanalTransitTimeseries`
 
         """
 

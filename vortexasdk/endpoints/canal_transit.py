@@ -12,7 +12,7 @@ from vortexasdk.utils import convert_to_list
 logger = get_logger(__name__)
 
 
-class CanalTransits(Search):
+class CanalTransit(Search):
     """
     Canal Transit Endpoint, use this to search through Vortexa's canal transit records.
 
@@ -23,8 +23,6 @@ class CanalTransits(Search):
 
     def __init__(self):
         Search.__init__(self, CANAL_TRANSIT_SEARCH)
-
-    default_date = datetime.now() - timedelta(days=2)
 
     def search(
         self,
@@ -45,7 +43,7 @@ class CanalTransits(Search):
         filter_booked_time_max: datetime = None,
         filter_booked_status: bool = None,
         filter_voyage_status: str = None,
-        updated_since: datetime = default_date,
+        updated_since: datetime = datetime.now() - timedelta(days=2),
         exclude_filter_vessels: Union[ID, List[ID]] = None,
         exclude_filter_vessel_classes: Union[ID, List[ID]] = None,
         exclude_filter_products: Union[ID, List[ID]] = None,
@@ -68,11 +66,11 @@ class CanalTransits(Search):
 
             filter_vessel_dead_weight_max: Maximum DWT of the vessel,
 
-            filter_canal: Canal the vessel is queing for. Must be one of ['suez_canal', 'panama_canal'],
+            filter_canal: Canal the vessel is queuing for. Must be one of [`'suez_canal'`, `'panama_canal'`],
 
-            filter_direction: Direction that vessel is heading. Must be one of  ['northbound', 'southbound'],
+            filter_direction: Direction that vessel is heading. Must be one of  [`'northbound'`, `'southbound'`],
 
-            filter_lock: Route taken through the canal. For the Panama canal, it must be one of ['panamax', 'neopanamax'],
+            filter_lock: Route taken through the canal. For the Panama canal, it must be one of [`'panamax'`, `'neopanamax'`],
 
             filter_queue_arrival_time_min: The UTC date of when vessel arrived to the queue,
 
@@ -90,7 +88,7 @@ class CanalTransits(Search):
 
             filter_booked_time_max: The UTC date of planned time to enter the canal,
 
-            filter_booked_status: Boolean flat to filter vessels that booked their slots. Can be '`true`' or '`false`',
+            filter_booked_status: Boolean flat to filter vessels that booked their slots. Can be `'true'` or `'false'`,
 
             filter_voyage_status: A voyage status, or list of voyage statuses to filter on. Can be one of: `'ballast'`, `'laden'`,
 
