@@ -4,7 +4,7 @@
   "python.testing.unittestEnabled": false,
   "python.testing.pytestEnabled": true,
   "[python]": {
-    "editor.defaultFormatter": "ms-python.autopep8"
+    "editor.defaultFormatter": "ms-python.black-formatter"
   },
   "cSpell.words": [
     "dataframe",
