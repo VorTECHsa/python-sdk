@@ -4,16 +4,11 @@ from typing import List, Optional
 from vortexasdk.api.geography import GeographyEntity
 
 from vortexasdk.api.shared_types import (
+    EntityWithSingleLayer,
     ISODate,
     VesselClassEntry,
 )
 from vortexasdk.api.id import ID
-
-
-class CargoProduct(BaseModel):
-    id: ID
-    label: Optional[str]
-    layer: Optional[str]
 
 
 class CargoEntity(BaseModel):
@@ -21,7 +16,7 @@ class CargoEntity(BaseModel):
     quantity_barrels: Optional[int]
     quantity_tonnes: Optional[int]
     quantity_cubic_metres: Optional[int]
-    product: Optional[List[CargoProduct]]
+    product: Optional[List[EntityWithSingleLayer]]
 
 
 class GeographyRecord(BaseModel):
