@@ -2,7 +2,7 @@ from datetime import datetime, timedelta
 from typing import Any, Dict, List, Union
 
 from vortexasdk.api import ID
-from vortexasdk.api.shared_types import to_ISODateOrNone
+from vortexasdk.api.shared_types import to_ISODate
 from vortexasdk.endpoints.canal_transit_result import CanalTransitResult
 from vortexasdk.endpoints.endpoints import CANAL_TRANSIT_SEARCH
 from vortexasdk.logger import get_logger
@@ -128,26 +128,38 @@ class CanalTransit(Search):
         }
 
         api_params: Dict[str, Any] = {
-            "filter_booked_time_max": to_ISODateOrNone(filter_booked_time_max)
+            "filter_booked_time_max": to_ISODate(filter_booked_time_max)
             if filter_booked_time_max
             else None,
-            "filter_booked_time_min": to_ISODateOrNone(filter_booked_time_min),
-            "filter_canal_entry_time_max": to_ISODateOrNone(
+            "filter_booked_time_min": to_ISODate(filter_booked_time_min)
+            if filter_booked_time_min
+            else None,
+            "filter_canal_entry_time_max": to_ISODate(
                 filter_canal_entry_time_max
-            ),
-            "filter_canal_entry_time_min": to_ISODateOrNone(
+            )
+            if filter_canal_entry_time_max
+            else None,
+            "filter_canal_entry_time_min": to_ISODate(
                 filter_canal_entry_time_min
-            ),
-            "filter_canal_exit_time_max": to_ISODateOrNone(
+            )
+            if filter_canal_entry_time_min
+            else None,
+            "filter_canal_exit_time_max": to_ISODate(
                 filter_canal_exit_time_max
-            ),
-            "filter_canal_exit_time_min": to_ISODateOrNone(
+            )
+            if filter_canal_exit_time_max
+            else None,
+            "filter_canal_exit_time_min": to_ISODate(
                 filter_canal_exit_time_min
-            ),
-            "filter_queue_arrival_time_max": to_ISODateOrNone(
+            )
+            if filter_canal_exit_time_min
+            else None,
+            "filter_queue_arrival_time_max": to_ISODate(
                 filter_queue_arrival_time_max
-            ),
-            "filter_queue_arrival_time_min": to_ISODateOrNone(
+            )
+            if filter_queue_arrival_time_max
+            else None,
+            "filter_queue_arrival_time_min": to_ISODate(
                 filter_queue_arrival_time_min
             )
             if filter_queue_arrival_time_min
@@ -161,7 +173,7 @@ class CanalTransit(Search):
             "filter_lock": filter_lock,
             "filter_booked_status": filter_booked_status,
             "filter_voyage_status": filter_voyage_status,
-            "updated_since": to_ISODateOrNone(updated_since),
+            "updated_since": to_ISODate(updated_since),
             "exclude": exclude_params,
             "size": self._MAX_PAGE_RESULT_SIZE,
         }
