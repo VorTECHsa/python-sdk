@@ -19,8 +19,6 @@ class CanalTransit(Search):
     A detailed explanation of what Canal Transit is can be found [here](https://docs.vortexa.com/reference/intro-canal-transit).
     """
 
-    _MAX_PAGE_RESULT_SIZE = 500
-
     def __init__(self):
         Search.__init__(self, CANAL_TRANSIT_SEARCH)
 
@@ -94,19 +92,19 @@ class CanalTransit(Search):
 
             updated_since: The UTC date of last record update time,
 
-            exclude_filter_vessels: A vessel ID, or list of vessel IDs to exclude.,
+            exclude_filter_vessels: A vessel ID, or list of vessel IDs to exclude,
 
-            exclude_filter_vessel_classes: A vessel class, or list of vessel classes to exclude.,
+            exclude_filter_vessel_classes: A vessel class, or list of vessel classes to exclude,
 
-            exclude_filter_products: A product ID, or list of product IDs to exclude.,
+            exclude_filter_products: A product ID, or list of product IDs to exclude,
 
-            exclude_filter_origin: A geography ID, or list of geography IDs to exclude.,
+            exclude_filter_origin: A geography ID, or list of geography IDs to exclude,
 
-            exclude_filter_destination: A geography ID, or list of geography IDs to exclude.,
+            exclude_filter_destination: A geography ID, or list of geography IDs to exclude,
 
-            exclude_filter_charterer: A charterer ID, or list of charterer IDs to exclude.,
+            exclude_filter_charterer: A charterer ID, or list of charterer IDs to exclude,
 
-            exclude_filter_effective_controller: A effective controller ID, or list of IDs to exclude.,
+            exclude_filter_effective_controller: A effective controller ID, or list of IDs to exclude,
 
         # Returns
         `CanalTransitResults`, containing all the canal transit records matching the given search terms.
@@ -175,7 +173,6 @@ class CanalTransit(Search):
             "filter_voyage_status": filter_voyage_status,
             "updated_since": to_ISODate(updated_since),
             "exclude": exclude_params,
-            "size": self._MAX_PAGE_RESULT_SIZE,
         }
 
         response = super().search_with_client_with_search_after(**api_params)
