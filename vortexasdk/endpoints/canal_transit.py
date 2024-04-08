@@ -28,9 +28,13 @@ class CanalTransit(Search):
         filter_vessel_cubic_capacity_max: int = None,
         filter_vessel_dead_weight_min: int = None,
         filter_vessel_dead_weight_max: int = None,
-        filter_canal: str = None,
-        filter_direction: str = None,
-        filter_lock: str = None,
+        filter_vessel_classes: Union[ID, List[ID]] = None,
+        filter_vessels: Union[ID, List[ID]] = None,
+        filter_products: Union[ID, List[ID]] = None,
+        filter_origin: Union[ID, List[ID]] = None,
+        filter_destination: Union[ID, List[ID]] = None,
+        filter_charterer: Union[ID, List[ID]] = None,
+        filter_effective_controller: Union[ID, List[ID]] = None,
         filter_queue_arrival_time_min: datetime = None,
         filter_queue_arrival_time_max: datetime = None,
         filter_canal_entry_time_min: datetime = None,
@@ -42,6 +46,9 @@ class CanalTransit(Search):
         filter_booked_status: bool = None,
         filter_voyage_status: str = None,
         updated_since: datetime = datetime.now() - timedelta(days=2),
+        filter_canal: str = None,
+        filter_direction: str = None,
+        filter_lock: str = None,
         exclude_filter_vessels: Union[ID, List[ID]] = None,
         exclude_filter_vessel_classes: Union[ID, List[ID]] = None,
         exclude_filter_products: Union[ID, List[ID]] = None,
@@ -63,6 +70,20 @@ class CanalTransit(Search):
             filter_vessel_dead_weight_min: Minimum DWT of the vessel,
 
             filter_vessel_dead_weight_max: Maximum DWT of the vessel,
+            
+            filter_vessel_classes: A vessel class, or list of vessel classes to filter on.
+            
+            filter_vessels: A vessel ID, or list of vessel IDs to filter on.
+            
+            filter_products: A product ID, or list of product IDs to filter on.
+            
+            filter_origin: A geography ID, or list of geography IDs to filter on.
+            
+            filter_destination: A geography ID, or list of geography IDs to filter on.
+            
+            filter_charterer: An charterer ID, or list of charterer IDs to filter on.
+
+            filter_effective_controllers: An effective controller ID, or list of effective controller IDs to filter on.
 
             filter_canal: Canal the vessel is queuing for. Must be one of [`'suez_canal'`, `'panama_canal'`],
 
@@ -86,7 +107,7 @@ class CanalTransit(Search):
 
             filter_booked_time_max: The UTC date of planned time to enter the canal,
 
-            filter_booked_status: Boolean flat to filter vessels that booked their slots. Can be `'true'` or `'false'`,
+            filter_booked_status: Boolean to filter vessels that booked their slots. Can be `'true'` or `'false'`,
 
             filter_voyage_status: A voyage status, or list of voyage statuses to filter on. Can be one of: `'ballast'`, `'laden'`,
 
@@ -166,6 +187,15 @@ class CanalTransit(Search):
             "filter_vessel_cubic_capacity_min": filter_vessel_cubic_capacity_min,
             "filter_vessel_dead_weight_max": filter_vessel_dead_weight_max,
             "filter_vessel_dead_weight_min": filter_vessel_dead_weight_min,
+            "filter_vessel_classes": convert_to_list(filter_vessel_classes),
+            "filter_vessels": convert_to_list(filter_vessels),
+            "filter_products": convert_to_list(filter_products),
+            "filter_origin": convert_to_list(filter_origin),
+            "filter_destination": convert_to_list(filter_destination),
+            "filter_charterer": convert_to_list(filter_charterer),
+            "filter_effective_controller": convert_to_list(
+                filter_effective_controller
+            ),
             "filter_canal": filter_canal,
             "filter_direction": filter_direction,
             "filter_lock": filter_lock,
