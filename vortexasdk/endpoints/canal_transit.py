@@ -70,17 +70,17 @@ class CanalTransit(Search):
             filter_vessel_dead_weight_min: Minimum DWT of the vessel,
 
             filter_vessel_dead_weight_max: Maximum DWT of the vessel,
-            
+
             filter_vessel_classes: A vessel class, or list of vessel classes to filter on.
-            
+
             filter_vessels: A vessel ID, or list of vessel IDs to filter on.
-            
+
             filter_products: A product ID, or list of product IDs to filter on.
-            
+
             filter_origin: A geography ID, or list of geography IDs to filter on.
-            
+
             filter_destination: A geography ID, or list of geography IDs to filter on.
-            
+
             filter_charterer: An charterer ID, or list of charterer IDs to filter on.
 
             filter_effective_controllers: An effective controller ID, or list of effective controller IDs to filter on.

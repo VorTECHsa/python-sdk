@@ -24,8 +24,8 @@ class TestCanalTransitTimeseries(TestCaseUsingRealAPI):
             timeseries_activity="started_waiting",
         )
 
-        assert all[0]['count'] > nonLng[0]['count']
-        
+        assert all[0]["count"] > nonLng[0]["count"]
+
     def test_timeseries_buckets_count(self):
         dailyBuckets = CanalTransitTimeseries().search(
             time_min=datetime(2023, 9, 5),
@@ -38,7 +38,7 @@ class TestCanalTransitTimeseries(TestCaseUsingRealAPI):
             time_max=datetime(2023, 12, 7),
             metric="count_of_vessels",
             timeseries_activity="started_waiting",
-            timeseries_frequency="week"
+            timeseries_frequency="week",
         )
 
         assert len(dailyBuckets) == 6
