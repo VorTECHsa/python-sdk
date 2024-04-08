@@ -31,6 +31,7 @@ DEFAULT_COLUMNS = [
     "cargoes.0.product.label",
     "cargoes.0.quantity_barrels",
     "cargoes.0.quantity_tonnes",
+    "cargoes.0.quantity_cubic_metres",
     "origin.0.label",
     "destination.0.label",
 ]
