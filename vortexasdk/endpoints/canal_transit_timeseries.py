@@ -55,7 +55,9 @@ class CanalTransitTimeseries(Search):
         exclude_filter_origin: Optional[Union[ID, List[ID]]] = None,
         exclude_filter_destination: Optional[Union[ID, List[ID]]] = None,
         exclude_filter_charterer: Optional[Union[ID, List[ID]]] = None,
-        exclude_filter_effective_controller: Optional[Union[ID, List[ID]]] = None,
+        exclude_filter_effective_controller: Optional[
+            Union[ID, List[ID]]
+        ] = None,
     ) -> TimeSeriesResult:
         """
 
