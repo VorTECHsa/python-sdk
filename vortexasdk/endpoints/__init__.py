@@ -2,6 +2,10 @@
 
 from vortexasdk.endpoints.asset_tanks import AssetTanks
 from vortexasdk.endpoints.attributes import Attributes
+from vortexasdk.endpoints.canal_transit import CanalTransit
+from vortexasdk.endpoints.canal_transit_timeseries import (
+    CanalTransitTimeseries,
+)
 from vortexasdk.endpoints.cargo_movements import CargoMovements
 from vortexasdk.endpoints.cargo_timeseries import CargoTimeSeries
 from vortexasdk.endpoints.corporations import Corporations

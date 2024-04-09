@@ -5,5 +5,12 @@
   "python.testing.pytestEnabled": true,
   "[python]": {
     "editor.defaultFormatter": "ms-python.black-formatter"
-  }
+  },
+  "cSpell.words": [
+    "dataframe",
+    "mmsi",
+    "panamax",
+    "timeseries",
+    "vortexasdk"
+  ]
 }
