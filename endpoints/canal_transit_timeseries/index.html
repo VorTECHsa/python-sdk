@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Time Series - VortexaSDK</title>
+  <title>Canal Transit Timeseries - VortexaSDK</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Time Series";
-    var mkdocs_page_input_path = "endpoints/onshore_inventories_timeseries.md";
+    var mkdocs_page_name = "Canal Transit Timeseries";
+    var mkdocs_page_input_path = "endpoints/canal_transit_timeseries.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -68,7 +68,7 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../canal_transit/">Canal Transit</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../canal_transit_timeseries/">Canal Transit Timeseries</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Canal Transit Timeseries</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../cargo_movements/">Cargo Movements</a>
                     </li>
@@ -108,11 +108,11 @@
                 </li>
     </ul>
                     </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="#">Crude Onshore Inventories</a>
-    <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="#">Crude Onshore Inventories</a>
+    <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../onshore_inventories_search/">Search</a>
                 </li>
-                <li class="toctree-l2 current"><a class="reference internal current" href="./">Time Series</a>
+                <li class="toctree-l2"><a class="reference internal" href="../onshore_inventories_timeseries/">Time Series</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="#">Reference Data</a>
     <ul>
@@ -234,15 +234,11 @@
           <li>Endpoints &raquo;</li>
         
       
-        
-          <li>Crude Onshore Inventories &raquo;</li>
-        
-      
     
-    <li>Time Series</li>
+    <li>Canal Transit Timeseries</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/vortechsa/python-sdk/edit/master/docs/endpoints/onshore_inventories_timeseries.md"
+        <a href="https://github.com/vortechsa/python-sdk/edit/master/docs/endpoints/canal_transit_timeseries.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -254,100 +250,133 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="vortexasdk.endpoints.onshore_inventories_timeseries">vortexasdk.endpoints.onshore_inventories_timeseries</h1>
+                <h1 id="vortexasdk.endpoints.canal_transit_timeseries">vortexasdk.endpoints.canal_transit_timeseries</h1>
 
-<p>Try me out in your browser:</p>
-<p><a href="https://mybinder.org/v2/gh/VorTECHsa/python-sdk/master?filepath=docs%2Fexamples%2Ftry_me_out%2Fonshore_inventories_timeseries.ipynb"><img alt="Binder" src="https://img.shields.io/badge/try%20me%20out-launch%20notebook-579ACA.svg?logo=data:image/png;base64,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" /></a></p>
-<h2 id="vortexasdk.endpoints.onshore_inventories_timeseries.OnshoreInventoriesTimeseries">OnshoreInventoriesTimeseries</h2>
+<h2 id="vortexasdk.endpoints.canal_transit_timeseries.CanalTransitTimeseries">CanalTransitTimeseries</h2>
 
-<pre><code class="language-python">OnshoreInventoriesTimeseries(self)
+<pre><code class="language-python">CanalTransitTimeseries(self)
 </code></pre>
-<p>Please note: you will require a subscription to our Crude Onshore Inventories module to access this endpoint.</p>
-<h3 id="vortexasdk.endpoints.onshore_inventories_timeseries.OnshoreInventoriesTimeseries.search">search</h3>
+<h3 id="vortexasdk.endpoints.canal_transit_timeseries.CanalTransitTimeseries.search">search</h3>
 
-<pre><code class="language-python">OnshoreInventoriesTimeseries.search(self, corporate_entity_ids: Union[str, List[str]] = None, crude_confidence: List[str] = None, location_ids: Union[str, List[str]] = None, storage_types: List[str] = None, asset_tank_ids: Union[str, List[str]] = None, time_max: datetime.datetime = None, time_min: datetime.datetime = None, timeseries_frequency: str = None, timeseries_split_property: str = None, timeseries_unit: str = None, timeseries_unit_operator: str = None, exclude_corporate_entity_ids: List[str] = None, exclude_crude_confidence: List[str] = None, exclude_location_ids: Union[str, List[str]] = None, exclude_storage_types: List[str] = None) -&gt; vortexasdk.endpoints.timeseries_result.TimeSeriesResult
+<pre><code class="language-python">CanalTransitTimeseries.search(self, filter_vessel_cubic_capacity_min: Union[int, NoneType] = None, filter_vessel_cubic_capacity_max: Union[int, NoneType] = None, filter_vessel_dead_weight_min: Union[int, NoneType] = None, filter_vessel_dead_weight_max: Union[int, NoneType] = None, filter_vessel_classes: Union[str, List[str], NoneType] = None, filter_vessels: Union[str, List[str], NoneType] = None, filter_products: Union[str, List[str], NoneType] = None, filter_origin: Union[str, List[str], NoneType] = None, filter_destination: Union[str, List[str], NoneType] = None, filter_charterer: Union[str, List[str], NoneType] = None, filter_effective_controller: Union[str, List[str], NoneType] = None, filter_queue_arrival_time_min: Union[datetime.datetime, NoneType] = None, filter_queue_arrival_time_max: Union[datetime.datetime, NoneType] = None, filter_canal_entry_time_min: Union[datetime.datetime, NoneType] = None, filter_canal_entry_time_max: Union[datetime.datetime, NoneType] = None, filter_canal_exit_time_min: Union[datetime.datetime, NoneType] = None, filter_canal_exit_time_max: Union[datetime.datetime, NoneType] = None, filter_booked_time_min: Union[datetime.datetime, NoneType] = None, filter_booked_time_max: Union[datetime.datetime, NoneType] = None, filter_booked_status: Union[bool, NoneType] = None, filter_voyage_status: Union[str, NoneType] = None, updated_since: Union[datetime.datetime, NoneType] = None, filter_canal: Union[str, NoneType] = None, filter_direction: Union[str, NoneType] = None, filter_lock: Union[str, NoneType] = None, time_min: datetime.datetime = datetime.datetime(2024, 4, 7, 11, 43, 52, 977263), time_max: datetime.datetime = datetime.datetime(2024, 4, 11, 11, 43, 52, 977268), timeseries_activity: str = 'started_waiting', metric: str = 'count_of_vessels', timeseries_frequency: str = 'day', exclude_filter_vessels: Union[str, List[str], NoneType] = None, exclude_filter_vessel_classes: Union[str, List[str], NoneType] = None, exclude_filter_products: Union[str, List[str], NoneType] = None, exclude_filter_origin: Union[str, List[str], NoneType] = None, exclude_filter_destination: Union[str, List[str], NoneType] = None, exclude_filter_charterer: Union[str, List[str], NoneType] = None, exclude_filter_effective_controller: Union[str, List[str], NoneType] = None) -&gt; vortexasdk.endpoints.timeseries_result.TimeSeriesResult
 </code></pre>
-<p>Sum of crude onshore inventories storage and total capacity updated weekly. For frequencies other than 'week', the values returned are
-calculated by returning the final weekly onshore inventories 'quantity' bucket for the specified period.</p>
+<p>Aggregate Canal Transit records for various activities and frequencies.</p>
 <p><strong>Arguments</strong></p>
 <ul>
-<li><strong>corporate_entity_ids</strong>: An array of owner ID(s) to filter on.</li>
-<li><strong>crude_confidence</strong>: An array of confidence metrics to filter on. Possible values are: <code>'confirmed’</code>, <code>‘probable’</code>, <code>‘unlikely’</code></li>
-<li><strong>location_ids</strong>: An array of geography ID(s) to filter on.</li>
-<li><strong>storage_types</strong>: An array of storage types to filter on. Possible values are: <code>'refinery'</code>, <code>'commercial'</code>, <code>'spr'</code></li>
-<li><strong>asset_tank_ids</strong>: An array of unique Asset Tanks ID(s) to filter on - linked to the Asset Tank Reference data.</li>
-<li><strong>time_min</strong>: The UTC start date of the time filter.</li>
-<li><strong>time_max</strong>: The UTC end date of the time filter.</li>
-<li><strong>timeseries_frequency</strong>: Frequency denoting the granularity of the time series. Must be one of the following: <code>'day'</code>, <code>'week'</code>, <code>'doe_week'</code>, <code>'month'</code>, <code>'year'</code>.</li>
 <li>
-<p><strong>timeseries_split_property</strong>: Property used to breakdown the aggregation. By default 'quantity' is used which returns only the total, but aggregations can be broken down
-    by either <code>'crude_confidence'</code>, <code>'storage_type'</code>, <code>'location_country'</code>, <code>'location_port'</code>, <code>'location_region'</code>, <code>'location_shipping_region'</code>, <code>'location_trading_region'</code>,
-    <code>'location_trading_subregion'</code></p>
+<p><strong>filter_vessel_cubic_capacity_min</strong>: Minimum cubic capacity of the vessel,</p>
 </li>
 <li>
-<p><strong>timeseries_unit</strong>: A numeric metric to be calculated for each time bucket. Must be either <code>'b'</code>, <code>'t'</code>, <code>'cbm'</code> corresponding to barrels, metric tonnes, cubic meters.</p>
+<p><strong>filter_vessel_cubic_capacity_max</strong>: Maximum cubic capacity of the vessel,</p>
 </li>
 <li>
-<p><strong>timeseries_unit_operator</strong>: Argument must be either 'fill' (total in storage) or 'capacity' (total capacity).</p>
+<p><strong>filter_vessel_dead_weight_min</strong>: Minimum DWT of the vessel,</p>
 </li>
 <li>
-<p><strong>exclude_corporate_entity_ids</strong>: An array of owner ID(s) to exclude from the results,</p>
+<p><strong>filter_vessel_dead_weight_max</strong>: Maximum DWT of the vessel,</p>
 </li>
-<li><strong>exclude_crude_confidence</strong>: An array of confidence metrics to exclude from the results</li>
-<li><strong>exclude_location_ids</strong>: An array of geography ID(s) to exclude from the results</li>
-<li><strong>exclude_storage_types</strong>: An array of storage types to exclude from the results</li>
+<li>
+<p><strong>filter_vessel_classes</strong>: A vessel class, or list of vessel classes to filter on.</p>
+</li>
+<li>
+<p><strong>filter_vessels</strong>: A vessel ID, or list of vessel IDs to filter on.</p>
+</li>
+<li>
+<p><strong>filter_products</strong>: A product ID, or list of product IDs to filter on.</p>
+</li>
+<li>
+<p><strong>filter_origin</strong>: A geography ID, or list of geography IDs to filter on.</p>
+</li>
+<li>
+<p><strong>filter_destination</strong>: A geography ID, or list of geography IDs to filter on.</p>
+</li>
+<li>
+<p><strong>filter_charterer</strong>: An charterer ID, or list of charterer IDs to filter on.</p>
+</li>
+<li>
+<p><strong>filter_effective_controllers</strong>: An effective controller ID, or list of effective controller IDs to filter on.</p>
+</li>
+<li>
+<p><strong>filter_queue_arrival_time_min</strong>: The UTC date of when vessel arrived to the queue,</p>
+</li>
+<li>
+<p><strong>filter_queue_arrival_time_max</strong>: The UTC date of when vessel arrived to the queue,</p>
+</li>
+<li>
+<p><strong>filter_canal_entry_time_min</strong>: The UTC date of when vessel entered the canal,</p>
+</li>
+<li>
+<p><strong>filter_canal_entry_time_max</strong>: The UTC date of when vessel entered the canal,</p>
+</li>
+<li>
+<p><strong>filter_canal_exit_time_min</strong>: The UTC date of when vessel left the canal,</p>
+</li>
+<li>
+<p><strong>filter_canal_exit_time_max</strong>: The UTC date of when vessel left the canal,</p>
+</li>
+<li>
+<p><strong>filter_booked_time_min</strong>: The UTC date of planned time to enter the canal,</p>
+</li>
+<li>
+<p><strong>filter_booked_time_max</strong>: The UTC date of planned time to enter the canal,</p>
+</li>
+<li>
+<p><strong>filter_booked_status</strong>: Boolean to filter vessels that booked their slots before arrival. Can be <code>'true'</code> or <code>'false'</code>,</p>
+</li>
+<li>
+<p><strong>filter_voyage_status</strong>: A voyage status, or list of voyage statuses to filter on. Can be one of: <code>'ballast'</code>, <code>'laden'</code>,</p>
+</li>
+<li>
+<p><strong>updated_since</strong>: The UTC date of last update time of the record,</p>
+</li>
+<li>
+<p><strong>filter_canal</strong>: Canal the vessel is queuing for. Must be one of [<code>'suez_canal'</code>, <code>'panama_canal'</code>],</p>
+</li>
+<li>
+<p><strong>filter_direction</strong>: Direction that vessel is heading. Must be one of  [<code>'northbound'</code>, <code>'southbound'</code>],</p>
+</li>
+<li>
+<p><strong>filter_lock</strong>: Route taken through the canal. For the Panama canal, it must be one of [<code>'panamax'</code>, <code>'neopanamax'</code>],</p>
+</li>
+<li>
+<p><strong>time_min</strong>: The UTC date when <code>timeseries_activity</code> starts,</p>
+</li>
+<li>
+<p><strong>time_max</strong>: The UTC date when <code>timeseries_activity</code> ends,</p>
+</li>
+<li>
+<p><strong>timeseries_activity</strong>: Activity of the vessel we want to aggregate on. Must be one of [<code>'started_waiting'</code>, <code>'waiting'</code>, <code>'started_transiting'</code>, <code>'transiting'</code>, <code>'transited'</code>]</p>
+</li>
+<li>
+<p><strong>metric</strong>: Aggregation metric. Must be one of [<code>'count_of_vessels'</code>, <code>'minimum_waiting_time'</code>, <code>'maximum_waiting_time'</code>, <code>'average_waiting_time'</code>]</p>
+</li>
+<li>
+<p><strong>timeseries_frequency</strong>: Frequency denoting the granularity of the time series. Must be one of [<code>'day'</code>, <code>'week'</code>]</p>
+</li>
+<li>
+<p><strong>exclude_filter_vessels</strong>: A vessel ID, or list of vessel IDs to exclude,</p>
+</li>
+<li>
+<p><strong>exclude_filter_vessel_classes</strong>: A vessel class, or list of vessel classes to exclude,</p>
+</li>
+<li>
+<p><strong>exclude_filter_products</strong>: A product ID, or list of product IDs to exclude,</p>
+</li>
+<li>
+<p><strong>exclude_filter_origin</strong>: A geography ID, or list of geography IDs to exclude,</p>
+</li>
+<li>
+<p><strong>exclude_filter_destination</strong>: A geography ID, or list of geography IDs to exclude,</p>
+</li>
+<li>
+<p><strong>exclude_filter_charterer</strong>: A charterer ID, or list of charterer IDs to exclude,</p>
+</li>
+<li>
+<p><strong>exclude_filter_effective_controller</strong>: A effective controller ID, or list of IDs to exclude,</p>
+</li>
 </ul>
 <p><strong>Returns</strong></p>
-<p><code>BreakdownResult</code></p>
-<p><strong>Example</strong></p>
-<p><em>Total storage capacity across Europe for the first week of January 2021.</em></p>
-<pre><code class="language-python">&gt;&gt;&gt; from vortexasdk import OnshoreInventoriesTimeseries
-&gt;&gt;&gt; from datetime import datetime
-&gt;&gt;&gt; search_result = OnshoreInventoriesTimeseries().search(
-...    location_ids=[&quot;f39d455f5d38907394d6da3a91da4e391f9a34bd6a17e826d6042761067e88f4&quot;],
-...    time_min=datetime(2021, 1, 5),
-...    time_max=datetime(2021, 1, 12),
-...    timeseries_frequency=&quot;week&quot;,
-...    timeseries_split_property=&quot;location_country&quot;,
-...    timeseries_unit=&quot;b&quot;,
-...    timeseries_unit_operator=&quot;capacity&quot;,
-...    ).to_list()
-
-</code></pre>
-<p>Gives the following result:</p>
-<pre><code>[
-    BreakdownItem(key='2021-09-09T14:00:00.000Z',
-    count=3769,
-    value=994621677,
-    breakdown=[
-        {
-            'id': 'ee1de4914cc26e8f1326b49793b089131870d478714c07e0c99c56cb307704c5',
-            'label': 'Italy',
-            'value': 204482432,
-            'count': 762
-        },
-        {
-            'id': '2aaad41b89dfad19e5668918018ae02695d7710bcbe5f2dc689234e8da492de3',
-            'label': 'UnitedKingdom',
-            'value': 113001186,
-            'count': 415
-        },
-        {
-            'id': '284c8d9831e1ac59c0cb714468856d561af722c8a2432c13a001f909b97e6b71',
-            'label': 'Germany',
-            'value': 93583672,
-            'count': 405
-        },
-        {
-            'id': 'e9e556620469f46a4dc171aef71073f5286a288da35c5883cac760446b0ceb46',
-            'label': 'France',
-            'value': 86652291,
-            'count': 327
-        },
-        ...
-    ])
-]
-</code></pre>
+<p><code>CanalTransitTimeseries</code></p>
               
             </div>
           </div>
@@ -355,10 +384,10 @@ calculated by returning the final weekly onshore inventories 'quantity' bucket f
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../asset_tanks/" class="btn btn-neutral float-right" title="Asset Tanks">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../cargo_movements/" class="btn btn-neutral float-right" title="Cargo Movements">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../onshore_inventories_search/" class="btn btn-neutral" title="Search"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../canal_transit/" class="btn btn-neutral" title="Canal Transit"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -388,10 +417,10 @@ calculated by returning the final weekly onshore inventories 'quantity' bucket f
         </span>
     
     
-      <span><a href="../onshore_inventories_search/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../canal_transit/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../asset_tanks/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../cargo_movements/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
