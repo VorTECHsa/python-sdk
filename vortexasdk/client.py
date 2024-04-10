@@ -127,7 +127,7 @@ class VortexaClient:
 
             if len(flattened) != total:
                 logger.info(
-                    f"Live updates to our data have impacted the number of records retrieved from the API since your query began."
+                    "Live updates to our data have impacted the number of records retrieved from the API since your query began."
                 )
                 logger.info(f"Actual: {len(flattened)}, expected: {total}")
 
@@ -305,10 +305,17 @@ def _handle_response(
                     "data": data,
                     "total": int(response.headers["x-total"]),
                 }
-                if response.headers["x-next-request"] != "undefined":
+
+                next_request_header = response.headers.get("x-next-request")
+
+                if (
+                    next_request_header is not None
+                    and next_request_header != ""
+                    and next_request_header != "undefined"
+                ):
                     try:
                         decoded["search_after"] = json.loads(
-                            response.headers["x-next-request"]
+                            next_request_header
                         )
                     except Exception as e:
                         logger.error(f"error parsing search_after: {e}")
@@ -367,9 +374,7 @@ def _warn_user_if_sdk_version_outdated() -> None:
                 f"You should consider upgrading via the 'pip install {sdk_pkg_name} --upgrade' command."
             )
     except Exception:
-        logger.warning(
-            f"Outdated SDK version check could not be completed. \n"
-        )
+        logger.warning("Outdated SDK version check could not be completed. \n")
 
 
 def _load_api_key():
