@@ -1,4 +1,5 @@
 from typing import List
+from typing_extensions import Literal
 
 import pandas as pd
 
@@ -21,7 +22,10 @@ class AttributeResult(Result):
         # noinspection PyTypeChecker
         return create_list(super().to_list(), Attribute)
 
-    def to_df(self, columns=DEFAULT_COLUMNS) -> pd.DataFrame:
+    def to_df(
+        self: "AttributeResult",
+        columns: List[str] | Literal["all"] = DEFAULT_COLUMNS,
+    ) -> pd.DataFrame:
         """
         Represent attributes as a `pd.DataFrame`.
 

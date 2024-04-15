@@ -23,7 +23,9 @@ class VoyagesSearchEnrichedFlattenedResult(Result):
             f"to_list method is not supported for search results in the flattened format (i.e. when the `columns` API param is provided). Please use to_df() instead."
         )
 
-    def to_df(self, columns=None) -> pd.DataFrame:
+    def to_df(
+        self: "VoyagesSearchEnrichedFlattenedResult", columns: None = None
+    ) -> pd.DataFrame:
         """
         Represent voyages as a `pd.DataFrame`.
 

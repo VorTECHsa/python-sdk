@@ -107,11 +107,11 @@ class Search:
 
         if exact_term_match:
             logger.debug("Filtering results on exact term match")
+            term = api_params.get("term", "")
+            data = api_result.get("data", [])
             return {
-                "reference": api_result["reference"],
-                "data": filter_exact_match(
-                    api_params["term"], api_result["data"]
-                ),
+                "reference": api_result.get("reference"),
+                "data": filter_exact_match(term, data),
             }
         else:
             return api_result

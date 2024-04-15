@@ -2,10 +2,11 @@ import functools
 import os
 from multiprocessing import Pool
 from typing import List
+from typing_extensions import Literal
 
 import pandas as pd
 
-from vortexasdk.api import Fixture
+from vortexasdk.api.fixture import Fixture
 from vortexasdk.api.entity_flattening import convert_to_flat_dict
 from vortexasdk.api.search_result import Result
 from vortexasdk.logger import get_logger
@@ -38,7 +39,10 @@ class FixtureResult(Result):
         # noinspection PyTypeChecker
         return create_list(super().to_list(), Fixture)
 
-    def to_df(self, columns=DEFAULT_COLUMNS) -> pd.DataFrame:
+    def to_df(
+        self,
+        columns: List[str] | Literal["all"] = DEFAULT_COLUMNS,
+    ) -> pd.DataFrame:
         """
         Represent Fixtures as a `pd.DataFrame`.
 

@@ -1,4 +1,5 @@
 from typing import List
+from typing_extensions import Literal
 
 import pandas as pd
 
@@ -21,7 +22,10 @@ class VesselPositionsResult(Result):
         # noinspection PyTypeChecker
         return create_list(super().to_list(), VesselPositions)
 
-    def to_df(self, columns=DEFAULT_COLUMNS) -> pd.DataFrame:
+    def to_df(
+        self,
+        columns: List[str] | Literal["all"] = DEFAULT_COLUMNS,
+    ) -> pd.DataFrame:
         """
         Represent vessel positions as a `pd.DataFrame`.
 
