@@ -14,6 +14,7 @@ jobs:
           command: |
             python -m venv .venv;
             . .venv/bin/activate
+            pip install "cython<3.0.0" wheel && pip install pyyaml==5.4.1 --no-build-isolation
             pip install -U pip
             pip install -e .[tests]
 
