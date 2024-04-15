@@ -133,9 +133,9 @@ class Search:
 
     def search_with_client_with_search_after(
         self: "Search",
-        exact_term_match: bool = None,
-        response_type: str = None,
-        headers: dict = None,
+        exact_term_match: bool | None = None,
+        response_type: str | None = None,
+        headers: dict | None = None,
         **api_params: Dict,
     ) -> SearchResponse:
         return self.search_with_client_base(
