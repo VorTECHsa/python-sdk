@@ -102,8 +102,8 @@ class VoyagesProductBreakdown(Search):
         vessel_wait_time_min: int = None,
         vessel_wait_time_max: int = None,
         vessel_scrubbers: str = None,
-        vessels_tags: Union[Tag, List[Tag]] = None,
-        vessels_tags_excluded: Union[Tag, List[Tag]] = None,
+        vessel_tags: Union[Tag, List[Tag]] = None,
+        vessel_tags_excluded: Union[Tag, List[Tag]] = None,
         vessel_risk_level: Union[str, List[str]] = None,
         vessel_risk_level_excluded: Union[str, List[str]] = None,
         has_ship_to_ship: bool = None,
@@ -236,9 +236,9 @@ class VoyagesProductBreakdown(Search):
 
             vessel_scrubbers: Either inactive 'disabled', or included 'inc' or excluded 'exc'.
 
-            vessels_tags: A time bound vessel tag, or list of time bound vessel tags to filter on.
+            vessel_tags: A time bound vessel tag, or list of time bound vessel tags to filter on.
 
-            vessels_tags_excluded: A time bound vessel tag, or list of time bound vessel tags to exclude.
+            vessel_tags_excluded: A time bound vessel tag, or list of time bound vessel tags to exclude.
 
             vessel_risk_level: A vessel risk level, or list of vessel risk levels to filter on.
 
@@ -311,7 +311,7 @@ class VoyagesProductBreakdown(Search):
             "ice_class": convert_to_list(ice_class),
             "vessel_propulsion": convert_to_list(vessel_propulsion),
             "vessels": convert_to_list(vessels),
-            "vessels_tags": convert_to_list(vessels_tags),
+            "vessel_tags": convert_to_list(vessel_tags),
             "vessel_risk_level": convert_to_list(vessel_risk_level),
             "vessel_age_min": vessel_age_min,
             "vessel_age_max": vessel_age_max,
@@ -369,7 +369,7 @@ class VoyagesProductBreakdown(Search):
                 vessel_propulsion_excluded
             ),
             "vessels_excluded": convert_to_list(vessels_excluded),
-            "vessels_tags_excluded": convert_to_list(vessels_tags_excluded),
+            "vessel_tags_excluded": convert_to_list(vessel_tags_excluded),
             "vessel_risk_level_excluded": convert_to_list(
                 vessel_risk_level_excluded
             ),
