@@ -1,4 +1,5 @@
 from typing import List
+from typing_extensions import Literal
 import pandas as pd
 
 from vortexasdk.api import Product
@@ -21,7 +22,10 @@ class ProductResult(Result):
         # noinspection PyTypeChecker
         return create_list(super().to_list(), Product)
 
-    def to_df(self, columns=DEFAULT_COLUMNS) -> pd.DataFrame:
+    def to_df(
+        self,
+        columns: List[str] | Literal["all"] = DEFAULT_COLUMNS,
+    ) -> pd.DataFrame:
         """
         Represent products as a `pd.DataFrame`.
 

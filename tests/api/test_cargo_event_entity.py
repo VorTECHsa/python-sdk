@@ -7,7 +7,7 @@ from vortexasdk.api.geography import GeographyEntity
 
 
 class TestCargoEventEntity(TestCase):
-    def test_serialize(self):
+    def test_serialize(self) -> None:
         with open("tests/api/examples/cargo_event_entity1.json", "r") as f:
             serialized = json.load(f)
             deserialized = CargoPortUnloadEvent.parse_obj(serialized)

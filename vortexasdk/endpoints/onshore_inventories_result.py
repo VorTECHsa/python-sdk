@@ -2,6 +2,7 @@ import functools
 import os
 from multiprocessing.pool import Pool
 from typing import List
+from typing_extensions import Literal
 from vortexasdk.api.onshore_inventory import OnshoreInventory
 
 import pandas as pd
@@ -51,7 +52,10 @@ class OnshoreInventoriesResult(Result):
         # noinspection PyTypeChecker
         return create_list(super().to_list(), OnshoreInventory)
 
-    def to_df(self, columns=DEFAULT_COLUMNS) -> pd.DataFrame:
+    def to_df(
+        self,
+        columns: List[str] | Literal["all"] = DEFAULT_COLUMNS,
+    ) -> pd.DataFrame:
         """
         Represent onshore inventories as a `pd.DataFrame`.
 

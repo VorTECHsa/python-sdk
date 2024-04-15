@@ -1,7 +1,8 @@
 import functools
 from multiprocessing.pool import Pool
 import os
-from typing import List
+from typing import Dict, List
+from typing_extensions import Literal
 
 import pandas as pd
 
@@ -16,7 +17,7 @@ logger = get_logger(__name__)
 DEFAULT_COLUMNS = ["key", "value", "count"]
 
 
-def sort_breakdown(item: dict, full_header_column: list):
+def sort_breakdown(item: dict, full_header_column: list) -> Dict:
     if "breakdown" not in item:
         return item
     for b_item in full_header_column:
@@ -41,7 +42,9 @@ class TimeSeriesResult(Result):
         """Represents time series as a list."""
         return create_list(super().to_list(), TimeSeriesItem)
 
-    def to_df(self, columns="all") -> pd.DataFrame:
+    def to_df(
+        self, columns: List[str] | Literal["all"] = "all"
+    ) -> pd.DataFrame:
         """
         Converts the time series data into a pandas DataFrame.
 

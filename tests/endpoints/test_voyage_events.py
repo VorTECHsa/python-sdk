@@ -1,3 +1,4 @@
+from typing import Dict
 from vortexasdk.api.voyages import (
     VoyageCargoEvent,
     VoyageStatusEvent,
@@ -6,8 +7,8 @@ from vortexasdk.api.voyages import (
 
 
 class TestVoyageEvents:
-    def test_serialize_voyage_vessel_event(self):
-        event = {
+    def test_serialize_voyage_vessel_event(self) -> None:
+        event: Dict = {
             "event_id": "9fd5917dc61b15d4d3aa758ac6c5f75d6ddb7238ff71440eced4a8a1141346f7",
             "start_timestamp": "2022-07-13T00:00:00.000Z",
             "end_timestamp": "2022-07-29T00:00:00.000Z",
@@ -28,9 +29,9 @@ class TestVoyageEvents:
             "probability": 1,
         }
 
-        VoyageVesselEvent.parse_obj(event)
+        VoyageVesselEvent.model_validate(event)
 
-    def test_serialize_voyage_status_event(self):
+    def test_serialize_voyage_status_event(self) -> None:
         event = {
             "event_id": "7bbf5ab36d93c995",
             "event_group": "derived",
@@ -43,9 +44,9 @@ class TestVoyageEvents:
             "source_event_id": "9fd5917dc61b15d4",
         }
 
-        VoyageStatusEvent.parse_obj(event)
+        VoyageStatusEvent.model_validate(event)
 
-    def test_serialize_voyage_cargo_event(self):
+    def test_serialize_voyage_cargo_event(self) -> None:
         event = {
             "event_id": "283307fa86429bac",
             "start_timestamp": "2022-07-13T20:55:57.000Z",
@@ -209,4 +210,4 @@ class TestVoyageEvents:
             "tonne_miles": 871910281.4416846,
         }
 
-        VoyageCargoEvent.parse_obj(event)
+        VoyageCargoEvent.model_validate(event)
