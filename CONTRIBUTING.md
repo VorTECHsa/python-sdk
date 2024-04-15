@@ -29,7 +29,7 @@ cd python-sdk
 create a new virtual environment
 
 ```bash
-python3.7 -m venv venv
+python -m venv venv
 ```
 
 activate your environment
@@ -88,7 +88,7 @@ To run the SDK on an Apple ARM chip, upgrade your Python version to 3.8 or highe
 The set up is almost identical as above except one command; to create a virtual environment for Python 3.8 you should run:
 
 ```bash
-python3.8 -m venv venv
+python -m venv venv
 ```
 
 ## Contributing Code

@@ -12,7 +12,7 @@ jobs:
       - run:
           name: "Install setup.py"
           command: |
-            python3.7 -m venv .venv;
+            python -m venv .venv;
             . .venv/bin/activate
             pip install -U pip
             pip install -e .[tests]
@@ -127,7 +127,7 @@ jobs:
             # mybinder currently does not install the extras_require in setup.py
             # to replicate the mybinder environment, we install only the packages that mybinder installs
             # For more details, see https://mybinder.readthedocs.io/en/latest/using/config_files.html#setup-py-install-python-packages
-            python3.7 -m venv .mybinder_venv;
+            python -m venv .mybinder_venv;
             . .mybinder_venv/bin/activate
             pip install -U pip
             pip install -e .[binder]
