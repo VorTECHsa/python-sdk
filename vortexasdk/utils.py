@@ -1,4 +1,4 @@
-from typing import Any, Dict, List, Optional, Union
+from typing import Any, Dict, List, Optional, TypeVar, Union
 from enum import Enum
 from datetime import datetime, timedelta
 
@@ -176,7 +176,10 @@ def chunk_time_series(
     return chunked_time_series
 
 
-def convert_to_list(a) -> List:
+T = TypeVar("T")  # Define generic type variable T
+
+
+def convert_to_list(a: Union[T, List[T]]) -> List[T]:
     """Convert wraps element in list if element isn't a list already."""
     if a is None:
         return []
