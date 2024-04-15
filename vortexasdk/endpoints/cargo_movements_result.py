@@ -2,6 +2,7 @@ import functools
 import os
 from multiprocessing.pool import Pool
 from typing import List
+from typing_extensions import Literal
 
 import pandas as pd
 
@@ -29,7 +30,6 @@ DEFAULT_COLUMNS = [
 
 
 class CargoMovementsResult(Result):
-
     """
     Container class holdings search results returns from the cargo movements endpoint.
 
@@ -42,7 +42,10 @@ class CargoMovementsResult(Result):
         # noinspection PyTypeChecker
         return create_list(super().to_list(), CargoMovement)
 
-    def to_df(self, columns=DEFAULT_COLUMNS) -> pd.DataFrame:
+    def to_df(
+        self: "CargoMovementsResult",
+        columns: Literal["all"] | List[str] = DEFAULT_COLUMNS,
+    ) -> pd.DataFrame:
         """
         Represent cargo movements as a `pd.DataFrame`.
 

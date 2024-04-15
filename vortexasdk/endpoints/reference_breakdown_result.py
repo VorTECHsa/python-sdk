@@ -1,4 +1,5 @@
-from typing import List
+from typing import Dict, List
+from typing_extensions import Literal
 import pandas as pd
 
 from vortexasdk.api.search_result import Result
@@ -13,7 +14,7 @@ from multiprocessing.pool import Pool
 logger = get_logger(__name__)
 
 
-def replace_keys(result: Result):
+def replace_keys(result: Result) -> List:
     # Creates a list of data entries with keys enriched by references
     if len(result) == 0:
         return list([])
@@ -23,7 +24,7 @@ def replace_keys(result: Result):
         return list(map(lambda x: key_from_ref(x, refs), data))
 
 
-def key_from_ref(datum, refs):
+def key_from_ref(datum: Dict, refs: Dict) -> Dict:
     # Reads the label from references and adds the label to the output
     key = datum["key"]
     if key in refs:
@@ -47,7 +48,10 @@ class ReferenceBreakdownResult(Result):
 
         return create_list(new_list, BreakdownItem)
 
-    def to_df(self, columns=DEFAULT_COLUMNS) -> pd.DataFrame:
+    def to_df(
+        self,
+        columns: List[str] | Literal["all"] = DEFAULT_COLUMNS,
+    ) -> pd.DataFrame:
         """Represents the breakdown as a dataframe.
 
         Returns a `pd.DataFrame`, of breakdown items with columns:

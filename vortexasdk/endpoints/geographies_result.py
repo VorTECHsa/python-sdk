@@ -1,4 +1,5 @@
 from typing import List
+from typing_extensions import Literal
 import pandas as pd
 
 from vortexasdk.api import Geography
@@ -20,7 +21,10 @@ class GeographyResult(Result):
         # noinspection PyTypeChecker
         return create_list(super().to_list(), Geography)
 
-    def to_df(self, columns=DEFAULT_COLUMNS) -> pd.DataFrame:
+    def to_df(
+        self,
+        columns: List[str] | Literal["all"] = DEFAULT_COLUMNS,
+    ) -> pd.DataFrame:
         """
         Represent geographies as a `pd.DataFrame`.
 
