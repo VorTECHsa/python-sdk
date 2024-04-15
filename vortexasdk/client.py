@@ -39,7 +39,7 @@ class VortexaClient:
     _N_THREADS = 6
     _MAX_ALLOWED_TOTAL = int(1e6)
 
-    def __init__(self, **kwargs):
+    def __init__(self: "VortexaClient", **kwargs: Dict) -> None:
         self.api_key = kwargs["api_key"]
 
     def get_reference(self, resource: str, id: ID) -> List[Dict]:
@@ -236,7 +236,12 @@ class VortexaClient:
 
 
 def _send_post_request_data(
-    offset, url, payload, size, progress_bar: tqdm, headers
+    offset: int,
+    url: str,
+    payload: Dict,
+    size: int,
+    progress_bar: tqdm,
+    headers: Dict,
 ) -> List:
     # noinspection PyBroadException
     try:
@@ -249,7 +254,9 @@ def _send_post_request_data(
     return dict_response.get("data", [])
 
 
-def _send_post_request(url, payload, size, offset, headers) -> Dict:
+def _send_post_request(
+    url: str, payload: Dict, size: int, offset: int, headers: Dict
+) -> Dict:
     logger.debug(f"Sending post request, offset: {offset}, size: {size}")
 
     payload_with_offset = copy.deepcopy(payload)
@@ -265,7 +272,7 @@ def _send_post_request(url, payload, size, offset, headers) -> Dict:
 
 
 def _handle_response(
-    response: Response, headers: Dict = None, payload: Dict = None
+    response: Response, headers: Dict = {}, payload: Dict = {}
 ) -> Dict:
     if not response.ok:
         logger.error(response.reason)
