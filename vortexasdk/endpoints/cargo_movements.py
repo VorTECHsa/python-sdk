@@ -5,9 +5,9 @@ Try me out in your browser:
 """
 
 from datetime import datetime
-from typing import Any, Dict, List, Optional, Union
+from typing import Any, Dict, List, Union
 
-from vortexasdk.api import ID
+from vortexasdk.api.id import ID
 from vortexasdk.api.shared_types import to_ISODate
 from vortexasdk.endpoints.cargo_movements_result import CargoMovementsResult
 from vortexasdk.endpoints.endpoints import (
@@ -33,50 +33,50 @@ class CargoMovements(Record, Search):
 
     _MAX_PAGE_RESULT_SIZE = 500
 
-    def __init__(self):
+    def __init__(self) -> None:
         Record.__init__(self, CARGO_MOVEMENT_RESOURCE)
         Search.__init__(self, CARGO_MOVEMENTS_RESOURCE)
 
     def search(
         self,
-        filter_activity: str = None,
+        filter_activity: str | None = None,
         filter_time_min: datetime = datetime.now(),
         filter_time_max: datetime = datetime.now(),
         cm_unit: str = "b",
-        filter_charterers: Union[ID, List[ID]] = None,
-        filter_destinations: Union[ID, List[ID]] = None,
-        filter_origins: Union[ID, List[ID]] = None,
-        filter_owners: Union[ID, List[ID]] = None,
-        filter_vessel_owners: Union[ID, List[ID]] = None,
-        filter_time_charterers: Union[ID, List[ID]] = None,
-        filter_effective_controllers: Union[ID, List[ID]] = None,
-        filter_products: Union[ID, List[ID]] = None,
-        filter_vessels: Union[ID, List[ID]] = None,
-        filter_vessel_classes: Union[str, List[str]] = None,
-        filter_storage_locations: Union[ID, List[ID]] = None,
-        filter_ship_to_ship_locations: Union[ID, List[ID]] = None,
-        filter_waypoints: Union[ID, List[ID]] = None,
-        filter_vessel_age_min: int = None,
-        filter_vessel_age_max: int = None,
+        filter_charterers: Union[ID, List[ID]] | None = None,
+        filter_destinations: Union[ID, List[ID]] | None = None,
+        filter_origins: Union[ID, List[ID]] | None = None,
+        filter_owners: Union[ID, List[ID]] | None = None,
+        filter_vessel_owners: Union[ID, List[ID]] | None = None,
+        filter_time_charterers: Union[ID, List[ID]] | None = None,
+        filter_effective_controllers: Union[ID, List[ID]] | None = None,
+        filter_products: Union[ID, List[ID]] | None = None,
+        filter_vessels: Union[ID, List[ID]] | None = None,
+        filter_vessel_classes: Union[str, List[str]] | None = None,
+        filter_storage_locations: Union[ID, List[ID]] | None = None,
+        filter_ship_to_ship_locations: Union[ID, List[ID]] | None = None,
+        filter_waypoints: Union[ID, List[ID]] | None = None,
+        filter_vessel_age_min: int | None = None,
+        filter_vessel_age_max: int | None = None,
         filter_vessel_scrubbers: str = "disabled",
-        filter_vessel_flags: Union[ID, List[ID]] = None,
-        filter_vessel_ice_class: Union[ID, List[ID]] = None,
-        filter_vessel_propulsion: Union[ID, List[ID]] = None,
-        exclude_origins: Union[ID, List[ID]] = None,
-        exclude_destinations: Union[ID, List[ID]] = None,
-        exclude_products: Union[ID, List[ID]] = None,
-        exclude_vessels: Union[ID, List[ID]] = None,
-        exclude_vessel_classes: Union[str, List[str]] = None,
-        exclude_charterers: Union[ID, List[ID]] = None,
-        exclude_owners: Union[ID, List[ID]] = None,
-        exclude_effective_controllers: Union[ID, List[ID]] = None,
-        exclude_filter_vessel_owners: Union[ID, List[ID]] = None,
-        exclude_filter_time_charterers: Union[ID, List[ID]] = None,
-        exclude_vessel_flags: Union[ID, List[ID]] = None,
-        exclude_vessel_ice_class: Union[ID, List[ID]] = None,
-        exclude_vessel_propulsion: Union[ID, List[ID]] = None,
-        disable_geographic_exclusion_rules: Optional[bool] = None,
-        intra_movements: str = None,
+        filter_vessel_flags: Union[ID, List[ID]] | None = None,
+        filter_vessel_ice_class: Union[ID, List[ID]] | None = None,
+        filter_vessel_propulsion: Union[ID, List[ID]] | None = None,
+        exclude_origins: Union[ID, List[ID]] | None = None,
+        exclude_destinations: Union[ID, List[ID]] | None = None,
+        exclude_products: Union[ID, List[ID]] | None = None,
+        exclude_vessels: Union[ID, List[ID]] | None = None,
+        exclude_vessel_classes: Union[str, List[str]] | None = None,
+        exclude_charterers: Union[ID, List[ID]] | None = None,
+        exclude_owners: Union[ID, List[ID]] | None = None,
+        exclude_effective_controllers: Union[ID, List[ID]] | None = None,
+        exclude_filter_vessel_owners: Union[ID, List[ID]] | None = None,
+        exclude_filter_time_charterers: Union[ID, List[ID]] | None = None,
+        exclude_vessel_flags: Union[ID, List[ID]] | None = None,
+        exclude_vessel_ice_class: Union[ID, List[ID]] | None = None,
+        exclude_vessel_propulsion: Union[ID, List[ID]] | None = None,
+        disable_geographic_exclusion_rules: bool | None = None,
+        intra_movements: str | None = None,
         quantity_at_time_of: str = "load",
     ) -> CargoMovementsResult:
         """

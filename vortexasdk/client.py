@@ -32,7 +32,7 @@ class VortexaClient:
     _N_THREADS = 6
     _MAX_ALLOWED_TOTAL = int(1e6)
 
-    def __init__(self, **kwargs):
+    def __init__(self: "VortexaClient", **kwargs: Dict) -> None:
         self.api_key = kwargs["api_key"]
 
     def get_reference(self, resource: str, id: ID) -> List[Dict]:
@@ -203,7 +203,7 @@ def _send_post_request(url, payload, size, headers) -> Dict:
 
 
 def _handle_response(
-    response: Response, headers: Dict = None, payload: Dict = None
+    response: Response, headers: Dict = {}, payload: Dict = {}
 ) -> Dict:
     if not response.ok:
         logger.error(response.reason)

@@ -57,7 +57,7 @@ def chunk_time_series(
     return chunked_time_series
 
 
-def convert_to_list(a: str | List[Any] | None) -> List[Any]:
+def convert_to_list(a: Any | List[Any] | None) -> List[Any]:
     """Convert wraps element in list if element isn't a list already."""
     if a is None:
         return []

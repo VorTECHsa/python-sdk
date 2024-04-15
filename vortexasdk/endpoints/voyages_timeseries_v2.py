@@ -50,8 +50,8 @@ class VoyagesTimeseriesV2(Search):
     # noinspection PyUnresolvedReferences
     def search(
         self,
-        breakdown_frequency: str = None,
-        breakdown_size: int = None,
+        breakdown_frequency: str | None = None,
+        breakdown_size: int | None = None,
         time_min: datetime = datetime(2024, 1, 1, 0),
         time_max: datetime = datetime(2024, 3, 31, 1),
         voyage_id: Union[ID, List[ID]] = None,
