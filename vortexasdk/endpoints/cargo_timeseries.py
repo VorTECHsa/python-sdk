@@ -265,10 +265,6 @@ class CargoTimeSeries(Search):
                 exclude_vessel_propulsion
             ),
             "filter_waypoints": convert_to_list(exclude_waypoints),
-            "filter_contract_type": exclude_contract_type,
-            "filter_delivery_method": exclude_delivery_method,
-            "filter_buyer": convert_to_list(exclude_buyer),
-            "filter_seller": convert_to_list(exclude_seller),
         }
 
         api_params: Dict[str, Any] = {
@@ -298,10 +294,6 @@ class CargoTimeSeries(Search):
                 filter_ship_to_ship_locations
             ),
             "filter_waypoints": convert_to_list(filter_waypoints),
-            "filter_contract_type": filter_contract_type,
-            "filter_delivery_method": filter_delivery_method,
-            "filter_buyer": convert_to_list(filter_buyer),
-            "filter_seller": convert_to_list(filter_seller),
             "exclude": exclude_params,
             "disable_geographic_exclusion_rules": disable_geographic_exclusion_rules,
             "intra_movements": intra_movements,
