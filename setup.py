@@ -30,7 +30,7 @@ setuptools.setup(
         "requests==2.31.0",
         "pydantic>=1.10.2,<2",
         "tqdm==4.64.1",
-        "urllib3>=1.26"
+        "urllib3>=1.26",
     ],
     extras_require={
         "tests": [
@@ -43,22 +43,22 @@ setuptools.setup(
             "pydoc-markdown==2.0.5",
             "pyyaml<6.0.0",
             "six==1.12.0",
-            "tabulate==0.8.7",
+            "tabulate==0.9.0",
             "xlrd==1.2.0",
             "openpyxl==3.0.7",
             "types-requests==2.28.9",
             "types-urllib3==1.26.23",
-            "types-tabulate==0.8.11",
+            "types-tabulate==0.9.0",
             "types-python-dateutil==2.8.19",
             "types-six==1.16.19",
             "jupyter==1.0.0",
             "statsmodels==0.13.5",
-            "matplotlib>=3.5.3"
+            "matplotlib>=3.5.3",
         ],
         "binder": [
             "jupyter==1.0.0",
             "statsmodels==0.13.5",
-            "matplotlib>=3.5.3"
+            "matplotlib>=3.5.3",
         ],
         "deploy": ["wheel==0.37.1", "twine==4.0.1"],
     },
