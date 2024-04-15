@@ -47,10 +47,6 @@ class CargoTimeSeries(Search):
         filter_storage_locations: Optional[Union[ID, List[ID]]] = None,
         filter_ship_to_ship_locations: Optional[Union[ID, List[ID]]] = None,
         filter_waypoints: Optional[Union[ID, List[ID]]] = None,
-        filter_contract_type: Optional[str] = None,
-        filter_delivery_method: Optional[str] = None,
-        filter_buyer: Optional[Union[ID, List[ID]]] = None,
-        filter_seller: Optional[Union[ID, List[ID]]] = None,
         exclude_ship_to_ship: Optional[bool] = False,
         exclude_ship_to_ship_locations: Optional[Union[ID, List[ID]]] = None,
         exclude_storage_locations: Optional[Union[ID, List[ID]]] = None,
@@ -68,10 +64,6 @@ class CargoTimeSeries(Search):
         exclude_owners: Optional[Union[ID, List[ID]]] = None,
         exclude_destinations: Optional[Union[ID, List[ID]]] = None,
         exclude_waypoints: Optional[Union[ID, List[ID]]] = None,
-        exclude_contract_type: Optional[str] = None,
-        exclude_delivery_method: Optional[str] = None,
-        exclude_buyer: Optional[Union[ID, List[ID]]] = None,
-        exclude_seller: Optional[Union[ID, List[ID]]] = None,
         disable_geographic_exclusion_rules: Optional[bool] = None,
         intra_movements: Optional[str] = None,
         timeseries_activity_time_span_min: Optional[int] = None,
@@ -126,14 +118,6 @@ class CargoTimeSeries(Search):
 
             filter_waypoints: A geography ID, or list of geography IDs to filter on.
 
-            filter_contract_type: A contract type to filter on. Must be one of ['spot', 'term']
-
-            filter_delivery_method: A delivery method to filter on. Must be one of ['FOB', 'DES', 'CFR', 'CIF']
-
-            filter_buyer: A corporation ID, or list of corporation IDs to filter on.
-
-            filter_seller: A corporation ID, or list of corporation IDs to filter on.
-
             exclude_origins: A geography ID, or list of geography IDs to exclude.
 
             exclude_destinations: A geography ID, or list of geography IDs to exclude.
@@ -165,14 +149,6 @@ class CargoTimeSeries(Search):
             exclude_vessel_propulsion: An attribute ID, or list of attribute IDs to exclude.
 
             exclude_waypoints: A geography ID, or list of geography IDs to exclude.
-
-            exclude_contract_type: A contract type to exclude. Must be one of ['spot', 'term']
-
-            exclude_delivery_method: A delivery method to exclude. Must be one of ['FOB', 'DES', 'CFR', 'CIF']
-
-            exclude_buyer: A corporation ID, or list of corporation IDs to exclude.
-
-            exclude_seller: A corporation ID, or list of corporation IDs to exclude.
 
             disable_geographic_exclusion_rules: This controls a popular industry term "intra-movements" and determines
              the filter behaviour for cargo leaving then entering the same geographic area.
