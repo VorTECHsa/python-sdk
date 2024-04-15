@@ -15,7 +15,10 @@ from vortexasdk.endpoints.endpoints import (
 )
 from vortexasdk.logger import get_logger
 from vortexasdk.operations import Record, Search
-from vortexasdk.utils import convert_to_list, showDeprecatedGeoExclusionRulesWarning
+from vortexasdk.utils import (
+    convert_to_list,
+    showDeprecatedGeoExclusionRulesWarning,
+)
 
 logger = get_logger(__name__)
 
@@ -223,7 +226,9 @@ class CargoMovements(Record, Search):
         """
 
         # If the request contains a deprecated geographic exclusion rule, show a warning
-        showDeprecatedGeoExclusionRulesWarning(disable_geographic_exclusion_rules, logger)
+        showDeprecatedGeoExclusionRulesWarning(
+            disable_geographic_exclusion_rules, logger
+        )
 
         exclude_params: Dict[str, Any] = {
             "filter_origins": convert_to_list(exclude_origins),
