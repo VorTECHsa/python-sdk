@@ -1,11 +1,12 @@
 from typing import Any, Dict, List, Optional, Union
 from enum import Enum
 from datetime import datetime, timedelta
+from logging import Logger
 
 
 def is_arrival_or_departure_mode(
     voyage_date_range_activity: Optional[str] = None,
-):
+) -> bool:
     """
     When the mode is arrival or departure, we do not need a multi-state aggregation
     This is because the arrival and departure doesn't need daily granularity,
@@ -124,7 +125,7 @@ def is_multi_state(api_params: Dict[str, Any]) -> bool:
 
 def chunk_time_series(
     time_min: datetime, time_max: datetime, chunk_size: int = 30
-):
+) -> List[Dict[str, datetime]]:
     """split the date range to smaller chunks"""
     if chunk_size <= 0:
         raise ValueError("chunk_size must be a positive integer")
@@ -176,7 +177,7 @@ def chunk_time_series(
     return chunked_time_series
 
 
-def convert_to_list(a) -> List:
+def convert_to_list(a: str | List[Any] | None) -> List[Any]:
     """Convert wraps element in list if element isn't a list already."""
     if a is None:
         return []
@@ -212,7 +213,7 @@ def filter_empty_values(data: Dict) -> Dict:
     }
 
 
-def sts_param_value(param):
+def sts_param_value(param: bool | None) -> Dict[str, bool]:
     """
     If sts filter is True, apply cross filter.
 
@@ -231,3 +232,12 @@ def sts_param_value(param):
 class PAGINATION_STRATEGIES(Enum):
     OFFSET = "OFFSET"
     SEARCH_AFTER = "SEARCH_AFTER"
+
+
+def showDeprecatedGeoExclusionRulesWarning(
+    disable_geographic_exclusion_rules: Optional[bool], logger: Logger
+) -> None:
+    if disable_geographic_exclusion_rules is not None:
+        logger.warning(
+            "\nYou are using the disable_geographic_exclusion_rules parameter. It was deprecated in March 2024 in favour of the `intra_movements` filter.\nPlease refer to https://docs.vortexa.com/reference/intro-cargo-filters for more information.\n"
+        )

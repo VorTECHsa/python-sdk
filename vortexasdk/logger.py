@@ -9,7 +9,7 @@ FORMATTER = logging.Formatter(
 )
 
 
-def get_logger(logger_name):
+def get_logger(logger_name: str) -> logging.Logger:
     logger = logging.getLogger(logger_name)
     logger.setLevel(LOG_LEVEL)
 
