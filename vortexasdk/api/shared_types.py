@@ -127,6 +127,13 @@ class Tag(BaseModel):
     start_timestamp: Optional[ISODate] = None
     end_timestamp: Optional[ISODate] = None
 
+    def to_json(self):
+        return {
+            "tag": self.tag,
+            "start_timestamp": self.start_timestamp,
+            "end_timestamp": self.end_timestamp,
+        }
+
 
 class Flag(BaseModel):
     """

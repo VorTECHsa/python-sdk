@@ -319,7 +319,9 @@ class VoyagesSearchEnriched(Search):
                 vessel_propulsion_excluded
             ),
             "vessels_excluded": convert_to_list(vessels_excluded),
-            "vessel_tags_excluded": convert_to_list(vessel_tags_excluded),
+            "vessel_tags_excluded": [
+                tag.to_json() for tag in convert_to_list(vessel_tags_excluded)
+            ],
             "vessel_risk_level_excluded": convert_to_list(
                 vessel_risk_level_excluded
             ),
