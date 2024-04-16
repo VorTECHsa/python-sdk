@@ -270,7 +270,7 @@ class VoyagesSearchEnriched(Search):
             "vessel_propulsion": convert_to_list(vessel_propulsion),
             "vessels": convert_to_list(vessels),
             "vessel_tags": [
-                tag.to_json() for tag in convert_to_list(vessel_tags_excluded)
+                dict(tag) for tag in convert_to_list(vessel_tags_excluded)
             ],
             "vessel_risk_level": convert_to_list(vessel_risk_level),
             "vessel_age_min": vessel_age_min,
@@ -322,7 +322,7 @@ class VoyagesSearchEnriched(Search):
             ),
             "vessels_excluded": convert_to_list(vessels_excluded),
             "vessel_tags_excluded": [
-                tag.to_json() for tag in convert_to_list(vessel_tags_excluded)
+                dict(tag) for tag in convert_to_list(vessel_tags_excluded)
             ],
             "vessel_risk_level_excluded": convert_to_list(
                 vessel_risk_level_excluded
