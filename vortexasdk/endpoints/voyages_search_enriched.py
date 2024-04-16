@@ -269,7 +269,9 @@ class VoyagesSearchEnriched(Search):
             "ice_class": convert_to_list(ice_class),
             "vessel_propulsion": convert_to_list(vessel_propulsion),
             "vessels": convert_to_list(vessels),
-            "vessel_tags": convert_to_list(vessel_tags),
+            "vessel_tags": [
+                tag.to_json() for tag in convert_to_list(vessel_tags_excluded)
+            ],
             "vessel_risk_level": convert_to_list(vessel_risk_level),
             "vessel_age_min": vessel_age_min,
             "vessel_age_max": vessel_age_max,
