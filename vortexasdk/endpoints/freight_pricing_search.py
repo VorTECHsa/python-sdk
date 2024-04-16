@@ -30,7 +30,6 @@ class FreightPricingSearch(Search):
         self,
         routes: Union[List[str], str] = None,
         days: List[datetime] = [],
-        offset: int = None,
         order: str = None,
         order_direction: str = None,
     ) -> FreightPricingResult:
@@ -51,8 +50,6 @@ class FreightPricingSearch(Search):
 
             order_direction: Determines the direction of sorting. ‘asc’ for ascending, ‘desc’ for
             descending.
-
-            offset: Used to page results. The offset from which records should be returned.
 
             size: Used to page results. The size of the result set. Between 0 and 500.
 
@@ -84,7 +81,6 @@ class FreightPricingSearch(Search):
         api_params: Dict[str, Any] = {
             "routes": convert_to_list(routes),
             "days": convert_to_list(to_ISODate_Array(days)),
-            "offset": offset,
             "order": order,
             "order_direction": order_direction,
             "size": self._MAX_PAGE_RESULT_SIZE,
