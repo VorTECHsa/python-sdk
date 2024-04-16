@@ -265,7 +265,7 @@
 <p>Freight Pricing Endpoint, use this to search through Vortexa's Baltic Exchange pricing data.</p>
 <h3 id="vortexasdk.endpoints.freight_pricing_search.FreightPricingSearch.search">search</h3>
 
-<pre><code class="language-python">FreightPricingSearch.search(self, routes: Union[List[str], str] = None, days: List[datetime.datetime] = [], offset: int = None, order: str = None, order_direction: str = None) -&gt; vortexasdk.endpoints.freight_pricing_result.FreightPricingResult
+<pre><code class="language-python">FreightPricingSearch.search(self, routes: Union[List[str], str] = None, days: List[datetime.datetime] = [], order: str = None, order_direction: str = None) -&gt; vortexasdk.endpoints.freight_pricing_result.FreightPricingResult
 </code></pre>
 <p>List of pricing information applicable for a specified route on a given day.</p>
 <p><strong>Arguments</strong></p>
@@ -288,9 +288,6 @@
 <li>
 <p><strong>order_direction</strong>: Determines the direction of sorting. ‘asc’ for ascending, ‘desc’ for
     descending.</p>
-</li>
-<li>
-<p><strong>offset</strong>: Used to page results. The offset from which records should be returned.</p>
 </li>
 <li>
 <p><strong>size</strong>: Used to page results. The size of the result set. Between 0 and 500.</p>
