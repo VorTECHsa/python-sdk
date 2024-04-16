@@ -326,9 +326,7 @@ class VoyagesSearchEnriched(Search):
         }
 
         if columns is None:
-            response = super().search_with_client(
-                **api_params
-            )
+            response = super().search_with_client(**api_params)
             return VoyagesSearchEnrichedListResult(
                 records=response["data"], reference=response["reference"]
             )

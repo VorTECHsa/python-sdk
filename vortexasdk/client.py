@@ -119,9 +119,7 @@ class VortexaClient:
     def search(
         self, resource: str, response_type: Optional[str], **data
     ) -> SearchResponse:
-        return self.search_base(
-            resource, response_type, **data
-        )
+        return self.search_base(resource, response_type, **data)
 
     def _create_url(self, path: str) -> str:
         return (
