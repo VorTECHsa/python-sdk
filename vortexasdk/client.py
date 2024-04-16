@@ -1,11 +1,8 @@
 import copy
 import csv
-import functools
 import getpass
 import os
 from json import JSONDecodeError
-from multiprocessing.pool import ThreadPool
-from random import shuffle
 from typing import Dict, List, Optional
 from urllib.parse import urlencode
 import uuid
@@ -24,7 +21,7 @@ from vortexasdk.retry_session import (
     retry_get,
     retry_post,
 )
-from vortexasdk.utils import filter_empty_values, PAGINATION_STRATEGIES
+from vortexasdk.utils import filter_empty_values
 from vortexasdk.version_utils import is_sdk_version_outdated
 from vortexasdk.version import __version__
 from vortexasdk import __name__ as sdk_pkg_name
@@ -66,7 +63,6 @@ class VortexaClient:
         self,
         resource: str,
         response_type: Optional[str],
-        pagination_strategy: Optional[PAGINATION_STRATEGIES] = None,
         **data,
     ) -> SearchResponse:
         """Search using `resource` using `**data` as filter params."""
@@ -81,14 +77,14 @@ class VortexaClient:
         if response_type == "breakdown":
             size = payload.get("breakdown_size", 1000)
             response = _send_post_request(
-                url, payload, size=size, offset=0, headers=headers
+                url, payload, size=size, headers=headers
             )
 
             ref = response.get("reference", {})
             return {"reference": ref, "data": response["data"]}
 
         probe_response = _send_post_request(
-            url, payload, size=1, offset=0, headers=headers
+            url, payload, size=1, headers=headers
         )
         total = self._calculate_total(probe_response)
 
@@ -101,27 +97,12 @@ class VortexaClient:
             # Only one page response, no need to send another request, so return flattened response
             return {"reference": {}, "data": probe_response["data"]}
         else:
-            logger.debug(
-                f"Sending post request with pagination: {pagination_strategy}"
+            responses = self._process_multiple_pages_with_search_after(
+                url=url,
+                payload=payload,
+                data=data,
+                headers=headers,
             )
-            if pagination_strategy == PAGINATION_STRATEGIES.SEARCH_AFTER:
-                # Wait for the response to retrieve new request
-                responses = self._process_multiple_pages_with_search_after(
-                    total=total,
-                    url=url,
-                    payload=payload,
-                    data=data,
-                    headers=headers,
-                )
-            else:
-                # Multiple pages available, create offsets and fetch all responses
-                responses = self._process_multiple_pages(
-                    total=total,
-                    url=url,
-                    payload=payload,
-                    data=data,
-                    headers=headers,
-                )
 
             flattened = self._flatten_response(responses)
 
@@ -138,16 +119,7 @@ class VortexaClient:
     def search(
         self, resource: str, response_type: Optional[str], **data
     ) -> SearchResponse:
-        return self.search_base(
-            resource, response_type, PAGINATION_STRATEGIES.OFFSET, **data
-        )
-
-    def searchWithSearchAfter(
-        self, resource: str, response_type: Optional[str], **data
-    ) -> SearchResponse:
-        return self.search_base(
-            resource, response_type, PAGINATION_STRATEGIES.SEARCH_AFTER, **data
-        )
+        return self.search_base(resource, response_type, **data)
 
     def _create_url(self, path: str) -> str:
         return (
@@ -161,41 +133,13 @@ class VortexaClient:
         else:
             return f"{API_URL}{path}?_sdk=python_v{__version__}&apikey={self.api_key}"
 
-    def _process_multiple_pages(
-        self, total: int, url: str, payload: Dict, data: Dict, headers
-    ) -> List:
-        size = data.get("size", 1000)
-        offsets = list(range(0, total, size))
-        shuffle(offsets)
-
-        with tqdm(
-            total=total, desc="Loading from API", disable=(len(offsets) == 1)
-        ) as pbar:
-            with ThreadPool(self._N_THREADS) as pool:
-                logger.info(
-                    f"{total} Results to retrieve."
-                    f" Sending {len(offsets)}"
-                    f" post requests in parallel using {self._N_THREADS} threads."
-                )
-
-                func = functools.partial(
-                    _send_post_request_data,
-                    url=url,
-                    payload=payload,
-                    size=size,
-                    progress_bar=pbar,
-                    headers=headers,
-                )
-
-                return pool.map(func, offsets)
-
     def _process_multiple_pages_with_search_after(
-        self, total: int, url: str, payload: Dict, data: Dict, headers
+        self, url: str, payload: Dict, data: Dict, headers
     ) -> List:
         responses = []
         size = data.get("size", 500)
 
-        first_response = _send_post_request(url, payload, size, 0, headers)
+        first_response = _send_post_request(url, payload, size, headers)
 
         responses.append(first_response.get("data", []))
         next_request = first_response.get("next_request")
@@ -207,7 +151,7 @@ class VortexaClient:
 
         while next_request:
             dict_response = _send_post_request(
-                url, next_request, size, 0, headers
+                url, next_request, size, headers
             )
             responses.append(dict_response.get("data", []))
             next_request = dict_response.get("next_request")
@@ -236,7 +180,7 @@ class VortexaClient:
 
 
 def _send_post_request_data(
-    offset, url, payload, size, progress_bar: tqdm, headers
+    url, payload, size, progress_bar: tqdm, headers
 ) -> List:
     # noinspection PyBroadException
     try:
@@ -244,24 +188,22 @@ def _send_post_request_data(
     except Exception:
         logger.warn("Could not update progress bar")
 
-    dict_response = _send_post_request(url, payload, size, offset, headers)
+    dict_response = _send_post_request(url, payload, size, headers)
 
     return dict_response.get("data", [])
 
 
-def _send_post_request(url, payload, size, offset, headers) -> Dict:
-    logger.debug(f"Sending post request, offset: {offset}, size: {size}")
+def _send_post_request(url, payload, size, headers) -> Dict:
+    logger.debug(f"Sending post request, size: {size}")
 
-    payload_with_offset = copy.deepcopy(payload)
+    payload_to_modify = copy.deepcopy(payload)
 
-    payload_with_offset["offset"] = offset
-    payload_with_offset["cm_offset"] = offset
-    payload_with_offset["size"] = size
-    payload_with_offset["cm_size"] = size
+    payload_to_modify["size"] = size
+    payload_to_modify["cm_size"] = size
 
-    response = retry_post(url, json=payload_with_offset, headers=headers)
+    response = retry_post(url, json=payload_to_modify, headers=headers)
 
-    return _handle_response(response, headers, payload_with_offset)
+    return _handle_response(response, headers, payload_to_modify)
 
 
 def _handle_response(

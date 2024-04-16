@@ -13,7 +13,6 @@ from vortexasdk.endpoints.endpoints import (
     VESSELS_REFERENCE,
 )
 from vortexasdk.search_response import SearchResponse
-from vortexasdk.utils import PAGINATION_STRATEGIES
 
 
 def _read(example_file) -> List[Dict]:
@@ -55,7 +54,6 @@ class MockVortexaClient:
         self,
         resource: str,
         response_type=None,
-        pagination_strategy: PAGINATION_STRATEGIES = None,
         **data,
     ) -> SearchResponse:
         return {"data": MockVortexaClient._results[resource], "reference": {}}

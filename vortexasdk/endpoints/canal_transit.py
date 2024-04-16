@@ -213,7 +213,7 @@ class CanalTransit(Search):
             "exclude": exclude_params,
         }
 
-        response = super().search_with_client_with_search_after(**api_params)
+        response = super().search_with_client(**api_params)
 
         return CanalTransitResult(
             records=response["data"], reference=response["reference"]

@@ -30,7 +30,6 @@ class VoyagesSearchEnriched(Search):
         self,
         order: str = None,
         order_direction: str = None,
-        offset: int = None,
         unit: str = None,
         columns: Union[str, List[str]] = None,
         time_min: datetime = datetime(2022, 1, 1, 0),
@@ -204,8 +203,6 @@ class VoyagesSearchEnriched(Search):
 
             order_direction: Determines the direction of sorting. ‘asc’ for ascending, ‘desc’ for descending.
 
-            offset: Used to page results. The offset from which records should be returned.
-
             unit: Unit of measurement. Enter `'b'` for barrels or `'t'` for tonnes or `'cbm'` for cubic metres.
 
             columns: Determines what columns are visible in the output. Enter "all" for all columns, or any of:
@@ -289,7 +286,6 @@ class VoyagesSearchEnriched(Search):
             "time_min": to_ISODate(time_min) if time_min else None,
             "order_direction": order_direction,
             "order": order,
-            "offset": offset,
             "size": self._MAX_PAGE_RESULT_SIZE,
             "unit": unit,
             "csv_columns": columns,
@@ -330,14 +326,12 @@ class VoyagesSearchEnriched(Search):
         }
 
         if columns is None:
-            response = super().search_with_client_with_search_after(
-                **api_params
-            )
+            response = super().search_with_client(**api_params)
             return VoyagesSearchEnrichedListResult(
                 records=response["data"], reference=response["reference"]
             )
         else:
-            response = super().search_with_client_with_search_after(
+            response = super().search_with_client(
                 headers=self._CSV_HEADERS, **api_params
             )
             return VoyagesSearchEnrichedFlattenedResult(

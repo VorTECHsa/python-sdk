@@ -68,7 +68,6 @@ class VesselAvailabilitySearch(Search):
         exclude_filter_vessel_ice_class: Union[ID, List[ID]] = None,
         exclude_filter_vessel_tags: Union[List[Tag], Tag] = None,
         exclude_filter_vessel_risk_level: Union[str, List[str]] = None,
-        offset: int = None,
         order: str = None,
         order_direction: str = None,
         size: int = None,
@@ -83,8 +82,6 @@ class VesselAvailabilitySearch(Search):
 
             order_direction: Determines the direction of sorting. ‘asc’ for ascending, ‘desc’ for
             descending.
-
-            offset: Used to page results. The offset from which records should be returned.
 
             size: Used to page results. The size of the result set. Between 0 and 500.
 
@@ -236,7 +233,6 @@ class VesselAvailabilitySearch(Search):
                 filter_vessel_risk_level
             ),
             "exclude": exclude_params,
-            "offset": offset,
             "order": order,
             "order_direction": order_direction,
             "size": size if size is not None else self._MAX_PAGE_RESULT_SIZE,
