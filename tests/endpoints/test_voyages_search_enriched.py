@@ -135,3 +135,96 @@ class TestVoyagesSearchEnrichedEnriched(TestCaseUsingRealAPI):
         )
 
         assert len(res) > 0
+
+    def test_departure_mode_with_first_load(self):
+        start = datetime(2022, 4, 26)
+        end = datetime(2022, 4, 26, 23, 59)
+
+        res = (
+            VoyagesSearchEnriched()
+            .search(
+                time_min=start,
+                time_max=end,
+                origins=rotterdam,
+                voyage_date_range_activity="departures",
+                origin_behaviour="first_load",
+            )
+            .to_list()
+        )
+
+        assert len(res) > 0
+
+    def test_reduced_events_fetching_only_cargo_events(self):
+        start = datetime(2022, 4, 26)
+        end = datetime(2022, 4, 26, 23, 59)
+
+        res = (
+            VoyagesSearchEnriched()
+            .search(
+                time_min=start,
+                time_max=end,
+                origins=rotterdam,
+                voyage_status=["laden"],
+                event_types=["cargo"]
+            )
+            .to_list()
+        )
+
+        invalid_events = [
+            event for event in res[0].events if event is not None and
+            (event.event_type == 'vessel' or event.event_type == 'status')
+        ]
+        
+        assert len(res) > 0
+        assert len(res[0].events) > 0
+        assert len(invalid_events) == 0
+
+    def test_reduced_events_fetching_only_vessel_events(self):
+        start = datetime(2022, 4, 26)
+        end = datetime(2022, 4, 26, 23, 59)
+
+        res = (
+            VoyagesSearchEnriched()
+            .search(
+                time_min=start,
+                time_max=end,
+                origins=rotterdam,
+                voyage_status=["laden"],
+                event_types=["vessel"]
+            )
+            .to_list()
+        )
+
+        invalid_events = [
+            event for event in res[0].events if event is not None and
+            (event.event_type == 'cargo' or event.event_type == 'status')
+        ]
+        
+        assert len(res) > 0
+        assert len(res[0].events) > 0
+        assert len(invalid_events) == 0
+
+    def test_reduced_events_fetching_only_status_events(self):
+        start = datetime(2022, 4, 26)
+        end = datetime(2022, 4, 26, 23, 59)
+
+        res = (
+            VoyagesSearchEnriched()
+            .search(
+                time_min=start,
+                time_max=end,
+                origins=rotterdam,
+                voyage_status=["laden"],
+                event_types=["status"]
+            )
+            .to_list()
+        )
+
+        invalid_events = [
+            event for event in res[0].events if event is not None and
+            (event.event_type == 'cargo' or event.event_type == 'vessel')
+        ]
+        
+        assert len(res) > 0
+        assert len(res[0].events) > 0
+        assert len(invalid_events) == 0

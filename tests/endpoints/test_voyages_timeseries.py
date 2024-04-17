@@ -11,13 +11,50 @@ class TestVoyagesTimeseries(TestCaseUsingRealAPI):
     def test_search_returns_all_days(self):
         start = datetime(2021, 6, 17)
         end = datetime(2021, 6, 21)
+        numbers_of_days_between_start_and_end = 4
 
         df = (
             VoyagesTimeseries()
             .search(time_min=start, time_max=end, origins=rotterdam)
             .to_df()
         )
-        assert len(df) == 5
+        assert len(df) == numbers_of_days_between_start_and_end
+
+    def test_search_arrivals(self):
+        start = datetime(2021, 6, 17)
+        end = datetime(2021, 6, 21)
+        numbers_of_days_between_start_and_end = 4
+
+        df = (
+            VoyagesTimeseries()
+            .search(time_min=start, time_max=end, origins=rotterdam, voyage_date_range_activity="arrivals")
+            .to_df()
+        )
+        assert len(df) >= numbers_of_days_between_start_and_end
+
+    def test_search_departures(self):
+        start = datetime(2021, 6, 17)
+        end = datetime(2021, 6, 21)
+        numbers_of_days_between_start_and_end = 4
+
+        df = (
+            VoyagesTimeseries()
+            .search(time_min=start, time_max=end, origins=rotterdam, voyage_date_range_activity="departures")
+            .to_df()
+        )
+        assert len(df) >= numbers_of_days_between_start_and_end
+
+    def test_search_departures_with_last_discharge_behavuour(self):
+        start = datetime(2021, 6, 17)
+        end = datetime(2021, 6, 21)
+        numbers_of_days_between_start_and_end = 4
+
+        df = (
+            VoyagesTimeseries()
+            .search(time_min=start, time_max=end, origins=rotterdam, voyage_date_range_activity="departures", destination_behaviour="last_discharge")
+            .to_df()
+        )
+        assert len(df) >= numbers_of_days_between_start_and_end
 
     def test_from_description(self):
         start = datetime(2022, 4, 26)

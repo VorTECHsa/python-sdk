@@ -87,8 +87,6 @@ class VoyagesCongestionBreakdown(Search):
         voyage_date_range_activity: str = None,
         origin_behaviour: str = None,
         destination_behaviour: str = None,
-        event_types: Union[str, List[str]] = None,
-        event_types_excluded: Union[str, List[str]] = None,
     ) -> CongestionBreakdownResult:
         """
 
@@ -222,10 +220,6 @@ class VoyagesCongestionBreakdown(Search):
 
             destination_behaviour: The destination behaviour into how the voyage_date_range_activity should consider in arrival mode, it could be `last_discharge` or `any_discharge`.
 
-            event_types: A list of event types that should be included when filtering voyages, it could be `vessel`, `cargo` or `status`.
-
-            event_types_excluded: A list of event types that should be excluded when filtering voyages, it could be `vessel`, `cargo` or `status`.
-
         # Returns
         `CongestionBreakdownResult`
 
@@ -329,8 +323,6 @@ class VoyagesCongestionBreakdown(Search):
             "voyage_date_range_activity": voyage_date_range_activity,
             "origin_behaviour": origin_behaviour,
             "destination_behaviour": destination_behaviour,
-            "event_types": convert_to_list(event_types),
-            "event_types_excluded": convert_to_list(event_types_excluded),
             "intra_movements": intra_movements,
         }
 
