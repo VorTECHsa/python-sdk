@@ -114,6 +114,11 @@ class VoyagesGeographyBreakdown(Search):
         time_charterer: Union[ID, List[ID]] = None,
         time_charterer_excluded: Union[ID, List[ID]] = None,
         intra_movements: str = None,
+        voyage_date_range_activity: str = None,
+        origin_behaviour: str = None,
+        destination_behaviour: str = None,
+        event_types: Union[str, List[str]] = None,
+        event_types_excluded: Union[str, List[str]] = None,
     ) -> VoyagesBreakdownResult:
         """
 
@@ -251,6 +256,16 @@ class VoyagesGeographyBreakdown(Search):
 
             intra_movements: Filter movements based on whether the vessel started and ended in the same country, or geographical layer.
 
+            voyage_date_range_activity: Filter to determinate the mode into how the voyages should be counted,`active`, `departures` or `arrivals`.
+
+            origin_behaviour: The origin behaviour into how the voyage_date_range_activity should consider in departure mode, it could be `first_load` or `any_load`.
+
+            destination_behaviour: The destination behaviour into how the voyage_date_range_activity should consider in arrival mode, it could be `last_discharge` or `any_discharge`.
+
+            event_types: A list of event types that should be included when filtering voyages, it could be `vessel`, `cargo` or `status`.
+
+            event_types_excluded: A list of event types that should be excluded when filtering voyages, it could be `vessel`, `cargo` or `status`.
+
         # Returns
         `BreakdownResult`
 
@@ -371,6 +386,12 @@ class VoyagesGeographyBreakdown(Search):
             "vessel_risk_level_excluded": convert_to_list(
                 vessel_risk_level_excluded
             ),
+            "voyage_date_range_activity": voyage_date_range_activity,
+            "origin_behaviour": origin_behaviour,
+            "destination_behaviour": destination_behaviour,
+            "event_types": convert_to_list(event_types),
+            "event_types_excluded": convert_to_list(event_types_excluded),
+            "intra_movements": intra_movements,
         }
 
         response = super().search_with_client(**api_params)
