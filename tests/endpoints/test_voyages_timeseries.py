@@ -27,7 +27,12 @@ class TestVoyagesTimeseries(TestCaseUsingRealAPI):
 
         df = (
             VoyagesTimeseries()
-            .search(time_min=start, time_max=end, origins=rotterdam, voyage_date_range_activity="arrivals")
+            .search(
+                time_min=start,
+                time_max=end,
+                origins=rotterdam,
+                voyage_date_range_activity="arrivals",
+            )
             .to_df()
         )
         assert len(df) >= numbers_of_days_between_start_and_end
@@ -39,7 +44,12 @@ class TestVoyagesTimeseries(TestCaseUsingRealAPI):
 
         df = (
             VoyagesTimeseries()
-            .search(time_min=start, time_max=end, origins=rotterdam, voyage_date_range_activity="departures")
+            .search(
+                time_min=start,
+                time_max=end,
+                origins=rotterdam,
+                voyage_date_range_activity="departures",
+            )
             .to_df()
         )
         assert len(df) >= numbers_of_days_between_start_and_end
@@ -51,7 +61,13 @@ class TestVoyagesTimeseries(TestCaseUsingRealAPI):
 
         df = (
             VoyagesTimeseries()
-            .search(time_min=start, time_max=end, origins=rotterdam, voyage_date_range_activity="departures", destination_behaviour="last_discharge")
+            .search(
+                time_min=start,
+                time_max=end,
+                origins=rotterdam,
+                voyage_date_range_activity="departures",
+                destination_behaviour="last_discharge",
+            )
             .to_df()
         )
         assert len(df) >= numbers_of_days_between_start_and_end
