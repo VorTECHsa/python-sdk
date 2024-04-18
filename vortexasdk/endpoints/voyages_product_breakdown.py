@@ -23,6 +23,8 @@ from vortexasdk.api.voyages import (
 )
 
 # noinspection PyUnresolvedReferences
+
+
 class VoyagesProductBreakdown(Search):
     """
     VoyagesProductBreakdown class has an optional _second_breakdown_ property.

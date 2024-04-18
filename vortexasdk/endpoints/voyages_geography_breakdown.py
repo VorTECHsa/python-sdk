@@ -23,6 +23,7 @@ from vortexasdk.api.voyages import (
     DestinationBehaviour,
 )
 
+
 # noinspection PyUnresolvedReferences
 class VoyagesGeographyBreakdown(Search):
     """
