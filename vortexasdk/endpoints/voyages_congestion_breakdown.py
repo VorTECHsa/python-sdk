@@ -14,7 +14,12 @@ from vortexasdk.endpoints.voyages_congestion_breakdown_result import (
 )
 from vortexasdk.operations import Search
 from vortexasdk.utils import convert_to_list
-from vortexasdk.api.voyages import VoyageDateRangeActivity
+from vortexasdk.api.voyages import (
+    VoyageDateRangeActivity,
+    OriginBehaviour,
+    DestinationBehaviour,
+)
+
 
 class VoyagesCongestionBreakdown(Search):
     """
@@ -85,8 +90,8 @@ class VoyagesCongestionBreakdown(Search):
         has_charterer: str = None,
         intra_movements: str = None,
         voyage_date_range_activity: VoyageDateRangeActivity = None,
-        origin_behaviour: str = None,
-        destination_behaviour: str = None,
+        origin_behaviour: OriginBehaviour = None,
+        destination_behaviour: DestinationBehaviour = None,
     ) -> CongestionBreakdownResult:
         """
 

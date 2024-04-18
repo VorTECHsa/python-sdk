@@ -15,6 +15,11 @@ from vortexasdk.endpoints.endpoints import VOYAGES_TOP_HITS
 
 from vortexasdk.operations import Search
 from vortexasdk.utils import convert_to_list
+from vortexasdk.api.voyages import (
+    VoyageDateRangeActivity,
+    OriginBehaviour,
+    DestinationBehaviour,
+)
 
 
 class VoyagesTopHits(Search):
@@ -87,8 +92,8 @@ class VoyagesTopHits(Search):
         has_charterer: str = None,
         intra_movements: str = None,
         voyage_date_range_activity: VoyageDateRangeActivity = None,
-        origin_behaviour: str = None,
-        destination_behaviour: str = None,
+        origin_behaviour: OriginBehaviour = None,
+        destination_behaviour: DestinationBehaviour = None,
     ) -> AggregationBreakdownResult:
         """
 

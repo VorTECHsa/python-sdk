@@ -16,6 +16,11 @@ from vortexasdk.endpoints.voyages_search_enriched_result import (
 
 from vortexasdk.operations import Search
 from vortexasdk.utils import convert_to_list
+from vortexasdk.api.voyages import (
+    VoyageDateRangeActivity,
+    OriginBehaviour,
+    DestinationBehaviour,
+)
 
 
 class VoyagesSearchEnriched(Search):
@@ -86,8 +91,8 @@ class VoyagesSearchEnriched(Search):
         has_charterer: str = None,
         intra_movements: str = None,
         voyage_date_range_activity: VoyageDateRangeActivity = None,
-        origin_behaviour: str = None,
-        destination_behaviour: str = None,
+        origin_behaviour: OriginBehaviour = None,
+        destination_behaviour: DestinationBehaviour = None,
         event_types: Union[str, List[str]] = None,
         event_types_excluded: Union[str, List[str]] = None,
     ) -> Union[

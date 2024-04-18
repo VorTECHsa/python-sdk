@@ -17,6 +17,11 @@ from vortexasdk.endpoints.voyages_breakdown_result import (
 from vortexasdk.operations import Search
 from vortexasdk.utils import convert_to_list
 
+from vortexasdk.api.voyages import (
+    VoyageDateRangeActivity,
+    OriginBehaviour,
+    DestinationBehaviour,
+)
 
 # noinspection PyUnresolvedReferences
 class VoyagesGeographyBreakdown(Search):
@@ -115,8 +120,8 @@ class VoyagesGeographyBreakdown(Search):
         time_charterer_excluded: Union[ID, List[ID]] = None,
         intra_movements: str = None,
         voyage_date_range_activity: VoyageDateRangeActivity = None,
-        origin_behaviour: str = None,
-        destination_behaviour: str = None,
+        origin_behaviour: OriginBehaviour = None,
+        destination_behaviour: DestinationBehaviour = None,
     ) -> VoyagesBreakdownResult:
         """
 

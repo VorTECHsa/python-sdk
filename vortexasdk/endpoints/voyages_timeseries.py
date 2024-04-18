@@ -13,6 +13,12 @@ from vortexasdk.endpoints.timeseries_result import TimeSeriesResult
 from vortexasdk.operations import Search
 from vortexasdk.utils import convert_to_list
 from vortexasdk.api.voyages import VoyageDateRangeActivity
+from vortexasdk.api.voyages import (
+    VoyageDateRangeActivity,
+    OriginBehaviour,
+    DestinationBehaviour,
+)
+
 
 class VoyagesTimeseries(Search):
     """
@@ -85,8 +91,8 @@ class VoyagesTimeseries(Search):
         has_charterer: str = None,
         intra_movements: str = None,
         voyage_date_range_activity: VoyageDateRangeActivity = None,
-        origin_behaviour: str = None,
-        destination_behaviour: str = None,
+        origin_behaviour: OriginBehaviour = None,
+        destination_behaviour: DestinationBehaviour = None,
     ) -> TimeSeriesResult:
         """
 
