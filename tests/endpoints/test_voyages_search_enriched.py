@@ -2,6 +2,7 @@ from datetime import datetime
 
 from tests.testcases import TestCaseUsingRealAPI
 from vortexasdk import VoyagesSearchEnriched
+from vortexasdk.api.voyages import VoyageDateRangeActivity
 
 rotterdam = "68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e"
 
@@ -146,7 +147,7 @@ class TestVoyagesSearchEnrichedEnriched(TestCaseUsingRealAPI):
                 time_min=start,
                 time_max=end,
                 origins=rotterdam,
-                voyage_date_range_activity="departures",
+                voyage_date_range_activity=VoyageDateRangeActivity.DEPARTURES.value,
                 origin_behaviour="first_load",
             )
             .to_list()

@@ -2,7 +2,7 @@ from pydantic import BaseModel
 from typing import List, Optional, Union
 from typing_extensions import Literal
 from vortexasdk.api.id import ID
-
+from enum import Enum
 
 from vortexasdk.api.shared_types import (
     EntityWithListLayer,
@@ -195,3 +195,8 @@ class VoyageEnrichedItem(BaseModel):
     ] = None
     latest_product_details: Optional[List[List[EntityWithSingleLayer]]] = None
     voyage_status: str
+
+class VoyageDateRangeActivity(Enum):
+    ACTIVE = "active"
+    DEPARTURES = "departures"
+    ARRIVALS = "arrivals"

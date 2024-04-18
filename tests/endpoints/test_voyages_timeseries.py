@@ -3,6 +3,7 @@ from vortexasdk import VoyagesTimeseries
 
 from tests.testcases import TestCaseUsingRealAPI
 from vortexasdk.endpoints.geographies import Geographies
+from vortexasdk.api.voyages import VoyageDateRangeActivity
 
 rotterdam = "68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e"
 
@@ -31,7 +32,7 @@ class TestVoyagesTimeseries(TestCaseUsingRealAPI):
                 time_min=start,
                 time_max=end,
                 origins=rotterdam,
-                voyage_date_range_activity="arrivals",
+                voyage_date_range_activity=VoyageDateRangeActivity.ARRIVALS.value,
             )
             .to_df()
         )
@@ -48,13 +49,13 @@ class TestVoyagesTimeseries(TestCaseUsingRealAPI):
                 time_min=start,
                 time_max=end,
                 origins=rotterdam,
-                voyage_date_range_activity="departures",
+                voyage_date_range_activity=VoyageDateRangeActivity.DEPARTURES.value,
             )
             .to_df()
         )
         assert len(df) >= numbers_of_days_between_start_and_end
 
-    def test_search_departures_with_last_discharge_behavuour(self):
+    def test_search_departures_with_last_discharge_behaviour(self):
         start = datetime(2021, 6, 17)
         end = datetime(2021, 6, 21)
         numbers_of_days_between_start_and_end = 4
@@ -65,7 +66,7 @@ class TestVoyagesTimeseries(TestCaseUsingRealAPI):
                 time_min=start,
                 time_max=end,
                 origins=rotterdam,
-                voyage_date_range_activity="departures",
+                voyage_date_range_activity=VoyageDateRangeActivity.DEPARTURES.value,
                 destination_behaviour="last_discharge",
             )
             .to_df()

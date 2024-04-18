@@ -12,7 +12,7 @@ from vortexasdk.endpoints.endpoints import VOYAGES_TIMESERIES
 from vortexasdk.endpoints.timeseries_result import TimeSeriesResult
 from vortexasdk.operations import Search
 from vortexasdk.utils import convert_to_list
-
+from vortexasdk.api.voyages import VoyageDateRangeActivity
 
 class VoyagesTimeseries(Search):
     """
@@ -84,7 +84,7 @@ class VoyagesTimeseries(Search):
         has_ship_to_ship: str = None,
         has_charterer: str = None,
         intra_movements: str = None,
-        voyage_date_range_activity: str = None,
+        voyage_date_range_activity: VoyageDateRangeActivity = None,
         origin_behaviour: str = None,
         destination_behaviour: str = None,
     ) -> TimeSeriesResult:
@@ -217,11 +217,11 @@ class VoyagesTimeseries(Search):
 
             intra_movements: Filter movements based on whether the vessel started and ended in the same country, or geographical layer.
 
-            voyage_date_range_activity: Filter to determinate the mode into how the voyages should be counted,`active`, `departures` or `arrivals`.
+            voyage_date_range_activity: Filter to determine how the voyages should be counted. Must be one of [`active`, `departures`, `arrivals`]
 
-            origin_behaviour: The origin behaviour into how the voyage_date_range_activity should consider in departure mode, it could be `first_load` or `any_load`.
+            origin_behaviour: The origin behaviour determines which departure mode the `voyage_date_range_activity` should count, must be one of  [`first_load`, `any_load`].
 
-            destination_behaviour: The destination behaviour into how the voyage_date_range_activity should consider in arrival mode, it could be `last_discharge` or `any_discharge`.
+            destination_behaviour: The destination behaviour determines which arrival mode the voyage_date_range_activity should count, must be one of [last_discharge, any_discharge].
 
         # Returns
         `BreakdownResult`
