@@ -4,7 +4,7 @@ from unittest import TestCase
 
 
 class TestMissingKeys(TestCase):
-    def test_missing_cargo_movement_keys(self):
+    def test_missing_cargo_movement_keys(self) -> None:
         dictionary = {
             "cargo_movement_id": "1234abc",
             "quantity": 100,

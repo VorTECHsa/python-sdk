@@ -5,7 +5,7 @@ from vortexasdk.api.product import ProductEntityWithSingleLayer
 
 
 class TestProductEntity(TestCase):
-    def test_serialize(self):
+    def test_serialize(self) -> None:
         with open("tests/api/examples/product_entity1.json", "r") as f:
             serialized = json.load(f)
             deserialized = ProductEntityWithSingleLayer.parse_obj(serialized)
@@ -20,7 +20,7 @@ class TestProductEntity(TestCase):
 
             assert expected == deserialized
 
-    def test_instantiate_from_dict(self):
+    def test_instantiate_from_dict(self) -> None:
         dictionary = {
             "id": "b68cbb746f8b9098c50e2ba36bcad83001a53bd362e9031fb49085d02c36659c",
             "layer": "group",

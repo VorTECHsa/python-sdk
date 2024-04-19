@@ -1,10 +1,10 @@
 from tests.testcases import TestCaseUsingMockAPI
-from vortexasdk.api import Product
+from vortexasdk.api.product import Product
 from vortexasdk.endpoints.products import Products
 
 
 class TestProducts(TestCaseUsingMockAPI):
-    def test_serialize(self):
+    def test_serialize(self) -> None:
         crude_dict = {
             "id": "6f11b0724c9a4e85ffa7f1445bc768f054af755a090118dcf99f14745c261653",
             "name": "Crude",
@@ -24,7 +24,7 @@ class TestProducts(TestCaseUsingMockAPI):
 
         Product.parse_obj(crude_dict)
 
-    def test_serialize_with_missing_fields(self):
+    def test_serialize_with_missing_fields(self) -> None:
         crude_dict = {
             "id": "abc123",
             "name": "Crude",
@@ -36,9 +36,9 @@ class TestProducts(TestCaseUsingMockAPI):
 
         Product.parse_obj(crude_dict)
 
-    def test_search_ids_retreives_names(self):
+    def test_search_ids_retreives_names(self) -> None:
         products = Products().search().to_df()
         assert len(products) > 0
 
-    def test_to_list(self):
+    def test_to_list(self) -> None:
         Products().search().to_list()

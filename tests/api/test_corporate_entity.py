@@ -6,7 +6,7 @@ from vortexasdk.api.corporation import CorporateEntity
 
 
 class TestCorporateEntity(TestCase):
-    def test_serialize(self):
+    def test_serialize(self) -> None:
         with open("tests/api/examples/corporate_entity1.json", "r") as f:
             serialized = json.load(f)
             deserialized = CorporateEntity.parse_obj(serialized)
