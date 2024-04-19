@@ -3,7 +3,7 @@ import csv
 import getpass
 import os
 from json import JSONDecodeError
-from typing import Dict, List, Optional
+from typing import Any, Dict, List, Optional
 from urllib.parse import urlencode
 import uuid
 
@@ -60,10 +60,10 @@ class VortexaClient:
         return _handle_response(response)["data"]
 
     def search_base(
-        self,
+        self: "VortexaClient",
         resource: str,
         response_type: Optional[str],
-        **data,
+        **data: Any,
     ) -> SearchResponse:
         """Search using `resource` using `**data` as filter params."""
         url = self._create_url(resource)
@@ -117,7 +117,7 @@ class VortexaClient:
             return {"reference": {}, "data": flattened}
 
     def search(
-        self, resource: str, response_type: Optional[str], **data
+        self, resource: str, response_type: Optional[str], **data: Any
     ) -> SearchResponse:
         return self.search_base(resource, response_type, **data)
 
@@ -134,7 +134,7 @@ class VortexaClient:
             return f"{API_URL}{path}?_sdk=python_v{__version__}&apikey={self.api_key}"
 
     def _process_multiple_pages_with_search_after(
-        self, url: str, payload: Dict, data: Dict, headers
+        self, url: str, payload: Dict, data: Dict, headers: dict
     ) -> List:
         responses = []
         size = data.get("size", 500)
