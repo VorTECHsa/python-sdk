@@ -22,16 +22,16 @@ class CongestionBreakdownItem(BaseModel):
 
     """
 
-    avg_waiting_time: Optional[int] = None
+    avg_waiting_time: Optional[float] = None
     vessel_dwt: Optional[int] = None
     vessel_cubic_capacity: Optional[int] = None
     vessel_count: Optional[int] = None
     cargo_quantity: Optional[int] = None
-    avg_waiting_time_laden: Optional[int] = None
+    avg_waiting_time_laden: Optional[float] = None
     vessel_dwt_laden: Optional[int] = None
     vessel_cubic_capacity_laden: Optional[int] = None
     vessel_count_laden: Optional[int] = None
-    avg_waiting_time_ballast: Optional[int] = None
+    avg_waiting_time_ballast: Optional[float] = None
     vessel_dwt_ballast: Optional[int] = None
     vessel_cubic_capacity_ballast: Optional[int] = None
     vessel_count_ballast: Optional[int] = None
