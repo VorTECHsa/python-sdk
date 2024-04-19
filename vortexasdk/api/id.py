@@ -4,7 +4,7 @@ from typing import List, Tuple
 ID = str
 
 
-def is_valid_id(potential_id) -> bool:
+def is_valid_id(potential_id: str) -> bool:
     """Check if argument is valid SHA256 hash."""
     return (
         isinstance(potential_id, str)

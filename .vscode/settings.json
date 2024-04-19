@@ -1,16 +1,35 @@
 {
-  "python.linting.mypyEnabled": true,
-  "python.linting.enabled": true,
   "python.testing.unittestEnabled": false,
   "python.testing.pytestEnabled": true,
   "[python]": {
     "editor.defaultFormatter": "ms-python.black-formatter"
   },
+  "mypy-type-checker.args": ["--strict"],
+  "mypy-type-checker.cwd": "${workspaceFolder}",
   "cSpell.words": [
     "dataframe",
     "mmsi",
     "panamax",
     "timeseries",
-    "vortexasdk"
+    "vortexasdk",
+    "vortechsa",
+    "venv",
+    "VORTEXA",
+    "pytest",
+    "nbconvert",
+    "inplace",
+    "ipynb",
+    "pypi",
+    "Pydocmd",
+    "timespan",
+    "statsmodels",
+    "tqdm",
+    "pydantic",
+    "openpyxl",
+    "xlrd",
+    "mkdocs",
+    "dateutil",
+    "esbenp",
+    "levelname"
   ]
 }
