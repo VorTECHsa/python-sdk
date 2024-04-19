@@ -22,7 +22,7 @@ class TestProducts(TestCaseUsingMockAPI):
             ],
         }
 
-        Product.parse_obj(crude_dict)
+        Product.model_validate(crude_dict)
 
     def test_serialize_with_missing_fields(self) -> None:
         crude_dict = {
@@ -34,9 +34,9 @@ class TestProducts(TestCaseUsingMockAPI):
             "ref_type": "product",
         }
 
-        Product.parse_obj(crude_dict)
+        Product.model_validate(crude_dict)
 
-    def test_search_ids_retreives_names(self) -> None:
+    def test_search_ids_retrieves_names(self) -> None:
         products = Products().search().to_df()
         assert len(products) > 0
 
