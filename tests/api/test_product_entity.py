@@ -8,7 +8,9 @@ class TestProductEntity(TestCase):
     def test_serialize(self) -> None:
         with open("tests/api/examples/product_entity1.json", "r") as f:
             serialized = json.load(f)
-            deserialized = ProductEntityWithSingleLayer.parse_obj(serialized)
+            deserialized = ProductEntityWithSingleLayer.model_validate(
+                serialized
+            )
 
             expected = ProductEntityWithSingleLayer(
                 id="6f11b0724c9a4e85ffa7f1445bc768f054af755a090118dcf99f14745c261653",
@@ -29,6 +31,6 @@ class TestProductEntity(TestCase):
             "label": "Clean products",
         }
 
-        p = ProductEntityWithSingleLayer.parse_obj(dictionary)
+        p = ProductEntityWithSingleLayer.model_validate(dictionary)
 
         assert p.source == "model"
