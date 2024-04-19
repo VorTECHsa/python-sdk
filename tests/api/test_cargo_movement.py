@@ -99,14 +99,14 @@ class TestCargoMovement(TestCase):
 
     cm = CargoMovement.parse_obj(dictionary)
 
-    def test_serialize(self):
+    def test_serialize(self) -> None:
         with open("tests/api/examples/cargo_movements.json", "r") as f:
             serialized = json.load(f)[0]
             deserialized = CargoMovement.parse_obj(serialized)
 
             assert self.cm == deserialized
 
-    def test_convert_to_flat_dict(self):
+    def test_convert_to_flat_dict(self) -> None:
         flat = convert_cargo_movement_to_flat_dict(self.cm.dict())
 
         expected = {

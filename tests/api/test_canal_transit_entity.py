@@ -6,7 +6,7 @@ from vortexasdk.api.canal_transit import CanalTransitRecord
 
 
 class TestCanalTransitEntity(TestCase):
-    def test_serialize(self):
+    def test_serialize(self) -> None:
         with open("tests/api/examples/canal_transit_entity.json", "r") as f:
             serialized = json.load(f)
             deserialized = CanalTransitRecord.parse_obj(serialized)

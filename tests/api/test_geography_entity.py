@@ -5,7 +5,7 @@ from vortexasdk.api.geography import GeographyEntity
 
 
 class TestGeographyEntity(TestCase):
-    def test_serialize(self):
+    def test_serialize(self) -> None:
         with open("tests/api/examples/geography_entity1.json", "r") as f:
             serialized = json.load(f)
             deserialized = GeographyEntity.parse_obj(serialized)
