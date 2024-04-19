@@ -8,7 +8,7 @@ from vortexasdk.api.shared_types import (
     ISODate,
     VesselClassEntry,
 )
-from vortexasdk.api.id import ID
+from vortexasdk.api import ID
 
 
 class CargoEntity(BaseModel):

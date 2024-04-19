@@ -5,7 +5,7 @@ from typing_extensions import Literal
 import pandas as pd
 from typing import Dict, List, Optional
 from pydantic import BaseModel
-from vortexasdk.api.id import ID
+from vortexasdk.api import ID
 
 from vortexasdk.api.entity_flattening import convert_to_flat_dict
 from vortexasdk.api.search_result import Result

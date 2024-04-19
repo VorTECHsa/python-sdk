@@ -11,6 +11,7 @@ from vortexasdk.api import ID
 from vortexasdk.api.shared_types import (
     DestinationBehaviour,
     OriginBehaviour,
+    Tag,
     VoyageDateRangeActivity,
     to_ISODate,
 )

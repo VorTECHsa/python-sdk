@@ -13,7 +13,7 @@ from requests import Response
 from tqdm import tqdm
 
 from vortexasdk.search_response import SearchResponse
-from vortexasdk.api.id import ID
+from vortexasdk.api import ID
 from vortexasdk.endpoints.endpoints import API_URL
 from vortexasdk.logger import get_logger
 from vortexasdk.retry_session import (

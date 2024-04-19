@@ -4,7 +4,7 @@ from typing import Optional
 from vortexasdk.api.asset_tank import AssetTank
 
 from vortexasdk.api.shared_types import ISODate
-from vortexasdk.api.id import ID
+from vortexasdk.api import ID
 
 
 class OnshoreInventory(BaseModel):

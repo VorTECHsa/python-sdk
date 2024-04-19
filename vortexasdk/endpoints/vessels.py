@@ -6,7 +6,7 @@ Try me out in your browser:
 
 from typing import Any, Dict, List, Union
 
-from vortexasdk.api.id import ID
+from vortexasdk.api import ID
 from vortexasdk.endpoints.endpoints import VESSELS_REFERENCE
 from vortexasdk.endpoints.vessels_result import VesselsResult
 from vortexasdk.operations import Reference, Search

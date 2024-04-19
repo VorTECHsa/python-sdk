@@ -1,5 +1,5 @@
 from typing import Any, Dict
-from vortexasdk.api.id import ID
+from vortexasdk.api import ID
 from vortexasdk.client import default_client
 from vortexasdk.exceptions import InvalidAPIDataResponseException
 from vortexasdk.logger import get_logger
