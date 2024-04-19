@@ -1,4 +1,4 @@
-from typing import Dict, List, Union
+from typing import Any, Dict, List, Optional
 from datetime import datetime, timedelta
 from logging import Logger
 
@@ -107,11 +107,6 @@ def sts_param_value(param: bool | None) -> Dict[str, bool]:
         return {"exclude": True, "x_filter": False}
     else:
         return {"exclude": False, "x_filter": False}
-
-
-class PAGINATION_STRATEGIES(Enum):
-    OFFSET = "OFFSET"
-    SEARCH_AFTER = "SEARCH_AFTER"
 
 
 def showDeprecatedGeoExclusionRulesWarning(
