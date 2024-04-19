@@ -37,7 +37,7 @@ setuptools.setup(
             "flake8==3.7.9",
             "black==22.8.0",
             "mkdocs==1.2.4",
-            "mypy==0.971",
+            "mypy==1.9.0",
             "pre-commit==1.20.0",
             "pytest==5.2.4",
             "pydoc-markdown==2.0.5",
@@ -52,12 +52,12 @@ setuptools.setup(
             "types-python-dateutil==2.8.19",
             "types-six==1.16.19",
             "jupyter==1.0.0",
-            "statsmodels==0.13.2",
+            "statsmodels==0.13.5",
             "matplotlib>=3.5.3"
         ],
         "binder": [
             "jupyter==1.0.0",
-            "statsmodels==0.13.2",
+            "statsmodels==0.13.5",
             "matplotlib>=3.5.3"
         ],
         "deploy": ["wheel==0.37.1", "twine==4.0.1"],
