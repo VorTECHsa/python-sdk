@@ -64,7 +64,7 @@ class VoyagesBreakdownResult(Result):
 
     def to_df(
         self,
-        columns: List[str] | Literal["all"] = "all",
+        columns: List[str] | Literal["all"] | None = "all",
     ) -> pd.DataFrame:
         """
         Converts the breakdown data into a pandas DataFrame.

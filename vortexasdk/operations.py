@@ -1,4 +1,4 @@
-from typing import Dict
+from typing import Any, Dict
 from vortexasdk.api.id import ID
 from vortexasdk.client import default_client
 from vortexasdk.exceptions import InvalidAPIDataResponseException
@@ -22,7 +22,7 @@ class Reference:
         """
         self._resource = resource
 
-    def reference(self, id: ID) -> Dict:
+    def reference(self, id: ID) -> Dict[str, Any]:
         """
         Lookup reference data using ID.
 
@@ -71,8 +71,8 @@ class Search:
         self: "Search",
         exact_term_match: bool | None = None,
         response_type: str | None = None,
-        headers: dict | None = None,
-        **api_params: Dict,
+        headers: Dict[str, Any] | None = None,
+        **api_params: Any,
     ) -> SearchResponse:
         """
         Search Reference data filtering on `params`.
@@ -108,7 +108,7 @@ class Search:
             term = api_params.get("term", "")
             data = api_result.get("data", [])
             return {
-                "reference": api_result.get("reference"),
+                "reference": api_result.get("reference", {}),
                 "data": filter_exact_match(term, data),
             }
         else:
@@ -118,8 +118,8 @@ class Search:
         self: "Search",
         exact_term_match: bool | None = None,
         response_type: str | None = None,
-        headers: dict | None = None,
-        **api_params: Dict,
+        headers: Dict[str, Any] | None = None,
+        **api_params: Dict[str, Any],
     ) -> SearchResponse:
         return self.search_with_client_base(
             exact_term_match,

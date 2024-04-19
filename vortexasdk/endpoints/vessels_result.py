@@ -23,7 +23,7 @@ class VesselsResult(Result):
 
     def to_df(
         self,
-        columns: List[str] | Literal["all"] = DEFAULT_COLUMNS,
+        columns: List[str] | Literal["all"] | None = DEFAULT_COLUMNS,
     ) -> pd.DataFrame:
         """
         Represent vessels as a `pd.DataFrame`.

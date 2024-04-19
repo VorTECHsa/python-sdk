@@ -3,7 +3,7 @@ from typing_extensions import Literal
 
 import pandas as pd
 
-from vortexasdk.api import AssetTank
+from vortexasdk.api.asset_tank import AssetTank
 from vortexasdk.api.search_result import Result
 from vortexasdk.logger import get_logger
 from vortexasdk.result_conversions import create_dataframe, create_list
@@ -32,7 +32,7 @@ class AssetTankResult(Result):
 
     def to_df(
         self: "AssetTankResult",
-        columns: List[str] | Literal["all"] = DEFAULT_COLUMNS,
+        columns: List[str] | Literal["all"] | None = DEFAULT_COLUMNS,
     ) -> pd.DataFrame:
         """
         Represent asset tanks as a `pd.DataFrame`.

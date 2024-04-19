@@ -52,7 +52,7 @@ class CanalTransitResult(Result):
 
     def to_df(
         self: "CanalTransitResult",
-        columns: List[str] | Literal["all"] = DEFAULT_COLUMNS,
+        columns: List[str] | Literal["all"] | None = DEFAULT_COLUMNS,
     ) -> pd.DataFrame:
         """
         Represent canal transit record as a `pd.DataFrame`.

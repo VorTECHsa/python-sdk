@@ -73,7 +73,7 @@ def convert_values_to_list(data: Dict) -> Dict:
 
 
 def filter_exact_match(
-    allowed_name: Union[str, List[str]], search_result: List[Dict]
+    allowed_name: str | List[str], search_result: List[Dict]
 ) -> List[Dict]:
     """
     Filter search results on items with exact matching names.

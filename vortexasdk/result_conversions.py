@@ -1,6 +1,7 @@
-from typing import List, Union
+from typing import Any, Dict, List, Type, TypeVar, Union
 
 import pandas as pd
+from pydantic import BaseModel
 from typing_extensions import Literal
 
 from vortexasdk.logger import get_logger
@@ -8,11 +9,16 @@ from vortexasdk.logger import get_logger
 logger = get_logger(__name__)
 
 
-def create_list(list_of_dicts, output_class) -> List:
+T = TypeVar("T", bound=BaseModel)
+
+
+def create_list(
+    list_of_dicts: List[Dict[str, Any]], output_class: Type[T]
+) -> List[T]:
     """Convert each list element into an instance of the output class."""
     logger.debug(f"Converting list of dictionaries to list of {output_class}")
 
-    return [output_class.parse_obj(d) for d in list_of_dicts]
+    return [output_class.model_validate(d) for d in list_of_dicts]
 
 
 def format_datatypes(df: pd.DataFrame) -> pd.DataFrame:
@@ -26,8 +32,8 @@ def format_datatypes(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def create_dataframe(
-    columns: Union[Literal["all"], List[str]],
-    data: List[dict],
+    columns: Union[Literal["all"], List[str]] | None,
+    data: List[Dict[str, Any]],
     logger_description: str,
 ) -> pd.DataFrame:
     """

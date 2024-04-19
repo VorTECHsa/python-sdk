@@ -31,8 +31,8 @@ class FreightPricingSearch(Search):
         self,
         routes: Union[List[str], str] | None = None,
         days: List[datetime] = [],
-        order: str = None,
-        order_direction: str = None,
+        order: str | None = None,
+        order_direction: str | None = None,
     ) -> FreightPricingResult:
         """
         List of pricing information applicable for a specified route on a given day.
