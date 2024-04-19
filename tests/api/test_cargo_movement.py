@@ -97,12 +97,12 @@ class TestCargoMovement(TestCase):
         ],
     }
 
-    cm = CargoMovement.parse_obj(dictionary)
+    cm = CargoMovement.model_validate_json(dictionary)
 
     def test_serialize(self) -> None:
         with open("tests/api/examples/cargo_movements.json", "r") as f:
             serialized = json.load(f)[0]
-            deserialized = CargoMovement.parse_obj(serialized)
+            deserialized = CargoMovement.model_validate_json(serialized)
 
             assert self.cm == deserialized
 

@@ -10,7 +10,7 @@ class TestCargoEventEntity(TestCase):
     def test_serialize(self) -> None:
         with open("tests/api/examples/cargo_event_entity1.json", "r") as f:
             serialized = json.load(f)
-            deserialized = CargoPortUnloadEvent.parse_obj(serialized)
+            deserialized = CargoPortUnloadEvent.model_validate_json(serialized)
 
             expected = CargoPortUnloadEvent(
                 event_type="cargo_port_unload_event",
