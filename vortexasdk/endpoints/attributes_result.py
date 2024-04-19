@@ -24,7 +24,7 @@ class AttributeResult(Result):
 
     def to_df(
         self: "AttributeResult",
-        columns: List[str] | Literal["all"] = DEFAULT_COLUMNS,
+        columns: List[str] | Literal["all"] | None = DEFAULT_COLUMNS,
     ) -> pd.DataFrame:
         """
         Represent attributes as a `pd.DataFrame`.

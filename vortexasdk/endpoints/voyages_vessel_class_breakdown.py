@@ -9,11 +9,10 @@ from typing import Any, Dict, List, Union
 
 from vortexasdk.api import ID
 from vortexasdk.api.shared_types import (
-    Tag,
-    to_ISODate,
-    VoyageDateRangeActivity,
-    OriginBehaviour,
     DestinationBehaviour,
+    OriginBehaviour,
+    VoyageDateRangeActivity,
+    to_ISODate,
 )
 
 from vortexasdk.endpoints.endpoints import VOYAGES_BREAKDOWN
@@ -118,9 +117,9 @@ class VoyagesVesselClassBreakdown(Search):
         time_charterer: Union[ID, List[ID]] = None,
         time_charterer_excluded: Union[ID, List[ID]] = None,
         intra_movements: str = None,
-        voyage_date_range_activity: VoyageDateRangeActivity = None,
-        origin_behaviour: OriginBehaviour = None,
-        destination_behaviour: DestinationBehaviour = None,
+        voyage_date_range_activity: VoyageDateRangeActivity = None | None,
+        origin_behaviour: OriginBehaviour = None | None,
+        destination_behaviour: DestinationBehaviour = None | None,
     ) -> VoyagesBreakdownResult:
         """
 

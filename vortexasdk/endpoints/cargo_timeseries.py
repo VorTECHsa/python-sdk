@@ -277,40 +277,6 @@ class CargoTimeSeries(Search):
                 exclude_vessel_propulsion
             ),
             "filter_waypoints": convert_to_list(exclude_waypoints),
-            "filter_contract_type": exclude_contract_type,
-            "filter_delivery_method": exclude_delivery_method,
-            "filter_buyer": convert_to_list(exclude_buyer),
-            "filter_seller": convert_to_list(exclude_seller),
-        }
-
-        exclude_params: Dict[str, Any] = {
-            "filter_charterers": convert_to_list(exclude_charterers),
-            "filter_vessel_owners": convert_to_list(exclude_vessel_owners),
-            "filter_time_charterers": convert_to_list(exclude_time_charterers),
-            "filter_destinations": convert_to_list(exclude_destinations),
-            "filter_origins": convert_to_list(exclude_origins),
-            "filter_effective_controllers": convert_to_list(
-                exclude_effective_controllers
-            ),
-            "filter_owners": convert_to_list(exclude_owners),
-            "filter_products": convert_to_list(exclude_products),
-            "filter_ship_to_ship_locations": convert_to_list(
-                exclude_ship_to_ship_locations
-            ),
-            "filter_ship_to_ship": exclude_ship_to_ship,
-            "filter_storage_locations": convert_to_list(
-                exclude_storage_locations
-            ),
-            "filter_vessels": convert_to_list(exclude_vessels),
-            "filter_vessel_classes": convert_to_list(exclude_vessel_classes),
-            "filter_vessel_flags": convert_to_list(exclude_vessel_flags),
-            "filter_vessel_ice_class": convert_to_list(
-                exclude_vessel_ice_class
-            ),
-            "filter_vessel_propulsion": convert_to_list(
-                exclude_vessel_propulsion
-            ),
-            "filter_waypoints": convert_to_list(exclude_waypoints),
         }
 
         api_params: Dict[str, Any] = {

@@ -33,17 +33,17 @@ class OnshoreInventoriesSearch(Search):
 
     def search(
         self,
-        asset_tank_ids: Union[ID, List[ID]] = None,
-        corporate_entity_ids: Union[ID, List[ID]] = None,
-        crude_confidence: List[str] = None,
-        location_ids: Union[ID, List[ID]] = None,
-        measurement_ids: Union[ID, List[ID]] = None,
-        order: str = None,
-        order_direction: str = None,
-        size: int = None,
-        storage_types: List[str] = None,
-        time_min: datetime = None,
-        time_max: datetime = None,
+        asset_tank_ids: Union[ID, List[ID]] | None = None,
+        corporate_entity_ids: Union[ID, List[ID]] | None = None,
+        crude_confidence: List[str] | None = None,
+        location_ids: Union[ID, List[ID]] | None = None,
+        measurement_ids: Union[ID, List[ID]] | None = None,
+        order: str | None = None,
+        order_direction: str | None = None,
+        size: int | None = None,
+        storage_types: List[str] | None = None,
+        time_min: datetime | None = None,
+        time_max: datetime | None = None,
     ) -> OnshoreInventoriesResult:
         """
         List of crude onshore inventories across the globe.

@@ -33,6 +33,7 @@
     "levelname",
     "tablefmt",
     "vlcc",
-    "vlccs"
+    "vlccs",
+    "fillna"
   ]
 }

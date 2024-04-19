@@ -41,7 +41,7 @@ class FixtureResult(Result):
 
     def to_df(
         self,
-        columns: List[str] | Literal["all"] = DEFAULT_COLUMNS,
+        columns: List[str] | Literal["all"] | None = DEFAULT_COLUMNS,
     ) -> pd.DataFrame:
         """
         Represent Fixtures as a `pd.DataFrame`.

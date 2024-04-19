@@ -1,7 +1,7 @@
 import functools
 import os
 from multiprocessing.pool import Pool
-from typing import List
+from typing import Any, List
 from typing_extensions import Literal
 
 import pandas as pd
@@ -42,7 +42,7 @@ class FreightPricingResult(Result):
         return create_list(super().to_list(), FreightPricing)
 
     @staticmethod
-    def format_prediction_outlooks(records: List) -> List:
+    def format_prediction_outlooks(records: List[Any]) -> List[Any]:
         """
         This method formats the freight_pricing records to replace a list of predictions
         with a dictionary where each key is the prediction outlook.
@@ -110,7 +110,7 @@ class FreightPricingResult(Result):
         return formatted_records
 
     def to_df(
-        self, columns: List[str] | Literal["all"] = "all"
+        self, columns: List[str] | Literal["all"] | None = "all"
     ) -> pd.DataFrame:
         """
         Represent freight pricing as a `pd.DataFrame`.

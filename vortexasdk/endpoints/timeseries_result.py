@@ -48,7 +48,7 @@ class TimeSeriesResult(Result):
         return create_list(super().to_list(), TimeSeriesItem)
 
     def to_df(
-        self, columns: List[str] | Literal["all"] = "all"
+        self, columns: List[str] | Literal["all"] | None = "all"
     ) -> pd.DataFrame:
         """
         Converts the time series data into a pandas DataFrame.

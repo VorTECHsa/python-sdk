@@ -6,7 +6,7 @@ from typing_extensions import Literal
 
 import pandas as pd
 
-from vortexasdk.api import CargoMovement
+from vortexasdk.api.cargo_movement import CargoMovement
 from vortexasdk.api.entity_flattening import (
     convert_cargo_movement_to_flat_dict,
 )
@@ -44,7 +44,7 @@ class CargoMovementsResult(Result):
 
     def to_df(
         self: "CargoMovementsResult",
-        columns: Literal["all"] | List[str] = DEFAULT_COLUMNS,
+        columns: Literal["all"] | List[str] | None = DEFAULT_COLUMNS,
     ) -> pd.DataFrame:
         """
         Represent cargo movements as a `pd.DataFrame`.
@@ -74,7 +74,7 @@ class CargoMovementsResult(Result):
          In this example the name of the 1st vessel, is found in the `vessels.0.name` column (we're using zero-based
          numbering indexes). Likewise, the imo of the second vessel is found in the `vessels.1.imo` column.
 
-         To find the name of the country in which the second STS event occured, we'd use the
+         To find the name of the country in which the second STS event occurred, we'd use the
          `events.cargo_sts_event.1.location.country.layer` column.
 
          Similarly, to find out when the first vessel started
