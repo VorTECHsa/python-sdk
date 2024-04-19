@@ -7,7 +7,7 @@ Try me out in your browser:
 from datetime import datetime
 from typing import Any, Dict, List, Union
 
-from vortexasdk.api.id import ID
+from vortexasdk.api import ID
 from vortexasdk.api.shared_types import to_ISODate
 from vortexasdk.endpoints.cargo_movements_result import CargoMovementsResult
 from vortexasdk.endpoints.endpoints import (

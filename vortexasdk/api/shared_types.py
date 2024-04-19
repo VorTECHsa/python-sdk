@@ -4,7 +4,7 @@ from pydantic import BaseModel
 from datetime import datetime
 from typing import List, Optional, Union
 
-from vortexasdk.api.id import ID
+from vortexasdk.api import ID
 
 IDsNames = Union[List[Union[ID, str]], str, ID]
 

@@ -8,7 +8,7 @@ from datetime import datetime
 from typing import Any, Dict, List, Optional, Union
 
 from vortexasdk.api.shared_types import to_ISODate
-from vortexasdk.api.id import ID
+from vortexasdk.api import ID
 from vortexasdk.endpoints.endpoints import CARGO_TIMESERIES_RESOURCE
 from vortexasdk.endpoints.timeseries_result import TimeSeriesResult
 from vortexasdk.logger import get_logger

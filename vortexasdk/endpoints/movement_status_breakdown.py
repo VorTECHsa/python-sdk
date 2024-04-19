@@ -6,7 +6,7 @@ Try me out in your browser:
 
 from typing import Any, Dict, List, Union
 from datetime import datetime
-from vortexasdk.api.id import ID
+from vortexasdk.api import ID
 from vortexasdk.api.shared_types import Tag, to_ISODate
 from vortexasdk.endpoints.reference_breakdown_result import (
     ReferenceBreakdownResult,
