@@ -4,7 +4,7 @@ from vortexasdk.endpoints.attributes import Attributes
 
 
 class TestAttributesReal(TestCaseUsingRealAPI):
-    def test_search_ids(self):
+    def test_search_ids(self) -> None:
         ids = [
             "14c7b073809eb565",
             "3ace0e050724707b",
@@ -13,7 +13,7 @@ class TestAttributesReal(TestCaseUsingRealAPI):
         attributes = Attributes().search(ids=ids).to_list()
         assert len(attributes) == 2
 
-    def test_search_filters_term(self):
+    def test_search_filters_term(self) -> None:
         term = ["Open Loop Hybrid Ready"]
 
         attributes = Attributes().search(term=term).to_list()
@@ -22,7 +22,7 @@ class TestAttributesReal(TestCaseUsingRealAPI):
 
         assert actual == set(term)
 
-    def test_search_ids_dataframe(self):
+    def test_search_ids_dataframe(self) -> None:
         ids = [
             "4729c38b99262b73",
             "478fca39000c49d6",
@@ -32,12 +32,12 @@ class TestAttributesReal(TestCaseUsingRealAPI):
         assert list(df.columns) == ["id", "name", "type"]
         assert len(df) == 2
 
-    def test_load_all(self):
+    def test_load_all(self) -> None:
         all_attributes = Attributes().load_all()
 
         assert len(all_attributes) > 40
 
-    def test_search_load_all_attributes(self):
+    def test_search_load_all_attributes(self) -> None:
         with Timer("Search"):
             result = Attributes().search()
 
@@ -49,7 +49,7 @@ class TestAttributesReal(TestCaseUsingRealAPI):
 
         assert len(result) >= 40
 
-    def test_search_is_case_agnostic(self):
+    def test_search_is_case_agnostic(self) -> None:
         uppercase = {v.id for v in Attributes().search(term="open").to_list()}
         lowercase = {v.id for v in Attributes().search(term="OpEn").to_list()}
 
