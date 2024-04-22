@@ -32,6 +32,9 @@ from vortexasdk.api.shared_types import (
     IDName,
     IDNameLayer,
     ISODate,
+    VoyageDateRangeActivity,
+    OriginBehaviour,
+    DestinationBehaviour,
 )
 from vortexasdk.api.storage_terminal import StorageTerminal
 from vortexasdk.api.vessel import Vessel, VesselEntity
@@ -40,9 +43,6 @@ from vortexasdk.api.vessel_availability import VesselAvailability
 from vortexasdk.api.voyages import (
     CongestionBreakdownItem,
     VoyagesVesselEntity,
-    VoyageDateRangeActivity,
-    OriginBehaviour,
-    DestinationBehaviour,
 )
 from vortexasdk.api.aggregation_breakdown_item import AggregationBreakdownItem
 from vortexasdk.api.fixture import Fixture

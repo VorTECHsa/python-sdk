@@ -7,16 +7,11 @@ from datetime import datetime
 from typing import Any, Dict, List, Union
 
 from vortexasdk.api import ID
-from vortexasdk.api.shared_types import Tag, to_ISODate
+from vortexasdk.api.shared_types import Tag, to_ISODate, VoyageDateRangeActivity, OriginBehaviour, DestinationBehaviour
 from vortexasdk.endpoints.endpoints import VOYAGES_TIMESERIES
 from vortexasdk.endpoints.timeseries_result import TimeSeriesResult
 from vortexasdk.operations import Search
 from vortexasdk.utils import convert_to_list
-from vortexasdk.api.voyages import (
-    VoyageDateRangeActivity,
-    OriginBehaviour,
-    DestinationBehaviour,
-)
 
 
 class VoyagesTimeseries(Search):
