@@ -36,7 +36,7 @@ setuptools.setup(
         "tests": [
             "flake8==3.7.9",
             "black==23.1.0",
-            "mkdocs==1.2.4",
+            "mkdocs==1.6.0",
             "mypy==1.9.0",
             "pre-commit==1.20.0",
             "pytest==8.1.1",
