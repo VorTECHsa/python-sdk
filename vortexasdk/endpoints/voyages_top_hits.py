@@ -7,7 +7,13 @@ from datetime import datetime
 from typing import Any, Dict, List, Union
 
 from vortexasdk.api import ID
-from vortexasdk.api.shared_types import Tag, to_ISODate, VoyageDateRangeActivity, OriginBehaviour, DestinationBehaviour
+from vortexasdk.api.shared_types import (
+    Tag,
+    to_ISODate,
+    VoyageDateRangeActivity,
+    OriginBehaviour,
+    DestinationBehaviour,
+)
 from vortexasdk.endpoints.aggregation_breakdown_result import (
     AggregationBreakdownResult,
 )
