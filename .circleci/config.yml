@@ -97,7 +97,7 @@ jobs:
             . .venv/bin/activate
             mkdir -p ./_build/pydocmd/examples
             python docs/autogen.py
-            mkdocs build
+            pydocmd build
 
   run-examples:
     working_directory: ~/project
@@ -194,8 +194,8 @@ jobs:
             . .venv/bin/activate
             mkdir -p ./_build/pydocmd/examples
             python docs/autogen.py
-            mkdocs build
-            mkdocs gh-deploy
+            pydocmd build
+            pydocmd gh-deploy
       - run:
           name: "Deploy package to pypi"
           command: |
