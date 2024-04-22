@@ -41,7 +41,7 @@ setuptools.setup(
             "pre-commit==1.20.0",
             "pytest==8.1.1",
             "pydoc-markdown==2.0.5",
-            "pyyaml!=6.0.0,!=5.4.0,!=5.4.1",  # pyyaml is broken with cython 3
+            "pyyaml==6.0.1", 
             "six==1.16.0",
             "tabulate==0.9.0",
             "xlrd==1.2.0",
