@@ -147,7 +147,6 @@ pages:
       Time Series Item: entities/timeseries_result.md
       Vessel: entities/vessel.md
       Vessel Availability: entities/availability.md
-      Vessel Movement: entities/vessel_movement.md
   - Config: config.md << docs/config/config.md
   - FAQ:
       Setup: faq_setup.md << docs/faq_setup.md
