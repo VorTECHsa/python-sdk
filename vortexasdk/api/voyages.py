@@ -1,6 +1,6 @@
+from enum import Enum
 from pydantic import BaseModel
 from typing import List, Optional, Union
-from enum import Enum
 from typing_extensions import Literal
 from vortexasdk.api.id import ID
 

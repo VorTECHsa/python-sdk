@@ -391,7 +391,6 @@ class VoyagesProductBreakdown(Search):
             "voyage_date_range_activity": voyage_date_range_activity,
             "origin_behaviour": origin_behaviour,
             "destination_behaviour": destination_behaviour,
-            "intra_movements": intra_movements,
         }
 
         response = super().search_with_client(**api_params)
