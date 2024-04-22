@@ -35,12 +35,12 @@ setuptools.setup(
     extras_require={
         "tests": [
             "flake8==3.7.9",
-            "black==22.8.0",
+            "black==23.1.0",
             "mkdocs==1.2.4",
             "mypy==1.9.0",
             "pre-commit==1.20.0",
             "pytest==8.1.1",
-            "pydoc-markdown==2.0.5",
+            "pydoc-markdown==4.8.2",
             "pyyaml==6.0.1", 
             "six==1.16.0",
             "tabulate==0.9.0",
