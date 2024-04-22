@@ -88,7 +88,7 @@ class VoyageVesselEvent(BaseModel):
     waiting_event_target_geography_id: Optional[str] = None
     fixture_event_fixing_timestamp: Optional[ISODate] = None
     tags: Optional[List[Tag]] = None
-    probability: Optional[int] = None
+    probability: Optional[float] = None
     location_details: Optional[List[EntityWithSingleLayer]] = None
     is_open_event: Optional[bool] = None
     waiting_event_target_geography_details: Optional[
