@@ -7,7 +7,13 @@ from datetime import datetime
 from typing import Any, Dict, List, Union
 
 from vortexasdk.api import ID
-from vortexasdk.api.shared_types import Tag, to_ISODate
+from vortexasdk.api.shared_types import (
+    Tag,
+    to_ISODate,
+    VoyageDateRangeActivity,
+    OriginBehaviour,
+    DestinationBehaviour,
+)
 from vortexasdk.endpoints.aggregation_breakdown_result import (
     AggregationBreakdownResult,
 )
@@ -85,6 +91,10 @@ class VoyagesTopHits(Search):
         vessel_risk_level_excluded: Union[str, List[str]] = None,
         has_ship_to_ship: str = None,
         has_charterer: str = None,
+        intra_movements: str = None,
+        voyage_date_range_activity: VoyageDateRangeActivity = None,
+        origin_behaviour: OriginBehaviour = None,
+        destination_behaviour: DestinationBehaviour = None,
     ) -> AggregationBreakdownResult:
         """
 
@@ -209,6 +219,14 @@ class VoyagesTopHits(Search):
             has_ship_to_ship: Filter data where at least one STS transfer occurs, or none. - one of: `'disabled'`, `'inc'`, `'exc'`. Passing disabled means the filter is not active.
 
             has_charterer: Filter data where at least one charterer is specified, or none. - one of: `'disabled'`, `'inc'`, `'exc'`. Passing disabled means the filter is not active.
+
+            intra_movements: Filter movements based on whether the vessel started and ended in the same country, or geographical layer.
+
+            voyage_date_range_activity: Filter to determine how the voyages should be counted. Must be one of [`active`, `departures`, `arrivals`]
+
+            origin_behaviour: The origin behaviour determines which departure mode the `voyage_date_range_activity` should count, must be one of  [`first_load`, `any_load`].
+
+            destination_behaviour: The destination behaviour determines which arrival mode the voyage_date_range_activity should count, must be one of [last_discharge, any_discharge].
 
         # Returns
         `AggregationBreakdownResult`
@@ -346,6 +364,10 @@ class VoyagesTopHits(Search):
             "vessel_risk_level_excluded": convert_to_list(
                 vessel_risk_level_excluded
             ),
+            "voyage_date_range_activity": voyage_date_range_activity,
+            "origin_behaviour": origin_behaviour,
+            "destination_behaviour": destination_behaviour,
+            "intra_movements": intra_movements,
         }
 
         response = super().search_with_client(

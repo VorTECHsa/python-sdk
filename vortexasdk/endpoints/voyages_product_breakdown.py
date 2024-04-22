@@ -7,7 +7,13 @@ from datetime import datetime
 from typing import Any, Dict, List, Union
 
 from vortexasdk.api import ID
-from vortexasdk.api.shared_types import Tag, to_ISODate
+from vortexasdk.api.shared_types import (
+    Tag,
+    to_ISODate,
+    VoyageDateRangeActivity,
+    OriginBehaviour,
+    DestinationBehaviour,
+)
 
 from vortexasdk.endpoints.endpoints import VOYAGES_BREAKDOWN
 from vortexasdk.endpoints.voyages_breakdown_result import (
@@ -17,8 +23,9 @@ from vortexasdk.endpoints.voyages_breakdown_result import (
 from vortexasdk.operations import Search
 from vortexasdk.utils import convert_to_list
 
-
 # noinspection PyUnresolvedReferences
+
+
 class VoyagesProductBreakdown(Search):
     """
     VoyagesProductBreakdown class has an optional _second_breakdown_ property.
@@ -113,6 +120,9 @@ class VoyagesProductBreakdown(Search):
         time_charterer: Union[ID, List[ID]] = None,
         time_charterer_excluded: Union[ID, List[ID]] = None,
         intra_movements: str = None,
+        voyage_date_range_activity: VoyageDateRangeActivity = None,
+        origin_behaviour: OriginBehaviour = None,
+        destination_behaviour: DestinationBehaviour = None,
     ) -> VoyagesBreakdownResult:
         """
 
@@ -250,6 +260,12 @@ class VoyagesProductBreakdown(Search):
 
             intra_movements: Filter movements based on whether the vessel started and ended in the same country, or geographical layer.
 
+            voyage_date_range_activity: Filter to determine how the voyages should be counted. Must be one of [`active`, `departures`, `arrivals`]
+
+            origin_behaviour: The origin behaviour determines which departure mode the `voyage_date_range_activity` should count, must be one of  [`first_load`, `any_load`].
+
+            destination_behaviour: The destination behaviour determines which arrival mode the voyage_date_range_activity should count, must be one of [last_discharge, any_discharge].
+
         # Returns
         `BreakdownResult`
 
@@ -373,6 +389,9 @@ class VoyagesProductBreakdown(Search):
             "vessel_risk_level_excluded": convert_to_list(
                 vessel_risk_level_excluded
             ),
+            "voyage_date_range_activity": voyage_date_range_activity,
+            "origin_behaviour": origin_behaviour,
+            "destination_behaviour": destination_behaviour,
         }
 
         response = super().search_with_client(**api_params)

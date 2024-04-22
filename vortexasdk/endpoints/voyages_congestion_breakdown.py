@@ -7,7 +7,13 @@ from datetime import datetime
 from typing import Any, Dict, List, Union
 
 from vortexasdk.api import ID
-from vortexasdk.api.shared_types import Tag, to_ISODate
+from vortexasdk.api.shared_types import (
+    Tag,
+    to_ISODate,
+    VoyageDateRangeActivity,
+    OriginBehaviour,
+    DestinationBehaviour,
+)
 from vortexasdk.endpoints.endpoints import VOYAGES_CONGESTION_BREAKDOWN
 from vortexasdk.endpoints.voyages_congestion_breakdown_result import (
     CongestionBreakdownResult,
@@ -83,6 +89,10 @@ class VoyagesCongestionBreakdown(Search):
         vessel_risk_level_excluded: Union[str, List[str]] = None,
         has_ship_to_ship: str = None,
         has_charterer: str = None,
+        intra_movements: str = None,
+        voyage_date_range_activity: VoyageDateRangeActivity = None,
+        origin_behaviour: OriginBehaviour = None,
+        destination_behaviour: DestinationBehaviour = None,
     ) -> CongestionBreakdownResult:
         """
 
@@ -210,6 +220,14 @@ class VoyagesCongestionBreakdown(Search):
             order_direction: Determines the direction of sorting. ‘asc’ for ascending, ‘desc’ for
             descending.
 
+            voyage_date_range_activity: Filter to determine how the voyages should be counted. Must be one of [`active`, `departures`, `arrivals`]
+
+            origin_behaviour: The origin behaviour determines which departure mode the `voyage_date_range_activity` should count, must be one of  [`first_load`, `any_load`].
+
+            destination_behaviour: The destination behaviour determines which arrival mode the voyage_date_range_activity should count, must be one of [last_discharge, any_discharge].
+
+            intra_movements: Filter movements based on whether the vessel started and ended in the same country, or geographical layer.
+
         # Returns
         `CongestionBreakdownResult`
 
@@ -310,6 +328,10 @@ class VoyagesCongestionBreakdown(Search):
             ),
             "order": order,
             "order_direction": order_direction,
+            "voyage_date_range_activity": voyage_date_range_activity,
+            "origin_behaviour": origin_behaviour,
+            "destination_behaviour": destination_behaviour,
+            "intra_movements": intra_movements,
         }
 
         response = super().search_with_client(**api_params)
