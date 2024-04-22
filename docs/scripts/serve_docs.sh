@@ -5,4 +5,4 @@ set -e
 rm -rf ./_build
 mkdir -p ./_build/pydocmd/examples
 python docs/autogen.py
-pydocmd serve
+pydoc-markdown  serve
