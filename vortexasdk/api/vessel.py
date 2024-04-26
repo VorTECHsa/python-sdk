@@ -39,8 +39,8 @@ class Vessel(Node):
     [Vessels Further Documentation](https://docs.vortexa.com/reference/GET/reference/vessels/%7Bid%7D)
     """
 
-    related_names: list[str] | None | None = None
-    mmsi: int | None | None = None
+    related_names: list[str] | None = None
+    mmsi: int | None = None
     layer: list[str] | None = None
 
     tags: list[Tag] | None = None
