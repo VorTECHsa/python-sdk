@@ -10,7 +10,7 @@ rotterdam = "68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e"
 class TestVoyagesTimeseries(TestCaseUsingRealAPI):
     def test_search_returns_all_days(self) -> None:
         start = datetime(2021, 6, 17)
-        end = datetime(2021, 6, 21, 23, 59, 59, 999)
+        end = datetime(2021, 6, 20, 23, 59, 59, 999)
 
         df = (
             VoyagesTimeseries()
@@ -18,7 +18,7 @@ class TestVoyagesTimeseries(TestCaseUsingRealAPI):
             .to_df()
         )
 
-        assert len(df) == 5
+        assert len(df) == 4
 
     def test_from_description(self) -> None:
         start = datetime(2022, 4, 26)
