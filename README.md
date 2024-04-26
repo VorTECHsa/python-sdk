@@ -1,6 +1,5 @@
 # VortexaSDK
 
-[![CircleCI](https://circleci.com/gh/VorTECHsa/python-sdk.svg?style=svg)](https://circleci.com/gh/VorTECHsa/python-sdk)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![All Contributors](https://img.shields.io/badge/all_contributors-12-orange.svg?style=flat-square)](#contributors)
 
