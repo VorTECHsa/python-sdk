@@ -16,16 +16,16 @@ from vortexasdk.utils import convert_to_list
 class VesselPositions(Search):
     """Vessel Positions endpoint."""
 
-    def __init__(self):
+    def __init__(self) -> None:
         """Instantiate endpoint"""
         Search.__init__(self, VESSEL_POSITIONS)
 
     def search(
         self,
-        vessel_id: Union[str, List[str]] = None,
-        vessel_class: Union[str, List[str]] = None,
-        time_max: ISODate = None,
-        time_min: ISODate = None,
+        vessel_id: Union[str, List[str]] | None = None,
+        vessel_class: Union[str, List[str]] | None = None,
+        time_max: ISODate | None = None,
+        time_min: ISODate | None = None,
         interval: str = "1d",
     ) -> VesselPositionsResult:
         """

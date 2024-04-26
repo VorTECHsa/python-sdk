@@ -1,10 +1,11 @@
 import functools
 import os
 from multiprocessing.pool import Pool
+from typing_extensions import Literal
 import pandas as pd
-from typing import List, Optional
+from typing import Dict, List, Optional
 from pydantic import BaseModel
-from vortexasdk.api.id import ID
+from vortexasdk.api import ID
 
 from vortexasdk.api.entity_flattening import convert_to_flat_dict
 from vortexasdk.api.search_result import Result
@@ -16,7 +17,7 @@ logger = get_logger(__name__)
 DEFAULT_COLUMNS = ["id", "value", "label"]
 
 
-def sort_breakdown(item: dict, full_header_column: list):
+def sort_breakdown(item: dict, full_header_column: list) -> Dict:
     if "breakdown" not in item:
         return item
     for b_item in full_header_column:
@@ -61,7 +62,10 @@ class VoyagesBreakdownResult(Result):
         # noinspection PyTypeChecker
         return create_list(super().to_list(), VoyagesBreakdown)
 
-    def to_df(self, columns="all") -> pd.DataFrame:
+    def to_df(
+        self,
+        columns: List[str] | Literal["all"] | None = "all",
+    ) -> pd.DataFrame:
         """
         Converts the breakdown data into a pandas DataFrame.
 

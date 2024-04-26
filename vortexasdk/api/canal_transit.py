@@ -8,15 +8,15 @@ from vortexasdk.api.shared_types import (
     ISODate,
     VesselClassEntry,
 )
-from vortexasdk.api.id import ID
+from vortexasdk.api import ID
 
 
 class CargoEntity(BaseModel):
     cargo_movement_id: ID
-    quantity_barrels: Optional[int]
-    quantity_tonnes: Optional[int]
-    quantity_cubic_metres: Optional[int]
-    product: Optional[List[EntityWithSingleLayer]]
+    quantity_barrels: int | None = None
+    quantity_tonnes: int | None = None
+    quantity_cubic_metres: int | None = None
+    product: list[EntityWithSingleLayer] | None = None
 
 
 class GeographyRecord(BaseModel):

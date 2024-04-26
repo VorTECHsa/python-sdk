@@ -7,7 +7,7 @@ import six
 # From https://github.com/keras-team/keras/blob/0a0ac3fa5462cf4a72636ca4498a0a82ac91fc32/docs/autogen.py
 
 
-def get_module_docstring(filepath):
+def get_module_docstring(filepath: str) -> tuple[str, int]:
     """Extract the module docstring.
     Also finds the line at which the docstring ends.
     """
@@ -20,7 +20,7 @@ def get_module_docstring(filepath):
     return docstring, co.co_firstlineno
 
 
-def copy_examples(examples_dir, destination_dir):
+def copy_examples(examples_dir: str, destination_dir: str) -> None:
     """Copy the examples directory in the documentation.
     Prettify files by extracting the docstrings written in Markdown.
     """

@@ -2,8 +2,8 @@ from pydantic import BaseModel
 from typing import List, Optional, Tuple
 
 
+from vortexasdk.api import ID
 from vortexasdk.api.shared_types import (
-    ID,
     EntityWithSingleLayerAndProbability,
     IDLayer,
     IDNameLayer,
@@ -25,10 +25,10 @@ class Geography(Node):
 
     id: ID
     name: Optional[str] = None
-    layer: Optional[List[str]] = None
+    layer: List[str] = []
     exclusion_rule: Optional[List[IDNameLayer]] = None
     hierarchy: Optional[List[IDLayer]] = None
-    pos: Optional[List[str]] = None
+    pos: Optional[List[float]] = None
 
 
 class GeographyEntity(EntityWithSingleLayerAndProbability):

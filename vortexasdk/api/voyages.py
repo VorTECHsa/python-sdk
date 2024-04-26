@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 from typing import List, Optional, Union
 from typing_extensions import Literal
-from vortexasdk.api.id import ID
+from vortexasdk.api import ID
 
 from vortexasdk.api.shared_types import (
     EntityWithListLayer,
@@ -22,16 +22,16 @@ class CongestionBreakdownItem(BaseModel):
 
     """
 
-    avg_waiting_time: Optional[int] = None
+    avg_waiting_time: Optional[float] = None
     vessel_dwt: Optional[int] = None
     vessel_cubic_capacity: Optional[int] = None
     vessel_count: Optional[int] = None
     cargo_quantity: Optional[int] = None
-    avg_waiting_time_laden: Optional[int] = None
+    avg_waiting_time_laden: Optional[float] = None
     vessel_dwt_laden: Optional[int] = None
     vessel_cubic_capacity_laden: Optional[int] = None
     vessel_count_laden: Optional[int] = None
-    avg_waiting_time_ballast: Optional[int] = None
+    avg_waiting_time_ballast: Optional[float] = None
     vessel_dwt_ballast: Optional[int] = None
     vessel_cubic_capacity_ballast: Optional[int] = None
     vessel_count_ballast: Optional[int] = None
@@ -88,7 +88,7 @@ class VoyageVesselEvent(BaseModel):
     waiting_event_target_geography_id: Optional[str] = None
     fixture_event_fixing_timestamp: Optional[ISODate] = None
     tags: Optional[List[Tag]] = None
-    probability: Optional[int] = None
+    probability: Optional[float] = None
     location_details: Optional[List[EntityWithSingleLayer]] = None
     is_open_event: Optional[bool] = None
     waiting_event_target_geography_details: Optional[
@@ -121,7 +121,7 @@ class VoyageCargoEvent(BaseModel):
     odometer_start: Optional[int] = None
     odometer_end: Optional[int] = None
     cargo_destination_id: Optional[str] = None
-    tonne_miles: Optional[int] = None
+    tonne_miles: Optional[float] = None
     product_details: Optional[List[EntityWithSingleLayer]] = None
     cargo_origin_details: Optional[List[EntityWithSingleLayer]] = None
     cargo_destination_details: Optional[List[EntityWithSingleLayer]] = None
@@ -171,7 +171,7 @@ class VoyageEnrichedItem(BaseModel):
     next_voyage_id: Optional[ID] = None
     latest_product_ids: Optional[List[ID]] = None
     tags: Optional[List[Tag]] = None
-    tonne_miles: Optional[int] = None
+    tonne_miles: Optional[float] = None
     corporate_entities: Optional[List[EntityWithSingleLayerAndTimespan]] = None
     odometer_start: Optional[int] = None
     odometer_end: Optional[int] = None

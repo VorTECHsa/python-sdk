@@ -23,9 +23,9 @@ class AssetTank(BaseModel):
     """
 
     id: Optional[str] = None
-    capacity_bbl: Optional[int] = None
-    capacity_cbm: Optional[int] = None
-    capacity_ton: Optional[int] = None
+    capacity_bbl: Optional[float] = None
+    capacity_cbm: Optional[float] = None
+    capacity_ton: Optional[float] = None
     corporate_entity_details: Optional[CorporateEntity] = None
     corporate_entity_id: Optional[str] = None
     leaf: Optional[bool] = None
@@ -34,7 +34,7 @@ class AssetTank(BaseModel):
     name: Optional[str] = None
     lat: Optional[float] = None
     lon: Optional[float] = None
-    radius: Optional[int] = None
+    radius: Optional[float] = None
     ref_type: Optional[str] = None
     storage_terminal_id: Optional[str] = None
     storage_terminal_name: Optional[str] = None
