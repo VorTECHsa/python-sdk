@@ -121,7 +121,7 @@ class VoyageCargoEvent(BaseModel):
     odometer_start: Optional[int] = None
     odometer_end: Optional[int] = None
     cargo_destination_id: Optional[str] = None
-    tonne_miles: Optional[int | float] = None
+    tonne_miles: Optional[float] = None
     product_details: Optional[List[EntityWithSingleLayer]] = None
     cargo_origin_details: Optional[List[EntityWithSingleLayer]] = None
     cargo_destination_details: Optional[List[EntityWithSingleLayer]] = None
@@ -171,7 +171,7 @@ class VoyageEnrichedItem(BaseModel):
     next_voyage_id: Optional[ID] = None
     latest_product_ids: Optional[List[ID]] = None
     tags: Optional[List[Tag]] = None
-    tonne_miles: Optional[int | float] = None
+    tonne_miles: Optional[float] = None
     corporate_entities: Optional[List[EntityWithSingleLayerAndTimespan]] = None
     odometer_start: Optional[int] = None
     odometer_end: Optional[int] = None

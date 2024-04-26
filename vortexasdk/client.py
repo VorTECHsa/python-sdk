@@ -33,7 +33,7 @@ class VortexaClient:
     _N_THREADS = 6
     _MAX_ALLOWED_TOTAL = int(1e6)
 
-    def __init__(self: "VortexaClient", **kwargs: Dict) -> None:
+    def __init__(self: "VortexaClient", **kwargs: Any) -> None:
         self.api_key = kwargs["api_key"]
 
     def get_reference(self, resource: str, id: ID) -> List[Dict]:
