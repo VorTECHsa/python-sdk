@@ -19,7 +19,7 @@ setuptools.setup(
     url="https://github.com/vortechsa/python-sdk",
     license="Apache License 2.0",
     classifiers=[
-        "Programming Language :: Python :: 3.11.0",
+        "Programming Language :: Python :: 3.11",
         "License :: OSI Approved :: Apache Software License",
         "Operating System :: OS Independent",
     ],
@@ -41,7 +41,7 @@ setuptools.setup(
             "pre-commit==1.20.0",
             "pytest==8.1.1",
             "pydoc-markdown==2.1.3",
-            "pyyaml==6.0.1", 
+            "pyyaml==6.0.1",
             "six==1.16.0",
             "tabulate==0.9.0",
             "xlrd==1.2.0",
