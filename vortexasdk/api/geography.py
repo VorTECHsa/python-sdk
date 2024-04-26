@@ -28,7 +28,7 @@ class Geography(Node):
     layer: List[str] = []
     exclusion_rule: Optional[List[IDNameLayer]] = None
     hierarchy: Optional[List[IDLayer]] = None
-    pos: Optional[List[str | float]] = None
+    pos: Optional[List[float]] = None
 
 
 class GeographyEntity(EntityWithSingleLayerAndProbability):
