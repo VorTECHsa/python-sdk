@@ -214,6 +214,36 @@ jobs:
             git tag -a $TAG -m "New tag $TAG"
             git push --tags
 
+  deploy-pre-release:
+    working_directory: ~/project
+    docker:
+      - image: cimg/python:3.11.0
+    steps:
+      - checkout
+      - restore_cache: &restore_cache
+          keys:
+            - v5-{{ .Branch }}-{{ checksum "setup.py" }}
+      - add_ssh_keys:
+          fingerprints:
+            - "b7:35:38:7a:76:62:44:82:28:93:77:f1:9c:f1:35:8c"
+      - run:
+          name: "Deploy package to pypi"
+          command: |
+            . .venv/bin/activate
+            pip install -e .[deploy]
+            rm -rf dist
+            python setup.py sdist bdist_wheel
+            python -m twine upload -u $TWINE_USERNAME -p $TWINE_PASSWORD dist/*
+      - run:
+          name: "Tag the release with git"
+          command: |
+            . .venv/bin/activate
+            TAG=$(python setup.py --version)
+            git config --global user.email "developers@vortexa.com"
+            git config --global user.name "CircleCI"
+            git tag -a $TAG -m "New tag $TAG"
+            git push --tags
+
 workflows:
   version: 2
   build-deploy:
@@ -249,6 +279,20 @@ workflows:
             - build
 
       - deploy:
+          filters:
+            branches:
+              only:
+                - master
+          requires:
+            - test
+            - test-documentation
+            - run-examples
+            - check_types
+            - check_linting
+            - check_formatting
+            - check-release-version
+
+      - deploy-pre-release:
           filters:
             branches:
               only:
