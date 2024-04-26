@@ -296,7 +296,7 @@ workflows:
           filters:
             branches:
               only:
-                - master
+                - python-sdk-tidyup
           requires:
             - test
             - test-documentation
