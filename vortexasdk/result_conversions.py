@@ -45,7 +45,7 @@ def create_dataframe(
     """
     logger.debug(f"Creating DataFrame of {logger_description}")
 
-    if columns == "all":
+    if columns == "all" or columns is None:
         df = pd.DataFrame(data=data).fillna("")
     else:
         df = pd.DataFrame(data=data, columns=columns).fillna("")

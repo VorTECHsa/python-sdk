@@ -47,7 +47,7 @@ from vortexasdk.version import __version__
 # noinspection PyUnresolvedReferences
 from vortexasdk.check_setup import run_all_checks
 
-# Explicitly define the exported symbols
+# Explicitly list all exported classes, to help MyPy know what is available
 __all__ = [
     "AssetTanks",
     "Attributes",

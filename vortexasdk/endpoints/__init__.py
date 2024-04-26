@@ -67,6 +67,7 @@ from vortexasdk.endpoints.fixtures import Fixtures
 from vortexasdk.endpoints.vessel_summary import VesselSummary
 from vortexasdk.endpoints.vessel_positions import VesselPositions
 
+# Explicitly list all exported classes, to help MyPy know what is available
 __all__ = [
     "AssetTanks",
     "Attributes",
