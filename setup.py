@@ -29,7 +29,8 @@ setuptools.setup(
         "pandas>=0.25.2",
         "requests==2.31.0",
         "pydantic>=1.10.2,<2",
-        "tqdm==4.64.1"
+        "tqdm==4.64.1",
+        "urllib3>=1.26"
     ],
     extras_require={
         "tests": [
