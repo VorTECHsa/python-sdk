@@ -187,7 +187,7 @@ jobs:
             - v5-{{ .Branch }}-{{ checksum "setup.py" }}
       - add_ssh_keys:
           fingerprints:
-            - "b7:35:38:7a:76:62:44:82:28:93:77:f1:9c:f1:35:8c"
+            - "SHA256:p5tevUJP7lVgxHvYWpKLbRWnCeIjYvApIL8xG0eeLU0"
       - run:
           name: "Deploy new documentation to github pages"
           command: |
