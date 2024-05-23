@@ -19,13 +19,13 @@ DEFAULT_COLUMNS = ["key", "value", "count"]
 def sort_breakdown(item: dict, full_header_column: list):
     if "breakdown" not in item:
         return item
-    for b_item in full_header_column:
-        label = b_item["label"]
-        if next((x for x in item["breakdown"] if x["label"] == label), None):
-            continue
 
+    breakdown_labels = [x["label"] for x in item["breakdown"]]
+    header_items = {b_item["label"]: b_item for b_item in full_header_column}
+    labels_to_append = set(header_items.keys()) - set(breakdown_labels)
+    for label in labels_to_append:
         item["breakdown"].append(
-            {"label": label, "id": b_item["id"], "value": "", "count": ""}
+            {"label": label, "id": header_items[label]["id"], "value": "", "count": ""}
         )
 
     item["breakdown"].sort(
@@ -65,7 +65,6 @@ class TimeSeriesResult(Result):
         - The 'breakdown' column in the DataFrame provides aggregated data and can contain multiple entries. To access additional breakdown information, modify the column names in the 'columns' parameter (e.g., 'breakdown.1.label', 'breakdown.2.label').
         """
         items = super().to_list()
-
         full_header_column: list = []
         # there is a world where we can just get items[-1], as it seems reasonable to thing the most recent one would have the most regions
         for item in items:
@@ -77,7 +76,13 @@ class TimeSeriesResult(Result):
             lambda item: sort_breakdown(item, full_header_column), items
         )
 
-        records = [convert_to_flat_dict(v, columns=columns) for v in sorted_list]
+        flatten = functools.partial(convert_to_flat_dict, columns=columns)
+        cpu_count = os.cpu_count()
+        if cpu_count > 1:
+            with Pool(os.cpu_count()) as pool:
+                records = pool.map(flatten, sorted_list)
+        else:
+            records = [flatten(v) for v in sorted_list]
 
         df = create_dataframe(
             columns=columns,
