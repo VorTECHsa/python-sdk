@@ -64,21 +64,20 @@ class TimeSeriesResult(Result):
         Notes:
         - The 'breakdown' column in the DataFrame provides aggregated data and can contain multiple entries. To access additional breakdown information, modify the column names in the 'columns' parameter (e.g., 'breakdown.1.label', 'breakdown.2.label').
         """
-        flatten = functools.partial(convert_to_flat_dict, columns=columns)
-        with Pool(os.cpu_count()) as pool:
-            items = super().to_list()
+        items = super().to_list()
 
-            full_header_column: list = []
-            # there is a world where we can just get items[-1], as it seems reasonable to thing the most recent one would have the most regions
-            for item in items:
-                if "breakdown" not in item:
-                    continue
-                if len(item["breakdown"]) > len(full_header_column):
-                    full_header_column = item["breakdown"][:]
-            sorted_list = map(
-                lambda item: sort_breakdown(item, full_header_column), items
-            )
-            records = pool.map(flatten, sorted_list)
+        full_header_column: list = []
+        # there is a world where we can just get items[-1], as it seems reasonable to thing the most recent one would have the most regions
+        for item in items:
+            if "breakdown" not in item:
+                continue
+            if len(item["breakdown"]) > len(full_header_column):
+                full_header_column = item["breakdown"][:]
+        sorted_list = map(
+            lambda item: sort_breakdown(item, full_header_column), items
+        )
+
+        records = [convert_to_flat_dict(v, columns=columns) for v in sorted_list]
 
         df = create_dataframe(
             columns=columns,
