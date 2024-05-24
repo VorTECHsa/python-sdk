@@ -78,7 +78,7 @@ class TimeSeriesResult(Result):
 
         flatten = functools.partial(convert_to_flat_dict, columns=columns)
         cpu_count = os.cpu_count()
-        if cpu_count > 1:
+        if cpu_count is None or cpu_count > 1:
             with Pool(os.cpu_count()) as pool:
                 records = pool.map(flatten, sorted_list)
         else:
