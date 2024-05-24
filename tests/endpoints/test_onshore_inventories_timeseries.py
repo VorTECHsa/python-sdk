@@ -83,13 +83,13 @@ class TestOnshoreInventoriesTimeseries(TestCaseUsingRealAPI):
                 location_ids=None,
                 timeseries_unit="b",
                 timeseries_frequency="day",
-                timeseries_split_property="location_trading_region",
+                timeseries_split_property="location_shipping_region_v2",
                 timeseries_unit_operator="capacity",
             )
             .to_df(columns="all")
         )
 
-        for i in range(0, 29):
+        for i in range(0, 24):
             assert (
                 len(list(result["breakdown." + str(i) + ".label"].unique()))
                 == 1
