@@ -25,7 +25,12 @@ def sort_breakdown(item: dict, full_header_column: list):
     labels_to_append = set(header_items.keys()) - set(breakdown_labels)
     for label in labels_to_append:
         item["breakdown"].append(
-            {"label": label, "id": header_items[label]["id"], "value": "", "count": ""}
+            {
+                "label": label,
+                "id": header_items[label]["id"],
+                "value": "",
+                "count": "",
+            }
         )
 
     item["breakdown"].sort(
