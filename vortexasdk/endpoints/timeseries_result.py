@@ -94,6 +94,8 @@ class TimeSeriesResult(Result):
             data=records,
             logger_description="TimeSeries",
         )
-        df["key"] = pd.to_datetime(df["key"])
+
+        if "key" in df.columns:
+            df["key"] = pd.to_datetime(df["key"])
 
         return df
