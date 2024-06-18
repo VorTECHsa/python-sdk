@@ -21,4 +21,4 @@ class TestVesselAvailabilityTimeSeries(TestCaseUsingRealAPI):
             )
             .to_df()
         )
-        assert len(df) == 4
+        assert len(df) == 5
