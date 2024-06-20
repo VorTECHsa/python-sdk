@@ -51,9 +51,7 @@ class VortexaClient:
         response = retry_get(url)
         return _handle_response(response)["data"]
 
-    def get_record_with_params(
-        self, resource: str, id: ID, params: Dict
-    ) -> Dict:
+    def get_record_with_params(self, resource: str, id: ID, params: Dict) -> Dict:
         """Lookup single record data."""
         url = self._create_url_with_params(f"{resource}/{id}", params)
         response = retry_get(url)
@@ -69,23 +67,17 @@ class VortexaClient:
         url = self._create_url(resource)
         payload = self._cleanse_payload(data)
         # use default headers if none are provided
-        headers = (
-            payload["headers"] if "headers" in payload else default_headers
-        )
+        headers = payload["headers"] if "headers" in payload else default_headers
         logger.info(f"Payload: {payload}")
         # breakdowns do not support paging, the breakdown size is specified explicitly as a request parameter
         if response_type == "breakdown":
             size = payload.get("breakdown_size", 1000)
-            response = _send_post_request(
-                url, payload, size=size, headers=headers
-            )
+            response = _send_post_request(url, payload, size=size, headers=headers)
 
             ref = response.get("reference", {})
             return {"reference": ref, "data": response["data"]}
 
-        probe_response = _send_post_request(
-            url, payload, size=1, headers=headers
-        )
+        probe_response = _send_post_request(url, payload, size=1, headers=headers)
         total = self._calculate_total(probe_response)
 
         if total > self._MAX_ALLOWED_TOTAL:
@@ -122,9 +114,7 @@ class VortexaClient:
         return self.search_base(resource, response_type, **data)
 
     def _create_url(self, path: str) -> str:
-        return (
-            f"{API_URL}{path}?_sdk=python_v{__version__}&apikey={self.api_key}"
-        )
+        return f"{API_URL}{path}?_sdk=python_v{__version__}&apikey={self.api_key}"
 
     def _create_url_with_params(self, path: str, params: Dict) -> str:
         stringParams = urlencode(params)
@@ -150,9 +140,7 @@ class VortexaClient:
             next_request["search_after"] = search_after
 
         while next_request:
-            dict_response = _send_post_request(
-                url, next_request, size, headers
-            )
+            dict_response = _send_post_request(url, next_request, size, headers)
             responses.append(dict_response.get("data", []))
             next_request = dict_response.get("next_request")
             search_after = dict_response.get("search_after")
@@ -179,9 +167,7 @@ class VortexaClient:
         return [x for y in response for x in y]
 
 
-def _send_post_request_data(
-    url, payload, size, progress_bar: tqdm, headers
-) -> List:
+def _send_post_request_data(url, payload, size, progress_bar: tqdm, headers) -> List:
     # noinspection PyBroadException
     try:
         progress_bar.update(size)
@@ -256,9 +242,7 @@ def _handle_response(
                     and next_request_header != "undefined"
                 ):
                     try:
-                        decoded["search_after"] = json.loads(
-                            next_request_header
-                        )
+                        decoded["search_after"] = json.loads(next_request_header)
                     except Exception as e:
                         logger.error(f"error parsing search_after: {e}")
             else:
@@ -301,9 +285,7 @@ def set_client(client) -> None:
     """Set the global client, used by all endpoints."""
     global __client__
     __client__ = client
-    logger.debug(
-        f"global __client__ has been set {__client__.__class__.__name__} \n"
-    )
+    logger.debug(f"global __client__ has been set {__client__.__class__.__name__} \n")
 
 
 def _warn_user_if_sdk_version_outdated() -> None:
