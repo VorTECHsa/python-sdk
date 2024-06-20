@@ -1,12 +1,12 @@
 from unittest import TestCase
 
+from requests.models import Response
+
 from vortexasdk.client import (
     VortexaClient,
-    verify_api_key_format,
     _handle_response,
+    verify_api_key_format,
 )
-
-from requests.models import Response
 
 
 class TestClient(TestCase):

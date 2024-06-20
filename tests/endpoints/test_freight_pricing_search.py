@@ -1,4 +1,5 @@
 from datetime import datetime
+
 from tests.testcases import TestCaseUsingRealAPI
 from vortexasdk.api.freight_pricing import FreightPricing
 from vortexasdk.endpoints.freight_pricing_result import FreightPricingResult

@@ -1,6 +1,7 @@
+from itertools import chain
+
 from tests.testcases import TestCaseUsingRealAPI
 from vortexasdk import Geographies
-from itertools import chain
 
 
 class TestGeographiesReal(TestCaseUsingRealAPI):

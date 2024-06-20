@@ -1,5 +1,5 @@
-from vortexasdk import VesselAvailabilitySearch
 from tests.testcases import TestCaseUsingRealAPI
+from vortexasdk import VesselAvailabilitySearch
 
 rotterdam = "68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e"
 singapore = "1b79e18416d358d7e07b978abcab3f17e2ca75085a6d70ce1811cf4eaeaea886"

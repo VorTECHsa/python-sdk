@@ -1,19 +1,18 @@
-from pydantic import BaseModel
 from typing import List, Optional
 
+from pydantic import BaseModel
 
 from vortexasdk.api.shared_types import (
     EntityWithListLayer,
-    ISODate,
-    VesselClassEntry,
-    Tag,
     Flag,
+    ISODate,
+    Tag,
+    VesselClassEntry,
 )
 
 
 class DeclaredDestination(BaseModel):
     """
-
     Current destination location, as reported by the available vessel
 
     """
@@ -25,7 +24,6 @@ class DeclaredDestination(BaseModel):
 
 class VesselFixtures(BaseModel):
     """
-
     Current fixture information for the available vessel
 
     """
@@ -40,7 +38,6 @@ class VesselFixtures(BaseModel):
 
 class VesselAvailability(BaseModel):
     """
-
     Vessel Availability shows vessels that are available to load a given cargo at a given port within a specified time range.
 
     """

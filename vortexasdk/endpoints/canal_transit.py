@@ -17,6 +17,8 @@ from vortexasdk.utils import convert_to_list
 
 logger = get_logger(__name__)
 
+NOW = datetime.now()
+
 
 class CanalTransit(Search):
     """
@@ -51,7 +53,7 @@ class CanalTransit(Search):
         filter_booked_time_max: Optional[datetime] = None,
         filter_booked_status: Optional[bool] = None,
         filter_voyage_status: Optional[str] = None,
-        updated_since: datetime = datetime.now() - timedelta(days=2),
+        updated_since: datetime = NOW - timedelta(days=2),
         filter_canal: Optional[str] = None,
         filter_direction: Optional[str] = None,
         filter_lock: Optional[str] = None,
@@ -66,7 +68,6 @@ class CanalTransit(Search):
         ] = None,
     ) -> CanalTransitResult:
         """
-
         Find CanalTransitRecords matching the given search parameters.
 
         # Arguments
@@ -139,7 +140,6 @@ class CanalTransit(Search):
         `CanalTransitResults`, containing all the canal transit records matching the given search terms.
 
         """
-
         exclude_params: Dict[str, Any] = {
             "filter_origin": convert_to_list(exclude_filter_origin),
             "filter_destination": convert_to_list(exclude_filter_destination),

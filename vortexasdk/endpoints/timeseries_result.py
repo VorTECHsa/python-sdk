@@ -1,6 +1,6 @@
 import functools
-from multiprocessing.pool import Pool
 import os
+from multiprocessing.pool import Pool
 from typing import List
 
 import pandas as pd
@@ -52,22 +52,26 @@ class TimeSeriesResult(Result):
 
         This method transforms time series data into a structured DataFrame, making it easier to analyze and manipulate. The DataFrame includes various columns representing different aspects of the time series, such as keys, values, counts, and breakdowns.
 
-        Parameters:
+        Parameters
+        ----------
         - columns (str or list, optional): Specifies the columns to include in the output DataFrame.
             - If set to 'all' (default), all available columns are included.
             - If a list is provided, it should contain the column names to be included. For example:
             ['key', 'count', 'value', 'breakdown.0.label', 'breakdown.0.count', 'breakdown.0.value']
             This list can be customized to include specific breakdown indices (e.g., 'breakdown.1.label').
 
-        Returns:
+        Returns
+        -------
         - pd.DataFrame: A DataFrame containing the time series data. The DataFrame includes the following columns by default:
             - key (datetime): The breakdown key, converted to a datetime object.
             - value (varies): The value associated with each key in the time series.
             - count (int): The number of records contributing to each time series entry.
             - breakdown (dict): Additional aggregated information for each time interval.
 
-        Notes:
+        Notes
+        -----
         - The 'breakdown' column in the DataFrame provides aggregated data and can contain multiple entries. To access additional breakdown information, modify the column names in the 'columns' parameter (e.g., 'breakdown.1.label', 'breakdown.2.label').
+
         """
         items = super().to_list()
         full_header_column: list = []

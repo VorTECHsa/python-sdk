@@ -1,7 +1,7 @@
 from datetime import datetime
-from vortexasdk import VesselAvailabilityTimeseries
 
 from tests.testcases import TestCaseUsingRealAPI
+from vortexasdk import VesselAvailabilityTimeseries
 
 rotterdam = "68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e"
 

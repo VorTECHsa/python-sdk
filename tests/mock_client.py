@@ -1,6 +1,5 @@
-from typing import List, Dict
-
 import json
+from typing import Dict, List
 
 from vortexasdk.api import ID
 from vortexasdk.endpoints.endpoints import (

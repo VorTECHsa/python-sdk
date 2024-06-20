@@ -2,7 +2,7 @@ from datetime import datetime
 
 from tests.testcases import TestCaseUsingRealAPI
 from tests.timer import Timer
-from vortexasdk import Geographies, Corporations, Products
+from vortexasdk import Corporations, Geographies, Products
 from vortexasdk.endpoints.cargo_movements import CargoMovements
 
 

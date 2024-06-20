@@ -4,7 +4,8 @@
   "python.testing.unittestEnabled": false,
   "python.testing.pytestEnabled": true,
   "[python]": {
-    "editor.defaultFormatter": "ms-python.black-formatter"
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "charliermarsh.ruff",
   },
   "cSpell.words": [
     "dataframe",

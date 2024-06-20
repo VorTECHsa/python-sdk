@@ -1,4 +1,5 @@
 from typing import List
+
 import pandas as pd
 
 from vortexasdk.api.aggregation_breakdown_item import AggregationBreakdownItem
@@ -20,7 +21,8 @@ class AggregationBreakdownResult(Result):
         return create_list(super().to_list(), AggregationBreakdownItem)
 
     def to_df(self, columns=DEFAULT_COLUMNS) -> pd.DataFrame:
-        """Represents the aggregation breakdown as a dataframe.
+        """
+        Represents the aggregation breakdown as a dataframe.
 
         Returns a `pd.DataFrame`, of time series items with columns:
          id: ID of the reference record
@@ -35,10 +37,8 @@ class AggregationBreakdownResult(Result):
         the number of vessels.
 
         """
-        df = create_dataframe(
+        return create_dataframe(
             columns=columns,
             data=super().to_list(),
             logger_description="AggregationBreakdown",
         )
-
-        return df

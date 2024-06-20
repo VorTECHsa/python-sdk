@@ -1,7 +1,7 @@
 from datetime import datetime
-from vortexasdk import MovementStatusBreakdown
 
 from tests.testcases import TestCaseUsingRealAPI
+from vortexasdk import MovementStatusBreakdown
 
 totalMovementStatusBreakdown = 6
 

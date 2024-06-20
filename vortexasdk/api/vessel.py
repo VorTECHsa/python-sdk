@@ -1,15 +1,15 @@
-from pydantic import BaseModel
 from typing import List, Optional
 
-from vortexasdk.api.id import ID
+from pydantic import BaseModel
 
+from vortexasdk.api.id import ID
 from vortexasdk.api.shared_types import (
+    Flag,
     IDName,
     ISODate,
     Node,
-    Tag,
     Scrubber,
-    Flag,
+    Tag,
     VesselClassEntry,
 )
 

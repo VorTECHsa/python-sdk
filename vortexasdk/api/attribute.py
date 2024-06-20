@@ -1,6 +1,5 @@
 from typing import Optional
 
-
 from vortexasdk.api.shared_types import Node
 
 

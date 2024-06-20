@@ -1,14 +1,15 @@
-from typing import List
-import pandas as pd
-
-from vortexasdk.api.search_result import Result
-from vortexasdk.logger import get_logger
-from vortexasdk.result_conversions import create_dataframe, create_list
-from vortexasdk.api.breakdown_item import BreakdownItem
-from vortexasdk.api.entity_flattening import convert_to_flat_dict
 import functools
 import os
 from multiprocessing.pool import Pool
+from typing import List
+
+import pandas as pd
+
+from vortexasdk.api.breakdown_item import BreakdownItem
+from vortexasdk.api.entity_flattening import convert_to_flat_dict
+from vortexasdk.api.search_result import Result
+from vortexasdk.logger import get_logger
+from vortexasdk.result_conversions import create_dataframe, create_list
 
 logger = get_logger(__name__)
 
@@ -17,10 +18,9 @@ def replace_keys(result: Result):
     # Creates a list of data entries with keys enriched by references
     if len(result) == 0:
         return list([])
-    else:
-        refs = result.reference
-        data = result.records
-        return list(map(lambda x: key_from_ref(x, refs), data))
+    refs = result.reference
+    data = result.records
+    return list(map(lambda x: key_from_ref(x, refs), data))
 
 
 def key_from_ref(datum, refs):
@@ -29,9 +29,8 @@ def key_from_ref(datum, refs):
     if key in refs:
         name = refs[key]["label"]
         return {**datum, "label": name}
-    else:
-        name = datum["key"]
-        return {**datum, "label": name}
+    name = datum["key"]
+    return {**datum, "label": name}
 
 
 DEFAULT_COLUMNS = ["key", "label", "value", "count"]
@@ -48,7 +47,8 @@ class ReferenceBreakdownResult(Result):
         return create_list(new_list, BreakdownItem)
 
     def to_df(self, columns=DEFAULT_COLUMNS) -> pd.DataFrame:
-        """Represents the breakdown as a dataframe.
+        """
+        Represents the breakdown as a dataframe.
 
         Returns a `pd.DataFrame`, of breakdown items with columns:
          key: id of the breakdown item
@@ -63,7 +63,6 @@ class ReferenceBreakdownResult(Result):
         and the `count` column holds the number of vessels movements contributing towards this day's movements.
 
         """
-
         # data enrichment step - labels from `reference` replace keys from `data`
         new_list = replace_keys(self)
 
@@ -73,10 +72,8 @@ class ReferenceBreakdownResult(Result):
         with Pool(os.cpu_count()) as pool:
             records = pool.map(flatten, new_list)
 
-        df = create_dataframe(
+        return create_dataframe(
             columns=columns,
             data=records,
             logger_description="ReferenceBreakdown",
         )
-
-        return df

@@ -1,6 +1,6 @@
-from vortexasdk.api import CargoMovement
-
 from unittest import TestCase
+
+from vortexasdk.api import CargoMovement
 
 
 class TestMissingKeys(TestCase):

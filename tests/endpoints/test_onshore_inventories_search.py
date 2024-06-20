@@ -1,6 +1,5 @@
-from vortexasdk import OnshoreInventoriesSearch
-
 from tests.testcases import TestCaseUsingRealAPI
+from vortexasdk import OnshoreInventoriesSearch
 
 
 class TestOnshoreInventoriesSearch(TestCaseUsingRealAPI):
@@ -20,7 +19,6 @@ class TestOnshoreInventoriesSearch(TestCaseUsingRealAPI):
         If this happens, you may need to find a new one and replace.
         Also consider removing this test if it happens periodically.
         """
-
         df = (
             OnshoreInventoriesSearch()
             .search(

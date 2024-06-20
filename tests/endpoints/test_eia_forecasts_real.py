@@ -1,5 +1,6 @@
-from tests.testcases import TestCaseUsingRealAPI
 from datetime import datetime
+
+from tests.testcases import TestCaseUsingRealAPI
 from vortexasdk.endpoints.eia_forecasts import EIAForecasts
 
 

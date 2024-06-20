@@ -1,5 +1,5 @@
 from tests.testcases import TestCaseUsingRealAPI
-from vortexasdk import Products, Geographies, Corporations, Vessels
+from vortexasdk import Corporations, Geographies, Products, Vessels
 
 endpoints_and_searchterms = [
     (Products(), "Gasoil"),

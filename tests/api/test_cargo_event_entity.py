@@ -1,6 +1,5 @@
-from unittest import TestCase
-
 import json
+from unittest import TestCase
 
 from vortexasdk.api.cargo_movement import CargoPortUnloadEvent
 from vortexasdk.api.geography import GeographyEntity

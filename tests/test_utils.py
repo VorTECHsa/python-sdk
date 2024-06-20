@@ -2,10 +2,10 @@ from datetime import datetime
 from unittest import TestCase
 
 from vortexasdk.utils import (
+    chunk_time_series,
     convert_to_list,
     convert_values_to_list,
     filter_exact_match,
-    chunk_time_series,
 )
 
 

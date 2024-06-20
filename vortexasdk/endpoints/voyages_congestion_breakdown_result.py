@@ -2,12 +2,14 @@ import functools
 import os
 from multiprocessing.pool import Pool
 from typing import List
+
 import pandas as pd
+
 from vortexasdk.api.entity_flattening import convert_to_flat_dict
 from vortexasdk.api.search_result import Result
 from vortexasdk.api.voyages import CongestionBreakdownItem
-from vortexasdk.result_conversions import create_dataframe, create_list
 from vortexasdk.logger import get_logger
+from vortexasdk.result_conversions import create_dataframe, create_list
 
 logger = get_logger(__name__)
 
@@ -46,7 +48,7 @@ class CongestionBreakdownResult(Result):
 
     def to_df(self, columns=DEFAULT_COLUMNS) -> pd.DataFrame:
         """
-            Represent availability as a `pd.DataFrame`.
+        Represent availability as a `pd.DataFrame`.
 
         # Arguments
                 columns: Output columns present in the `pd.DataFrame`.
@@ -110,7 +112,6 @@ class CongestionBreakdownResult(Result):
             ```
 
         """
-
         logger.debug(
             "Converting each Voyage Congestion Breakdown to a flat dictionary"
         )

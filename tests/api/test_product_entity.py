@@ -1,6 +1,6 @@
+import json
 from unittest import TestCase
 
-import json
 from vortexasdk.api.product import ProductEntityWithSingleLayer
 
 

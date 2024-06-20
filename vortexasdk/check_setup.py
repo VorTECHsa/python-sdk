@@ -1,6 +1,7 @@
 import os
 
 import requests
+
 from vortexasdk.endpoints.endpoints import API_FQDN
 
 all_tests_pass = True
@@ -37,7 +38,7 @@ def check_can_connect_to_vortexa_api():
         print(f"Python unable to connect to {url}")
         print(f"         status code: {status_code}")
         print(f"         reason: {reason}")
-        print(f"         Check your internet connectivity / VPN settings.")
+        print("          Check your internet connectivity / VPN settings.")
 
 
 def check_can_import_vortexasdk():

@@ -20,7 +20,7 @@ class VoyagesSearchEnrichedFlattenedResult(Result):
     def to_list(self) -> List[VoyageEnrichedItem]:
         # noinspection PyTypeChecker
         raise Exception(
-            f"to_list method is not supported for search results in the flattened format (i.e. when the `columns` API param is provided). Please use to_df() instead."
+            "to_list method is not supported for search results in the flattened format (i.e. when the `columns` API param is provided). Please use to_df() instead."
         )
 
     def to_df(self, columns=None) -> pd.DataFrame:
@@ -31,7 +31,6 @@ class VoyagesSearchEnrichedFlattenedResult(Result):
         `pd.DataFrame`, one row per `Voyage`.
 
         """
-
         logger.debug("Converting Voyage CSV response to a dataframe")
 
         # converts list to a datafrane
@@ -53,5 +52,5 @@ class VoyagesSearchEnrichedListResult(Result):
     def to_df(self, columns=None) -> pd.DataFrame:
         # noinspection PyTypeChecker
         raise Exception(
-            f"to_df method is not supported for search results in the list format (i.e. when the `columns` API param is not provided). Please use to_list() instead."
+            "to_df method is not supported for search results in the list format (i.e. when the `columns` API param is not provided). Please use to_list() instead."
         )

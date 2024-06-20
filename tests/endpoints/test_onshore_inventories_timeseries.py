@@ -1,8 +1,7 @@
 from datetime import datetime
-from vortexasdk import OnshoreInventoriesTimeseries
 
 from tests.testcases import TestCaseUsingRealAPI
-
+from vortexasdk import OnshoreInventoriesTimeseries
 
 START = datetime(2021, 8, 5, 0)
 END = datetime(2021, 8, 23, 1)

@@ -167,7 +167,6 @@ class FreightPricingResult(Result):
         ```
 
         """
-
         logger.debug(
             "Converting each Freight Pricing object to a flat dictionary"
         )

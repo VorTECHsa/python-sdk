@@ -2,13 +2,14 @@ import functools
 import os
 from multiprocessing.pool import Pool
 from typing import List
-from vortexasdk.api.vessel_availability import VesselAvailability
+
 import pandas as pd
 
 from vortexasdk.api.entity_flattening import convert_to_flat_dict
 from vortexasdk.api.search_result import Result
-from vortexasdk.result_conversions import create_dataframe, create_list
+from vortexasdk.api.vessel_availability import VesselAvailability
 from vortexasdk.logger import get_logger
+from vortexasdk.result_conversions import create_dataframe, create_list
 
 logger = get_logger(__name__)
 
@@ -203,7 +204,6 @@ class VesselAvailabilityResult(Result):
         ```
 
         """
-
         logger.debug(
             "Converting each Vessel Availability to a flat dictionary"
         )

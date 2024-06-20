@@ -2,9 +2,9 @@ from typing import List
 
 import pandas as pd
 
-from vortexasdk.logger import get_logger
 from vortexasdk.api import VesselSummary
 from vortexasdk.api.search_result import Result
+from vortexasdk.logger import get_logger
 from vortexasdk.result_conversions import create_dataframe, create_list
 
 logger = get_logger(__name__)

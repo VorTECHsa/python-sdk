@@ -1,11 +1,11 @@
-from typing import Dict, List, Union
 from datetime import datetime, timedelta
+from typing import Dict, List, Union
 
 
 def chunk_time_series(
     time_min: datetime, time_max: datetime, chunk_size: int = 30
 ):
-    """split the date range to smaller chunks"""
+    """Split the date range to smaller chunks"""
     if chunk_size <= 0:
         raise ValueError("chunk_size must be a positive integer")
 
@@ -60,10 +60,9 @@ def convert_to_list(a) -> List:
     """Convert wraps element in list if element isn't a list already."""
     if a is None:
         return []
-    elif isinstance(a, list):
+    if isinstance(a, list):
         return a
-    else:
-        return [a]
+    return [a]
 
 
 def convert_values_to_list(data: Dict) -> Dict:
@@ -100,9 +99,8 @@ def sts_param_value(param):
 
     Else - don't apply any filters
     """
-    if param == True:
-        return {"exclude": False, "x_filter": True}
-    elif param == False:
+    if isinstance(param, bool):
+        if param:
+            return {"exclude": False, "x_filter": True}
         return {"exclude": True, "x_filter": False}
-    else:
-        return {"exclude": False, "x_filter": False}
+    return {"exclude": False, "x_filter": False}

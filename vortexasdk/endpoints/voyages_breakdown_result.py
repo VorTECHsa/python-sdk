@@ -1,12 +1,13 @@
 import functools
 import os
 from multiprocessing.pool import Pool
-import pandas as pd
 from typing import List, Optional
+
+import pandas as pd
 from pydantic import BaseModel
-from vortexasdk.api.id import ID
 
 from vortexasdk.api.entity_flattening import convert_to_flat_dict
+from vortexasdk.api.id import ID
 from vortexasdk.api.search_result import Result
 from vortexasdk.logger import get_logger
 from vortexasdk.result_conversions import create_dataframe, create_list
@@ -67,21 +68,25 @@ class VoyagesBreakdownResult(Result):
 
         This method transforms breakdown data into a structured DataFrame, making it easier to analyze and manipulate. The DataFrame includes various columns representing different aspects of the breakdown, such as ids, values, and breakdowns.
 
-        Parameters:
+        Parameters
+        ----------
         - columns (str or list, optional): Specifies the columns to include in the output DataFrame.
             - If set to 'all' (default), all available columns are included.
             - If a list is provided, it should contain the column names to be included. For example:
             ['id', 'value', 'breakdown.0.label', 'breakdown.0.count', 'breakdown.0.value']
             This list can be customized to include specific breakdown indices (e.g., 'breakdown.1.label').
 
-        Returns:
+        Returns
+        -------
         - pd.DataFrame: A DataFrame containing the breakdown data. The DataFrame includes the following columns by default:
             - id (datetime): The breakdown key.
             - value (varies): The value associated with each key in the time series.
             - breakdown (dict): Additional aggregated information for each time interval.
 
-        Notes:
+        Notes
+        -----
         - The 'breakdown' column in the DataFrame provides aggregated data and can contain multiple entries. To access additional breakdown information, modify the column names in the 'columns' parameter (e.g., 'breakdown.1.label', 'breakdown.2.label').
+
         """
         flatten = functools.partial(convert_to_flat_dict, columns=columns)
         with Pool(os.cpu_count()) as pool:
@@ -99,10 +104,8 @@ class VoyagesBreakdownResult(Result):
             )
             records = pool.map(flatten, sorted_list)
 
-        df = create_dataframe(
+        return create_dataframe(
             columns=columns,
             data=records,
             logger_description="VoyagesBreakdown",
         )
-
-        return df

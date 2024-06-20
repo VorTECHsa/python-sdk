@@ -1,8 +1,9 @@
 from abc import ABC
-from enum import Enum
-from pydantic import BaseModel
 from datetime import datetime
+from enum import Enum
 from typing import List, Optional, Union
+
+from pydantic import BaseModel
 
 from vortexasdk.api.id import ID
 
@@ -115,7 +116,6 @@ class Node(ABC, IDName, BaseModel):
 
 class Tag(BaseModel):
     """
-
     Represents a property that is associated with a period of time.
 
     A good example is if a vessel has acted as an FSO during a time period.
@@ -131,7 +131,6 @@ class Tag(BaseModel):
 
 class Flag(BaseModel):
     """
-
     Represents a property that is associated with a vessel's flag.
 
     - `flag` key will be a Geography Entity ID.
@@ -148,7 +147,6 @@ class Flag(BaseModel):
 
 class Scrubber(BaseModel):
     """
-
     Represents information about scrubbers fitted to a vessel.
 
     - `scrubber` key will be the type of scrubber.
@@ -165,7 +163,6 @@ class Scrubber(BaseModel):
 
 class VesselClassEntry(BaseModel):
     """
-
     Represents a property that is associated with  the classes of a vessel.
 
     - `id` key will be a Vessel class Entity ID.

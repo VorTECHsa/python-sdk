@@ -7,8 +7,8 @@ Try me out in your browser:
 from datetime import datetime
 from typing import Any, Dict, List, Optional, Union
 
-from vortexasdk.api.shared_types import to_ISODate
 from vortexasdk.api.id import ID
+from vortexasdk.api.shared_types import to_ISODate
 from vortexasdk.endpoints.endpoints import CARGO_TIMESERIES_RESOURCE
 from vortexasdk.endpoints.timeseries_result import TimeSeriesResult
 from vortexasdk.logger import get_logger
@@ -71,7 +71,6 @@ class CargoTimeSeries(Search):
         timeseries_property: Optional[str] = None,
     ) -> TimeSeriesResult:
         """
-
         Find Aggregate flows between regions, for various products, for various vessels, or various corporations.
 
         Example questions that can be answered with this endpoint:
@@ -231,7 +230,6 @@ class CargoTimeSeries(Search):
 
 
         """
-
         if disable_geographic_exclusion_rules is not None:
             logger.warning(
                 "\nYou are using the disable_geographic_exclusion_rules parameter. It will be deprecated in March 2024 in favour of the `intra_movements` filter.\nPlease refer to https://docs.vortexa.com/reference/intro-cargo-filters for more information.\n"

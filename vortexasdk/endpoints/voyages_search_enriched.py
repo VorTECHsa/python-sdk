@@ -9,18 +9,17 @@ from typing import Any, Dict, List, Union
 
 from vortexasdk.api import ID
 from vortexasdk.api.shared_types import (
-    Tag,
-    to_ISODate,
-    VoyageDateRangeActivity,
-    OriginBehaviour,
     DestinationBehaviour,
+    OriginBehaviour,
+    Tag,
+    VoyageDateRangeActivity,
+    to_ISODate,
 )
 from vortexasdk.endpoints.endpoints import VOYAGES_SEARCH_ENRICHED
 from vortexasdk.endpoints.voyages_search_enriched_result import (
     VoyagesSearchEnrichedFlattenedResult,
     VoyagesSearchEnrichedListResult,
 )
-
 from vortexasdk.operations import Search
 from vortexasdk.utils import convert_to_list
 
@@ -101,7 +100,6 @@ class VoyagesSearchEnriched(Search):
         VoyagesSearchEnrichedFlattenedResult, VoyagesSearchEnrichedListResult
     ]:
         """
-
         Returns one record per voyage, containing a selection of information about the voyage.
 
         NOTE: To display results as a list (`to_list()`), please set the columns parameter to `None`. To display results as dataframe (`to_df()`), please set the columns parameter to `all` or a list of selected columns.
@@ -358,10 +356,10 @@ class VoyagesSearchEnriched(Search):
             return VoyagesSearchEnrichedListResult(
                 records=response["data"], reference=response["reference"]
             )
-        else:
-            response = super().search_with_client(
-                headers=self._CSV_HEADERS, **api_params
-            )
-            return VoyagesSearchEnrichedFlattenedResult(
-                records=response["data"], reference=response["reference"]
-            )
+
+        response = super().search_with_client(
+            headers=self._CSV_HEADERS, **api_params
+        )
+        return VoyagesSearchEnrichedFlattenedResult(
+            records=response["data"], reference=response["reference"]
+        )

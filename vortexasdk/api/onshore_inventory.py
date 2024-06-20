@@ -1,15 +1,14 @@
-from pydantic import BaseModel
 from typing import Optional
 
-from vortexasdk.api.asset_tank import AssetTank
+from pydantic import BaseModel
 
-from vortexasdk.api.shared_types import ISODate
+from vortexasdk.api.asset_tank import AssetTank
 from vortexasdk.api.id import ID
+from vortexasdk.api.shared_types import ISODate
 
 
 class OnshoreInventory(BaseModel):
     """
-
     Land Storage measurements are the base data set the Vortexa API is centred around.
 
     Each measurement represents the total capacity and current amount being stored at each location.
