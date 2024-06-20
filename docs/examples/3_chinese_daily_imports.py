@@ -13,6 +13,7 @@ The below script returns:
 ...
 
 """
+
 from datetime import datetime
 
 from vortexasdk import CargoTimeSeries, Geographies, Products

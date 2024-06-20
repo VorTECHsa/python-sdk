@@ -12,6 +12,7 @@ The below script returns something similar to:
 
 
 """
+
 from datetime import datetime
 
 from vortexasdk import CargoMovements

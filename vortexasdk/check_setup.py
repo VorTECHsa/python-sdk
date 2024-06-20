@@ -60,7 +60,9 @@ def check_can_retrieve_geographies():
     try:
         from vortexasdk import Geographies
 
-        europe = "f39d455f5d38907394d6da3a91da4e391f9a34bd6a17e826d6042761067e88f4"
+        europe = (
+            "f39d455f5d38907394d6da3a91da4e391f9a34bd6a17e826d6042761067e88f4"
+        )
         geography = Geographies().reference(europe)
         assert geography["id"] == europe
         print("Python successfully retrieved a sample piece of reference data")

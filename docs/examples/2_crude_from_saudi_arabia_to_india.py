@@ -5,6 +5,7 @@ The below script returns a `pd.DataFrame`, similar to the table given in the mov
  filtering on `Products: Crude` with `Origin: Saudi Arabia`, `Destination: India` and `Date Range: Departures in the last Month`.
 
 """
+
 from datetime import datetime
 
 from dateutil.relativedelta import relativedelta
