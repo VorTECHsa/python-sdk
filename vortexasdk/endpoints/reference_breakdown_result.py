@@ -47,7 +47,8 @@ class ReferenceBreakdownResult(Result):
         return create_list(new_list, BreakdownItem)
 
     def to_df(self, columns=DEFAULT_COLUMNS) -> pd.DataFrame:
-        """Represents the breakdown as a dataframe.
+        """
+        Represents the breakdown as a dataframe.
 
         Returns a `pd.DataFrame`, of breakdown items with columns:
          key: id of the breakdown item
@@ -62,7 +63,6 @@ class ReferenceBreakdownResult(Result):
         and the `count` column holds the number of vessels movements contributing towards this day's movements.
 
         """
-
         # data enrichment step - labels from `reference` replace keys from `data`
         new_list = replace_keys(self)
 

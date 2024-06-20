@@ -5,7 +5,7 @@ from typing import Dict, List, Union
 def chunk_time_series(
     time_min: datetime, time_max: datetime, chunk_size: int = 30
 ):
-    """split the date range to smaller chunks"""
+    """Split the date range to smaller chunks"""
     if chunk_size <= 0:
         raise ValueError("chunk_size must be a positive integer")
 

@@ -72,7 +72,7 @@ class MovementStatusBreakdown(Search):
         intra_movements: str = None,
     ) -> ReferenceBreakdownResult:
         """
-         Origin locations breakdown aggregation by geographic area
+        Origin locations breakdown aggregation by geographic area
 
          # Arguments
 
@@ -195,7 +195,6 @@ class MovementStatusBreakdown(Search):
          |  4 | ship_to_ship                    | 118285   | 18        |
 
         """
-
         if disable_geographic_exclusion_rules is not None:
             logger.warning(
                 "\nYou are using the disable_geographic_exclusion_rules parameter. It will be deprecated in March 2024 in favour of the `intra_movements` filter.\n"
@@ -214,11 +213,19 @@ class MovementStatusBreakdown(Search):
             ),
             "filter_origins": convert_to_list(exclude_origins),
             "filter_flags": convert_to_list(exclude_vessel_flags),
-            "filter_vessel_ice_class": convert_to_list(exclude_vessel_ice_class),
-            "filter_vessel_propulsion": convert_to_list(exclude_vessel_propulsion),
-            "filter_storage_locations": convert_to_list(exclude_storage_locations),
+            "filter_vessel_ice_class": convert_to_list(
+                exclude_vessel_ice_class
+            ),
+            "filter_vessel_propulsion": convert_to_list(
+                exclude_vessel_propulsion
+            ),
+            "filter_storage_locations": convert_to_list(
+                exclude_storage_locations
+            ),
             "filter_waypoints": convert_to_list(exclude_waypoints),
-            "filter_ship_to_ship": convert_to_list(exclude_ship_to_ship_locations),
+            "filter_ship_to_ship": convert_to_list(
+                exclude_ship_to_ship_locations
+            ),
         }
 
         api_params: Dict[str, Any] = {
@@ -235,8 +242,12 @@ class MovementStatusBreakdown(Search):
             "filter_vessels": convert_to_list(filter_vessels),
             "filter_vessel_classes": convert_to_list(filter_vessel_classes),
             "filter_vessel_flags": convert_to_list(filter_vessel_flags),
-            "filter_vessel_ice_class": convert_to_list(filter_vessel_ice_class),
-            "filter_vessel_propulsion": convert_to_list(filter_vessel_propulsion),
+            "filter_vessel_ice_class": convert_to_list(
+                filter_vessel_ice_class
+            ),
+            "filter_vessel_propulsion": convert_to_list(
+                filter_vessel_propulsion
+            ),
             "filter_owners": convert_to_list(filter_owners),
             "filter_effective_controllers": convert_to_list(
                 filter_effective_controllers
@@ -245,7 +256,9 @@ class MovementStatusBreakdown(Search):
             "filter_origins": convert_to_list(filter_origins),
             "filter_waypoints": convert_to_list(filter_waypoints),
             "filter_charterers": convert_to_list(filter_charterers),
-            "filter_storage_locations": convert_to_list(filter_storage_locations),
+            "filter_storage_locations": convert_to_list(
+                filter_storage_locations
+            ),
             "filter_ship_to_ship_locations": convert_to_list(
                 filter_ship_to_ship_locations
             ),
@@ -258,7 +271,9 @@ class MovementStatusBreakdown(Search):
             "include_reference": self._INCLUDE_REFERENCE_DATA,
         }
 
-        response = super().search_with_client(response_type="breakdown", **api_params)
+        response = super().search_with_client(
+            response_type="breakdown", **api_params
+        )
 
         return ReferenceBreakdownResult(
             records=response["data"], reference=response["reference"]

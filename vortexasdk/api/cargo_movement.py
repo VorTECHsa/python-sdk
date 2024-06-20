@@ -114,7 +114,6 @@ class CargoOilOnWaterEvent(BaseModel):
 
 class ParentID(BaseModel):
     """
-
     `cargo_movement_id` may change under certain conditions. `ParentID` contains an `id`,
     a previous id of the cargo movement, and a `splinter_timestamp`, the time at which the id change occurred.
 
@@ -136,7 +135,6 @@ class CargoMovementProductEntry(BaseModel):
 
 class CargoMovement(BaseModel):
     """
-
     Cargo movements are the base data set the Vortexa API is centred around.
 
     Each movement represents a journey of a certain quantity of a product between places.

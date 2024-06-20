@@ -67,7 +67,6 @@ class CanalTransitTimeseries(Search):
         ] = None,
     ) -> TimeSeriesResult:
         """
-
         Aggregate Canal Transit records for various activities and frequencies.
 
         # Arguments
@@ -150,7 +149,6 @@ class CanalTransitTimeseries(Search):
         `CanalTransitTimeseries`
 
         """
-
         exclude_params: Dict[str, Any] = {
             "filter_origin": convert_to_list(exclude_filter_origin),
             "filter_destination": convert_to_list(exclude_filter_destination),

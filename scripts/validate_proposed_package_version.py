@@ -8,7 +8,6 @@ def check_proposed_version_is_allowed(
     latest_version: str, proposed_version: str
 ) -> None:
     """Check that the proposed version is a valid future semver version, or a prerelease."""
-
     print(f"Latest version:  {latest_version}")
     print(f"Proposed version {proposed_version}")
 

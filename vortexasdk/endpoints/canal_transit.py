@@ -68,7 +68,6 @@ class CanalTransit(Search):
         ] = None,
     ) -> CanalTransitResult:
         """
-
         Find CanalTransitRecords matching the given search parameters.
 
         # Arguments
@@ -141,7 +140,6 @@ class CanalTransit(Search):
         `CanalTransitResults`, containing all the canal transit records matching the given search terms.
 
         """
-
         exclude_params: Dict[str, Any] = {
             "filter_origin": convert_to_list(exclude_filter_origin),
             "filter_destination": convert_to_list(exclude_filter_destination),

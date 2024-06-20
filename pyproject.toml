@@ -43,6 +43,7 @@ extend-include = ["*.ipynb"]
 # Enable Pyflakes (`F`) and a subset of the pycodestyle (`E`)  codes by default.
 # Unlike Flake8, Ruff doesn't enable pycodestyle warnings (`W`) or
 # McCabe complexity (`C901`) by default.
+# add D for complete pydocstyle
 select = ["B", "E4", "E7", "E9", "F", "RET", "I", "Q"]
 ignore = []
 

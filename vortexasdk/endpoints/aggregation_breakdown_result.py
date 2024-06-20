@@ -21,7 +21,8 @@ class AggregationBreakdownResult(Result):
         return create_list(super().to_list(), AggregationBreakdownItem)
 
     def to_df(self, columns=DEFAULT_COLUMNS) -> pd.DataFrame:
-        """Represents the aggregation breakdown as a dataframe.
+        """
+        Represents the aggregation breakdown as a dataframe.
 
         Returns a `pd.DataFrame`, of time series items with columns:
          id: ID of the reference record

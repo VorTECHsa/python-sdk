@@ -100,7 +100,6 @@ class VoyagesSearchEnriched(Search):
         VoyagesSearchEnrichedFlattenedResult, VoyagesSearchEnrichedListResult
     ]:
         """
-
         Returns one record per voyage, containing a selection of information about the voyage.
 
         NOTE: To display results as a list (`to_list()`), please set the columns parameter to `None`. To display results as dataframe (`to_df()`), please set the columns parameter to `all` or a list of selected columns.

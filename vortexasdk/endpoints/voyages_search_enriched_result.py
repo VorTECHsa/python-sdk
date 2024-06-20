@@ -31,7 +31,6 @@ class VoyagesSearchEnrichedFlattenedResult(Result):
         `pd.DataFrame`, one row per `Voyage`.
 
         """
-
         logger.debug("Converting Voyage CSV response to a dataframe")
 
         # converts list to a datafrane

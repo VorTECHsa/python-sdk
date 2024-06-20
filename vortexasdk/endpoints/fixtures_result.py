@@ -117,7 +117,6 @@ class FixtureResult(Result):
         # Returns
         `pd.DataFrame` of Fixtures.
         """
-
         flatten = functools.partial(convert_to_flat_dict, columns=columns)
 
         with Pool(os.cpu_count()) as pool:

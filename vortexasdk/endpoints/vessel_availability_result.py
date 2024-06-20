@@ -204,7 +204,6 @@ class VesselAvailabilityResult(Result):
         ```
 
         """
-
         logger.debug(
             "Converting each Vessel Availability to a flat dictionary"
         )

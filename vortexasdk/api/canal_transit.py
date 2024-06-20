@@ -33,7 +33,6 @@ class CorporateRecord(BaseModel):
 
 class CanalTransitRecord(BaseModel):
     """
-
     The canal transits dataset contains information about ships waiting to cross major global canals.
 
     An entry in this dataset records information about a vessels transit through a canal, including the the actual queue arrival time, the planned canal entry time, the actual canal entry time, and the actual canal exit time.

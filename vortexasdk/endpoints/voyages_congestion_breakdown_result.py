@@ -48,7 +48,7 @@ class CongestionBreakdownResult(Result):
 
     def to_df(self, columns=DEFAULT_COLUMNS) -> pd.DataFrame:
         """
-            Represent availability as a `pd.DataFrame`.
+        Represent availability as a `pd.DataFrame`.
 
         # Arguments
                 columns: Output columns present in the `pd.DataFrame`.
@@ -112,7 +112,6 @@ class CongestionBreakdownResult(Result):
             ```
 
         """
-
         logger.debug(
             "Converting each Voyage Congestion Breakdown to a flat dictionary"
         )

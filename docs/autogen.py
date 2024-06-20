@@ -7,7 +7,8 @@ import six
 
 
 def get_module_docstring(filepath):
-    """Extract the module docstring.
+    """
+    Extract the module docstring.
     Also finds the line at which the docstring ends.
     """
     co = compile(open(filepath, encoding="utf-8").read(), filepath, "exec")
@@ -20,7 +21,8 @@ def get_module_docstring(filepath):
 
 
 def copy_examples(examples_dir, destination_dir):
-    """Copy the examples directory in the documentation.
+    """
+    Copy the examples directory in the documentation.
     Prettify files by extracting the docstrings written in Markdown.
     """
     pathlib.Path(destination_dir).mkdir(exist_ok=True)
@@ -33,7 +35,6 @@ def copy_examples(examples_dir, destination_dir):
         with open(destination_file, "w+", encoding="utf-8") as f_out, open(
             os.path.join(examples_dir, file), "r+", encoding="utf-8"
         ) as f_in:
-
             f_out.write(docstring + "\n\n")
 
             # skip docstring

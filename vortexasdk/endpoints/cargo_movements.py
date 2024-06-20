@@ -79,7 +79,6 @@ class CargoMovements(Record, Search):
         intra_movements: str = None,
     ) -> CargoMovementsResult:
         """
-
         Find CargoMovements matching the given search parameters.
 
         # Arguments
@@ -225,7 +224,6 @@ class CargoMovements(Record, Search):
         [Cargo Movements Endpoint Further Documentation](https://docs.vortexa.com/reference/POST/cargo-movements/search)
 
         """
-
         if disable_geographic_exclusion_rules is not None:
             logger.warning(
                 "\nYou are using the disable_geographic_exclusion_rules parameter. It will be deprecated in March 2024 in favour of the `intra_movements` filter.\nPlease refer to https://docs.vortexa.com/reference/intro-cargo-filters for more information.\n"

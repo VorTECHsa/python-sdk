@@ -18,7 +18,6 @@ from vortexasdk.api.shared_types import (
 
 class CongestionBreakdownItem(BaseModel):
     """
-
     Congestion breakdown shows various stats of vessels in congestion.
 
     """
@@ -151,7 +150,6 @@ class VoyageStatusEvent(BaseModel):
 
 class VoyageEnrichedItem(BaseModel):
     """
-
     A voyage is defined as a continuous period of time when the vessel is either laden or ballast.
 
     Each voyage is made up of multiple voyage events which describe the activity of the vessel while it is laden or ballast.

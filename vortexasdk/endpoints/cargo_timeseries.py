@@ -71,7 +71,6 @@ class CargoTimeSeries(Search):
         timeseries_property: Optional[str] = None,
     ) -> TimeSeriesResult:
         """
-
         Find Aggregate flows between regions, for various products, for various vessels, or various corporations.
 
         Example questions that can be answered with this endpoint:
@@ -231,7 +230,6 @@ class CargoTimeSeries(Search):
 
 
         """
-
         if disable_geographic_exclusion_rules is not None:
             logger.warning(
                 "\nYou are using the disable_geographic_exclusion_rules parameter. It will be deprecated in March 2024 in favour of the `intra_movements` filter.\nPlease refer to https://docs.vortexa.com/reference/intro-cargo-filters for more information.\n"

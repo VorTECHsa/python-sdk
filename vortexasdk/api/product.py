@@ -22,7 +22,6 @@ class Product(Node):
 
 class ProductEntityWithSingleLayer(EntityWithSingleLayerAndProbability):
     """
-
     Represents a single product layer of a hierarchical product tree.
 
     [Further Documentation](https://docs.vortexa.com/reference/intro-product-entities)
@@ -31,7 +30,6 @@ class ProductEntityWithSingleLayer(EntityWithSingleLayerAndProbability):
 
 class ProductEntityWithListLayer(EntityWithListLayerAndProbability):
     """
-
     Represents a single product layer of a hierarchical product tree.
 
     [Further Documentation](https://docs.vortexa.com/reference/intro-product-entities)

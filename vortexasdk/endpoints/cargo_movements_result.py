@@ -28,7 +28,6 @@ DEFAULT_COLUMNS = [
 
 
 class CargoMovementsResult(Result):
-
     """
     Container class holdings search results returns from the cargo movements endpoint.
 
@@ -551,7 +550,6 @@ class CargoMovementsResult(Result):
         ```
 
         """
-
         flatten = functools.partial(
             convert_cargo_movement_to_flat_dict, columns=columns
         )

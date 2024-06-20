@@ -38,7 +38,6 @@ DEFAULT_COLUMNS = [
 
 
 class CanalTransitResult(Result):
-
     """
     Container class holdings search results returns from the Canal transit endpoint.
 
@@ -63,7 +62,6 @@ class CanalTransitResult(Result):
         `pd.DataFrame`, one row per canal transit record.
 
         """
-
         flatten = functools.partial(convert_to_flat_dict, columns=columns)
         logger.debug("Converting each CanalTransitRecord to a flat dictionary")
 

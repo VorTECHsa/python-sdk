@@ -23,7 +23,6 @@ def convert_to_flat_dict(
     va: Dict, columns: Union[Literal["all"], List[str]] = "all"
 ) -> Dict:
     """A generic function to convert nested object to flat dictionary, keeping *cols*."""
-
     formatted = flatten_dictionary(va)
 
     if columns == "all":

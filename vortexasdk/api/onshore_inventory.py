@@ -9,7 +9,6 @@ from vortexasdk.api.shared_types import ISODate
 
 class OnshoreInventory(BaseModel):
     """
-
     Land Storage measurements are the base data set the Vortexa API is centred around.
 
     Each measurement represents the total capacity and current amount being stored at each location.

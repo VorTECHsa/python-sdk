@@ -92,7 +92,6 @@ class OnshoreInventoriesResult(Result):
 
 
         """
-
         logger.debug(
             "Converting Crude Onshore Inventories to a flat dictionary"
         )
