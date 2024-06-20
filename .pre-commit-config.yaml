@@ -4,11 +4,6 @@ repos:
     hooks:
       - id: ruff
       - id: ruff-format
-  - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v1.2.3
-    hooks:
-      - id: flake8
-        files: ^vortexasdk/
   - repo: https://github.com/PyCQA/pydocstyle
     rev: 4.0.1
     hooks:
