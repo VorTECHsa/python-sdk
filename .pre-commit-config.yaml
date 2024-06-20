@@ -4,11 +4,3 @@ repos:
     hooks:
       - id: ruff
       - id: ruff-format
-  - repo: https://github.com/PyCQA/pydocstyle
-    rev: 4.0.1
-    hooks:
-      - id: pydocstyle
-        args:
-          - --ignore=D107,D203,D212,D100
-        files: ^vortexasdk/
-          ^docs/examples/
