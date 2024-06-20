@@ -1,13 +1,13 @@
-from pydantic import BaseModel
 from typing import List, Optional
 
+from pydantic import BaseModel
 
 from vortexasdk.api.shared_types import (
     EntityWithListLayer,
-    ISODate,
-    VesselClassEntry,
-    Tag,
     Flag,
+    ISODate,
+    Tag,
+    VesselClassEntry,
 )
 
 

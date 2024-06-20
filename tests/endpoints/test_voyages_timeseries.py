@@ -1,9 +1,9 @@
 from datetime import datetime
-from vortexasdk import VoyagesTimeseries
 
 from tests.testcases import TestCaseUsingRealAPI
-from vortexasdk.endpoints.geographies import Geographies
+from vortexasdk import VoyagesTimeseries
 from vortexasdk.api.shared_types import VoyageDateRangeActivity
+from vortexasdk.endpoints.geographies import Geographies
 
 rotterdam = "68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e"
 

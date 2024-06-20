@@ -1,12 +1,13 @@
 import functools
 import os
 from multiprocessing.pool import Pool
-import pandas as pd
 from typing import List, Optional
+
+import pandas as pd
 from pydantic import BaseModel
-from vortexasdk.api.id import ID
 
 from vortexasdk.api.entity_flattening import convert_to_flat_dict
+from vortexasdk.api.id import ID
 from vortexasdk.api.search_result import Result
 from vortexasdk.logger import get_logger
 from vortexasdk.result_conversions import create_dataframe, create_list
@@ -99,10 +100,8 @@ class VoyagesBreakdownResult(Result):
             )
             records = pool.map(flatten, sorted_list)
 
-        df = create_dataframe(
+        return create_dataframe(
             columns=columns,
             data=records,
             logger_description="VoyagesBreakdown",
         )
-
-        return df

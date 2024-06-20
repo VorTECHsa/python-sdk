@@ -1,30 +1,31 @@
 import copy
 import csv
 import getpass
+import json
 import os
+import uuid
 from json import JSONDecodeError
 from typing import Dict, List, Optional
 from urllib.parse import urlencode
-import uuid
-
-import json
 
 from requests import Response
 from tqdm import tqdm
 
-from vortexasdk.search_response import SearchResponse
+from vortexasdk import __name__ as sdk_pkg_name
 from vortexasdk.api.id import ID
 from vortexasdk.endpoints.endpoints import API_URL
 from vortexasdk.logger import get_logger
 from vortexasdk.retry_session import (
     _HEADERS as default_headers,
+)
+from vortexasdk.retry_session import (
     retry_get,
     retry_post,
 )
+from vortexasdk.search_response import SearchResponse
 from vortexasdk.utils import filter_empty_values
-from vortexasdk.version_utils import is_sdk_version_outdated
 from vortexasdk.version import __version__
-from vortexasdk import __name__ as sdk_pkg_name
+from vortexasdk.version_utils import is_sdk_version_outdated
 
 logger = get_logger(__name__)
 
@@ -51,7 +52,9 @@ class VortexaClient:
         response = retry_get(url)
         return _handle_response(response)["data"]
 
-    def get_record_with_params(self, resource: str, id: ID, params: Dict) -> Dict:
+    def get_record_with_params(
+        self, resource: str, id: ID, params: Dict
+    ) -> Dict:
         """Lookup single record data."""
         url = self._create_url_with_params(f"{resource}/{id}", params)
         response = retry_get(url)
@@ -67,17 +70,23 @@ class VortexaClient:
         url = self._create_url(resource)
         payload = self._cleanse_payload(data)
         # use default headers if none are provided
-        headers = payload["headers"] if "headers" in payload else default_headers
+        headers = (
+            payload["headers"] if "headers" in payload else default_headers
+        )
         logger.info(f"Payload: {payload}")
         # breakdowns do not support paging, the breakdown size is specified explicitly as a request parameter
         if response_type == "breakdown":
             size = payload.get("breakdown_size", 1000)
-            response = _send_post_request(url, payload, size=size, headers=headers)
+            response = _send_post_request(
+                url, payload, size=size, headers=headers
+            )
 
             ref = response.get("reference", {})
             return {"reference": ref, "data": response["data"]}
 
-        probe_response = _send_post_request(url, payload, size=1, headers=headers)
+        probe_response = _send_post_request(
+            url, payload, size=1, headers=headers
+        )
         total = self._calculate_total(probe_response)
 
         if total > self._MAX_ALLOWED_TOTAL:
@@ -85,28 +94,28 @@ class VortexaClient:
                 f"Attempting to query too many records at once. Attempted records: {total}, Max allowed records: {self._MAX_ALLOWED_TOTAL} . "
                 f"Try reducing the date range to return fewer records."
             )
-        elif total == 1:
+        if total == 1:
             # Only one page response, no need to send another request, so return flattened response
             return {"reference": {}, "data": probe_response["data"]}
-        else:
-            responses = self._process_multiple_pages_with_search_after(
-                url=url,
-                payload=payload,
-                data=data,
-                headers=headers,
+
+        responses = self._process_multiple_pages_with_search_after(
+            url=url,
+            payload=payload,
+            data=data,
+            headers=headers,
+        )
+
+        flattened = self._flatten_response(responses)
+
+        if len(flattened) != total:
+            logger.info(
+                "Live updates to our data have impacted the number of records retrieved from the API since your query began."
             )
+            logger.info(f"Actual: {len(flattened)}, expected: {total}")
 
-            flattened = self._flatten_response(responses)
+        logger.info(f"Total records returned: {total}")
 
-            if len(flattened) != total:
-                logger.info(
-                    "Live updates to our data have impacted the number of records retrieved from the API since your query began."
-                )
-                logger.info(f"Actual: {len(flattened)}, expected: {total}")
-
-            logger.info(f"Total records returned: {total}")
-
-            return {"reference": {}, "data": flattened}
+        return {"reference": {}, "data": flattened}
 
     def search(
         self, resource: str, response_type: Optional[str], **data
@@ -114,14 +123,17 @@ class VortexaClient:
         return self.search_base(resource, response_type, **data)
 
     def _create_url(self, path: str) -> str:
-        return f"{API_URL}{path}?_sdk=python_v{__version__}&apikey={self.api_key}"
+        return (
+            f"{API_URL}{path}?_sdk=python_v{__version__}&apikey={self.api_key}"
+        )
 
     def _create_url_with_params(self, path: str, params: Dict) -> str:
         stringParams = urlencode(params)
         if len(stringParams) > 0:
             return f"{API_URL}{path}?_sdk=python_v{__version__}&apikey={self.api_key}&{stringParams}"
-        else:
-            return f"{API_URL}{path}?_sdk=python_v{__version__}&apikey={self.api_key}"
+        return (
+            f"{API_URL}{path}?_sdk=python_v{__version__}&apikey={self.api_key}"
+        )
 
     def _process_multiple_pages_with_search_after(
         self, url: str, payload: Dict, data: Dict, headers
@@ -140,7 +152,9 @@ class VortexaClient:
             next_request["search_after"] = search_after
 
         while next_request:
-            dict_response = _send_post_request(url, next_request, size, headers)
+            dict_response = _send_post_request(
+                url, next_request, size, headers
+            )
             responses.append(dict_response.get("data", []))
             next_request = dict_response.get("next_request")
             search_after = dict_response.get("search_after")
@@ -167,7 +181,9 @@ class VortexaClient:
         return [x for y in response for x in y]
 
 
-def _send_post_request_data(url, payload, size, progress_bar: tqdm, headers) -> List:
+def _send_post_request_data(
+    url, payload, size, progress_bar: tqdm, headers
+) -> List:
     # noinspection PyBroadException
     try:
         progress_bar.update(size)
@@ -213,46 +229,45 @@ def _handle_response(
 
         raise ValueError(f"{error} {message}")
 
-    else:
-        try:
+    try:
+        if (
+            headers is not None
+            and "accept" in headers
+            and headers["accept"] == "text/csv"
+        ):
+            # decode
+            raw = response.content.decode("utf-8")
+
+            # convert to dictionaries
+            reader = csv.DictReader(raw.splitlines())
+
+            # convert to JSON
+            data = [dict(line) for line in reader]
+
+            decoded = {
+                "data": data,
+                "total": int(response.headers["x-total"]),
+            }
+
+            next_request_header = response.headers.get("x-next-request")
+
             if (
-                headers is not None
-                and "accept" in headers
-                and headers["accept"] == "text/csv"
+                next_request_header is not None
+                and next_request_header != ""
+                and next_request_header != "undefined"
             ):
-                # decode
-                raw = response.content.decode("utf-8")
-
-                # convert to dictionaries
-                reader = csv.DictReader(raw.splitlines())
-
-                # convert to JSON
-                data = [dict(line) for line in reader]
-
-                decoded = {
-                    "data": data,
-                    "total": int(response.headers["x-total"]),
-                }
-
-                next_request_header = response.headers.get("x-next-request")
-
-                if (
-                    next_request_header is not None
-                    and next_request_header != ""
-                    and next_request_header != "undefined"
-                ):
-                    try:
-                        decoded["search_after"] = json.loads(next_request_header)
-                    except Exception as e:
-                        logger.error(f"error parsing search_after: {e}")
-            else:
-                decoded = response.json()
-        except JSONDecodeError:
-            logger.error("Could not decode response")
-            decoded = {}
-        except Exception as e:
-            logger.error(e)
-            decoded = {}
+                try:
+                    decoded["search_after"] = json.loads(next_request_header)
+                except Exception as e:
+                    logger.error(f"error parsing search_after: {e}")
+        else:
+            decoded = response.json()
+    except JSONDecodeError:
+        logger.error("Could not decode response")
+        decoded = {}
+    except Exception as e:
+        logger.error(e)
+        decoded = {}
 
     return decoded
 
@@ -285,7 +300,9 @@ def set_client(client) -> None:
     """Set the global client, used by all endpoints."""
     global __client__
     __client__ = client
-    logger.debug(f"global __client__ has been set {__client__.__class__.__name__} \n")
+    logger.debug(
+        f"global __client__ has been set {__client__.__class__.__name__} \n"
+    )
 
 
 def _warn_user_if_sdk_version_outdated() -> None:
@@ -307,19 +324,19 @@ def _load_api_key():
         return os.environ["VORTEXA_API_KEY"]
     except KeyError:
         return getpass.getpass("Vortexa API Key: ")
-    except Exception:
+    except Exception as err:
         raise KeyError(
             "You must either set the VORTEXA_API_KEY environment variable, or interactively enter your Vortexa API key."
             " Your API key can be found at https://docs.vortexa.com"
-        )
+        ) from err
 
 
 def verify_api_key_format(api_key: str) -> None:
     """Verify that the api_key is a valid UUID string"""
     try:
         uuid.UUID(api_key)
-    except ValueError:
+    except ValueError as err:
         raise ValueError(
             "Incorrect API key set. The Vortexa API key must be of the form xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx "
             " Your API key can be found at https://docs.vortexa.com"
-        )
+        ) from err

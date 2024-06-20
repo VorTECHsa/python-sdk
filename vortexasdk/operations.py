@@ -1,4 +1,5 @@
 from typing import Dict
+
 from vortexasdk.api.id import ID
 from vortexasdk.client import default_client
 from vortexasdk.exceptions import InvalidAPIDataResponseException
@@ -111,8 +112,7 @@ class Search:
                     api_params["term"], api_result["data"]
                 ),
             }
-        else:
-            return api_result
+        return api_result
 
     def search_with_client(
         self,

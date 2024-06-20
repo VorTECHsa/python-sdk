@@ -1,6 +1,5 @@
-from vortexasdk import OnshoreInventoriesSearch
-
 from tests.testcases import TestCaseUsingRealAPI
+from vortexasdk import OnshoreInventoriesSearch
 
 
 class TestOnshoreInventoriesSearch(TestCaseUsingRealAPI):

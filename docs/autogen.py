@@ -3,7 +3,6 @@ import pathlib
 
 import six
 
-
 # From https://github.com/keras-team/keras/blob/0a0ac3fa5462cf4a72636ca4498a0a82ac91fc32/docs/autogen.py
 
 

@@ -1,7 +1,7 @@
 from datetime import datetime
-from vortexasdk import VesselClassBreakdown
 
 from tests.testcases import TestCaseUsingRealAPI
+from vortexasdk import VesselClassBreakdown
 
 totalVesselClassBreakdown = 27
 

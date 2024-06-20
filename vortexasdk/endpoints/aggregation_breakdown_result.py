@@ -1,4 +1,5 @@
 from typing import List
+
 import pandas as pd
 
 from vortexasdk.api.aggregation_breakdown_item import AggregationBreakdownItem
@@ -35,10 +36,8 @@ class AggregationBreakdownResult(Result):
         the number of vessels.
 
         """
-        df = create_dataframe(
+        return create_dataframe(
             columns=columns,
             data=super().to_list(),
             logger_description="AggregationBreakdown",
         )
-
-        return df

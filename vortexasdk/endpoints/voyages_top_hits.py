@@ -8,17 +8,16 @@ from typing import Any, Dict, List, Union
 
 from vortexasdk.api import ID
 from vortexasdk.api.shared_types import (
-    Tag,
-    to_ISODate,
-    VoyageDateRangeActivity,
-    OriginBehaviour,
     DestinationBehaviour,
+    OriginBehaviour,
+    Tag,
+    VoyageDateRangeActivity,
+    to_ISODate,
 )
 from vortexasdk.endpoints.aggregation_breakdown_result import (
     AggregationBreakdownResult,
 )
 from vortexasdk.endpoints.endpoints import VOYAGES_TOP_HITS
-
 from vortexasdk.operations import Search
 from vortexasdk.utils import convert_to_list
 

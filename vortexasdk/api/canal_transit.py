@@ -1,14 +1,14 @@
-from pydantic import BaseModel
 from typing import List, Optional
 
-from vortexasdk.api.geography import GeographyEntity
+from pydantic import BaseModel
 
+from vortexasdk.api.geography import GeographyEntity
+from vortexasdk.api.id import ID
 from vortexasdk.api.shared_types import (
     EntityWithSingleLayer,
     ISODate,
     VesselClassEntry,
 )
-from vortexasdk.api.id import ID
 
 
 class CargoEntity(BaseModel):

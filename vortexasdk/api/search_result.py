@@ -1,8 +1,8 @@
-from typing_extensions import Literal
-from pydantic import BaseModel, Field
 from typing import Any, Dict, List, Union
 
 import pandas as pd
+from pydantic import BaseModel, Field
+from typing_extensions import Literal
 
 
 class Result(BaseModel):

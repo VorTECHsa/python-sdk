@@ -1,8 +1,9 @@
-from pydantic import BaseModel
 from typing import List, Optional, Union
-from typing_extensions import Literal
-from vortexasdk.api.id import ID
 
+from pydantic import BaseModel
+from typing_extensions import Literal
+
+from vortexasdk.api.id import ID
 from vortexasdk.api.shared_types import (
     EntityWithListLayer,
     EntityWithSingleLayer,

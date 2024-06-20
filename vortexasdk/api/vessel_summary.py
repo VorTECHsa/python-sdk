@@ -1,8 +1,8 @@
-from pydantic import BaseModel
 from typing import Optional
 
-from vortexasdk.api.id import ID
+from pydantic import BaseModel
 
+from vortexasdk.api.id import ID
 from vortexasdk.api.shared_types import ISODate
 
 

@@ -1,7 +1,7 @@
 from datetime import datetime
-from vortexasdk import VoyagesCongestionBreakdown
 
 from tests.testcases import TestCaseUsingRealAPI
+from vortexasdk import VoyagesCongestionBreakdown
 
 
 class TestVoyagesCongestionBreakdown(TestCaseUsingRealAPI):

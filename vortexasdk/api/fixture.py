@@ -1,5 +1,7 @@
-from pydantic import BaseModel
 from typing import Optional
+
+from pydantic import BaseModel
+
 from vortexasdk.api.id import ID
 from vortexasdk.api.vessel import VesselEntity
 

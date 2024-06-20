@@ -1,6 +1,7 @@
 import os
 
 import requests
+
 from vortexasdk.endpoints.endpoints import API_FQDN
 
 all_tests_pass = True

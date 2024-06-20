@@ -9,18 +9,17 @@ from typing import Any, Dict, List, Union
 
 from vortexasdk.api import ID
 from vortexasdk.api.shared_types import (
-    Tag,
-    to_ISODate,
-    VoyageDateRangeActivity,
-    OriginBehaviour,
     DestinationBehaviour,
+    OriginBehaviour,
+    Tag,
+    VoyageDateRangeActivity,
+    to_ISODate,
 )
 from vortexasdk.endpoints.endpoints import VOYAGES_SEARCH_ENRICHED
 from vortexasdk.endpoints.voyages_search_enriched_result import (
     VoyagesSearchEnrichedFlattenedResult,
     VoyagesSearchEnrichedListResult,
 )
-
 from vortexasdk.operations import Search
 from vortexasdk.utils import convert_to_list
 
@@ -358,10 +357,10 @@ class VoyagesSearchEnriched(Search):
             return VoyagesSearchEnrichedListResult(
                 records=response["data"], reference=response["reference"]
             )
-        else:
-            response = super().search_with_client(
-                headers=self._CSV_HEADERS, **api_params
-            )
-            return VoyagesSearchEnrichedFlattenedResult(
-                records=response["data"], reference=response["reference"]
-            )
+
+        response = super().search_with_client(
+            headers=self._CSV_HEADERS, **api_params
+        )
+        return VoyagesSearchEnrichedFlattenedResult(
+            records=response["data"], reference=response["reference"]
+        )

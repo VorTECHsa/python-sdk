@@ -8,11 +8,11 @@ from typing import Any, Dict, List, Union
 
 from vortexasdk.api import ID
 from vortexasdk.api.shared_types import (
-    Tag,
-    to_ISODate,
-    VoyageDateRangeActivity,
-    OriginBehaviour,
     DestinationBehaviour,
+    OriginBehaviour,
+    Tag,
+    VoyageDateRangeActivity,
+    to_ISODate,
 )
 from vortexasdk.endpoints.endpoints import VOYAGES_CONGESTION_BREAKDOWN
 from vortexasdk.endpoints.voyages_congestion_breakdown_result import (

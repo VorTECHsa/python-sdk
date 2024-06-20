@@ -1,7 +1,6 @@
+from tests.mock_client import example_asset_tanks
 from tests.testcases import TestCaseUsingMockAPI
 from vortexasdk.endpoints.asset_tanks import AssetTanks
-
-from tests.mock_client import example_asset_tanks
 from vortexasdk.endpoints.asset_tanks_result import AssetTankResult
 
 

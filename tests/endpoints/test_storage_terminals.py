@@ -1,7 +1,6 @@
+from tests.mock_client import example_storage_terminals
 from tests.testcases import TestCaseUsingMockAPI
 from vortexasdk.endpoints.storage_terminals import StorageTerminals
-
-from tests.mock_client import example_storage_terminals
 from vortexasdk.endpoints.storage_terminals_result import StorageTerminalResult
 
 

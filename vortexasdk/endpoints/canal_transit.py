@@ -17,6 +17,8 @@ from vortexasdk.utils import convert_to_list
 
 logger = get_logger(__name__)
 
+NOW = datetime.now()
+
 
 class CanalTransit(Search):
     """
@@ -51,7 +53,7 @@ class CanalTransit(Search):
         filter_booked_time_max: Optional[datetime] = None,
         filter_booked_status: Optional[bool] = None,
         filter_voyage_status: Optional[str] = None,
-        updated_since: datetime = datetime.now() - timedelta(days=2),
+        updated_since: datetime = NOW - timedelta(days=2),
         filter_canal: Optional[str] = None,
         filter_direction: Optional[str] = None,
         filter_lock: Optional[str] = None,

@@ -1,6 +1,5 @@
 from typing import List, Optional
 
-
 from vortexasdk.api.shared_types import (
     EntityWithSingleLayerAndProbability,
     IDName,

@@ -1,8 +1,10 @@
-from typing import Dict, List, Union
 from datetime import datetime, timedelta
+from typing import Dict, List, Union
 
 
-def chunk_time_series(time_min: datetime, time_max: datetime, chunk_size: int = 30):
+def chunk_time_series(
+    time_min: datetime, time_max: datetime, chunk_size: int = 30
+):
     """split the date range to smaller chunks"""
     if chunk_size <= 0:
         raise ValueError("chunk_size must be a positive integer")
@@ -22,7 +24,9 @@ def chunk_time_series(time_min: datetime, time_max: datetime, chunk_size: int = 
 
     for i in range(0, max_time_min, chunk_size):
         new_time_min = time_min if i == 0 else time_min + timedelta(days=i + 1)
-        new_time_min = new_time_min.replace(hour=0, minute=0, second=0, microsecond=0)
+        new_time_min = new_time_min.replace(
+            hour=0, minute=0, second=0, microsecond=0
+        )
         new_time_max = time_min + timedelta(days=i + chunk_size)
         new_time_max = new_time_max.replace(
             hour=23, minute=59, second=59, microsecond=999999
@@ -39,7 +43,9 @@ def chunk_time_series(time_min: datetime, time_max: datetime, chunk_size: int = 
 
     if should_add_last_chunk > 0:
         new_time_min = chunked_time_series[-1]["time_max"] + timedelta(days=1)
-        new_time_min = new_time_min.replace(hour=0, minute=0, second=0, microsecond=0)
+        new_time_min = new_time_min.replace(
+            hour=0, minute=0, second=0, microsecond=0
+        )
         chunked_time_series.append(
             {
                 "time_min": new_time_min,
@@ -54,10 +60,9 @@ def convert_to_list(a) -> List:
     """Convert wraps element in list if element isn't a list already."""
     if a is None:
         return []
-    elif isinstance(a, list):
+    if isinstance(a, list):
         return a
-    else:
-        return [a]
+    return [a]
 
 
 def convert_values_to_list(data: Dict) -> Dict:
@@ -81,7 +86,9 @@ def filter_exact_match(
 
 
 def filter_empty_values(data: Dict) -> Dict:
-    return {k: v for k, v in data.items() if not (v is None or v == [] or v == {})}
+    return {
+        k: v for k, v in data.items() if not (v is None or v == [] or v == {})
+    }
 
 
 def sts_param_value(param):
@@ -96,5 +103,4 @@ def sts_param_value(param):
         if param:
             return {"exclude": False, "x_filter": True}
         return {"exclude": True, "x_filter": False}
-    else:
-        return {"exclude": False, "x_filter": False}
+    return {"exclude": False, "x_filter": False}

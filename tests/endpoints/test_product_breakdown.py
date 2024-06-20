@@ -1,7 +1,7 @@
 from datetime import datetime
-from vortexasdk import ProductBreakdown
 
 from tests.testcases import TestCaseUsingRealAPI
+from vortexasdk import ProductBreakdown
 
 
 class TestProductBreakdownReal(TestCaseUsingRealAPI):

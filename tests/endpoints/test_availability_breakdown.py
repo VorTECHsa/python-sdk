@@ -1,5 +1,5 @@
-from vortexasdk import VesselAvailabilityBreakdown
 from tests.testcases import TestCaseUsingRealAPI
+from vortexasdk import VesselAvailabilityBreakdown
 
 
 class TestVesselAvailabilityBreakdown(TestCaseUsingRealAPI):

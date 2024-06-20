@@ -56,8 +56,7 @@ def convert_cme_to_flat_dict(cme: Dict, cols="all") -> Dict:
 
     if cols == "all":
         return formatted
-    else:
-        return {k: v for k, v in formatted.items() if k in cols}
+    return {k: v for k, v in formatted.items() if k in cols}
 
 
 def flatten_dictionary(d: Dict) -> Dict:

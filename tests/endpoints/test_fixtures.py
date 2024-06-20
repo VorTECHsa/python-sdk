@@ -1,6 +1,7 @@
+from datetime import datetime
+
 from tests.testcases import TestCaseUsingRealAPI
 from vortexasdk.endpoints.fixtures import Fixtures
-from datetime import datetime
 
 
 class TestFixtures(TestCaseUsingRealAPI):

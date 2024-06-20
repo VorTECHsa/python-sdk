@@ -1,6 +1,7 @@
 import json
-from urllib.request import urlopen
 from distutils.version import StrictVersion
+from urllib.request import urlopen
+
 from vortexasdk import __name__ as sdk_pkg_name
 from vortexasdk.version import __version__
 
@@ -27,5 +28,4 @@ def is_sdk_version_outdated():
     latest_version = get_latest_sdk_version()
     if StrictVersion(__version__) < latest_version:
         return latest_version, True
-    else:
-        return latest_version, False
+    return latest_version, False

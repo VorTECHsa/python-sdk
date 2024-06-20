@@ -1,9 +1,9 @@
+import copy
 from typing import Dict, List, Union
-from typing_extensions import Literal
 
 # noinspection PyProtectedMember
 from flatten_dict import flatten
-import copy
+from typing_extensions import Literal
 
 
 def flatten_dictionary(d: Dict) -> Dict:
@@ -28,8 +28,7 @@ def convert_to_flat_dict(
 
     if columns == "all":
         return formatted
-    else:
-        return {k: v for k, v in formatted.items() if k in columns}
+    return {k: v for k, v in formatted.items() if k in columns}
 
 
 def convert_cargo_movement_to_flat_dict(
@@ -42,8 +41,7 @@ def convert_cargo_movement_to_flat_dict(
 
     if columns == "all":
         return formatted
-    else:
-        return {k: v for k, v in formatted.items() if k in columns}
+    return {k: v for k, v in formatted.items() if k in columns}
 
 
 def _group_cargo_movement_attributes_by_layer(cm: Dict) -> Dict:

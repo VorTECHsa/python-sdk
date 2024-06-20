@@ -1,6 +1,6 @@
 import functools
-from multiprocessing.pool import Pool
 import os
+from multiprocessing.pool import Pool
 from typing import List
 
 import pandas as pd
