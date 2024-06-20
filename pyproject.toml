@@ -44,8 +44,8 @@ extend-include = ["*.ipynb"]
 # Unlike Flake8, Ruff doesn't enable pycodestyle warnings (`W`) or
 # McCabe complexity (`C901`) by default.
 # add D for complete pydocstyle
-select = ["B", "E4", "E7", "E9", "F", "RET", "I", "Q"]
-ignore = []
+select = ["B", "E4", "E7", "E9", "F", "RET", "I", "Q", "D"]
+ignore = ["D107", "D203", "D212", "D100"]
 
 # Allow fix for all enabled rules (when `--fix`) is provided.
 fixable = ["ALL"]
@@ -54,6 +54,10 @@ unfixable = []
 # Allow unused variables when underscore-prefixed.
 dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
 
+[tool.ruff.lint.per-file-ignores]
+# Ignore `D` rules everywhere except for the `vortexasdk/` directory and the `docs/examples/` directory.
+"!vortexasdk/**.py" = ["D"]
+"!docs/examples/**.py" = ["D"]
 
 [tool.ruff.format]
 # Like Black, use double quotes for strings.
