@@ -30,15 +30,14 @@ setuptools.setup(
         "requests==2.31.0",
         "pydantic>=1.10.2,<2",
         "tqdm==4.64.1",
-        "urllib3>=1.26"
+        "urllib3>=1.26",
     ],
     extras_require={
         "tests": [
-            "flake8==3.7.9",
-            "black==22.8.0",
+            "ruff==0.4.10",
             "mkdocs==1.2.4",
             "mypy==0.971",
-            "pre-commit==1.20.0",
+            "pre-commit==2.9.2",
             "pytest==5.2.4",
             "pydoc-markdown==2.0.5",
             "pyyaml<6.0.0",
@@ -53,12 +52,12 @@ setuptools.setup(
             "types-six==1.16.19",
             "jupyter==1.0.0",
             "statsmodels==0.13.2",
-            "matplotlib>=3.5.3"
+            "matplotlib>=3.5.3",
         ],
         "binder": [
             "jupyter==1.0.0",
             "statsmodels==0.13.2",
-            "matplotlib>=3.5.3"
+            "matplotlib>=3.5.3",
         ],
         "deploy": ["wheel==0.37.1", "twine==4.0.1"],
     },
