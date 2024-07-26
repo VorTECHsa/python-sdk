@@ -156,7 +156,7 @@ class CargoMovements(Record, Search):
             intra_movements: This enum controls a popular industry term intra-movements and determines the filter behaviour for cargo leaving then entering the same geographic area.
              One of `all`, `exclude_intra_country` or `exclude_intra_geography`
 
-            quantity_at_time_of: The enum specifies the quantity of cargo at specific events, namely the loading and unloading events. This property is particularly relevant for monitoring the quantity changes during these events. While the quantity for crude cargo remains the same, it might differ for LNG cargo as a result of a boil off.
+            quantity_at_time_of: This parameter is designed for LNG cargo and gives the user the freedom to choose whether to create the time series based on the load volume or discharged volumes, as we consider the discharge quantities to differ from load quantities due to boil-off gas.
 
              One of:
              `load` - represents the quantity of the selected unit at the time of the loading event.
