@@ -74,7 +74,7 @@ class CargoMovements(Record, Search):
         exclude_vessel_propulsion: Union[ID, List[ID]] = None,
         disable_geographic_exclusion_rules: bool = None,
         intra_movements: str = None,
-        quantity_at_time_of: str = None,
+        quantity_at_time_of: str = "load",
     ) -> CargoMovementsResult:
         """
 
