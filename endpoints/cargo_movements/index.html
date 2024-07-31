@@ -264,7 +264,7 @@
 <p>A detailed explanation of Cargo/Vessel Movements can be found <a href="https://docs.vortexa.com/reference/intro-movement-difference">here</a>.</p>
 <h3 id="vortexasdk.endpoints.cargo_movements.CargoMovements.search">search</h3>
 
-<pre><code class="language-python">CargoMovements.search(self, filter_activity: str = None, filter_time_min: datetime.datetime = datetime.datetime(2024, 7, 3, 13, 16, 32, 258122), filter_time_max: datetime.datetime = datetime.datetime(2024, 7, 3, 13, 16, 32, 258126), cm_unit: str = 'b', filter_charterers: Union[str, List[str]] = None, filter_destinations: Union[str, List[str]] = None, filter_origins: Union[str, List[str]] = None, filter_owners: Union[str, List[str]] = None, filter_vessel_owners: Union[str, List[str]] = None, filter_time_charterers: Union[str, List[str]] = None, filter_effective_controllers: Union[str, List[str]] = None, filter_products: Union[str, List[str]] = None, filter_vessels: Union[str, List[str]] = None, filter_vessel_classes: Union[str, List[str]] = None, filter_storage_locations: Union[str, List[str]] = None, filter_ship_to_ship_locations: Union[str, List[str]] = None, filter_waypoints: Union[str, List[str]] = None, filter_vessel_age_min: int = None, filter_vessel_age_max: int = None, filter_vessel_scrubbers: str = 'disabled', filter_vessel_flags: Union[str, List[str]] = None, filter_vessel_ice_class: Union[str, List[str]] = None, filter_vessel_propulsion: Union[str, List[str]] = None, exclude_origins: Union[str, List[str]] = None, exclude_destinations: Union[str, List[str]] = None, exclude_products: Union[str, List[str]] = None, exclude_vessels: Union[str, List[str]] = None, exclude_vessel_classes: Union[str, List[str]] = None, exclude_charterers: Union[str, List[str]] = None, exclude_owners: Union[str, List[str]] = None, exclude_effective_controllers: Union[str, List[str]] = None, exclude_filter_vessel_owners: Union[str, List[str]] = None, exclude_filter_time_charterers: Union[str, List[str]] = None, exclude_vessel_flags: Union[str, List[str]] = None, exclude_vessel_ice_class: Union[str, List[str]] = None, exclude_vessel_propulsion: Union[str, List[str]] = None, disable_geographic_exclusion_rules: bool = None, intra_movements: str = None) -&gt; vortexasdk.endpoints.cargo_movements_result.CargoMovementsResult
+<pre><code class="language-python">CargoMovements.search(self, filter_activity: str = None, filter_time_min: datetime.datetime = datetime.datetime(2024, 7, 31, 8, 19, 36, 962443), filter_time_max: datetime.datetime = datetime.datetime(2024, 7, 31, 8, 19, 36, 962445), cm_unit: str = 'b', filter_charterers: Union[str, List[str]] = None, filter_destinations: Union[str, List[str]] = None, filter_origins: Union[str, List[str]] = None, filter_owners: Union[str, List[str]] = None, filter_vessel_owners: Union[str, List[str]] = None, filter_time_charterers: Union[str, List[str]] = None, filter_effective_controllers: Union[str, List[str]] = None, filter_products: Union[str, List[str]] = None, filter_vessels: Union[str, List[str]] = None, filter_vessel_classes: Union[str, List[str]] = None, filter_storage_locations: Union[str, List[str]] = None, filter_ship_to_ship_locations: Union[str, List[str]] = None, filter_waypoints: Union[str, List[str]] = None, filter_vessel_age_min: int = None, filter_vessel_age_max: int = None, filter_vessel_scrubbers: str = 'disabled', filter_vessel_flags: Union[str, List[str]] = None, filter_vessel_ice_class: Union[str, List[str]] = None, filter_vessel_propulsion: Union[str, List[str]] = None, exclude_origins: Union[str, List[str]] = None, exclude_destinations: Union[str, List[str]] = None, exclude_products: Union[str, List[str]] = None, exclude_vessels: Union[str, List[str]] = None, exclude_vessel_classes: Union[str, List[str]] = None, exclude_charterers: Union[str, List[str]] = None, exclude_owners: Union[str, List[str]] = None, exclude_effective_controllers: Union[str, List[str]] = None, exclude_filter_vessel_owners: Union[str, List[str]] = None, exclude_filter_time_charterers: Union[str, List[str]] = None, exclude_vessel_flags: Union[str, List[str]] = None, exclude_vessel_ice_class: Union[str, List[str]] = None, exclude_vessel_propulsion: Union[str, List[str]] = None, disable_geographic_exclusion_rules: bool = None, intra_movements: str = None, quantity_at_time_of: str = 'load') -&gt; vortexasdk.endpoints.cargo_movements_result.CargoMovementsResult
 </code></pre>
 <p>Find CargoMovements matching the given search parameters.</p>
 <p><strong>Arguments</strong></p>
@@ -381,6 +381,14 @@
 <li>
 <p><strong>intra_movements</strong>: This enum controls a popular industry term intra-movements and determines the filter behaviour for cargo leaving then entering the same geographic area.
      One of <code>all</code>, <code>exclude_intra_country</code> or <code>exclude_intra_geography</code></p>
+</li>
+<li>
+<p><strong>quantity_at_time_of</strong>: This parameter is designed for LNG cargo and gives the user the freedom to choose whether to create the time series based on the load volume or discharged volumes, as we consider the discharge quantities to differ from load quantities due to boil-off gas.</p>
+</li>
+<li>
+<p><strong>One of</strong>:
+     <code>load</code> - represents the quantity of the selected unit at the time of the loading event.
+     <code>unload</code> - represents the quantity of the selected unit at the time of the unloading event.</p>
 </li>
 </ul>
 <p><strong>Returns</strong></p>
@@ -603,7 +611,7 @@ This lets us view all vessels present in any STS operations.</p>
 <p>Represent cargo movements as a list of <code>CargoMovementEntity</code>s.</p>
 <h3 id="vortexasdk.endpoints.cargo_movements_result.CargoMovementsResult.to_df">to_df</h3>
 
-<pre><code class="language-python">CargoMovementsResult.to_df(self, columns=['events.cargo_port_load_event.0.location.port.label', 'events.cargo_port_unload_event.0.location.port.label', 'product.group.label', 'product.grade.label', 'quantity', 'vessels.0.name', 'events.cargo_port_load_event.0.end_timestamp', 'events.cargo_port_unload_event.0.start_timestamp']) -&gt; pandas.core.frame.DataFrame
+<pre><code class="language-python">CargoMovementsResult.to_df(self, columns=['events.cargo_port_load_event.0.location.port.label', 'events.cargo_port_unload_event.0.location.port.label', 'product.group.label', 'product.grade.label', 'quantity', 'discharge_quantity', 'vessels.0.name', 'events.cargo_port_load_event.0.end_timestamp', 'events.cargo_port_unload_event.0.start_timestamp']) -&gt; pandas.core.frame.DataFrame
 </code></pre>
 <p>Represent cargo movements as a <code>pd.DataFrame</code>.</p>
 <p><strong>Arguments</strong></p>
@@ -636,6 +644,7 @@ This lets us view all vessels present in any STS operations.</p>
     'product.group.label',
     'product.grade.label',
     'quantity',
+    'discharge_quantity',
     'vessels.0.name',
     'events.cargo_port_load_event.0.end_timestamp',
     'events.cargo_port_unload_event.0.start_timestamp',
@@ -982,6 +991,7 @@ This lets us view all vessels present in any STS operations.</p>
     'product.group_product.probability',
     'product.group_product.source',
     'quantity',
+    'discharge_quantity',
     'status',
     'vessels.0.corporate_entities.charterer.id',
     'vessels.0.corporate_entities.charterer.label',
