@@ -357,7 +357,9 @@ class VoyagesSearchEnriched(Search):
             "event_types": convert_to_list(event_types),
             "event_types_excluded": convert_to_list(event_types_excluded),
             "intra_movements": intra_movements,
-            "congestion_target_location": convert_to_list(congestion_target_location),
+            "congestion_target_location": convert_to_list(
+                congestion_target_location
+            ),
             "congestion_target_location_excluded": convert_to_list(
                 congestion_target_location_excluded
             ),
