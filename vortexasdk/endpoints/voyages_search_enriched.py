@@ -97,6 +97,8 @@ class VoyagesSearchEnriched(Search):
         destination_behaviour: DestinationBehaviour = None,
         event_types: Union[str, List[str]] = None,
         event_types_excluded: Union[str, List[str]] = None,
+        congestion_target_location: Union[ID, List[ID]] = None,
+        congestion_target_location_excluded: Union[ID, List[ID]] = None,
     ) -> Union[
         VoyagesSearchEnrichedFlattenedResult, VoyagesSearchEnrichedListResult
     ]:
@@ -239,6 +241,10 @@ class VoyagesSearchEnriched(Search):
             `'first_origin'`,`'first_origin_shipping_region'`,`'first_origin_country'`,`'first_origin_port'`,`'first_origin_terminal'`,
             `'final_destination'`,`'final_destination_shipping_region'`,`'final_destination_country'`,`'final_destination_port'`,`'final_destination_terminal'`.
 
+            congestion_target_location: A list of geographical identifiers to apply to the location filter.
+
+            congestion_target_location_excluded: A list of geographical identifiers to exclude from the location filter.
+
         # Returns
         `VoyagesSearchEnrichedListResult` or `VoyagesSearchEnrichedFlattenedResult`
 
@@ -351,6 +357,10 @@ class VoyagesSearchEnriched(Search):
             "event_types": convert_to_list(event_types),
             "event_types_excluded": convert_to_list(event_types_excluded),
             "intra_movements": intra_movements,
+            "congestion_target_location": convert_to_list(congestion_target_location),
+            "congestion_target_location_excluded": convert_to_list(
+                congestion_target_location_excluded
+            ),
         }
 
         if columns is None:
