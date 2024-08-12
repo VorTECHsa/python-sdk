@@ -139,7 +139,13 @@ class OnshoreInventoriesSearch(Search):
             fill_bbl: 732345,
             fill_tons: 100132.79950499999,
             fill_cbm: 116434.06685999999,
-            reference_data_version: '20210906-1631611377217'
+            reference_data_version: '20210906-1631611377217',
+            latest_in_day: [1720828800000],
+            latest_in_doe_week: [1720782000000],
+            latest_in_month: [1719792000000],
+            latest_in_quarter: [1719792000000],
+            latest_in_week: [1720396800000],
+            latest_in_year: [1704067200000]
         }
         ```
 
