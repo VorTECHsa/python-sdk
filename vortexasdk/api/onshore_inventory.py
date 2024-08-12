@@ -30,6 +30,6 @@ class OnshoreInventory(BaseModel):
     latest_in_day: Optional[List[ISODate]] = None
     latest_in_doe_week: Optional[List[ISODate]] = None
     latest_in_month: Optional[List[ISODate]] = None
-    latest_in_quarter:Optional[List[ISODate]] = None
+    latest_in_quarter: Optional[List[ISODate]] = None
     latest_in_week: Optional[List[ISODate]] = None
     latest_in_year: Optional[List[ISODate]] = None
