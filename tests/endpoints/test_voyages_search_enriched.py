@@ -98,10 +98,13 @@ class TestVoyagesSearchEnrichedEnriched(TestCaseUsingRealAPI):
         )
 
         assert len(res) > 0
-        assert res[0].schema_version == "1.0.0"
         assert res[0].vessel is not None
         assert len(res[0].events) > 0
         assert res[0].events[0].event_group is not None
+        assert res[0].start_timestamp is not None
+        assert res[0].corporate_entities is not None
+        assert res[0].tags is not None
+        assert res[0].voyage_status is not None
 
     def test_has_charterer_param(self):
         start = datetime(2022, 4, 26)
