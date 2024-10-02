@@ -264,7 +264,7 @@ def _handle_response(
             else:
                 decoded = response.json()
         except JSONDecodeError:
-            logger.error("Could not decode response")
+            logger.error("Could not decode response", response)
             decoded = {}
         except Exception as e:
             logger.error(e)
