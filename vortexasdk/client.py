@@ -1,30 +1,26 @@
 import copy
 import csv
 import getpass
+import json
 import os
+import uuid
 from json import JSONDecodeError
 from typing import Dict, List, Optional
 from urllib.parse import urlencode
-import uuid
-
-import json
 
 from requests import Response
 from tqdm import tqdm
 
-from vortexasdk.search_response import SearchResponse
+from vortexasdk import __name__ as sdk_pkg_name
 from vortexasdk.api.id import ID
 from vortexasdk.endpoints.endpoints import API_URL
 from vortexasdk.logger import get_logger
-from vortexasdk.retry_session import (
-    _HEADERS as default_headers,
-    retry_get,
-    retry_post,
-)
+from vortexasdk.retry_session import _HEADERS as default_headers
+from vortexasdk.retry_session import retry_get, retry_post
+from vortexasdk.search_response import SearchResponse
 from vortexasdk.utils import filter_empty_values
-from vortexasdk.version_utils import is_sdk_version_outdated
 from vortexasdk.version import __version__
-from vortexasdk import __name__ as sdk_pkg_name
+from vortexasdk.version_utils import is_sdk_version_outdated
 
 logger = get_logger(__name__)
 
@@ -263,8 +259,9 @@ def _handle_response(
                         logger.error(f"error parsing search_after: {e}")
             else:
                 decoded = response.json()
-        except JSONDecodeError:
+        except JSONDecodeError as e:
             logger.error("Could not decode response")
+            logger.error(e)
             decoded = {}
         except Exception as e:
             logger.error(e)
