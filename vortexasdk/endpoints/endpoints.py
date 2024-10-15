@@ -29,8 +29,8 @@ PRODUCTS_REFERENCE = "/v5/reference/products"
 STORAGE_TERMINALS_REFERENCE = "/v5/reference/storage-terminals"
 VESSELS_REFERENCE = "/v5/reference/vessels"
 
-FREIGHT_PRICING_SEARCH = "/v5/freight-pricing/rates"
-FREIGHT_PRICING_TIMESERIES = "/v5/freight-pricing/timeseries"
+FREIGHT_PRICING_SEARCH = "/v5/freight-outlook/rates"
+FREIGHT_PRICING_TIMESERIES = "/v5/freight-outlook/timeseries"
 
 VOYAGES_SEARCH_ENRICHED = "/v5/voyages/search-enriched"
 VOYAGES_TOP_HITS = "/v5/voyages/top-hits"
