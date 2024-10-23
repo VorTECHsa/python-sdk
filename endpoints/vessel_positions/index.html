@@ -159,8 +159,6 @@
                 <li class="toctree-l2"><a class="reference internal" href="../vessel_summary/">Vessel Summary</a>
                 </li>
                 <li class="toctree-l2 current"><a class="reference internal current" href="./">Vessel Positions</a>
-    <ul class="current">
-    </ul>
                 </li>
     </ul>
                     </li>
@@ -326,18 +324,7 @@
 </tbody>
 </table>
 <p>Note that we will show you all fields by default if you don't set the columns argument.</p>
-<pre><code>
-- Now let's find positions for vessels carrying crude, using the Vessels and Product Reference endpoints
-
-```python
-&gt;&gt;&gt; from vortexasdk import Vessels, Products
-&gt;&gt;&gt; crude = [p.id for p in Products().search(term=&quot;crude&quot;).to_list() if 'group' in p.layer]
-&gt;&gt;&gt; vessels_list = Vessels().search(vessel_product_types=crude).to_list()
-&gt;&gt;&gt; vessel_ids = [v.id for v in vessels_list]
-&gt;&gt;&gt; crude_positions = VesselPositions().search(vessel_id=vessel_ids).to_df()
-
-</code></pre>
-<h1 id="further-documentation">Further Documentation</h1>
+<p><strong>Further Documentation</strong></p>
 <p><a href="https://docs.vortexa.com/reference/POST/signals/vessel-positions">VortexaAPI Vessel Positions Reference</a></p>
 <h1 id="vortexasdk.endpoints.vessel_positions_result">vortexasdk.endpoints.vessel_positions_result</h1>
 
