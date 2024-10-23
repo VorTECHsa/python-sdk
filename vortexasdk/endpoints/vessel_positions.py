@@ -56,7 +56,7 @@ class VesselPositions(Search):
         |  ...to >800 results
 
         Note that we will show you all fields by default if you don't set the columns argument.
-        
+
         # Further Documentation
 
         [VortexaAPI Vessel Positions Reference](https://docs.vortexa.com/reference/POST/signals/vessel-positions)
