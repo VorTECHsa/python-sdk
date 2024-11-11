@@ -272,8 +272,11 @@
 <p><strong>breakdown_unit</strong>: Units to aggregate upon. Must be one of the following: <code>'b'</code>, <code>'t'</code>, <code>'cbm'</code>, <code>'bpd'</code>, <code>'tpd'</code>, <code>'mpd'</code>.</p>
 </li>
 <li>
-<p><strong>breakdown_geography</strong>: Geography hierarchy of the origin to aggregate upon. Must be one of the following: <code>'terminal'</code>, <code>'port'</code>,<code>'country'</code>, <code>'shipping_region'</code>,
-    <code>'region'</code>,<code>'trading_block'</code>,<code>'trading_region'</code>,<code>'trading_subregion'</code>,<code>'sts_zone'</code>,<code>'waypoint'</code>.</p>
+<p><strong>breakdown_geography</strong>: Geography layer of the origin to aggregate upon. Must be one of the following:
+    <code>berth</code>, <code>terminal</code>, <code>port</code>, <code>country</code>, <code>country_zone</code>, <code>shipping_region</code>, <code>shipping_region_v2</code>,
+    <code>wider_shipping_region</code>, <code>region</code>, <code>alternative_region</code>, <code>trading_block</code>, <code>trading_region</code>,
+    <code>trading_subregion</code>, <code>state_or_province</code>, <code>sts_zone</code>, <code>waypoint</code>, <code>storage</code>, <code>storage_terminal</code>, <code>basin</code>,
+    <code>root</code>, or not provided. Default is <code>berth</code>.</p>
 </li>
 <li>
 <p><strong>breakdown_size</strong>: Number of top geographies to return. Default is 5.</p>

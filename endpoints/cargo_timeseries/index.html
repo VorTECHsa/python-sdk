@@ -271,11 +271,12 @@
 </ul>
 <p><strong>Arguments</strong></p>
 <ul>
+<li><strong>filter_activity</strong>: Cargo movement activity on which to base the time filter. The endpoint only includes cargo</li>
 <li>
-<p><strong>filter_activity</strong>: Cargo movement activity on which to base the time filter. The endpoint only includes cargo
-    movements matching that match this filter in the aggregations. Must be one of ['loading_state',
-     'loading_start', 'loading_end', 'identified_for_loading_state', 'unloading_state', 'unloading_start',
-      'unloading_end', 'storing_state', 'storing_start', 'storing_end', 'transiting_state', 'oil_on_water_state', 'waypoint_start<code>,</code>waypoint_end`].</p>
+<p><strong>movements matching that match this filter in the aggregations. Must be one of</strong>: <code>loading_state</code>,
+     <code>loading_start</code>, <code>loading_end</code>, <code>identified_for_loading_state</code>, <code>unloading_state</code>, <code>unloading_start</code>,
+     <code>unloading_end</code>, <code>storing_state</code>, <code>storing_start</code>, <code>storing_end</code>, <code>transiting_state</code>,
+     <code>oil_on_water_state</code>, <code>waypoint_start</code>, <code>waypoint_end</code>.</p>
 </li>
 <li>
 <p><strong>filter_time_min</strong>: The UTC start date of the time filter.</p>
@@ -396,10 +397,18 @@
      'doe_week', 'month', 'quarter', 'year']</p>
 </li>
 <li>
-<p><strong>timeseries_property</strong>: Property to split results by. Can be one of: <code>quantity</code>, <code>'vessel_class_group'</code>, <code>'vessel_class_coarse'</code>, <code>'vessel_class_granular'</code>, <code>vessel_flag</code>,
-     <code>origin_region</code>, <code>origin_shipping_region</code>, <code>origin_trading_region</code>, <code>origin_trading_sub_region</code>, <code>origin_country</code>, <code>origin_port</code>, <code>origin_terminal</code>,
-     <code>destination_region</code>, <code>destination_shipping_region</code>, <code>destination_trading_region</code>, <code>destination_trading_sub_region</code>, <code>destination_country</code>, <code>destination_port</code>, <code>destination_terminal</code>,
-     <code>product_group</code>, <code>product_group_product</code>, <code>product_category</code>, <code>product_grade</code>, <code>waypoint_selected</code>, <code>none</code> or not provided.</p>
+<p><strong>timeseries_property</strong>: Property to split results by. Can be one of: <code>quantity</code>, <code>waypoint_selected</code>,
+    <code>origin_country</code>, <code>origin_port</code>, <code>origin_region</code>, <code>origin_trading_region</code>, <code>origin_shipping_region</code>,
+    <code>origin_terminal</code>, <code>origin_trading_sub_region</code>, <code>origin_shipping_region_v2</code>, <code>origin_basin</code>,
+    <code>origin_wider_shipping_region</code>, <code>origin_country_zone</code>, <code>origin_alternative_region</code>,
+    <code>origin_state_or_province</code>, <code>destination_country</code>, <code>destination_port</code>, <code>destination_region</code>,
+    <code>destination_shipping_region</code>, <code>destination_terminal</code>, <code>destination_trading_region</code>,
+    <code>destination_trading_sub_region</code>, <code>destination_basin</code>, <code>destination_shipping_region_v2</code>,
+    <code>destination_wider_shipping_region</code>, <code>destination_country_zone</code>, <code>destination_alternative_region</code>,
+    <code>destination_state_or_province</code>, <code>product_category</code>, <code>product_grade</code>, <code>product_group</code>,
+    <code>product_group_product</code>, <code>vessel_class_group</code>, <code>vessel_class_coarse</code>, <code>vessel_class_granular</code>,
+    <code>vessel_flag</code>, <code>storage_location_country</code>, <code>storage_location_region</code>, <code>storage_location_shipping_region_v2</code>,
+    <code>storage_location_trading_sub_region</code>, or not provided.</p>
 </li>
 <li>
 <p><strong>timeseries_unit</strong>: A numeric metric to be calculated for each time bucket. Must be one of ['b', 'bpd', 't',
