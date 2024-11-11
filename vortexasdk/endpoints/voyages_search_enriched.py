@@ -3,11 +3,18 @@ Try me out in your browser:
 
 [![Binder](https://img.shields.io/badge/try%20me%20out-launch%20notebook-579ACA.svg?logo=data:image/png;base64,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)](https://mybinder.org/v2/gh/VorTECHsa/python-sdk/master?filepath=docs%2Fexamples%2Ftry_me_out%2Fvoyages_search_enriched.ipynb)
 """
+
 from datetime import datetime
 from typing import Any, Dict, List, Union
 
 from vortexasdk.api import ID
-from vortexasdk.api.shared_types import Tag, to_ISODate
+from vortexasdk.api.shared_types import (
+    Tag,
+    to_ISODate,
+    VoyageDateRangeActivity,
+    OriginBehaviour,
+    DestinationBehaviour,
+)
 from vortexasdk.endpoints.endpoints import VOYAGES_SEARCH_ENRICHED
 from vortexasdk.endpoints.voyages_search_enriched_result import (
     VoyagesSearchEnrichedFlattenedResult,
@@ -30,7 +37,6 @@ class VoyagesSearchEnriched(Search):
         self,
         order: str = None,
         order_direction: str = None,
-        offset: int = None,
         unit: str = None,
         columns: Union[str, List[str]] = None,
         time_min: datetime = datetime(2022, 1, 1, 0),
@@ -79,12 +85,20 @@ class VoyagesSearchEnriched(Search):
         vessel_wait_time_min: int = None,
         vessel_wait_time_max: int = None,
         vessel_scrubbers: str = None,
-        vessels_tags: Union[Tag, List[Tag]] = None,
-        vessels_tags_excluded: Union[Tag, List[Tag]] = None,
+        vessel_tags: Union[Tag, List[Tag]] = None,
+        vessel_tags_excluded: Union[Tag, List[Tag]] = None,
         vessel_risk_level: Union[str, List[str]] = None,
         vessel_risk_level_excluded: Union[str, List[str]] = None,
         has_ship_to_ship: str = None,
         has_charterer: str = None,
+        intra_movements: str = None,
+        voyage_date_range_activity: VoyageDateRangeActivity = None,
+        origin_behaviour: OriginBehaviour = None,
+        destination_behaviour: DestinationBehaviour = None,
+        event_types: Union[str, List[str]] = None,
+        event_types_excluded: Union[str, List[str]] = None,
+        congestion_target_location: Union[ID, List[ID]] = None,
+        congestion_target_location_excluded: Union[ID, List[ID]] = None,
     ) -> Union[
         VoyagesSearchEnrichedFlattenedResult, VoyagesSearchEnrichedListResult
     ]:
@@ -141,13 +155,13 @@ class VoyagesSearchEnriched(Search):
 
             effective_controllers_excluded: A effective controller ID, or list of effective controller IDs to exclude.
 
-            origins: An origin ID, or list of origin IDs to filter on.
+            origins: An origin ID, or list of origin IDs for all the cargoes of a voyage to filter on.
 
-            origins_excluded: An origin ID, or list of origin IDs to exclude.
+            origins_excluded: An origin ID, or list of origin IDs for all the cargoes of a voyage to exclude.
 
-            destinations: A destination ID, or list of destination IDs to filter on.
+            destinations: A destination ID, or list of destination IDs for all the cargoes of a voyage to filter on.
 
-            destinations_excluded: A destination ID, or list of destination IDs to exclude.
+            destinations_excluded: A destination ID, or list of destination IDs for all the cargoes of a voyage to exclude.
 
             locations: A location ID, or list of location IDs to filter on.
 
@@ -187,9 +201,9 @@ class VoyagesSearchEnriched(Search):
 
             vessel_scrubbers: Either inactive 'disabled', or included 'inc' or excluded 'exc'.
 
-            vessels_tags: A time bound vessel tag, or list of time bound vessel tags to filter on.
+            vessel_tags: A time bound vessel tag, or list of time bound vessel tags to filter on.
 
-            vessels_tags_excluded: A time bound vessel tag, or list of time bound vessel tags to exclude.
+            vessel_tags_excluded: A time bound vessel tag, or list of time bound vessel tags to exclude.
 
             vessel_risk_level: A vessel risk level, or list of vessel risk levels to filter on.
 
@@ -199,12 +213,21 @@ class VoyagesSearchEnriched(Search):
 
             has_charterer: Filter data where at least one charterer is specified, or none. - one of `disabled`, `inc`, `exc`. Passing disabled means the filter is not active.
 
-            order: Used to sort the returned results. Can be one of:`'vessel_name'`,`'dwt'`,`'vessel_class'`,
-            `'start_date'`,`'end_date'`.
+            intra_movements: Filter movements based on whether the vessel started and ended in the same country, or geographical layer.
+
+            voyage_date_range_activity: Filter to determine how the voyages should be counted. Must be one of [`active`, `departures`, `arrivals`]
+
+            origin_behaviour: The origin behaviour determines which departure mode the `voyage_date_range_activity` should count, must be one of  [`first_load`, `any_load`].
+
+            destination_behaviour: The destination behaviour determines which arrival mode the voyage_date_range_activity should count, must be one of [last_discharge, any_discharge].
+
+            event_types: A list of event types that should be included when filtering voyages, it could be `vessel`, `cargo` or `status`.
+
+            event_types_excluded: A list of event types that should be excluded when filtering voyages, it could be `vessel`, `cargo` or `status`.
+
+            order: Used to sort the returned results. Can be one of:`'vessel_name'`,`'dwt'`,`'vessel_class'`, `'start_date'`,`'end_date'`.
 
             order_direction: Determines the direction of sorting. ‘asc’ for ascending, ‘desc’ for descending.
-
-            offset: Used to page results. The offset from which records should be returned.
 
             unit: Unit of measurement. Enter `'b'` for barrels or `'t'` for tonnes or `'cbm'` for cubic metres.
 
@@ -217,6 +240,10 @@ class VoyagesSearchEnriched(Search):
             `'voyage_id'`,`'previous_voyage_id'`,`'next_voyage_id'`,`'duration'`,
             `'first_origin'`,`'first_origin_shipping_region'`,`'first_origin_country'`,`'first_origin_port'`,`'first_origin_terminal'`,
             `'final_destination'`,`'final_destination_shipping_region'`,`'final_destination_country'`,`'final_destination_port'`,`'final_destination_terminal'`.
+
+            congestion_target_location: A list of geographical identifiers to apply to the location filter.
+
+            congestion_target_location_excluded: A list of geographical identifiers to exclude from the location filter.
 
         # Returns
         `VoyagesSearchEnrichedListResult` or `VoyagesSearchEnrichedFlattenedResult`
@@ -269,7 +296,7 @@ class VoyagesSearchEnriched(Search):
             "ice_class": convert_to_list(ice_class),
             "vessel_propulsion": convert_to_list(vessel_propulsion),
             "vessels": convert_to_list(vessels),
-            "vessels_tags": convert_to_list(vessels_tags),
+            "vessel_tags": [dict(tag) for tag in convert_to_list(vessel_tags)],
             "vessel_risk_level": convert_to_list(vessel_risk_level),
             "vessel_age_min": vessel_age_min,
             "vessel_age_max": vessel_age_max,
@@ -287,7 +314,6 @@ class VoyagesSearchEnriched(Search):
             "time_min": to_ISODate(time_min) if time_min else None,
             "order_direction": order_direction,
             "order": order,
-            "offset": offset,
             "size": self._MAX_PAGE_RESULT_SIZE,
             "unit": unit,
             "csv_columns": columns,
@@ -319,21 +345,33 @@ class VoyagesSearchEnriched(Search):
                 vessel_propulsion_excluded
             ),
             "vessels_excluded": convert_to_list(vessels_excluded),
-            "vessels_tags_excluded": convert_to_list(vessels_tags_excluded),
+            "vessel_tags_excluded": [
+                dict(tag) for tag in convert_to_list(vessel_tags_excluded)
+            ],
             "vessel_risk_level_excluded": convert_to_list(
                 vessel_risk_level_excluded
+            ),
+            "voyage_date_range_activity": voyage_date_range_activity,
+            "origin_behaviour": origin_behaviour,
+            "destination_behaviour": destination_behaviour,
+            "event_types": convert_to_list(event_types),
+            "event_types_excluded": convert_to_list(event_types_excluded),
+            "intra_movements": intra_movements,
+            "congestion_target_location": convert_to_list(
+                congestion_target_location
+            ),
+            "congestion_target_location_excluded": convert_to_list(
+                congestion_target_location_excluded
             ),
         }
 
         if columns is None:
-            response = super().search_with_client_with_search_after(
-                **api_params
-            )
+            response = super().search_with_client(**api_params)
             return VoyagesSearchEnrichedListResult(
                 records=response["data"], reference=response["reference"]
             )
         else:
-            response = super().search_with_client_with_search_after(
+            response = super().search_with_client(
                 headers=self._CSV_HEADERS, **api_params
             )
             return VoyagesSearchEnrichedFlattenedResult(

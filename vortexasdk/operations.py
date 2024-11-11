@@ -1,10 +1,10 @@
-from typing import Dict, Optional
+from typing import Dict
 from vortexasdk.api.id import ID
 from vortexasdk.client import default_client
 from vortexasdk.exceptions import InvalidAPIDataResponseException
 from vortexasdk.logger import get_logger
 from vortexasdk.search_response import SearchResponse
-from vortexasdk.utils import filter_exact_match, PAGINATION_STRATEGIES
+from vortexasdk.utils import filter_exact_match
 
 logger = get_logger(__name__)
 
@@ -72,7 +72,6 @@ class Search:
         exact_term_match: bool = None,
         response_type: str = None,
         headers: dict = None,
-        pagination_strategy: Optional[PAGINATION_STRATEGIES] = None,
         **api_params,
     ) -> SearchResponse:
         """
@@ -96,7 +95,6 @@ class Search:
         api_result = default_client().search_base(
             self._resource,
             response_type=response_type,
-            pagination_strategy=pagination_strategy,
             headers=headers,
             **api_params,
         )
@@ -127,22 +125,6 @@ class Search:
             exact_term_match,
             response_type,
             headers,
-            PAGINATION_STRATEGIES.OFFSET,
-            **api_params,
-        )
-
-    def search_with_client_with_search_after(
-        self,
-        exact_term_match: bool = None,
-        response_type: str = None,
-        headers: dict = None,
-        **api_params,
-    ) -> SearchResponse:
-        return self.search_with_client_base(
-            exact_term_match,
-            response_type,
-            headers,
-            PAGINATION_STRATEGIES.SEARCH_AFTER,
             **api_params,
         )
 

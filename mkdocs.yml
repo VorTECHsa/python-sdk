@@ -8,6 +8,8 @@ pages:
   - Endpoints:
       About Endpoints: endpoints/about-endpoints.md
       Attributes: endpoints/attributes.md
+      Canal Transit: endpoints/canal_transit.md
+      Canal Transit Timeseries: endpoints/canal_transit_timeseries.md
       Cargo Movements: endpoints/cargo_movements.md
       Movement Status Breakdown: endpoints/movement_status_breakdown.md
       Product Breakdown: endpoints/product_breakdown.md
@@ -38,11 +40,18 @@ pages:
       Voyages:
         Search Enriched: endpoints/voyages_search_enriched.md
         Time Series: endpoints/voyages_timeseries.md
+        Time Series V2: endpoints/voyages_timeseries_v2.md
         Top Hits: endpoints/voyages_top_hits.md
+        Geography Breakdown: endpoints/voyages_geography_breakdown.md
+        Vessel Class Breakdown: endpoints/voyages_vessel_class_breakdown.md
+        Product Breakdown: endpoints/voyages_product_breakdown.md
+        Routes Breakdown: endpoints/voyages_routes_breakdown.md
         Congestion Breakdown: endpoints/voyages_congestion_breakdown.md
       Signals:
         Vessel Summary: endpoints/vessel_summary.md
+        Vessel Positions: endpoints/vessel_positions.md
   - Entities:
+      Canal Transit: entities/canal_transit.md
       Cargo Movement: entities/cargo_movement.md
       Corporation: entities/corporation.md
       Geography: entities/geography.md
@@ -53,6 +62,7 @@ pages:
       Vessel Availability: entities/vessel_availability.md
       Time Series Item: entities/timeseries_item.md
       Breakdown Item: entities/breakdown_item.md
+      Signals: entities/signals.md
   - Config: config.md
   - FAQ:
       General: faq.md

@@ -14,7 +14,6 @@ class Corporation(IDName):
     ref_type: Optional[str] = None
     leaf: Optional[bool] = None
     parent: Optional[List[str]] = None
-    filterable: Optional[bool] = None
 
 
 class CorporateEntity(EntityWithSingleLayerAndProbability):

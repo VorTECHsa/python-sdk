@@ -29,17 +29,23 @@ PRODUCTS_REFERENCE = "/v5/reference/products"
 STORAGE_TERMINALS_REFERENCE = "/v5/reference/storage-terminals"
 VESSELS_REFERENCE = "/v5/reference/vessels"
 
-FREIGHT_PRICING_SEARCH = "/v5/freight-pricing/rates"
-FREIGHT_PRICING_TIMESERIES = "/v5/freight-pricing/timeseries"
+FREIGHT_PRICING_SEARCH = "/v5/freight-outlook/rates"
+FREIGHT_PRICING_TIMESERIES = "/v5/freight-outlook/timeseries"
 
 VOYAGES_SEARCH_ENRICHED = "/v5/voyages/search-enriched"
 VOYAGES_TOP_HITS = "/v5/voyages/top-hits"
 VOYAGES_CONGESTION_BREAKDOWN = "/v5/voyages/congestion-breakdown"
 VOYAGES_TIMESERIES = "/v5/voyages/timeseries"
+VOYAGES_BREAKDOWN = "/v5/voyages/breakdown"
 
 VESSEL_SUMMARY = "/v6/signals/vessel-summary"
+VESSEL_POSITIONS = "/v6/signals/vessel-positions"
 
 FIXTURES = "/v5/search/fixtures"
+
+CANAL_TRANSIT = "/v5/canal-transit"
+CANAL_TRANSIT_SEARCH = "/v5/canal-transit/search"
+CANAL_TRANSIT_TIME_SERIES = "/v5/canal-transit/time-series"
 
 API_FQDN = "https://api.vortexa.com"
 

@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import Optional
+from typing import List, Optional
 
 from vortexasdk.api.asset_tank import AssetTank
 
@@ -27,3 +27,9 @@ class OnshoreInventory(BaseModel):
     fill_tons: Optional[float] = None
     fill_cbm: Optional[float] = None
     reference_data_version: Optional[str] = None
+    latest_in_day: Optional[List[str]] = None
+    latest_in_doe_week: Optional[List[str]] = None
+    latest_in_month: Optional[List[str]] = None
+    latest_in_quarter: Optional[List[str]] = None
+    latest_in_week: Optional[List[str]] = None
+    latest_in_year: Optional[List[str]] = None

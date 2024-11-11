@@ -7,7 +7,13 @@ from datetime import datetime
 from typing import Any, Dict, List, Union
 
 from vortexasdk.api import ID
-from vortexasdk.api.shared_types import Tag, to_ISODate
+from vortexasdk.api.shared_types import (
+    Tag,
+    to_ISODate,
+    VoyageDateRangeActivity,
+    OriginBehaviour,
+    DestinationBehaviour,
+)
 from vortexasdk.endpoints.aggregation_breakdown_result import (
     AggregationBreakdownResult,
 )
@@ -79,12 +85,16 @@ class VoyagesTopHits(Search):
         vessel_wait_time_min: int = None,
         vessel_wait_time_max: int = None,
         vessel_scrubbers: str = None,
-        vessels_tags: Union[Tag, List[Tag]] = None,
-        vessels_tags_excluded: Union[Tag, List[Tag]] = None,
+        vessel_tags: Union[Tag, List[Tag]] = None,
+        vessel_tags_excluded: Union[Tag, List[Tag]] = None,
         vessel_risk_level: Union[str, List[str]] = None,
         vessel_risk_level_excluded: Union[str, List[str]] = None,
         has_ship_to_ship: str = None,
         has_charterer: str = None,
+        intra_movements: str = None,
+        voyage_date_range_activity: VoyageDateRangeActivity = None,
+        origin_behaviour: OriginBehaviour = None,
+        destination_behaviour: DestinationBehaviour = None,
     ) -> AggregationBreakdownResult:
         """
 
@@ -96,7 +106,7 @@ class VoyagesTopHits(Search):
 
             breakdown_property: Property to aggregate upon. Must be `vessel_count` or not provided.
 
-            breakdown_split_property: Property to split results by. Can be one of: `'vessel_status'`, `'vessel_class'`, `'vessel_flag'`,`'fixture_status'`, `'origin_region'`,
+            breakdown_split_property: Property to split results by. Can be one of: `'vessel_status'`, `'vessel_class_group'`, `'vessel_class_coarse'`, `'vessel_class_granular'`, `'vessel_flag'`,`'fixture_status'`, `'origin_region'`,
             `'origin_shipping_region'`,`'origin_trading_region'`,`'origin_trading_sub_region'`,`'origin_trading_block'`,`'origin_country'`,`'origin_port'`,
             `'origin_terminal'`,`'destination_region'`,`'destination_shipping_region'`,`'destination_trading_region'`,`'destination_trading_sub_region'`,`'destination_trading_block'`,
             `'destination_country'`,`'destination_port'`,`'destination_terminal'`,`'location_port'`,`'location_country'`,`'location_shipping_region'`,
@@ -148,13 +158,13 @@ class VoyagesTopHits(Search):
 
             effective_controllers_excluded: A vessel effective controller ID, or list of vessel effective controller IDs to exclude.
 
-            origins: An origin ID, or list of origin IDs to filter on.
+            origins: An origin ID, or list of origin IDs for all the cargoes of a voyage to filter on.
 
-            origins_excluded: An origin ID, or list of origin IDs to exclude.
+            origins_excluded: An origin ID, or list of origin IDs for all the cargoes of a voyage to exclude.
 
-            destinations: A destination ID, or list of destination IDs to filter on.
+            destinations: A destination ID, or list of destination IDs for all the cargoes of a voyage to filter on.
 
-            destinations_excluded: A destination ID, or list of destination IDs to exclude.
+            destinations_excluded: A destination ID, or list of destination IDs for all the cargoes of a voyage to exclude.
 
             locations: A location ID, or list of location IDs to filter on.
 
@@ -198,9 +208,9 @@ class VoyagesTopHits(Search):
 
             vessel_scrubbers: Either inactive 'disabled', or included 'inc' or excluded 'exc'.
 
-            vessels_tags: A time bound vessel tag, or list of time bound vessel tags to filter on.
+            vessel_tags: A time bound vessel tag, or list of time bound vessel tags to filter on.
 
-            vessels_tags_excluded: A time bound vessel tag, or list of time bound vessel tags to exclude.
+            vessel_tags_excluded: A time bound vessel tag, or list of time bound vessel tags to exclude.
 
             vessel_risk_level: A vessel risk level, or list of vessel risk levels to filter on.
 
@@ -209,6 +219,14 @@ class VoyagesTopHits(Search):
             has_ship_to_ship: Filter data where at least one STS transfer occurs, or none. - one of: `'disabled'`, `'inc'`, `'exc'`. Passing disabled means the filter is not active.
 
             has_charterer: Filter data where at least one charterer is specified, or none. - one of: `'disabled'`, `'inc'`, `'exc'`. Passing disabled means the filter is not active.
+
+            intra_movements: Filter movements based on whether the vessel started and ended in the same country, or geographical layer.
+
+            voyage_date_range_activity: Filter to determine how the voyages should be counted. Must be one of [`active`, `departures`, `arrivals`]
+
+            origin_behaviour: The origin behaviour determines which departure mode the `voyage_date_range_activity` should count, must be one of  [`first_load`, `any_load`].
+
+            destination_behaviour: The destination behaviour determines which arrival mode the voyage_date_range_activity should count, must be one of [last_discharge, any_discharge].
 
         # Returns
         `AggregationBreakdownResult`
@@ -292,7 +310,7 @@ class VoyagesTopHits(Search):
             "ice_class": convert_to_list(ice_class),
             "vessel_propulsion": convert_to_list(vessel_propulsion),
             "vessels": convert_to_list(vessels),
-            "vessels_tags": convert_to_list(vessels_tags),
+            "vessel_tags": convert_to_list(vessel_tags),
             "vessel_risk_level": convert_to_list(vessel_risk_level),
             "vessel_age_min": vessel_age_min,
             "vessel_age_max": vessel_age_max,
@@ -342,10 +360,14 @@ class VoyagesTopHits(Search):
                 vessel_propulsion_excluded
             ),
             "vessels_excluded": convert_to_list(vessels_excluded),
-            "vessels_tags_excluded": convert_to_list(vessels_tags_excluded),
+            "vessel_tags_excluded": convert_to_list(vessel_tags_excluded),
             "vessel_risk_level_excluded": convert_to_list(
                 vessel_risk_level_excluded
             ),
+            "voyage_date_range_activity": voyage_date_range_activity,
+            "origin_behaviour": origin_behaviour,
+            "destination_behaviour": destination_behaviour,
+            "intra_movements": intra_movements,
         }
 
         response = super().search_with_client(

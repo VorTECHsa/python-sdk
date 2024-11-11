@@ -29,7 +29,6 @@ class Vessels(Reference, Search):
         term: Union[str, List[str]] = None,
         ids: Union[str, List[str]] = None,
         vessel_classes: Union[str, List[str]] = None,
-        vessel_product_types: Union[ID, List[ID]] = None,
         vessel_scrubbers: str = "disabled",
         exact_term_match: bool = False,
     ) -> VesselsResult:
@@ -41,9 +40,7 @@ class Vessels(Reference, Search):
 
             ids: ID or IDs of vessels we'd like to search
 
-            vessel_classes: vessel_class (or list of vessel classes) we'd like to search. Each vessel class must be one of `"tiny_tanker", "general_purpose", "handysize", "handymax", "panamax", "aframax", "suezmax", "vlcc_plus", "vlcc", "sgc", "mgc", "lgc", "vlgc", "oil_coastal", "oil_intermediate", "oil_flexi", "oil_handysize", "oil_mr1","oil_handymax", "oil_mr2", "oil_panamax", "oil_lr1", "oil_aframax", "oil_lr2", "oil_suezmax","oil_lr3", "oil_vlcc","lpg_coasters", "lpg_handysize", "lpg_mgc", "lpg_lgc", "lpg_vlgc", "lpg_vlec", "lng_small_scale_lng", "lng_mid_scale_lng", "lng_two_stroke", "lng_tfde_dfde", "lng_steam", "lng_ssd", "lng_q_flex", "lng_q_max", "oil_coastal", "oil_specialised", "oil_handysize_mr1", "oil_handymax_mr2", "oil_panamax_lr1", "oil_aframax_lr2", "oil_aframax_lr3", "oil_suezmax_lr3", "oil_vlcc","lpg_sgc", "lpg_mgc", "lpg_lgc", "lpg_vlgc_vlec","lng_small_scale_lng", "lng_mid_scale_lng","lng_conventional_lng", "lng_q_fleet", "oil", "lpg", "lng","vlcc", "ulcc", "small_tanker",`. Refer to [VortexaAPI Vessel Entities](https://docs.vortexa.com/reference/intro-vessel-entities) for the most up-to-date list of vessel classes.
-
-            vessel_product_types: A product ID, or list of product IDs to filter on, searching vessels _currently_ carrying these products.
+            vessel_classes: vessel_class (or list of vessel classes) we'd like to search. Each vessel class must be one of `"oil_coastal", "oil_intermediate", "oil_flexi", "oil_handysize", "oil_mr1","oil_handymax", "oil_mr2", "oil_panamax", "oil_lr1", "oil_aframax", "oil_lr2", "oil_suezmax","oil_lr3", "oil_vlcc","lpg_coasters", "lpg_handysize", "lpg_mgc", "lpg_lgc", "lpg_vlgc", "lpg_vlec", "lng_small_scale_lng", "lng_mid_scale_lng", "lng_two_stroke", "lng_tfde_dfde", "lng_steam", "lng_ssd", "lng_q_flex", "lng_q_max", "oil_coastal", "oil_specialised", "oil_handysize_mr1", "oil_handymax_mr2", "oil_panamax_lr1", "oil_aframax_lr2", "oil_suezmax_lr3", "oil_vlcc","lpg_sgc", "lpg_mgc", "lpg_lgc", "lpg_vlgc_vlec","lng_small_scale_lng", "lng_mid_scale_lng","lng_conventional_lng", "lng_q_fleet", "oil", "lpg", "lng",`. Refer to [VortexaAPI Vessel Entities](https://docs.vortexa.com/reference/intro-vessel-entities) for the most up-to-date list of vessel classes.
 
             vessel_scrubbers: An optional filter to filter on vessels with or without scrubbers.
              To disable the filter (the default behaviour), enter 'disabled'.
@@ -66,7 +63,7 @@ class Vessels(Reference, Search):
 
         ```python
         >>> from vortexasdk import Vessels
-        >>> vessels_df = Vessels().search(vessel_classes='vlcc', term='ocean').to_df(columns=['name', 'imo', 'mmsi', 'related_names'])
+        >>> vessels_df = Vessels().search(vessel_classes='oil_vlcc', term='ocean').to_df(columns=['name', 'imo', 'mmsi', 'related_names'])
 
         ```
         |    | name         |     imo |      mmsi | related_names             |
@@ -82,16 +79,6 @@ class Vessels(Reference, Search):
 
         Note the `term` search also looks for vessels with matching `related_names`
 
-
-        - Let's find all the vessels currently carrying Crude.
-
-        ```python
-        >>> from vortexasdk import Vessels, Products
-        >>> crude = [p.id for p in Products().search(term="crude").to_list() if 'group' in p.layer]
-        >>> vessels_df = Vessels().search(vessel_product_types=crude).to_df()
-
-        ```
-
         # Further Documentation
 
         [VortexaAPI Vessel Reference](https://docs.vortexa.com/reference/POST/reference/vessels)
@@ -100,7 +87,6 @@ class Vessels(Reference, Search):
         api_params: Dict[str, Any] = {
             "term": [str(e) for e in convert_to_list(term)],
             "ids": convert_to_list(ids),
-            "vessel_product_types": convert_to_list(vessel_product_types),
             "vessel_classes": [
                 v.lower() for v in convert_to_list(vessel_classes)
             ],
@@ -133,19 +119,6 @@ class Vessels(Reference, Search):
 
 
 AVAILABLE_VESSEL_CLASSES = [
-    "tiny_tanker",
-    "general_purpose",
-    "handysize",
-    "handymax",
-    "panamax",
-    "aframax",
-    "suezmax",
-    "vlcc_plus",
-    "vlcc",
-    "sgc",
-    "mgc",
-    "lgc",
-    "vlgc",
     "oil_coastal",
     "oil_intermediate",
     "oil_flexi",
@@ -180,7 +153,6 @@ AVAILABLE_VESSEL_CLASSES = [
     "oil_handymax_mr2",
     "oil_panamax_lr1",
     "oil_aframax_lr2",
-    "oil_aframax_lr3",
     "oil_suezmax_lr3",
     "oil_vlcc",
     "lpg_sgc",
@@ -194,7 +166,4 @@ AVAILABLE_VESSEL_CLASSES = [
     "oil",
     "lpg",
     "lng",
-    "vlcc",
-    "ulcc",
-    "small_tanker",
 ]

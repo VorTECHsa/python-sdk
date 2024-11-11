@@ -7,12 +7,17 @@ from datetime import datetime
 from typing import Any, Dict, List, Union
 
 from vortexasdk.api import ID
-from vortexasdk.api.shared_types import Tag, to_ISODate
+from vortexasdk.api.shared_types import (
+    Tag,
+    to_ISODate,
+    VoyageDateRangeActivity,
+    OriginBehaviour,
+    DestinationBehaviour,
+)
 from vortexasdk.endpoints.endpoints import VOYAGES_TIMESERIES
 from vortexasdk.endpoints.timeseries_result import TimeSeriesResult
 from vortexasdk.operations import Search
-from vortexasdk.search_response import SearchResponse
-from vortexasdk.utils import chunk_time_series, convert_to_list
+from vortexasdk.utils import convert_to_list
 
 
 class VoyagesTimeseries(Search):
@@ -22,119 +27,6 @@ class VoyagesTimeseries(Search):
 
     def __init__(self):
         Search.__init__(self, VOYAGES_TIMESERIES)
-
-    def __is_arrival_or_departure_mode__(self, voyage_date_range_activity):
-        """
-        When the mode is arrival or departure, we do not need a multi-state aggregation
-        This is because the arrival and departure doesn't need daily granularity,
-        because they are determined by only one type of event.
-
-        The breakdowns on departures and arrivals are the resume of the voyages properties and
-        do not require a daily progression to be displayed.
-
-        E.g. In arrival or departure, the tonne miles or the avg distance are the max value that voyage have.
-        indifferently of the moment when the cargo was loaded or unloaded.
-        """
-        return (
-            voyage_date_range_activity is not None
-            and voyage_date_range_activity in ["arrivals", "departures"]
-        )
-
-    def __is_breakdown_property_multi_state__(
-        self, breakdown_property, breakdown_split_property
-    ):
-        """
-        Check if the breakdown property should be considered as multi-state
-        Some breakdowns should be considered as multi-state even to ensure consistency in the data
-        """
-        if breakdown_property is None:
-            return False
-
-        """
-        Some breakdowns should always be considered as multi-state to ensure consistency in the data.
-        E.G. AvgSpeed and AvgDistance because they require daily granularity
-        """
-        if breakdown_property in [
-            "cargo_quantity",
-            "avg_wait_time",
-            "dwt",
-            "cubic_capacity",
-        ]:
-            return True
-
-        """
-        Some breakdowns should be considered as multi-state only when a valid breakdown split is provided
-        Tonne miles aggregations are multi-state when the breakdown is by tonne miles
-        and the split property is not "none", because the split require an aggregation accessing the
-        nested "metrics" property of the cargo events twice.
-        """
-        if (
-            breakdown_property in ["tonne_miles", "avg_distance", "avg_speed"]
-            and breakdown_split_property is not None
-            and breakdown_split_property != "none"
-        ):
-            return True
-
-        return False
-
-    def __is_multi_state__(self, **api_params):
-        """
-        Some states (e.g. cargo_status, commitment_status) will change across the timespan of a voyage,
-        when we are filtering in the aggregation stage, we cannot determine multiple states when just looking at 1 event.
-        So what we need to do is to split the aggregation by 1 day, then only valid voyages will be filtered in the query stage,
-        and we don't need to do filtering in aggregation stage anymore.
-
-                        |-- day1 --|-- day2 --|-- day3 --|-- day4 --|-- day5  --|
-        Movement status:   |--- Moving ------|----waiting--|----- Moving ----------| from movement status event
-        Commitment status: |---unknown---------------|--------committed------------| from commitment status event
-        Location status:   |------- on the sea -------------------|------berth-----| from location status event
-        """
-
-        """
-        If the mode is arrival or departure, we do not need a multi-state aggregation
-        no matter the other filters provided.
-        """
-        if self.__is_arrival_or_departure_mode__(
-            api_params.get("voyage_date_range_activity")
-        ):
-            return False
-
-        """
-        If some breakdown properties are provided, we need to do a multi-state aggregation
-        """
-        if self.__is_breakdown_property_multi_state__(
-            api_params.get("breakdown_property"),
-            api_params.get("breakdown_split_property"),
-        ):
-            return True
-
-        effective_state_params_count = 0
-
-        """
-        These filters are determined by the cargo events, that means that the combination of all the filters
-        will determine if a multi state by cargo info is required.
-        """
-        if (
-            api_params.get("origins")
-            or api_params.get("destinations")
-            or api_params.get("products")
-        ):
-            effective_state_params_count += 1
-
-        # exclusions are not needed because they will be handled at the filter level
-        state_param_keys = [
-            "cargo_status",
-            "location_status",
-            "movement_status",
-            "commitment_status",
-            "locations",
-        ]
-
-        for key in state_param_keys:
-            if api_params.get(key):
-                effective_state_params_count += 1
-
-        return effective_state_params_count > 1
 
     # noinspection PyUnresolvedReferences
     def search(
@@ -191,12 +83,16 @@ class VoyagesTimeseries(Search):
         vessel_wait_time_min: int = None,
         vessel_wait_time_max: int = None,
         vessel_scrubbers: str = None,
-        vessels_tags: Union[Tag, List[Tag]] = None,
-        vessels_tags_excluded: Union[Tag, List[Tag]] = None,
+        vessel_tags: Union[Tag, List[Tag]] = None,
+        vessel_tags_excluded: Union[Tag, List[Tag]] = None,
         vessel_risk_level: Union[str, List[str]] = None,
         vessel_risk_level_excluded: Union[str, List[str]] = None,
         has_ship_to_ship: str = None,
         has_charterer: str = None,
+        intra_movements: str = None,
+        voyage_date_range_activity: VoyageDateRangeActivity = None,
+        origin_behaviour: OriginBehaviour = None,
+        destination_behaviour: DestinationBehaviour = None,
     ) -> TimeSeriesResult:
         """
 
@@ -208,7 +104,7 @@ class VoyagesTimeseries(Search):
             breakdown_property: Property to aggregate upon. Can be one of: `'vessel_count'`, `'utilisation'`, `'cargo_quantity'`, `'avg_wait_time'`,`'dwt'`, `'cubic_capacity'`,
             `'tonne_miles'`, `'avg_distance'`, `'avg_speed'`.
 
-            breakdown_split_property: Property to split results by. Can be one of: `'vessel_status'`, `'vessel_class'`, `'vessel_flag'`,`'fixture_status'`, `'origin_region'`,
+            breakdown_split_property: Property to split results by. Can be one of: `'vessel_status'`, `'vessel_class_group'`, `'vessel_class_coarse'`, `'vessel_class_granular'`, `'vessel_flag'`,`'fixture_status'`, `'origin_region'`,
             `'origin_shipping_region'`,`'origin_trading_region'`,`'origin_trading_sub_region'`,`'origin_trading_block'`,`'origin_country'`,`'origin_port'`,
             `'origin_terminal'`,`'destination_region'`,`'destination_shipping_region'`,`'destination_trading_region'`,`'destination_trading_sub_region'`,`'destination_trading_block'`,
             `'destination_country'`,`'destination_port'`,`'destination_terminal'`,`'location_port'`,`'location_country'`,`'location_shipping_region'`,
@@ -263,13 +159,13 @@ class VoyagesTimeseries(Search):
 
             effective_controllers_excluded: A effective controller ID, or list of effective controller IDs to exclude.
 
-            origins: An origin ID, or list of origin IDs to filter on.
+            origins: An origin ID, or list of origin IDs for all the cargoes of a voyage to filter on.
 
-            origins_excluded: An origin ID, or list of origin IDs to exclude.
+            origins_excluded: An origin ID, or list of origin IDs for all the cargoes of a voyage to exclude.
 
-            destinations: A destination ID, or list of destination IDs to filter on.
+            destinations: A destination ID, or list of destination IDs for all the cargoes of a voyage to filter on.
 
-            destinations_excluded: A destination ID, or list of destination IDs to exclude.
+            destinations_excluded: A destination ID, or list of destination IDs for all the cargoes of a voyage to exclude.
 
             locations: A location ID, or list of location IDs to filter on.
 
@@ -313,9 +209,9 @@ class VoyagesTimeseries(Search):
 
             vessel_scrubbers: Either inactive 'disabled', or included 'inc' or excluded 'exc'.
 
-            vessels_tags: A time bound vessel tag, or list of time bound vessel tags to filter on.
+            vessel_tags: A time bound vessel tag, or list of time bound vessel tags to filter on.
 
-            vessels_tags_excluded: A time bound vessel tag, or list of time bound vessel tags to exclude.
+            vessel_tags_excluded: A time bound vessel tag, or list of time bound vessel tags to exclude.
 
             vessel_risk_level: A vessel risk level, or list of vessel risk levels to filter on.
 
@@ -325,20 +221,27 @@ class VoyagesTimeseries(Search):
 
             has_charterer: Filter data where at least one charterer is specified, or none. - one of: `'disabled'`, `'inc'`, `'exc'`. Passing disabled means the filter is not active.
 
+            intra_movements: Filter movements based on whether the vessel started and ended in the same country, or geographical layer.
+
+            voyage_date_range_activity: Filter to determine how the voyages should be counted. Must be one of [`active`, `departures`, `arrivals`]
+
+            origin_behaviour: The origin behaviour determines which departure mode the `voyage_date_range_activity` should count, must be one of  [`first_load`, `any_load`].
+
+            destination_behaviour: The destination behaviour determines which arrival mode the voyage_date_range_activity should count, must be one of [last_discharge, any_discharge].
+
         # Returns
         `BreakdownResult`
 
         # Example
-        _Sum of vessels departing from Rotterdam between 26th-28th April 2022, split by location country._
+        _Sum of vessels departing from Ukraine between 1th-3rd Febuary 2024, split by location country._
 
         ```python
-        >>> from vortexasdk import VoyagesTimeseries, Geographies
+        >>> from vortexasdk import VoyagesTimeseries
         >>> from datetime import datetime
-        >>> rotterdam = [g.id for g in Geographies().search("rotterdam").to_list() if "port" in g.layer]
         >>> search_result = VoyagesTimeseries().search(
-        ...    origins=rotterdam,
-        ...    time_min=datetime(2022, 4, 26),
-        ...    time_max=datetime(2022, 4, 28, 23, 59),
+        ...    origins=["c4b606ff15bd9b86"],
+        ...    time_min=datetime(2024, 2, 1),
+        ...    time_max=datetime(2024, 2, 3, 23, 59),
         ...    breakdown_frequency="day",
         ...    breakdown_property="vessel_count",
         ...    breakdown_split_property="location_country",
@@ -348,11 +251,11 @@ class VoyagesTimeseries(Search):
         Gives the following result:
 
         ```
-        |    | key                       |   value |   count | breakdown.0.label   |   breakdown.0.count |   breakdown.0.value |
-        |---:|:--------------------------|--------:|--------:|:--------------------|--------------------:|--------------------:|
-        |  0 | 2022-04-26 00:00:00+00:00 |     294 |     294 | Netherlands         |                  85 |                  85 |
-        |  1 | 2022-04-27 00:00:00+00:00 |     281 |     281 | Netherlands         |                  82 |                  82 |
-        |  2 | 2022-04-28 00:00:00+00:00 |     279 |     279 | Netherlands         |                  85 |                  85 |
+        |    | key                       |   value |   count | breakdown.0.id   | breakdown.0.label   |   breakdown.0.count |   breakdown.0.value | breakdown.1.id   | breakdown.1.label   | breakdown.1.count   | breakdown.1.value   | breakdown.2.id   | breakdown.2.label   |   breakdown.2.count |   breakdown.2.value | breakdown.3.id   | breakdown.3.label   |   breakdown.3.count |   breakdown.3.value | breakdown.4.id   | breakdown.4.label   |   breakdown.4.count |   breakdown.4.value | breakdown.5.id   | breakdown.5.label   |   breakdown.5.count |   breakdown.5.value | breakdown.6.id   | breakdown.6.label   |   breakdown.6.count |   breakdown.6.value | breakdown.7.id   | breakdown.7.label   |   breakdown.7.count |   breakdown.7.value | breakdown.8.id   | breakdown.8.label   |   breakdown.8.count |   breakdown.8.value | breakdown.9.id   | breakdown.9.label   |   breakdown.9.count |   breakdown.9.value | breakdown.10.id   | breakdown.10.label   |   breakdown.10.count |   breakdown.10.value | breakdown.11.id   | breakdown.11.label   |   breakdown.11.count |   breakdown.11.value | breakdown.12.id   | breakdown.12.label   |   breakdown.12.count |   breakdown.12.value | breakdown.13.id   | breakdown.13.label   |   breakdown.13.count |   breakdown.13.value |
+        |---:|:--------------------------|--------:|--------:|:-----------------|:--------------------|--------------------:|--------------------:|:-----------------|:--------------------|:--------------------|:--------------------|:-----------------|:--------------------|--------------------:|--------------------:|:-----------------|:--------------------|--------------------:|--------------------:|:-----------------|:--------------------|--------------------:|--------------------:|:-----------------|:--------------------|--------------------:|--------------------:|:-----------------|:--------------------|--------------------:|--------------------:|:-----------------|:--------------------|--------------------:|--------------------:|:-----------------|:--------------------|--------------------:|--------------------:|:-----------------|:--------------------|--------------------:|--------------------:|:------------------|:---------------------|---------------------:|---------------------:|:------------------|:---------------------|---------------------:|---------------------:|:------------------|:---------------------|---------------------:|---------------------:|:------------------|:---------------------|---------------------:|---------------------:|
+        |  0 | 2024-02-01 00:00:00+00:00 |      16 |      16 | a398152fa8e559b0 | Bulgaria            |                   2 |                   2 | 3eac69e760d9ec57 | Egypt               | 2                   | 1                   | e9e556620469f46a | France              |                   1 |                   1 | b6be463f6999751d | Greece              |                   8 |                   3 | ee1de4914cc26e8f | Italy               |                   4 |                   2 | 82a6dd5bf8dfb66a | Libya               |                   1 |                   1 | 80dd61da7ce1edcc | Malta               |                   5 |                   3 | 8c6dfac15afa6dca | Portugal            |                   1 |                   1 | 65ab749279c8fbe6 | Romania             |                   6 |                   4 | c1698979b983b265 | Spain               |                   2 |                   2 | 03b07ca887edb311  | Tunisia              |                    5 |                    2 | 69c53542ac9ee1fc  | Turkey               |                   17 |                    7 | c4b606ff15bd9b86  | Ukraine              |                   12 |                    3 | 2aaad41b89dfad19  | United Kingdom       |                    1 |                    1 |
+        |  1 | 2024-02-02 00:00:00+00:00 |      16 |      16 | a398152fa8e559b0 | Bulgaria            |                   2 |                   2 | 3eac69e760d9ec57 | Egypt               | 2                   | 1                   | e9e556620469f46a | France              |                   1 |                   1 | b6be463f6999751d | Greece              |                   8 |                   3 | ee1de4914cc26e8f | Italy               |                   4 |                   2 | 82a6dd5bf8dfb66a | Libya               |                   1 |                   1 | 80dd61da7ce1edcc | Malta               |                   5 |                   3 | 8c6dfac15afa6dca | Portugal            |                   1 |                   1 | 65ab749279c8fbe6 | Romania             |                   6 |                   4 | c1698979b983b265 | Spain               |                   2 |                   2 | 03b07ca887edb311  | Tunisia              |                    5 |                    2 | 69c53542ac9ee1fc  | Turkey               |                   17 |                    7 | c4b606ff15bd9b86  | Ukraine              |                   12 |                    3 | 2aaad41b89dfad19  | United Kingdom       |                    1 |                    1 |
+        |  2 | 2024-02-03 00:00:00+00:00 |      13 |      13 | a398152fa8e559b0 | Bulgaria            |                   2 |                   2 | 3eac69e760d9ec57 | Egypt               |                     |                     | e9e556620469f46a | France              |                   1 |                   1 | b6be463f6999751d | Greece              |                   5 |                   2 | ee1de4914cc26e8f | Italy               |                   4 |                   2 | 82a6dd5bf8dfb66a | Libya               |                   1 |                   1 | 80dd61da7ce1edcc | Malta               |                   5 |                   3 | 8c6dfac15afa6dca | Portugal            |                   1 |                   1 | 65ab749279c8fbe6 | Romania             |                   6 |                   4 | c1698979b983b265 | Spain               |                   2 |                   2 | 03b07ca887edb311  | Tunisia              |                    5 |                    2 | 69c53542ac9ee1fc  | Turkey               |                    8 |                    4 | c4b606ff15bd9b86  | Ukraine              |                   16 |                    4 | 2aaad41b89dfad19  | United Kingdom       |                    1 |                    1 |
         ```
         """
         api_params: Dict[str, Any] = {
@@ -377,7 +280,7 @@ class VoyagesTimeseries(Search):
             "ice_class": convert_to_list(ice_class),
             "vessel_propulsion": convert_to_list(vessel_propulsion),
             "vessels": convert_to_list(vessels),
-            "vessels_tags": convert_to_list(vessels_tags),
+            "vessel_tags": convert_to_list(vessel_tags),
             "vessel_risk_level": convert_to_list(vessel_risk_level),
             "vessel_age_min": vessel_age_min,
             "vessel_age_max": vessel_age_max,
@@ -428,35 +331,20 @@ class VoyagesTimeseries(Search):
                 vessel_propulsion_excluded
             ),
             "vessels_excluded": convert_to_list(vessels_excluded),
-            "vessels_tags_excluded": convert_to_list(vessels_tags_excluded),
+            "vessel_tags_excluded": convert_to_list(vessel_tags_excluded),
             "vessel_risk_level_excluded": convert_to_list(
                 vessel_risk_level_excluded
             ),
+            "voyage_date_range_activity": voyage_date_range_activity,
+            "origin_behaviour": origin_behaviour,
+            "destination_behaviour": destination_behaviour,
+            "intra_movements": intra_movements,
         }
 
-        if not self.__is_multi_state__(**api_params):
-            response = super().search_with_client(
-                response_type="breakdown", **api_params
-            )
-
-            return TimeSeriesResult(
-                records=response["data"], reference=response["reference"]
-            )
-
-        combined_response: SearchResponse = {"reference": {}, "data": []}
-
-        for chunk in chunk_time_series(time_min, time_max):
-            api_params["time_min"] = to_ISODate(chunk["time_min"])
-            api_params["time_max"] = to_ISODate(chunk["time_max"])
-
-            response = super().search_with_client(
-                response_type="breakdown", **api_params
-            )
-
-            combined_response["data"] = (
-                combined_response["data"] + response["data"]
-            )
+        response = super().search_with_client(
+            response_type="breakdown", **api_params
+        )
 
         return TimeSeriesResult(
-            records=combined_response["data"], reference=response["reference"]
+            records=response["data"], reference=response["reference"]
         )

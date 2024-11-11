@@ -119,7 +119,7 @@ class TestCargoTimeSeries(TestCaseUsingRealAPI):
         start = datetime(2019, 1, 1)
         end = datetime(2019, 1, 20)
 
-        vlcc_plus = "vlcc_plus"
+        vlcc_plus = "oil_vlcc"
 
         vlcc_plus_timeseries = (
             CargoTimeSeries()

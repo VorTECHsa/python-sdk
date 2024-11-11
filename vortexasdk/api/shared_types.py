@@ -1,4 +1,5 @@
 from abc import ABC
+from enum import Enum
 from pydantic import BaseModel
 from datetime import datetime
 from typing import List, Optional, Union
@@ -176,3 +177,19 @@ class VesselClassEntry(BaseModel):
     id: Optional[str] = None
     layer: Optional[str] = None
     label: Optional[str] = None
+
+
+class VoyageDateRangeActivity(Enum):
+    ACTIVE = "active"
+    DEPARTURES = "departures"
+    ARRIVALS = "arrivals"
+
+
+class OriginBehaviour(Enum):
+    ANY_LOAD = "any_load"
+    FIRST_LOAD = "first_load"
+
+
+class DestinationBehaviour(Enum):
+    ANY_LOAD = "any_discharge"
+    LAST_DISCHARGE = "last_discharge"

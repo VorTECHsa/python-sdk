@@ -1,6 +1,5 @@
 from tests.testcases import TestCaseUsingRealAPI
 from tests.timer import Timer
-from vortexasdk import Products
 from vortexasdk.endpoints.vessels import Vessels
 
 
@@ -15,7 +14,7 @@ class TestVesselsReal(TestCaseUsingRealAPI):
         assert len(vessels) == 2
 
     def test_search_filters_vessel_class(self):
-        vessel_classes = ["vlcc_plus", "aframax"]
+        vessel_classes = ["oil_vlcc", "oil_aframax"]
 
         vessels = Vessels().search(vessel_classes=vessel_classes).to_list()
 
@@ -25,12 +24,13 @@ class TestVesselsReal(TestCaseUsingRealAPI):
 
     def test_search_terms_are_combined_with_AND(self):
         aframax = set(
-            v.id for v in Vessels().search(vessel_classes="aframax").to_list()
+            v.id
+            for v in Vessels().search(vessel_classes="oil_aframax").to_list()
         )
         aframax_called_zhen = set(
             v.id
             for v in Vessels()
-            .search(vessel_classes="aframax", term="zhen")
+            .search(vessel_classes="oil_aframax", term="zhen")
             .to_list()
         )
 
@@ -45,15 +45,6 @@ class TestVesselsReal(TestCaseUsingRealAPI):
         df = Vessels().search(ids=ids).to_df()
         assert list(df.columns) == ["id", "name", "imo", "vessel_class"]
         assert len(df) == 2
-
-    def test_find_crude_vessels(self):
-        crude = [
-            p.id
-            for p in Products().search("crude").to_list()
-            if "group" in p.layer
-        ]
-        df = Vessels().search(vessel_product_types=crude).to_df()
-        assert len(df) > 1000
 
     def test_load_all(self):
         all_products = Vessels().load_all()
@@ -74,10 +65,12 @@ class TestVesselsReal(TestCaseUsingRealAPI):
 
     def test_search_is_case_agnostic(self):
         uppercase = {
-            v.id for v in Vessels().search(vessel_classes="Suezmax").to_list()
+            v.id
+            for v in Vessels().search(vessel_classes="oil_suezmax").to_list()
         }
         lowercase = {
-            v.id for v in Vessels().search(vessel_classes="suezmax").to_list()
+            v.id
+            for v in Vessels().search(vessel_classes="oil_suezmax").to_list()
         }
 
         assert uppercase == lowercase

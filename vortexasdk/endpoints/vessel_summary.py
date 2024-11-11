@@ -33,7 +33,7 @@ class VesselSummary(Search):
 
             vessel_id: ID or IDs of vessels we'd like to search
 
-            vessel_class: vessel_class (or list of vessel classes) we'd like to search. This will give you summaries for all vessels within this class. Each vessel class must be one of `"tiny_tanker", "general_purpose", "handysize", "handymax", "panamax", "aframax", "suezmax", "vlcc_plus", "vlcc", "sgc", "mgc", "lgc", "vlgc", "oil_coastal", "oil_intermediate", "oil_flexi", "oil_handysize", "oil_mr1","oil_handymax", "oil_mr2", "oil_panamax", "oil_lr1", "oil_aframax", "oil_lr2", "oil_suezmax","oil_lr3", "oil_vlcc","lpg_coasters", "lpg_handysize", "lpg_mgc", "lpg_lgc", "lpg_vlgc", "lpg_vlec", "lng_small_scale_lng", "lng_mid_scale_lng", "lng_two_stroke", "lng_tfde_dfde", "lng_steam", "lng_ssd", "lng_q_flex", "lng_q_max", "oil_coastal", "oil_specialised", "oil_handysize_mr1", "oil_handymax_mr2", "oil_panamax_lr1", "oil_aframax_lr2", "oil_aframax_lr3", "oil_suezmax_lr3", "oil_vlcc","lpg_sgc", "lpg_mgc", "lpg_lgc", "lpg_vlgc_vlec","lng_small_scale_lng", "lng_mid_scale_lng","lng_conventional_lng", "lng_q_fleet", "oil", "lpg", "lng","vlcc", "ulcc", "small_tanker",`. Refer to [VortexaAPI Vessel Entities](https://docs.vortexa.com/reference/intro-vessel-entities) for the most up-to-date list of vessel classes.
+            vessel_class: vessel_class (or list of vessel classes) we'd like to search. This will give you summaries for all vessels within this class. Each vessel class must be one of `"oil_coastal", "oil_intermediate", "oil_flexi", "oil_handysize", "oil_mr1","oil_handymax", "oil_mr2", "oil_panamax", "oil_lr1", "oil_aframax", "oil_lr2", "oil_suezmax","oil_lr3", "oil_vlcc","lpg_coasters", "lpg_handysize", "lpg_mgc", "lpg_lgc", "lpg_vlgc", "lpg_vlec", "lng_small_scale_lng", "lng_mid_scale_lng", "lng_two_stroke", "lng_tfde_dfde", "lng_steam", "lng_ssd", "lng_q_flex", "lng_q_max", "oil_coastal", "oil_specialised", "oil_handysize_mr1", "oil_handymax_mr2", "oil_panamax_lr1", "oil_aframax_lr2", "oil_suezmax_lr3", "oil_vlcc","lpg_sgc", "lpg_mgc", "lpg_lgc", "lpg_vlgc_vlec","lng_small_scale_lng", "lng_mid_scale_lng","lng_conventional_lng", "lng_q_fleet", "oil", "lpg", "lng",`. Refer to [VortexaAPI Vessel Entities](https://docs.vortexa.com/reference/intro-vessel-entities) for the most up-to-date list of vessel classes.
 
         # Returns
         List of vessel summaries matching the search arguments.
@@ -44,7 +44,7 @@ class VesselSummary(Search):
 
         ```python
         >>> from vortexasdk import VesselSummary
-        >>> vessel_summary_df = VesselSummary().search(vessel_class=['aframax', 'vlcc_plus'], timestamp='2023-10-31T23:59:59.000Z').to_df(columns=['vessel_id', 'timestamp', 'lat', 'lon', 'speed', 'heading', 'declared_destination', 'draught'])
+        >>> vessel_summary_df = VesselSummary().search(vessel_class=['oil_aframax', 'oil_vlcc'], timestamp='2023-10-31T23:59:59.000Z').to_df(columns=['vessel_id', 'timestamp', 'lat', 'lon', 'speed', 'heading', 'declared_destination', 'draught'])
 
         ```
         |    | vessel_id        |     lat  |      lon   | timestamp                | speed  | heading | declared_destination | draught |
@@ -53,18 +53,6 @@ class VesselSummary(Search):
         |  ...to >800 results
 
         Note that we will show you all fields by default if you don't set the columns argument.
-        ```
-
-        - Now let's find summaries for vessels carrying crude, using the Vessels and Product Reference endpoints
-
-        ```python
-        >>> from vortexasdk import Vessels, Products
-        >>> crude = [p.id for p in Products().search(term="crude").to_list() if 'group' in p.layer]
-        >>> vessels_list = Vessels().search(vessel_product_types=crude).to_list()
-        >>> vessel_ids = [v.id for v in vessels_list]
-        >>> crude_summaries = VesselSummary().search(vessel_id=vessel_ids).to_df()
-
-        ```
 
         # Further Documentation
 

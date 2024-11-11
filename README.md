@@ -1,6 +1,6 @@
 # VortexaSDK
 
-[![CircleCI](https://circleci.com/gh/VorTECHsa/python-sdk.svg?style=svg)](https://circleci.com/gh/VorTECHsa/python-sdk)
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/VorTECHsa/python-sdk/tree/master.svg?style=svg&circle-token=CCIPRJ_Ttg8qk4EgWPW4o2zSa4GAM_c75257228a3a37589ceb44d7d7b28d891927063f)](https://dl.circleci.com/status-badge/redirect/gh/VorTECHsa/python-sdk/tree/master)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![All Contributors](https://img.shields.io/badge/all_contributors-12-orange.svg?style=flat-square)](#contributors)
 
@@ -72,6 +72,12 @@ To check the SDK is setup correctly, run the following in a bash console:
 
 ```bash
 $ python -m vortexasdk.check_setup
+```
+
+or
+
+```bash
+$ python3 -m vortexasdk.check_setup
 ```
 
 A successful setup looks like this:

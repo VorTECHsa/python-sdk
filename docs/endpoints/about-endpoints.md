@@ -5,17 +5,21 @@ The endpoints module allows you to query Vortexa's data.
 The VortexaSDK currently contains the following endpoints:
 
 1. Cargo Movements
-2. Voyages
-3. Charterers
-4. Geographies
-5. Products
-6. Vessels
-7. Cargo Time Series
-8. EIA Forecasts
-9. Tonne-miles
-10. Vessel Availability
-11. Crude Onshore Inventories
-12. Freight Pricing
+1. Voyages
+1. Charterers
+1. Geographies
+1. Products
+1. Vessels
+1. Cargo Time Series
+1. EIA Forecasts
+1. Tonne-miles
+1. Vessel Availability
+1. Crude Onshore Inventories
+1. Freight Pricing
+1. Vessel Summary
+1. Vessel Positions
+1. Canal transit
+1. Canal transit Time Series
 
 Each endpoint offers either one, or both, of two different functionalities:
 
@@ -28,9 +32,8 @@ Find all aframax vessels
 
 ```python
 from vortexasdk import Vessels
-df = Vessels().search(vessel_classes='aframax').to_df()
+df = Vessels().search(vessel_classes='oil_aframax').to_df()
 ```
-
 
 Find the vessel that has with id 12345
 
