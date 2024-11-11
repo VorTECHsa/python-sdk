@@ -112,10 +112,18 @@ class CargoTimeSeries(Search):
             timeseries_frequency: Frequency denoting the granularity of the time series. Must be one of ['day', 'week',
              'doe_week', 'month', 'quarter', 'year']
 
-            timeseries_property: Property to split results by. Can be one of: `quantity`, `vessel_class`, `vessel_flag`,
-             `origin_region`, `origin_shipping_region`, `origin_trading_region`, `origin_trading_sub_region`, `origin_country`, `origin_port`, `origin_terminal`,
-             `destination_region`, `destination_shipping_region`, `destination_trading_region`, `destination_trading_sub_region`, `destination_country`, `destination_port`, `destination_terminal`,
-             `product_group`, `product_group_product`, `product_category`, `product_grade`, `none` or not provided.
+            timeseries_property: Property to split results by. Can be one of: `quantity`, `waypoint_selected`,
+            `origin_country`, `origin_port`, `origin_region`, `origin_trading_region`, `origin_shipping_region`,
+            `origin_terminal`, `origin_trading_sub_region`, `origin_shipping_region_v2`, `origin_basin`,
+            `origin_wider_shipping_region`, `origin_country_zone`, `origin_alternative_region`,
+            `origin_state_or_province`, `destination_country`, `destination_port`, `destination_region`,
+            `destination_shipping_region`, `destination_terminal`, `destination_trading_region`,
+            `destination_trading_sub_region`, `destination_basin`, `destination_shipping_region_v2`,
+            `destination_wider_shipping_region`, `destination_country_zone`, `destination_alternative_region`,
+            `destination_state_or_province`, `product_category`, `product_grade`, `product_group`,
+            `product_group_product`, `vessel_class_group`, `vessel_class_coarse`, `vessel_class_granular`,
+            `vessel_flag`, `storage_location_country`, `storage_location_region`, `storage_location_shipping_region_v2`,
+            `storage_location_trading_sub_region`, or not provided.
 
             timeseries_unit: A numeric metric to be calculated for each time bucket. Must be one of ['b', 'bpd', 't',
              'tpd', 'c', 'cpd'], corresponding to barrels, barrels per day, metric tonnes, metric tonnes per day,
