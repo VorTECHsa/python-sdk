@@ -40,7 +40,10 @@ class Geographies(Reference, Search):
                 ['China', 'South China', 'China Energy Services Ningbo'...] etc. When `exact_term_match=True`,
                 the SDK will only yield the geography named `China`.
 
-            filter_layer: Must be one of geographical type ['terminal', 'port', 'country', 'shipping_region', 'region', 'trading_block', 'trading_region', 'trading_subregion', 'sts_zone', 'waypoint', 'storage', 'root'].
+            filter_layer: Must be one of: `terminal`, `port`, `country`, `country_zone`, `shipping_region`,
+            `shipping_region_v2`, `wider_shipping_region`, `region`, `alternative_region`, `trading_block`,
+            `trading_region`, `trading_subregion`, `state_or_province`, `sts_zone`, `waypoint`, `storage`,
+            `storage_terminal`, `basin`, `root`, or not provided.
 
 
         # Returns

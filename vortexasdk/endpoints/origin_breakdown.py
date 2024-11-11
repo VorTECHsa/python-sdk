@@ -79,8 +79,11 @@ class OriginBreakdown(Search):
 
              breakdown_unit: Units to aggregate upon. Must be one of the following: `'b'`, `'t'`, `'cbm'`, `'bpd'`, `'tpd'`, `'mpd'`.
 
-             breakdown_geography: Geography hierarchy of the origin to aggregate upon. Must be one of the following: `'terminal'`, `'port'`,`'country'`, `'shipping_region'`,
-             `'region'`,`'trading_block'`,`'trading_region'`,`'trading_subregion'`,`'sts_zone'`,`'waypoint'`.
+             breakdown_geography: Geography layer of the origin to aggregate upon. Must be one of the following:
+             `berth`, `terminal`, `port`, `country`, `country_zone`, `shipping_region`, `shipping_region_v2`,
+             `wider_shipping_region`, `region`, `alternative_region`, `trading_block`, `trading_region`,
+             `trading_subregion`, `state_or_province`, `sts_zone`, `waypoint`, `storage`, `storage_terminal`, `basin`,
+             `root`, or not provided. Default is `berth`.
 
              breakdown_size: Number of top geographies to return. Default is 5.
 
