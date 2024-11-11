@@ -1,10 +1,8 @@
 #### RELATED TICKETS
 
-- asana/app-issues...
+- jira links here
 
-#### RELATED PRs
-
-- web/app-core/publish...
+! Do not post related PRs here, unless they are open source !
 
 #### CHANGELOG
 
