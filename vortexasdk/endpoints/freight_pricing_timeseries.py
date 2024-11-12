@@ -42,7 +42,7 @@ class FreightPricingTimeseries(Search):
              breakdown_frequency: Must be one of: `day`, `week`, `doe_week`, `month`, `quarter` or `year`.
 
              breakdown_property: Property used to build the value of the aggregation. Must be one of the following:
-             `route`, `cost` (non-LNG routes), `tce` (non-LNG routes).
+             `route`, `cost` (not available for LNG routes), `tce` (not available for LNG routes).
 
              routes: Used to filter by specific routes. Must be one of the following:
              - Clean routes - `TC1`, `TC2_37`, `TC5`, `TC6`, `TC7`, `TC8`, `TC9`, `TC10`, `TC11`, `TC12`, `TC14`, `TC15`, `TC16`, `TC17`, `TC18`, `TC19`.
