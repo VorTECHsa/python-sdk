@@ -45,10 +45,11 @@ class FreightPricingSearch(Search):
             - BLNG routes -  `BLNG1g`, `BLNG2g`, `BLNG3g`
 
             days: Used to filter results by day on which the record was generated. Must be an ISO date array or not supplied.
+            Note that BLNG prices are only published on Tuesdays and Fridays.
 
-            order: Used to sort the returned results. Must be either 'record_date' or not supplied.
+            order: Used to sort the returned results. Must be either `record_date` or not supplied.
 
-            order_direction: Determines the direction of sorting. ‘asc’ for ascending, ‘desc’ for
+            order_direction: Determines the direction of sorting. `asc` for ascending, `desc` for
             descending.
 
             size: Used to page results. The size of the result set. Between 0 and 500.
