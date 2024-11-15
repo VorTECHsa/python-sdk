@@ -51,7 +51,7 @@ class CanalTransit(Search):
         filter_booked_time_max: Optional[datetime] = None,
         filter_booked_status: Optional[bool] = None,
         filter_voyage_status: Optional[str] = None,
-        updated_since: datetime = datetime.now() - timedelta(days=2),
+        updated_since: Optional[datetime] = None,
         filter_canal: Optional[str] = None,
         filter_direction: Optional[str] = None,
         filter_lock: Optional[str] = None,
@@ -209,7 +209,9 @@ class CanalTransit(Search):
             "filter_lock": filter_lock,
             "filter_booked_status": filter_booked_status,
             "filter_voyage_status": filter_voyage_status,
-            "updated_since": to_ISODate(updated_since),
+            "updated_since": to_ISODate(updated_since)
+            if updated_since
+            else None,
             "exclude": exclude_params,
         }
 
