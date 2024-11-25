@@ -12,7 +12,6 @@ from requests import Response
 from tqdm import tqdm
 
 from vortexasdk import __name__ as sdk_pkg_name
-from vortexasdk.search_response import SearchResponse
 from vortexasdk.api import ID
 from vortexasdk.endpoints.endpoints import API_URL
 from vortexasdk.logger import get_logger
