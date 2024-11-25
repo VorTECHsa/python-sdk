@@ -1,6 +1,7 @@
 from abc import ABC
 from enum import Enum
-from pydantic import BaseModel
+from pydantic import v1 as pydantic_v1
+
 from datetime import datetime
 from typing import List, Optional, Union
 
@@ -20,7 +21,7 @@ def to_ISODate_Array(days: List[datetime]) -> List[ISODate]:
     return [to_ISODate(date) for date in days]
 
 
-class EntityWithSingleLayer(BaseModel):
+class EntityWithSingleLayer(pydantic_v1.BaseModel):
     """Holds commonly used properties."""
 
     id: ID
@@ -28,7 +29,7 @@ class EntityWithSingleLayer(BaseModel):
     label: Optional[str] = None
 
 
-class EntityWithSingleLayerAndTimespan(BaseModel):
+class EntityWithSingleLayerAndTimespan(pydantic_v1.BaseModel):
     id: ID
     layer: Optional[str] = None
     label: Optional[str] = None
@@ -36,7 +37,7 @@ class EntityWithSingleLayerAndTimespan(BaseModel):
     end_timestamp: Optional[ISODate] = None
 
 
-class EntityWithListLayer(BaseModel):
+class EntityWithListLayer(pydantic_v1.BaseModel):
     """Holds commonly used properties."""
 
     id: ID
@@ -44,7 +45,7 @@ class EntityWithListLayer(BaseModel):
     label: Optional[str] = None
 
 
-class EntityWithSingleLayerAndProbability(BaseModel):
+class EntityWithSingleLayerAndProbability(pydantic_v1.BaseModel):
     """
     Extension of `Entity`, containing additional properties.
 
@@ -59,7 +60,7 @@ class EntityWithSingleLayerAndProbability(BaseModel):
     label: Optional[str] = None
 
 
-class EntityWithListLayerAndProbability(BaseModel):
+class EntityWithListLayerAndProbability(pydantic_v1.BaseModel):
     """
     Extension of `Entity`, containing additional properties.
 
@@ -74,14 +75,14 @@ class EntityWithListLayerAndProbability(BaseModel):
     label: Optional[str] = None
 
 
-class IDName(BaseModel):
+class IDName(pydantic_v1.BaseModel):
     """Tuple containing `id` and `name`."""
 
     id: ID
     name: Optional[str] = None
 
 
-class IDLayer(BaseModel):
+class IDLayer(pydantic_v1.BaseModel):
     """Tuple containing `id` and `layer`."""
 
     id: ID
@@ -89,7 +90,7 @@ class IDLayer(BaseModel):
     label: Optional[str] = None
 
 
-class IDNameLayer(BaseModel):
+class IDNameLayer(pydantic_v1.BaseModel):
     """Triple holding `id`, `name`, and `layer`."""
 
     id: ID
@@ -97,7 +98,7 @@ class IDNameLayer(BaseModel):
     name: Optional[str] = None
 
 
-class Node(ABC, IDName, BaseModel):
+class Node(ABC, IDName, pydantic_v1.BaseModel):
     """
     Abstract Base Class holding a node of a tree.
 
@@ -113,7 +114,7 @@ class Node(ABC, IDName, BaseModel):
     parent: Optional[List[IDNameLayer]] = None
 
 
-class Tag(BaseModel):
+class Tag(pydantic_v1.BaseModel):
     """
 
     Represents a property that is associated with a period of time.
@@ -129,7 +130,7 @@ class Tag(BaseModel):
     end_timestamp: Optional[ISODate] = None
 
 
-class Flag(BaseModel):
+class Flag(pydantic_v1.BaseModel):
     """
 
     Represents a property that is associated with a vessel's flag.
@@ -146,7 +147,7 @@ class Flag(BaseModel):
     flag_country: Optional[str] = None
 
 
-class Scrubber(BaseModel):
+class Scrubber(pydantic_v1.BaseModel):
     """
 
     Represents information about scrubbers fitted to a vessel.
@@ -163,7 +164,7 @@ class Scrubber(BaseModel):
     planned: Optional[bool] = None
 
 
-class VesselClassEntry(BaseModel):
+class VesselClassEntry(pydantic_v1.BaseModel):
     """
 
     Represents a property that is associated with  the classes of a vessel.

@@ -3,7 +3,8 @@ import os
 from multiprocessing.pool import Pool
 import pandas as pd
 from typing import List, Optional
-from pydantic import BaseModel
+from pydantic import v1 as pydantic_v1
+
 from vortexasdk.api.id import ID
 
 from vortexasdk.api.entity_flattening import convert_to_flat_dict
@@ -34,7 +35,7 @@ def sort_breakdown(item: dict, full_header_column: list):
     return item
 
 
-class VoyagesBreakdownItem(BaseModel):
+class VoyagesBreakdownItem(pydantic_v1.BaseModel):
     """
     Generic container class holding a `id <> value` pair, a `label`.
 

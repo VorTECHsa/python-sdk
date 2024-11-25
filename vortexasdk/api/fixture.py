@@ -1,15 +1,15 @@
-from pydantic import BaseModel
+from pydantic import v1 as pydantic_v1
 from typing import Optional
 from vortexasdk.api.id import ID
 from vortexasdk.api.vessel import VesselEntity
 
 
-class Entity(BaseModel):
+class Entity(pydantic_v1.BaseModel):
     id: Optional[str] = None
     label: Optional[str] = None
 
 
-class Fixture(BaseModel):
+class Fixture(pydantic_v1.BaseModel):
     """Represent a Fixture record returned by the API."""
 
     id: ID

@@ -1,23 +1,24 @@
-from pydantic import BaseModel
+from pydantic import v1 as pydantic_v1
+
 from typing import List, Optional
 
 
 from vortexasdk.api.shared_types import IDNameLayer
 
 
-class TerminalHierarchy(BaseModel):
+class TerminalHierarchy(pydantic_v1.BaseModel):
     id: Optional[str] = None
     label: Optional[str] = None
     layer: Optional[str] = None
 
 
-class TerminalParent(BaseModel):
+class TerminalParent(pydantic_v1.BaseModel):
     id: Optional[str] = None
     layer: Optional[List[str]] = None
     name: Optional[str] = None
 
 
-class StorageTerminal(BaseModel):
+class StorageTerminal(pydantic_v1.BaseModel):
     """
     Represents a Storage Terminal reference record returned by the API.
     """

@@ -1,4 +1,5 @@
-from pydantic import BaseModel
+from pydantic import v1 as pydantic_v1
+
 from typing import List, Optional, Union
 from typing_extensions import Literal
 from vortexasdk.api.id import ID
@@ -15,7 +16,7 @@ from vortexasdk.api.shared_types import (
 )
 
 
-class CongestionBreakdownItem(BaseModel):
+class CongestionBreakdownItem(pydantic_v1.BaseModel):
     """
 
     Congestion breakdown shows various stats of vessels in congestion.
@@ -38,7 +39,7 @@ class CongestionBreakdownItem(BaseModel):
     location_details: Optional[List[EntityWithListLayer]] = None
 
 
-class VoyagesVesselEntity(BaseModel):
+class VoyagesVesselEntity(pydantic_v1.BaseModel):
     """
     A VoyagesVesselEntity represents a vessel record used in Voyages.
 
@@ -63,7 +64,7 @@ class VoyagesVesselEntity(BaseModel):
     vessel_risk_level: Optional[str] = None
 
 
-class VoyageVesselEvent(BaseModel):
+class VoyageVesselEvent(pydantic_v1.BaseModel):
     """
     A vessel event represents an activity that a vessel has performed during a voyage
 
@@ -96,7 +97,7 @@ class VoyageVesselEvent(BaseModel):
     ] = None
 
 
-class VoyageCargoEvent(BaseModel):
+class VoyageCargoEvent(pydantic_v1.BaseModel):
     """
     Cargo events relate to the movement of cargo during the voyage.
 
@@ -128,7 +129,7 @@ class VoyageCargoEvent(BaseModel):
     is_open_event: Optional[bool] = None
 
 
-class VoyageStatusEvent(BaseModel):
+class VoyageStatusEvent(pydantic_v1.BaseModel):
     """
     Status events describe the status of the voyage at a given period.
 
@@ -148,7 +149,7 @@ class VoyageStatusEvent(BaseModel):
     is_open_event: Optional[bool] = None
 
 
-class VoyageEnrichedItem(BaseModel):
+class VoyageEnrichedItem(pydantic_v1.BaseModel):
     """
 
     A voyage is defined as a continuous period of time when the vessel is either laden or ballast.

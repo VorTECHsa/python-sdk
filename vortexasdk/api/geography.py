@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import v1 as pydantic_v1
 from typing import List, Optional, Tuple
 
 
@@ -13,7 +13,7 @@ from vortexasdk.api.shared_types import (
 Position = Tuple[float, float]
 
 
-class BoundingBox(BaseModel):
+class BoundingBox(pydantic_v1.BaseModel):
     """Polygon with list of bounding lon lat coords."""
 
     type: Optional[str] = None

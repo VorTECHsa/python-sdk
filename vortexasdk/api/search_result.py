@@ -1,15 +1,15 @@
 from typing_extensions import Literal
-from pydantic import BaseModel, Field
+from pydantic import v1 as pydantic_v1
 from typing import Any, Dict, List, Union
 
 import pandas as pd
 
 
-class Result(BaseModel):
+class Result(pydantic_v1.BaseModel):
     """Abstract Container that holds a list of *records*."""
 
-    records: List = Field(default_factory=list)
-    reference: Dict[str, Any] = Field(default_factory=dict)
+    records: List = pydantic_v1.Field(default_factory=list)
+    reference: Dict[str, Any] = pydantic_v1.Field(default_factory=dict)
 
     def to_list(self) -> List:
         """Represent *records* as a list."""

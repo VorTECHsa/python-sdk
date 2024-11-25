@@ -1,5 +1,4 @@
-from pydantic import Field
-from pydantic import BaseModel
+from pydantic import v1 as pydantic_v1
 from typing import List, Optional, Union
 from typing_extensions import Annotated, Literal
 
@@ -10,12 +9,12 @@ from vortexasdk.api.id import ID
 from vortexasdk.api.vessel import VesselEntity
 
 
-class RawLocations(BaseModel):
+class RawLocations(pydantic_v1.BaseModel):
     probability: Optional[float] = None
     location_id: Optional[str] = None
 
 
-class CargoPortLoadEvent(BaseModel):
+class CargoPortLoadEvent(pydantic_v1.BaseModel):
     vessel_id: Optional[ID] = None
     start_timestamp: Optional[ISODate] = None
     event_type: Optional[Literal["cargo_port_load_event"]] = None
@@ -25,7 +24,7 @@ class CargoPortLoadEvent(BaseModel):
     pos: Optional[List[float]] = None
 
 
-class CargoFSOLoadEvent(BaseModel):
+class CargoFSOLoadEvent(pydantic_v1.BaseModel):
     start_timestamp: Optional[ISODate] = None
     event_type: Optional[Literal["cargo_fso_load_event"]] = None
     location: Optional[List[GeographyEntity]] = None
@@ -38,7 +37,7 @@ class CargoFSOLoadEvent(BaseModel):
     pos: Optional[List[float]] = None
 
 
-class CargoPortUnloadEvent(BaseModel):
+class CargoPortUnloadEvent(pydantic_v1.BaseModel):
     vessel_id: Optional[ID] = None
     event_type: Optional[Literal["cargo_port_unload_event"]] = None
     location: Optional[List[GeographyEntity]] = None
@@ -50,7 +49,7 @@ class CargoPortUnloadEvent(BaseModel):
     restricted: Optional[bool] = False
 
 
-class CargoFSOUnloadEvent(BaseModel):
+class CargoFSOUnloadEvent(pydantic_v1.BaseModel):
     start_timestamp: Optional[ISODate] = None
     event_type: Optional[Literal["cargo_fso_unload_event"]] = None
     location: Optional[List[GeographyEntity]] = None
@@ -63,13 +62,13 @@ class CargoFSOUnloadEvent(BaseModel):
     pos: Optional[List[float]] = None
 
 
-class CargoFixtureEvent(BaseModel):
+class CargoFixtureEvent(pydantic_v1.BaseModel):
     start_timestamp: Optional[ISODate] = None
     event_type: Optional[Literal["cargo_fixture_event"]] = None
     end_timestamp: Optional[ISODate] = None
 
 
-class CargoSTSEvent(BaseModel):
+class CargoSTSEvent(pydantic_v1.BaseModel):
     start_timestamp: Optional[ISODate] = None
     event_type: Optional[Literal["cargo_sts_event"]] = None
     location: Optional[List[GeographyEntity]] = None
@@ -81,7 +80,7 @@ class CargoSTSEvent(BaseModel):
     pos: Optional[List[float]] = None
 
 
-class CargoStorageEvent(BaseModel):
+class CargoStorageEvent(pydantic_v1.BaseModel):
     vessel_id: Optional[ID] = None
     start_timestamp: Optional[ISODate] = None
     event_type: Optional[Literal["cargo_storage_event"]] = None
@@ -91,7 +90,7 @@ class CargoStorageEvent(BaseModel):
     pos: Optional[List[float]] = None
 
 
-class CargoWaypointEvent(BaseModel):
+class CargoWaypointEvent(pydantic_v1.BaseModel):
     vessel_id: Optional[ID] = None
     start_timestamp: Optional[ISODate] = None
     event_type: Optional[Literal["cargo_waypoint_event"]] = None
@@ -101,19 +100,19 @@ class CargoWaypointEvent(BaseModel):
     pos: Optional[List[float]] = None
 
 
-class CargoTransitingEvent(BaseModel):
+class CargoTransitingEvent(pydantic_v1.BaseModel):
     start_timestamp: Optional[ISODate] = None
     event_type: Optional[Literal["cargo_transiting_event"]] = None
     end_timestamp: Optional[ISODate] = None
 
 
-class CargoOilOnWaterEvent(BaseModel):
+class CargoOilOnWaterEvent(pydantic_v1.BaseModel):
     start_timestamp: Optional[ISODate] = None
     event_type: Optional[Literal["cargo_oil_on_water_event"]] = None
     end_timestamp: Optional[ISODate] = None
 
 
-class ParentID(BaseModel):
+class ParentID(pydantic_v1.BaseModel):
     """
 
     `cargo_movement_id` may change under certain conditions. `ParentID` contains an `id`,
@@ -127,7 +126,7 @@ class ParentID(BaseModel):
     splinter_timestamp: Optional[ISODate] = None
 
 
-class CargoMovementProductEntry(BaseModel):
+class CargoMovementProductEntry(pydantic_v1.BaseModel):
     probability: Optional[float] = None
     source: Optional[str] = None
     id: Optional[ID] = None
@@ -135,7 +134,7 @@ class CargoMovementProductEntry(BaseModel):
     label: Optional[str] = None
 
 
-class CargoMovement(BaseModel):
+class CargoMovement(pydantic_v1.BaseModel):
     """
 
     Cargo movements are the base data set the Vortexa API is centred around.
@@ -167,7 +166,7 @@ class CargoMovement(BaseModel):
                     CargoTransitingEvent,
                     CargoOilOnWaterEvent,
                 ],
-                Field(discriminator="event_type"),
+                pydantic_v1.Field(discriminator="event_type"),
             ]
         ]
     ] = None

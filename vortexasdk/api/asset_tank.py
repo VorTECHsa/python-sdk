@@ -1,23 +1,23 @@
-from pydantic import BaseModel
+from pydantic import v1 as pydantic_v1
 from typing import List, Optional
 
 
 from vortexasdk.api.shared_types import ISODate
 
 
-class CorporateEntity(BaseModel):
+class CorporateEntity(pydantic_v1.BaseModel):
     id: Optional[str] = None
     label: Optional[str] = None
     layer: Optional[str] = None
 
 
-class LocationDetails(BaseModel):
+class LocationDetails(pydantic_v1.BaseModel):
     id: Optional[str] = None
     label: Optional[str] = None
     layer: Optional[str] = None
 
 
-class AssetTank(BaseModel):
+class AssetTank(pydantic_v1.BaseModel):
     """
     Represents an Asset Tank reference record returned by the API.
     """

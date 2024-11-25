@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import v1 as pydantic_v1
 from typing import List, Optional
 
 from vortexasdk.api.geography import GeographyEntity
@@ -11,7 +11,7 @@ from vortexasdk.api.shared_types import (
 from vortexasdk.api.id import ID
 
 
-class CargoEntity(BaseModel):
+class CargoEntity(pydantic_v1.BaseModel):
     cargo_movement_id: ID
     quantity_barrels: Optional[int]
     quantity_tonnes: Optional[int]
@@ -19,19 +19,19 @@ class CargoEntity(BaseModel):
     product: Optional[List[EntityWithSingleLayer]]
 
 
-class GeographyRecord(BaseModel):
+class GeographyRecord(pydantic_v1.BaseModel):
     id: ID
     layer: Optional[List[str]] = None
     label: Optional[str] = None
     aliases: Optional[List[str]] = None
 
 
-class CorporateRecord(BaseModel):
+class CorporateRecord(pydantic_v1.BaseModel):
     id: ID
     label: str
 
 
-class CanalTransitRecord(BaseModel):
+class CanalTransitRecord(pydantic_v1.BaseModel):
     """
 
     The canal transits dataset contains information about ships waiting to cross major global canals.

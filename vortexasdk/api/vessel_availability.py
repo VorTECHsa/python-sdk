@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import v1 as pydantic_v1
 from typing import List, Optional
 
 
@@ -11,7 +11,7 @@ from vortexasdk.api.shared_types import (
 )
 
 
-class DeclaredDestination(BaseModel):
+class DeclaredDestination(pydantic_v1.BaseModel):
     """
 
     Current destination location, as reported by the available vessel
@@ -23,7 +23,7 @@ class DeclaredDestination(BaseModel):
     vessel_id: Optional[str] = None
 
 
-class VesselFixtures(BaseModel):
+class VesselFixtures(pydantic_v1.BaseModel):
     """
 
     Current fixture information for the available vessel
@@ -38,7 +38,7 @@ class VesselFixtures(BaseModel):
     laycan_to: Optional[ISODate] = None
 
 
-class VesselAvailability(BaseModel):
+class VesselAvailability(pydantic_v1.BaseModel):
     """
 
     Vessel Availability shows vessels that are available to load a given cargo at a given port within a specified time range.

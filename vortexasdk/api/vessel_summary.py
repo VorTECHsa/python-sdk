@@ -1,4 +1,5 @@
-from pydantic import BaseModel
+from pydantic import v1 as pydantic_v1
+
 from typing import Optional
 
 from vortexasdk.api.id import ID
@@ -6,7 +7,7 @@ from vortexasdk.api.id import ID
 from vortexasdk.api.shared_types import ISODate
 
 
-class VesselSummary(BaseModel):
+class VesselSummary(pydantic_v1.BaseModel):
     """
     Represents a Vessel Summary record returned by the API.
 

@@ -1,4 +1,5 @@
-from pydantic import BaseModel
+from pydantic import v1 as pydantic_v1
+
 from typing import List, Optional
 
 from vortexasdk.api.id import ID
@@ -14,7 +15,7 @@ from vortexasdk.api.shared_types import (
 )
 
 
-class VesselEntityCorporateEntity(BaseModel):
+class VesselEntityCorporateEntity(pydantic_v1.BaseModel):
     id: ID
     label: Optional[str] = None
     layer: Optional[str] = None
@@ -22,7 +23,7 @@ class VesselEntityCorporateEntity(BaseModel):
     start_timestamp: Optional[ISODate] = None
 
 
-class VesselEntityCorporateEntityWithConfidence(BaseModel):
+class VesselEntityCorporateEntityWithConfidence(pydantic_v1.BaseModel):
     probability: Optional[float] = None
     source: Optional[str] = None
     id: Optional[ID] = None
