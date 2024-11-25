@@ -28,7 +28,7 @@ setuptools.setup(
         "flatten-dict==0.4.2",
         "pandas>=0.25.2",
         "requests==2.31.0",
-        "pydantic>=2",
+        "pydantic>=2.0.0,<3.0.0",
         "tqdm==4.64.1",
         "urllib3>=1.26",
     ],
