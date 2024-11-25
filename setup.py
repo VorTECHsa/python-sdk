@@ -17,7 +17,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     packages=setuptools.find_packages(),
     url="https://github.com/vortechsa/python-sdk",
-    license="Apache License 2.0",
+    license_files=("LICENSE.txt",),
     classifiers=[
         "Programming Language :: Python :: 3.11",
         "License :: OSI Approved :: Apache Software License",
