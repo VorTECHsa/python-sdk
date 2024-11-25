@@ -54,6 +54,7 @@ setuptools.setup(
             "jupyter==1.0.0",
             "statsmodels==0.13.5",
             "matplotlib>=3.5.3",
+            "packaging>=24.0",
         ],
         "binder": [
             "jupyter==1.0.0",
