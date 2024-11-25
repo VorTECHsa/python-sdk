@@ -58,7 +58,7 @@ setuptools.setup(
         ],
         "binder": [
             "jupyter==1.0.0",
-            "statsmodels==0.13.5",
+            "statsmodels>=0.13.5",
             "matplotlib>=3.5.3",
         ],
         "deploy": ["wheel==0.37.1", "twine==4.0.1"],
