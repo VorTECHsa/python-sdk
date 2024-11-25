@@ -25,12 +25,12 @@ setuptools.setup(
     ],
     python_requires=">=3.11",
     install_requires=[
-        "flatten-dict==0.4.2",
-        "pandas==2.2.0",
-        "requests==2.31.0",
-        "pydantic==2.7.0",
-        "tqdm==4.64.1",
         "urllib3>=1.26",
+        "flatten-dict>=0.4.2",
+        "pandas>=2.0.0",
+        "requests>=2.31.0",
+        "pydantic>=2.0.0,<3.0.0",
+        "tqdm>=4.64.1",
     ],
     extras_require={
         "tests": [
