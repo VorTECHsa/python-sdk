@@ -37,7 +37,7 @@ setuptools.setup(
             "flake8==3.7.9",
             "black==22.8.0",
             "mkdocs==1.2.4",
-            "mypy==1.13.0",
+            "mypy>1.0.0",
             "pre-commit==1.20.0",
             "pytest==5.2.4",
             "pydoc-markdown==2.0.5",
