@@ -60,6 +60,6 @@ setuptools.setup(
             "statsmodels==0.13.2",
             "matplotlib>=3.5.3"
         ],
-        "deploy": ["wheel==0.37.1", "twine==4.0.1"],
+        "deploy": ["wheel==0.37.1", "twine==5.1.1"],
     },
 )
