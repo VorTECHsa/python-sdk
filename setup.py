@@ -30,7 +30,7 @@ setuptools.setup(
         "pandas>=2.0.0",
         "requests>=2.31.0",
         "pydantic>=2.0.0,<3.0.0",
-        "tqdm>=4.64.1",
+        "tqdm<5.0.0",
     ],
     extras_require={
         "tests": [
