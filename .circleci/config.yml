@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/project
     docker:
-      - image: cimg/python:3.11.0
+      - image: cimg/python:3.9.0
     steps:
       - checkout
       - restore_cache: &restore_cache
@@ -26,7 +26,7 @@ jobs:
   check_linting:
     working_directory: ~/project
     docker:
-      - image: cimg/python:3.11.0
+      - image: cimg/python:3.9.0
     steps:
       - checkout
       - restore_cache: &restore_cache
@@ -41,7 +41,7 @@ jobs:
   check_types:
     working_directory: ~/project
     docker:
-      - image: cimg/python:3.11.0
+      - image: cimg/python:3.9.0
     steps:
       - checkout
       - restore_cache: &restore_cache
@@ -56,7 +56,7 @@ jobs:
   check_formatting:
     working_directory: ~/project
     docker:
-      - image: cimg/python:3.11.0
+      - image: cimg/python:3.9.0
     steps:
       - checkout
       - restore_cache: &restore_cache
@@ -71,7 +71,7 @@ jobs:
   test-documentation:
     working_directory: ~/project
     docker:
-      - image: cimg/python:3.11.0
+      - image: cimg/python:3.9.0
     steps:
       - checkout
       - restore_cache: &restore_cache
@@ -102,7 +102,7 @@ jobs:
   run-examples:
     working_directory: ~/project
     docker:
-      - image: cimg/python:3.11.0
+      - image: cimg/python:3.9.0
     resource_class: large
     steps:
       - checkout
@@ -147,7 +147,7 @@ jobs:
   test:
     working_directory: ~/project
     docker:
-      - image: cimg/python:3.11.0
+      - image: cimg/python:3.9.0
     steps:
       - checkout
       - restore_cache: &restore_cache
@@ -164,7 +164,7 @@ jobs:
   check-release-version:
     working_directory: ~/project
     docker:
-      - image: cimg/python:3.11.0
+      - image: cimg/python:3.9.0
     steps:
       - checkout
       - restore_cache: &restore_cache
@@ -179,7 +179,7 @@ jobs:
   deploy:
     working_directory: ~/project
     docker:
-      - image: cimg/python:3.11.0
+      - image: cimg/python:3.9.0
     steps:
       - checkout
       - restore_cache: &restore_cache
@@ -217,7 +217,7 @@ jobs:
   deploy-pre-release:
     working_directory: ~/project
     docker:
-      - image: cimg/python:3.11.0
+      - image: cimg/python:3.9.0
     steps:
       - checkout
       - restore_cache: &restore_cache
@@ -296,7 +296,7 @@ workflows:
           filters:
             branches:
               only:
-                - python-sdk-tidyup
+                - python-3.9
           requires:
             - test
             - test-documentation

@@ -19,11 +19,11 @@ setuptools.setup(
     url="https://github.com/vortechsa/python-sdk",
     license="Apache Software License 2.0",
     classifiers=[
-        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.9",
         "License :: OSI Approved :: Apache Software License",
         "Operating System :: OS Independent",
     ],
-    python_requires=">=3.11",
+    python_requires=">=3.9",
     install_requires=[
         "urllib3>=1.26",
         "flatten-dict>=0.4.2",
