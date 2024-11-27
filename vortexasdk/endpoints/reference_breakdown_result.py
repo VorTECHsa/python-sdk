@@ -1,4 +1,4 @@
-from typing import Dict, List
+from typing import Dict, List, Optional, Union
 from typing_extensions import Literal
 import pandas as pd
 
@@ -50,7 +50,7 @@ class ReferenceBreakdownResult(Result):
 
     def to_df(
         self,
-        columns: List[str] | Literal["all"] | None = DEFAULT_COLUMNS,
+        columns: Optional[Union[List[str], Literal["all"]]] = DEFAULT_COLUMNS,
     ) -> pd.DataFrame:
         """Represents the breakdown as a dataframe.
 

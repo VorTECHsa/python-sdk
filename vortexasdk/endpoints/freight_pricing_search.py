@@ -5,7 +5,7 @@ Try me out in your browser:
 """
 
 from datetime import datetime
-from typing import Any, Dict, List, Union
+from typing import Any, Dict, List, Optional, Union
 from vortexasdk.api.shared_types import to_ISODate_Array
 from vortexasdk.endpoints.freight_pricing_result import FreightPricingResult
 
@@ -29,10 +29,10 @@ class FreightPricingSearch(Search):
 
     def search(
         self,
-        routes: Union[List[str], str] | None = None,
+        routes: Optional[Union[List[str], str]] = None,
         days: List[datetime] = [],
-        order: str | None = None,
-        order_direction: str | None = None,
+        order: Optional[str] = None,
+        order_direction: Optional[str] = None,
     ) -> FreightPricingResult:
         """
         List of pricing information applicable for a specified route on a given day.

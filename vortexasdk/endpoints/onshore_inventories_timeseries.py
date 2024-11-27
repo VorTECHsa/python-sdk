@@ -5,7 +5,7 @@ Try me out in your browser:
 """
 
 from datetime import datetime
-from typing import Any, Dict, List, Union
+from typing import Any, Dict, List, Optional, Union
 
 from vortexasdk.api import ID
 from vortexasdk.api.shared_types import to_ISODate
@@ -26,21 +26,21 @@ class OnshoreInventoriesTimeseries(Search):
     # noinspection PyUnresolvedReferences
     def search(
         self,
-        corporate_entity_ids: Union[ID, List[ID]] | None = None,
-        crude_confidence: List[str] | None = None,
-        location_ids: Union[ID, List[ID]] | None = None,
-        storage_types: List[str] | None = None,
-        asset_tank_ids: Union[ID, List[ID]] | None = None,
-        time_max: datetime | None = None,
-        time_min: datetime | None = None,
-        timeseries_frequency: str | None = None,
-        timeseries_split_property: str | None = None,
-        timeseries_unit: str | None = None,
-        timeseries_unit_operator: str | None = None,
-        exclude_corporate_entity_ids: List[str] | None = None,
-        exclude_crude_confidence: List[str] | None = None,
-        exclude_location_ids: Union[ID, List[ID]] | None = None,
-        exclude_storage_types: List[str] | None = None,
+        corporate_entity_ids: Optional[Union[ID, List[ID]]] = None,
+        crude_confidence: Optional[List[str]] = None,
+        location_ids: Optional[Union[ID, List[ID]]] = None,
+        storage_types: Optional[List[str]] = None,
+        asset_tank_ids: Optional[Union[ID, List[ID]]] = None,
+        time_max: Optional[datetime] = None,
+        time_min: Optional[datetime] = None,
+        timeseries_frequency: Optional[str] = None,
+        timeseries_split_property: Optional[str] = None,
+        timeseries_unit: Optional[str] = None,
+        timeseries_unit_operator: Optional[str] = None,
+        exclude_corporate_entity_ids: Optional[List[str]] = None,
+        exclude_crude_confidence: Optional[List[str]] = None,
+        exclude_location_ids: Optional[Union[ID, List[ID]]] = None,
+        exclude_storage_types: Optional[List[str]] = None,
     ) -> TimeSeriesResult:
         """
 

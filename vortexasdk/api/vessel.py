@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, List, Optional
 from pydantic import BaseModel
 
 from vortexasdk.api import ID
@@ -16,20 +16,20 @@ from vortexasdk.api.shared_types import (
 
 class VesselEntityCorporateEntity(BaseModel):
     id: ID
-    label: str | None = None
-    layer: str | None = None
-    end_timestamp: ISODate | None = None
-    start_timestamp: ISODate | None = None
+    label: Optional[str] = None
+    layer: Optional[str] = None
+    end_timestamp: Optional[ISODate] = None
+    start_timestamp: Optional[ISODate] = None
 
 
 class VesselEntityCorporateEntityWithConfidence(BaseModel):
-    probability: float | None = None
-    source: str | None = None
-    id: ID | None = None
-    label: str | None = None
-    layer: str | None = None
-    end_timestamp: ISODate | None = None
-    start_timestamp: ISODate | None = None
+    probability: Optional[float] = None
+    source: Optional[str] = None
+    id: Optional[ID] = None
+    label: Optional[str] = None
+    layer: Optional[str] = None
+    end_timestamp: Optional[ISODate] = None
+    start_timestamp: Optional[ISODate] = None
 
 
 class Vessel(Node):
@@ -39,33 +39,33 @@ class Vessel(Node):
     [Vessels Further Documentation](https://docs.vortexa.com/reference/GET/reference/vessels/%7Bid%7D)
     """
 
-    related_names: list[str] | None = None
-    mmsi: int | None = None
-    layer: list[str] | None = None
+    related_names: Optional[list[str]] = None
+    mmsi: Optional[int] = None
+    layer: Optional[List[str]] = None
 
-    tags: list[Tag] | None = None
-    current_product_type: list[Any] | None = None
+    tags: Optional[List[Tag]] = None
+    current_product_type: Optional[List[Any]] = None
 
-    vessel_class: str | None = None
-    classes: list[VesselClassEntry] | None = None
-    vessel_status: str | None = None
+    vessel_class: Optional[str] = None
+    classes: Optional[List[VesselClassEntry]] = None
+    vessel_status: Optional[str] = None
 
-    corporate_entities: list[VesselEntityCorporateEntity] | None = None
-    dead_weight: int | None = None
-    cubic_capacity: int | None = None
-    to_bow: int | None = None
-    to_stern: int | None = None
-    to_port: int | None = None
-    to_starboard: int | None = None
-    call_sign: str | None = None
-    year: int | None = None
-    imo: int | None = None
-    gross_tonnage: int | None = None
+    corporate_entities: Optional[List[VesselEntityCorporateEntity]] = None
+    dead_weight: Optional[int] = None
+    cubic_capacity: Optional[int] = None
+    to_bow: Optional[int] = None
+    to_stern: Optional[int] = None
+    to_port: Optional[int] = None
+    to_starboard: Optional[int] = None
+    call_sign: Optional[str] = None
+    year: Optional[int] = None
+    imo: Optional[int] = None
+    gross_tonnage: Optional[int] = None
 
-    scrubber: list[Scrubber] | None = None
-    flag: list[Flag] | None = None
-    ice_class: str | None = None
-    propulsion: str | None = None
+    scrubber: Optional[List[Scrubber]] = None
+    flag: Optional[List[Flag]] = None
+    ice_class: Optional[str] = None
+    propulsion: Optional[str] = None
 
 
 class VesselEntity(IDName):
@@ -76,30 +76,30 @@ class VesselEntity(IDName):
     """
 
     id: ID
-    name: str | None = None
-    mmsi: int | None = None
-    imo: int | None = None
+    name: Optional[str] = None
+    mmsi: Optional[int] = None
+    imo: Optional[int] = None
 
-    dwt: int | None = None
+    dwt: Optional[int] = None
 
-    vessel_class: str | None = None
-    classes: list[VesselClassEntry] | None = None
-    corporate_entities: (
-        list[VesselEntityCorporateEntityWithConfidence] | None
-    ) = None
-    tags: list[Tag] | None = None
-    status: str | None = None
-    year: int | None = None
+    vessel_class: Optional[str] = None
+    classes: Optional[List[VesselClassEntry]] = None
+    corporate_entities: Optional[
+        List[VesselEntityCorporateEntityWithConfidence]
+    ] = None
+    tags: Optional[List[Tag]] = None
+    status: Optional[str] = None
+    year: Optional[int] = None
 
-    start_timestamp: ISODate | None = None
+    start_timestamp: Optional[ISODate] = None
 
-    cubic_capacity: int | None = None
-    voyage_id: str | None = None
-    fixture_fulfilled: bool | None = None
-    end_timestamp: ISODate | None = None
-    fixture_id: str | None = None
+    cubic_capacity: Optional[int] = None
+    voyage_id: Optional[str] = None
+    fixture_fulfilled: Optional[bool] = None
+    end_timestamp: Optional[ISODate] = None
+    fixture_id: Optional[str] = None
 
-    scrubber: list[Scrubber] | None = None
-    flag: list[Flag] | None = None
-    ice_class: str | None = None
-    propulsion: str | None = None
+    scrubber: Optional[List[Scrubber]] = None
+    flag: Optional[List[Flag]] = None
+    ice_class: Optional[str] = None
+    propulsion: Optional[str] = None

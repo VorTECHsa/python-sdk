@@ -5,7 +5,7 @@ Try me out in your browser:
 """
 
 from datetime import datetime
-from typing import Any, Dict, List, Union
+from typing import Any, Dict, List, Optional, Union
 from vortexasdk.endpoints.onshore_inventories_result import (
     OnshoreInventoriesResult,
 )
@@ -33,17 +33,17 @@ class OnshoreInventoriesSearch(Search):
 
     def search(
         self,
-        asset_tank_ids: Union[ID, List[ID]] | None = None,
-        corporate_entity_ids: Union[ID, List[ID]] | None = None,
-        crude_confidence: List[str] | None = None,
-        location_ids: Union[ID, List[ID]] | None = None,
-        measurement_ids: Union[ID, List[ID]] | None = None,
-        order: str | None = None,
-        order_direction: str | None = None,
-        size: int | None = None,
-        storage_types: List[str] | None = None,
-        time_min: datetime | None = None,
-        time_max: datetime | None = None,
+        asset_tank_ids: Optional[Union[ID, List[ID]]] = None,
+        corporate_entity_ids: Optional[Union[ID, List[ID]]] = None,
+        crude_confidence: Optional[List[str]] = None,
+        location_ids: Optional[Union[ID, List[ID]]] = None,
+        measurement_ids: Optional[Union[ID, List[ID]]] = None,
+        order: Optional[str] = None,
+        order_direction: Optional[str] = None,
+        size: Optional[int] = None,
+        storage_types: Optional[List[str]] = None,
+        time_min: Optional[datetime] = None,
+        time_max: Optional[datetime] = None,
     ) -> OnshoreInventoriesResult:
         """
         List of crude onshore inventories across the globe.

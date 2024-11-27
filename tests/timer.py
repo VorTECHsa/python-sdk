@@ -1,5 +1,5 @@
 import time
-from typing import Any
+from typing import Any, Optional
 
 from vortexasdk.logger import get_logger
 
@@ -29,7 +29,7 @@ class Timer:
 
     """
 
-    def __init__(self: "Timer", name: str | None = None) -> None:
+    def __init__(self: "Timer", name: Optional[str] = None) -> None:
         self.name = name
 
     def __enter__(self: "Timer") -> "Timer":

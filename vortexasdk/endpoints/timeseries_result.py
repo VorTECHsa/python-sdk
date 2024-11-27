@@ -1,7 +1,7 @@
 import functools
 from multiprocessing.pool import Pool
 import os
-from typing import Dict, List
+from typing import Dict, List, Optional, Union
 from typing_extensions import Literal
 
 import pandas as pd
@@ -48,7 +48,7 @@ class TimeSeriesResult(Result):
         return create_list(super().to_list(), TimeSeriesItem)
 
     def to_df(
-        self, columns: List[str] | Literal["all"] | None = "all"
+        self, columns: Optional[Union[List[str], Literal["all"]]] = "all"
     ) -> pd.DataFrame:
         """
         Converts the time series data into a pandas DataFrame.

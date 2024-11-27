@@ -13,10 +13,10 @@ from vortexasdk.api import ID
 
 class CargoEntity(BaseModel):
     cargo_movement_id: ID
-    quantity_barrels: int | None = None
-    quantity_tonnes: int | None = None
-    quantity_cubic_metres: int | None = None
-    product: list[EntityWithSingleLayer] | None = None
+    quantity_barrels: Optional[int] = None
+    quantity_tonnes: Optional[int] = None
+    quantity_cubic_metres: Optional[int] = None
+    product: Optional[List[EntityWithSingleLayer]] = None
 
 
 class GeographyRecord(BaseModel):

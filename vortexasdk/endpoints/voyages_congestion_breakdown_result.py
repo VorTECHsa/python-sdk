@@ -1,7 +1,7 @@
 import functools
 import os
 from multiprocessing.pool import Pool
-from typing import List
+from typing import List, Optional, Union
 from typing_extensions import Literal
 import pandas as pd
 from vortexasdk.api.entity_flattening import convert_to_flat_dict
@@ -47,7 +47,7 @@ class CongestionBreakdownResult(Result):
 
     def to_df(
         self,
-        columns: List[str] | Literal["all"] | None = DEFAULT_COLUMNS,
+        columns: Optional[Union[List[str], Literal["all"]]] = DEFAULT_COLUMNS,
     ) -> pd.DataFrame:
         """
             Represent availability as a `pd.DataFrame`.

@@ -1,4 +1,4 @@
-from typing import List, Literal
+from typing import List, Literal, Optional, Union
 
 import pandas as pd
 
@@ -25,7 +25,7 @@ class VoyagesSearchEnrichedFlattenedResult(Result):
 
     def to_df(
         self: "VoyagesSearchEnrichedFlattenedResult",
-        columns: Literal["all"] | List[str] | None = None,
+        columns: Optional[Union[Literal["all"], List[str]]] = None,
     ) -> pd.DataFrame:
         """
         Represent voyages as a `pd.DataFrame`.
@@ -55,7 +55,7 @@ class VoyagesSearchEnrichedListResult(Result):
 
     def to_df(
         self: "VoyagesSearchEnrichedListResult",
-        columns: Literal["all"] | List[str] | None = None,
+        columns: Optional[Union[Literal["all"], List[str]]] = None,
     ) -> pd.DataFrame:
         # noinspection PyTypeChecker
         raise Exception(

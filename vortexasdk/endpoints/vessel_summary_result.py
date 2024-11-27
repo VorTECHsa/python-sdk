@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional, Union
 from typing_extensions import Literal
 
 import pandas as pd
@@ -33,7 +33,7 @@ class VesselSummaryResult(Result):
 
     def to_df(
         self,
-        columns: List[str] | Literal["all"] | None = DEFAULT_COLUMNS,
+        columns: Optional[Union[List[str], Literal["all"]]] = DEFAULT_COLUMNS,
     ) -> pd.DataFrame:
         """
         Represent vessel summaries as a `pd.DataFrame`.

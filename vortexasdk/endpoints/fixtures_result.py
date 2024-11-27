@@ -1,7 +1,7 @@
 import functools
 import os
 from multiprocessing import Pool
-from typing import List
+from typing import List, Optional, Union
 from typing_extensions import Literal
 
 import pandas as pd
@@ -41,7 +41,7 @@ class FixtureResult(Result):
 
     def to_df(
         self,
-        columns: List[str] | Literal["all"] | None = DEFAULT_COLUMNS,
+        columns: Optional[Union[List[str], Literal["all"]]] = DEFAULT_COLUMNS,
     ) -> pd.DataFrame:
         """
         Represent Fixtures as a `pd.DataFrame`.

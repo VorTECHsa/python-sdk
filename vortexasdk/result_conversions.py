@@ -1,4 +1,4 @@
-from typing import Any, Dict, List, Type, TypeVar, Union
+from typing import Any, Dict, List, Optional, Type, TypeVar, Union
 
 import pandas as pd
 from pydantic import BaseModel
@@ -32,7 +32,7 @@ def format_datatypes(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def create_dataframe(
-    columns: Union[Literal["all"], List[str]] | None,
+    columns: Optional[Union[Literal["all"], List[str]]] = None,
     data: List[Dict[str, Any]],
     logger_description: str,
 ) -> pd.DataFrame:

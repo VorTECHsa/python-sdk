@@ -1,6 +1,6 @@
 from typing_extensions import Literal
 from pydantic import BaseModel, Field
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional, Union
 
 import pandas as pd
 
@@ -16,7 +16,7 @@ class Result(BaseModel):
         return self.records
 
     def to_df(
-        self, columns: Literal["all"] | List[str] | None
+        self, columns: Optional[Union[Literal["all"], List[str]]]
     ) -> pd.DataFrame:
         """Represent *records* as a `pd.DataFrame` with given columns."""
         pass

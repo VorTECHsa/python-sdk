@@ -1,4 +1,4 @@
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Union
 from datetime import datetime, timedelta
 from logging import Logger
 
@@ -57,7 +57,7 @@ def chunk_time_series(
     return chunked_time_series
 
 
-def convert_to_list(a: Any | List[Any] | None) -> List[Any]:
+def convert_to_list(a: Optional[Union[Any, List[Any]]]) -> List[Any]:
     """Convert wraps element in list if element isn't a list already."""
     if a is None:
         return []
@@ -93,7 +93,7 @@ def filter_empty_values(data: Dict) -> Dict:
     }
 
 
-def sts_param_value(param: bool | None) -> Dict[str, bool]:
+def sts_param_value(param: Optional[bool]) -> Dict[str, bool]:
     """
     If sts filter is True, apply cross filter.
 

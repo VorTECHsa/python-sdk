@@ -1,7 +1,7 @@
 import functools
 import os
 from multiprocessing.pool import Pool
-from typing import List
+from typing import List, Optional, Union
 from typing_extensions import Literal
 from vortexasdk.api.onshore_inventory import OnshoreInventory
 
@@ -54,7 +54,7 @@ class OnshoreInventoriesResult(Result):
 
     def to_df(
         self,
-        columns: List[str] | Literal["all"] | None = DEFAULT_COLUMNS,
+        columns: Optional[Union[List[str], Literal["all"]]] = DEFAULT_COLUMNS,
     ) -> pd.DataFrame:
         """
         Represent onshore inventories as a `pd.DataFrame`.

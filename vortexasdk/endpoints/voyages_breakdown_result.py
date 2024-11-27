@@ -3,7 +3,7 @@ import os
 from multiprocessing.pool import Pool
 from typing_extensions import Literal
 import pandas as pd
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Union
 from pydantic import BaseModel
 from vortexasdk.api import ID
 
@@ -64,7 +64,7 @@ class VoyagesBreakdownResult(Result):
 
     def to_df(
         self,
-        columns: List[str] | Literal["all"] | None = "all",
+        columns: Optional[Union[List[str], Literal["all"]]] = "all",
     ) -> pd.DataFrame:
         """
         Converts the breakdown data into a pandas DataFrame.

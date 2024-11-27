@@ -9,7 +9,7 @@ from vortexasdk.endpoints.endpoints import FIXTURES
 from vortexasdk.operations import Search
 from vortexasdk.api.shared_types import to_ISODate
 from datetime import datetime
-from typing import Any, Dict, List, Union
+from typing import Any, Dict, List, Optional, Union
 from vortexasdk.api import ID
 from vortexasdk.utils import convert_to_list
 
@@ -66,29 +66,29 @@ class Fixtures(Search):
         filter_time_field: str = "fixing_timestamp",
         filter_time_min: datetime = datetime(2020, 1, 1),
         filter_time_max: datetime = datetime(2020, 1, 2),
-        ids: Union[ID, List[ID]] | None = None,
-        filter_charterers: Union[ID, List[ID]] | None = None,
-        filter_destinations: Union[ID, List[ID]] | None = None,
-        filter_origins: Union[ID, List[ID]] | None = None,
-        filter_owners: Union[ID, List[ID]] | None = None,
-        filter_effective_controllers: Union[ID, List[ID]] | None = None,
-        filter_products: Union[ID, List[ID]] | None = None,
-        filter_vessels: Union[ID, List[ID]] | None = None,
-        filter_vessel_classes: Union[str, List[str]] | None = None,
-        filter_vessel_age_min: int | None = None,
-        filter_vessel_age_max: int | None = None,
+        ids: Optional[Union[ID, List[ID]]] = None,
+        filter_charterers: Optional[Union[ID, List[ID]]] = None,
+        filter_destinations: Optional[Union[ID, List[ID]]] = None,
+        filter_origins: Optional[Union[ID, List[ID]]] = None,
+        filter_owners: Optional[Union[ID, List[ID]]] = None,
+        filter_effective_controllers: Optional[Union[ID, List[ID]]] = None,
+        filter_products: Optional[Union[ID, List[ID]]] = None,
+        filter_vessels: Optional[Union[ID, List[ID]]] = None,
+        filter_vessel_classes: Optional[Union[str, List[str]]] = None,
+        filter_vessel_age_min: Optional[int] = None,
+        filter_vessel_age_max: Optional[int] = None,
         filter_vessel_scrubbers: str = "disabled",
-        filter_vessel_flags: Union[ID, List[ID]] | None = None,
-        exclude_origins: Union[ID, List[ID]] | None = None,
-        exclude_destinations: Union[ID, List[ID]] | None = None,
-        exclude_products: Union[ID, List[ID]] | None = None,
-        exclude_vessels: Union[ID, List[ID]] | None = None,
-        exclude_vessel_classes: Union[str, List[str]] | None = None,
-        exclude_charterers: Union[ID, List[ID]] | None = None,
-        exclude_vessel_flags: Union[ID, List[ID]] | None = None,
-        order: str | None = None,
-        order_direction: str | None = None,
-        size: int | None = None,
+        filter_vessel_flags: Optional[Union[ID, List[ID]]] = None,
+        exclude_origins: Optional[Union[ID, List[ID]]] = None,
+        exclude_destinations: Optional[Union[ID, List[ID]]] = None,
+        exclude_products: Optional[Union[ID, List[ID]]] = None,
+        exclude_vessels: Optional[Union[ID, List[ID]]] = None,
+        exclude_vessel_classes: Optional[Union[str, List[str]]] = None,
+        exclude_charterers: Optional[Union[ID, List[ID]]] = None,
+        exclude_vessel_flags: Optional[Union[ID, List[ID]]] = None,
+        order: Optional[str] = None,
+        order_direction: Optional[str] = None,
+        size: Optional[int] = None,
     ) -> FixtureResult:
         """
         Find Fixtures matching filters and date range.

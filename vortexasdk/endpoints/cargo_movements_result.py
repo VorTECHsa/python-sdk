@@ -1,7 +1,7 @@
 import functools
 import os
 from multiprocessing.pool import Pool
-from typing import List
+from typing import List, Optional, Union
 from typing_extensions import Literal
 
 import pandas as pd
@@ -44,7 +44,7 @@ class CargoMovementsResult(Result):
 
     def to_df(
         self: "CargoMovementsResult",
-        columns: Literal["all"] | List[str] | None = DEFAULT_COLUMNS,
+        columns: Optional[Union[Literal["all"], List[str]]] = DEFAULT_COLUMNS,
     ) -> pd.DataFrame:
         """
         Represent cargo movements as a `pd.DataFrame`.
