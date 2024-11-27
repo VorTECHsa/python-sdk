@@ -106,7 +106,7 @@ class OnshoreInventoriesResult(Result):
             records = pool.map(flatten, super().to_list())
 
         return create_dataframe(
-            columns=columns,
             data=records,
             logger_description="OnshoreInventory",
+            columns=columns,
         )

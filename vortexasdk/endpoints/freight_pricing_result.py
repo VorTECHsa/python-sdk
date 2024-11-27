@@ -182,7 +182,7 @@ class FreightPricingResult(Result):
             )
 
         return create_dataframe(
-            columns=columns,
             data=records,
             logger_description="FreightPricing",
+            columns=columns,
         )

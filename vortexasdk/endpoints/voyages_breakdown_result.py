@@ -104,9 +104,9 @@ class VoyagesBreakdownResult(Result):
             records = pool.map(flatten, sorted_list)
 
         df = create_dataframe(
-            columns=columns,
             data=records,
             logger_description="VoyagesBreakdown",
+            columns=columns,
         )
 
         return df

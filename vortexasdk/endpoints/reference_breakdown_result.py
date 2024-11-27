@@ -78,9 +78,9 @@ class ReferenceBreakdownResult(Result):
             records = pool.map(flatten, new_list)
 
         df = create_dataframe(
-            columns=columns,
             data=records,
             logger_description="ReferenceBreakdown",
+            columns=columns,
         )
 
         return df

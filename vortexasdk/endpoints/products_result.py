@@ -41,7 +41,7 @@ class ProductResult(Result):
         flattened_dicts = [flatten_dictionary(p) for p in super().to_list()]
 
         return create_dataframe(
-            columns=columns,
             data=flattened_dicts,
             logger_description="Products",
+            columns=columns,
         )

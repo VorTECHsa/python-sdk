@@ -47,7 +47,7 @@ class AssetTankResult(Result):
 
         """
         return create_dataframe(
-            columns=columns,
             data=super().to_list(),
             logger_description="AssetTanks",
+            columns=columns,
         )

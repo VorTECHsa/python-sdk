@@ -39,6 +39,6 @@ class GeographyResult(Result):
         """
         return create_dataframe(
             data=super().to_list(),
-            columns=columns,
             logger_description="Geographies",
+            columns=columns,
         )

@@ -93,9 +93,9 @@ class TimeSeriesResult(Result):
             records = [flatten(v) for v in sorted_list]
 
         df = create_dataframe(
-            columns=columns,
             data=records,
             logger_description="TimeSeries",
+            columns=columns,
         )
 
         if "key" in df.columns:
