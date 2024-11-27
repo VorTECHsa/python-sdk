@@ -5,7 +5,7 @@ Try me out in your browser:
 """
 
 from datetime import datetime
-from typing import Any, Dict, List, Union
+from typing import Any, Dict, List, Optional, Union
 
 from vortexasdk.api import ID
 from vortexasdk.api.shared_types import (
