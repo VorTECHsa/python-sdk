@@ -293,6 +293,10 @@ workflows:
           requires:
             - build
 
+      - check-pre-release-version:
+          requires:
+            - build
+
       - deploy:
           filters:
             branches:
