@@ -176,6 +176,21 @@ jobs:
             . .venv/bin/activate
             python scripts/validate_proposed_package_version.py
 
+  check-pre-release-version:
+    working_directory: ~/project
+    docker:
+      - image: cimg/python:3.9.0
+    steps:
+      - checkout
+      - restore_cache: &restore_cache
+          keys:
+            - v5-{{ .Branch }}-{{ checksum "setup.py" }}
+      - run:
+          name: "Check proposed release version is a pre-release version"
+          command: |
+            . .venv/bin/activate
+            python scripts/check_pre_release.py
+
   deploy:
     working_directory: ~/project
     docker:
@@ -304,4 +319,5 @@ workflows:
             - check_types
             - check_linting
             - check_formatting
+            - check-pre-release-version
             - check-release-version
