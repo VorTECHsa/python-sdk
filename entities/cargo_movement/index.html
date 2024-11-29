@@ -177,8 +177,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../vessel/">Vessel</a>
                     </li>
-                    <li class="toctree-l1"><a class="" href="../vessel_movement.md">Vessel Movement</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../voyages/">Voyages</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../vessel_availability/">Vessel Availability</a>
@@ -252,20 +250,184 @@
               
                 <h1 id="vortexasdk.api.cargo_movement">vortexasdk.api.cargo_movement</h1>
 
+<h2 id="vortexasdk.api.cargo_movement.RawLocations">RawLocations</h2>
+
+<pre><code class="language-python">RawLocations(*, probability: typing.Optional[float],
+             location_id: typing.Optional[str])
+</code></pre>
+<h3 id="vortexasdk.api.cargo_movement.RawLocations.model_config">model_config</h3>
+
+<h2 id="vortexasdk.api.cargo_movement.CargoPortLoadEvent">CargoPortLoadEvent</h2>
+
+<pre><code class="language-python">CargoPortLoadEvent(
+  *, vessel_id: typing.Optional[str],
+  start_timestamp: typing.Optional[str],
+  event_type: typing_extensions.Literal['cargo_port_load_event'],
+  location:
+    typing.Optional[typing.List[vortexasdk.api.geography.GeographyEntity]],
+  probability: typing.Optional[float],
+  end_timestamp: typing.Optional[str],
+  pos: typing.Optional[typing.List[float]])
+</code></pre>
+<h3 id="vortexasdk.api.cargo_movement.CargoPortLoadEvent.model_config">model_config</h3>
+
+<h2 id="vortexasdk.api.cargo_movement.CargoFSOLoadEvent">CargoFSOLoadEvent</h2>
+
+<pre><code class="language-python">CargoFSOLoadEvent(
+  *, start_timestamp: typing.Optional[str],
+  event_type: typing_extensions.Literal['cargo_fso_load_event'],
+  location:
+    typing.Optional[typing.List[vortexasdk.api.geography.GeographyEntity]],
+  probability: typing.Optional[float],
+  fso_vessel_id: typing.Optional[str],
+  fso_vessel_name: typing.Optional[str],
+  to_vessel_id: typing.Optional[str],
+  to_vessel_name: typing.Optional[str],
+  end_timestamp: typing.Optional[str],
+  pos: typing.Optional[typing.List[float]])
+</code></pre>
+<h3 id="vortexasdk.api.cargo_movement.CargoFSOLoadEvent.model_config">model_config</h3>
+
+<h2 id="vortexasdk.api.cargo_movement.CargoPortUnloadEvent">CargoPortUnloadEvent</h2>
+
+<pre><code class="language-python">CargoPortUnloadEvent(
+  *, vessel_id: typing.Optional[str],
+  event_type: typing_extensions.Literal['cargo_port_unload_event'],
+  location:
+    typing.Optional[typing.List[vortexasdk.api.geography.GeographyEntity]],
+  probability: typing.Optional[float],
+  end_timestamp: typing.Optional[str], raw_locations:
+    typing.Optional[typing.List[vortexasdk.api.cargo_movement.RawLocations]],
+  pos: typing.Optional[typing.List[float]],
+  start_timestamp: typing.Optional[str],
+  restricted: typing.Optional[bool])
+</code></pre>
+<h3 id="vortexasdk.api.cargo_movement.CargoPortUnloadEvent.model_config">model_config</h3>
+
+<h2 id="vortexasdk.api.cargo_movement.CargoFSOUnloadEvent">CargoFSOUnloadEvent</h2>
+
+<pre><code class="language-python">CargoFSOUnloadEvent(
+  *, start_timestamp: typing.Optional[str],
+  event_type: typing_extensions.Literal['cargo_fso_unload_event'],
+  location:
+    typing.Optional[typing.List[vortexasdk.api.geography.GeographyEntity]],
+  probability: typing.Optional[float],
+  fso_vessel_id: typing.Optional[str],
+  fso_vessel_name: typing.Optional[str],
+  from_vessel_id: typing.Optional[str],
+  from_vessel_name: typing.Optional[str],
+  end_timestamp: typing.Optional[str],
+  pos: typing.Optional[typing.List[float]])
+</code></pre>
+<h3 id="vortexasdk.api.cargo_movement.CargoFSOUnloadEvent.model_config">model_config</h3>
+
+<h2 id="vortexasdk.api.cargo_movement.CargoFixtureEvent">CargoFixtureEvent</h2>
+
+<pre><code class="language-python">CargoFixtureEvent(
+  *, start_timestamp: typing.Optional[str],
+  event_type: typing_extensions.Literal['cargo_fixture_event'],
+  end_timestamp: typing.Optional[str])
+</code></pre>
+<h3 id="vortexasdk.api.cargo_movement.CargoFixtureEvent.model_config">model_config</h3>
+
+<h2 id="vortexasdk.api.cargo_movement.CargoSTSEvent">CargoSTSEvent</h2>
+
+<pre><code class="language-python">CargoSTSEvent(
+  *, start_timestamp: typing.Optional[str],
+  event_type: typing_extensions.Literal['cargo_sts_event'], location:
+    typing.Optional[typing.List[vortexasdk.api.geography.GeographyEntity]],
+  to_vessel_id: typing.Optional[str],
+  to_vessel_name: typing.Optional[str],
+  from_vessel_id: typing.Optional[str],
+  from_vessel_name: typing.Optional[str],
+  end_timestamp: typing.Optional[str],
+  pos: typing.Optional[typing.List[float]])
+</code></pre>
+<h3 id="vortexasdk.api.cargo_movement.CargoSTSEvent.model_config">model_config</h3>
+
+<h2 id="vortexasdk.api.cargo_movement.CargoStorageEvent">CargoStorageEvent</h2>
+
+<pre><code class="language-python">CargoStorageEvent(
+  *, vessel_id: typing.Optional[str],
+  start_timestamp: typing.Optional[str],
+  event_type: typing_extensions.Literal['cargo_storage_event'], location:
+    typing.Optional[typing.List[vortexasdk.api.geography.GeographyEntity]],
+  vessel_class: typing.Optional[str],
+  end_timestamp: typing.Optional[str],
+  pos: typing.Optional[typing.List[float]])
+</code></pre>
+<h3 id="vortexasdk.api.cargo_movement.CargoStorageEvent.model_config">model_config</h3>
+
+<h2 id="vortexasdk.api.cargo_movement.CargoWaypointEvent">CargoWaypointEvent</h2>
+
+<pre><code class="language-python">CargoWaypointEvent(
+  *, vessel_id: typing.Optional[str],
+  start_timestamp: typing.Optional[str],
+  event_type: typing_extensions.Literal['cargo_waypoint_event'],
+  location:
+    typing.Optional[typing.List[vortexasdk.api.geography.GeographyEntity]],
+  probability: typing.Optional[float],
+  end_timestamp: typing.Optional[str],
+  pos: typing.Optional[typing.List[float]])
+</code></pre>
+<h3 id="vortexasdk.api.cargo_movement.CargoWaypointEvent.model_config">model_config</h3>
+
+<h2 id="vortexasdk.api.cargo_movement.CargoTransitingEvent">CargoTransitingEvent</h2>
+
+<pre><code class="language-python">CargoTransitingEvent(
+  *, start_timestamp: typing.Optional[str],
+  event_type: typing_extensions.Literal['cargo_transiting_event'],
+  end_timestamp: typing.Optional[str])
+</code></pre>
+<h3 id="vortexasdk.api.cargo_movement.CargoTransitingEvent.model_config">model_config</h3>
+
+<h2 id="vortexasdk.api.cargo_movement.CargoOilOnWaterEvent">CargoOilOnWaterEvent</h2>
+
+<pre><code class="language-python">CargoOilOnWaterEvent(
+  *, start_timestamp: typing.Optional[str],
+  event_type: typing_extensions.Literal['cargo_oil_on_water_event'],
+  end_timestamp: typing.Optional[str])
+</code></pre>
+<h3 id="vortexasdk.api.cargo_movement.CargoOilOnWaterEvent.model_config">model_config</h3>
+
 <h2 id="vortexasdk.api.cargo_movement.ParentID">ParentID</h2>
 
-<pre><code class="language-python">ParentID(__pydantic_self__, **data: Any) -&gt; None
+<pre><code class="language-python">ParentID(*, id: typing.Optional[str],
+         splinter_timestamp: typing.Optional[str])
 </code></pre>
 <p><code>cargo_movement_id</code> may change under certain conditions. <code>ParentID</code> contains an <code>id</code>,
 a previous id of the cargo movement, and a <code>splinter_timestamp</code>, the time at which the id change occurred.</p>
 <p><a href="https://docs.vortexa.com/reference/intro-cargo-movement">Cargo Movement Further Documentation</a></p>
+<h3 id="vortexasdk.api.cargo_movement.ParentID.model_config">model_config</h3>
+
+<h2 id="vortexasdk.api.cargo_movement.CargoMovementProductEntry">CargoMovementProductEntry</h2>
+
+<pre><code class="language-python">CargoMovementProductEntry(*, probability: typing.Optional[float],
+                          source: typing.Optional[str],
+                          id: typing.Optional[str],
+                          layer: typing.Optional[str],
+                          label: typing.Optional[str])
+</code></pre>
+<h3 id="vortexasdk.api.cargo_movement.CargoMovementProductEntry.model_config">model_config</h3>
+
 <h2 id="vortexasdk.api.cargo_movement.CargoMovement">CargoMovement</h2>
 
-<pre><code class="language-python">CargoMovement(__pydantic_self__, **data: Any) -&gt; None
+<pre><code class="language-python">CargoMovement(
+    *, cargo_movement_id: str, quantity: typing.Optional[int],
+    status: typing.Optional[str],
+    vessels: typing.Optional[typing.List[vortexasdk.api.vessel.VesselEntity]],
+    product:
+    typing.Optional[typing.List[vortexasdk.api.cargo_movement.CargoMovementProductEntry]],
+    parent_ids:
+    typing.Optional[typing.List[vortexasdk.api.cargo_movement.ParentID]],
+    events:
+    typing.Optional[typing.List[typing.Annotated[typing.Union[vortexasdk.api.cargo_movement.CargoPortLoadEvent, vortexasdk.api.cargo_movement.CargoFSOLoadEvent, vortexasdk.api.cargo_movement.CargoPortUnloadEvent, vortexasdk.api.cargo_movement.CargoFSOUnloadEvent, vortexasdk.api.cargo_movement.CargoFixtureEvent, vortexasdk.api.cargo_movement.CargoSTSEvent, vortexasdk.api.cargo_movement.CargoStorageEvent, vortexasdk.api.cargo_movement.CargoWaypointEvent, vortexasdk.api.cargo_movement.CargoTransitingEvent, vortexasdk.api.cargo_movement.CargoOilOnWaterEvent], FieldInfo(annotation=NoneType, required=True, discriminator='event_type')]]]
+)
 </code></pre>
 <p>Cargo movements are the base data set the Vortexa API is centred around.</p>
 <p>Each movement represents a journey of a certain quantity of a product between places.</p>
 <p><a href="https://docs.vortexa.com/reference/intro-cargo-movement">Cargo Movement Further Documentation</a></p>
+<h3 id="vortexasdk.api.cargo_movement.CargoMovement.model_config">model_config</h3>
               
             </div>
           </div>

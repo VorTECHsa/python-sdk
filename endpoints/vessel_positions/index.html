@@ -177,8 +177,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/vessel/">Vessel</a>
                     </li>
-                    <li class="toctree-l1"><a class="" href="../../entities/vessel_movement.md">Vessel Movement</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/voyages/">Voyages</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/vessel_availability/">Vessel Availability</a>
@@ -265,19 +263,20 @@
 <p>Vessel Positions endpoint.</p>
 <h3 id="vortexasdk.endpoints.vessel_positions.VesselPositions.search">search</h3>
 
-<pre><code class="language-python">VesselPositions.search(self, vessel_id: Union[str, List[str]] = None, vessel_class: Union[str, List[str]] = None, time_max: str = None, time_min: str = None, interval: str = '1d') -&gt; vortexasdk.endpoints.vessel_positions_result.VesselPositionsResult
+<pre><code class="language-python">VesselPositions.search(
+  vessel_id: typing.Union[str, typing.List[str], NoneType] = None,
+  vessel_class: typing.Union[str, typing.List[str], NoneType] = None,
+  time_max: typing.Optional[str] = None,
+  time_min: typing.Optional[str] = None,
+  interval: str = '1d')
 </code></pre>
 <p>Find all latest positions of vessels matching given search arguments. Search arguments are combined in an AND manner.</p>
 <p><strong>Arguments</strong></p>
 <ul>
 <li>
 <p><strong>time_max</strong>: The earliest timestamp before which you'd like your positions sourced from</p>
-</li>
-<li>
-<p><strong>vessel_id</strong>: ID or IDs of vessels we'd like to search</p>
-</li>
-<li>
-<p><strong>vessel_class</strong>: vessel_class (or list of vessel classes) we'd like to search. This will give you positions for all vessels within this class, if no IDs are set. Each vessel class must be one of <code>"oil_coastal", "oil_intermediate", "oil_flexi", "oil_handysize", "oil_mr1","oil_handymax", "oil_mr2", "oil_panamax", "oil_lr1", "oil_aframax", "oil_lr2", "oil_suezmax","oil_lr3", "oil_vlcc","lpg_coasters", "lpg_handysize", "lpg_mgc", "lpg_lgc", "lpg_vlgc", "lpg_vlec", "lng_small_scale_lng", "lng_mid_scale_lng", "lng_two_stroke", "lng_tfde_dfde", "lng_steam", "lng_ssd", "lng_q_flex", "lng_q_max", "oil_coastal", "oil_specialised", "oil_handysize_mr1", "oil_handymax_mr2", "oil_panamax_lr1", "oil_aframax_lr2", "oil_suezmax_lr3", "oil_vlcc","lpg_sgc", "lpg_mgc", "lpg_lgc", "lpg_vlgc_vlec","lng_small_scale_lng", "lng_mid_scale_lng","lng_conventional_lng", "lng_q_fleet", "oil", "lpg", "lng",</code>. Refer to <a href="https://docs.vortexa.com/reference/intro-vessel-entities">VortexaAPI Vessel Entities</a> for the most up-to-date list of vessel classes.</p>
+<p>vessel_id: ID or IDs of vessels we'd like to search</p>
+<p>vessel_class: vessel_class (or list of vessel classes) we'd like to search. This will give you positions for all vessels within this class, if no IDs are set. Each vessel class must be one of <code>"oil_coastal", "oil_intermediate", "oil_flexi", "oil_handysize", "oil_mr1","oil_handymax", "oil_mr2", "oil_panamax", "oil_lr1", "oil_aframax", "oil_lr2", "oil_suezmax","oil_lr3", "oil_vlcc","lpg_coasters", "lpg_handysize", "lpg_mgc", "lpg_lgc", "lpg_vlgc", "lpg_vlec", "lng_small_scale_lng", "lng_mid_scale_lng", "lng_two_stroke", "lng_tfde_dfde", "lng_steam", "lng_ssd", "lng_q_flex", "lng_q_max", "oil_coastal", "oil_specialised", "oil_handysize_mr1", "oil_handymax_mr2", "oil_panamax_lr1", "oil_aframax_lr2", "oil_suezmax_lr3", "oil_vlcc","lpg_sgc", "lpg_mgc", "lpg_lgc", "lpg_vlgc_vlec","lng_small_scale_lng", "lng_mid_scale_lng","lng_conventional_lng", "lng_q_fleet", "oil", "lpg", "lng",</code>. Refer to <a href="https://docs.vortexa.com/reference/intro-vessel-entities">VortexaAPI Vessel Entities</a> for the most up-to-date list of vessel classes.</p>
 </li>
 </ul>
 <p><strong>Returns</strong></p>
@@ -330,17 +329,23 @@
 
 <h2 id="vortexasdk.endpoints.vessel_positions_result.VesselPositionsResult">VesselPositionsResult</h2>
 
-<pre><code class="language-python">VesselPositionsResult(__pydantic_self__, **data: Any) -&gt; None
+<pre><code class="language-python">VesselPositionsResult(*, records: typing.List,
+                      reference: typing.Dict[str, typing.Any])
 </code></pre>
 <p>Container class that holds the result obtained from calling the <code>Vessel-Positions</code> endpoint.</p>
+<h3 id="vortexasdk.endpoints.vessel_positions_result.VesselPositionsResult.model_config">model_config</h3>
+
 <h3 id="vortexasdk.endpoints.vessel_positions_result.VesselPositionsResult.to_list">to_list</h3>
 
-<pre><code class="language-python">VesselPositionsResult.to_list(self) -&gt; List[vortexasdk.api.vessel_positions.VesselPositions]
+<pre><code class="language-python">VesselPositionsResult.to_list()
 </code></pre>
 <p>Represent vessel positions as a list.</p>
 <h3 id="vortexasdk.endpoints.vessel_positions_result.VesselPositionsResult.to_df">to_df</h3>
 
-<pre><code class="language-python">VesselPositionsResult.to_df(self, columns=['vessel_id', 'timestamp', 'lat', 'lon', 'speed', 'heading']) -&gt; pandas.core.frame.DataFrame
+<pre><code class="language-python">VesselPositionsResult.to_df(
+    columns:
+    typing.Union[typing_extensions.Literal['all'], typing.List[str], NoneType] = ['vessel_id', 'timestamp', 'lat', 'lon', 'speed', 'heading']
+)
 </code></pre>
 <p>Represent vessel positions as a <code>pd.DataFrame</code>.</p>
 <p><strong>Arguments</strong></p>

@@ -177,8 +177,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../vessel/">Vessel</a>
                     </li>
-                    <li class="toctree-l1"><a class="" href="../vessel_movement.md">Vessel Movement</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../voyages/">Voyages</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../vessel_availability/">Vessel Availability</a>
@@ -254,13 +252,16 @@
 
 <h2 id="vortexasdk.api.breakdown_item.BreakdownItem">BreakdownItem</h2>
 
-<pre><code class="language-python">BreakdownItem(__pydantic_self__, **data: Any) -&gt; None
+<pre><code class="language-python">BreakdownItem(*, key: typing.Optional[str], count: typing.Optional[int],
+              label: typing.Optional[str], value: typing.Optional[float],
+              breakdown: typing.Optional[typing.List[typing.Dict]])
 </code></pre>
 <p>Generic container class holding a <code>key &lt;&gt; value</code> pair, a <code>count</code>, and optionally a <code>label</code> and a <code>breakdown</code> of records contributing to the given value.</p>
 <p>For example, this class could hold the average speed of vessels (<code>value</code>) on 2019-01-01 (<code>key</code>), the number of vessels contributing to the
 this average (count) and additional information about the aggregation (<code>breakdown</code>).</p>
 <p>If the <code>BreakdownItem</code> is enriched by reference data (e.g. in <code>fleet-utilisation/breakdown/origin</code>), <code>key</code> is the ID of the reference entity, <code>label</code> holds its name
 and <code>value</code> and <code>count</code> correspond to numeric values of the returned record.</p>
+<h3 id="vortexasdk.api.breakdown_item.BreakdownItem.model_config">model_config</h3>
               
             </div>
           </div>

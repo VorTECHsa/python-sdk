@@ -179,8 +179,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/vessel/">Vessel</a>
                     </li>
-                    <li class="toctree-l1"><a class="" href="../../entities/vessel_movement.md">Vessel Movement</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/voyages/">Voyages</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/vessel_availability/">Vessel Availability</a>
@@ -264,7 +262,67 @@
 <p>A detailed explanation of Cargo/Vessel Movements can be found <a href="https://docs.vortexa.com/reference/intro-movement-difference">here</a>.</p>
 <h3 id="vortexasdk.endpoints.cargo_movements.CargoMovements.search">search</h3>
 
-<pre><code class="language-python">CargoMovements.search(self, filter_activity: str = None, filter_time_min: datetime.datetime = datetime.datetime(2024, 11, 15, 14, 14, 46, 758877), filter_time_max: datetime.datetime = datetime.datetime(2024, 11, 15, 14, 14, 46, 758879), cm_unit: str = 'b', filter_charterers: Union[str, List[str]] = None, filter_destinations: Union[str, List[str]] = None, filter_origins: Union[str, List[str]] = None, filter_owners: Union[str, List[str]] = None, filter_vessel_owners: Union[str, List[str]] = None, filter_time_charterers: Union[str, List[str]] = None, filter_effective_controllers: Union[str, List[str]] = None, filter_products: Union[str, List[str]] = None, filter_vessels: Union[str, List[str]] = None, filter_vessel_classes: Union[str, List[str]] = None, filter_storage_locations: Union[str, List[str]] = None, filter_ship_to_ship_locations: Union[str, List[str]] = None, filter_waypoints: Union[str, List[str]] = None, filter_vessel_age_min: int = None, filter_vessel_age_max: int = None, filter_vessel_scrubbers: str = 'disabled', filter_vessel_flags: Union[str, List[str]] = None, filter_vessel_ice_class: Union[str, List[str]] = None, filter_vessel_propulsion: Union[str, List[str]] = None, exclude_origins: Union[str, List[str]] = None, exclude_destinations: Union[str, List[str]] = None, exclude_products: Union[str, List[str]] = None, exclude_vessels: Union[str, List[str]] = None, exclude_vessel_classes: Union[str, List[str]] = None, exclude_charterers: Union[str, List[str]] = None, exclude_owners: Union[str, List[str]] = None, exclude_effective_controllers: Union[str, List[str]] = None, exclude_filter_vessel_owners: Union[str, List[str]] = None, exclude_filter_time_charterers: Union[str, List[str]] = None, exclude_vessel_flags: Union[str, List[str]] = None, exclude_vessel_ice_class: Union[str, List[str]] = None, exclude_vessel_propulsion: Union[str, List[str]] = None, disable_geographic_exclusion_rules: bool = None, intra_movements: str = None, quantity_at_time_of: str = 'load') -&gt; vortexasdk.endpoints.cargo_movements_result.CargoMovementsResult
+<pre><code class="language-python">CargoMovements.search(
+  filter_activity: typing.Optional[str] = None,
+  filter_time_min:
+    datetime = datetime.datetime(2024, 11, 29, 11, 34, 41, 963740),
+  filter_time_max:
+    datetime = datetime.datetime(2024, 11, 29, 11, 34, 41, 963743),
+  cm_unit: str = 'b',
+  filter_charterers: typing.Union[str, typing.List[str], NoneType] = None,
+  filter_destinations:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  filter_origins: typing.Union[str, typing.List[str], NoneType] = None,
+  filter_owners: typing.Union[str, typing.List[str], NoneType] = None,
+  filter_vessel_owners:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  filter_time_charterers:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  filter_effective_controllers:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  filter_products: typing.Union[str, typing.List[str], NoneType] = None,
+  filter_vessels: typing.Union[str, typing.List[str], NoneType] = None,
+  filter_vessel_classes:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  filter_storage_locations:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  filter_ship_to_ship_locations:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  filter_waypoints: typing.Union[str, typing.List[str], NoneType] = None,
+  filter_vessel_age_min: typing.Optional[int] = None,
+  filter_vessel_age_max: typing.Optional[int] = None,
+  filter_vessel_scrubbers: str = 'disabled',
+  filter_vessel_flags:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  filter_vessel_ice_class:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  filter_vessel_propulsion:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_origins: typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_destinations:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_products: typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_vessels: typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_vessel_classes:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_charterers:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_owners: typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_effective_controllers:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_filter_vessel_owners:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_filter_time_charterers:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_vessel_flags:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_vessel_ice_class:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_vessel_propulsion:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  disable_geographic_exclusion_rules: typing.Optional[bool] = None,
+  intra_movements: typing.Optional[str] = None,
+  quantity_at_time_of: str = 'load')
 </code></pre>
 <p>Find CargoMovements matching the given search parameters.</p>
 <p><strong>Arguments</strong></p>
@@ -274,121 +332,47 @@
      'loading_start', 'loading_end', 'identified_for_loading_state', 'unloading_state', 'unloading_start',
       'unloading_end', 'unloaded_state', 'storing_state', 'storing_start', 'storing_end', 'transiting_state',
        'any_activity', 'oil_on_water_state', 'waypoint_start<code>,</code>waypoint_end`].</p>
-</li>
-<li>
-<p><strong>filter_time_min</strong>: The UTC start date of the time filter.</p>
-</li>
-<li>
-<p><strong>filter_time_max</strong>: The UTC end date of the time filter.</p>
-</li>
-<li>
-<p><strong>cm_unit</strong>: Unit of measurement. Enter 'b' for barrels or 't' for tonnes.</p>
-</li>
-<li>
-<p><strong>filter_charterers</strong>: A charterer ID, or list of charterer IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_destinations</strong>: A geography ID, or list of geography IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_origins</strong>: A geography ID, or list of geography IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_effective_controllers</strong>: An effective controller ID, or list of effective controller IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_vessel_owners</strong>: An vessel owner ID, or list of vessel owners IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_time_charterers</strong>: An time charterer ID, or list of time charterers IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_products</strong>: A product ID, or list of product IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_vessels</strong>: A vessel ID, or list of vessel IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_vessel_classes</strong>: A vessel class, or list of vessel classes to filter on.</p>
-</li>
-<li>
-<p><strong>filter_storage_locations</strong>: A geography ID, or list of geography IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_ship_to_ship_locations</strong>: A geography ID, or list of geography IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_waypoints</strong>: A geography ID, or list of geography IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_vessel_age_min</strong>: A number between 1 and 100 (representing years).</p>
-</li>
-<li>
-<p><strong>filter_vessel_age_max</strong>: A number between 1 and 100 (representing years).</p>
-</li>
-<li>
-<p><strong>filter_vessel_scrubbers</strong>: Either inactive 'disabled', or included 'inc' or excluded 'exc'.</p>
-</li>
-<li>
-<p><strong>filter_vessel_flags</strong>: A vessel flag, or list of vessel flags to filter on.</p>
-</li>
-<li>
-<p><strong>filter_vessel_ice_class</strong>: An attribute ID, or list of attribute IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_vessel_propulsion</strong>: An attribute ID, or list of attribute IDs to filter on.</p>
-</li>
-<li>
-<p><strong>exclude_origins</strong>: A geography ID, or list of geography IDs to exclude.</p>
-</li>
-<li>
-<p><strong>exclude_destinations</strong>: A geography ID, or list of geography IDs to exclude.</p>
-</li>
-<li>
-<p><strong>exclude_products</strong>: A product ID, or list of product IDs to exclude.</p>
-</li>
-<li>
-<p><strong>exclude_vessels</strong>: A vessel ID, or list of vessel IDs to exclude.</p>
-</li>
-<li>
-<p><strong>exclude_vessel_classes</strong>: A vessel class, or list of vessel classes to exclude.</p>
-</li>
-<li>
-<p><strong>exclude_charterers</strong>: A charterer ID, or list of charterer IDs to exclude.</p>
-</li>
-<li>
-<p><strong>exclude_filter_effective_controllers</strong>: An effective controller ID, or list of effective controller IDs to exclude.</p>
-</li>
-<li>
-<p><strong>exclude_filter_vessel_owners</strong>: An vessel owner ID, or list of vessel owners IDs to filter on.</p>
-</li>
-<li>
-<p><strong>exclude_filter_time_charterers</strong>: An time charterer ID, or list of time charterers IDs to filter on.</p>
-</li>
-<li>
-<p><strong>exclude_vessel_flags</strong>: A geography ID, or list of geography IDs to exclude.</p>
-</li>
-<li>
-<p><strong>exclude_vessel_ice_class</strong>: An attribute ID, or list of attribute IDs to exclude.</p>
-</li>
-<li>
-<p><strong>exclude_vessel_propulsion</strong>: An attribute ID, or list of attribute IDs to exclude.</p>
-</li>
-<li>
-<p><strong>disable_geographic_exclusion_rules</strong>: This controls a popular industry term "intra-movements" and determines
-     the filter behaviour for cargo leaving then entering the same geographic area.</p>
-</li>
-<li>
-<p><strong>intra_movements</strong>: This enum controls a popular industry term intra-movements and determines the filter behaviour for cargo leaving then entering the same geographic area.
-     One of <code>all</code>, <code>exclude_intra_country</code> or <code>exclude_intra_geography</code></p>
-</li>
-<li>
-<p><strong>quantity_at_time_of</strong>: This parameter is designed for LNG cargo and gives the user the freedom to choose whether to create the time series based on the load volume or discharged volumes, as we consider the discharge quantities to differ from load quantities due to boil-off gas.</p>
-</li>
-<li>
-<p><strong>One of</strong>:
-     <code>load</code> - represents the quantity of the selected unit at the time of the loading event.
-     <code>unload</code> - represents the quantity of the selected unit at the time of the unloading event.</p>
+<p>filter_time_min: The UTC start date of the time filter.</p>
+<p>filter_time_max: The UTC end date of the time filter.</p>
+<p>cm_unit: Unit of measurement. Enter 'b' for barrels or 't' for tonnes.</p>
+<p>filter_charterers: A charterer ID, or list of charterer IDs to filter on.</p>
+<p>filter_destinations: A geography ID, or list of geography IDs to filter on.</p>
+<p>filter_origins: A geography ID, or list of geography IDs to filter on.</p>
+<p>filter_effective_controllers: An effective controller ID, or list of effective controller IDs to filter on.</p>
+<p>filter_vessel_owners: An vessel owner ID, or list of vessel owners IDs to filter on.</p>
+<p>filter_time_charterers: An time charterer ID, or list of time charterers IDs to filter on.</p>
+<p>filter_products: A product ID, or list of product IDs to filter on.</p>
+<p>filter_vessels: A vessel ID, or list of vessel IDs to filter on.</p>
+<p>filter_vessel_classes: A vessel class, or list of vessel classes to filter on.</p>
+<p>filter_storage_locations: A geography ID, or list of geography IDs to filter on.</p>
+<p>filter_ship_to_ship_locations: A geography ID, or list of geography IDs to filter on.</p>
+<p>filter_waypoints: A geography ID, or list of geography IDs to filter on.</p>
+<p>filter_vessel_age_min: A number between 1 and 100 (representing years).</p>
+<p>filter_vessel_age_max: A number between 1 and 100 (representing years).</p>
+<p>filter_vessel_scrubbers: Either inactive 'disabled', or included 'inc' or excluded 'exc'.</p>
+<p>filter_vessel_flags: A vessel flag, or list of vessel flags to filter on.</p>
+<p>filter_vessel_ice_class: An attribute ID, or list of attribute IDs to filter on.</p>
+<p>filter_vessel_propulsion: An attribute ID, or list of attribute IDs to filter on.</p>
+<p>exclude_origins: A geography ID, or list of geography IDs to exclude.</p>
+<p>exclude_destinations: A geography ID, or list of geography IDs to exclude.</p>
+<p>exclude_products: A product ID, or list of product IDs to exclude.</p>
+<p>exclude_vessels: A vessel ID, or list of vessel IDs to exclude.</p>
+<p>exclude_vessel_classes: A vessel class, or list of vessel classes to exclude.</p>
+<p>exclude_charterers: A charterer ID, or list of charterer IDs to exclude.</p>
+<p>exclude_filter_effective_controllers: An effective controller ID, or list of effective controller IDs to exclude.</p>
+<p>exclude_filter_vessel_owners: An vessel owner ID, or list of vessel owners IDs to filter on.</p>
+<p>exclude_filter_time_charterers: An time charterer ID, or list of time charterers IDs to filter on.</p>
+<p>exclude_vessel_flags: A geography ID, or list of geography IDs to exclude.</p>
+<p>exclude_vessel_ice_class: An attribute ID, or list of attribute IDs to exclude.</p>
+<p>exclude_vessel_propulsion: An attribute ID, or list of attribute IDs to exclude.</p>
+<p>disable_geographic_exclusion_rules: This controls a popular industry term "intra-movements" and determines
+ the filter behaviour for cargo leaving then entering the same geographic area.</p>
+<p>intra_movements: This enum controls a popular industry term intra-movements and determines the filter behaviour for cargo leaving then entering the same geographic area.
+ One of <code>all</code>, <code>exclude_intra_country</code> or <code>exclude_intra_geography</code></p>
+<p>quantity_at_time_of: This parameter is designed for LNG cargo and gives the user the freedom to choose whether to create the time series based on the load volume or discharged volumes, as we consider the discharge quantities to differ from load quantities due to boil-off gas.</p>
+<p>One of:
+ <code>load</code> - represents the quantity of the selected unit at the time of the loading event.
+ <code>unload</code> - represents the quantity of the selected unit at the time of the unloading event.</p>
 </li>
 </ul>
 <p><strong>Returns</strong></p>
@@ -578,18 +562,16 @@ This lets us view all vessels present in any STS operations.</p>
 <p><a href="https://docs.vortexa.com/reference/POST/cargo-movements/search">Cargo Movements Endpoint Further Documentation</a></p>
 <h3 id="vortexasdk.endpoints.cargo_movements.CargoMovements.record">record</h3>
 
-<pre><code class="language-python">CargoMovements.record(self, id: str, params: Dict = {}) -&gt; Dict
+<pre><code class="language-python">CargoMovements.record(id: str, params: typing.Dict = {})
 </code></pre>
 <p>Perform a cargo movement lookup.</p>
 <p><strong>Arguments</strong></p>
 <ul>
 <li>
 <p><strong>id</strong>: Cargo movement ID to lookup (long_id or short_id)</p>
+<p>params: Supported search params:
+    'unit': enter 'b' for barrels, 't' for tonnes and 'cbm' for cubic meters</p>
 </li>
-<li>
-<p><strong>params</strong>: Supported search params:</p>
-</li>
-<li><strong>'unit'</strong>: enter 'b' for barrels, 't' for tonnes and 'cbm' for cubic meters</li>
 </ul>
 <p><strong>Returns</strong></p>
 <p>Cargo movement record matching the ID</p>
@@ -599,19 +581,25 @@ This lets us view all vessels present in any STS operations.</p>
 
 <h2 id="vortexasdk.endpoints.cargo_movements_result.CargoMovementsResult">CargoMovementsResult</h2>
 
-<pre><code class="language-python">CargoMovementsResult(__pydantic_self__, **data: Any) -&gt; None
+<pre><code class="language-python">CargoMovementsResult(*, records: typing.List,
+                     reference: typing.Dict[str, typing.Any])
 </code></pre>
 <p>Container class holdings search results returns from the cargo movements endpoint.</p>
 <p>This class has two methods, <code>to_list()</code>, and <code>to_df()</code>, allowing search results to be represented as a list of <code>CargoMovements</code>,
  or as a <code>pd.DataFrame</code> , respectively.</p>
+<h3 id="vortexasdk.endpoints.cargo_movements_result.CargoMovementsResult.model_config">model_config</h3>
+
 <h3 id="vortexasdk.endpoints.cargo_movements_result.CargoMovementsResult.to_list">to_list</h3>
 
-<pre><code class="language-python">CargoMovementsResult.to_list(self) -&gt; List[vortexasdk.api.cargo_movement.CargoMovement]
+<pre><code class="language-python">CargoMovementsResult.to_list()
 </code></pre>
 <p>Represent cargo movements as a list of <code>CargoMovementEntity</code>s.</p>
 <h3 id="vortexasdk.endpoints.cargo_movements_result.CargoMovementsResult.to_df">to_df</h3>
 
-<pre><code class="language-python">CargoMovementsResult.to_df(self, columns=['events.cargo_port_load_event.0.location.port.label', 'events.cargo_port_unload_event.0.location.port.label', 'product.group.label', 'product.grade.label', 'quantity', 'discharge_quantity', 'vessels.0.name', 'events.cargo_port_load_event.0.end_timestamp', 'events.cargo_port_unload_event.0.start_timestamp']) -&gt; pandas.core.frame.DataFrame
+<pre><code class="language-python">CargoMovementsResult.to_df(
+    columns:
+    typing.Union[typing_extensions.Literal['all'], typing.List[str], NoneType] = ['events.cargo_port_load_event.0.location.port.label', 'events.cargo_port_unload_event.0.location.port.label', 'product.group.label', 'product.grade.label', 'quantity', 'discharge_quantity', 'vessels.0.name', 'events.cargo_port_load_event.0.end_timestamp', 'events.cargo_port_unload_event.0.start_timestamp']
+)
 </code></pre>
 <p>Represent cargo movements as a <code>pd.DataFrame</code>.</p>
 <p><strong>Arguments</strong></p>
@@ -633,7 +621,7 @@ This lets us view all vessels present in any STS operations.</p>
   3 <code>cargo_sts_event</code>s, and finally 1 <code>cargo_port_unload_event</code>.</p>
 <p>In this example the name of the 1st vessel, is found in the <code>vessels.0.name</code> column (we're using zero-based
  numbering indexes). Likewise, the imo of the second vessel is found in the <code>vessels.1.imo</code> column.</p>
-<p>To find the name of the country in which the second STS event occured, we'd use the
+<p>To find the name of the country in which the second STS event occurred, we'd use the
  <code>events.cargo_sts_event.1.location.country.layer</code> column.</p>
 <p>Similarly, to find out when the first vessel started
  loading the cargo from Rotterdam, we'd use the <code>events.cargo_port_load_event.0.start_timestamp</code> column.</p>

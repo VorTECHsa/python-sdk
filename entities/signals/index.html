@@ -177,8 +177,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../vessel/">Vessel</a>
                     </li>
-                    <li class="toctree-l1"><a class="" href="../vessel_movement.md">Vessel Movement</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../voyages/">Voyages</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../vessel_availability/">Vessel Availability</a>
@@ -254,10 +252,16 @@
 
 <h2 id="vortexasdk.api.vessel_summary.VesselSummary">VesselSummary</h2>
 
-<pre><code class="language-python">VesselSummary(__pydantic_self__, **data: Any) -&gt; None
+<pre><code class="language-python">VesselSummary(*, vessel_id: typing.Optional[str],
+              timestamp: typing.Optional[str], lat: typing.Optional[str],
+              lon: typing.Optional[str], speed: typing.Optional[float],
+              draught: typing.Optional[float],
+              declared_destination: typing.Optional[str],
+              declared_eta: typing.Optional[str])
 </code></pre>
 <p>Represents a Vessel Summary record returned by the API.</p>
 <p><a href="https://docs.vortexa.com/reference/POST/signals/vessel-summary">Vessel Summary Further Documentation</a></p>
+<h3 id="vortexasdk.api.vessel_summary.VesselSummary.model_config">model_config</h3>
               
             </div>
           </div>

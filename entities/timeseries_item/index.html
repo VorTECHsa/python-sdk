@@ -177,8 +177,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../vessel/">Vessel</a>
                     </li>
-                    <li class="toctree-l1"><a class="" href="../vessel_movement.md">Vessel Movement</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../voyages/">Voyages</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../vessel_availability/">Vessel Availability</a>
@@ -252,13 +250,26 @@
               
                 <h1 id="vortexasdk.api.timeseries_item">vortexasdk.api.timeseries_item</h1>
 
+<h2 id="vortexasdk.api.timeseries_item.TimeSeriesBreakdownItem">TimeSeriesBreakdownItem</h2>
+
+<pre><code class="language-python">TimeSeriesBreakdownItem(*, id: typing.Optional[str],
+                        label: typing.Optional[str],
+                        value: typing.Optional[float],
+                        count: typing.Optional[int])
+</code></pre>
+<h3 id="vortexasdk.api.timeseries_item.TimeSeriesBreakdownItem.model_config">model_config</h3>
+
 <h2 id="vortexasdk.api.timeseries_item.TimeSeriesItem">TimeSeriesItem</h2>
 
-<pre><code class="language-python">TimeSeriesItem(__pydantic_self__, **data: Any) -&gt; None
+<pre><code class="language-python">TimeSeriesItem(
+  *, key: typing.Optional[str], count: typing.Optional[int], breakdown:
+    typing.Optional[typing.List[vortexasdk.api.timeseries_item.TimeSeriesBreakdownItem]],
+  value: typing.Optional[float])
 </code></pre>
 <p>Generic container class holding a <code>key &lt;&gt; value</code> pair, a <code>count</code> of records contributing to the given value.</p>
 <p>For example, this class could hold the total tonnage exported (value) on 2019-01-01 (key), and the count of cargo
 movements contributing to this tonnage aggregate, ie the number of cargo movements on this day (count).</p>
+<h3 id="vortexasdk.api.timeseries_item.TimeSeriesItem.model_config">model_config</h3>
               
             </div>
           </div>

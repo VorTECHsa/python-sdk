@@ -177,8 +177,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/vessel/">Vessel</a>
                     </li>
-                    <li class="toctree-l1"><a class="" href="../../entities/vessel_movement.md">Vessel Movement</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/voyages/">Voyages</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/vessel_availability/">Vessel Availability</a>
@@ -249,7 +247,13 @@
                 <p>Let's find all crude cargo movements from Saudi Arabia to India that loaded in the last month.</p>
 <p>The below script returns a <code>pd.DataFrame</code>, similar to the table given in the movements tab of <code>https://analytics.vortexa.com</code>,
  filtering on <code>Products: Crude</code> with <code>Origin: Saudi Arabia</code>, <code>Destination: India</code> and <code>Date Range: Departures in the last Month</code>.</p>
-<pre><code class="language-python">from datetime import datetime
+<pre><code class="language-python">Let's find all crude cargo movements from Saudi Arabia to India that loaded in the last month.
+
+The below script returns a `pd.DataFrame`, similar to the table given in the movements tab of `https://analytics.vortexa.com`,
+ filtering on `Products: Crude` with `Origin: Saudi Arabia`, `Destination: India` and `Date Range: Departures in the last Month`.
+
+&quot;&quot;&quot;
+from datetime import datetime
 
 from dateutil.relativedelta import relativedelta
 

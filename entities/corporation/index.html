@@ -177,8 +177,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../vessel/">Vessel</a>
                     </li>
-                    <li class="toctree-l1"><a class="" href="../vessel_movement.md">Vessel Movement</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../voyages/">Voyages</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../vessel_availability/">Vessel Availability</a>
@@ -254,15 +252,24 @@
 
 <h2 id="vortexasdk.api.corporation.Corporation">Corporation</h2>
 
-<pre><code class="language-python">Corporation(__pydantic_self__, **data: Any) -&gt; None
+<pre><code class="language-python">Corporation(*, id: str, name: typing.Optional[str],
+            corporate_entity_type: typing.Optional[typing.List[str]],
+            ref_type: typing.Optional[str], leaf: typing.Optional[bool],
+            parent: typing.Optional[typing.List[str]])
 </code></pre>
 <p>Represent a Corporation reference record returned by the API.</p>
+<h3 id="vortexasdk.api.corporation.Corporation.model_config">model_config</h3>
+
 <h2 id="vortexasdk.api.corporation.CorporateEntity">CorporateEntity</h2>
 
-<pre><code class="language-python">CorporateEntity(__pydantic_self__, **data: Any) -&gt; None
+<pre><code class="language-python">CorporateEntity(*, id: str, probability: typing.Optional[float],
+                source: typing.Optional[str],
+                layer: typing.Optional[str],
+                label: typing.Optional[str])
 </code></pre>
 <p>Represents a relationship between a corporation and another entity like a vessel.</p>
 <p><a href="https://docs.vortexa.com/reference/intro-corporate-entities">Corporate Entity Further Documentation</a></p>
+<h3 id="vortexasdk.api.corporation.CorporateEntity.model_config">model_config</h3>
               
             </div>
           </div>

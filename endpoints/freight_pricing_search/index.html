@@ -177,8 +177,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/vessel/">Vessel</a>
                     </li>
-                    <li class="toctree-l1"><a class="" href="../../entities/vessel_movement.md">Vessel Movement</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/voyages/">Voyages</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/vessel_availability/">Vessel Availability</a>
@@ -265,35 +263,30 @@
 <p>Freight Pricing Endpoint, use this to search through Vortexa's Baltic Exchange pricing data.</p>
 <h3 id="vortexasdk.endpoints.freight_pricing_search.FreightPricingSearch.search">search</h3>
 
-<pre><code class="language-python">FreightPricingSearch.search(self, routes: Union[List[str], str] = None, days: List[datetime.datetime] = [], order: str = None, order_direction: str = None) -&gt; vortexasdk.endpoints.freight_pricing_result.FreightPricingResult
+<pre><code class="language-python">FreightPricingSearch.search(
+  routes: typing.Union[str, typing.List[str], NoneType] = None,
+  days: typing.List[datetime.datetime] = [],
+  order: typing.Optional[str] = None,
+  order_direction: typing.Optional[str] = None)
 </code></pre>
 <p>List of pricing information applicable for a specified route on a given day.</p>
 <p><strong>Arguments</strong></p>
-<ul>
-<li>
-<p><strong>routes</strong>: Used to filter by specific routes. Must be one of the following:</p>
-<ul>
-<li>Clean routes - <code>TC1</code>, <code>TC2_37</code>, <code>TC5</code>, <code>TC6</code>, <code>TC7</code>, <code>TC8</code>, <code>TC9</code>, <code>TC10</code>, <code>TC11</code>, <code>TC12</code>, <code>TC14</code>, <code>TC15</code>, <code>TC16</code>, <code>TC17</code>, <code>TC18</code>, <code>TC19</code>.</li>
-<li>Dirty routes - <code>TD1</code>, <code>TD2</code>, <code>TD3C</code>, <code>TD6</code>, <code>TD7</code>, <code>TD8</code>, <code>TD9</code>, <code>TD12</code>, <code>TD14</code>, <code>TD15</code>, <code>TD17</code>, <code>TD18</code>, <code>TD19</code>, <code>TD20</code>, <code>TD21</code>, <code>TD22</code>, <code>TD23</code>, <code>TD24</code>, <code>TD25</code>, <code>TD26</code>.</li>
-<li>BLPG routes - <code>BLPG1</code>, <code>BLPG2</code>, <code>BLPG3</code>.</li>
-<li>BLNG routes -  <code>BLNG1g</code>, <code>BLNG2g</code>, <code>BLNG3g</code>, <code>BLNG1-174</code>, <code>BLNG2-174</code>, <code>BLNG3-174</code>.</li>
-</ul>
-</li>
-<li>
-<p><strong>days</strong>: Used to filter results by day on which the record was generated. Must be an ISO date array or not supplied.
-    Note that BLNG prices are only published on Tuesdays and Fridays.</p>
-</li>
-<li>
-<p><strong>order</strong>: Used to sort the returned results. Must be either <code>record_date</code> or not supplied.</p>
-</li>
-<li>
-<p><strong>order_direction</strong>: Determines the direction of sorting. <code>asc</code> for ascending, <code>desc</code> for
-    descending.</p>
-</li>
-<li>
-<p><strong>size</strong>: Used to page results. The size of the result set. Between 0 and 500.</p>
-</li>
-</ul>
+<pre><code>routes: Used to filter by specific routes. Must be one of the following:
+- Clean routes - `TC1`, `TC2_37`, `TC5`, `TC6`, `TC7`, `TC8`, `TC9`, `TC10`, `TC11`, `TC12`, `TC14`, `TC15`, `TC16`, `TC17`, `TC18`, `TC19`.
+- Dirty routes - `TD1`, `TD2`, `TD3C`, `TD6`, `TD7`, `TD8`, `TD9`, `TD12`, `TD14`, `TD15`, `TD17`, `TD18`, `TD19`, `TD20`, `TD21`, `TD22`, `TD23`, `TD24`, `TD25`, `TD26`.
+- BLPG routes - `BLPG1`, `BLPG2`, `BLPG3`.
+- BLNG routes -  `BLNG1g`, `BLNG2g`, `BLNG3g`, `BLNG1-174`, `BLNG2-174`, `BLNG3-174`.
+
+days: Used to filter results by day on which the record was generated. Must be an ISO date array or not supplied.
+Note that BLNG prices are only published on Tuesdays and Fridays.
+
+order: Used to sort the returned results. Must be either `record_date` or not supplied.
+
+order_direction: Determines the direction of sorting. `asc` for ascending, `desc` for
+descending.
+
+size: Used to page results. The size of the result set. Between 0 and 500.
+</code></pre>
 <p><strong>Returns</strong></p>
 <p><code>FreightPricingResult</code></p>
 <p><strong>Example</strong></p>

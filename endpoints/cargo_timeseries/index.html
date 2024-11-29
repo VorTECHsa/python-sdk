@@ -177,8 +177,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/vessel/">Vessel</a>
                     </li>
-                    <li class="toctree-l1"><a class="" href="../../entities/vessel_movement.md">Vessel Movement</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/voyages/">Voyages</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/vessel_availability/">Vessel Availability</a>
@@ -256,11 +254,72 @@
 <p><a href="https://mybinder.org/v2/gh/VorTECHsa/python-sdk/master?filepath=docs%2Fexamples%2Ftry_me_out%2Fcargo_timeseries.ipynb"><img alt="Binder" src="https://img.shields.io/badge/try%20me%20out-launch%20notebook-579ACA.svg?logo=data:image/png;base64,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" /></a></p>
 <h2 id="vortexasdk.endpoints.cargo_timeseries.CargoTimeSeries">CargoTimeSeries</h2>
 
-<pre><code class="language-python">CargoTimeSeries(self) -&gt; None
+<pre><code class="language-python">CargoTimeSeries(self)
 </code></pre>
 <h3 id="vortexasdk.endpoints.cargo_timeseries.CargoTimeSeries.search">search</h3>
 
-<pre><code class="language-python">CargoTimeSeries.search(self, filter_activity: str, timeseries_activity: Union[str, NoneType] = None, timeseries_frequency: str = 'day', timeseries_unit: str = 'b', filter_time_min: datetime.datetime = datetime.datetime(2019, 10, 1, 0, 0), filter_time_max: datetime.datetime = datetime.datetime(2019, 10, 1, 1, 0), filter_charterers: Union[str, List[str], NoneType] = None, filter_destinations: Union[str, List[str], NoneType] = None, filter_origins: Union[str, List[str], NoneType] = None, filter_owners: Union[str, List[str], NoneType] = None, filter_vessel_owners: Union[str, List[str], NoneType] = None, filter_time_charterers: Union[str, List[str], NoneType] = None, filter_effective_controllers: Union[str, List[str], NoneType] = None, filter_products: Union[str, List[str], NoneType] = None, filter_vessels: Union[str, List[str], NoneType] = None, filter_vessel_classes: Union[str, List[str], NoneType] = None, filter_vessel_age_min: Union[int, NoneType] = None, filter_vessel_age_max: Union[int, NoneType] = None, filter_storage_locations: Union[str, List[str], NoneType] = None, filter_ship_to_ship_locations: Union[str, List[str], NoneType] = None, filter_waypoints: Union[str, List[str], NoneType] = None, exclude_ship_to_ship: Union[bool, NoneType] = False, exclude_ship_to_ship_locations: Union[str, List[str], NoneType] = None, exclude_storage_locations: Union[str, List[str], NoneType] = None, exclude_charterers: Union[str, List[str], NoneType] = None, exclude_vessel_owners: Union[str, List[str], NoneType] = None, exclude_time_charterers: Union[str, List[str], NoneType] = None, exclude_origins: Union[str, List[str], NoneType] = None, exclude_products: Union[str, List[str], NoneType] = None, exclude_vessels: Union[str, List[str], NoneType] = None, exclude_vessel_classes: Union[str, List[str], NoneType] = None, exclude_vessel_flags: Union[str, List[str], NoneType] = None, exclude_vessel_ice_class: Union[str, List[str], NoneType] = None, exclude_vessel_propulsion: Union[str, List[str], NoneType] = None, exclude_effective_controllers: Union[str, List[str], NoneType] = None, exclude_owners: Union[str, List[str], NoneType] = None, exclude_destinations: Union[str, List[str], NoneType] = None, exclude_waypoints: Union[str, List[str], NoneType] = None, disable_geographic_exclusion_rules: Union[bool, NoneType] = None, intra_movements: Union[str, NoneType] = None, timeseries_activity_time_span_min: Union[int, NoneType] = None, timeseries_activity_time_span_max: Union[int, NoneType] = None, timeseries_property: Union[str, NoneType] = None) -&gt; vortexasdk.endpoints.timeseries_result.TimeSeriesResult
+<pre><code class="language-python">CargoTimeSeries.search(
+  filter_activity: str,
+  timeseries_activity: typing.Optional[str] = None,
+  timeseries_frequency: str = 'day',
+  timeseries_unit: str = 'b',
+  filter_time_min: datetime = datetime.datetime(2019, 10, 1, 0, 0),
+  filter_time_max: datetime = datetime.datetime(2019, 10, 1, 1, 0),
+  filter_charterers: typing.Union[str, typing.List[str], NoneType] = None,
+  filter_destinations:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  filter_origins: typing.Union[str, typing.List[str], NoneType] = None,
+  filter_owners: typing.Union[str, typing.List[str], NoneType] = None,
+  filter_vessel_owners:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  filter_time_charterers:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  filter_effective_controllers:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  filter_products: typing.Union[str, typing.List[str], NoneType] = None,
+  filter_vessels: typing.Union[str, typing.List[str], NoneType] = None,
+  filter_vessel_classes:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  filter_vessel_age_min: typing.Optional[int] = None,
+  filter_vessel_age_max: typing.Optional[int] = None,
+  filter_storage_locations:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  filter_ship_to_ship_locations:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  filter_waypoints: typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_ship_to_ship: typing.Optional[bool] = False,
+  exclude_ship_to_ship_locations:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_storage_locations:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_charterers:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_vessel_owners:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_time_charterers:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_origins: typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_products: typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_vessels: typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_vessel_classes:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_vessel_flags:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_vessel_ice_class:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_vessel_propulsion:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_effective_controllers:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_owners: typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_destinations:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_waypoints: typing.Union[str, typing.List[str], NoneType] = None,
+  disable_geographic_exclusion_rules: typing.Optional[bool] = None,
+  intra_movements: typing.Optional[str] = None,
+  timeseries_activity_time_span_min: typing.Optional[int] = None,
+  timeseries_activity_time_span_max: typing.Optional[int] = None,
+  timeseries_property: typing.Optional[str] = None)
 </code></pre>
 <p>Find Aggregate flows between regions, for various products, for various vessels, or various corporations.</p>
 <p>Example questions that can be answered with this endpoint:</p>
@@ -277,157 +336,77 @@
      <code>loading_start</code>, <code>loading_end</code>, <code>identified_for_loading_state</code>, <code>unloading_state</code>, <code>unloading_start</code>,
      <code>unloading_end</code>, <code>storing_state</code>, <code>storing_start</code>, <code>storing_end</code>, <code>transiting_state</code>,
      <code>oil_on_water_state</code>, <code>waypoint_start</code>, <code>waypoint_end</code>.</p>
-</li>
-<li>
-<p><strong>filter_time_min</strong>: The UTC start date of the time filter.</p>
-</li>
-<li>
-<p><strong>filter_time_max</strong>: The UTC end date of the time filter.</p>
-</li>
-<li>
-<p><strong>filter_corporations</strong>: A corporation ID, or list of corporation IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_destinations</strong>: A geography ID, or list of geography IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_origins</strong>: A geography ID, or list of geography IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_effective_controllers</strong>: An effective controller ID, or list of effective controller IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_vessel_owners</strong>: An vessel owner ID, or list of vessel owners IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_time_charterers</strong>: An time charterer ID, or list of time charterers IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_products</strong>: A product ID, or list of product IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_vessels</strong>: A vessel ID, or list of vessel IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_vessel_classes</strong>: A vessel class, or list of vessel classes to filter on.</p>
-</li>
-<li>
-<p><strong>filter_vessel_age_min</strong>: A number between 1 and 100 (representing years).</p>
-</li>
-<li>
-<p><strong>filter_vessel_age_max</strong>: A number between 1 and 100 (representing years).</p>
-</li>
-<li>
-<p><strong>filter_storage_locations</strong>: A geography ID, or list of geography IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_ship_to_ship_locations</strong>: A geography ID, or list of geography IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_waypoints</strong>: A geography ID, or list of geography IDs to filter on.</p>
-</li>
-<li>
-<p><strong>exclude_origins</strong>: A geography ID, or list of geography IDs to exclude.</p>
-</li>
-<li>
-<p><strong>exclude_destinations</strong>: A geography ID, or list of geography IDs to exclude.</p>
-</li>
-<li>
-<p><strong>exclude_products</strong>: A product ID, or list of product IDs to exclude.</p>
-</li>
-<li>
-<p><strong>exclude_ship_to_ship</strong>: A boolean flag to exclude ship-to-ship movements.</p>
-</li>
-<li>
-<p><strong>exclude_ship_to_ship_locations</strong>: A geography ID, or list of geography IDs to exclude.</p>
-</li>
-<li>
-<p><strong>exclude_storage_locations</strong>: A geography ID, or list of geography IDs to exclude.</p>
-</li>
-<li>
-<p><strong>exclude_vessels</strong>: A vessel ID, or list of vessel IDs to exclude.</p>
-</li>
-<li>
-<p><strong>exclude_vessel_classes</strong>: A vessel class, or list of vessel classes to exclude.</p>
-</li>
-<li>
-<p><strong>exclude_charterers</strong>: A charterer ID, or list of charterer IDs to exclude.</p>
-</li>
-<li>
-<p><strong>exclude_effective_controllers</strong>: An effective controller ID, or list of effective controller IDs to exclude.</p>
-</li>
-<li>
-<p><strong>exclude_vessel_owners</strong>: A vessel owner ID, or list of vessel owners IDs to filter on.</p>
-</li>
-<li>
-<p><strong>exclude_time_charterers</strong>: An time charterer ID, or list of time charterers IDs to filter on.</p>
-</li>
-<li>
-<p><strong>exclude_vessel_flags</strong>: A geography ID, or list of geography IDs to exclude.</p>
-</li>
-<li>
-<p><strong>exclude_vessel_ice_class</strong>: An attribute ID, or list of attribute IDs to exclude.</p>
-</li>
-<li>
-<p><strong>exclude_vessel_propulsion</strong>: An attribute ID, or list of attribute IDs to exclude.</p>
-</li>
-<li>
-<p><strong>exclude_waypoints</strong>: A geography ID, or list of geography IDs to exclude.</p>
-</li>
-<li>
-<p><strong>disable_geographic_exclusion_rules</strong>: This controls a popular industry term "intra-movements" and determines
-     the filter behaviour for cargo leaving then entering the same geographic area.</p>
-</li>
-<li>
-<p><strong>intra_movements</strong>: This enum controls a popular industry term intra-movements and determines the filter behaviour for cargo leaving then entering the same geographic area.
-     One of <code>all</code>, <code>exclude_intra_country</code> or <code>exclude_intra_geography</code></p>
-</li>
-<li>
-<p><strong>timeseries_activity</strong>: The cargo movement activity we want to aggregate on. This param defaults to
-    <code>filter_activity</code> if left blank. For example, Let's say we want to aggregate the unloading timestamps of
-     all cargo movements that loaded in 2019, then we'd use <code>filter_time_min</code> and <code>filter_time_max</code> to specify
-     1st Jan 2019 and 31st Dec 2019 respectively, we'd set <code>filter_activity='loading_state'</code> and
-     <code>timeseries_activity='unloading_state'</code> to filter on loadings but aggregate on unloadings.
-      <code>filter_activity</code> Must be one of ['loading_state',
-     'loading_start', 'loading_end', 'identified_for_loading_state', 'unloading_state', 'unloading_start',
-      'unloading_end', 'storing_state', 'storing_start', 'storing_end', 'transiting_state'].</p>
-</li>
-<li>
-<p><strong>timeseries_frequency</strong>: Frequency denoting the granularity of the time series. Must be one of ['day', 'week',
-     'doe_week', 'month', 'quarter', 'year']</p>
-</li>
-<li>
-<p><strong>timeseries_property</strong>: Property to split results by. Can be one of: <code>quantity</code>, <code>waypoint_selected</code>,
-    <code>origin_country</code>, <code>origin_port</code>, <code>origin_region</code>, <code>origin_trading_region</code>, <code>origin_shipping_region</code>,
-    <code>origin_terminal</code>, <code>origin_trading_sub_region</code>, <code>origin_shipping_region_v2</code>, <code>origin_basin</code>,
-    <code>origin_wider_shipping_region</code>, <code>origin_country_zone</code>, <code>origin_alternative_region</code>,
-    <code>origin_state_or_province</code>, <code>destination_country</code>, <code>destination_port</code>, <code>destination_region</code>,
-    <code>destination_shipping_region</code>, <code>destination_terminal</code>, <code>destination_trading_region</code>,
-    <code>destination_trading_sub_region</code>, <code>destination_basin</code>, <code>destination_shipping_region_v2</code>,
-    <code>destination_wider_shipping_region</code>, <code>destination_country_zone</code>, <code>destination_alternative_region</code>,
-    <code>destination_state_or_province</code>, <code>product_category</code>, <code>product_grade</code>, <code>product_group</code>,
-    <code>product_group_product</code>, <code>vessel_class_group</code>, <code>vessel_class_coarse</code>, <code>vessel_class_granular</code>,
-    <code>vessel_flag</code>, <code>storage_location_country</code>, <code>storage_location_region</code>, <code>storage_location_shipping_region_v2</code>,
-    <code>storage_location_trading_sub_region</code>, or not provided.</p>
-</li>
-<li>
-<p><strong>timeseries_unit</strong>: A numeric metric to be calculated for each time bucket. Must be one of ['b', 'bpd', 't',
-     'tpd', 'c', 'cpd'], corresponding to barrels, barrels per day, metric tonnes, metric tonnes per day,
-      cargo movement count, cargo movement count per day, respectively.</p>
-</li>
-<li>
-<p><strong>timeseries_activity_time_span_min</strong>: The minimum amount of time in milliseconds accounted for in a time series
-     activity. Can be used to request long-term floating storage. For example, to only return floating storage
-     movements that occurred for <em>more</em> than 14 days enter
-     <code>timeseries_activity_time_span_min=1000 * 60 * 60 * 24 * 14</code> in conjunction with
-     <code>filter_activity='storing_state'</code>.</p>
-</li>
-<li>
-<p><strong>timeseries_activity_time_span_max</strong>: The maximum amount of time in milliseconds accounted for in a time series
-     activity. Can be used to request short-term floating storage. For example, to only return floating storage
-     movements that occurred for <em>less</em> than 14 days enter
-     <code>timeseries_activity_time_span_max=1000 * 60 * 60 * 24 * 14</code> in conjunction with
-     <code>filter_activity='storing_state'</code>.</p>
+<p>filter_time_min: The UTC start date of the time filter.</p>
+<p>filter_time_max: The UTC end date of the time filter.</p>
+<p>filter_corporations: A corporation ID, or list of corporation IDs to filter on.</p>
+<p>filter_destinations: A geography ID, or list of geography IDs to filter on.</p>
+<p>filter_origins: A geography ID, or list of geography IDs to filter on.</p>
+<p>filter_effective_controllers: An effective controller ID, or list of effective controller IDs to filter on.</p>
+<p>filter_vessel_owners: An vessel owner ID, or list of vessel owners IDs to filter on.</p>
+<p>filter_time_charterers: An time charterer ID, or list of time charterers IDs to filter on.</p>
+<p>filter_products: A product ID, or list of product IDs to filter on.</p>
+<p>filter_vessels: A vessel ID, or list of vessel IDs to filter on.</p>
+<p>filter_vessel_classes: A vessel class, or list of vessel classes to filter on.</p>
+<p>filter_vessel_age_min: A number between 1 and 100 (representing years).</p>
+<p>filter_vessel_age_max: A number between 1 and 100 (representing years).</p>
+<p>filter_storage_locations: A geography ID, or list of geography IDs to filter on.</p>
+<p>filter_ship_to_ship_locations: A geography ID, or list of geography IDs to filter on.</p>
+<p>filter_waypoints: A geography ID, or list of geography IDs to filter on.</p>
+<p>exclude_origins: A geography ID, or list of geography IDs to exclude.</p>
+<p>exclude_destinations: A geography ID, or list of geography IDs to exclude.</p>
+<p>exclude_products: A product ID, or list of product IDs to exclude.</p>
+<p>exclude_ship_to_ship: A boolean flag to exclude ship-to-ship movements.</p>
+<p>exclude_ship_to_ship_locations: A geography ID, or list of geography IDs to exclude.</p>
+<p>exclude_storage_locations: A geography ID, or list of geography IDs to exclude.</p>
+<p>exclude_vessels: A vessel ID, or list of vessel IDs to exclude.</p>
+<p>exclude_vessel_classes: A vessel class, or list of vessel classes to exclude.</p>
+<p>exclude_charterers: A charterer ID, or list of charterer IDs to exclude.</p>
+<p>exclude_effective_controllers: An effective controller ID, or list of effective controller IDs to exclude.</p>
+<p>exclude_vessel_owners: A vessel owner ID, or list of vessel owners IDs to filter on.</p>
+<p>exclude_time_charterers: An time charterer ID, or list of time charterers IDs to filter on.</p>
+<p>exclude_vessel_flags: A geography ID, or list of geography IDs to exclude.</p>
+<p>exclude_vessel_ice_class: An attribute ID, or list of attribute IDs to exclude.</p>
+<p>exclude_vessel_propulsion: An attribute ID, or list of attribute IDs to exclude.</p>
+<p>exclude_waypoints: A geography ID, or list of geography IDs to exclude.</p>
+<p>disable_geographic_exclusion_rules: This controls a popular industry term "intra-movements" and determines
+ the filter behaviour for cargo leaving then entering the same geographic area.</p>
+<p>intra_movements: This enum controls a popular industry term intra-movements and determines the filter behaviour for cargo leaving then entering the same geographic area.
+ One of <code>all</code>, <code>exclude_intra_country</code> or <code>exclude_intra_geography</code></p>
+<p>timeseries_activity: The cargo movement activity we want to aggregate on. This param defaults to
+<code>filter_activity</code> if left blank. For example, Let's say we want to aggregate the unloading timestamps of
+ all cargo movements that loaded in 2019, then we'd use <code>filter_time_min</code> and <code>filter_time_max</code> to specify
+ 1st Jan 2019 and 31st Dec 2019 respectively, we'd set <code>filter_activity='loading_state'</code> and
+ <code>timeseries_activity='unloading_state'</code> to filter on loadings but aggregate on unloadings.
+  <code>filter_activity</code> Must be one of ['loading_state',
+ 'loading_start', 'loading_end', 'identified_for_loading_state', 'unloading_state', 'unloading_start',
+  'unloading_end', 'storing_state', 'storing_start', 'storing_end', 'transiting_state'].</p>
+<p>timeseries_frequency: Frequency denoting the granularity of the time series. Must be one of ['day', 'week',
+ 'doe_week', 'month', 'quarter', 'year']</p>
+<p>timeseries_property: Property to split results by. Can be one of: <code>quantity</code>, <code>waypoint_selected</code>,
+<code>origin_country</code>, <code>origin_port</code>, <code>origin_region</code>, <code>origin_trading_region</code>, <code>origin_shipping_region</code>,
+<code>origin_terminal</code>, <code>origin_trading_sub_region</code>, <code>origin_shipping_region_v2</code>, <code>origin_basin</code>,
+<code>origin_wider_shipping_region</code>, <code>origin_country_zone</code>, <code>origin_alternative_region</code>,
+<code>origin_state_or_province</code>, <code>destination_country</code>, <code>destination_port</code>, <code>destination_region</code>,
+<code>destination_shipping_region</code>, <code>destination_terminal</code>, <code>destination_trading_region</code>,
+<code>destination_trading_sub_region</code>, <code>destination_basin</code>, <code>destination_shipping_region_v2</code>,
+<code>destination_wider_shipping_region</code>, <code>destination_country_zone</code>, <code>destination_alternative_region</code>,
+<code>destination_state_or_province</code>, <code>product_category</code>, <code>product_grade</code>, <code>product_group</code>,
+<code>product_group_product</code>, <code>vessel_class_group</code>, <code>vessel_class_coarse</code>, <code>vessel_class_granular</code>,
+<code>vessel_flag</code>, <code>storage_location_country</code>, <code>storage_location_region</code>, <code>storage_location_shipping_region_v2</code>,
+<code>storage_location_trading_sub_region</code>, or not provided.</p>
+<p>timeseries_unit: A numeric metric to be calculated for each time bucket. Must be one of ['b', 'bpd', 't',
+ 'tpd', 'c', 'cpd'], corresponding to barrels, barrels per day, metric tonnes, metric tonnes per day,
+  cargo movement count, cargo movement count per day, respectively.</p>
+<p>timeseries_activity_time_span_min: The minimum amount of time in milliseconds accounted for in a time series
+ activity. Can be used to request long-term floating storage. For example, to only return floating storage
+ movements that occurred for <em>more</em> than 14 days enter
+ <code>timeseries_activity_time_span_min=1000 * 60 * 60 * 24 * 14</code> in conjunction with
+ <code>filter_activity='storing_state'</code>.</p>
+<p>timeseries_activity_time_span_max: The maximum amount of time in milliseconds accounted for in a time series
+ activity. Can be used to request short-term floating storage. For example, to only return floating storage
+ movements that occurred for <em>less</em> than 14 days enter
+ <code>timeseries_activity_time_span_max=1000 * 60 * 60 * 24 * 14</code> in conjunction with
+ <code>filter_activity='storing_state'</code>.</p>
 </li>
 </ul>
 <p><strong>Returns</strong></p>

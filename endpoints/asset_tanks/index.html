@@ -177,8 +177,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/vessel/">Vessel</a>
                     </li>
-                    <li class="toctree-l1"><a class="" href="../../entities/vessel_movement.md">Vessel Movement</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/voyages/">Voyages</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/vessel_availability/">Vessel Availability</a>
@@ -313,22 +311,28 @@
 </table>
 <h3 id="vortexasdk.endpoints.asset_tanks.AssetTanks.load_all">load_all</h3>
 
-<pre><code class="language-python">AssetTanks.load_all(self) -&gt; vortexasdk.endpoints.asset_tanks_result.AssetTankResult
+<pre><code class="language-python">AssetTanks.load_all()
 </code></pre>
 <p>Load all asset tanks.</p>
 <h3 id="vortexasdk.endpoints.asset_tanks.AssetTanks.search">search</h3>
 
-<pre><code class="language-python">AssetTanks.search(self, ids: Union[str, List[str]] = None, corporate_entity_ids: Union[str, List[str]] = None, crude_confidence: List[str] = None, location_ids: Union[str, List[str]] = None, storage_type: List[str] = None, term: Union[str, List[str]] = None) -&gt; vortexasdk.endpoints.asset_tanks_result.AssetTankResult
+<pre><code class="language-python">AssetTanks.search(
+  ids: typing.Union[str, typing.List[str], NoneType] = None,
+  corporate_entity_ids:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  crude_confidence: typing.Optional[typing.List[str]] = None,
+  location_ids: typing.Union[str, typing.List[str], NoneType] = None,
+  storage_type: typing.Optional[typing.List[str]] = None,
+  term: typing.Union[str, typing.List[str], NoneType] = None)
 </code></pre>
 <p>Find all asset tanks matching given type.</p>
 <p><strong>Arguments</strong></p>
-<ul>
-<li><strong>ids</strong>: An array of unique Asset Tanks ID(s) to filter on.</li>
-<li><strong>corporate_entity_ids</strong>: An array of owner ID(s) to filter on.</li>
-<li><strong>crude_confidence</strong>: An array of confidence metrics to filter on. Possible values are: <code>'confirmed’</code>, <code>‘probable’</code>, <code>‘unlikely’</code></li>
-<li><strong>location_ids</strong>: An array of geography ID(s) to filter on.</li>
-<li><strong>storage_types</strong>: An array of storage types to filter on. Possible values are: <code>'refinery'</code>, <code>'commercial'</code>, <code>'spr'</code></li>
-</ul>
+<pre><code>ids: An array of unique Asset Tanks ID(s) to filter on.
+corporate_entity_ids: An array of owner ID(s) to filter on.
+crude_confidence: An array of confidence metrics to filter on. Possible values are: `'confirmed’`, `‘probable’`, `‘unlikely’`
+location_ids: An array of geography ID(s) to filter on.
+storage_types: An array of storage types to filter on. Possible values are: `'refinery'`, `'commercial'`, `'spr'`
+</code></pre>
 <p><strong>Returns</strong></p>
 <p>List of asset tanks matching <code>type</code></p>
 <p><strong>Examples</strong></p>
@@ -381,17 +385,23 @@
 
 <h2 id="vortexasdk.endpoints.asset_tanks_result.AssetTankResult">AssetTankResult</h2>
 
-<pre><code class="language-python">AssetTankResult(__pydantic_self__, **data: Any) -&gt; None
+<pre><code class="language-python">AssetTankResult(*, records: typing.List,
+                reference: typing.Dict[str, typing.Any])
 </code></pre>
 <p>Container class that holds the result obtained from calling the <code>Asset Tanks</code> endpoint.</p>
+<h3 id="vortexasdk.endpoints.asset_tanks_result.AssetTankResult.model_config">model_config</h3>
+
 <h3 id="vortexasdk.endpoints.asset_tanks_result.AssetTankResult.to_list">to_list</h3>
 
-<pre><code class="language-python">AssetTankResult.to_list(self) -&gt; List[vortexasdk.api.asset_tank.AssetTank]
+<pre><code class="language-python">AssetTankResult.to_list()
 </code></pre>
 <p>Represent asset tanks as a list.</p>
 <h3 id="vortexasdk.endpoints.asset_tanks_result.AssetTankResult.to_df">to_df</h3>
 
-<pre><code class="language-python">AssetTankResult.to_df(self, columns=['id', 'capacity_bbl', 'crude_confidence', 'location_id', 'name', 'storage_type', 'lat', 'lon'])
+<pre><code class="language-python">AssetTankResult.to_df(
+    columns:
+    typing.Union[typing_extensions.Literal['all'], typing.List[str], NoneType] = ['id', 'capacity_bbl', 'crude_confidence', 'location_id', 'name', 'storage_type', 'lat', 'lon']
+)
 </code></pre>
 <p>Represent asset tanks as a <code>pd.DataFrame</code>.</p>
 <p><strong>Arguments</strong></p>

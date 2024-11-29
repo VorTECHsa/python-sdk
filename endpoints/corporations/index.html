@@ -177,8 +177,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/vessel/">Vessel</a>
                     </li>
-                    <li class="toctree-l1"><a class="" href="../../entities/vessel_movement.md">Vessel Movement</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/voyages/">Voyages</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/vessel_availability/">Vessel Availability</a>
@@ -261,24 +259,24 @@
 <p>Corporations Endpoint.</p>
 <h3 id="vortexasdk.endpoints.corporations.Corporations.load_all">load_all</h3>
 
-<pre><code class="language-python">Corporations.load_all(self) -&gt; vortexasdk.endpoints.corporations_result.CorporationsResult
+<pre><code class="language-python">Corporations.load_all()
 </code></pre>
 <p>Load all corporations.</p>
 <h3 id="vortexasdk.endpoints.corporations.Corporations.search">search</h3>
 
-<pre><code class="language-python">Corporations.search(self, term: Union[str, List[str]] = None, exact_term_match: bool = False) -&gt; vortexasdk.endpoints.corporations_result.CorporationsResult
+<pre><code class="language-python">Corporations.search(
+  term: typing.Union[str, typing.List[str], NoneType] = None,
+  exact_term_match: bool = False)
 </code></pre>
 <p>Find all Corporations matching given search terms.</p>
 <p><strong>Arguments</strong></p>
 <ul>
 <li>
 <p><strong>term</strong>: The corporation name(s) we're filtering on</p>
-</li>
-<li>
-<p><strong>exact_term_match</strong>: Search on only exact term matches, or allow similar matches.
-      e.g. When searching for "COS" with <code>exact_term_match=False</code>, then the SDK will yield corporations named
-      ['COSCO', 'COSMO OIL'] etc. When <code>exact_term_match=True</code>,
-      the SDK won't yield any results, because no corporations have the exact name "COS".</p>
+<p>exact_term_match: Search on only exact term matches, or allow similar matches.
+  e.g. When searching for "COS" with <code>exact_term_match=False</code>, then the SDK will yield corporations named
+  ['COSCO', 'COSMO OIL'] etc. When <code>exact_term_match=True</code>,
+  the SDK won't yield any results, because no corporations have the exact name "COS".</p>
 </li>
 </ul>
 <p><strong>Returns</strong></p>
@@ -323,7 +321,7 @@
 <p><a href="https://docs.vortexa.com/reference/POST/reference/charterers">VortexaAPI Corporation Reference</a></p>
 <h3 id="vortexasdk.endpoints.corporations.Corporations.reference">reference</h3>
 
-<pre><code class="language-python">Corporations.reference(self, id: str) -&gt; Dict
+<pre><code class="language-python">Corporations.reference(id: str)
 </code></pre>
 <p>Perform a corporation lookup.</p>
 <p><strong>Arguments</strong></p>
@@ -346,17 +344,23 @@
 
 <h2 id="vortexasdk.endpoints.corporations_result.CorporationsResult">CorporationsResult</h2>
 
-<pre><code class="language-python">CorporationsResult(__pydantic_self__, **data: Any) -&gt; None
+<pre><code class="language-python">CorporationsResult(*, records: typing.List,
+                   reference: typing.Dict[str, typing.Any])
 </code></pre>
 <p>Container class that holds the result obtained from calling the <code>Vessels</code> endpoint.</p>
+<h3 id="vortexasdk.endpoints.corporations_result.CorporationsResult.model_config">model_config</h3>
+
 <h3 id="vortexasdk.endpoints.corporations_result.CorporationsResult.to_list">to_list</h3>
 
-<pre><code class="language-python">CorporationsResult.to_list(self) -&gt; List[vortexasdk.api.corporation.Corporation]
+<pre><code class="language-python">CorporationsResult.to_list()
 </code></pre>
 <p>Represent vessels as a list.</p>
 <h3 id="vortexasdk.endpoints.corporations_result.CorporationsResult.to_df">to_df</h3>
 
-<pre><code class="language-python">CorporationsResult.to_df(self, columns=['id', 'name', 'corporate_entity_type']) -&gt; pandas.core.frame.DataFrame
+<pre><code class="language-python">CorporationsResult.to_df(
+    columns:
+    typing.Union[typing_extensions.Literal['all'], typing.List[str], NoneType] = ['id', 'name', 'corporate_entity_type']
+)
 </code></pre>
 <p>Represent corporations as a <code>pd.DataFrame</code>.</p>
 <p><strong>Arguments</strong></p>

@@ -177,8 +177,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/vessel/">Vessel</a>
                     </li>
-                    <li class="toctree-l1"><a class="" href="../../entities/vessel_movement.md">Vessel Movement</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/voyages/">Voyages</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/vessel_availability/">Vessel Availability</a>
@@ -296,7 +294,21 @@
 </tr>
 </tbody>
 </table>
-<pre><code class="language-python">from datetime import datetime
+<pre><code class="language-python">Let's retrieve the daily sum of Chinese Crude/Condensate imports, across January 2019.
+
+The below script returns:
+
+|     | key                      |    value |   count |
+|----:|:-------------------------|---------:|--------:|
+|   0 | 2019-01-01T00:00:00.000Z |  1237381 |       9 |
+|   1 | 2019-01-02T00:00:00.000Z |  6548127 |      23 |
+|   2 | 2019-01-03T00:00:00.000Z | 45457617 |      23 |
+|   3 | 2019-01-04T00:00:00.000Z |  6467759 |      43 |
+|   4 | 2019-01-05T00:00:00.000Z |  7777144 |       4 |
+...
+
+&quot;&quot;&quot;
+from datetime import datetime
 
 from vortexasdk import CargoTimeSeries, Geographies, Products
 

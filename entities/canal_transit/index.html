@@ -177,8 +177,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../vessel/">Vessel</a>
                     </li>
-                    <li class="toctree-l1"><a class="" href="../vessel_movement.md">Vessel Movement</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../voyages/">Voyages</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../vessel_availability/">Vessel Availability</a>
@@ -252,13 +250,58 @@
               
                 <h1 id="vortexasdk.api.canal_transit">vortexasdk.api.canal_transit</h1>
 
+<h2 id="vortexasdk.api.canal_transit.CargoEntity">CargoEntity</h2>
+
+<pre><code class="language-python">CargoEntity(
+    *, cargo_movement_id: str, quantity_barrels: typing.Optional[int],
+    quantity_tonnes: typing.Optional[int],
+    quantity_cubic_metres: typing.Optional[int], product:
+    typing.Optional[typing.List[vortexasdk.api.shared_types.EntityWithSingleLayer]]
+)
+</code></pre>
+<h3 id="vortexasdk.api.canal_transit.CargoEntity.model_config">model_config</h3>
+
+<h2 id="vortexasdk.api.canal_transit.GeographyRecord">GeographyRecord</h2>
+
+<pre><code class="language-python">GeographyRecord(*, id: str, layer: typing.Optional[typing.List[str]],
+                label: typing.Optional[str],
+                aliases: typing.Optional[typing.List[str]])
+</code></pre>
+<h3 id="vortexasdk.api.canal_transit.GeographyRecord.model_config">model_config</h3>
+
+<h2 id="vortexasdk.api.canal_transit.CorporateRecord">CorporateRecord</h2>
+
+<pre><code class="language-python">CorporateRecord(*, id: str, label: str)
+</code></pre>
+<h3 id="vortexasdk.api.canal_transit.CorporateRecord.model_config">model_config</h3>
+
 <h2 id="vortexasdk.api.canal_transit.CanalTransitRecord">CanalTransitRecord</h2>
 
-<pre><code class="language-python">CanalTransitRecord(__pydantic_self__, **data: Any) -&gt; None
+<pre><code class="language-python">CanalTransitRecord(
+    *, id: str, voyage_id: typing.Optional[str],
+    vessel_id: typing.Optional[str], vessel_name: typing.Optional[str],
+    vessel_imo: typing.Optional[int], vessel_mmsi: typing.Optional[int],
+    vessel_class:
+    typing.Optional[typing.List[vortexasdk.api.shared_types.VesselClassEntry]],
+    vessel_cubic_capacity: typing.Optional[int],
+    vessel_dead_weight: typing.Optional[int], canal: str, direction: str,
+    lock: str, queue_arrival_time: typing.Optional[str],
+    canal_entry_time: typing.Optional[str],
+    canal_exit_time: typing.Optional[str], booked_time: typing.Optional[str],
+    voyage_status: typing.Optional[str], cargoes:
+    typing.Optional[typing.List[vortexasdk.api.canal_transit.CargoEntity]],
+    origin:
+    typing.Optional[typing.List[vortexasdk.api.geography.GeographyEntity]],
+    destination:
+    typing.Optional[typing.List[vortexasdk.api.geography.GeographyEntity]],
+    charterer: typing.Optional[vortexasdk.api.canal_transit.CorporateRecord],
+    effective_controller:
+    typing.Optional[vortexasdk.api.canal_transit.CorporateRecord])
 </code></pre>
 <p>The canal transits dataset contains information about ships waiting to cross major global canals.</p>
 <p>An entry in this dataset records information about a vessels transit through a canal, including the the actual queue arrival time, the planned canal entry time, the actual canal entry time, and the actual canal exit time.</p>
 <p><a href="https://docs.vortexa.com/reference/intro-canal-transit">Canal Transit Further Documentation</a></p>
+<h3 id="vortexasdk.api.canal_transit.CanalTransitRecord.model_config">model_config</h3>
               
             </div>
           </div>

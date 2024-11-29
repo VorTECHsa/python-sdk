@@ -177,8 +177,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../vessel/">Vessel</a>
                     </li>
-                    <li class="toctree-l1"><a class="" href="../vessel_movement.md">Vessel Movement</a>
-                    </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Voyages</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../vessel_availability/">Vessel Availability</a>
@@ -254,40 +252,143 @@
 
 <h2 id="vortexasdk.api.voyages.CongestionBreakdownItem">CongestionBreakdownItem</h2>
 
-<pre><code class="language-python">CongestionBreakdownItem(__pydantic_self__, **data: Any) -&gt; None
+<pre><code class="language-python">CongestionBreakdownItem(
+    *, avg_waiting_time: typing.Optional[float],
+    vessel_dwt: typing.Optional[int],
+    vessel_cubic_capacity: typing.Optional[int],
+    vessel_count: typing.Optional[int], cargo_quantity: typing.Optional[int],
+    avg_waiting_time_laden: typing.Optional[float],
+    vessel_dwt_laden: typing.Optional[int],
+    vessel_cubic_capacity_laden: typing.Optional[int],
+    vessel_count_laden: typing.Optional[int],
+    avg_waiting_time_ballast: typing.Optional[float],
+    vessel_dwt_ballast: typing.Optional[int],
+    vessel_cubic_capacity_ballast: typing.Optional[int],
+    vessel_count_ballast: typing.Optional[int], location_details:
+    typing.Optional[typing.List[vortexasdk.api.shared_types.EntityWithListLayer]]
+)
 </code></pre>
 <p>Congestion breakdown shows various stats of vessels in congestion.</p>
+<h3 id="vortexasdk.api.voyages.CongestionBreakdownItem.model_config">model_config</h3>
+
 <h2 id="vortexasdk.api.voyages.VoyagesVesselEntity">VoyagesVesselEntity</h2>
 
-<pre><code class="language-python">VoyagesVesselEntity(__pydantic_self__, **data: Any) -&gt; None
+<pre><code class="language-python">VoyagesVesselEntity(
+  *, id: str, name: typing.Optional[str],
+  dead_weight: typing.Optional[int], vessel_class: typing.Optional[str],
+  classes:
+    typing.Optional[typing.List[vortexasdk.api.shared_types.VesselClassEntry]],
+  imo: typing.Optional[int], mmsi: typing.Optional[int],
+  call_sign: typing.Optional[str], cubic_capacity: typing.Optional[int],
+  year: typing.Optional[int],
+  flag: typing.Optional[typing.List[vortexasdk.api.shared_types.Flag]],
+  scrubber:
+    typing.Optional[typing.List[vortexasdk.api.shared_types.Scrubber]],
+  ice_class: typing.Optional[str], propulsion: typing.Optional[str],
+  tags: typing.Optional[typing.List[vortexasdk.api.shared_types.Tag]],
+  vessel_risk_level: typing.Optional[str])
 </code></pre>
 <p>A VoyagesVesselEntity represents a vessel record used in Voyages.</p>
 <p><a href="https://docs.vortexa.com/reference/intro-vessel-entities">Vessel Entities Further Documentation</a></p>
+<h3 id="vortexasdk.api.voyages.VoyagesVesselEntity.model_config">model_config</h3>
+
 <h2 id="vortexasdk.api.voyages.VoyageVesselEvent">VoyageVesselEvent</h2>
 
-<pre><code class="language-python">VoyageVesselEvent(__pydantic_self__, **data: Any) -&gt; None
+<pre><code class="language-python">VoyageVesselEvent(
+    *, event_id: typing.Optional[str], value: typing.Optional[str],
+    event_group: typing.Optional[str], event_type: typing.Optional[str],
+    location_id: typing.Optional[str], start_timestamp: typing.Optional[str],
+    end_timestamp: typing.Optional[str], activity: typing.Optional[str],
+    odometer_start: typing.Optional[int], odometer_end: typing.Optional[int],
+    location_layer: typing.Optional[typing.List[str]],
+    cargo_movement_id: typing.Optional[typing.List[str]],
+    sts_event_counterparty_vessel_id: typing.Optional[str],
+    waiting_event_target_geography_id: typing.Optional[str],
+    fixture_event_fixing_timestamp: typing.Optional[str],
+    tags: typing.Optional[typing.List[vortexasdk.api.shared_types.Tag]],
+    probability: typing.Optional[float], location_details:
+    typing.Optional[typing.List[vortexasdk.api.shared_types.EntityWithSingleLayer]],
+    is_open_event: typing.Optional[bool],
+    waiting_event_target_geography_details:
+    typing.Optional[typing.List[vortexasdk.api.shared_types.EntityWithSingleLayer]]
+)
 </code></pre>
 <p>A vessel event represents an activity that a vessel has performed during a voyage</p>
 <p><a href="https://docs.vortexa.com/reference/intro-voyage-events">Voyage Events Further Documentation</a></p>
+<h3 id="vortexasdk.api.voyages.VoyageVesselEvent.model_config">model_config</h3>
+
 <h2 id="vortexasdk.api.voyages.VoyageCargoEvent">VoyageCargoEvent</h2>
 
-<pre><code class="language-python">VoyageCargoEvent(__pydantic_self__, **data: Any) -&gt; None
+<pre><code class="language-python">VoyageCargoEvent(
+  *, event_id: typing.Optional[str], value: typing.Optional[str],
+  event_group: typing_extensions.Literal['derived'],
+  event_type: typing.Optional[str],
+  cargo_movement_id: typing.Optional[str],
+  cargo_origin_id: typing.Optional[str],
+  product_id: typing.Optional[str],
+  quantity_tonnes: typing.Optional[int],
+  quantity_barrels: typing.Optional[int],
+  quantity_cubic_metres: typing.Optional[int],
+  start_timestamp: typing.Optional[str],
+  end_timestamp: typing.Optional[str], activity: typing.Optional[str],
+  odometer_start: typing.Optional[int],
+  odometer_end: typing.Optional[int],
+  cargo_destination_id: typing.Optional[str],
+  tonne_miles: typing.Optional[float], product_details:
+    typing.Optional[typing.List[vortexasdk.api.shared_types.EntityWithSingleLayer]],
+  cargo_origin_details:
+    typing.Optional[typing.List[vortexasdk.api.shared_types.EntityWithSingleLayer]],
+  cargo_destination_details:
+    typing.Optional[typing.List[vortexasdk.api.shared_types.EntityWithSingleLayer]],
+  is_open_event: typing.Optional[bool])
 </code></pre>
 <p>Cargo events relate to the movement of cargo during the voyage.</p>
 <p><a href="https://docs.vortexa.com/reference/intro-voyage-events">Voyage Events Further Documentation</a></p>
+<h3 id="vortexasdk.api.voyages.VoyageCargoEvent.model_config">model_config</h3>
+
 <h2 id="vortexasdk.api.voyages.VoyageStatusEvent">VoyageStatusEvent</h2>
 
-<pre><code class="language-python">VoyageStatusEvent(__pydantic_self__, **data: Any) -&gt; None
+<pre><code class="language-python">VoyageStatusEvent(*, event_id: typing.Optional[str],
+                  event_group: typing_extensions.Literal['derived'],
+                  event_type: typing.Optional[str],
+                  activity: typing.Optional[str],
+                  value: typing.Optional[str],
+                  source_event_id: typing.Optional[str],
+                  end_timestamp: typing.Optional[str],
+                  start_timestamp: typing.Optional[str],
+                  is_open_event: typing.Optional[bool])
 </code></pre>
 <p>Status events describe the status of the voyage at a given period.</p>
 <p><a href="https://docs.vortexa.com/reference/intro-voyage-events">Voyage Events Further Documentation</a></p>
+<h3 id="vortexasdk.api.voyages.VoyageStatusEvent.model_config">model_config</h3>
+
 <h2 id="vortexasdk.api.voyages.VoyageEnrichedItem">VoyageEnrichedItem</h2>
 
-<pre><code class="language-python">VoyageEnrichedItem(__pydantic_self__, **data: Any) -&gt; None
+<pre><code class="language-python">VoyageEnrichedItem(
+  *, voyage_id: str, vessel_id: str,
+  schema_version: typing.Optional[str],
+  start_event_id: typing.Optional[str],
+  vessel: typing.Optional[vortexasdk.api.voyages.VoyagesVesselEntity],
+  start_timestamp: typing.Optional[str],
+  end_timestamp: typing.Optional[str],
+  end_event_id: typing.Optional[str],
+  previous_voyage_id: typing.Optional[str],
+  next_voyage_id: typing.Optional[str],
+  latest_product_ids: typing.Optional[typing.List[str]],
+  tags: typing.Optional[typing.List[vortexasdk.api.shared_types.Tag]],
+  tonne_miles: typing.Optional[float], corporate_entities:
+    typing.Optional[typing.List[vortexasdk.api.shared_types.EntityWithSingleLayerAndTimespan]],
+  odometer_start: typing.Optional[int],
+  odometer_end: typing.Optional[int], events:
+    typing.Optional[typing.List[typing.Union[vortexasdk.api.voyages.VoyageVesselEvent, vortexasdk.api.voyages.VoyageCargoEvent, vortexasdk.api.voyages.VoyageStatusEvent, NoneType]]],
+  latest_product_details:
+    typing.Optional[typing.List[typing.List[vortexasdk.api.shared_types.EntityWithSingleLayer]]],
+  voyage_status: str)
 </code></pre>
 <p>A voyage is defined as a continuous period of time when the vessel is either laden or ballast.</p>
 <p>Each voyage is made up of multiple voyage events which describe the activity of the vessel while it is laden or ballast.</p>
 <p><a href="https://docs.vortexa.com/reference/intro-voyages">Voyages Further Documentation</a></p>
+<h3 id="vortexasdk.api.voyages.VoyageEnrichedItem.model_config">model_config</h3>
               
             </div>
           </div>

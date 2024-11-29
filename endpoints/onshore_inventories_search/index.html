@@ -177,8 +177,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/vessel/">Vessel</a>
                     </li>
-                    <li class="toctree-l1"><a class="" href="../../entities/vessel_movement.md">Vessel Movement</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/voyages/">Voyages</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/vessel_availability/">Vessel Availability</a>
@@ -266,23 +264,34 @@
 Please note: you will require a subscription to our Crude Onshore Inventories module to access this endpoint.</p>
 <h3 id="vortexasdk.endpoints.onshore_inventories_search.OnshoreInventoriesSearch.search">search</h3>
 
-<pre><code class="language-python">OnshoreInventoriesSearch.search(self, asset_tank_ids: Union[str, List[str]] = None, corporate_entity_ids: Union[str, List[str]] = None, crude_confidence: List[str] = None, location_ids: Union[str, List[str]] = None, measurement_ids: Union[str, List[str]] = None, order: str = None, order_direction: str = None, size: int = None, storage_types: List[str] = None, time_min: datetime.datetime = None, time_max: datetime.datetime = None) -&gt; vortexasdk.endpoints.onshore_inventories_result.OnshoreInventoriesResult
+<pre><code class="language-python">OnshoreInventoriesSearch.search(
+  asset_tank_ids: typing.Union[str, typing.List[str], NoneType] = None,
+  corporate_entity_ids:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  crude_confidence: typing.Optional[typing.List[str]] = None,
+  location_ids: typing.Union[str, typing.List[str], NoneType] = None,
+  measurement_ids: typing.Union[str, typing.List[str], NoneType] = None,
+  order: typing.Optional[str] = None,
+  order_direction: typing.Optional[str] = None,
+  size: typing.Optional[int] = None,
+  storage_types: typing.Optional[typing.List[str]] = None,
+  time_min: typing.Optional[datetime.datetime] = None,
+  time_max: typing.Optional[datetime.datetime] = None)
 </code></pre>
 <p>List of crude onshore inventories across the globe.</p>
 <p><strong>Arguments</strong></p>
-<ul>
-<li><strong>asset_tank_ids</strong>: An array of tank IDs to filter on.</li>
-<li><strong>corporate_entity_ids</strong>: An array of owner ID(s) to filter on.</li>
-<li><strong>crude_confidence</strong>: An array of confidence metrics to filter on. Possible values are: <code>'confirmed'</code>, <code>'probable'</code>, <code>'unlikely'</code></li>
-<li><strong>location_ids</strong>: An array of geography ID(s) to filter on.</li>
-<li><strong>measurement_ids</strong>: An array of unique measurements (each COI measurement) to filter on.</li>
-<li><strong>order</strong>: Used to sort the returned results. Can be one of:<code>'measurement_id'</code>, <code>'tank_id'</code>.</li>
-<li><strong>order_direction</strong>: Determines the direction of sorting. ‘asc’ for ascending, ‘desc’ for descending.</li>
-<li><strong>size</strong>: Used to page results. The size of the result set. Between 0 and 500.</li>
-<li><strong>storage_types</strong>: An array of storage types to filter on. Possible values are: <code>'refinery'</code>, <code>'commercial'</code>, <code>'spr'</code>.</li>
-<li><strong>time_min</strong>: The UTC start date of the time filter.</li>
-<li><strong>time_max</strong>: The UTC end date of the time filter.</li>
-</ul>
+<pre><code>asset_tank_ids: An array of tank IDs to filter on.
+corporate_entity_ids: An array of owner ID(s) to filter on.
+crude_confidence: An array of confidence metrics to filter on. Possible values are: `'confirmed'`, `'probable'`, `'unlikely'`
+location_ids: An array of geography ID(s) to filter on.
+measurement_ids: An array of unique measurements (each COI measurement) to filter on.
+order: Used to sort the returned results. Can be one of:`'measurement_id'`, `'tank_id'`.
+order_direction: Determines the direction of sorting. ‘asc’ for ascending, ‘desc’ for descending.
+size: Used to page results. The size of the result set. Between 0 and 500.
+storage_types: An array of storage types to filter on. Possible values are: `'refinery'`, `'commercial'`, `'spr'`.
+time_min: The UTC start date of the time filter.
+time_max: The UTC end date of the time filter.
+</code></pre>
 <p><strong>Returns</strong></p>
 <p><code>OnshoreInventoriesResult</code></p>
 <p><strong>Data frame example</strong></p>

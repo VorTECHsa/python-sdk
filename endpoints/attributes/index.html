@@ -177,8 +177,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/vessel/">Vessel</a>
                     </li>
-                    <li class="toctree-l1"><a class="" href="../../entities/vessel_movement.md">Vessel Movement</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/voyages/">Voyages</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/vessel_availability/">Vessel Availability</a>
@@ -299,12 +297,15 @@
 </table>
 <h3 id="vortexasdk.endpoints.attributes.Attributes.load_all">load_all</h3>
 
-<pre><code class="language-python">Attributes.load_all(self) -&gt; vortexasdk.endpoints.attributes_result.AttributeResult
+<pre><code class="language-python">Attributes.load_all()
 </code></pre>
 <p>Load all attributes.</p>
 <h3 id="vortexasdk.endpoints.attributes.Attributes.search">search</h3>
 
-<pre><code class="language-python">Attributes.search(self, type: str = None, term: Union[str, List[str]] = None, ids: Union[str, List[str]] = None) -&gt; vortexasdk.endpoints.attributes_result.AttributeResult
+<pre><code class="language-python">Attributes.search(
+  type: typing.Optional[str] = None,
+  term: typing.Union[str, typing.List[str], NoneType] = None,
+  ids: typing.Union[str, typing.List[str], NoneType] = None)
 </code></pre>
 <p>Find all attributes matching given type.</p>
 <p><strong>Arguments</strong></p>
@@ -348,17 +349,23 @@
 
 <h2 id="vortexasdk.endpoints.attributes_result.AttributeResult">AttributeResult</h2>
 
-<pre><code class="language-python">AttributeResult(__pydantic_self__, **data: Any) -&gt; None
+<pre><code class="language-python">AttributeResult(*, records: typing.List,
+                reference: typing.Dict[str, typing.Any])
 </code></pre>
 <p>Container class that holds the result obtained from calling the <code>Attributes</code> endpoint.</p>
+<h3 id="vortexasdk.endpoints.attributes_result.AttributeResult.model_config">model_config</h3>
+
 <h3 id="vortexasdk.endpoints.attributes_result.AttributeResult.to_list">to_list</h3>
 
-<pre><code class="language-python">AttributeResult.to_list(self) -&gt; List[vortexasdk.api.attribute.Attribute]
+<pre><code class="language-python">AttributeResult.to_list()
 </code></pre>
 <p>Represent attributes as a list.</p>
 <h3 id="vortexasdk.endpoints.attributes_result.AttributeResult.to_df">to_df</h3>
 
-<pre><code class="language-python">AttributeResult.to_df(self, columns=['id', 'name', 'type']) -&gt; pandas.core.frame.DataFrame
+<pre><code class="language-python">AttributeResult.to_df(
+    columns:
+    typing.Union[typing_extensions.Literal['all'], typing.List[str], NoneType] = ['id', 'name', 'type']
+)
 </code></pre>
 <p>Represent attributes as a <code>pd.DataFrame</code>.</p>
 <p><strong>Arguments</strong></p>

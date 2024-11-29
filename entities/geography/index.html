@@ -177,8 +177,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../vessel/">Vessel</a>
                     </li>
-                    <li class="toctree-l1"><a class="" href="../vessel_movement.md">Vessel Movement</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../voyages/">Voyages</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../vessel_availability/">Vessel Availability</a>
@@ -254,20 +252,38 @@
 
 <h2 id="vortexasdk.api.geography.BoundingBox">BoundingBox</h2>
 
-<pre><code class="language-python">BoundingBox(__pydantic_self__, **data: Any) -&gt; None
+<pre><code class="language-python">BoundingBox(
+  *, type: typing.Optional[str],
+  coordinates: typing.Optional[typing.List[typing.Tuple[float, float]]])
 </code></pre>
 <p>Polygon with list of bounding lon lat coords.</p>
+<h3 id="vortexasdk.api.geography.BoundingBox.model_config">model_config</h3>
+
 <h2 id="vortexasdk.api.geography.Geography">Geography</h2>
 
-<pre><code class="language-python">Geography(__pydantic_self__, **data: Any) -&gt; None
+<pre><code class="language-python">Geography(
+  *, id: str, name: typing.Optional[str], ref_type: typing.Optional[str],
+  leaf: typing.Optional[bool], parent:
+    typing.Optional[typing.List[vortexasdk.api.shared_types.IDNameLayer]],
+  layer: typing.List[str], exclusion_rule:
+    typing.Optional[typing.List[vortexasdk.api.shared_types.IDNameLayer]],
+  hierarchy:
+    typing.Optional[typing.List[vortexasdk.api.shared_types.IDLayer]],
+  pos: typing.Optional[typing.List[float]])
 </code></pre>
 <p>Represent a Geography reference record returned by the API.</p>
+<h3 id="vortexasdk.api.geography.Geography.model_config">model_config</h3>
+
 <h2 id="vortexasdk.api.geography.GeographyEntity">GeographyEntity</h2>
 
-<pre><code class="language-python">GeographyEntity(__pydantic_self__, **data: Any) -&gt; None
+<pre><code class="language-python">GeographyEntity(*, id: str, probability: typing.Optional[float],
+                source: typing.Optional[str],
+                layer: typing.Optional[str],
+                label: typing.Optional[str])
 </code></pre>
 <p>Represents a hierarchy tree of locational data.</p>
 <p><a href="https://docs.vortexa.com/reference/intro-geography-entries">Geography Entities Further Documentation</a></p>
+<h3 id="vortexasdk.api.geography.GeographyEntity.model_config">model_config</h3>
               
             </div>
           </div>

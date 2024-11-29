@@ -177,8 +177,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/vessel/">Vessel</a>
                     </li>
-                    <li class="toctree-l1"><a class="" href="../../entities/vessel_movement.md">Vessel Movement</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/voyages/">Voyages</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/vessel_availability/">Vessel Availability</a>
@@ -265,116 +263,129 @@
 <p>Please note: you will require a subscription to our Freight module to access this endpoint.</p>
 <h3 id="vortexasdk.endpoints.vessel_availability_breakdown.VesselAvailabilityBreakdown.search">search</h3>
 
-<pre><code class="language-python">VesselAvailabilityBreakdown.search(self, filter_products: Union[str, List[str]] = None, filter_vessels: Union[str, List[str]] = None, filter_vessel_classes: Union[str, List[str]] = None, filter_vessel_status: str = None, filter_vessel_location: Union[str, List[str]] = None, filter_owners: Union[str, List[str]] = None, filter_effective_controllers: Union[str, List[str]] = None, filter_destination: Union[str, List[str]] = None, filter_region: str = None, filter_port: str = None, use_reference_port: bool = False, filter_days_to_arrival: List[Dict[str, int]] = None, filter_vessel_dwt_min: int = None, filter_vessel_dwt_max: int = None, filter_vessel_age_min: int = None, filter_vessel_age_max: int = None, filter_vessel_idle_min: int = None, filter_vessel_idle_max: int = None, filter_vessel_scrubbers: str = 'disabled', filter_recent_visits: str = None, filter_vessel_flags: Union[str, List[str]] = None, filter_vessel_ice_class: Union[str, List[str]] = None, filter_vessel_tags: Union[List[vortexasdk.api.shared_types.Tag], vortexasdk.api.shared_types.Tag] = None, filter_vessel_risk_level: Union[str, List[str]] = None, exclude_products: Union[str, List[str]] = None, exclude_vessels: Union[str, List[str]] = None, exclude_vessel_classes: Union[str, List[str]] = None, exclude_vessel_status: str = None, exclude_vessel_location: Union[str, List[str]] = None, exclude_owners: Union[str, List[str]] = None, exclude_effective_controllers: Union[str, List[str]] = None, exclude_destination: Union[str, List[str]] = None, exclude_filter_vessel_flags: Union[str, List[str]] = None, exclude_filter_vessel_ice_class: Union[str, List[str]] = None, exclude_filter_vessel_tags: Union[List[vortexasdk.api.shared_types.Tag], vortexasdk.api.shared_types.Tag] = None, exclude_filter_vessel_risk_level: Union[str, List[str]] = None) -&gt; vortexasdk.endpoints.timeseries_result.TimeSeriesResult
+<pre><code class="language-python">VesselAvailabilityBreakdown.search(
+    filter_products: typing.Union[str, typing.List[str], NoneType] = None,
+    filter_vessels: typing.Union[str, typing.List[str], NoneType] = None,
+    filter_vessel_classes: typing.Union[str, typing.List[str], NoneType] = None,
+    filter_vessel_status: typing.Optional[str] = None,
+    filter_vessel_location:
+    typing.Union[str, typing.List[str], NoneType] = None,
+    filter_owners: typing.Union[str, typing.List[str], NoneType] = None,
+    filter_effective_controllers:
+    typing.Union[str, typing.List[str], NoneType] = None,
+    filter_destination: typing.Union[str, typing.List[str], NoneType] = None,
+    filter_region: typing.Optional[str] = None,
+    filter_port: typing.Optional[str] = None,
+    use_reference_port: bool = False,
+    filter_days_to_arrival:
+    typing.Optional[typing.List[typing.Dict[str, int]]] = None,
+    filter_vessel_dwt_min: typing.Optional[int] = None,
+    filter_vessel_dwt_max: typing.Optional[int] = None,
+    filter_vessel_age_min: typing.Optional[int] = None,
+    filter_vessel_age_max: typing.Optional[int] = None,
+    filter_vessel_idle_min: typing.Optional[int] = None,
+    filter_vessel_idle_max: typing.Optional[int] = None,
+    filter_vessel_scrubbers: str = 'disabled',
+    filter_recent_visits: typing.Optional[str] = None,
+    filter_vessel_flags: typing.Union[str, typing.List[str], NoneType] = None,
+    filter_vessel_ice_class:
+    typing.Union[str, typing.List[str], NoneType] = None,
+    filter_vessel_tags:
+    typing.Union[typing.List[vortexasdk.api.shared_types.Tag], vortexasdk.api.shared_types.Tag, NoneType] = None,
+    filter_vessel_risk_level:
+    typing.Union[str, typing.List[str], NoneType] = None,
+    exclude_products: typing.Union[str, typing.List[str], NoneType] = None,
+    exclude_vessels: typing.Union[str, typing.List[str], NoneType] = None,
+    exclude_vessel_classes:
+    typing.Union[str, typing.List[str], NoneType] = None,
+    exclude_vessel_status: typing.Optional[str] = None,
+    exclude_vessel_location:
+    typing.Union[str, typing.List[str], NoneType] = None,
+    exclude_owners: typing.Union[str, typing.List[str], NoneType] = None,
+    exclude_effective_controllers:
+    typing.Union[str, typing.List[str], NoneType] = None,
+    exclude_destination: typing.Union[str, typing.List[str], NoneType] = None,
+    exclude_filter_vessel_flags:
+    typing.Union[str, typing.List[str], NoneType] = None,
+    exclude_filter_vessel_ice_class:
+    typing.Union[str, typing.List[str], NoneType] = None,
+    exclude_filter_vessel_tags:
+    typing.Union[typing.List[vortexasdk.api.shared_types.Tag], vortexasdk.api.shared_types.Tag, NoneType] = None,
+    exclude_filter_vessel_risk_level:
+    typing.Union[str, typing.List[str], NoneType] = None)
 </code></pre>
 <p>Number and DWT of all vessels that can be available to load a given cargo at a given port,
 grouped by the number of days to arrival.</p>
 <p><strong>Arguments</strong></p>
-<ul>
-<li>
-<p><strong>filter_effective_controllers</strong>: An effective controller ID, or list of effective controller IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_destination</strong>: A geography ID, or list of geography IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_products</strong>: A product ID, or list of product IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_vessels</strong>: A vessel ID, or list of vessel IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_vessel_classes</strong>: A vessel class, or list of vessel classes to filter on.</p>
-</li>
-<li>
-<p><strong>filter_vessel_status</strong>: The vessel status on which to base the filter. Enter 'vessel_status_ballast' for ballast vessels, 'vessel_status_laden_known' for laden vessels with known cargo (i.e. a type of cargo that Vortexa currently tracks) or 'any_activity' for any other vessels</p>
-</li>
-<li>
-<p><strong>filter_vessel_location</strong>: A location ID, or list of location IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_port</strong>: Filter by port ID.</p>
-</li>
-<li>
-<p><strong>filter_region</strong>: Filter by region ID - takes precedence over filter_port if provided. This should be used in conjunction with <code>use_reference_port</code></p>
-</li>
-<li>
-<p><strong>filter_days_to_arrival</strong>: Filter availability by time to arrival in days`</p>
-</li>
-<li>
-<p><strong>use_reference_port</strong>: If this flag is enabled, we will return data for
-    the reference port instead of the user selected one,</p>
-</li>
-<li>
-<p><strong>filter_vessel_age_min</strong>: A number between 1 and 100 (representing years).</p>
-</li>
-<li>
-<p><strong>filter_vessel_age_max</strong>: A number between 1 and 100 (representing years).</p>
-</li>
-<li>
-<p><strong>filter_vessel_idle_min</strong>: A number greater than 0 (representing idle days).</p>
-</li>
-<li>
-<p><strong>filter_vessel_idle_max</strong>: A number greater than 0 and filter_vessel_idle_min (representing idle days).</p>
-</li>
-<li>
-<p><strong>filter_vessel_dwt_min</strong>: A number between 0 and 550000.</p>
-</li>
-<li>
-<p><strong>filter_vessel_dwt_max</strong>: A number between 0 and 550000.</p>
-</li>
-<li>
-<p><strong>filter_vessel_scrubbers</strong>: Either inactive 'disabled', or included 'inc' or excluded 'exc'.</p>
-</li>
-<li>
-<p><strong>filter_vessel_flags</strong>: A flag ID, or list of flag IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_vessel_ice_class</strong>: An ice class ID, or list of ice class IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_vessel_tags</strong>: A tag ID, or list of tag IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_vessel_risk_level</strong>: A risk level ID, or list of risk level IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_recent_visits</strong>: Filter availability by each vessel's recent visits</p>
-</li>
-<li>
-<p><strong>exclude_products</strong>: A product ID, or list of product IDs to exclude.</p>
-</li>
-<li>
-<p><strong>exclude_vessels</strong>: A vessel ID, or list of vessel IDs to exclude.</p>
-</li>
-<li>
-<p><strong>exclude_vessel_classes</strong>: A vessel class, or list of vessel classes to exclude.</p>
-</li>
-<li>
-<p><strong>exclude_vessel_status</strong>: The vessel status on which to base the filter. Enter 'vessel_status_ballast' for ballast vessels, 'vessel_status_laden_known' for laden vessels with known cargo (i.e. a type of cargo that Vortexa currently tracks) or 'any_activity' for any other vessels</p>
-</li>
-<li>
-<p><strong>exclude_effective_controllers</strong>: An effective controller ID, or list of effective controller IDs to exclude.</p>
-</li>
-<li>
-<p><strong>exclude_vessel_location</strong>: A location ID, or list of location IDs to filter on.</p>
-</li>
-<li>
-<p><strong>exclude_destination</strong>: A location ID, or list of location IDs to filter on.</p>
-</li>
-<li>
-<p><strong>exclude_vessel_flags</strong>: A flag ID, or list of flag IDs to exclude.</p>
-</li>
-<li>
-<p><strong>exclude_vessel_ice_class</strong>: An ice class ID, or list of ice class IDs to exclude.</p>
-</li>
-<li>
-<p><strong>exclude_vessel_tags</strong>: A tag ID, or list of tag IDs to exclude.</p>
-</li>
-<li>
-<p><strong>exclude_vessel_risk_level</strong>: A risk level ID, or list of risk level IDs to exclude.</p>
-</li>
-</ul>
+<pre><code>filter_effective_controllers: An effective controller ID, or list of effective controller IDs to filter on.
+
+filter_destination: A geography ID, or list of geography IDs to filter on.
+
+filter_products: A product ID, or list of product IDs to filter on.
+
+filter_vessels: A vessel ID, or list of vessel IDs to filter on.
+
+filter_vessel_classes: A vessel class, or list of vessel classes to filter on.
+
+filter_vessel_status: The vessel status on which to base the filter. Enter 'vessel_status_ballast' for ballast vessels, 'vessel_status_laden_known' for laden vessels with known cargo (i.e. a type of cargo that Vortexa currently tracks) or 'any_activity' for any other vessels
+
+filter_vessel_location: A location ID, or list of location IDs to filter on.
+
+filter_port: Filter by port ID.
+
+filter_region: Filter by region ID - takes precedence over filter_port if provided. This should be used in conjunction with `use_reference_port`
+
+filter_days_to_arrival: Filter availability by time to arrival in days`
+
+use_reference_port: If this flag is enabled, we will return data for
+the reference port instead of the user selected one,
+
+filter_vessel_age_min: A number between 1 and 100 (representing years).
+
+filter_vessel_age_max: A number between 1 and 100 (representing years).
+
+filter_vessel_idle_min: A number greater than 0 (representing idle days).
+
+filter_vessel_idle_max: A number greater than 0 and filter_vessel_idle_min (representing idle days).
+
+filter_vessel_dwt_min: A number between 0 and 550000.
+
+filter_vessel_dwt_max: A number between 0 and 550000.
+
+filter_vessel_scrubbers: Either inactive 'disabled', or included 'inc' or excluded 'exc'.
+
+filter_vessel_flags: A flag ID, or list of flag IDs to filter on.
+
+filter_vessel_ice_class: An ice class ID, or list of ice class IDs to filter on.
+
+filter_vessel_tags: A tag ID, or list of tag IDs to filter on.
+
+filter_vessel_risk_level: A risk level ID, or list of risk level IDs to filter on.
+
+filter_recent_visits: Filter availability by each vessel's recent visits
+
+exclude_products: A product ID, or list of product IDs to exclude.
+
+exclude_vessels: A vessel ID, or list of vessel IDs to exclude.
+
+exclude_vessel_classes: A vessel class, or list of vessel classes to exclude.
+
+exclude_vessel_status: The vessel status on which to base the filter. Enter 'vessel_status_ballast' for ballast vessels, 'vessel_status_laden_known' for laden vessels with known cargo (i.e. a type of cargo that Vortexa currently tracks) or 'any_activity' for any other vessels
+
+exclude_effective_controllers: An effective controller ID, or list of effective controller IDs to exclude.
+
+exclude_vessel_location: A location ID, or list of location IDs to filter on.
+
+exclude_destination: A location ID, or list of location IDs to filter on.
+
+exclude_vessel_flags: A flag ID, or list of flag IDs to exclude.
+
+exclude_vessel_ice_class: An ice class ID, or list of ice class IDs to exclude.
+
+exclude_vessel_tags: A tag ID, or list of tag IDs to exclude.
+
+exclude_vessel_risk_level: A risk level ID, or list of risk level IDs to exclude.
+</code></pre>
 <p><strong>Returns</strong></p>
 <p><code>TimeSeriesResult</code></p>
 <p><strong>Example</strong></p>

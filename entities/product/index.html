@@ -177,8 +177,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../vessel/">Vessel</a>
                     </li>
-                    <li class="toctree-l1"><a class="" href="../vessel_movement.md">Vessel Movement</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../voyages/">Voyages</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../vessel_availability/">Vessel Availability</a>
@@ -254,22 +252,42 @@
 
 <h2 id="vortexasdk.api.product.Product">Product</h2>
 
-<pre><code class="language-python">Product(__pydantic_self__, **data: Any) -&gt; None
+<pre><code class="language-python">Product(
+    *, id: str, name: typing.Optional[str], ref_type: typing.Optional[str],
+    leaf: typing.Optional[bool], parent:
+    typing.Optional[typing.List[vortexasdk.api.shared_types.IDNameLayer]],
+    layer: typing.Optional[typing.List[str]], meta: typing.Optional[dict],
+    hierarchy:
+    typing.Optional[typing.List[vortexasdk.api.shared_types.EntityWithSingleLayer]]
+)
 </code></pre>
 <p>Represent a Product reference record returned by the API.</p>
 <p><a href="https://docs.vortexa.com/reference/GET/reference/products/%7Bid%7D">Product Further Documentation</a></p>
+<h3 id="vortexasdk.api.product.Product.model_config">model_config</h3>
+
 <h2 id="vortexasdk.api.product.ProductEntityWithSingleLayer">ProductEntityWithSingleLayer</h2>
 
-<pre><code class="language-python">ProductEntityWithSingleLayer(__pydantic_self__, **data: Any) -&gt; None
+<pre><code class="language-python">ProductEntityWithSingleLayer(*, id: str,
+                             probability: typing.Optional[float],
+                             source: typing.Optional[str],
+                             layer: typing.Optional[str],
+                             label: typing.Optional[str])
 </code></pre>
 <p>Represents a single product layer of a hierarchical product tree.</p>
 <p><a href="https://docs.vortexa.com/reference/intro-product-entities">Further Documentation</a></p>
+<h3 id="vortexasdk.api.product.ProductEntityWithSingleLayer.model_config">model_config</h3>
+
 <h2 id="vortexasdk.api.product.ProductEntityWithListLayer">ProductEntityWithListLayer</h2>
 
-<pre><code class="language-python">ProductEntityWithListLayer(__pydantic_self__, **data: Any) -&gt; None
+<pre><code class="language-python">ProductEntityWithListLayer(*, id: str,
+                           probability: typing.Optional[float],
+                           source: typing.Optional[str],
+                           layer: typing.Optional[typing.List[str]],
+                           label: typing.Optional[str])
 </code></pre>
 <p>Represents a single product layer of a hierarchical product tree.</p>
 <p><a href="https://docs.vortexa.com/reference/intro-product-entities">Further Documentation</a></p>
+<h3 id="vortexasdk.api.product.ProductEntityWithListLayer.model_config">model_config</h3>
               
             </div>
           </div>

@@ -177,8 +177,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/vessel/">Vessel</a>
                     </li>
-                    <li class="toctree-l1"><a class="" href="../../entities/vessel_movement.md">Vessel Movement</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/voyages/">Voyages</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/vessel_availability/">Vessel Availability</a>
@@ -270,7 +268,10 @@
 </ul>
 <h3 id="vortexasdk.endpoints.eia_forecasts.EIAForecasts.search">search</h3>
 
-<pre><code class="language-python">EIAForecasts.search(self, preset: str = 'padd1-gasoline-imports', filter_time_min: datetime.datetime = datetime.datetime(2020, 1, 1, 0, 0), filter_time_max: datetime.datetime = datetime.datetime(2020, 1, 31, 0, 0)) -&gt; vortexasdk.endpoints.eia_forecasts_result.EIAForecastResult
+<pre><code class="language-python">EIAForecasts.search(
+  preset: str = 'padd1-gasoline-imports',
+  filter_time_min: datetime = datetime.datetime(2020, 1, 1, 0, 0),
+  filter_time_max: datetime = datetime.datetime(2020, 1, 31, 0, 0))
 </code></pre>
 <p>Find EIA forecasts for a given preset and date range.</p>
 <p><strong>Arguments</strong></p>
@@ -282,12 +283,8 @@
     'us-crude-exports', 'padd1-diesel-imports', 'padd3-diesel-imports', 'padd5-diesel-imports',
     'us-diesel-exports', 'padd1-jet-imports', 'padd5-jet-imports', 'us-jet-exports',
     'padd1-fueloil-imports', 'padd3-fueloil-imports', 'padd5-fueloil-imports' or 'us-fueloil-exports'</p>
-</li>
-<li>
-<p><strong>filter_time_min</strong>: The UTC start date of the time filter</p>
-</li>
-<li>
-<p><strong>filter_time_max</strong>: The UTC end date of the time filter</p>
+<p>filter_time_min: The UTC start date of the time filter</p>
+<p>filter_time_max: The UTC end date of the time filter</p>
 </li>
 </ul>
 <p><strong>Returns</strong></p>
@@ -368,17 +365,23 @@
 
 <h2 id="vortexasdk.endpoints.eia_forecasts_result.EIAForecastResult">EIAForecastResult</h2>
 
-<pre><code class="language-python">EIAForecastResult(__pydantic_self__, **data: Any) -&gt; None
+<pre><code class="language-python">EIAForecastResult(*, records: typing.List,
+                  reference: typing.Dict[str, typing.Any])
 </code></pre>
 <p>Container class that holds the result obtained from calling the <code>EIAForecasts</code> endpoint.</p>
+<h3 id="vortexasdk.endpoints.eia_forecasts_result.EIAForecastResult.model_config">model_config</h3>
+
 <h3 id="vortexasdk.endpoints.eia_forecasts_result.EIAForecastResult.to_list">to_list</h3>
 
-<pre><code class="language-python">EIAForecastResult.to_list(self) -&gt; List[vortexasdk.api.eia_forecast.EIAForecast]
+<pre><code class="language-python">EIAForecastResult.to_list()
 </code></pre>
 <p>Represent EIAForecast data as a list.</p>
 <h3 id="vortexasdk.endpoints.eia_forecasts_result.EIAForecastResult.to_df">to_df</h3>
 
-<pre><code class="language-python">EIAForecastResult.to_df(self, columns=['date', 'forecast_fri', 'value', 'stocks', 'cover', 'runs']) -&gt; pandas.core.frame.DataFrame
+<pre><code class="language-python">EIAForecastResult.to_df(
+    columns:
+    typing.Union[typing_extensions.Literal['all'], typing.List[str], NoneType] = ['date', 'forecast_fri', 'value', 'stocks', 'cover', 'runs']
+)
 </code></pre>
 <p>Represent EIA forecasts as a <code>pd.DataFrame</code>.</p>
 <p><strong>Arguments</strong></p>

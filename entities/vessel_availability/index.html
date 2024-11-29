@@ -177,8 +177,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../vessel/">Vessel</a>
                     </li>
-                    <li class="toctree-l1"><a class="" href="../vessel_movement.md">Vessel Movement</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../voyages/">Voyages</a>
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Vessel Availability</a>
@@ -254,19 +252,59 @@
 
 <h2 id="vortexasdk.api.vessel_availability.DeclaredDestination">DeclaredDestination</h2>
 
-<pre><code class="language-python">DeclaredDestination(__pydantic_self__, **data: Any) -&gt; None
+<pre><code class="language-python">DeclaredDestination(*, eta: typing.Optional[str],
+                    name: typing.Optional[str],
+                    vessel_id: typing.Optional[str])
 </code></pre>
 <p>Current destination location, as reported by the available vessel</p>
+<h3 id="vortexasdk.api.vessel_availability.DeclaredDestination.model_config">model_config</h3>
+
 <h2 id="vortexasdk.api.vessel_availability.VesselFixtures">VesselFixtures</h2>
 
-<pre><code class="language-python">VesselFixtures(__pydantic_self__, **data: Any) -&gt; None
+<pre><code class="language-python">VesselFixtures(*, origin: typing.Optional[str],
+               destination: typing.Optional[str],
+               charterer: typing.Optional[str],
+               fixing_timestamp: typing.Optional[str],
+               laycan_from: typing.Optional[str],
+               laycan_to: typing.Optional[str])
 </code></pre>
 <p>Current fixture information for the available vessel</p>
+<h3 id="vortexasdk.api.vessel_availability.VesselFixtures.model_config">model_config</h3>
+
 <h2 id="vortexasdk.api.vessel_availability.VesselAvailability">VesselAvailability</h2>
 
-<pre><code class="language-python">VesselAvailability(__pydantic_self__, **data: Any) -&gt; None
+<pre><code class="language-python">VesselAvailability(
+  *, available_at: typing.Optional[str],
+  evaluated_at: typing.Optional[str], vessel_class: typing.Optional[str],
+  vessel_class_hierarchy:
+    typing.Optional[typing.List[vortexasdk.api.shared_types.VesselClassEntry]],
+  vessel_declared_destination:
+    typing.Optional[typing.List[vortexasdk.api.vessel_availability.DeclaredDestination]],
+  vessel_dwt: typing.Optional[int],
+  vessel_cubic_capacity: typing.Optional[int], vessel_fixtures:
+    typing.Optional[typing.List[vortexasdk.api.vessel_availability.VesselFixtures]],
+  vessel_id: typing.Optional[str], vessel_imo: typing.Optional[str],
+  vessel_last_cargo:
+    typing.Optional[typing.List[vortexasdk.api.shared_types.EntityWithListLayer]],
+  vessel_location:
+    typing.Optional[typing.List[vortexasdk.api.shared_types.EntityWithListLayer]],
+  vessel_name: typing.Optional[str],
+  vessel_owner_id: typing.Optional[str],
+  vessel_owner_name: typing.Optional[str],
+  vessel_risk_level: typing.Optional[str], vessel_predicted_destination:
+    typing.Optional[typing.List[vortexasdk.api.shared_types.EntityWithListLayer]],
+  vessel_scrubber: typing.Optional[bool],
+  vessel_status: typing.Optional[str],
+  vessel_year_built: typing.Optional[int],
+  last_activity_at: typing.Optional[str],
+  last_activity: typing.Optional[int], vessel_flags:
+    typing.Optional[typing.List[vortexasdk.api.shared_types.Flag]],
+  vessel_tags:
+    typing.Optional[typing.List[vortexasdk.api.shared_types.Tag]],
+  vessel_ice_class: typing.Optional[str])
 </code></pre>
 <p>Vessel Availability shows vessels that are available to load a given cargo at a given port within a specified time range.</p>
+<h3 id="vortexasdk.api.vessel_availability.VesselAvailability.model_config">model_config</h3>
               
             </div>
           </div>

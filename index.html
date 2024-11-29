@@ -62,14 +62,12 @@
     <li class="toctree-l2"><a class="reference internal" href="#example">Example</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#quick-start">Quick Start</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#authentication">Authentication</a>
+    <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#check-setup">Check Setup</a>
+    <li class="toctree-l2"><a class="reference internal" href="#authentication">Authentication</a>
     </li>
-        </ul>
+    <li class="toctree-l2"><a class="reference internal" href="#check-setup">Check Setup</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#next-steps">Next Steps</a>
     </li>
@@ -199,8 +197,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="entities/vessel/">Vessel</a>
                     </li>
-                    <li class="toctree-l1"><a class="" href="entities/vessel_movement.md">Vessel Movement</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="entities/voyages/">Voyages</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="entities/vessel_availability/">Vessel Availability</a>
@@ -269,8 +265,7 @@
             <div class="section">
               
                 <h1 id="vortexasdk">VortexaSDK</h1>
-<p><a href="https://dl.circleci.com/status-badge/redirect/gh/VorTECHsa/python-sdk/tree/master"><img alt="CircleCI" src="https://dl.circleci.com/status-badge/img/gh/VorTECHsa/python-sdk/tree/master.svg?style=svg&amp;circle-token=CCIPRJ_Ttg8qk4EgWPW4o2zSa4GAM_c75257228a3a37589ceb44d7d7b28d891927063f" /></a>
-<a href="https://github.com/psf/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg" /></a>
+<p><a href="https://github.com/psf/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg" /></a>
 <a href="#contributors"><img alt="All Contributors" src="https://img.shields.io/badge/all_contributors-12-orange.svg?style=flat-square" /></a></p>
 <p>Welcome to Vortexa's Python Software Development Kit (SDK)! We built the SDK to
 provide fast, interactive, programmatic exploration of our data. The tool lets
@@ -280,7 +275,7 @@ setup cost.</p>
 <p>The SDK sits as a thin python wrapper around
 <a href="https://docs.vortexa.com">Vortexa's API</a>, giving you immediate access to pandas
 DataFrames.</p>
-<h5 id="example">Example</h5>
+<h2 id="example">Example</h2>
 <p>In an interactive Python console, run:</p>
 <pre><code class="language-python">&gt;&gt;&gt; from datetime import datetime
 &gt;&gt;&gt; from vortexasdk import CargoMovements
@@ -336,25 +331,25 @@ DataFrames.</p>
 <h2 id="quick-start">Quick Start</h2>
 <p>Try me out in your browser:</p>
 <p><a href="https://mybinder.org/v2/gh/VorTECHsa/python-sdk/master?filepath=docs%2Fexamples%2Ftry_me_out%2Fcargo_movements.ipynb"><img alt="Binder" src="https://img.shields.io/badge/try%20me%20out-launch%20notebook-579ACA.svg?logo=data:image/png;base64,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" /></a></p>
-<h5 id="installation">Installation</h5>
-<pre><code class="language-bash">$ pip install vortexasdk
+<h2 id="installation">Installation</h2>
+<pre><code class="language-bash">pip install vortexasdk
 </code></pre>
 <p>or</p>
-<pre><code class="language-bash">$ pip3 install vortexasdk
+<pre><code class="language-bash">pip3 install vortexasdk
 </code></pre>
-<p>The SDK requires Python versions between 3.7 and 3.10. See <a href="https://vortechsa.github.io/python-sdk/faq_setup/">Setup FAQ</a> for more details.</p>
-<p>To install the SDK on an Apple ARM-based machine, use Python versions between 3.7 and 3.10 and use the latest version of pip. This is supported in the SDK versions 0.41.0 or higher.</p>
-<h5 id="authentication">Authentication</h5>
+<p>The SDK requires Python version 3.9. See <a href="https://vortechsa.github.io/python-sdk/faq_setup/">Setup FAQ</a> for more details.</p>
+<p>To install the SDK on an Apple ARM-based machine, use Python versions 3.9 and use the latest version of pip. This is supported in the SDK versions 1.0.0 or higher.</p>
+<h2 id="authentication">Authentication</h2>
 <p>Set your <code>VORTEXA_API_KEY</code> environment variable, that's all. Alternatively, the
 SDK prompts to you enter your API Key when running a script interactively.</p>
 <p>To get an API key and experiment with Vortexa's data, you can
 <a href="https://www.vortexa.com/demo">request a demo here</a>.</p>
-<h5 id="check-setup">Check Setup</h5>
+<h2 id="check-setup">Check Setup</h2>
 <p>To check the SDK is setup correctly, run the following in a bash console:</p>
-<pre><code class="language-bash">$ python -m vortexasdk.check_setup
+<pre><code class="language-bash">python -m vortexasdk.check_setup
 </code></pre>
 <p>or</p>
-<pre><code class="language-bash">$ python3 -m vortexasdk.check_setup
+<pre><code class="language-bash">python3 -m vortexasdk.check_setup
 </code></pre>
 <p>A successful setup looks like this:</p>
 <p><img alt="check_setup.png" src="https://raw.githubusercontent.com/VorTECHsa/python-sdk/master/docs/img/check_setup.png" /></p>
@@ -469,5 +464,5 @@ specification. Contributions of any kind welcome!</p>
 
 <!--
 MkDocs version : 1.2.4
-Build Date UTC : 2024-11-15 14:14:48.513252+00:00
+Build Date UTC : 2024-11-29 11:35:31.251223+00:00
 -->

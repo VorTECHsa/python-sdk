@@ -177,8 +177,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/vessel/">Vessel</a>
                     </li>
-                    <li class="toctree-l1"><a class="" href="../../entities/vessel_movement.md">Vessel Movement</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/voyages/">Voyages</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/vessel_availability/">Vessel Availability</a>
@@ -261,30 +259,29 @@
 <p>Geographies endpoint.</p>
 <h3 id="vortexasdk.endpoints.geographies.Geographies.load_all">load_all</h3>
 
-<pre><code class="language-python">Geographies.load_all(self) -&gt; vortexasdk.endpoints.geographies_result.GeographyResult
+<pre><code class="language-python">Geographies.load_all()
 </code></pre>
 <p>Load all geographies.</p>
 <h3 id="vortexasdk.endpoints.geographies.Geographies.search">search</h3>
 
-<pre><code class="language-python">Geographies.search(self, term: Union[str, List[str]] = None, exact_term_match: bool = False, filter_layer: str = None) -&gt; vortexasdk.endpoints.geographies_result.GeographyResult
+<pre><code class="language-python">Geographies.search(
+  term: typing.Union[str, typing.List[str], NoneType] = None,
+  exact_term_match: bool = False,
+  filter_layer: typing.Optional[str] = None)
 </code></pre>
 <p>Find all geographies matching given search terms.</p>
 <p><strong>Arguments</strong></p>
 <ul>
 <li>
 <p><strong>term</strong>: The geography name (or names) we're filtering on</p>
-</li>
-<li>
-<p><strong>exact_term_match</strong>: Search on only exact term matches, or allow similar matches.
-        e.g. When searching for "China" with <code>exact_term_match=False</code>, then the SDK will yield geographies named
-        ['China', 'South China', 'China Energy Services Ningbo'...] etc. When <code>exact_term_match=True</code>,
-        the SDK will only yield the geography named <code>China</code>.</p>
-</li>
-<li>
-<p><strong>filter_layer</strong>: Must be one of: <code>terminal</code>, <code>port</code>, <code>country</code>, <code>country_zone</code>, <code>shipping_region</code>,
-    <code>shipping_region_v2</code>, <code>wider_shipping_region</code>, <code>region</code>, <code>alternative_region</code>, <code>trading_block</code>,
-    <code>trading_region</code>, <code>trading_subregion</code>, <code>state_or_province</code>, <code>sts_zone</code>, <code>waypoint</code>, <code>storage</code>,
-    <code>storage_terminal</code>, <code>basin</code>, <code>root</code>, or not provided.</p>
+<p>exact_term_match: Search on only exact term matches, or allow similar matches.
+    e.g. When searching for "China" with <code>exact_term_match=False</code>, then the SDK will yield geographies named
+    ['China', 'South China', 'China Energy Services Ningbo'...] etc. When <code>exact_term_match=True</code>,
+    the SDK will only yield the geography named <code>China</code>.</p>
+<p>filter_layer: Must be one of: <code>terminal</code>, <code>port</code>, <code>country</code>, <code>country_zone</code>, <code>shipping_region</code>,
+<code>shipping_region_v2</code>, <code>wider_shipping_region</code>, <code>region</code>, <code>alternative_region</code>, <code>trading_block</code>,
+<code>trading_region</code>, <code>trading_subregion</code>, <code>state_or_province</code>, <code>sts_zone</code>, <code>waypoint</code>, <code>storage</code>,
+<code>storage_terminal</code>, <code>basin</code>, <code>root</code>, or not provided.</p>
 </li>
 </ul>
 <p><strong>Returns</strong></p>
@@ -339,7 +336,7 @@
 </table>
 <h3 id="vortexasdk.endpoints.geographies.Geographies.reference">reference</h3>
 
-<pre><code class="language-python">Geographies.reference(self, id: str) -&gt; Dict
+<pre><code class="language-python">Geographies.reference(id: str)
 </code></pre>
 <p>Perform a geography lookup.</p>
 <p><strong>Arguments</strong></p>
@@ -354,17 +351,23 @@
 
 <h2 id="vortexasdk.endpoints.geographies_result.GeographyResult">GeographyResult</h2>
 
-<pre><code class="language-python">GeographyResult(__pydantic_self__, **data: Any) -&gt; None
+<pre><code class="language-python">GeographyResult(*, records: typing.List,
+                reference: typing.Dict[str, typing.Any])
 </code></pre>
 <p>Container class that holds the result obtained from calling the <code>Geography</code> endpoint.</p>
+<h3 id="vortexasdk.endpoints.geographies_result.GeographyResult.model_config">model_config</h3>
+
 <h3 id="vortexasdk.endpoints.geographies_result.GeographyResult.to_list">to_list</h3>
 
-<pre><code class="language-python">GeographyResult.to_list(self) -&gt; List[vortexasdk.api.geography.Geography]
+<pre><code class="language-python">GeographyResult.to_list()
 </code></pre>
 <p>Represent geographies as a list.</p>
 <h3 id="vortexasdk.endpoints.geographies_result.GeographyResult.to_df">to_df</h3>
 
-<pre><code class="language-python">GeographyResult.to_df(self, columns=['id', 'name', 'layer']) -&gt; pandas.core.frame.DataFrame
+<pre><code class="language-python">GeographyResult.to_df(
+    columns:
+    typing.Union[typing_extensions.Literal['all'], typing.List[str], NoneType] = ['id', 'name', 'layer']
+)
 </code></pre>
 <p>Represent geographies as a <code>pd.DataFrame</code>.</p>
 <p><strong>Arguments</strong></p>

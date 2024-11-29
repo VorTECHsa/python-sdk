@@ -177,8 +177,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/vessel/">Vessel</a>
                     </li>
-                    <li class="toctree-l1"><a class="" href="../../entities/vessel_movement.md">Vessel Movement</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/voyages/">Voyages</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/vessel_availability/">Vessel Availability</a>
@@ -260,140 +258,159 @@
 </code></pre>
 <h3 id="vortexasdk.endpoints.origin_breakdown.OriginBreakdown.search">search</h3>
 
-<pre><code class="language-python">OriginBreakdown.search(self, breakdown_geography: str = 'country', breakdown_unit_average_basis: str = None, filter_activity: str = 'any_activity', breakdown_unit: str = 'b', disable_geographic_exclusion_rules: bool = None, breakdown_size: int = None, filter_time_min: datetime.datetime = datetime.datetime(2019, 10, 1, 0, 0), filter_time_max: datetime.datetime = datetime.datetime(2019, 10, 1, 1, 0), filter_products: Union[str, List[str]] = None, filter_charterers: Union[str, List[str]] = None, filter_vessels: Union[str, List[str]] = None, filter_vessel_classes: Union[str, List[str]] = None, filter_owners: Union[str, List[str]] = None, filter_effective_controllers: Union[str, List[str]] = None, filter_vessel_flags: Union[str, List[str]] = None, filter_vessel_ice_class: Union[str, List[str]] = None, filter_vessel_propulsion: Union[str, List[str]] = None, filter_origins: Union[str, List[str]] = None, filter_destinations: Union[str, List[str]] = None, filter_storage_locations: Union[str, List[str]] = None, filter_waypoints: Union[str, List[str]] = None, filter_ship_to_ship_locations: Union[str, List[str]] = None, filter_vessel_age_min: int = None, filter_vessel_age_max: int = None, filter_vessel_scrubbers: str = 'disabled', filter_vessel_tags: Union[List[vortexasdk.api.shared_types.Tag], vortexasdk.api.shared_types.Tag] = None, exclude_products: Union[str, List[str]] = None, exclude_vessels: Union[str, List[str]] = None, exclude_vessel_classes: Union[str, List[str]] = None, exclude_owners: Union[str, List[str]] = None, exclude_effective_controllers: Union[str, List[str]] = None, exclude_charterers: Union[str, List[str]] = None, exclude_vessel_flags: Union[str, List[str]] = None, exclude_destinations: Union[str, List[str]] = None, exclude_origins: Union[str, List[str]] = None, exclude_waypoints: Union[str, List[str]] = None, exclude_storage_locations: Union[str, List[str]] = None, exclude_ship_to_ship_locations: Union[str, List[str]] = None, exclude_vessel_ice_class: Union[str, List[str]] = None, exclude_vessel_propulsion: Union[str, List[str]] = None, exclude_vessel_tags: Union[List[vortexasdk.api.shared_types.Tag], vortexasdk.api.shared_types.Tag] = None, intra_movements: str = None) -&gt; vortexasdk.endpoints.reference_breakdown_result.ReferenceBreakdownResult
+<pre><code class="language-python">OriginBreakdown.search(
+  breakdown_geography: str = 'country',
+  breakdown_unit_average_basis: typing.Optional[str] = None,
+  filter_activity: str = 'any_activity',
+  breakdown_unit: str = 'b',
+  disable_geographic_exclusion_rules: typing.Optional[bool] = None,
+  breakdown_size: typing.Optional[int] = None,
+  filter_time_min: datetime = datetime.datetime(2019, 10, 1, 0, 0),
+  filter_time_max: datetime = datetime.datetime(2019, 10, 1, 1, 0),
+  filter_products: typing.Union[str, typing.List[str], NoneType] = None,
+  filter_charterers: typing.Union[str, typing.List[str], NoneType] = None,
+  filter_vessels: typing.Union[str, typing.List[str], NoneType] = None,
+  filter_vessel_classes:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  filter_owners: typing.Union[str, typing.List[str], NoneType] = None,
+  filter_effective_controllers:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  filter_vessel_flags:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  filter_vessel_ice_class:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  filter_vessel_propulsion:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  filter_origins: typing.Union[str, typing.List[str], NoneType] = None,
+  filter_destinations:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  filter_storage_locations:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  filter_waypoints: typing.Union[str, typing.List[str], NoneType] = None,
+  filter_ship_to_ship_locations:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  filter_vessel_age_min: typing.Optional[int] = None,
+  filter_vessel_age_max: typing.Optional[int] = None,
+  filter_vessel_scrubbers: str = 'disabled',
+  filter_vessel_tags:
+    typing.Union[typing.List[vortexasdk.api.shared_types.Tag], vortexasdk.api.shared_types.Tag, NoneType] = None,
+  exclude_products: typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_vessels: typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_vessel_classes:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_owners: typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_effective_controllers:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_charterers:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_vessel_flags:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_destinations:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_origins: typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_waypoints: typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_storage_locations:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_ship_to_ship_locations:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_vessel_ice_class:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_vessel_propulsion:
+    typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_vessel_tags:
+    typing.Union[typing.List[vortexasdk.api.shared_types.Tag], vortexasdk.api.shared_types.Tag, NoneType] = None,
+  intra_movements: typing.Optional[str] = None)
 </code></pre>
 <p>Origin locations breakdown aggregation by geographic area</p>
 <p><strong>Arguments</strong></p>
-<ul>
-<li>
-<p><strong>breakdown_unit_average_basis</strong>: Per day metrics only - movement activity on which to base the average metric. Can be one of state properties of a cargo movement: <code>identified_for_loading_state</code>, <code>loading_state</code>, <code>transiting_state</code>, <code>storing_state</code>, <code>ship_to_ship</code>, <code>unloading_state</code>, <code>unloaded_state</code>, <code>oil_on_water_state</code>, <code>unknown_state</code>, or one of time properties of a cargo movement: <code>identified_for_loading_at</code>, <code>loading_start</code>, <code>loading_end</code>, <code>storing_start</code>, <code>storing_end</code>, <code>ship_to_ship_start</code>, <code>ship_to_ship_end</code>, <code>unloading_start</code>, <code>unloading_end</code>.</p>
-</li>
-<li>
-<p><strong>breakdown_unit</strong>: Units to aggregate upon. Must be one of the following: <code>'b'</code>, <code>'t'</code>, <code>'cbm'</code>, <code>'bpd'</code>, <code>'tpd'</code>, <code>'mpd'</code>.</p>
-</li>
-<li>
-<p><strong>breakdown_geography</strong>: Geography layer of the origin to aggregate upon. Must be one of the following:
-    <code>berth</code>, <code>terminal</code>, <code>port</code>, <code>country</code>, <code>country_zone</code>, <code>shipping_region</code>, <code>shipping_region_v2</code>,
-    <code>wider_shipping_region</code>, <code>region</code>, <code>alternative_region</code>, <code>trading_block</code>, <code>trading_region</code>,
-    <code>trading_subregion</code>, <code>state_or_province</code>, <code>sts_zone</code>, <code>waypoint</code>, <code>storage</code>, <code>storage_terminal</code>, <code>basin</code>,
-    <code>root</code>, or not provided. Default is <code>berth</code>.</p>
-</li>
-<li>
-<p><strong>breakdown_size</strong>: Number of top geographies to return. Default is 5.</p>
-</li>
-<li>
-<p><strong>disable_geographic_exclusion_rules</strong>: A boolean which specifies whether certain movements should be excluded, based on a combination of their origin and destination.</p>
-</li>
-<li>
-<p><strong>intra_movements</strong>: This enum controls a popular industry term intra-movements and determines the filter behaviour for cargo leaving then entering the same geographic area.
-     One of <code>all</code>, <code>exclude_intra_country</code> or <code>exclude_intra_geography</code></p>
-</li>
-<li>
-<p><strong>filter_activity</strong>: Cargo movement activity on which to base the time filter. The endpoint only includes cargo
-    movements matching that match this filter in the aggregations. Must be one of ['loading_state',
-     'loading_start', 'loading_end', 'identified_for_loading_state', 'unloading_state', 'unloading_start',
-      'unloading_end', 'storing_state', 'storing_start', 'storing_end', 'transiting_state'].</p>
-</li>
-<li>
-<p><strong>filter_time_min</strong>: The UTC start date of the time filter.</p>
-</li>
-<li>
-<p><strong>filter_time_max</strong>: The UTC end date of the time filter.</p>
-</li>
-<li>
-<p><strong>filter_effective_controllers</strong>: An effective controller ID, or list of effective controller IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_vessel_flags</strong>: A vessel flag ID, or list of vessel flag IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_vessel_ice_class</strong>: An ice class ID, or list of ice class IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_vessel_propulsion</strong>: An propulsion means ID, or list of propulsion means IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_charterers</strong>: An commercial entity ID, or list of commercial entity IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_origins</strong>: A geography ID, or list of geography IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_destinations</strong>: A geography ID, or list of geography IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_storage_locations</strong>: A geography ID, or list of geography IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_waypoints</strong>: A geography ID, or list of geography IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_ship_to_ship_locations</strong>: A geography ID, or list of geography IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_products</strong>: A product ID, or list of product IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_vessels</strong>: A vessel ID, or list of vessel IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_vessel_classes</strong>: A vessel class, or list of vessel classes to filter on.</p>
-</li>
-<li>
-<p><strong>filter_vessel_age_min</strong>: A number between 1 and 100 (representing years).</p>
-</li>
-<li>
-<p><strong>filter_vessel_age_max</strong>: A number between 1 and 100 (representing years).</p>
-</li>
-<li>
-<p><strong>filter_vessel_scrubbers</strong>: Either inactive 'disabled', or included 'inc' or excluded 'exc'.</p>
-</li>
-<li>
-<p><strong>filter_vessel_tags</strong>: A time bound vessel tag, or list of time bound vessel tags to filter on.</p>
-</li>
-<li>
-<p><strong>exclude_products</strong>: A product ID, or list of product IDs to exclude.</p>
-</li>
-<li>
-<p><strong>exclude_vessel_flags</strong>: A vessel flag ID, or list of vessel flag IDs to exclude.</p>
-</li>
-<li>
-<p><strong>exclude_vessel_ice_class</strong>: An ice class ID, or list of ice class IDs to exclude.</p>
-</li>
-<li>
-<p><strong>exclude_vessel_propulsion</strong>: An propulsion means ID, or list of propulsion means IDs to exclude.</p>
-</li>
-<li>
-<p><strong>exclude_vessels</strong>: A vessel ID, or list of vessel IDs to exclude.</p>
-</li>
-<li>
-<p><strong>exclude_vessel_classes</strong>: A vessel class, or list of vessel classes to exclude.</p>
-</li>
-<li>
-<p><strong>exclude_effective_controllers</strong>: An effective controller ID, or list of effective controller IDs to exclude.</p>
-</li>
-<li>
-<p><strong>exclude_vessel_location</strong>: A location ID, or list of location IDs to exclude.</p>
-</li>
-<li>
-<p><strong>exclude_destinations</strong>: A location ID, or list of location IDs to exclude.</p>
-</li>
-<li>
-<p><strong>exclude_origins</strong>: A location ID, or list of location IDs to exclude.</p>
-</li>
-<li>
-<p><strong>exclude_storage_locations</strong>: A location ID, or list of location IDs to exclude.</p>
-</li>
-<li>
-<p><strong>exclude_waypoints</strong>: A location ID, or list of location IDs to exclude.</p>
-</li>
-<li>
-<p><strong>exclude_ship_to_ship_locations</strong>: A location ID, or list of location IDs to exclude.</p>
-</li>
-<li>
-<p><strong>exclude_vessel_tags</strong>: A time bound vessel tag, or list of time bound vessel tags to exclude.</p>
-</li>
-</ul>
+<pre><code>breakdown_unit_average_basis: Per day metrics only - movement activity on which to base the average metric. Can be one of state properties of a cargo movement: `identified_for_loading_state`, `loading_state`, `transiting_state`, `storing_state`, `ship_to_ship`, `unloading_state`, `unloaded_state`, `oil_on_water_state`, `unknown_state`, or one of time properties of a cargo movement: `identified_for_loading_at`, `loading_start`, `loading_end`, `storing_start`, `storing_end`, `ship_to_ship_start`, `ship_to_ship_end`, `unloading_start`, `unloading_end`.
+
+breakdown_unit: Units to aggregate upon. Must be one of the following: `'b'`, `'t'`, `'cbm'`, `'bpd'`, `'tpd'`, `'mpd'`.
+
+breakdown_geography: Geography layer of the origin to aggregate upon. Must be one of the following:
+`berth`, `terminal`, `port`, `country`, `country_zone`, `shipping_region`, `shipping_region_v2`,
+`wider_shipping_region`, `region`, `alternative_region`, `trading_block`, `trading_region`,
+`trading_subregion`, `state_or_province`, `sts_zone`, `waypoint`, `storage`, `storage_terminal`, `basin`,
+`root`, or not provided. Default is `berth`.
+
+breakdown_size: Number of top geographies to return. Default is 5.
+
+disable_geographic_exclusion_rules: A boolean which specifies whether certain movements should be excluded, based on a combination of their origin and destination.
+
+intra_movements: This enum controls a popular industry term intra-movements and determines the filter behaviour for cargo leaving then entering the same geographic area.
+ One of `all`, `exclude_intra_country` or `exclude_intra_geography`
+
+filter_activity: Cargo movement activity on which to base the time filter. The endpoint only includes cargo
+movements matching that match this filter in the aggregations. Must be one of ['loading_state',
+ 'loading_start', 'loading_end', 'identified_for_loading_state', 'unloading_state', 'unloading_start',
+  'unloading_end', 'storing_state', 'storing_start', 'storing_end', 'transiting_state'].
+
+filter_time_min: The UTC start date of the time filter.
+
+filter_time_max: The UTC end date of the time filter.
+
+filter_effective_controllers: An effective controller ID, or list of effective controller IDs to filter on.
+
+filter_vessel_flags: A vessel flag ID, or list of vessel flag IDs to filter on.
+
+filter_vessel_ice_class: An ice class ID, or list of ice class IDs to filter on.
+
+filter_vessel_propulsion: An propulsion means ID, or list of propulsion means IDs to filter on.
+
+filter_charterers: An commercial entity ID, or list of commercial entity IDs to filter on.
+
+filter_origins: A geography ID, or list of geography IDs to filter on.
+
+filter_destinations: A geography ID, or list of geography IDs to filter on.
+
+filter_storage_locations: A geography ID, or list of geography IDs to filter on.
+
+filter_waypoints: A geography ID, or list of geography IDs to filter on.
+
+filter_ship_to_ship_locations: A geography ID, or list of geography IDs to filter on.
+
+filter_products: A product ID, or list of product IDs to filter on.
+
+filter_vessels: A vessel ID, or list of vessel IDs to filter on.
+
+filter_vessel_classes: A vessel class, or list of vessel classes to filter on.
+
+filter_vessel_age_min: A number between 1 and 100 (representing years).
+
+filter_vessel_age_max: A number between 1 and 100 (representing years).
+
+filter_vessel_scrubbers: Either inactive 'disabled', or included 'inc' or excluded 'exc'.
+
+filter_vessel_tags: A time bound vessel tag, or list of time bound vessel tags to filter on.
+
+exclude_products: A product ID, or list of product IDs to exclude.
+
+exclude_vessel_flags: A vessel flag ID, or list of vessel flag IDs to exclude.
+
+exclude_vessel_ice_class: An ice class ID, or list of ice class IDs to exclude.
+
+exclude_vessel_propulsion: An propulsion means ID, or list of propulsion means IDs to exclude.
+
+exclude_vessels: A vessel ID, or list of vessel IDs to exclude.
+
+exclude_vessel_classes: A vessel class, or list of vessel classes to exclude.
+
+exclude_effective_controllers: An effective controller ID, or list of effective controller IDs to exclude.
+
+exclude_vessel_location: A location ID, or list of location IDs to exclude.
+
+exclude_destinations: A location ID, or list of location IDs to exclude.
+
+exclude_origins: A location ID, or list of location IDs to exclude.
+
+exclude_storage_locations: A location ID, or list of location IDs to exclude.
+
+exclude_waypoints: A location ID, or list of location IDs to exclude.
+
+exclude_ship_to_ship_locations: A location ID, or list of location IDs to exclude.
+
+exclude_vessel_tags: A time bound vessel tag, or list of time bound vessel tags to exclude.
+</code></pre>
 <p><strong>Returns</strong></p>
 <p><code>ReferenceBreakdownResult</code></p>
 <p><strong>Example</strong></p>

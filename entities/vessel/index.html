@@ -177,8 +177,6 @@
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Vessel</a>
                     </li>
-                    <li class="toctree-l1"><a class="" href="../vessel_movement.md">Vessel Movement</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../voyages/">Voyages</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../vessel_availability/">Vessel Availability</a>
@@ -252,18 +250,76 @@
               
                 <h1 id="vortexasdk.api.vessel">vortexasdk.api.vessel</h1>
 
+<h2 id="vortexasdk.api.vessel.VesselEntityCorporateEntity">VesselEntityCorporateEntity</h2>
+
+<pre><code class="language-python">VesselEntityCorporateEntity(*, id: str, label: typing.Optional[str],
+                            layer: typing.Optional[str],
+                            end_timestamp: typing.Optional[str],
+                            start_timestamp: typing.Optional[str])
+</code></pre>
+<h3 id="vortexasdk.api.vessel.VesselEntityCorporateEntity.model_config">model_config</h3>
+
+<h2 id="vortexasdk.api.vessel.VesselEntityCorporateEntityWithConfidence">VesselEntityCorporateEntityWithConfidence</h2>
+
+<pre><code class="language-python">VesselEntityCorporateEntityWithConfidence(
+  *, probability: typing.Optional[float], source: typing.Optional[str],
+  id: typing.Optional[str], label: typing.Optional[str],
+  layer: typing.Optional[str], end_timestamp: typing.Optional[str],
+  start_timestamp: typing.Optional[str])
+</code></pre>
+<h3 id="vortexasdk.api.vessel.VesselEntityCorporateEntityWithConfidence.model_config">model_config</h3>
+
 <h2 id="vortexasdk.api.vessel.Vessel">Vessel</h2>
 
-<pre><code class="language-python">Vessel(__pydantic_self__, **data: Any) -&gt; None
+<pre><code class="language-python">Vessel(
+  *, id: str, name: typing.Optional[str], ref_type: typing.Optional[str],
+  leaf: typing.Optional[bool], parent:
+    typing.Optional[typing.List[vortexasdk.api.shared_types.IDNameLayer]],
+  related_names: typing.Optional[list], mmsi: typing.Optional[int],
+  layer: typing.Optional[typing.List[str]],
+  tags: typing.Optional[typing.List[vortexasdk.api.shared_types.Tag]],
+  current_product_type: typing.Optional[typing.List[typing.Any]],
+  vessel_class: typing.Optional[str], classes:
+    typing.Optional[typing.List[vortexasdk.api.shared_types.VesselClassEntry]],
+  vessel_status: typing.Optional[str], corporate_entities:
+    typing.Optional[typing.List[vortexasdk.api.vessel.VesselEntityCorporateEntity]],
+  dead_weight: typing.Optional[int],
+  cubic_capacity: typing.Optional[int], to_bow: typing.Optional[int],
+  to_stern: typing.Optional[int], to_port: typing.Optional[int],
+  to_starboard: typing.Optional[int], call_sign: typing.Optional[str],
+  year: typing.Optional[int], imo: typing.Optional[int],
+  gross_tonnage: typing.Optional[int], scrubber:
+    typing.Optional[typing.List[vortexasdk.api.shared_types.Scrubber]],
+  flag: typing.Optional[typing.List[vortexasdk.api.shared_types.Flag]],
+  ice_class: typing.Optional[str], propulsion: typing.Optional[str])
 </code></pre>
 <p>Represent a Vessel reference record returned by the API.</p>
 <p><a href="https://docs.vortexa.com/reference/GET/reference/vessels/%7Bid%7D">Vessels Further Documentation</a></p>
+<h3 id="vortexasdk.api.vessel.Vessel.model_config">model_config</h3>
+
 <h2 id="vortexasdk.api.vessel.VesselEntity">VesselEntity</h2>
 
-<pre><code class="language-python">VesselEntity(__pydantic_self__, **data: Any) -&gt; None
+<pre><code class="language-python">VesselEntity(
+  *, id: str, name: typing.Optional[str], mmsi: typing.Optional[int],
+  imo: typing.Optional[int], dwt: typing.Optional[int],
+  vessel_class: typing.Optional[str], classes:
+    typing.Optional[typing.List[vortexasdk.api.shared_types.VesselClassEntry]],
+  corporate_entities:
+    typing.Optional[typing.List[vortexasdk.api.vessel.VesselEntityCorporateEntityWithConfidence]],
+  tags: typing.Optional[typing.List[vortexasdk.api.shared_types.Tag]],
+  status: typing.Optional[str], year: typing.Optional[int],
+  start_timestamp: typing.Optional[str],
+  cubic_capacity: typing.Optional[int], voyage_id: typing.Optional[str],
+  fixture_fulfilled: typing.Optional[bool],
+  end_timestamp: typing.Optional[str], fixture_id: typing.Optional[str],
+  scrubber:
+    typing.Optional[typing.List[vortexasdk.api.shared_types.Scrubber]],
+  flag: typing.Optional[typing.List[vortexasdk.api.shared_types.Flag]],
+  ice_class: typing.Optional[str], propulsion: typing.Optional[str])
 </code></pre>
 <p>A VesselEntity represents a vessel record used in CargoMovements.</p>
 <p><a href="https://docs.vortexa.com/reference/intro-vessel-entities">Vessel Entities Further Documentation</a></p>
+<h3 id="vortexasdk.api.vessel.VesselEntity.model_config">model_config</h3>
               
             </div>
           </div>

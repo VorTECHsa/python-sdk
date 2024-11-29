@@ -177,8 +177,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/vessel/">Vessel</a>
                     </li>
-                    <li class="toctree-l1"><a class="" href="../../entities/vessel_movement.md">Vessel Movement</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/voyages/">Voyages</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/vessel_availability/">Vessel Availability</a>
@@ -265,203 +263,150 @@
 <p>Please note: you will require a subscription to our Freight module to access this endpoint.</p>
 <h3 id="vortexasdk.endpoints.voyages_congestion_breakdown.VoyagesCongestionBreakdown.search">search</h3>
 
-<pre><code class="language-python">VoyagesCongestionBreakdown.search(self, breakdown_property: str = 'port', breakdown_size: int = 2000, order: str = None, order_direction: str = None, time_min: datetime.datetime = datetime.datetime(2022, 1, 1, 0, 0), time_max: datetime.datetime = datetime.datetime(2022, 1, 1, 1, 0), voyage_id: Union[str, List[str]] = None, cargo_movement_id: Union[str, List[str]] = None, voyage_status: Union[str, List[str]] = None, voyage_status_excluded: Union[str, List[str]] = None, movement_status: Union[str, List[str]] = None, movement_status_excluded: Union[str, List[str]] = None, cargo_status: Union[str, List[str]] = None, cargo_status_excluded: Union[str, List[str]] = None, location_status: Union[str, List[str]] = None, location_status_excluded: Union[str, List[str]] = None, commitment_status: Union[str, List[str]] = None, commitment_status_excluded: Union[str, List[str]] = None, exclude_overlapping_entries: bool = None, products: Union[str, List[str]] = None, products_excluded: Union[str, List[str]] = None, latest_products: Union[str, List[str]] = None, latest_products_excluded: Union[str, List[str]] = None, charterers: Union[str, List[str]] = None, charterers_excluded: Union[str, List[str]] = None, effective_controllers: Union[str, List[str]] = None, effective_controllers_excluded: Union[str, List[str]] = None, origins: Union[str, List[str]] = None, origins_excluded: Union[str, List[str]] = None, destinations: Union[str, List[str]] = None, destinations_excluded: Union[str, List[str]] = None, locations: Union[str, List[str]] = None, locations_excluded: Union[str, List[str]] = None, vessels: Union[str, List[str]] = None, vessels_excluded: Union[str, List[str]] = None, flags: Union[str, List[str]] = None, flags_excluded: Union[str, List[str]] = None, ice_class: Union[str, List[str]] = None, ice_class_excluded: Union[str, List[str]] = None, vessel_propulsion: Union[str, List[str]] = None, vessel_propulsion_excluded: Union[str, List[str]] = None, vessel_age_min: int = None, vessel_age_max: int = None, vessel_dwt_min: int = None, vessel_dwt_max: int = None, vessel_cbm_min: int = None, vessel_cbm_max: int = None, vessel_wait_time_min: int = None, vessel_wait_time_max: int = None, vessel_scrubbers: str = None, vessel_tags: Union[vortexasdk.api.shared_types.Tag, List[vortexasdk.api.shared_types.Tag]] = None, vessel_tags_excluded: Union[vortexasdk.api.shared_types.Tag, List[vortexasdk.api.shared_types.Tag]] = None, vessel_risk_level: Union[str, List[str]] = None, vessel_risk_level_excluded: Union[str, List[str]] = None, has_ship_to_ship: str = None, has_charterer: str = None, intra_movements: str = None, voyage_date_range_activity: vortexasdk.api.shared_types.VoyageDateRangeActivity = None, origin_behaviour: vortexasdk.api.shared_types.OriginBehaviour = None, destination_behaviour: vortexasdk.api.shared_types.DestinationBehaviour = None) -&gt; vortexasdk.endpoints.voyages_congestion_breakdown_result.CongestionBreakdownResult
+<pre><code class="language-python">VoyagesCongestionBreakdown.search(
+    breakdown_property: str = 'port',
+    breakdown_size: int = 2000,
+    order: typing.Optional[str] = None,
+    order_direction: typing.Optional[str] = None,
+    time_min: datetime = datetime.datetime(2022, 1, 1, 0, 0),
+    time_max: datetime = datetime.datetime(2022, 1, 1, 1, 0),
+    voyage_id: typing.Union[str, typing.List[str], NoneType] = None,
+    cargo_movement_id: typing.Union[str, typing.List[str], NoneType] = None,
+    voyage_status: typing.Union[str, typing.List[str], NoneType] = None,
+    voyage_status_excluded:
+    typing.Union[str, typing.List[str], NoneType] = None,
+    movement_status: typing.Union[str, typing.List[str], NoneType] = None,
+    movement_status_excluded:
+    typing.Union[str, typing.List[str], NoneType] = None,
+    cargo_status: typing.Union[str, typing.List[str], NoneType] = None,
+    cargo_status_excluded: typing.Union[str, typing.List[str], NoneType] = None,
+    location_status: typing.Union[str, typing.List[str], NoneType] = None,
+    location_status_excluded:
+    typing.Union[str, typing.List[str], NoneType] = None,
+    commitment_status: typing.Union[str, typing.List[str], NoneType] = None,
+    commitment_status_excluded:
+    typing.Union[str, typing.List[str], NoneType] = None,
+    exclude_overlapping_entries: typing.Optional[bool] = None,
+    products: typing.Union[str, typing.List[str], NoneType] = None,
+    products_excluded: typing.Union[str, typing.List[str], NoneType] = None,
+    latest_products: typing.Union[str, typing.List[str], NoneType] = None,
+    latest_products_excluded:
+    typing.Union[str, typing.List[str], NoneType] = None,
+    charterers: typing.Union[str, typing.List[str], NoneType] = None,
+    charterers_excluded: typing.Union[str, typing.List[str], NoneType] = None,
+    effective_controllers: typing.Union[str, typing.List[str], NoneType] = None,
+    effective_controllers_excluded:
+    typing.Union[str, typing.List[str], NoneType] = None,
+    origins: typing.Union[str, typing.List[str], NoneType] = None,
+    origins_excluded: typing.Union[str, typing.List[str], NoneType] = None,
+    destinations: typing.Union[str, typing.List[str], NoneType] = None,
+    destinations_excluded: typing.Union[str, typing.List[str], NoneType] = None,
+    locations: typing.Union[str, typing.List[str], NoneType] = None,
+    locations_excluded: typing.Union[str, typing.List[str], NoneType] = None,
+    vessels: typing.Union[str, typing.List[str], NoneType] = None,
+    vessels_excluded: typing.Union[str, typing.List[str], NoneType] = None,
+    flags: typing.Union[str, typing.List[str], NoneType] = None,
+    flags_excluded: typing.Union[str, typing.List[str], NoneType] = None,
+    ice_class: typing.Union[str, typing.List[str], NoneType] = None,
+    ice_class_excluded: typing.Union[str, typing.List[str], NoneType] = None,
+    vessel_propulsion: typing.Union[str, typing.List[str], NoneType] = None,
+    vessel_propulsion_excluded:
+    typing.Union[str, typing.List[str], NoneType] = None,
+    vessel_age_min: typing.Optional[int] = None,
+    vessel_age_max: typing.Optional[int] = None,
+    vessel_dwt_min: typing.Optional[int] = None,
+    vessel_dwt_max: typing.Optional[int] = None,
+    vessel_cbm_min: typing.Optional[int] = None,
+    vessel_cbm_max: typing.Optional[int] = None,
+    vessel_wait_time_min: typing.Optional[int] = None,
+    vessel_wait_time_max: typing.Optional[int] = None,
+    vessel_scrubbers: typing.Optional[str] = None,
+    vessel_tags:
+    typing.Union[typing.List[vortexasdk.api.shared_types.Tag], vortexasdk.api.shared_types.Tag, NoneType] = None,
+    vessel_tags_excluded:
+    typing.Union[typing.List[vortexasdk.api.shared_types.Tag], vortexasdk.api.shared_types.Tag, NoneType] = None,
+    vessel_risk_level: typing.Union[str, typing.List[str], NoneType] = None,
+    vessel_risk_level_excluded:
+    typing.Union[str, typing.List[str], NoneType] = None,
+    has_ship_to_ship: typing.Optional[str] = None,
+    has_charterer: typing.Optional[str] = None,
+    intra_movements: typing.Optional[str] = None,
+    voyage_date_range_activity:
+    typing.Optional[vortexasdk.api.shared_types.VoyageDateRangeActivity] = None,
+    origin_behaviour:
+    typing.Optional[vortexasdk.api.shared_types.OriginBehaviour] = None,
+    destination_behaviour:
+    typing.Optional[vortexasdk.api.shared_types.DestinationBehaviour] = None)
 </code></pre>
 <p>Returns a count of congested voyages aggregated by congestion location.</p>
 <p><strong>Arguments</strong></p>
 <ul>
 <li>
 <p><strong>breakdown_size</strong>: Number of top records to return.</p>
-</li>
-<li>
-<p><strong>breakdown_property</strong>: Property to aggregate upon. Can be one of: <code>'port'</code>, <code>'shipping_region'</code>, <code>'terminal'</code>.</p>
-</li>
-<li>
-<p><strong>time_min</strong>: The UTC start date of the time filter.</p>
-</li>
-<li>
-<p><strong>time_max</strong>: The UTC end date of the time filter.</p>
-</li>
-<li>
-<p><strong>voyage_id</strong>: An array of unique voyage ID(s) to filter on.</p>
-</li>
-<li>
-<p><strong>cargo_movement_id</strong>: An array of unique cargo movement ID(s) to filter on.</p>
-</li>
-<li>
-<p><strong>voyage_status</strong>: A voyage status, or list of voyage statuses to filter on. Can be one of: <code>'ballast'</code>, <code>'laden'</code>.</p>
-</li>
-<li>
-<p><strong>voyage_status_excluded</strong>: A voyage status, or list of voyage statuses to exclude.</p>
-</li>
-<li>
-<p><strong>movement_status</strong>: A movement status, or list of movement statuses to filter on. Can be one of: <code>'moving'</code>, <code>'stationary'</code>, <code>'waiting'</code>, <code>'congestion'</code>, <code>'slow'</code>.</p>
-</li>
-<li>
-<p><strong>movement_status_excluded</strong>: A movement status, or list of movement statuses to exclude.</p>
-</li>
-<li>
-<p><strong>cargo_status</strong>: A cargo status, or list of cargo statuses to filter on. Can be one of: <code>'in-transit'</code>, <code>'floating-storage'</code>, <code>'loading'</code>, <code>'discharging'</code>.</p>
-</li>
-<li>
-<p><strong>cargo_status_excluded</strong>: A cargo status, or list of cargo statuses to exclude.</p>
-</li>
-<li>
-<p><strong>location_status</strong>: A location status, or list of location statuses to filter on. Can be one of: <code>'berth'</code>, <code>'anchorage-zone'</code>, <code>'dry-dock'</code>, <code>'on-the-sea'</code>.</p>
-</li>
-<li>
-<p><strong>location_status_excluded</strong>: A location status, or list of location statuses to exclude.</p>
-</li>
-<li>
-<p><strong>commitment_status</strong>: A commitment status, or list of commitment statuses to filter on. Can be one of: <code>'committed'</code>, <code>'uncommitted'</code>, <code>'open'</code>, <code>'unknown'</code>.</p>
-</li>
-<li>
-<p><strong>commitment_status_excluded</strong>: A commitment status, or list of commitment statuses to exclude.</p>
-</li>
-<li>
-<p><strong>exclude_overlapping_entries</strong>: A boolean to only consider the latest voyage in days where two or more Voyages overlap.</p>
-</li>
-<li>
-<p><strong>products</strong>: A product ID, or list of product IDs to filter on.</p>
-</li>
-<li>
-<p><strong>products_excluded</strong>: A product ID, or list of product IDs to exclude.</p>
-</li>
-<li>
-<p><strong>latest_products</strong>: A product ID, or list of product IDs of the latest cargo on board to filter on.</p>
-</li>
-<li>
-<p><strong>latest_products_excluded</strong>: A product ID, or list of product IDs of the latest cargo on board to exclude.</p>
-</li>
-<li>
-<p><strong>charterers</strong>: A charterer ID, or list of charterer IDs to filter on.</p>
-</li>
-<li>
-<p><strong>charterers_excluded</strong>: A charterer ID, or list of charterer IDs to exclude.</p>
-</li>
-<li>
-<p><strong>effective_controllers</strong>: A vessel effective controller ID, or list of vessel effective controller IDs to filter on.</p>
-</li>
-<li>
-<p><strong>effective_controllers_excluded</strong>: A effective controller ID, or list of effective controller IDs to exclude.</p>
-</li>
-<li>
-<p><strong>origins</strong>: An origin ID, or list of origin IDs for all the cargoes of a voyage to filter on.</p>
-</li>
-<li>
-<p><strong>origins_excluded</strong>: An origin ID, or list of origin IDs for all the cargoes of a voyage to exclude.</p>
-</li>
-<li>
-<p><strong>destinations</strong>: A destination ID, or list of destination IDs for all the cargoes of a voyage to filter on.</p>
-</li>
-<li>
-<p><strong>destinations_excluded</strong>: A destination ID, or list of destination IDs for all the cargoes of a voyage to exclude.</p>
-</li>
-<li>
-<p><strong>voyage_origins</strong>: An origin ID, or list of origin IDs for the first origin of voyage to filter on.</p>
-</li>
-<li>
-<p><strong>voyage_origins_excluded</strong>: An origin ID, or list of origin IDs for the first origin of voyage to exclude.</p>
-</li>
-<li>
-<p><strong>voyage_destinations</strong>: A destination ID, or list of destination IDs for the last destination of a voyage to filter on.</p>
-</li>
-<li>
-<p><strong>voyage_destinations_excluded</strong>: A destination ID, or list of destination IDs for the final destination of a voyage to exclude.</p>
-</li>
-<li>
-<p><strong>locations</strong>: A location ID, or list of location IDs to filter on.</p>
-</li>
-<li>
-<p><strong>locations_excluded</strong>: A location ID, or list of location IDs to exclude.</p>
-</li>
-<li>
-<p><strong>vessels</strong>: A vessel ID or vessel class, or list of vessel IDs/vessel classes to filter on.</p>
-</li>
-<li>
-<p><strong>vessels_excluded</strong>: A vessel ID or vessel class, or list of vessel IDs/vessel classes to exclude.</p>
-</li>
-<li>
-<p><strong>flags</strong>: A flag, or list of flags to filter on.</p>
-</li>
-<li>
-<p><strong>flags_excluded</strong>: A flag, or list of flags to exclude.</p>
-</li>
-<li>
-<p><strong>ice_class</strong>: An ice class, or list of ice classes to filter on.</p>
-</li>
-<li>
-<p><strong>ice_class_excluded</strong>: An ice class, or list of ice classes to ęxclude.</p>
-</li>
-<li>
-<p><strong>vessel_propulsion</strong>: A propulsion method, or list of propulsion methods to filter on.</p>
-</li>
-<li>
-<p><strong>vessel_propulsion_excluded</strong>: A propulsion method, or list of propulsion methods to ęxclude.</p>
-</li>
-<li>
-<p><strong>vessel_age_min</strong>: A number between 1 and 100 (representing years).</p>
-</li>
-<li>
-<p><strong>vessel_age_max</strong>: A number between 1 and 100 (representing years).</p>
-</li>
-<li>
-<p><strong>vessel_dwt_min</strong>: A number representing minimum deadweight tonnage of a vessel.</p>
-</li>
-<li>
-<p><strong>vessel_dwt_max</strong>: A number representing maximum deadweight tonnage of a vessel.</p>
-</li>
-<li>
-<p><strong>vessel_cbm_min</strong>: A number representing minimum cubic capacity of a vessel.</p>
-</li>
-<li>
-<p><strong>vessel_cbm_max</strong>: A number representing maximum cubic capacity tonnage of a vessel.</p>
-</li>
-<li>
-<p><strong>vessel_wait_time_min</strong>: A number representing a minimum number of days until a vessel becomes available.</p>
-</li>
-<li>
-<p><strong>vessel_wait_time_max</strong>: A number representing a maximum number of days until a vessel becomes available.</p>
-</li>
-<li>
-<p><strong>vessel_scrubbers</strong>: Either inactive 'disabled', or included 'inc' or excluded 'exc'.</p>
-</li>
-<li>
-<p><strong>vessel_tags</strong>: A time bound vessel tag, or list of time bound vessel tags to filter on.</p>
-</li>
-<li>
-<p><strong>vessel_tags_excluded</strong>: A time bound vessel tag, or list of time bound vessel tags to exclude.</p>
-</li>
-<li>
-<p><strong>vessel_risk_level</strong>: A vessel risk level, or list of vessel risk levels to filter on.</p>
-</li>
-<li>
-<p><strong>vessel_risk_level_excluded</strong>: A vessel risk level, or list of vessel risk levels to exclude.</p>
-</li>
-<li>
-<p><strong>has_ship_to_ship</strong>: Filter data where at least one STS transfer occurs, or none. - one of: <code>'disabled'</code>, <code>'inc'</code>, <code>'exc'</code>. Passing disabled means the filter is not active.</p>
-</li>
-<li>
-<p><strong>has_charterer</strong>: Filter data where at least one charterer is specified, or none. - one of: <code>'disabled'</code>, <code>'inc'</code>, <code>'exc'</code>. Passing disabled means the filter is not active.</p>
-</li>
-<li>
-<p><strong>order</strong>: Used to sort the returned results. Can be one of: <code>'location'</code>, <code>'avg_wait'</code>, <code>'dwt'</code>, <code>'capacity'</code>, <code>'count'</code>.</p>
-</li>
-<li>
-<p><strong>order_direction</strong>: Determines the direction of sorting. ‘asc’ for ascending, ‘desc’ for
-    descending.</p>
-</li>
-<li>
-<p><strong>voyage_date_range_activity</strong>: Filter to determine how the voyages should be counted. Must be one of [<code>active</code>, <code>departures</code>, <code>arrivals</code>]</p>
-</li>
-<li>
-<p><strong>origin_behaviour</strong>: The origin behaviour determines which departure mode the <code>voyage_date_range_activity</code> should count, must be one of  [<code>first_load</code>, <code>any_load</code>].</p>
-</li>
-<li>
-<p><strong>destination_behaviour</strong>: The destination behaviour determines which arrival mode the voyage_date_range_activity should count, must be one of [last_discharge, any_discharge].</p>
-</li>
-<li>
-<p><strong>intra_movements</strong>: Filter movements based on whether the vessel started and ended in the same country, or geographical layer.</p>
+<p>breakdown_property: Property to aggregate upon. Can be one of: <code>'port'</code>, <code>'shipping_region'</code>, <code>'terminal'</code>.</p>
+<p>time_min: The UTC start date of the time filter.</p>
+<p>time_max: The UTC end date of the time filter.</p>
+<p>voyage_id: An array of unique voyage ID(s) to filter on.</p>
+<p>cargo_movement_id: An array of unique cargo movement ID(s) to filter on.</p>
+<p>voyage_status: A voyage status, or list of voyage statuses to filter on. Can be one of: <code>'ballast'</code>, <code>'laden'</code>.</p>
+<p>voyage_status_excluded: A voyage status, or list of voyage statuses to exclude.</p>
+<p>movement_status: A movement status, or list of movement statuses to filter on. Can be one of: <code>'moving'</code>, <code>'stationary'</code>, <code>'waiting'</code>, <code>'congestion'</code>, <code>'slow'</code>.</p>
+<p>movement_status_excluded: A movement status, or list of movement statuses to exclude.</p>
+<p>cargo_status: A cargo status, or list of cargo statuses to filter on. Can be one of: <code>'in-transit'</code>, <code>'floating-storage'</code>, <code>'loading'</code>, <code>'discharging'</code>.</p>
+<p>cargo_status_excluded: A cargo status, or list of cargo statuses to exclude.</p>
+<p>location_status: A location status, or list of location statuses to filter on. Can be one of: <code>'berth'</code>, <code>'anchorage-zone'</code>, <code>'dry-dock'</code>, <code>'on-the-sea'</code>.</p>
+<p>location_status_excluded: A location status, or list of location statuses to exclude.</p>
+<p>commitment_status: A commitment status, or list of commitment statuses to filter on. Can be one of: <code>'committed'</code>, <code>'uncommitted'</code>, <code>'open'</code>, <code>'unknown'</code>.</p>
+<p>commitment_status_excluded: A commitment status, or list of commitment statuses to exclude.</p>
+<p>exclude_overlapping_entries: A boolean to only consider the latest voyage in days where two or more Voyages overlap.</p>
+<p>products: A product ID, or list of product IDs to filter on.</p>
+<p>products_excluded: A product ID, or list of product IDs to exclude.</p>
+<p>latest_products: A product ID, or list of product IDs of the latest cargo on board to filter on.</p>
+<p>latest_products_excluded: A product ID, or list of product IDs of the latest cargo on board to exclude.</p>
+<p>charterers: A charterer ID, or list of charterer IDs to filter on.</p>
+<p>charterers_excluded: A charterer ID, or list of charterer IDs to exclude.</p>
+<p>effective_controllers: A vessel effective controller ID, or list of vessel effective controller IDs to filter on.</p>
+<p>effective_controllers_excluded: A effective controller ID, or list of effective controller IDs to exclude.</p>
+<p>origins: An origin ID, or list of origin IDs for all the cargoes of a voyage to filter on.</p>
+<p>origins_excluded: An origin ID, or list of origin IDs for all the cargoes of a voyage to exclude.</p>
+<p>destinations: A destination ID, or list of destination IDs for all the cargoes of a voyage to filter on.</p>
+<p>destinations_excluded: A destination ID, or list of destination IDs for all the cargoes of a voyage to exclude.</p>
+<p>voyage_origins: An origin ID, or list of origin IDs for the first origin of voyage to filter on.</p>
+<p>voyage_origins_excluded: An origin ID, or list of origin IDs for the first origin of voyage to exclude.</p>
+<p>voyage_destinations: A destination ID, or list of destination IDs for the last destination of a voyage to filter on.</p>
+<p>voyage_destinations_excluded: A destination ID, or list of destination IDs for the final destination of a voyage to exclude.</p>
+<p>locations: A location ID, or list of location IDs to filter on.</p>
+<p>locations_excluded: A location ID, or list of location IDs to exclude.</p>
+<p>vessels: A vessel ID or vessel class, or list of vessel IDs/vessel classes to filter on.</p>
+<p>vessels_excluded: A vessel ID or vessel class, or list of vessel IDs/vessel classes to exclude.</p>
+<p>flags: A flag, or list of flags to filter on.</p>
+<p>flags_excluded: A flag, or list of flags to exclude.</p>
+<p>ice_class: An ice class, or list of ice classes to filter on.</p>
+<p>ice_class_excluded: An ice class, or list of ice classes to ęxclude.</p>
+<p>vessel_propulsion: A propulsion method, or list of propulsion methods to filter on.</p>
+<p>vessel_propulsion_excluded: A propulsion method, or list of propulsion methods to ęxclude.</p>
+<p>vessel_age_min: A number between 1 and 100 (representing years).</p>
+<p>vessel_age_max: A number between 1 and 100 (representing years).</p>
+<p>vessel_dwt_min: A number representing minimum deadweight tonnage of a vessel.</p>
+<p>vessel_dwt_max: A number representing maximum deadweight tonnage of a vessel.</p>
+<p>vessel_cbm_min: A number representing minimum cubic capacity of a vessel.</p>
+<p>vessel_cbm_max: A number representing maximum cubic capacity tonnage of a vessel.</p>
+<p>vessel_wait_time_min: A number representing a minimum number of days until a vessel becomes available.</p>
+<p>vessel_wait_time_max: A number representing a maximum number of days until a vessel becomes available.</p>
+<p>vessel_scrubbers: Either inactive 'disabled', or included 'inc' or excluded 'exc'.</p>
+<p>vessel_tags: A time bound vessel tag, or list of time bound vessel tags to filter on.</p>
+<p>vessel_tags_excluded: A time bound vessel tag, or list of time bound vessel tags to exclude.</p>
+<p>vessel_risk_level: A vessel risk level, or list of vessel risk levels to filter on.</p>
+<p>vessel_risk_level_excluded: A vessel risk level, or list of vessel risk levels to exclude.</p>
+<p>has_ship_to_ship: Filter data where at least one STS transfer occurs, or none. - one of: <code>'disabled'</code>, <code>'inc'</code>, <code>'exc'</code>. Passing disabled means the filter is not active.</p>
+<p>has_charterer: Filter data where at least one charterer is specified, or none. - one of: <code>'disabled'</code>, <code>'inc'</code>, <code>'exc'</code>. Passing disabled means the filter is not active.</p>
+<p>order: Used to sort the returned results. Can be one of: <code>'location'</code>, <code>'avg_wait'</code>, <code>'dwt'</code>, <code>'capacity'</code>, <code>'count'</code>.</p>
+<p>order_direction: Determines the direction of sorting. ‘asc’ for ascending, ‘desc’ for
+descending.</p>
+<p>voyage_date_range_activity: Filter to determine how the voyages should be counted. Must be one of [<code>active</code>, <code>departures</code>, <code>arrivals</code>]</p>
+<p>origin_behaviour: The origin behaviour determines which departure mode the <code>voyage_date_range_activity</code> should count, must be one of  [<code>first_load</code>, <code>any_load</code>].</p>
+<p>destination_behaviour: The destination behaviour determines which arrival mode the voyage_date_range_activity should count, must be one of [last_discharge, any_discharge].</p>
+<p>intra_movements: Filter movements based on whether the vessel started and ended in the same country, or geographical layer.</p>
 </li>
 </ul>
 <p><strong>Returns</strong></p>

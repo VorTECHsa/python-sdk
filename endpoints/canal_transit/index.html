@@ -177,8 +177,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/vessel/">Vessel</a>
                     </li>
-                    <li class="toctree-l1"><a class="" href="../../entities/vessel_movement.md">Vessel Movement</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/voyages/">Voyages</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../entities/vessel_availability/">Vessel Availability</a>
@@ -262,126 +260,137 @@
 <p>A detailed explanation of what Canal Transit is can be found <a href="https://docs.vortexa.com/reference/intro-canal-transit">here</a>.</p>
 <h3 id="vortexasdk.endpoints.canal_transit.CanalTransit.search">search</h3>
 
-<pre><code class="language-python">CanalTransit.search(self, filter_vessel_cubic_capacity_min: Union[int, NoneType] = None, filter_vessel_cubic_capacity_max: Union[int, NoneType] = None, filter_vessel_dead_weight_min: Union[int, NoneType] = None, filter_vessel_dead_weight_max: Union[int, NoneType] = None, filter_vessel_classes: Union[str, List[str], NoneType] = None, filter_vessels: Union[str, List[str], NoneType] = None, filter_products: Union[str, List[str], NoneType] = None, filter_origin: Union[str, List[str], NoneType] = None, filter_destination: Union[str, List[str], NoneType] = None, filter_charterer: Union[str, List[str], NoneType] = None, filter_effective_controller: Union[str, List[str], NoneType] = None, filter_queue_arrival_time_min: Union[datetime.datetime, NoneType] = None, filter_queue_arrival_time_max: Union[datetime.datetime, NoneType] = None, filter_canal_entry_time_min: Union[datetime.datetime, NoneType] = None, filter_canal_entry_time_max: Union[datetime.datetime, NoneType] = None, filter_canal_exit_time_min: Union[datetime.datetime, NoneType] = None, filter_canal_exit_time_max: Union[datetime.datetime, NoneType] = None, filter_booked_time_min: Union[datetime.datetime, NoneType] = None, filter_booked_time_max: Union[datetime.datetime, NoneType] = None, filter_booked_status: Union[bool, NoneType] = None, filter_voyage_status: Union[str, NoneType] = None, updated_since: Union[datetime.datetime, NoneType] = None, filter_canal: Union[str, NoneType] = None, filter_direction: Union[str, NoneType] = None, filter_lock: Union[str, NoneType] = None, exclude_filter_vessels: Union[str, List[str], NoneType] = None, exclude_filter_vessel_classes: Union[str, List[str], NoneType] = None, exclude_filter_products: Union[str, List[str], NoneType] = None, exclude_filter_origin: Union[str, List[str], NoneType] = None, exclude_filter_destination: Union[str, List[str], NoneType] = None, exclude_filter_charterer: Union[str, List[str], NoneType] = None, exclude_filter_effective_controller: Union[str, List[str], NoneType] = None) -&gt; vortexasdk.endpoints.canal_transit_result.CanalTransitResult
+<pre><code class="language-python">CanalTransit.search(
+    filter_vessel_cubic_capacity_min: typing.Optional[int] = None,
+    filter_vessel_cubic_capacity_max: typing.Optional[int] = None,
+    filter_vessel_dead_weight_min: typing.Optional[int] = None,
+    filter_vessel_dead_weight_max: typing.Optional[int] = None,
+    filter_vessel_classes: typing.Union[str, typing.List[str], NoneType] = None,
+    filter_vessels: typing.Union[str, typing.List[str], NoneType] = None,
+    filter_products: typing.Union[str, typing.List[str], NoneType] = None,
+    filter_origin: typing.Union[str, typing.List[str], NoneType] = None,
+    filter_destination: typing.Union[str, typing.List[str], NoneType] = None,
+    filter_charterer: typing.Union[str, typing.List[str], NoneType] = None,
+    filter_effective_controller:
+    typing.Union[str, typing.List[str], NoneType] = None,
+    filter_queue_arrival_time_min: typing.Optional[datetime.datetime] = None,
+    filter_queue_arrival_time_max: typing.Optional[datetime.datetime] = None,
+    filter_canal_entry_time_min: typing.Optional[datetime.datetime] = None,
+    filter_canal_entry_time_max: typing.Optional[datetime.datetime] = None,
+    filter_canal_exit_time_min: typing.Optional[datetime.datetime] = None,
+    filter_canal_exit_time_max: typing.Optional[datetime.datetime] = None,
+    filter_booked_time_min: typing.Optional[datetime.datetime] = None,
+    filter_booked_time_max: typing.Optional[datetime.datetime] = None,
+    filter_booked_status: typing.Optional[bool] = None,
+    filter_voyage_status: typing.Optional[str] = None,
+    updated_since: typing.Optional[datetime.datetime] = None,
+    filter_canal: typing.Optional[str] = None,
+    filter_direction: typing.Optional[str] = None,
+    filter_lock: typing.Optional[str] = None,
+    exclude_filter_vessels:
+    typing.Union[str, typing.List[str], NoneType] = None,
+    exclude_filter_vessel_classes:
+    typing.Union[str, typing.List[str], NoneType] = None,
+    exclude_filter_products:
+    typing.Union[str, typing.List[str], NoneType] = None,
+    exclude_filter_origin: typing.Union[str, typing.List[str], NoneType] = None,
+    exclude_filter_destination:
+    typing.Union[str, typing.List[str], NoneType] = None,
+    exclude_filter_charterer:
+    typing.Union[str, typing.List[str], NoneType] = None,
+    exclude_filter_effective_controller:
+    typing.Union[str, typing.List[str], NoneType] = None)
 </code></pre>
 <p>Find CanalTransitRecords matching the given search parameters.</p>
 <p><strong>Arguments</strong></p>
-<ul>
-<li>
-<p><strong>filter_vessel_cubic_capacity_min</strong>: Minimum cubic capacity of the vessel,</p>
-</li>
-<li>
-<p><strong>filter_vessel_cubic_capacity_max</strong>: Maximum cubic capacity of the vessel,</p>
-</li>
-<li>
-<p><strong>filter_vessel_dead_weight_min</strong>: Minimum DWT of the vessel,</p>
-</li>
-<li>
-<p><strong>filter_vessel_dead_weight_max</strong>: Maximum DWT of the vessel,</p>
-</li>
-<li>
-<p><strong>filter_vessel_classes</strong>: A vessel class, or list of vessel classes to filter on.</p>
-</li>
-<li>
-<p><strong>filter_vessels</strong>: A vessel ID, or list of vessel IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_products</strong>: A product ID, or list of product IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_origin</strong>: A geography ID, or list of geography IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_destination</strong>: A geography ID, or list of geography IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_charterer</strong>: An charterer ID, or list of charterer IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_effective_controllers</strong>: An effective controller ID, or list of effective controller IDs to filter on.</p>
-</li>
-<li>
-<p><strong>filter_canal</strong>: Canal the vessel is queuing for. Must be one of [<code>'suez_canal'</code>, <code>'panama_canal'</code>],</p>
-</li>
-<li>
-<p><strong>filter_direction</strong>: Direction that vessel is heading. Must be one of  [<code>'northbound'</code>, <code>'southbound'</code>],</p>
-</li>
-<li>
-<p><strong>filter_lock</strong>: Route taken through the canal. For the Panama canal, it must be one of [<code>'panamax'</code>, <code>'neopanamax'</code>],</p>
-</li>
-<li>
-<p><strong>filter_queue_arrival_time_min</strong>: The UTC date of when vessel arrived to the queue,</p>
-</li>
-<li>
-<p><strong>filter_queue_arrival_time_max</strong>: The UTC date of when vessel arrived to the queue,</p>
-</li>
-<li>
-<p><strong>filter_canal_entry_time_min</strong>: The UTC date of when vessel entered the canal,</p>
-</li>
-<li>
-<p><strong>filter_canal_entry_time_max</strong>: The UTC date of when vessel entered the canal,</p>
-</li>
-<li>
-<p><strong>filter_canal_exit_time_min</strong>: The UTC date of when vessel left the canal,</p>
-</li>
-<li>
-<p><strong>filter_canal_exit_time_max</strong>: The UTC date of when vessel left the canal,</p>
-</li>
-<li>
-<p><strong>filter_booked_time_min</strong>: The UTC date of planned time to enter the canal,</p>
-</li>
-<li>
-<p><strong>filter_booked_time_max</strong>: The UTC date of planned time to enter the canal,</p>
-</li>
-<li>
-<p><strong>filter_booked_status</strong>: Boolean to filter vessels that booked their slots. Can be <code>'true'</code> or <code>'false'</code>,</p>
-</li>
-<li>
-<p><strong>filter_voyage_status</strong>: A voyage status, or list of voyage statuses to filter on. Can be one of: <code>'ballast'</code>, <code>'laden'</code>,</p>
-</li>
-<li>
-<p><strong>updated_since</strong>: The UTC date of last record update time,</p>
-</li>
-<li>
-<p><strong>exclude_filter_vessels</strong>: A vessel ID, or list of vessel IDs to exclude,</p>
-</li>
-<li>
-<p><strong>exclude_filter_vessel_classes</strong>: A vessel class, or list of vessel classes to exclude,</p>
-</li>
-<li>
-<p><strong>exclude_filter_products</strong>: A product ID, or list of product IDs to exclude,</p>
-</li>
-<li>
-<p><strong>exclude_filter_origin</strong>: A geography ID, or list of geography IDs to exclude,</p>
-</li>
-<li>
-<p><strong>exclude_filter_destination</strong>: A geography ID, or list of geography IDs to exclude,</p>
-</li>
-<li>
-<p><strong>exclude_filter_charterer</strong>: A charterer ID, or list of charterer IDs to exclude,</p>
-</li>
-<li>
-<p><strong>exclude_filter_effective_controller</strong>: A effective controller ID, or list of IDs to exclude,</p>
-</li>
-</ul>
+<pre><code>filter_vessel_cubic_capacity_min: Minimum cubic capacity of the vessel,
+
+filter_vessel_cubic_capacity_max: Maximum cubic capacity of the vessel,
+
+filter_vessel_dead_weight_min: Minimum DWT of the vessel,
+
+filter_vessel_dead_weight_max: Maximum DWT of the vessel,
+
+filter_vessel_classes: A vessel class, or list of vessel classes to filter on.
+
+filter_vessels: A vessel ID, or list of vessel IDs to filter on.
+
+filter_products: A product ID, or list of product IDs to filter on.
+
+filter_origin: A geography ID, or list of geography IDs to filter on.
+
+filter_destination: A geography ID, or list of geography IDs to filter on.
+
+filter_charterer: An charterer ID, or list of charterer IDs to filter on.
+
+filter_effective_controllers: An effective controller ID, or list of effective controller IDs to filter on.
+
+filter_canal: Canal the vessel is queuing for. Must be one of [`'suez_canal'`, `'panama_canal'`],
+
+filter_direction: Direction that vessel is heading. Must be one of  [`'northbound'`, `'southbound'`],
+
+filter_lock: Route taken through the canal. For the Panama canal, it must be one of [`'panamax'`, `'neopanamax'`],
+
+filter_queue_arrival_time_min: The UTC date of when vessel arrived to the queue,
+
+filter_queue_arrival_time_max: The UTC date of when vessel arrived to the queue,
+
+filter_canal_entry_time_min: The UTC date of when vessel entered the canal,
+
+filter_canal_entry_time_max: The UTC date of when vessel entered the canal,
+
+filter_canal_exit_time_min: The UTC date of when vessel left the canal,
+
+filter_canal_exit_time_max: The UTC date of when vessel left the canal,
+
+filter_booked_time_min: The UTC date of planned time to enter the canal,
+
+filter_booked_time_max: The UTC date of planned time to enter the canal,
+
+filter_booked_status: Boolean to filter vessels that booked their slots. Can be `'true'` or `'false'`,
+
+filter_voyage_status: A voyage status, or list of voyage statuses to filter on. Can be one of: `'ballast'`, `'laden'`,
+
+updated_since: The UTC date of last record update time,
+
+exclude_filter_vessels: A vessel ID, or list of vessel IDs to exclude,
+
+exclude_filter_vessel_classes: A vessel class, or list of vessel classes to exclude,
+
+exclude_filter_products: A product ID, or list of product IDs to exclude,
+
+exclude_filter_origin: A geography ID, or list of geography IDs to exclude,
+
+exclude_filter_destination: A geography ID, or list of geography IDs to exclude,
+
+exclude_filter_charterer: A charterer ID, or list of charterer IDs to exclude,
+
+exclude_filter_effective_controller: A effective controller ID, or list of IDs to exclude,
+</code></pre>
 <p><strong>Returns</strong></p>
 <p><code>CanalTransitResults</code>, containing all the canal transit records matching the given search terms.</p>
 <h1 id="vortexasdk.endpoints.canal_transit_result">vortexasdk.endpoints.canal_transit_result</h1>
 
 <h2 id="vortexasdk.endpoints.canal_transit_result.CanalTransitResult">CanalTransitResult</h2>
 
-<pre><code class="language-python">CanalTransitResult(__pydantic_self__, **data: Any) -&gt; None
+<pre><code class="language-python">CanalTransitResult(*, records: typing.List,
+                   reference: typing.Dict[str, typing.Any])
 </code></pre>
 <p>Container class holdings search results returns from the Canal transit endpoint.</p>
 <p>This class has two methods, <code>to_list()</code>, and <code>to_df()</code>, allowing search results to be represented as a list of <code>CanalTransitRecords</code>, or as a <code>pd.DataFrame</code> , respectively.</p>
+<h3 id="vortexasdk.endpoints.canal_transit_result.CanalTransitResult.model_config">model_config</h3>
+
 <h3 id="vortexasdk.endpoints.canal_transit_result.CanalTransitResult.to_list">to_list</h3>
 
-<pre><code class="language-python">CanalTransitResult.to_list(self) -&gt; List[vortexasdk.api.canal_transit.CanalTransitRecord]
+<pre><code class="language-python">CanalTransitResult.to_list()
 </code></pre>
 <p>Represent canal transit records as a list of <code>CanalTransitRecord</code>s.</p>
 <h3 id="vortexasdk.endpoints.canal_transit_result.CanalTransitResult.to_df">to_df</h3>
 
-<pre><code class="language-python">CanalTransitResult.to_df(self, columns=['vessel_id', 'vessel_name', 'vessel_imo', 'vessel_class.0.label', 'vessel_cubic_capacity', 'vessel_dead_weight', 'booked', 'canal', 'direction', 'lock', 'queue_arrival_time', 'canal_entry_time', 'cargoes.0.product.label', 'cargoes.0.quantity_barrels', 'cargoes.0.quantity_tonnes', 'cargoes.0.quantity_cubic_metres', 'origin.0.label', 'destination.0.label']) -&gt; pandas.core.frame.DataFrame
+<pre><code class="language-python">CanalTransitResult.to_df(
+    columns:
+    typing.Union[typing_extensions.Literal['all'], typing.List[str], NoneType] = ['vessel_id', 'vessel_name', 'vessel_imo', 'vessel_class.0.label', 'vessel_cubic_capacity', 'vessel_dead_weight', 'booked', 'canal', 'direction', 'lock', 'queue_arrival_time', 'canal_entry_time', 'cargoes.0.product.label', 'cargoes.0.quantity_barrels', 'cargoes.0.quantity_tonnes', 'cargoes.0.quantity_cubic_metres', 'origin.0.label', 'destination.0.label']
+)
 </code></pre>
 <p>Represent canal transit record as a <code>pd.DataFrame</code>.</p>
 <p><strong>Arguments</strong></p>
