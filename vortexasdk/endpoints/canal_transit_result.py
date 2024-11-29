@@ -1,7 +1,8 @@
 import functools
 import os
 from multiprocessing.pool import Pool
-from typing import List
+from typing import List, Optional, Union
+from typing_extensions import Literal
 
 import pandas as pd
 
@@ -38,7 +39,6 @@ DEFAULT_COLUMNS = [
 
 
 class CanalTransitResult(Result):
-
     """
     Container class holdings search results returns from the Canal transit endpoint.
 
@@ -50,7 +50,10 @@ class CanalTransitResult(Result):
         # noinspection PyTypeChecker
         return create_list(super().to_list(), CanalTransitRecord)
 
-    def to_df(self, columns=DEFAULT_COLUMNS) -> pd.DataFrame:
+    def to_df(
+        self: "CanalTransitResult",
+        columns: Optional[Union[List[str], Literal["all"]]] = DEFAULT_COLUMNS,
+    ) -> pd.DataFrame:
         """
         Represent canal transit record as a `pd.DataFrame`.
 
@@ -71,7 +74,7 @@ class CanalTransitResult(Result):
             records = pool.map(flatten, super().to_list())
 
         return create_dataframe(
-            columns=columns,
             data=records,
             logger_description="CanalTransitRecords",
+            columns=columns,
         )

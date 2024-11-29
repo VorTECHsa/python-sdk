@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/project
     docker:
-      - image: cimg/python:3.7
+      - image: cimg/python:3.9.0
     steps:
       - checkout
       - restore_cache: &restore_cache
@@ -12,7 +12,7 @@ jobs:
       - run:
           name: "Install setup.py"
           command: |
-            python3.7 -m venv .venv;
+            python -m venv .venv;
             . .venv/bin/activate
             pip install -U pip
             pip install -e .[tests]
@@ -26,7 +26,7 @@ jobs:
   check_linting:
     working_directory: ~/project
     docker:
-      - image: cimg/python:3.7
+      - image: cimg/python:3.9.0
     steps:
       - checkout
       - restore_cache: &restore_cache
@@ -41,7 +41,7 @@ jobs:
   check_types:
     working_directory: ~/project
     docker:
-      - image: cimg/python:3.7
+      - image: cimg/python:3.9.0
     steps:
       - checkout
       - restore_cache: &restore_cache
@@ -56,7 +56,7 @@ jobs:
   check_formatting:
     working_directory: ~/project
     docker:
-      - image: cimg/python:3.7
+      - image: cimg/python:3.9.0
     steps:
       - checkout
       - restore_cache: &restore_cache
@@ -71,7 +71,7 @@ jobs:
   test-documentation:
     working_directory: ~/project
     docker:
-      - image: cimg/python:3.7
+      - image: cimg/python:3.9.0
     steps:
       - checkout
       - restore_cache: &restore_cache
@@ -102,7 +102,7 @@ jobs:
   run-examples:
     working_directory: ~/project
     docker:
-      - image: cimg/python:3.7
+      - image: cimg/python:3.9.0
     resource_class: large
     steps:
       - checkout
@@ -127,7 +127,7 @@ jobs:
             # mybinder currently does not install the extras_require in setup.py
             # to replicate the mybinder environment, we install only the packages that mybinder installs
             # For more details, see https://mybinder.readthedocs.io/en/latest/using/config_files.html#setup-py-install-python-packages
-            python3.7 -m venv .mybinder_venv;
+            python -m venv .mybinder_venv;
             . .mybinder_venv/bin/activate
             pip install -U pip
             pip install -e .[binder]
@@ -147,7 +147,7 @@ jobs:
   test:
     working_directory: ~/project
     docker:
-      - image: cimg/python:3.7
+      - image: cimg/python:3.9.0
     steps:
       - checkout
       - restore_cache: &restore_cache
@@ -164,7 +164,7 @@ jobs:
   check-release-version:
     working_directory: ~/project
     docker:
-      - image: cimg/python:3.7
+      - image: cimg/python:3.9.0
     steps:
       - checkout
       - restore_cache: &restore_cache
@@ -176,10 +176,25 @@ jobs:
             . .venv/bin/activate
             python scripts/validate_proposed_package_version.py
 
+  check-pre-release-version:
+    working_directory: ~/project
+    docker:
+      - image: cimg/python:3.9.0
+    steps:
+      - checkout
+      - restore_cache: &restore_cache
+          keys:
+            - v5-{{ .Branch }}-{{ checksum "setup.py" }}
+      - run:
+          name: "Check proposed release version is a pre-release version"
+          command: |
+            . .venv/bin/activate
+            python scripts/check_pre_release.py
+
   deploy:
     working_directory: ~/project
     docker:
-      - image: cimg/python:3.7
+      - image: cimg/python:3.9.0
     steps:
       - checkout
       - restore_cache: &restore_cache
@@ -196,6 +211,36 @@ jobs:
             python docs/autogen.py
             pydocmd build
             pydocmd gh-deploy
+      - run:
+          name: "Deploy package to pypi"
+          command: |
+            . .venv/bin/activate
+            pip install -e .[deploy]
+            rm -rf dist
+            python setup.py sdist bdist_wheel
+            python -m twine upload -u $TWINE_USERNAME -p $TWINE_PASSWORD dist/*
+      - run:
+          name: "Tag the release with git"
+          command: |
+            . .venv/bin/activate
+            TAG=$(python setup.py --version)
+            git config --global user.email "developers@vortexa.com"
+            git config --global user.name "CircleCI"
+            git tag -a $TAG -m "New tag $TAG"
+            git push --tags
+
+  deploy-pre-release:
+    working_directory: ~/project
+    docker:
+      - image: cimg/python:3.9.0
+    steps:
+      - checkout
+      - restore_cache: &restore_cache
+          keys:
+            - v5-{{ .Branch }}-{{ checksum "setup.py" }}
+      - add_ssh_keys:
+          fingerprints:
+            - "SHA256:p5tevUJP7lVgxHvYWpKLbRWnCeIjYvApIL8xG0eeLU0"
       - run:
           name: "Deploy package to pypi"
           command: |
@@ -248,6 +293,10 @@ workflows:
           requires:
             - build
 
+      - check-pre-release-version:
+          requires:
+            - build
+
       - deploy:
           filters:
             branches:
@@ -260,4 +309,19 @@ workflows:
             - check_types
             - check_linting
             - check_formatting
+            - check-release-version
+
+      - deploy-pre-release:
+          filters:
+            branches:
+              only:
+                - python-3.9
+          requires:
+            - test
+            - test-documentation
+            - run-examples
+            - check_types
+            - check_linting
+            - check_formatting
+            - check-pre-release-version
             - check-release-version

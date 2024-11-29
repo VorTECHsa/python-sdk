@@ -5,7 +5,7 @@ Try me out in your browser:
 """
 
 from datetime import datetime
-from typing import Any, Dict, List, Union
+from typing import Any, Dict, List, Optional, Union
 
 from vortexasdk.api import ID
 from vortexasdk.api.shared_types import to_ISODate
@@ -16,7 +16,10 @@ from vortexasdk.endpoints.endpoints import (
 )
 from vortexasdk.logger import get_logger
 from vortexasdk.operations import Record, Search
-from vortexasdk.utils import convert_to_list
+from vortexasdk.utils import (
+    convert_to_list,
+    showDeprecatedGeoExclusionRulesWarning,
+)
 
 logger = get_logger(__name__)
 
@@ -30,50 +33,50 @@ class CargoMovements(Record, Search):
 
     _MAX_PAGE_RESULT_SIZE = 500
 
-    def __init__(self):
+    def __init__(self) -> None:
         Record.__init__(self, CARGO_MOVEMENT_RESOURCE)
         Search.__init__(self, CARGO_MOVEMENTS_RESOURCE)
 
     def search(
         self,
-        filter_activity: str = None,
+        filter_activity: Optional[str] = None,
         filter_time_min: datetime = datetime.now(),
         filter_time_max: datetime = datetime.now(),
         cm_unit: str = "b",
-        filter_charterers: Union[ID, List[ID]] = None,
-        filter_destinations: Union[ID, List[ID]] = None,
-        filter_origins: Union[ID, List[ID]] = None,
-        filter_owners: Union[ID, List[ID]] = None,
-        filter_vessel_owners: Union[ID, List[ID]] = None,
-        filter_time_charterers: Union[ID, List[ID]] = None,
-        filter_effective_controllers: Union[ID, List[ID]] = None,
-        filter_products: Union[ID, List[ID]] = None,
-        filter_vessels: Union[ID, List[ID]] = None,
-        filter_vessel_classes: Union[str, List[str]] = None,
-        filter_storage_locations: Union[ID, List[ID]] = None,
-        filter_ship_to_ship_locations: Union[ID, List[ID]] = None,
-        filter_waypoints: Union[ID, List[ID]] = None,
-        filter_vessel_age_min: int = None,
-        filter_vessel_age_max: int = None,
+        filter_charterers: Optional[Union[ID, List[ID]]] = None,
+        filter_destinations: Optional[Union[ID, List[ID]]] = None,
+        filter_origins: Optional[Union[ID, List[ID]]] = None,
+        filter_owners: Optional[Union[ID, List[ID]]] = None,
+        filter_vessel_owners: Optional[Union[ID, List[ID]]] = None,
+        filter_time_charterers: Optional[Union[ID, List[ID]]] = None,
+        filter_effective_controllers: Optional[Union[ID, List[ID]]] = None,
+        filter_products: Optional[Union[ID, List[ID]]] = None,
+        filter_vessels: Optional[Union[ID, List[ID]]] = None,
+        filter_vessel_classes: Optional[Union[str, List[str]]] = None,
+        filter_storage_locations: Optional[Union[ID, List[ID]]] = None,
+        filter_ship_to_ship_locations: Optional[Union[ID, List[ID]]] = None,
+        filter_waypoints: Optional[Union[ID, List[ID]]] = None,
+        filter_vessel_age_min: Optional[int] = None,
+        filter_vessel_age_max: Optional[int] = None,
         filter_vessel_scrubbers: str = "disabled",
-        filter_vessel_flags: Union[ID, List[ID]] = None,
-        filter_vessel_ice_class: Union[ID, List[ID]] = None,
-        filter_vessel_propulsion: Union[ID, List[ID]] = None,
-        exclude_origins: Union[ID, List[ID]] = None,
-        exclude_destinations: Union[ID, List[ID]] = None,
-        exclude_products: Union[ID, List[ID]] = None,
-        exclude_vessels: Union[ID, List[ID]] = None,
-        exclude_vessel_classes: Union[str, List[str]] = None,
-        exclude_charterers: Union[ID, List[ID]] = None,
-        exclude_owners: Union[ID, List[ID]] = None,
-        exclude_effective_controllers: Union[ID, List[ID]] = None,
-        exclude_filter_vessel_owners: Union[ID, List[ID]] = None,
-        exclude_filter_time_charterers: Union[ID, List[ID]] = None,
-        exclude_vessel_flags: Union[ID, List[ID]] = None,
-        exclude_vessel_ice_class: Union[ID, List[ID]] = None,
-        exclude_vessel_propulsion: Union[ID, List[ID]] = None,
-        disable_geographic_exclusion_rules: bool = None,
-        intra_movements: str = None,
+        filter_vessel_flags: Optional[Union[ID, List[ID]]] = None,
+        filter_vessel_ice_class: Optional[Union[ID, List[ID]]] = None,
+        filter_vessel_propulsion: Optional[Union[ID, List[ID]]] = None,
+        exclude_origins: Optional[Union[ID, List[ID]]] = None,
+        exclude_destinations: Optional[Union[ID, List[ID]]] = None,
+        exclude_products: Optional[Union[ID, List[ID]]] = None,
+        exclude_vessels: Optional[Union[ID, List[ID]]] = None,
+        exclude_vessel_classes: Optional[Union[str, List[str]]] = None,
+        exclude_charterers: Optional[Union[ID, List[ID]]] = None,
+        exclude_owners: Optional[Union[ID, List[ID]]] = None,
+        exclude_effective_controllers: Optional[Union[ID, List[ID]]] = None,
+        exclude_filter_vessel_owners: Optional[Union[ID, List[ID]]] = None,
+        exclude_filter_time_charterers: Optional[Union[ID, List[ID]]] = None,
+        exclude_vessel_flags: Optional[Union[ID, List[ID]]] = None,
+        exclude_vessel_ice_class: Optional[Union[ID, List[ID]]] = None,
+        exclude_vessel_propulsion: Optional[Union[ID, List[ID]]] = None,
+        disable_geographic_exclusion_rules: Optional[bool] = None,
+        intra_movements: Optional[str] = None,
         quantity_at_time_of: str = "load",
     ) -> CargoMovementsResult:
         """
@@ -230,10 +233,10 @@ class CargoMovements(Record, Search):
 
         """
 
-        if disable_geographic_exclusion_rules is not None:
-            logger.warning(
-                "\nYou are using the disable_geographic_exclusion_rules parameter. It will be deprecated in March 2024 in favour of the `intra_movements` filter.\nPlease refer to https://docs.vortexa.com/reference/intro-cargo-filters for more information.\n"
-            )
+        # If the request contains a deprecated geographic exclusion rule, show a warning
+        showDeprecatedGeoExclusionRulesWarning(
+            disable_geographic_exclusion_rules, logger
+        )
 
         exclude_params: Dict[str, Any] = {
             "filter_origins": convert_to_list(exclude_origins),

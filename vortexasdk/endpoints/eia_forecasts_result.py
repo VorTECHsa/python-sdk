@@ -1,4 +1,5 @@
-from typing import List
+from typing import List, Optional, Union
+from typing_extensions import Literal
 import pandas as pd
 
 from vortexasdk.api import EIAForecast
@@ -19,7 +20,10 @@ class EIAForecastResult(Result):
         # noinspection PyTypeChecker
         return create_list(super().to_list(), EIAForecast)
 
-    def to_df(self, columns=DEFAULT_COLUMNS) -> pd.DataFrame:
+    def to_df(
+        self,
+        columns: Optional[Union[List[str], Literal["all"]]] = DEFAULT_COLUMNS,
+    ) -> pd.DataFrame:
         """
         Represent EIA forecasts as a `pd.DataFrame`.
 
@@ -32,7 +36,7 @@ class EIAForecastResult(Result):
         `pd.DataFrame` of EIA forecasts.
         """
         return create_dataframe(
-            columns=columns,
             data=super().to_list(),
             logger_description="EIAForecasts",
+            columns=columns,
         )

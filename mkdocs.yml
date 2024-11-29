@@ -57,7 +57,6 @@ pages:
       Geography: entities/geography.md
       Product: entities/product.md
       Vessel: entities/vessel.md
-      Vessel Movement: entities/vessel_movement.md
       Voyages: entities/voyages.md
       Vessel Availability: entities/vessel_availability.md
       Time Series Item: entities/timeseries_item.md

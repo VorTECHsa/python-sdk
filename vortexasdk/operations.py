@@ -1,5 +1,5 @@
-from typing import Dict
-from vortexasdk.api.id import ID
+from typing import Any, Dict, Optional
+from vortexasdk.api import ID
 from vortexasdk.client import default_client
 from vortexasdk.exceptions import InvalidAPIDataResponseException
 from vortexasdk.logger import get_logger
@@ -12,7 +12,7 @@ logger = get_logger(__name__)
 class Reference:
     """Lookup Vortexa Reference Data using an entity ID."""
 
-    def __init__(self, resource):
+    def __init__(self: "Reference", resource: str):
         """
         Init.
 
@@ -22,7 +22,7 @@ class Reference:
         """
         self._resource = resource
 
-    def reference(self, id: ID) -> Dict:
+    def reference(self, id: ID) -> Dict[str, Any]:
         """
         Lookup reference data using ID.
 
@@ -55,7 +55,7 @@ class Reference:
 class Search:
     """Search Vortexa Reference Data."""
 
-    def __init__(self, resource):
+    def __init__(self: "Search", resource: str):
         """
         Init.
 
@@ -68,11 +68,11 @@ class Search:
     # This method has been renamed from `search` to `search_with_client` to avoid type signature
     # issues with the `search` method in each endpoint class.
     def search_with_client_base(
-        self,
-        exact_term_match: bool = None,
-        response_type: str = None,
-        headers: dict = None,
-        **api_params,
+        self: "Search",
+        exact_term_match: Optional[bool] = None,
+        response_type: Optional[str] = None,
+        headers: Optional[Dict[str, Any]] = None,
+        **api_params: Any,
     ) -> SearchResponse:
         """
         Search Reference data filtering on `params`.
@@ -105,21 +105,21 @@ class Search:
 
         if exact_term_match:
             logger.debug("Filtering results on exact term match")
+            term = api_params.get("term", "")
+            data = api_result.get("data", [])
             return {
-                "reference": api_result["reference"],
-                "data": filter_exact_match(
-                    api_params["term"], api_result["data"]
-                ),
+                "reference": api_result.get("reference", {}),
+                "data": filter_exact_match(term, data),
             }
         else:
             return api_result
 
     def search_with_client(
-        self,
-        exact_term_match: bool = None,
-        response_type: str = None,
-        headers: dict = None,
-        **api_params,
+        self: "Search",
+        exact_term_match: Optional[bool] = None,
+        response_type: Optional[str] = None,
+        headers: Optional[Dict[str, Any]] = None,
+        **api_params: Dict[str, Any],
     ) -> SearchResponse:
         return self.search_with_client_base(
             exact_term_match,
@@ -132,7 +132,7 @@ class Search:
 class Record:
     """Lookup Vortexa Data using an record ID."""
 
-    def __init__(self, resource):
+    def __init__(self: "Record", resource: str):
         """
         Init.
 

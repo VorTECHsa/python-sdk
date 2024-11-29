@@ -15,7 +15,7 @@ from vortexasdk.endpoints.endpoints import (
 from vortexasdk.search_response import SearchResponse
 
 
-def _read(example_file) -> List[Dict]:
+def _read(example_file: str) -> List[Dict]:
     with open(f"tests/api/examples/{example_file}", "r") as f:
         return json.load(f)
 
@@ -46,7 +46,7 @@ class MockVortexaClient:
         return [e for e in entities if e["id"] == id]
 
     def search(
-        self, resource: str, response_type=None, **data
+        self: "MockVortexaClient", resource: str, **data: Dict
     ) -> SearchResponse:
         return {"data": MockVortexaClient._results[resource], "reference": {}}
 

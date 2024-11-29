@@ -1,4 +1,5 @@
 import time
+from typing import Any, Optional
 
 from vortexasdk.logger import get_logger
 
@@ -28,14 +29,14 @@ class Timer:
 
     """
 
-    def __init__(self, name=None):
+    def __init__(self: "Timer", name: Optional[str] = None) -> None:
         self.name = name
 
-    def __enter__(self):
+    def __enter__(self: "Timer") -> "Timer":
         self.start = time.time()
         return self
 
-    def __exit__(self, *args):
+    def __exit__(self: "Timer", *args: Any) -> None:
         self.end = time.time()
         self.interval = self.end - self.start
         logger.info(f"Timer {self.name} took: {self.interval} seconds")

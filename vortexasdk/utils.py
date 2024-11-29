@@ -1,10 +1,11 @@
-from typing import Dict, List, Union
+from typing import Any, Dict, List, Optional, Union
 from datetime import datetime, timedelta
+from logging import Logger
 
 
 def chunk_time_series(
     time_min: datetime, time_max: datetime, chunk_size: int = 30
-):
+) -> List[Dict[str, datetime]]:
     """split the date range to smaller chunks"""
     if chunk_size <= 0:
         raise ValueError("chunk_size must be a positive integer")
@@ -56,7 +57,7 @@ def chunk_time_series(
     return chunked_time_series
 
 
-def convert_to_list(a) -> List:
+def convert_to_list(a: Optional[Union[Any, List[Any]]]) -> List[Any]:
     """Convert wraps element in list if element isn't a list already."""
     if a is None:
         return []
@@ -92,7 +93,7 @@ def filter_empty_values(data: Dict) -> Dict:
     }
 
 
-def sts_param_value(param):
+def sts_param_value(param: Optional[bool]) -> Dict[str, bool]:
     """
     If sts filter is True, apply cross filter.
 
@@ -106,3 +107,12 @@ def sts_param_value(param):
         return {"exclude": True, "x_filter": False}
     else:
         return {"exclude": False, "x_filter": False}
+
+
+def showDeprecatedGeoExclusionRulesWarning(
+    disable_geographic_exclusion_rules: Optional[bool], logger: Logger
+) -> None:
+    if disable_geographic_exclusion_rules is not None:
+        logger.warning(
+            "\nYou are using the disable_geographic_exclusion_rules parameter. It was deprecated in March 2024 in favour of the `intra_movements` filter.\nPlease refer to https://docs.vortexa.com/reference/intro-cargo-filters for more information.\n"
+        )

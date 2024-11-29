@@ -1,7 +1,7 @@
 from typing import Optional
 from pydantic import BaseModel
 
-from vortexasdk.api.id import ID
+from vortexasdk.api import ID
 
 
 class AggregationBreakdownItem(BaseModel):

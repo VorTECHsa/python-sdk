@@ -1,7 +1,7 @@
+from typing import Any, List, Optional
 from pydantic import BaseModel
-from typing import List, Optional
 
-from vortexasdk.api.id import ID
+from vortexasdk.api import ID
 
 from vortexasdk.api.shared_types import (
     IDName,
@@ -39,12 +39,12 @@ class Vessel(Node):
     [Vessels Further Documentation](https://docs.vortexa.com/reference/GET/reference/vessels/%7Bid%7D)
     """
 
-    related_names: Optional[List[str]] = None
+    related_names: Optional[list[str]] = None
     mmsi: Optional[int] = None
     layer: Optional[List[str]] = None
 
     tags: Optional[List[Tag]] = None
-    current_product_type: Optional[List] = None
+    current_product_type: Optional[List[Any]] = None
 
     vessel_class: Optional[str] = None
     classes: Optional[List[VesselClassEntry]] = None
@@ -53,10 +53,10 @@ class Vessel(Node):
     corporate_entities: Optional[List[VesselEntityCorporateEntity]] = None
     dead_weight: Optional[int] = None
     cubic_capacity: Optional[int] = None
-    to_bow: Optional[str] = None
-    to_stern: Optional[str] = None
-    to_port: Optional[str] = None
-    to_starboard: Optional[str] = None
+    to_bow: Optional[int] = None
+    to_stern: Optional[int] = None
+    to_port: Optional[int] = None
+    to_starboard: Optional[int] = None
     call_sign: Optional[str] = None
     year: Optional[int] = None
     imo: Optional[int] = None

@@ -1,7 +1,8 @@
 import functools
 import os
 from multiprocessing.pool import Pool
-from typing import List
+from typing import List, Optional, Union
+from typing_extensions import Literal
 from vortexasdk.api.vessel_availability import VesselAvailability
 import pandas as pd
 
@@ -42,7 +43,10 @@ class VesselAvailabilityResult(Result):
         # noinspection PyTypeChecker
         return create_list(super().to_list(), VesselAvailability)
 
-    def to_df(self, columns=DEFAULT_COLUMNS) -> pd.DataFrame:
+    def to_df(
+        self,
+        columns: Optional[Union[List[str], Literal["all"]]] = DEFAULT_COLUMNS,
+    ) -> pd.DataFrame:
         """
         Represent availability as a `pd.DataFrame`.
 
@@ -214,7 +218,7 @@ class VesselAvailabilityResult(Result):
             records = pool.map(flatten, super().to_list())
 
         return create_dataframe(
-            columns=columns,
             data=records,
             logger_description="VesselAvailability",
+            columns=columns,
         )

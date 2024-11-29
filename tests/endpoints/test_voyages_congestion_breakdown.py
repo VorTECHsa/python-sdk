@@ -5,7 +5,7 @@ from tests.testcases import TestCaseUsingRealAPI
 
 
 class TestVoyagesCongestionBreakdown(TestCaseUsingRealAPI):
-    def test_search_returns_one_day(self):
+    def test_search_returns_one_day(self) -> None:
         date = datetime(2019, 11, 10)
         end_date = datetime(2019, 11, 11)
 
@@ -15,7 +15,7 @@ class TestVoyagesCongestionBreakdown(TestCaseUsingRealAPI):
 
         assert len(result) == 1
 
-    def test_search_returns_all_days(self):
+    def test_search_returns_all_days(self) -> None:
         start = datetime(2019, 11, 1)
         end = datetime(2019, 11, 10)
 
@@ -25,7 +25,7 @@ class TestVoyagesCongestionBreakdown(TestCaseUsingRealAPI):
 
         assert len(result) == 10
 
-    def test_search_returns_for_terminal(self):
+    def test_search_returns_for_terminal(self) -> None:
         start = datetime(2019, 11, 1)
         end = datetime(2019, 11, 10)
 
@@ -38,7 +38,7 @@ class TestVoyagesCongestionBreakdown(TestCaseUsingRealAPI):
 
         assert len(result) == 10
 
-    def test_search_returns_larger_size(self):
+    def test_search_returns_larger_size(self) -> None:
         start = datetime(2019, 1, 1)
         end = datetime(2019, 3, 1)
 
@@ -48,7 +48,7 @@ class TestVoyagesCongestionBreakdown(TestCaseUsingRealAPI):
 
         assert len(result) == 25
 
-    def test_to_df(self):
+    def test_to_df(self) -> None:
         start = datetime(2019, 11, 1)
         end = datetime(2019, 11, 10)
 
@@ -76,7 +76,7 @@ class TestVoyagesCongestionBreakdown(TestCaseUsingRealAPI):
             "location_details.0.label",
         ]
 
-    def test_with_params(self):
+    def test_with_params(self) -> None:
         df = (
             VoyagesCongestionBreakdown()
             .search(
@@ -106,7 +106,7 @@ class TestVoyagesCongestionBreakdown(TestCaseUsingRealAPI):
             "location_details.0.label",
         ]
 
-    def test_to_list(self):
+    def test_to_list(self) -> None:
         start = datetime(2019, 11, 1)
         end = datetime(2019, 11, 10)
 
@@ -118,7 +118,7 @@ class TestVoyagesCongestionBreakdown(TestCaseUsingRealAPI):
 
         assert len(time_series_list) == 10
 
-    def test_from_docs(self):
+    def test_from_docs(self) -> None:
         search_result = (
             VoyagesCongestionBreakdown()
             .search(

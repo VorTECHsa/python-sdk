@@ -8,12 +8,15 @@ from datetime import datetime
 from typing import Any, Dict, List, Optional, Union
 
 from vortexasdk.api.shared_types import to_ISODate
-from vortexasdk.api.id import ID
+from vortexasdk.api import ID
 from vortexasdk.endpoints.endpoints import CARGO_TIMESERIES_RESOURCE
 from vortexasdk.endpoints.timeseries_result import TimeSeriesResult
 from vortexasdk.logger import get_logger
 from vortexasdk.operations import Search
-from vortexasdk.utils import convert_to_list
+from vortexasdk.utils import (
+    convert_to_list,
+    showDeprecatedGeoExclusionRulesWarning,
+)
 
 logger = get_logger(__name__)
 
@@ -241,10 +244,10 @@ class CargoTimeSeries(Search):
 
         """
 
-        if disable_geographic_exclusion_rules is not None:
-            logger.warning(
-                "\nYou are using the disable_geographic_exclusion_rules parameter. It will be deprecated in March 2024 in favour of the `intra_movements` filter.\nPlease refer to https://docs.vortexa.com/reference/intro-cargo-filters for more information.\n"
-            )
+        # If the request contains a deprecated geographic exclusion rule, show a warning
+        showDeprecatedGeoExclusionRulesWarning(
+            disable_geographic_exclusion_rules, logger
+        )
 
         exclude_params: Dict[str, Any] = {
             "filter_charterers": convert_to_list(exclude_charterers),

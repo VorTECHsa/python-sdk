@@ -4,7 +4,7 @@ from typing import List, Optional
 from vortexasdk.api.asset_tank import AssetTank
 
 from vortexasdk.api.shared_types import ISODate
-from vortexasdk.api.id import ID
+from vortexasdk.api import ID
 
 
 class OnshoreInventory(BaseModel):
@@ -27,9 +27,9 @@ class OnshoreInventory(BaseModel):
     fill_tons: Optional[float] = None
     fill_cbm: Optional[float] = None
     reference_data_version: Optional[str] = None
-    latest_in_day: Optional[List[str]] = None
-    latest_in_doe_week: Optional[List[str]] = None
-    latest_in_month: Optional[List[str]] = None
-    latest_in_quarter: Optional[List[str]] = None
-    latest_in_week: Optional[List[str]] = None
-    latest_in_year: Optional[List[str]] = None
+    latest_in_day: Optional[List[int]] = None
+    latest_in_doe_week: Optional[List[int]] = None
+    latest_in_month: Optional[List[int]] = None
+    latest_in_quarter: Optional[List[int]] = None
+    latest_in_week: Optional[List[int]] = None
+    latest_in_year: Optional[List[int]] = None

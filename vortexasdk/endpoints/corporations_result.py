@@ -1,4 +1,5 @@
-from typing import List
+from typing import List, Optional, Union
+from typing_extensions import Literal
 
 import pandas as pd
 
@@ -20,7 +21,10 @@ class CorporationsResult(Result):
         # noinspection PyTypeChecker
         return create_list(super().to_list(), Corporation)
 
-    def to_df(self, columns=DEFAULT_COLUMNS) -> pd.DataFrame:
+    def to_df(
+        self,
+        columns: Optional[Union[List[str], Literal["all"]]] = DEFAULT_COLUMNS,
+    ) -> pd.DataFrame:
         """
         Represent corporations as a `pd.DataFrame`.
 
@@ -34,7 +38,7 @@ class CorporationsResult(Result):
 
         """
         return create_dataframe(
-            columns=columns,
             data=super().to_list(),
             logger_description="Corporations",
+            columns=columns,
         )
