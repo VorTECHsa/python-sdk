@@ -137,13 +137,13 @@ class VesselAvailabilityBreakdown(Search):
 
              exclude_destination: A location ID, or list of location IDs to filter on.
 
-             exclude_vessel_flags: A flag ID, or list of flag IDs to exclude.
+             exclude_filter_vessel_flags: A flag ID, or list of flag IDs to exclude.
 
-             exclude_vessel_ice_class: An ice class ID, or list of ice class IDs to exclude.
+             exclude_filter_vessel_ice_class: An ice class ID, or list of ice class IDs to exclude.
 
-             exclude_vessel_tags: A tag ID, or list of tag IDs to exclude.
+             exclude_filter_vessel_tags: A tag ID, or list of tag IDs to exclude.
 
-             exclude_vessel_risk_level: A risk level ID, or list of risk level IDs to exclude.
+             exclude_filter_vessel_risk_level: A risk level ID, or list of risk level IDs to exclude.
 
          # Returns
          `TimeSeriesResult`
