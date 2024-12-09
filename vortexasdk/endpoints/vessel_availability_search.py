@@ -12,6 +12,7 @@ from vortexasdk.endpoints.vessel_availability_result import (
 from vortexasdk.api.shared_types import (
     Tag,
 )
+from datetime import datetime
 from vortexasdk.endpoints.endpoints import VESSEL_AVAILABILITY_SEARCH_RESOURCE
 from vortexasdk.logger import get_logger
 from vortexasdk.operations import Search
@@ -74,6 +75,8 @@ class VesselAvailabilitySearch(Search):
         order: Optional[str] = None,
         order_direction: Optional[str] = None,
         size: Optional[int] = None,
+        filter_time_min: Optional[datetime] = None,
+        filter_time_max: Optional[datetime] = None,
     ) -> VesselAvailabilityResult:
         """
         List of vessels that can be available to load a given cargo at a given port on a future date.
@@ -239,6 +242,8 @@ class VesselAvailabilitySearch(Search):
             "order": order,
             "order_direction": order_direction,
             "size": size if size is not None else self._MAX_PAGE_RESULT_SIZE,
+            "filter_time_min": filter_time_min,
+            "filter_time_max": filter_time_max,
         }
 
         response = super().search_with_client(**api_params)
