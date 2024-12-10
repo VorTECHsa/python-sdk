@@ -320,7 +320,9 @@ Please note: you will require a subscription to our Freight module to access thi
     typing.Union[str, typing.List[str], NoneType] = None,
   order: typing.Optional[str] = None,
   order_direction: typing.Optional[str] = None,
-  size: typing.Optional[int] = None)
+  size: typing.Optional[int] = None,
+  filter_time_min: typing.Optional[datetime.datetime] = None,
+  filter_time_max: typing.Optional[datetime.datetime] = None)
 </code></pre>
 <p>List of vessels that can be available to load a given cargo at a given port on a future date.</p>
 <p><strong>Arguments</strong></p>
