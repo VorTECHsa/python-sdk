@@ -240,11 +240,13 @@ class VesselAvailabilitySearch(Search):
             "order": order,
             "order_direction": order_direction,
             "size": size if size is not None else self._MAX_PAGE_RESULT_SIZE,
+            "filter_time_min": to_ISODate(filter_time_min)
+            if filter_time_min is not None
+            else None,
+            "filter_time_max": to_ISODate(filter_time_max)
+            if filter_time_max is not None
+            else None,
         }
-
-        if filter_time_max is not None and filter_time_min is not None:
-            api_params["filter_time_min"] = to_ISODate(filter_time_min)
-            api_params["filter_time_max"] = to_ISODate(filter_time_max)
 
         response = super().search_with_client(**api_params)
 
