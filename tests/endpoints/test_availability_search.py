@@ -1,4 +1,6 @@
+from datetime import datetime
 from vortexasdk import VesselAvailabilitySearch
+
 from tests.testcases import TestCaseUsingRealAPI
 
 rotterdam = "68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e"
@@ -6,7 +8,7 @@ singapore = "1b79e18416d358d7e07b978abcab3f17e2ca75085a6d70ce1811cf4eaeaea886"
 days_to_arrival = {"min": 0, "max": 5}
 
 
-class TestVesselAvailabilityReal(TestCaseUsingRealAPI):
+class TestVesselAvailabilitySearchReal(TestCaseUsingRealAPI):
     def test_default_search(self):
         results = VesselAvailabilitySearch().search(
             filter_port=rotterdam, filter_days_to_arrival=days_to_arrival
@@ -81,3 +83,23 @@ class TestVesselAvailabilityReal(TestCaseUsingRealAPI):
             .head(10)
         )
         assert len(df) == 10
+
+    def test_search_with_dates(self):
+        start = datetime(2021, 6, 20)
+        end = datetime(2021, 6, 21)
+
+        results = VesselAvailabilitySearch().search(
+            filter_port=rotterdam,
+            filter_days_to_arrival=days_to_arrival,
+            filter_time_min=start,
+            filter_time_max=end,
+        )
+        assert len(results) > 10
+        availabilities = results.records
+        assert all(
+            datetime.strptime(
+                item["evaluated_at"], "%Y-%m-%dT%H:%M:%SZ"
+            ).strftime("%Y-%m-%d")
+            == start.strftime("%Y-%m-%d")
+            for item in availabilities
+        ), "Not all items have 'evaluated_at' equal to 'start'"

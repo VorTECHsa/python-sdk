@@ -9,9 +9,7 @@ from vortexasdk.api import ID
 from vortexasdk.endpoints.vessel_availability_result import (
     VesselAvailabilityResult,
 )
-from vortexasdk.api.shared_types import (
-    Tag,
-)
+from vortexasdk.api.shared_types import Tag, to_ISODate
 from datetime import datetime
 from vortexasdk.endpoints.endpoints import VESSEL_AVAILABILITY_SEARCH_RESOURCE
 from vortexasdk.logger import get_logger
@@ -242,8 +240,12 @@ class VesselAvailabilitySearch(Search):
             "order": order,
             "order_direction": order_direction,
             "size": size if size is not None else self._MAX_PAGE_RESULT_SIZE,
-            "filter_time_min": filter_time_min,
-            "filter_time_max": filter_time_max,
+            "filter_time_min": to_ISODate(filter_time_min)
+            if filter_time_min is not None
+            else None,
+            "filter_time_max": to_ISODate(filter_time_max)
+            if filter_time_max is not None
+            else None,
         }
 
         response = super().search_with_client(**api_params)
