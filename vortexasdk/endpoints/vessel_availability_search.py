@@ -10,7 +10,7 @@ from vortexasdk.endpoints.vessel_availability_result import (
     VesselAvailabilityResult,
 )
 from vortexasdk.api.shared_types import (
-    Tag,
+    Tag, to_ISODate
 )
 from datetime import datetime
 from vortexasdk.endpoints.endpoints import VESSEL_AVAILABILITY_SEARCH_RESOURCE
@@ -242,7 +242,7 @@ class VesselAvailabilitySearch(Search):
             "order": order,
             "order_direction": order_direction,
             "size": size if size is not None else self._MAX_PAGE_RESULT_SIZE,
-            "filter_time_min": filter_time_min,
+            "filter_time_min": to_ISODate(filter_time_min),
             "filter_time_max": filter_time_max,
         }
 
