@@ -82,7 +82,13 @@ class VortexaClient:
         probe_response = _send_post_request(
             url, payload, size=1, headers=headers
         )
+
+        if "error" in probe_response:
+            raise Exception(probe_response)
+
         total = self._calculate_total(probe_response)
+
+        print(probe_response)
 
         if total > self._MAX_ALLOWED_TOTAL:
             raise Exception(
