@@ -88,8 +88,6 @@ class VortexaClient:
 
         total = self._calculate_total(probe_response)
 
-        print(probe_response)
-
         if total > self._MAX_ALLOWED_TOTAL:
             raise Exception(
                 f"Attempting to query too many records at once. Attempted records: {total}, Max allowed records: {self._MAX_ALLOWED_TOTAL} . "
