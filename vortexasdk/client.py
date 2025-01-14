@@ -8,7 +8,7 @@ from json import JSONDecodeError
 from typing import Any, Dict, List, Optional
 from urllib.parse import urlencode
 
-from requests import Response
+from requests import Response, RequestException
 from tqdm import tqdm
 
 from vortexasdk import __name__ as sdk_pkg_name
@@ -84,7 +84,7 @@ class VortexaClient:
         )
 
         if "error" in probe_response:
-            raise Exception(probe_response)
+            raise RequestException(probe_response)
 
         total = self._calculate_total(probe_response)
 
