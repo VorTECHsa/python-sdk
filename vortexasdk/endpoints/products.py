@@ -44,7 +44,7 @@ class Products(Reference, Search):
             product_parent: ID, or list of IDs of the immediate product parent. E.g. `product_parent ='12345'` will return all children of product `12345`.
 
             exact_term_match: By default, the SDK returns all products which name _includes_ the search term. For example, searching for "Gasoil" will return
-                results including "Gasoil", "Gasoil 0.4pc", "Gasoil 500ppm" etc. Setting `exact_search_match` to true ensure that only exact term matches are
+                results including "Gasoil", "Gasoil 0.4pc", "Gasoil 500ppm" etc. Setting `exact_term_match` to true ensure that only exact term matches are
                 returned, ie just "Gasoil" in this case.
 
             filter_layer: Must be one of product types ['group', 'group_product', 'category', 'grade'].
