@@ -136,6 +136,10 @@ class VesselAvailabilitySearch(Search):
 
             filter_recent_visits: Filter availability by each vessel's recent visits
 
+            filter_time_min: Filter availability by minimum time
+
+            filter_time_max: Filter availability by maximum time
+
             exclude_products: A product ID, or list of product IDs to exclude.
 
             exclude_vessels: A vessel ID, or list of vessel IDs to exclude.
