@@ -146,6 +146,8 @@ class VoyageStatusEvent(BaseModel):
     end_timestamp: Optional[ISODate] = None
     start_timestamp: Optional[ISODate] = None
     is_open_event: Optional[bool] = None
+    origins: Optional[List[EntityWithSingleLayer]] = None
+    destinations: Optional[List[EntityWithSingleLayer]] = None
 
 
 class VoyageEnrichedItem(BaseModel):
