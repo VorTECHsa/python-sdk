@@ -4,7 +4,6 @@ from tests.testcases import TestCaseUsingRealAPI
 
 
 class TestOnshoreInventoriesSearch(TestCaseUsingRealAPI):
-
     # Commented out because the API is not returning data for this query, will bring them back once fixed
     # def test_timeseries_returns_data_frame(self):
     #     df = (
@@ -23,7 +22,7 @@ class TestOnshoreInventoriesSearch(TestCaseUsingRealAPI):
     #     )
 
     #     assert len(lst) > 0
-
+    #
     def test_should_throw_an_error_when_invalid_params_are_passed(self):
         self.assertRaises(
             ValueError,
