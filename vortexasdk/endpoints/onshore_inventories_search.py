@@ -89,8 +89,9 @@ class OnshoreInventoriesSearch(Search):
         First COI object in the list where 'crude_confidence' status is 'confirmed'.
 
         ```python
-        >>> from vortexasdk import OnshoreInventoriesSearch
-        >>> list = OnshoreInventoriesSearch().search(crude_confidence='confirmed').to_list()[0]
+        # Commented out because the API is not returning data for this query, will bring them back once fixed
+        # >>> from vortexasdk import OnshoreInventoriesSearch
+        # >>> list = OnshoreInventoriesSearch().search(crude_confidence='confirmed').to_list()[0]
 
         ```
 
