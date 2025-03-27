@@ -368,8 +368,9 @@ time_max: The UTC end date of the time filter.
 </table>
 <p><strong>List example</strong></p>
 <p>First COI object in the list where 'crude_confidence' status is 'confirmed'.</p>
-<pre><code class="language-python">&gt;&gt;&gt; from vortexasdk import OnshoreInventoriesSearch
-&gt;&gt;&gt; list = OnshoreInventoriesSearch().search(crude_confidence='confirmed').to_list()[0]
+<pre><code class="language-python"># Commented out because the API is not returning data for this query, will bring them back once fixed
+# &gt;&gt;&gt; from vortexasdk import OnshoreInventoriesSearch
+# &gt;&gt;&gt; list = OnshoreInventoriesSearch().search(crude_confidence='confirmed').to_list()[0]
 
 </code></pre>
 <pre><code>{

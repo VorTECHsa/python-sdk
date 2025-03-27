@@ -348,15 +348,17 @@
 
 <h2 id="vortexasdk.api.voyages.VoyageStatusEvent">VoyageStatusEvent</h2>
 
-<pre><code class="language-python">VoyageStatusEvent(*, event_id: typing.Optional[str],
-                  event_group: typing_extensions.Literal['derived'],
-                  event_type: typing.Optional[str],
-                  activity: typing.Optional[str],
-                  value: typing.Optional[str],
-                  source_event_id: typing.Optional[str],
-                  end_timestamp: typing.Optional[str],
-                  start_timestamp: typing.Optional[str],
-                  is_open_event: typing.Optional[bool])
+<pre><code class="language-python">VoyageStatusEvent(
+    *, event_id: typing.Optional[str],
+    event_group: typing_extensions.Literal['derived'],
+    event_type: typing.Optional[str], activity: typing.Optional[str],
+    value: typing.Optional[str], source_event_id: typing.Optional[str],
+    end_timestamp: typing.Optional[str], start_timestamp: typing.Optional[str],
+    is_open_event: typing.Optional[bool], origins:
+    typing.Optional[typing.List[vortexasdk.api.shared_types.EntityWithSingleLayer]],
+    destinations:
+    typing.Optional[typing.List[vortexasdk.api.shared_types.EntityWithSingleLayer]]
+)
 </code></pre>
 <p>Status events describe the status of the voyage at a given period.</p>
 <p><a href="https://docs.vortexa.com/reference/intro-voyage-events">Voyage Events Further Documentation</a></p>
