@@ -50,6 +50,7 @@ pages:
       Signals:
         Vessel Summary: endpoints/vessel_summary.md
         Vessel Positions: endpoints/vessel_positions.md
+      Refineries: endpoints/refineries.md
   - Entities:
       Canal Transit: entities/canal_transit.md
       Cargo Movement: entities/cargo_movement.md

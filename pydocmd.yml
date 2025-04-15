@@ -101,6 +101,8 @@ generate:
   - endpoints/voyages_routes_breakdown.md: vortexasdk.endpoints.voyages_routes_breakdown++
   - endpoints/voyages_top_hits.md: vortexasdk.endpoints.voyages_top_hits++
   - endpoints/voyages_congestion_breakdown.md: vortexasdk.endpoints.voyages_congestion_breakdown++
+  - endpoints/refineries.md: 
+        - vortexasdk.endpoints.refineries++
 pages:
   - Home: index.md << README.md
   - Endpoints:
@@ -138,6 +140,7 @@ pages:
       Voyages Product Breakdown: endpoints/voyages_product_breakdown.md
       Voyages Routes Breakdown: endpoints/voyages_routes_breakdown.md
       Voyages Congestion Breakdown: endpoints/voyages_congestion_breakdown.md
+      Refineries: endpoints/refineries.md
   - Entities:
       Breakdown Item: entities/breakdown_result.md
       Cargo Movement: entities/cargo_movement.md
