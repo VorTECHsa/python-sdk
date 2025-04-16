@@ -62,16 +62,13 @@ class Refineries(Reference, Search):
 
         ```python
         >>> from vortexasdk import Refineries
-        >>> refineries = Refineries().search("San").to_df()
-        >>> refineries.head()
+        >>> refineries = Refineries().search("San").to_df(columns=['name', 'country_name'])
 
         ```
-        Returns
-
-        |    | id                                                 | name                                  | status        | country_name  |
-        |---:|:---------------------------------------------------|:--------------------------------------|:--------------|:--------------|
-        |  0 | 001532832cd06f9055e21fd1d4cc82d81db6210f26ea56...  | San Lorenzo Refinery Oil Combustibles | Active        | Argentina     |
-        |  1 | 5f8604fef70157ddf814142d017acd84c381f3d4b54538...  | Gibraltar-San Roque Refinery          | Active        | Spain         |
+        |    |                                  name | country_name |
+        |---:|--------------------------------------:|:-------------|
+        |  0 | San Lorenzo Refinery Oil Combustibles | Argentina    |
+        |  1 | Gibraltar-San Roque Refinery          | Spain        |
 
         # Further Documentation
 
