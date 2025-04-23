@@ -3,13 +3,9 @@
     "id": "a12b3c4d5e6f7890a12b3c4d5e6f7890a12b3c4d5e6f7890a12b3c4d5e6f7890",
     "country_name": "Argentina",
     "current_capacity_kbd": 50,
-    "end_date": null,
-    "historical_peak_capacity_kbd": 50,
-    "is_coastal": true,
     "latitude": -32.7205,
     "longitude": -60.7477,
     "name": "Mock Industrial Refinery",
-    "notes": "; Mock note: This is a simulated refinery record for testing purposes.",
     "ports": [
       {
         "id": 745,
@@ -36,10 +32,7 @@
     "refinery_owner_name": "Mock Owner Corp",
     "refinery_type": "Unknown",
     "shipping_region_name": "Mock Shipping Region",
-    "start_date": null,
     "status": "Active",
-    "storage_location_id": null,
-    "storage_location_name": null,
     "ref_type": "refinery"
   }
 ]
