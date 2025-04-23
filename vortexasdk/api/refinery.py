@@ -5,7 +5,6 @@ from vortexasdk.api.shared_types import ISODate, Node
 
 
 class RefineryPort(BaseModel):
-    id: int
     import_export: Optional[str] = None
     port_id: Optional[str] = None
     port_name: Optional[str] = None
@@ -38,10 +37,8 @@ class Refinery(Node):
     refinery_owner_name: Optional[str] = None
     refinery_type: Optional[str] = None
     shipping_region_name: Optional[str] = None
-    short_id: Optional[str] = None
     start_date: Optional[ISODate] = None
     status: Optional[str] = None
     storage_location_id: Optional[str] = None
     storage_location_name: Optional[str] = None
     ref_type: Optional[str] = None
-    leaf: Optional[bool] = None

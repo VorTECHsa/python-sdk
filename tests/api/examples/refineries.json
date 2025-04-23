@@ -12,7 +12,6 @@
     "notes": "; Mock note: This is a simulated refinery record for testing purposes.",
     "ports": [
       {
-        "id": 745,
         "import_export": "export",
         "port_id": "d12e3f4a5b6c7890d12e3f4a5b6c7890d12e3f4a5b6c7890d12e3f4a5b6c7890",
         "port_name": "Mock Port [AR]",
@@ -21,7 +20,6 @@
         "terminal_name": "Mock Terminal"
       },
       {
-        "id": 836,
         "import_export": "import",
         "port_id": "d12e3f4a5b6c7890d12e3f4a5b6c7890d12e3f4a5b6c7890d12e3f4a5b6c7890",
         "port_name": "Mock Port [AR]",
@@ -36,12 +34,10 @@
     "refinery_owner_name": "Mock Owner Corp",
     "refinery_type": "Unknown",
     "shipping_region_name": "Mock Shipping Region",
-    "short_id": "a12b3c4d5e6f7890",
     "start_date": null,
     "status": "Active",
     "storage_location_id": null,
     "storage_location_name": null,
-    "ref_type": "refinery",
-    "leaf": true
+    "ref_type": "refinery"
   }
 ]
