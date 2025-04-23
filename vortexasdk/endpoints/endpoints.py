@@ -28,6 +28,7 @@ GEOGRAPHIES_REFERENCE = "/v5/reference/geographies"
 PRODUCTS_REFERENCE = "/v5/reference/products"
 STORAGE_TERMINALS_REFERENCE = "/v5/reference/storage-terminals"
 VESSELS_REFERENCE = "/v5/reference/vessels"
+REFINERY_REFERENCE = "/v5/reference/refineries"
 
 FREIGHT_PRICING_SEARCH = "/v5/freight-outlook/rates"
 FREIGHT_PRICING_TIMESERIES = "/v5/freight-outlook/timeseries"

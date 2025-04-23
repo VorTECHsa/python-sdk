@@ -51,6 +51,8 @@ from vortexasdk.api.vessel_summary import VesselSummary
 from vortexasdk.api.vessel_positions import VesselPositions
 from vortexasdk.api.canal_transit import CanalTransitRecord
 
+from vortexasdk.api.refinery import Refinery
+
 # Explicitly list all exported classes, to help MyPy know what is available
 __all__ = [
     "AssetTank",
@@ -93,4 +95,5 @@ __all__ = [
     "EntityWithListLayer",
     "EntityWithListLayerAndProbability",
     "BoundingBox",
+    "Refinery",
 ]

@@ -39,6 +39,7 @@ from vortexasdk.endpoints import (
     VoyagesSearchEnriched,
     VesselSummary,
     VesselPositions,
+    Refineries,
 )
 
 # noinspection PyUnresolvedReferences
@@ -86,6 +87,7 @@ __all__ = [
     "VoyagesSearchEnriched",
     "VesselSummary",
     "VesselPositions",
+    "Refineries",
     "__version__",
     "run_all_checks",
 ]

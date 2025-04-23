@@ -20,6 +20,7 @@ The VortexaSDK currently contains the following endpoints:
 1. Vessel Positions
 1. Canal transit
 1. Canal transit Time Series
+1. Refineries
 
 Each endpoint offers either one, or both, of two different functionalities:
 

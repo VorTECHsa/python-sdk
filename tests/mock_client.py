@@ -11,6 +11,7 @@ from vortexasdk.endpoints.endpoints import (
     PRODUCTS_REFERENCE,
     STORAGE_TERMINALS_REFERENCE,
     VESSELS_REFERENCE,
+    REFINERY_REFERENCE,
 )
 from vortexasdk.search_response import SearchResponse
 
@@ -28,6 +29,7 @@ example_products: List[Dict] = _read("products.json")
 example_storage_terminals: List[Dict] = _read("storage_terminals.json")
 example_time_series = _read("cargo_time_series.json")
 example_vessels: List[Dict] = _read("vessels.json")
+example_refineries: List[Dict] = _read("refineries.json")
 
 
 class MockVortexaClient:
@@ -39,6 +41,7 @@ class MockVortexaClient:
         PRODUCTS_REFERENCE: example_products,
         STORAGE_TERMINALS_REFERENCE: example_storage_terminals,
         VESSELS_REFERENCE: example_vessels,
+        REFINERY_REFERENCE: example_refineries,
     }
 
     def get_reference(self, resource: str, id: ID) -> List[Dict]:

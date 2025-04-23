@@ -1,0 +1,38 @@
+[
+  {
+    "id": "a12b3c4d5e6f7890a12b3c4d5e6f7890a12b3c4d5e6f7890a12b3c4d5e6f7890",
+    "country_name": "Argentina",
+    "current_capacity_kbd": 50,
+    "latitude": -32.7205,
+    "longitude": -60.7477,
+    "name": "Mock Industrial Refinery",
+    "ports": [
+      {
+        "id": 745,
+        "import_export": "export",
+        "port_id": "d12e3f4a5b6c7890d12e3f4a5b6c7890d12e3f4a5b6c7890d12e3f4a5b6c7890",
+        "port_name": "Mock Port [AR]",
+        "refinery_id": "a12b3c4d5e6f7890a12b3c4d5e6f7890a12b3c4d5e6f7890a12b3c4d5e6f7890",
+        "terminal_id": "e12f3a4b5c6d7890e12f3a4b5c6d7890e12f3a4b5c6d7890e12f3a4b5c6d7890",
+        "terminal_name": "Mock Terminal"
+      },
+      {
+        "id": 836,
+        "import_export": "import",
+        "port_id": "d12e3f4a5b6c7890d12e3f4a5b6c7890d12e3f4a5b6c7890d12e3f4a5b6c7890",
+        "port_name": "Mock Port [AR]",
+        "refinery_id": "a12b3c4d5e6f7890a12b3c4d5e6f7890a12b3c4d5e6f7890a12b3c4d5e6f7890",
+        "terminal_id": "e12f3a4b5c6d7890e12f3a4b5c6d7890e12f3a4b5c6d7890e12f3a4b5c6d7890",
+        "terminal_name": "Mock Terminal"
+      }
+    ],
+    "refinery_operator_id": "b1c2d3e4f5a6b789",
+    "refinery_operator_name": "Mock Operator Inc",
+    "refinery_owner_id": "c1d2e3f4a5b67890",
+    "refinery_owner_name": "Mock Owner Corp",
+    "refinery_type": "Unknown",
+    "shipping_region_name": "Mock Shipping Region",
+    "status": "Active",
+    "ref_type": "refinery"
+  }
+]
