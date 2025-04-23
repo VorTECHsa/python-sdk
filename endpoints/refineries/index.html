@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Storage Terminals - VortexaSDK</title>
+  <title>Refineries - VortexaSDK</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Storage Terminals";
-    var mkdocs_page_input_path = "endpoints/storage_terminals.md";
+    var mkdocs_page_name = "Refineries";
+    var mkdocs_page_input_path = "endpoints/refineries.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -108,17 +108,17 @@
                 </li>
     </ul>
                     </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="#">Crude Onshore Inventories</a>
-    <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="#">Crude Onshore Inventories</a>
+    <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../onshore_inventories_search/">Search</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../onshore_inventories_timeseries/">Time Series</a>
                 </li>
-                <li class="toctree-l2 current"><a class="reference internal current" href="#">Reference Data</a>
-    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="#">Reference Data</a>
+    <ul>
                 <li class="toctree-l3"><a class="reference internal" href="../asset_tanks/">Asset Tanks</a>
                 </li>
-                <li class="toctree-l3 current"><a class="reference internal current" href="./">Storage Terminals</a>
+                <li class="toctree-l3"><a class="reference internal" href="../storage_terminals/">Storage Terminals</a>
                 </li>
     </ul>
                 </li>
@@ -162,7 +162,7 @@
                 </li>
     </ul>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../refineries/">Refineries</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Refineries</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Entities</span></p>
@@ -234,19 +234,11 @@
           <li>Endpoints &raquo;</li>
         
       
-        
-          <li>Crude Onshore Inventories &raquo;</li>
-        
-      
-        
-          <li>Reference Data &raquo;</li>
-        
-      
     
-    <li>Storage Terminals</li>
+    <li>Refineries</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/vortechsa/python-sdk/edit/master/docs/endpoints/storage_terminals.md"
+        <a href="https://github.com/vortechsa/python-sdk/edit/master/docs/endpoints/refineries.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -258,128 +250,90 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="vortexasdk.endpoints.storage_terminals">vortexasdk.endpoints.storage_terminals</h1>
+                <h1 id="vortexasdk.endpoints.refineries">vortexasdk.endpoints.refineries</h1>
 
 <p>Try me out in your browser:</p>
-<p><a href="https://mybinder.org/v2/gh/VorTECHsa/python-sdk/master?filepath=docs%2Fexamples%2Ftry_me_out%2Fstorage_terminals.ipynb"><img alt="Binder" src="https://img.shields.io/badge/try%20me%20out-launch%20notebook-579ACA.svg?logo=data:image/png;base64,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" /></a></p>
-<h2 id="vortexasdk.endpoints.storage_terminals.StorageTerminals">StorageTerminals</h2>
+<p><a href="https://mybinder.org/v2/gh/VorTECHsa/python-sdk/master?filepath=docs%2Fexamples%2Ftry_me_out%refineries.ipynb"><img alt="Binder" src="https://img.shields.io/badge/try%20me%20out-launch%20notebook-579ACA.svg?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFkAAABZCAMAAABi1XidAAAB8lBMVEX///9XmsrmZYH1olJXmsr1olJXmsrmZYH1olJXmsr1olJXmsrmZYH1olL1olJXmsr1olJXmsrmZYH1olL1olJXmsrmZYH1olJXmsr1olL1olJXmsrmZYH1olL1olJXmsrmZYH1olL1olL0nFf1olJXmsrmZYH1olJXmsq8dZb1olJXmsrmZYH1olJXmspXmspXmsr1olL1olJXmsrmZYH1olJXmsr1olL1olJXmsrmZYH1olL1olLeaIVXmsrmZYH1olL1olL1olJXmsrmZYH1olLna31Xmsr1olJXmsr1olJXmsrmZYH1olLqoVr1olJXmsr1olJXmsrmZYH1olL1olKkfaPobXvviGabgadXmsqThKuofKHmZ4Dobnr1olJXmsr1olJXmspXmsr1olJXmsrfZ4TuhWn1olL1olJXmsqBi7X1olJXmspZmslbmMhbmsdemsVfl8ZgmsNim8Jpk8F0m7R4m7F5nLB6jbh7jbiDirOEibOGnKaMhq+PnaCVg6qWg6qegKaff6WhnpKofKGtnomxeZy3noG6dZi+n3vCcpPDcpPGn3bLb4/Mb47UbIrVa4rYoGjdaIbeaIXhoWHmZYHobXvpcHjqdHXreHLroVrsfG/uhGnuh2bwj2Hxk17yl1vzmljzm1j0nlX1olL3AJXWAAAAbXRSTlMAEBAQHx8gICAuLjAwMDw9PUBAQEpQUFBXV1hgYGBkcHBwcXl8gICAgoiIkJCQlJicnJ2goKCmqK+wsLC4usDAwMjP0NDQ1NbW3Nzg4ODi5+3v8PDw8/T09PX29vb39/f5+fr7+/z8/Pz9/v7+zczCxgAABC5JREFUeAHN1ul3k0UUBvCb1CTVpmpaitAGSLSpSuKCLWpbTKNJFGlcSMAFF63iUmRccNG6gLbuxkXU66JAUef/9LSpmXnyLr3T5AO/rzl5zj137p136BISy44fKJXuGN/d19PUfYeO67Znqtf2KH33Id1psXoFdW30sPZ1sMvs2D060AHqws4FHeJojLZqnw53cmfvg+XR8mC0OEjuxrXEkX5ydeVJLVIlV0e10PXk5k7dYeHu7Cj1j+49uKg7uLU61tGLw1lq27ugQYlclHC4bgv7VQ+TAyj5Zc/UjsPvs1sd5cWryWObtvWT2EPa4rtnWW3JkpjggEpbOsPr7F7EyNewtpBIslA7p43HCsnwooXTEc3UmPmCNn5lrqTJxy6nRmcavGZVt/3Da2pD5NHvsOHJCrdc1G2r3DITpU7yic7w/7Rxnjc0kt5GC4djiv2Sz3Fb2iEZg41/ddsFDoyuYrIkmFehz0HR2thPgQqMyQYb2OtB0WxsZ3BeG3+wpRb1vzl2UYBog8FfGhttFKjtAclnZYrRo9ryG9uG/FZQU4AEg8ZE9LjGMzTmqKXPLnlWVnIlQQTvxJf8ip7VgjZjyVPrjw1te5otM7RmP7xm+sK2Gv9I8Gi++BRbEkR9EBw8zRUcKxwp73xkaLiqQb+kGduJTNHG72zcW9LoJgqQxpP3/Tj//c3yB0tqzaml05/+orHLksVO+95kX7/7qgJvnjlrfr2Ggsyx0eoy9uPzN5SPd86aXggOsEKW2Prz7du3VID3/tzs/sSRs2w7ovVHKtjrX2pd7ZMlTxAYfBAL9jiDwfLkq55Tm7ifhMlTGPyCAs7RFRhn47JnlcB9RM5T97ASuZXIcVNuUDIndpDbdsfrqsOppeXl5Y+XVKdjFCTh+zGaVuj0d9zy05PPK3QzBamxdwtTCrzyg/2Rvf2EstUjordGwa/kx9mSJLr8mLLtCW8HHGJc2R5hS219IiF6PnTusOqcMl57gm0Z8kanKMAQg0qSyuZfn7zItsbGyO9QlnxY0eCuD1XL2ys/MsrQhltE7Ug0uFOzufJFE2PxBo/YAx8XPPdDwWN0MrDRYIZF0mSMKCNHgaIVFoBbNoLJ7tEQDKxGF0kcLQimojCZopv0OkNOyWCCg9XMVAi7ARJzQdM2QUh0gmBozjc3Skg6dSBRqDGYSUOu66Zg+I2fNZs/M3/f/Grl/XnyF1Gw3VKCez0PN5IUfFLqvgUN4C0qNqYs5YhPL+aVZYDE4IpUk57oSFnJm4FyCqqOE0jhY2SMyLFoo56zyo6becOS5UVDdj7Vih0zp+tcMhwRpBeLyqtIjlJKAIZSbI8SGSF3k0pA3mR5tHuwPFoa7N7reoq2bqCsAk1HqCu5uvI1n6JuRXI+S1Mco54YmYTwcn6Aeic+kssXi8XpXC4V3t7/ADuTNKaQJdScAAAAAElFTkSuQmCC" /></a></p>
+<h2 id="vortexasdk.endpoints.refineries.Refineries">Refineries</h2>
 
-<pre><code class="language-python">StorageTerminals(self)
+<pre><code class="language-python">Refineries(self)
 </code></pre>
-<p>Storage Terminals endpoint.</p>
-<p>A Storage Terminal is a reference value that corresponds to an ID associated with other entities.</p>
-<p>For example, a storage terminal object may have the following keys:</p>
-<pre><code class="language-json">{
-    &quot;name&quot;: &quot;Military Oil Depot&quot;,
-    &quot;parent&quot;: {
-        &quot;name&quot;: &quot;Bandar Khomeini, Bandar Mahshahr [IR]&quot;
-    }
-    ...
-}
-</code></pre>
-<p>These IDs represent storage terminals which can be found via the Storage Terminal reference endpoint.</p>
-<p>When the storage terminals endpoint is searched with those ids as parameters:</p>
-<pre><code class="language-python">    &gt;&gt;&gt; from vortexasdk import StorageTerminals
-    &gt;&gt;&gt; df = StorageTerminals().search(ids=[&quot;08bbaf7a67ab30036d73b9604b932352a73905e16b8342b27f02ae34941b7db5&quot;]).to_df()
+<p>Refineries endpoint.</p>
+<h3 id="vortexasdk.endpoints.refineries.Refineries.load_all">load_all</h3>
 
+<pre><code class="language-python">Refineries.load_all()
 </code></pre>
-<p>Returns</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: right;"></th>
-<th style="text-align: left;">id</th>
-<th style="text-align: left;">name</th>
-<th>lat</th>
-<th>lon</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: right;">0</td>
-<td style="text-align: left;">08bbaf7a67ab30036d73...</td>
-<td style="text-align: left;">Military Oil Depot</td>
-<td>90</td>
-<td>180</td>
-</tr>
-</tbody>
-</table>
-<h3 id="vortexasdk.endpoints.storage_terminals.StorageTerminals.load_all">load_all</h3>
+<p>Load all refineries.</p>
+<h3 id="vortexasdk.endpoints.refineries.Refineries.search">search</h3>
 
-<pre><code class="language-python">StorageTerminals.load_all()
-</code></pre>
-<p>Load all storage terminals.</p>
-<h3 id="vortexasdk.endpoints.storage_terminals.StorageTerminals.search">search</h3>
-
-<pre><code class="language-python">StorageTerminals.search(
+<pre><code class="language-python">Refineries.search(
+  term: typing.Union[str, typing.List[str], NoneType] = None,
+  size: typing.Optional[int] = None,
   ids: typing.Union[str, typing.List[str], NoneType] = None,
-  term: typing.Union[str, typing.List[str], NoneType] = None)
+  refinery_name: typing.Optional[str] = None,
+  status:
+    typing.Optional[typing.Literal['Active', 'Shut', 'Unknown', 'Upcoming']] = None,
+  owner_id: typing.Union[str, typing.List[str], NoneType] = None,
+  operator_id: typing.Union[str, typing.List[str], NoneType] = None,
+  exact_term_match: bool = False)
 </code></pre>
-<p>Find all storage terminals matching given term.</p>
+<p>Find all refineries matching the given search arguments. Search arguments are combined in an AND manner.</p>
 <p><strong>Arguments</strong></p>
 <ul>
-<li><strong>ids</strong>: List of storage terminal ids to filter by.</li>
-<li><strong>term</strong>: List of terms to filter on.</li>
+<li><strong>term</strong>: The name(s) (or partial name(s)) of a refinery to search.</li>
+<li><strong>ids</strong>: ID or IDs of refineries to search.</li>
+<li><strong>refinery_name</strong>: The exact refinery name to search.</li>
+<li><strong>status</strong>: The current status of the refinery. Must be one of "Active", "Shut", "Unknown", or "Upcoming".</li>
+<li><strong>owner_id</strong>: Owner ID or list of owner IDs to filter the refineries.</li>
+<li><strong>operator_id</strong>: Operator ID or list of operator IDs to filter the refineries.</li>
+<li><strong>exact_term_match</strong>: If True, only exact name matches will be returned. If False, similar matches are allowed.</li>
 </ul>
 <p><strong>Returns</strong></p>
-<p>List of storage terminals matching the <code>ids</code> or <code>term</code> specified.</p>
+<p>List of refineries matching the search arguments.</p>
 <p><strong>Examples</strong></p>
-<p>Find a storage terminal by term, for example the name of the storage terminal.</p>
-<pre><code class="language-python">&gt;&gt;&gt; from vortexasdk import StorageTerminals
-&gt;&gt;&gt; df = StorageTerminals().search(term=[&quot;Military&quot;]).to_df()
+<ul>
+<li>Let's find all the Refineries with 'San' in their name.</li>
+</ul>
+<pre><code class="language-python">&gt;&gt;&gt; from vortexasdk import Refineries
+&gt;&gt;&gt; refineries = Refineries().search(&quot;San&quot;).to_df(columns=['name', 'country_name'])
 
 </code></pre>
-<p>Returns</p>
 <table>
 <thead>
 <tr>
 <th style="text-align: right;"></th>
-<th style="text-align: left;">id</th>
-<th style="text-align: left;">name</th>
-<th>lat</th>
-<th>lon</th>
+<th style="text-align: right;">name</th>
+<th style="text-align: left;">country_name</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: right;">0</td>
-<td style="text-align: left;">08bbaf7a67ab30036d73...</td>
-<td style="text-align: left;">Military Oil Depot</td>
-<td>90</td>
-<td>180</td>
+<td style="text-align: right;">San Lorenzo Refinery Oil Combustibles</td>
+<td style="text-align: left;">Argentina</td>
+</tr>
+<tr>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">Gibraltar-San Roque Refinery</td>
+<td style="text-align: left;">Spain</td>
 </tr>
 </tbody>
 </table>
-<h1 id="vortexasdk.endpoints.storage_terminals_result">vortexasdk.endpoints.storage_terminals_result</h1>
+<p><strong>Further Documentation</strong></p>
+<p><a href="https://docs.vortexa.com/reference/POST/reference/refineries">VortexaAPI Refineries Reference</a></p>
+<h3 id="vortexasdk.endpoints.refineries.Refineries.reference">reference</h3>
 
-<h2 id="vortexasdk.endpoints.storage_terminals_result.StorageTerminalResult">StorageTerminalResult</h2>
-
-<pre><code class="language-python">StorageTerminalResult(*, records: typing.List,
-                      reference: typing.Dict[str, typing.Any])
+<pre><code class="language-python">Refineries.reference(id: str)
 </code></pre>
-<p>Container class that holds the result obtained from calling the <code>Storage Terminals</code> endpoint.</p>
-<h3 id="vortexasdk.endpoints.storage_terminals_result.StorageTerminalResult.model_config">model_config</h3>
-
-<h3 id="vortexasdk.endpoints.storage_terminals_result.StorageTerminalResult.to_list">to_list</h3>
-
-<pre><code class="language-python">StorageTerminalResult.to_list()
-</code></pre>
-<p>Represent storage terminals as a list.</p>
-<h3 id="vortexasdk.endpoints.storage_terminals_result.StorageTerminalResult.to_df">to_df</h3>
-
-<pre><code class="language-python">StorageTerminalResult.to_df(
-    columns:
-    typing.Union[typing_extensions.Literal['all'], typing.List[str], NoneType] = ['id', 'name', 'lat', 'lon']
-)
-</code></pre>
-<p>Represent storage terminals as a <code>pd.DataFrame</code>.</p>
+<p>Perform a refinery lookup.</p>
 <p><strong>Arguments</strong></p>
 <ul>
-<li><strong>columns</strong>: The storage terminals features we want in the dataframe. Enter <code>columns='all'</code> to include all features.
-    Defaults to <code>columns = ['id', 'name', 'lat', 'lon']</code>.</li>
+<li><strong>id</strong>: Refinery ID to lookup</li>
 </ul>
 <p><strong>Returns</strong></p>
-<p><code>pd.DataFrame</code> of storage terminals.</p>
+<p>Refinery record matching the ID</p>
+<p><strong>Further Documentation:</strong></p>
+<p><a href="https://docs.vortexa.com/reference/GET/reference/refineries">VortexaAPI Refinery Reference</a></p>
               
             </div>
           </div>
@@ -387,10 +341,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../freight_pricing_search/" class="btn btn-neutral float-right" title="Search">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../entities/canal_transit/" class="btn btn-neutral float-right" title="Canal Transit">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../asset_tanks/" class="btn btn-neutral" title="Asset Tanks"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../vessel_positions/" class="btn btn-neutral" title="Vessel Positions"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -420,10 +374,10 @@
         </span>
     
     
-      <span><a href="../asset_tanks/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../vessel_positions/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../freight_pricing_search/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../../entities/canal_transit/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
