@@ -5,6 +5,7 @@ from vortexasdk.api.shared_types import ISODate, Node
 
 
 class RefineryPort(BaseModel):
+    id: int
     import_export: Optional[str] = None
     port_id: Optional[str] = None
     port_name: Optional[str] = None
