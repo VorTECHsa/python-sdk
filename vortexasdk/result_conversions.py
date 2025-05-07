@@ -26,7 +26,14 @@ def format_datatypes(df: pd.DataFrame) -> pd.DataFrame:
     timestamp_cols = [col for col in df.columns if "timestamp" in col]
 
     for col in timestamp_cols:
-        df[col] = pd.to_datetime(df[col])
+        if df[col].dtype != "object":
+            df[col] = pd.to_datetime(df[col])
+        else:
+            try:
+                df[col] = pd.to_datetime(df[col], format="ISO8601")
+            except (ValueError, pd.errors.ParserError):
+                logger.debug("Failed to parse ISO8601 format, trying default")
+                df[col] = pd.to_datetime(df[col])
 
     return df
 
