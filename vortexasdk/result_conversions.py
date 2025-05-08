@@ -32,7 +32,9 @@ def format_datatypes(df: pd.DataFrame) -> pd.DataFrame:
             try:
                 df[col] = pd.to_datetime(df[col], format="ISO8601")
             except (ValueError, pd.errors.ParserError):
-                logger.debug("Failed to parse ISO8601 format, trying default")
+                logger.debug(
+                    f"Failed to parse column=[{col}] using ISO8601 format, trying default"
+                )
                 df[col] = pd.to_datetime(df[col])
 
     return df
