@@ -61,6 +61,25 @@ def test_format_datatypes_does_not_convert_columns_without_timestamp_suffix():
         pytest.param(
             pd.Series(
                 [
+                    "2025/01/31",
+                    "2025/01/01",
+                    "2025/03/01",
+                ],
+                dtype=str,
+            ),
+            "custom_fmt_timestamp",
+            pd.Series(
+                [
+                    datetime(2025, 1, 31),
+                    datetime(2025, 1, 1),
+                    datetime(2025, 3, 1),
+                ]
+            ),
+            id="non ISO formats are parsed",
+        ),
+        pytest.param(
+            pd.Series(
+                [
                     1696118400000000000,
                     1696204800000000000,
                     1688169600000000000,
