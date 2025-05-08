@@ -7,7 +7,6 @@ from vortexasdk.result_conversions import format_datatypes
 
 
 def test_format_datatypes_does_not_convert_columns_without_timestamp_suffix():
-    # Create a sample DataFrame with different timestamp formats
     data = {
         "date_col_dont_convert": ["2023-10-01", "2023-10-02", "2023-07-01"],
         "int_values": [1, 2, 3],
@@ -18,7 +17,7 @@ def test_format_datatypes_does_not_convert_columns_without_timestamp_suffix():
     # Call the function to format datatypes
     formatted_df = format_datatypes(df)
 
-    # Check if the columns are converted to datetime
+    # Check the columns are not converted to datetime
     assert not pd.api.types.is_datetime64_any_dtype(
         formatted_df["date_col_dont_convert"]
     )
