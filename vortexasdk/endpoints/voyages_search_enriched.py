@@ -135,7 +135,7 @@ class VoyagesSearchEnriched(Search):
 
             location_status_excluded: A location status, or list of location statuses to exclude.
 
-            commitment_status: A commitment status, or list of commitment statuses to filter on. Can be one of: `'committed'`, `'uncommitted'`, `'open'`, `'unknown'`.
+            commitment_status: A commitment status, or list of commitment statuses to filter on. Can be one of: `'committed'`, `'unknown'`.
 
             commitment_status_excluded: A commitment status, or list of commitment statuses to exclude.
 
