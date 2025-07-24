@@ -85,8 +85,8 @@ class TestVesselAvailabilitySearchReal(TestCaseUsingRealAPI):
         assert len(df) == 10
 
     def test_search_with_dates(self):
-        start = datetime(2021, 6, 20)
-        end = datetime(2021, 6, 21)
+        start = datetime(2023, 6, 20)
+        end = datetime(2023, 6, 21)
 
         results = VesselAvailabilitySearch().search(
             filter_port=rotterdam,
