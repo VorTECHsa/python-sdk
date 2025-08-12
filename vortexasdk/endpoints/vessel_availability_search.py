@@ -64,12 +64,10 @@ class VesselAvailabilitySearch(Search):
         exclude_owners: Optional[Union[ID, List[ID]]] = None,
         exclude_effective_controllers: Optional[Union[ID, List[ID]]] = None,
         exclude_destination: Optional[Union[ID, List[ID]]] = None,
-        exclude_filter_vessel_flags: Optional[Union[ID, List[ID]]] = None,
-        exclude_filter_vessel_ice_class: Optional[Union[ID, List[ID]]] = None,
-        exclude_filter_vessel_tags: Optional[Union[List[Tag], Tag]] = None,
-        exclude_filter_vessel_risk_level: Optional[
-            Union[str, List[str]]
-        ] = None,
+        exclude_vessel_flags: Optional[Union[ID, List[ID]]] = None,
+        exclude_vessel_ice_class: Optional[Union[ID, List[ID]]] = None,
+        exclude_vessel_tags: Optional[Union[List[Tag], Tag]] = None,
+        exclude_vessel_risk_level: Optional[Union[str, List[str]]] = None,
         order: Optional[str] = None,
         order_direction: Optional[str] = None,
         size: Optional[int] = None,
@@ -150,13 +148,13 @@ class VesselAvailabilitySearch(Search):
 
             exclude_destination: A location ID, or list of location IDs to filter on.
 
-            exclude_filter_vessel_flags: A flag ID, or list of flag IDs to exclude.
+            exclude_vessel_flags: A flag ID, or list of flag IDs to exclude.
 
-            exclude_filter_vessel_ice_class: An ice class ID, or list of ice class IDs to exclude.
+            exclude_vessel_ice_class: An ice class ID, or list of ice class IDs to exclude.
 
-            exclude_filter_vessel_tags: A tag ID, or list of tag IDs to exclude.
+            exclude_vessel_tags: A tag ID, or list of tag IDs to exclude.
 
-            exclude_filter_vessel_risk_level: A risk level ID, or list of risk level IDs to exclude.
+            exclude_vessel_risk_level: A risk level ID, or list of risk level IDs to exclude.
 
         # Returns
         `VesselAvailabilityResult`
@@ -193,15 +191,13 @@ class VesselAvailabilitySearch(Search):
             ),
             "filter_vessel_status": convert_to_list(exclude_vessel_status),
             "filter_vessel_location": convert_to_list(exclude_vessel_location),
-            "filter_vessel_flags": convert_to_list(
-                exclude_filter_vessel_flags
-            ),
+            "filter_vessel_flags": convert_to_list(exclude_vessel_flags),
             "filter_vessel_ice_class": convert_to_list(
-                exclude_filter_vessel_ice_class
+                exclude_vessel_ice_class
             ),
-            "filter_vessel_tags": convert_to_list(exclude_filter_vessel_tags),
+            "filter_vessel_tags": convert_to_list(exclude_vessel_tags),
             "filter_vessel_risk_level": convert_to_list(
-                exclude_filter_vessel_risk_level
+                exclude_vessel_risk_level
             ),
         }
 
