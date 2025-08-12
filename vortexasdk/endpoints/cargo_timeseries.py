@@ -42,6 +42,8 @@ class CargoTimeSeries(Search):
         filter_vessel_owners: Optional[Union[ID, List[ID]]] = None,
         filter_time_charterers: Optional[Union[ID, List[ID]]] = None,
         filter_effective_controllers: Optional[Union[ID, List[ID]]] = None,
+        filter_shipper: Optional[Union[ID, List[ID]]] = None,
+        filter_consignee: Optional[Union[ID, List[ID]]] = None,
         filter_products: Optional[Union[ID, List[ID]]] = None,
         filter_vessels: Optional[Union[ID, List[ID]]] = None,
         filter_vessel_classes: Optional[Union[ID, List[ID]]] = None,
@@ -56,6 +58,8 @@ class CargoTimeSeries(Search):
         exclude_charterers: Optional[Union[ID, List[ID]]] = None,
         exclude_vessel_owners: Optional[Union[ID, List[ID]]] = None,
         exclude_time_charterers: Optional[Union[ID, List[ID]]] = None,
+        exclude_shipper: Optional[Union[ID, List[ID]]] = None,
+        exclude_consignee: Optional[Union[ID, List[ID]]] = None,
         exclude_origins: Optional[Union[ID, List[ID]]] = None,
         exclude_products: Optional[Union[ID, List[ID]]] = None,
         exclude_vessels: Optional[Union[ID, List[ID]]] = None,
@@ -106,6 +110,10 @@ class CargoTimeSeries(Search):
 
             filter_time_charterers: An time charterer ID, or list of time charterers IDs to filter on.
 
+            filter_shipper: A shipper ID, or list of shipper IDs to filter on.
+
+            filter_consignee: A consignee ID, or list of consignee IDs to filter on.
+
             filter_products: A product ID, or list of product IDs to filter on.
 
             filter_vessels: A vessel ID, or list of vessel IDs to filter on.
@@ -146,6 +154,10 @@ class CargoTimeSeries(Search):
 
             exclude_time_charterers: An time charterer ID, or list of time charterers IDs to filter on.
 
+            exclude_shipper: A shipper ID, or list of shipper IDs to exclude.
+
+            exclude_consignee: A consignee ID, or list of consignee IDs to exclude.
+
             exclude_vessel_flags: A geography ID, or list of geography IDs to exclude.
 
             exclude_vessel_ice_class: An attribute ID, or list of attribute IDs to exclude.
@@ -183,7 +195,7 @@ class CargoTimeSeries(Search):
             `destination_state_or_province`, `product_category`, `product_grade`, `product_group`,
             `product_group_product`, `vessel_class_group`, `vessel_class_coarse`, `vessel_class_granular`,
             `vessel_flag`, `storage_location_country`, `storage_location_region`, `storage_location_shipping_region_v2`,
-            `storage_location_trading_sub_region`, or not provided.
+            `storage_location_trading_sub_region`, `shipper`, `consignee`, or not provided.
 
             timeseries_unit: A numeric metric to be calculated for each time bucket. Must be one of ['b', 'bpd', 't',
              'tpd', 'c', 'cpd'], corresponding to barrels, barrels per day, metric tonnes, metric tonnes per day,
@@ -258,6 +270,8 @@ class CargoTimeSeries(Search):
             "filter_effective_controllers": convert_to_list(
                 exclude_effective_controllers
             ),
+            "filter_shipper": convert_to_list(exclude_shipper),
+            "filter_consignee": convert_to_list(exclude_consignee),
             "filter_owners": convert_to_list(exclude_owners),
             "filter_products": convert_to_list(exclude_products),
             "filter_ship_to_ship_locations": convert_to_list(
@@ -292,6 +306,8 @@ class CargoTimeSeries(Search):
             ),
             "filter_vessel_owners": convert_to_list(filter_vessel_owners),
             "filter_time_charterers": convert_to_list(filter_time_charterers),
+            "filter_shipper": convert_to_list(filter_shipper),
+            "filter_consignee": convert_to_list(filter_consignee),
             "filter_products": convert_to_list(filter_products),
             "filter_vessels": convert_to_list(filter_vessels),
             "filter_vessel_classes": convert_to_list(filter_vessel_classes),

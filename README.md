@@ -55,7 +55,7 @@ pip3 install vortexasdk
 
 The SDK requires Python version 3.9. See [Setup FAQ](https://vortechsa.github.io/python-sdk/faq_setup/) for more details.
 
-To install the SDK on an Apple ARM-based machine, use Python versions 3.9 and use the latest version of pip. This is supported in the SDK versions 1.0.0 or higher.
+To install the SDK on an Apple ARM-based machine, use Python versions 3.9.19 and use the latest version of pip. This is supported in the SDK versions 1.0.0 or higher.
 
 ## Authentication
 

@@ -83,13 +83,7 @@ Now you're ready to create a new branch, add a feature or fix a bug, then send u
 
 ### Note about Apple ARM-based chips
 
-To run the SDK on an Apple ARM chip, upgrade your Python version to 3.9 or higher and use the latest version of pip. This works for the SDK version 0.41.0 or higher.
-
-The set up is almost identical as above except one command; to create a virtual environment for Python 3.8 you should run:
-
-```bash
-python -m venv venv
-```
+To run the SDK on an Apple ARM chip, use Python version 3.9.19 and use the latest version of pip. This works for the SDK version 0.41.0 or higher.
 
 ## Contributing Code
 
