@@ -93,7 +93,7 @@ class CanalTransit(Search):
 
             filter_effective_controllers: An effective controller ID, or list of effective controller IDs to filter on.
 
-            filter_canal: Canal the vessel is queuing for. Must be one of [`'suez_canal'`, `'panama_canal'`],
+            filter_canal: Canal the vessel is queuing for. Must be [`'panama_canal'`],
 
             filter_direction: Direction that vessel is heading. Must be one of  [`'northbound'`, `'southbound'`],
 
