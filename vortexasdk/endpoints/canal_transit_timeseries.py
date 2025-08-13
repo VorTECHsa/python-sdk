@@ -116,7 +116,7 @@ class CanalTransitTimeseries(Search):
 
             updated_since: The UTC date of last update time of the record,
 
-            filter_canal: Canal the vessel is queuing for. Must be one of [`'suez_canal'`, `'panama_canal'`],
+            filter_canal: Canal the vessel is queuing for. Must be [`'panama_canal'`],
 
             filter_direction: Direction that vessel is heading. Must be one of  [`'northbound'`, `'southbound'`],
 
