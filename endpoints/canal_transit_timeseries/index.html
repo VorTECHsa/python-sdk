@@ -287,8 +287,8 @@
     filter_canal: typing.Optional[str] = None,
     filter_direction: typing.Optional[str] = None,
     filter_lock: typing.Optional[str] = None,
-    time_min: datetime = datetime.datetime(2025, 7, 22, 13, 44, 49, 649755),
-    time_max: datetime = datetime.datetime(2025, 7, 26, 13, 44, 49, 649762),
+    time_min: datetime = datetime.datetime(2025, 8, 11, 9, 5, 20, 590568),
+    time_max: datetime = datetime.datetime(2025, 8, 15, 9, 5, 20, 590577),
     timeseries_activity: str = 'started_waiting',
     metric: str = 'count_of_vessels',
     timeseries_frequency: str = 'day',
@@ -352,7 +352,7 @@ filter_voyage_status: A voyage status, or list of voyage statuses to filter on. 
 
 updated_since: The UTC date of last update time of the record,
 
-filter_canal: Canal the vessel is queuing for. Must be one of [`'suez_canal'`, `'panama_canal'`],
+filter_canal: Canal the vessel is queuing for. Must be [`'panama_canal'`],
 
 filter_direction: Direction that vessel is heading. Must be one of  [`'northbound'`, `'southbound'`],
 
