@@ -316,8 +316,9 @@ def _warn_user_if_sdk_version_outdated() -> None:
                 f"You are using {sdk_pkg_name} version {__version__}, however version {latest_sdk_version} is available.\n"
                 f"You should consider upgrading via the 'pip install {sdk_pkg_name} --upgrade' command."
             )
-    except Exception:
-        logger.warning("Outdated SDK version check could not be completed. \n")
+    except Exception as e:
+        logger.warning("Outdated SDK version check could not be completed. See error below for more information.")
+        logger.warning(e)
 
 
 def _load_api_key():
