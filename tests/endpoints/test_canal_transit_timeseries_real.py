@@ -13,7 +13,7 @@ class TestCanalTransitTimeseries(TestCaseUsingRealAPI):
         nonLng = CanalTransitTimeseries().search(
             time_min=datetime(2023, 9, 5),
             time_max=datetime(2023, 9, 7),
-            exclude_filter_vessel_classes=["lng"],
+            exclude_vessel_classes=["lng"],
             metric="count_of_vessels",
             timeseries_activity="started_waiting",
         )

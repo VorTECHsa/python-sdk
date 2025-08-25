@@ -553,6 +553,9 @@ class CargoMovementsResult(Result):
             'parent_ids.0.splinter_timestamp',
             'parent_ids.1.id',
             'parent_ids.1.splinter_timestamp',
+            'trades.0.type',
+            'trades.0.id',
+            'trades.0.label'
         ]
         ```
 

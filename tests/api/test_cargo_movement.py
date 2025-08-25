@@ -95,6 +95,18 @@ class TestCargoMovement(TestCase):
                 "splinter_timestamp": "2019-10-20T16:41:49+0000",
             }
         ],
+        "trades": [
+            {
+                "type": "shipper",
+                "id": "c9f70607e743e82428ea24cd32f6e403c6ced09078eacfe3d6c175347a9ab508",
+                "label": "NAYARA ENERGY",
+            },
+            {
+                "type": "consignee",
+                "id": "5b3fcbc1bd2efec8999bd37d128a7e2132ebd9acf5a1a6fd8d6d2ba234c13938",
+                "label": "RELIANCE",
+            },
+        ],
     }
 
     cm = CargoMovement.model_validate(dictionary)
@@ -179,6 +191,12 @@ class TestCargoMovement(TestCase):
             "vessels.0.voyage_id": "401f0e74fc42401248a484aca2e9955dea885378796f7f4d0bc8e92c35ea270a",
             "parent_ids.0.id": "9d52ede1cff0421a8cd7283b0171afe8d23f519dca5f4e489734522f9cdf804c",
             "parent_ids.0.splinter_timestamp": "2019-10-20T16:41:49+0000",
+            "trades.0.type": "shipper",
+            "trades.0.id": "c9f70607e743e82428ea24cd32f6e403c6ced09078eacfe3d6c175347a9ab508",
+            "trades.0.label": "NAYARA ENERGY",
+            "trades.1.type": "consignee",
+            "trades.1.id": "5b3fcbc1bd2efec8999bd37d128a7e2132ebd9acf5a1a6fd8d6d2ba234c13938",
+            "trades.1.label": "RELIANCE",
         }
 
         assert flat == expected

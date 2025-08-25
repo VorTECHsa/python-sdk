@@ -326,3 +326,52 @@ class TestCargoMovementsReal(TestCaseUsingRealAPI):
 
         assert cmT["quantity"] != cmB["quantity"]
         assert cmT["quantity"] != cmCBM["quantity"]
+
+    def test_filter_by_shipper_and_consignee(self):
+        cms = CargoMovements().search(
+            filter_activity="loading_start",
+            filter_time_min=datetime(2025, 6, 8),
+            filter_time_max=datetime(2025, 6, 10),
+            filter_shipper="96039552fb75629f9001daac756b1cc20acfe3faeb7d48b2856d9a229832cc34",
+            filter_consignee="eb0d904f1a96d00df814dc9e07ed5909fcf2e2f2fb74288daf7d84adb80dbba0",
+        )
+
+        for i, cm in enumerate(cms):
+            assert "trades" in cm
+            assert cm["trades"]
+
+            for trade in cm["trades"]:
+                if trade["type"] == "shipper":
+                    assert (
+                        trade["id"]
+                        == "96039552fb75629f9001daac756b1cc20acfe3faeb7d48b2856d9a229832cc34"
+                    )
+                elif trade["type"] == "consignee":
+                    assert (
+                        trade["id"]
+                        == "eb0d904f1a96d00df814dc9e07ed5909fcf2e2f2fb74288daf7d84adb80dbba0"
+                    )
+
+    def test_filter_exclude_shipper_and_consignee(self):
+        cms = CargoMovements().search(
+            filter_activity="loading_start",
+            filter_time_min=datetime(2025, 6, 8),
+            filter_time_max=datetime(2025, 6, 10),
+            exclude_shipper="96039552fb75629f9001daac756b1cc20acfe3faeb7d48b2856d9a229832cc34",
+            exclude_consignee="eb0d904f1a96d00df814dc9e07ed5909fcf2e2f2fb74288daf7d84adb80dbba0",
+        )
+
+        for i, cm in enumerate(cms):
+
+            if "trades" in cm and cm["trades"]:
+                for trade in cm["trades"]:
+                    if trade["type"] == "shipper":
+                        assert (
+                            trade["id"]
+                            != "96039552fb75629f9001daac756b1cc20acfe3faeb7d48b2856d9a229832cc34"
+                        )
+                    elif trade["type"] == "consignee":
+                        assert (
+                            trade["id"]
+                            != "eb0d904f1a96d00df814dc9e07ed5909fcf2e2f2fb74288daf7d84adb80dbba0"
+                        )

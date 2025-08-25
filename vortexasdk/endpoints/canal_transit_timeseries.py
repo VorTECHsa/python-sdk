@@ -56,15 +56,13 @@ class CanalTransitTimeseries(Search):
         timeseries_activity: str = "started_waiting",
         metric: str = "count_of_vessels",
         timeseries_frequency: str = "day",
-        exclude_filter_vessels: Optional[Union[ID, List[ID]]] = None,
-        exclude_filter_vessel_classes: Optional[Union[ID, List[ID]]] = None,
-        exclude_filter_products: Optional[Union[ID, List[ID]]] = None,
-        exclude_filter_origin: Optional[Union[ID, List[ID]]] = None,
-        exclude_filter_destination: Optional[Union[ID, List[ID]]] = None,
-        exclude_filter_charterer: Optional[Union[ID, List[ID]]] = None,
-        exclude_filter_effective_controller: Optional[
-            Union[ID, List[ID]]
-        ] = None,
+        exclude_vessels: Optional[Union[ID, List[ID]]] = None,
+        exclude_vessel_classes: Optional[Union[ID, List[ID]]] = None,
+        exclude_products: Optional[Union[ID, List[ID]]] = None,
+        exclude_origin: Optional[Union[ID, List[ID]]] = None,
+        exclude_destination: Optional[Union[ID, List[ID]]] = None,
+        exclude_charterer: Optional[Union[ID, List[ID]]] = None,
+        exclude_effective_controller: Optional[Union[ID, List[ID]]] = None,
     ) -> TimeSeriesResult:
         """
 
@@ -132,19 +130,19 @@ class CanalTransitTimeseries(Search):
 
             timeseries_frequency: Frequency denoting the granularity of the time series. Must be one of [`'day'`, `'week'`]
 
-            exclude_filter_vessels: A vessel ID, or list of vessel IDs to exclude,
+            exclude_vessels: A vessel ID, or list of vessel IDs to exclude,
 
-            exclude_filter_vessel_classes: A vessel class, or list of vessel classes to exclude,
+            exclude_vessel_classes: A vessel class, or list of vessel classes to exclude,
 
-            exclude_filter_products: A product ID, or list of product IDs to exclude,
+            exclude_products: A product ID, or list of product IDs to exclude,
 
-            exclude_filter_origin: A geography ID, or list of geography IDs to exclude,
+            exclude_origin: A geography ID, or list of geography IDs to exclude,
 
-            exclude_filter_destination: A geography ID, or list of geography IDs to exclude,
+            exclude_destination: A geography ID, or list of geography IDs to exclude,
 
-            exclude_filter_charterer: A charterer ID, or list of charterer IDs to exclude,
+            exclude_charterer: A charterer ID, or list of charterer IDs to exclude,
 
-            exclude_filter_effective_controller: A effective controller ID, or list of IDs to exclude,
+            exclude_effective_controller: A effective controller ID, or list of IDs to exclude,
 
         # Returns
         `CanalTransitTimeseries`
@@ -152,16 +150,14 @@ class CanalTransitTimeseries(Search):
         """
 
         exclude_params: Dict[str, Any] = {
-            "filter_origin": convert_to_list(exclude_filter_origin),
-            "filter_destination": convert_to_list(exclude_filter_destination),
-            "filter_products": convert_to_list(exclude_filter_products),
-            "filter_vessels": convert_to_list(exclude_filter_vessels),
-            "filter_vessel_classes": convert_to_list(
-                exclude_filter_vessel_classes
-            ),
-            "filter_charterers": convert_to_list(exclude_filter_charterer),
+            "filter_origin": convert_to_list(exclude_origin),
+            "filter_destination": convert_to_list(exclude_destination),
+            "filter_products": convert_to_list(exclude_products),
+            "filter_vessels": convert_to_list(exclude_vessels),
+            "filter_vessel_classes": convert_to_list(exclude_vessel_classes),
+            "filter_charterers": convert_to_list(exclude_charterer),
             "filter_effective_controllers": convert_to_list(
-                exclude_filter_effective_controller
+                exclude_effective_controller
             ),
         }
 
