@@ -76,6 +76,7 @@ class CargoTimeSeries(Search):
         timeseries_activity_time_span_min: Optional[int] = None,
         timeseries_activity_time_span_max: Optional[int] = None,
         timeseries_property: Optional[str] = None,
+        quantity_at_time_of: str = "load",
     ) -> TimeSeriesResult:
         """
 
@@ -213,6 +214,13 @@ class CargoTimeSeries(Search):
              `timeseries_activity_time_span_max=1000 * 60 * 60 * 24 * 14` in conjunction with
              `filter_activity='storing_state'`.
 
+            quantity_at_time_of: This parameter is designed for LNG cargo and gives the user the freedom to
+            choose whether to create the time series based on the load volume or discharged volumes,
+            as we consider the discharge quantities to differ from load quantities due to boil-off gas.
+            Can be `load` or `unload`. Default is `load`.
+            `load` - represents the quantity of the selected unit at the time of the loading event.
+            `unload` - represents the quantity of the selected unit at the time of the unloading event.
+
         # Returns
         `TimeSeriesResult`
 
@@ -329,6 +337,7 @@ class CargoTimeSeries(Search):
             "timeseries_unit": timeseries_unit,
             "timeseries_activity": timeseries_activity or filter_activity,
             "timeseries_property": timeseries_property,
+            "quantity_at_time_of": quantity_at_time_of,
             "size": self._MAX_PAGE_RESULT_SIZE,
         }
 
