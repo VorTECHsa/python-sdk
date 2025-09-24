@@ -325,7 +325,8 @@
   intra_movements: typing.Optional[str] = None,
   timeseries_activity_time_span_min: typing.Optional[int] = None,
   timeseries_activity_time_span_max: typing.Optional[int] = None,
-  timeseries_property: typing.Optional[str] = None)
+  timeseries_property: typing.Optional[str] = None,
+  quantity_at_time_of: str = 'load')
 </code></pre>
 <p>Find Aggregate flows between regions, for various products, for various vessels, or various corporations.</p>
 <p>Example questions that can be answered with this endpoint:</p>
@@ -417,6 +418,12 @@
  movements that occurred for <em>less</em> than 14 days enter
  <code>timeseries_activity_time_span_max=1000 * 60 * 60 * 24 * 14</code> in conjunction with
  <code>filter_activity='storing_state'</code>.</p>
+<p>quantity_at_time_of: This parameter is designed for LNG cargo and gives the user the freedom to
+choose whether to create the time series based on the load volume or discharged volumes,
+as we consider the discharge quantities to differ from load quantities due to boil-off gas.
+Can be <code>load</code> or <code>unload</code>. Default is <code>load</code>.
+<code>load</code> - represents the quantity of the selected unit at the time of the loading event.
+<code>unload</code> - represents the quantity of the selected unit at the time of the unloading event.</p>
 </li>
 </ul>
 <p><strong>Returns</strong></p>
