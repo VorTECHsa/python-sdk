@@ -332,8 +332,8 @@ class TestCargoMovementsReal(TestCaseUsingRealAPI):
             filter_activity="loading_start",
             filter_time_min=datetime(2025, 6, 8),
             filter_time_max=datetime(2025, 6, 10),
-            filter_shipper="96039552fb75629f9001daac756b1cc20acfe3faeb7d48b2856d9a229832cc34",
-            filter_consignee="eb0d904f1a96d00df814dc9e07ed5909fcf2e2f2fb74288daf7d84adb80dbba0",
+            filter_shipper="7b3c9abe7a56425f27bfcd227426ff6a8bc68357cbbb775d7c6c3d0df9bb2f2c",
+            filter_consignee="5b3fcbc1bd2efec8999bd37d128a7e2132ebd9acf5a1a6fd8d6d2ba234c13938",
         )
 
         for i, cm in enumerate(cms):
@@ -344,12 +344,12 @@ class TestCargoMovementsReal(TestCaseUsingRealAPI):
                 if trade["type"] == "shipper":
                     assert (
                         trade["id"]
-                        == "96039552fb75629f9001daac756b1cc20acfe3faeb7d48b2856d9a229832cc34"
+                        == "7b3c9abe7a56425f27bfcd227426ff6a8bc68357cbbb775d7c6c3d0df9bb2f2c"
                     )
                 elif trade["type"] == "consignee":
                     assert (
                         trade["id"]
-                        == "eb0d904f1a96d00df814dc9e07ed5909fcf2e2f2fb74288daf7d84adb80dbba0"
+                        == "5b3fcbc1bd2efec8999bd37d128a7e2132ebd9acf5a1a6fd8d6d2ba234c13938"
                     )
 
     def test_filter_exclude_shipper_and_consignee(self):
@@ -357,8 +357,8 @@ class TestCargoMovementsReal(TestCaseUsingRealAPI):
             filter_activity="loading_start",
             filter_time_min=datetime(2025, 6, 8),
             filter_time_max=datetime(2025, 6, 10),
-            exclude_shipper="96039552fb75629f9001daac756b1cc20acfe3faeb7d48b2856d9a229832cc34",
-            exclude_consignee="eb0d904f1a96d00df814dc9e07ed5909fcf2e2f2fb74288daf7d84adb80dbba0",
+            exclude_shipper="7b3c9abe7a56425f27bfcd227426ff6a8bc68357cbbb775d7c6c3d0df9bb2f2c",
+            exclude_consignee="5b3fcbc1bd2efec8999bd37d128a7e2132ebd9acf5a1a6fd8d6d2ba234c13938",
         )
 
         for i, cm in enumerate(cms):
@@ -367,10 +367,10 @@ class TestCargoMovementsReal(TestCaseUsingRealAPI):
                     if trade["type"] == "shipper":
                         assert (
                             trade["id"]
-                            != "96039552fb75629f9001daac756b1cc20acfe3faeb7d48b2856d9a229832cc34"
+                            != "7b3c9abe7a56425f27bfcd227426ff6a8bc68357cbbb775d7c6c3d0df9bb2f2c"
                         )
                     elif trade["type"] == "consignee":
                         assert (
                             trade["id"]
-                            != "eb0d904f1a96d00df814dc9e07ed5909fcf2e2f2fb74288daf7d84adb80dbba0"
+                            != "5b3fcbc1bd2efec8999bd37d128a7e2132ebd9acf5a1a6fd8d6d2ba234c13938"
                         )
