@@ -362,7 +362,6 @@ class TestCargoMovementsReal(TestCaseUsingRealAPI):
         )
 
         for i, cm in enumerate(cms):
-
             if "trades" in cm and cm["trades"]:
                 for trade in cm["trades"]:
                     if trade["type"] == "shipper":
