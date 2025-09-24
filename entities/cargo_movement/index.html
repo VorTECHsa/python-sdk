@@ -412,6 +412,15 @@ a previous id of the cargo movement, and a <code>splinter_timestamp</code>, the 
 </code></pre>
 <h3 id="vortexasdk.api.cargo_movement.CargoMovementProductEntry.model_config">model_config</h3>
 
+<h2 id="vortexasdk.api.cargo_movement.CargoMovementTradeEntry">CargoMovementTradeEntry</h2>
+
+<pre><code class="language-python">CargoMovementTradeEntry(
+  *, type:
+    typing_extensions.Literal['load', 'discharge', 'shipper', 'consignee'],
+  id: typing.Optional[str], label: typing.Optional[str])
+</code></pre>
+<h3 id="vortexasdk.api.cargo_movement.CargoMovementTradeEntry.model_config">model_config</h3>
+
 <h2 id="vortexasdk.api.cargo_movement.CargoMovement">CargoMovement</h2>
 
 <pre><code class="language-python">CargoMovement(
@@ -423,7 +432,9 @@ a previous id of the cargo movement, and a <code>splinter_timestamp</code>, the 
     parent_ids:
     typing.Optional[typing.List[vortexasdk.api.cargo_movement.ParentID]],
     events:
-    typing.Optional[typing.List[typing.Annotated[typing.Union[vortexasdk.api.cargo_movement.CargoPortLoadEvent, vortexasdk.api.cargo_movement.CargoFSOLoadEvent, vortexasdk.api.cargo_movement.CargoPortUnloadEvent, vortexasdk.api.cargo_movement.CargoFSOUnloadEvent, vortexasdk.api.cargo_movement.CargoFixtureEvent, vortexasdk.api.cargo_movement.CargoSTSEvent, vortexasdk.api.cargo_movement.CargoStorageEvent, vortexasdk.api.cargo_movement.CargoWaypointEvent, vortexasdk.api.cargo_movement.CargoTransitingEvent, vortexasdk.api.cargo_movement.CargoOilOnWaterEvent], FieldInfo(annotation=NoneType, required=True, discriminator='event_type')]]]
+    typing.Optional[typing.List[typing.Annotated[typing.Union[vortexasdk.api.cargo_movement.CargoPortLoadEvent, vortexasdk.api.cargo_movement.CargoFSOLoadEvent, vortexasdk.api.cargo_movement.CargoPortUnloadEvent, vortexasdk.api.cargo_movement.CargoFSOUnloadEvent, vortexasdk.api.cargo_movement.CargoFixtureEvent, vortexasdk.api.cargo_movement.CargoSTSEvent, vortexasdk.api.cargo_movement.CargoStorageEvent, vortexasdk.api.cargo_movement.CargoWaypointEvent, vortexasdk.api.cargo_movement.CargoTransitingEvent, vortexasdk.api.cargo_movement.CargoOilOnWaterEvent], FieldInfo(annotation=NoneType, required=True, discriminator='event_type')]]],
+    trades:
+    typing.Optional[typing.List[vortexasdk.api.cargo_movement.CargoMovementTradeEntry]]
 )
 </code></pre>
 <p>Cargo movements are the base data set the Vortexa API is centred around.</p>

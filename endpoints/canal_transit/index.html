@@ -289,18 +289,14 @@
     filter_canal: typing.Optional[str] = None,
     filter_direction: typing.Optional[str] = None,
     filter_lock: typing.Optional[str] = None,
-    exclude_filter_vessels:
+    exclude_vessels: typing.Union[str, typing.List[str], NoneType] = None,
+    exclude_vessel_classes:
     typing.Union[str, typing.List[str], NoneType] = None,
-    exclude_filter_vessel_classes:
-    typing.Union[str, typing.List[str], NoneType] = None,
-    exclude_filter_products:
-    typing.Union[str, typing.List[str], NoneType] = None,
-    exclude_filter_origin: typing.Union[str, typing.List[str], NoneType] = None,
-    exclude_filter_destination:
-    typing.Union[str, typing.List[str], NoneType] = None,
-    exclude_filter_charterer:
-    typing.Union[str, typing.List[str], NoneType] = None,
-    exclude_filter_effective_controller:
+    exclude_products: typing.Union[str, typing.List[str], NoneType] = None,
+    exclude_origin: typing.Union[str, typing.List[str], NoneType] = None,
+    exclude_destination: typing.Union[str, typing.List[str], NoneType] = None,
+    exclude_charterer: typing.Union[str, typing.List[str], NoneType] = None,
+    exclude_effective_controller:
     typing.Union[str, typing.List[str], NoneType] = None)
 </code></pre>
 <p>Find CanalTransitRecords matching the given search parameters.</p>
@@ -355,19 +351,19 @@ filter_voyage_status: A voyage status, or list of voyage statuses to filter on. 
 
 updated_since: The UTC date of last record update time,
 
-exclude_filter_vessels: A vessel ID, or list of vessel IDs to exclude,
+exclude_vessels: A vessel ID, or list of vessel IDs to exclude,
 
-exclude_filter_vessel_classes: A vessel class, or list of vessel classes to exclude,
+exclude_vessel_classes: A vessel class, or list of vessel classes to exclude,
 
-exclude_filter_products: A product ID, or list of product IDs to exclude,
+exclude_products: A product ID, or list of product IDs to exclude,
 
-exclude_filter_origin: A geography ID, or list of geography IDs to exclude,
+exclude_origin: A geography ID, or list of geography IDs to exclude,
 
-exclude_filter_destination: A geography ID, or list of geography IDs to exclude,
+exclude_destination: A geography ID, or list of geography IDs to exclude,
 
-exclude_filter_charterer: A charterer ID, or list of charterer IDs to exclude,
+exclude_charterer: A charterer ID, or list of charterer IDs to exclude,
 
-exclude_filter_effective_controller: A effective controller ID, or list of IDs to exclude,
+exclude_effective_controller: A effective controller ID, or list of IDs to exclude,
 </code></pre>
 <p><strong>Returns</strong></p>
 <p><code>CanalTransitResults</code>, containing all the canal transit records matching the given search terms.</p>

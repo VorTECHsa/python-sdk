@@ -267,9 +267,9 @@
 <pre><code class="language-python">CargoMovements.search(
   filter_activity: typing.Optional[str] = None,
   filter_time_min:
-    datetime = datetime.datetime(2025, 8, 20, 14, 40, 33, 745196),
+    datetime = datetime.datetime(2025, 9, 24, 10, 23, 31, 323549),
   filter_time_max:
-    datetime = datetime.datetime(2025, 8, 20, 14, 40, 33, 745198),
+    datetime = datetime.datetime(2025, 9, 24, 10, 23, 31, 323552),
   cm_unit: str = 'b',
   filter_charterers: typing.Union[str, typing.List[str], NoneType] = None,
   filter_destinations:
@@ -282,6 +282,8 @@
     typing.Union[str, typing.List[str], NoneType] = None,
   filter_effective_controllers:
     typing.Union[str, typing.List[str], NoneType] = None,
+  filter_shipper: typing.Union[str, typing.List[str], NoneType] = None,
+  filter_consignee: typing.Union[str, typing.List[str], NoneType] = None,
   filter_products: typing.Union[str, typing.List[str], NoneType] = None,
   filter_vessels: typing.Union[str, typing.List[str], NoneType] = None,
   filter_vessel_classes:
@@ -312,10 +314,12 @@
   exclude_owners: typing.Union[str, typing.List[str], NoneType] = None,
   exclude_effective_controllers:
     typing.Union[str, typing.List[str], NoneType] = None,
-  exclude_filter_vessel_owners:
+  exclude_vessel_owners:
     typing.Union[str, typing.List[str], NoneType] = None,
-  exclude_filter_time_charterers:
+  exclude_time_charterers:
     typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_shipper: typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_consignee: typing.Union[str, typing.List[str], NoneType] = None,
   exclude_vessel_flags:
     typing.Union[str, typing.List[str], NoneType] = None,
   exclude_vessel_ice_class:
@@ -343,6 +347,8 @@
 <p>filter_effective_controllers: An effective controller ID, or list of effective controller IDs to filter on.</p>
 <p>filter_vessel_owners: An vessel owner ID, or list of vessel owners IDs to filter on.</p>
 <p>filter_time_charterers: An time charterer ID, or list of time charterers IDs to filter on.</p>
+<p>filter_shipper: A shipper ID, or list of shipper IDs to filter on.</p>
+<p>filter_consignee: A consignee ID, or list of consignee IDs to filter on.</p>
 <p>filter_products: A product ID, or list of product IDs to filter on.</p>
 <p>filter_vessels: A vessel ID, or list of vessel IDs to filter on.</p>
 <p>filter_vessel_classes: A vessel class, or list of vessel classes to filter on.</p>
@@ -361,9 +367,11 @@
 <p>exclude_vessels: A vessel ID, or list of vessel IDs to exclude.</p>
 <p>exclude_vessel_classes: A vessel class, or list of vessel classes to exclude.</p>
 <p>exclude_charterers: A charterer ID, or list of charterer IDs to exclude.</p>
-<p>exclude_filter_effective_controllers: An effective controller ID, or list of effective controller IDs to exclude.</p>
-<p>exclude_filter_vessel_owners: An vessel owner ID, or list of vessel owners IDs to filter on.</p>
-<p>exclude_filter_time_charterers: An time charterer ID, or list of time charterers IDs to filter on.</p>
+<p>exclude_effective_controllers: An effective controller ID, or list of effective controller IDs to exclude.</p>
+<p>exclude_vessel_owners: An vessel owner ID, or list of vessel owners IDs to exclude.</p>
+<p>exclude_time_charterers: An time charterer ID, or list of time charterers IDs to exclude.</p>
+<p>exclude_shipper: A shipper ID, or list of shipper IDs to exclude.</p>
+<p>exclude_consignee: A consignee ID, or list of consignee IDs to exclude.</p>
 <p>exclude_vessel_flags: A geography ID, or list of geography IDs to exclude.</p>
 <p>exclude_vessel_ice_class: An attribute ID, or list of attribute IDs to exclude.</p>
 <p>exclude_vessel_propulsion: An attribute ID, or list of attribute IDs to exclude.</p>
@@ -1097,6 +1105,9 @@ This lets us view all vessels present in any STS operations.</p>
     'parent_ids.0.splinter_timestamp',
     'parent_ids.1.id',
     'parent_ids.1.splinter_timestamp',
+    'trades.0.type',
+    'trades.0.id',
+    'trades.0.label'
 ]
 </code></pre>
               

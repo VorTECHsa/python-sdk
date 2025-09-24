@@ -278,6 +278,8 @@
     typing.Union[str, typing.List[str], NoneType] = None,
   filter_effective_controllers:
     typing.Union[str, typing.List[str], NoneType] = None,
+  filter_shipper: typing.Union[str, typing.List[str], NoneType] = None,
+  filter_consignee: typing.Union[str, typing.List[str], NoneType] = None,
   filter_products: typing.Union[str, typing.List[str], NoneType] = None,
   filter_vessels: typing.Union[str, typing.List[str], NoneType] = None,
   filter_vessel_classes:
@@ -300,6 +302,8 @@
     typing.Union[str, typing.List[str], NoneType] = None,
   exclude_time_charterers:
     typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_shipper: typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_consignee: typing.Union[str, typing.List[str], NoneType] = None,
   exclude_origins: typing.Union[str, typing.List[str], NoneType] = None,
   exclude_products: typing.Union[str, typing.List[str], NoneType] = None,
   exclude_vessels: typing.Union[str, typing.List[str], NoneType] = None,
@@ -346,6 +350,8 @@
 <p>filter_effective_controllers: An effective controller ID, or list of effective controller IDs to filter on.</p>
 <p>filter_vessel_owners: An vessel owner ID, or list of vessel owners IDs to filter on.</p>
 <p>filter_time_charterers: An time charterer ID, or list of time charterers IDs to filter on.</p>
+<p>filter_shipper: A shipper ID, or list of shipper IDs to filter on.</p>
+<p>filter_consignee: A consignee ID, or list of consignee IDs to filter on.</p>
 <p>filter_products: A product ID, or list of product IDs to filter on.</p>
 <p>filter_vessels: A vessel ID, or list of vessel IDs to filter on.</p>
 <p>filter_vessel_classes: A vessel class, or list of vessel classes to filter on.</p>
@@ -366,6 +372,8 @@
 <p>exclude_effective_controllers: An effective controller ID, or list of effective controller IDs to exclude.</p>
 <p>exclude_vessel_owners: A vessel owner ID, or list of vessel owners IDs to filter on.</p>
 <p>exclude_time_charterers: An time charterer ID, or list of time charterers IDs to filter on.</p>
+<p>exclude_shipper: A shipper ID, or list of shipper IDs to exclude.</p>
+<p>exclude_consignee: A consignee ID, or list of consignee IDs to exclude.</p>
 <p>exclude_vessel_flags: A geography ID, or list of geography IDs to exclude.</p>
 <p>exclude_vessel_ice_class: An attribute ID, or list of attribute IDs to exclude.</p>
 <p>exclude_vessel_propulsion: An attribute ID, or list of attribute IDs to exclude.</p>
@@ -395,7 +403,7 @@
 <code>destination_state_or_province</code>, <code>product_category</code>, <code>product_grade</code>, <code>product_group</code>,
 <code>product_group_product</code>, <code>vessel_class_group</code>, <code>vessel_class_coarse</code>, <code>vessel_class_granular</code>,
 <code>vessel_flag</code>, <code>storage_location_country</code>, <code>storage_location_region</code>, <code>storage_location_shipping_region_v2</code>,
-<code>storage_location_trading_sub_region</code>, or not provided.</p>
+<code>storage_location_trading_sub_region</code>, <code>shipper</code>, <code>consignee</code>, or not provided.</p>
 <p>timeseries_unit: A numeric metric to be calculated for each time bucket. Must be one of ['b', 'bpd', 't',
  'tpd', 'c', 'cpd'], corresponding to barrels, barrels per day, metric tonnes, metric tonnes per day,
   cargo movement count, cargo movement count per day, respectively.</p>

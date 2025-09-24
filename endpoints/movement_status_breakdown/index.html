@@ -277,6 +277,8 @@
   filter_owners: typing.Union[str, typing.List[str], NoneType] = None,
   filter_effective_controllers:
     typing.Union[str, typing.List[str], NoneType] = None,
+  filter_shipper: typing.Union[str, typing.List[str], NoneType] = None,
+  filter_consignee: typing.Union[str, typing.List[str], NoneType] = None,
   filter_vessel_flags:
     typing.Union[str, typing.List[str], NoneType] = None,
   filter_vessel_ice_class:
@@ -305,6 +307,8 @@
     typing.Union[str, typing.List[str], NoneType] = None,
   exclude_charterers:
     typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_shipper: typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_consignee: typing.Union[str, typing.List[str], NoneType] = None,
   exclude_vessel_flags:
     typing.Union[str, typing.List[str], NoneType] = None,
   exclude_destinations:
@@ -336,12 +340,12 @@ breakdown_size: Number of top geographies to return. Default is 5.
 disable_geographic_exclusion_rules: A boolean which specifies whether certain movements should be excluded, based on a combination of their origin and destination.
 
 intra_movements: This enum controls a popular industry term intra-movements and determines the filter behaviour for cargo leaving then entering the same geographic area.
- One of `all`, `exclude_intra_country` or `exclude_intra_geography`
+One of `all`, `exclude_intra_country` or `exclude_intra_geography`
 
 filter_activity: Cargo movement activity on which to base the time filter. The endpoint only includes cargo
 movements matching that match this filter in the aggregations. Must be one of ['loading_state',
- 'loading_start', 'loading_end', 'identified_for_loading_state', 'unloading_state', 'unloading_start',
-  'unloading_end', 'storing_state', 'storing_start', 'storing_end', 'transiting_state'].
+'loading_start', 'loading_end', 'identified_for_loading_state', 'unloading_state', 'unloading_start',
+'unloading_end', 'storing_state', 'storing_start', 'storing_end', 'transiting_state'].
 
 filter_time_min: The UTC start date of the time filter.
 
@@ -356,6 +360,10 @@ filter_vessel_ice_class: An ice class ID, or list of ice class IDs to filter on.
 filter_vessel_propulsion: An propulsion means ID, or list of propulsion means IDs to filter on.
 
 filter_charterers: An commercial entity ID, or list of commercial entity IDs to filter on.
+
+filter_shipper: A shipper ID, or list of shipper IDs to filter on.
+
+filter_consignee: A consignee ID, or list of consignee IDs to filter on.
 
 filter_origins: A geography ID, or list of geography IDs to filter on.
 
@@ -394,6 +402,10 @@ exclude_vessels: A vessel ID, or list of vessel IDs to exclude.
 exclude_vessel_classes: A vessel class, or list of vessel classes to exclude.
 
 exclude_effective_controllers: An effective controller ID, or list of effective controller IDs to exclude.
+
+exclude_shipper: A shipper ID, or list of shipper IDs to exclude.
+
+exclude_consignee: A consignee ID, or list of consignee IDs to exclude.
 
 exclude_vessel_location: A location ID, or list of location IDs to exclude.
 
