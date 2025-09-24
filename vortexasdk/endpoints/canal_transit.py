@@ -55,15 +55,13 @@ class CanalTransit(Search):
         filter_canal: Optional[str] = None,
         filter_direction: Optional[str] = None,
         filter_lock: Optional[str] = None,
-        exclude_filter_vessels: Optional[Union[ID, List[ID]]] = None,
-        exclude_filter_vessel_classes: Optional[Union[ID, List[ID]]] = None,
-        exclude_filter_products: Optional[Union[ID, List[ID]]] = None,
-        exclude_filter_origin: Optional[Union[ID, List[ID]]] = None,
-        exclude_filter_destination: Optional[Union[ID, List[ID]]] = None,
-        exclude_filter_charterer: Optional[Union[ID, List[ID]]] = None,
-        exclude_filter_effective_controller: Optional[
-            Union[ID, List[ID]]
-        ] = None,
+        exclude_vessels: Optional[Union[ID, List[ID]]] = None,
+        exclude_vessel_classes: Optional[Union[ID, List[ID]]] = None,
+        exclude_products: Optional[Union[ID, List[ID]]] = None,
+        exclude_origin: Optional[Union[ID, List[ID]]] = None,
+        exclude_destination: Optional[Union[ID, List[ID]]] = None,
+        exclude_charterer: Optional[Union[ID, List[ID]]] = None,
+        exclude_effective_controller: Optional[Union[ID, List[ID]]] = None,
     ) -> CanalTransitResult:
         """
 
@@ -121,19 +119,19 @@ class CanalTransit(Search):
 
             updated_since: The UTC date of last record update time,
 
-            exclude_filter_vessels: A vessel ID, or list of vessel IDs to exclude,
+            exclude_vessels: A vessel ID, or list of vessel IDs to exclude,
 
-            exclude_filter_vessel_classes: A vessel class, or list of vessel classes to exclude,
+            exclude_vessel_classes: A vessel class, or list of vessel classes to exclude,
 
-            exclude_filter_products: A product ID, or list of product IDs to exclude,
+            exclude_products: A product ID, or list of product IDs to exclude,
 
-            exclude_filter_origin: A geography ID, or list of geography IDs to exclude,
+            exclude_origin: A geography ID, or list of geography IDs to exclude,
 
-            exclude_filter_destination: A geography ID, or list of geography IDs to exclude,
+            exclude_destination: A geography ID, or list of geography IDs to exclude,
 
-            exclude_filter_charterer: A charterer ID, or list of charterer IDs to exclude,
+            exclude_charterer: A charterer ID, or list of charterer IDs to exclude,
 
-            exclude_filter_effective_controller: A effective controller ID, or list of IDs to exclude,
+            exclude_effective_controller: A effective controller ID, or list of IDs to exclude,
 
         # Returns
         `CanalTransitResults`, containing all the canal transit records matching the given search terms.
@@ -141,16 +139,14 @@ class CanalTransit(Search):
         """
 
         exclude_params: Dict[str, Any] = {
-            "filter_origin": convert_to_list(exclude_filter_origin),
-            "filter_destination": convert_to_list(exclude_filter_destination),
-            "filter_products": convert_to_list(exclude_filter_products),
-            "filter_vessels": convert_to_list(exclude_filter_vessels),
-            "filter_vessel_classes": convert_to_list(
-                exclude_filter_vessel_classes
-            ),
-            "filter_charterers": convert_to_list(exclude_filter_charterer),
+            "filter_origin": convert_to_list(exclude_origin),
+            "filter_destination": convert_to_list(exclude_destination),
+            "filter_products": convert_to_list(exclude_products),
+            "filter_vessels": convert_to_list(exclude_vessels),
+            "filter_vessel_classes": convert_to_list(exclude_vessel_classes),
+            "filter_charterers": convert_to_list(exclude_charterer),
             "filter_effective_controllers": convert_to_list(
-                exclude_filter_effective_controller
+                exclude_effective_controller
             ),
         }
 

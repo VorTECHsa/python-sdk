@@ -135,6 +135,12 @@ class CargoMovementProductEntry(BaseModel):
     label: Optional[str] = None
 
 
+class CargoMovementTradeEntry(BaseModel):
+    type: Literal["load", "discharge", "shipper", "consignee"]
+    id: Optional[ID] = None
+    label: Optional[str] = None
+
+
 class CargoMovement(BaseModel):
     """
 
@@ -171,3 +177,4 @@ class CargoMovement(BaseModel):
             ]
         ]
     ] = None
+    trades: Optional[List[CargoMovementTradeEntry]] = None
