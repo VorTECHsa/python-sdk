@@ -66,3 +66,7 @@ jobs:
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v2
+        permissions:
+          actions: read
+          contents: read
+          security-events: write
