@@ -91,6 +91,10 @@ class VoyagesSearchEnriched(Search):
         vessel_risk_level_excluded: Optional[Union[str, List[str]]] = None,
         has_ship_to_ship: Optional[str] = None,
         has_charterer: Optional[str] = None,
+        vessel_owners: Optional[Union[ID, List[ID]]] = None,
+        vessel_owners_excluded: Optional[Union[ID, List[ID]]] = None,
+        time_charterer: Optional[Union[ID, List[ID]]] = None,
+        time_charterer_excluded: Optional[Union[ID, List[ID]]] = None,
         intra_movements: Optional[str] = None,
         voyage_date_range_activity: Optional[VoyageDateRangeActivity] = None,
         origin_behaviour: Optional[OriginBehaviour] = None,
@@ -153,9 +157,17 @@ class VoyagesSearchEnriched(Search):
 
             charterers_excluded: A charterer ID, or list of charterer IDs to exclude.
 
+            time_charterer: A time charterer ID, or list of time charterer IDs to filter on.
+
+            time_charterer_excluded: A time charterer ID, or list of time charterer IDs to exclude.
+
             effective_controllers: A vessel effective controller ID, or list of vessel effective controller IDs to filter on.
 
             effective_controllers_excluded: A effective controller ID, or list of effective controller IDs to exclude.
+
+            vessel_owners: A vessel owner ID, or list of vessel owners IDs to filter on.
+
+            vessel_owners_excluded: A vessel owner ID, or list of vessel owners IDs to exclude.
 
             origins: An origin ID, or list of origin IDs for all the cargoes of a voyage to filter on.
 
@@ -290,7 +302,9 @@ class VoyagesSearchEnriched(Search):
             "products": convert_to_list(products),
             "latest_products": convert_to_list(latest_products),
             "charterers": convert_to_list(charterers),
+            "time_charterer": convert_to_list(time_charterer),
             "effective_controllers": convert_to_list(effective_controllers),
+            "vessel_owners": convert_to_list(vessel_owners),
             "origins": convert_to_list(origins),
             "destinations": convert_to_list(destinations),
             "locations": convert_to_list(locations),
@@ -334,10 +348,14 @@ class VoyagesSearchEnriched(Search):
             "latest_products_excluded": convert_to_list(
                 latest_products_excluded
             ),
+            "time_charterer_excluded": convert_to_list(
+                time_charterer_excluded
+            ),
             "charterers_excluded": convert_to_list(charterers_excluded),
             "effective_controllers_excluded": convert_to_list(
                 effective_controllers_excluded
             ),
+            "vessel_owners_excluded": convert_to_list(vessel_owners_excluded),
             "origins_excluded": convert_to_list(origins_excluded),
             "destinations_excluded": convert_to_list(destinations_excluded),
             "locations_excluded": convert_to_list(locations_excluded),
