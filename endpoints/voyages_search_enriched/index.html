@@ -331,6 +331,12 @@
     typing.Union[str, typing.List[str], NoneType] = None,
     has_ship_to_ship: typing.Optional[str] = None,
     has_charterer: typing.Optional[str] = None,
+    vessel_owners: typing.Union[str, typing.List[str], NoneType] = None,
+    vessel_owners_excluded:
+    typing.Union[str, typing.List[str], NoneType] = None,
+    time_charterer: typing.Union[str, typing.List[str], NoneType] = None,
+    time_charterer_excluded:
+    typing.Union[str, typing.List[str], NoneType] = None,
     intra_movements: typing.Optional[str] = None,
     voyage_date_range_activity:
     typing.Optional[vortexasdk.api.shared_types.VoyageDateRangeActivity] = None,
@@ -371,8 +377,12 @@
 <p>latest_products_excluded: A product ID, or list of product IDs of the latest cargo on board to exclude.</p>
 <p>charterers: A charterer ID, or list of charterer IDs to filter on.</p>
 <p>charterers_excluded: A charterer ID, or list of charterer IDs to exclude.</p>
+<p>time_charterer: A time charterer ID, or list of time charterer IDs to filter on.</p>
+<p>time_charterer_excluded: A time charterer ID, or list of time charterer IDs to exclude.</p>
 <p>effective_controllers: A vessel effective controller ID, or list of vessel effective controller IDs to filter on.</p>
 <p>effective_controllers_excluded: A effective controller ID, or list of effective controller IDs to exclude.</p>
+<p>vessel_owners: A vessel owner ID, or list of vessel owners IDs to filter on.</p>
+<p>vessel_owners_excluded: A vessel owner ID, or list of vessel owners IDs to exclude.</p>
 <p>origins: An origin ID, or list of origin IDs for all the cargoes of a voyage to filter on.</p>
 <p>origins_excluded: An origin ID, or list of origin IDs for all the cargoes of a voyage to exclude.</p>
 <p>destinations: A destination ID, or list of destination IDs for all the cargoes of a voyage to filter on.</p>
