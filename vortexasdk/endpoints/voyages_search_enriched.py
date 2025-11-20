@@ -385,8 +385,6 @@ class VoyagesSearchEnriched(Search):
             ),
         }
 
-        print(columns)
-
         if columns is None:
             response = super().search_with_client(**api_params)
             return VoyagesSearchEnrichedListResult(
