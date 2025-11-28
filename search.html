@@ -1,3 +1,10 @@
+<!-- 
+    This content is copied from https://github.com/mkdocs/mkdocs/blob/80feaf03a42dacdd0740259b647014d5f0f9d839/mkdocs/themes/readthedocs/base.html
+    It has to be this specific commit to keep the table scrolling working (newer versions of the base.html break it)
+    The modification that is done is the addition of:
+    <meta name="robots" content="noindex,nofollow" />
+-->
+
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -5,6 +12,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow" />
   
   
   
@@ -147,14 +155,6 @@
                 </li>
     </ul>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="#">Signals</a>
-    <ul>
-                <li class="toctree-l2"><a class="reference internal" href="./endpoints/vessel_summary/">Vessel Summary</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="./endpoints/vessel_positions/">Vessel Positions</a>
-                </li>
-    </ul>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="./endpoints/refineries/">Refineries</a>
                     </li>
                 </ul>
@@ -179,8 +179,6 @@
                     <li class="toctree-l1"><a class="reference internal" href="./entities/timeseries_item/">Time Series Item</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="./entities/breakdown_item/">Breakdown Item</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="./entities/signals/">Signals</a>
                     </li>
                 </ul>
                 <ul>
