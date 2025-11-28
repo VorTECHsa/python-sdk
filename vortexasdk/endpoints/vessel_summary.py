@@ -55,10 +55,6 @@ class VesselSummary(Search):
 
         Note that we will show you all fields by default if you don't set the columns argument.
 
-        # Further Documentation
-
-        [VortexaAPI Vessel Summary Reference](https://docs.vortexa.com/reference/POST/signals/vessel-summary)
-
         """
         api_params: Dict[str, Any] = {
             "vessel_id": convert_to_list(vessel_id),

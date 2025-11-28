@@ -9,8 +9,6 @@ from vortexasdk.api.shared_types import ISODate
 class VesselSummary(BaseModel):
     """
     Represents a Vessel Summary record returned by the API.
-
-    [Vessel Summary Further Documentation](https://docs.vortexa.com/reference/POST/signals/vessel-summary)
     """
 
     vessel_id: Optional[ID] = None
