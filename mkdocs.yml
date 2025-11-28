@@ -47,9 +47,6 @@ pages:
         Product Breakdown: endpoints/voyages_product_breakdown.md
         Routes Breakdown: endpoints/voyages_routes_breakdown.md
         Congestion Breakdown: endpoints/voyages_congestion_breakdown.md
-      Signals:
-        Vessel Summary: endpoints/vessel_summary.md
-        Vessel Positions: endpoints/vessel_positions.md
       Refineries: endpoints/refineries.md
   - Entities:
       Canal Transit: entities/canal_transit.md
@@ -62,7 +59,6 @@ pages:
       Vessel Availability: entities/vessel_availability.md
       Time Series Item: entities/timeseries_item.md
       Breakdown Item: entities/breakdown_item.md
-      Signals: entities/signals.md
   - Config: config.md
   - FAQ:
       General: faq.md

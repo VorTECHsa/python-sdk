@@ -51,8 +51,6 @@ generate:
       - vortexasdk.api.breakdown_item++
   - entities/voyages.md:
       - vortexasdk.api.voyages++
-  - entities/signals.md:
-      - vortexasdk.api.vessel_summary++
   - entities/canal_transit.md:
       - vortexasdk.api.canal_transit++
   - endpoints/origin_breakdown.md:
@@ -82,12 +80,6 @@ generate:
   - endpoints/storage_terminals.md:
       - vortexasdk.endpoints.storage_terminals++
       - vortexasdk.endpoints.storage_terminals_result++
-  - endpoints/vessel_summary.md:
-      - vortexasdk.endpoints.vessel_summary++
-      - vortexasdk.endpoints.vessel_summary_result++
-  - endpoints/vessel_positions.md:
-      - vortexasdk.endpoints.vessel_positions++
-      - vortexasdk.endpoints.vessel_positions_result++
   - endpoints/onshore_inventories_search.md: vortexasdk.endpoints.onshore_inventories_search++
   - endpoints/onshore_inventories_timeseries.md: vortexasdk.endpoints.onshore_inventories_timeseries++
   - endpoints/freight_pricing_search.md: vortexasdk.endpoints.freight_pricing_search++
@@ -130,7 +122,6 @@ pages:
       Crude Onshore Inventories Time Series: endpoints/onshore_inventories_timeseries.md
       Freight Pricing Search: endpoints/freight_pricing_search.md
       Freight Pricing Time Series: endpoints/freight_pricing_timeseries.md
-      Vessel Summary: endpoints/vessel_summary.md
       Voyages Search Enriched: endpoints/voyages_search_enriched.md
       Voyages Time Series: endpoints/voyages_timeseries.md
       Voyages Time Series V2: endpoints/voyages_timeseries_v2.md

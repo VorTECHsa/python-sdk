@@ -8,8 +8,6 @@ from vortexasdk.api.shared_types import ISODate
 class VesselPositions(BaseModel):
     """
     Represents an AIS Vessel Position record returned by the API.
-
-    [Vessel Position Further Documentation](https://docs.vortexa.com/reference/POST/signals/vessel-positions)
     """
 
     vessel_id: Optional[ID] = None
