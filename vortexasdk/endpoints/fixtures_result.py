@@ -70,8 +70,6 @@ class FixtureResult(Result):
                 'vessels.cubic_capacity',
                 'vessels.dwt',
                 'vessels.end_timestamp',
-                'vessels.fixture_fulfilled',
-                'vessels.fixture_id',
                 'vessels.id',
                 'vessels.imo',
                 'vessels.mmsi',
