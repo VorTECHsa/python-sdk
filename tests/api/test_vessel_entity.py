@@ -37,8 +37,6 @@ class TestVesselEntity(TestCase):
                     },
                 ],
                 "start_timestamp": "2019-10-14T00:00:00+0000",
-                "fixture_id": "cc4f364367db830da1d5d8ad89b02a7dc6f207402cd907a19c9d713e1a70b0ed",
-                "fixture_fulfilled": False,
                 "voyage_id": "813cb0baf01a335a5c74aded99b5c910bf627b24ff7b5eb9ed943579e902495d",
                 "tags": [],
                 "status": "vessel_status_laden_known",
