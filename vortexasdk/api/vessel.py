@@ -95,9 +95,7 @@ class VesselEntity(IDName):
 
     cubic_capacity: Optional[int] = None
     voyage_id: Optional[str] = None
-    fixture_fulfilled: Optional[bool] = None
     end_timestamp: Optional[ISODate] = None
-    fixture_id: Optional[str] = None
 
     scrubber: Optional[List[Scrubber]] = None
     flag: Optional[List[Flag]] = None
