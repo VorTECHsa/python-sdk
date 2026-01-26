@@ -18,7 +18,6 @@ class Fixture(BaseModel):
     laycan_to: Optional[str] = None
     tones: Optional[int] = None
     fixing_timestamp: Optional[str] = None
-    fulfilled: Optional[bool] = None
     vtx_fulfilled: Optional[bool] = None
     origin: Optional[Entity] = None
     destination: Optional[Entity] = None
