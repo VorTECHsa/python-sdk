@@ -410,7 +410,7 @@ replacement fixture or "Conf" for confirmed and "Corr" for corrected.</p>
 
 <pre><code class="language-python">FixtureResult.to_df(
     columns:
-    typing.Union[typing_extensions.Literal['all'], typing.List[str], NoneType] = ['id', 'vessel.id', 'vessel.name', 'laycan_from', 'laycan_to', 'tones', 'fixing_timestamp', 'fulfilled', 'vtx_fulfilled', 'destination.label', 'origin.label', 'product.label', 'charterer.label']
+    typing.Union[typing_extensions.Literal['all'], typing.List[str], NoneType] = ['id', 'vessel.id', 'vessel.name', 'laycan_from', 'laycan_to', 'tones', 'fixing_timestamp', 'vtx_fulfilled', 'destination.label', 'origin.label', 'product.label', 'charterer.label']
 )
 </code></pre>
 <p>Represent Fixtures as a <code>pd.DataFrame</code>.</p>
@@ -439,8 +439,6 @@ replacement fixture or "Conf" for confirmed and "Corr" for corrected.</p>
         'vessels.cubic_capacity',
         'vessels.dwt',
         'vessels.end_timestamp',
-        'vessels.fixture_fulfilled',
-        'vessels.fixture_id',
         'vessels.id',
         'vessels.imo',
         'vessels.mmsi',
@@ -456,7 +454,6 @@ replacement fixture or "Conf" for confirmed and "Corr" for corrected.</p>
         "laycan_to",
         "tones",
         "fixing_timestamp",
-        "fulfilled",
         "vtx_fulfilled",
         "destination.label",
         "destination.id",
@@ -477,7 +474,6 @@ replacement fixture or "Conf" for confirmed and "Corr" for corrected.</p>
     &quot;laycan_to&quot;,
     &quot;tones&quot;,
     &quot;fixing_timestamp&quot;,
-    &quot;fulfilled&quot;,
     &quot;vtx_fulfilled&quot;,
     &quot;destination.label&quot;,
     &quot;origin.label&quot;,
