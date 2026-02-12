@@ -8,7 +8,7 @@ from datetime import datetime
 from typing import Any, Dict, List, Optional, Union
 
 from vortexasdk.api import ID
-from vortexasdk.api.shared_types import to_ISODate
+from vortexasdk.api.shared_types import Tag, to_ISODate
 from vortexasdk.endpoints.cargo_movements_result import CargoMovementsResult
 from vortexasdk.endpoints.endpoints import (
     CARGO_MOVEMENTS_RESOURCE,
@@ -64,6 +64,7 @@ class CargoMovements(Record, Search):
         filter_vessel_flags: Optional[Union[ID, List[ID]]] = None,
         filter_vessel_ice_class: Optional[Union[ID, List[ID]]] = None,
         filter_vessel_propulsion: Optional[Union[ID, List[ID]]] = None,
+        filter_vessel_tags: Optional[Union[Tag, List[Tag]]] = None,
         exclude_origins: Optional[Union[ID, List[ID]]] = None,
         exclude_destinations: Optional[Union[ID, List[ID]]] = None,
         exclude_products: Optional[Union[ID, List[ID]]] = None,
@@ -79,6 +80,7 @@ class CargoMovements(Record, Search):
         exclude_vessel_flags: Optional[Union[ID, List[ID]]] = None,
         exclude_vessel_ice_class: Optional[Union[ID, List[ID]]] = None,
         exclude_vessel_propulsion: Optional[Union[ID, List[ID]]] = None,
+        exclude_vessel_tags: Optional[Union[Tag, List[Tag]]] = None,
         disable_geographic_exclusion_rules: Optional[bool] = None,
         intra_movements: Optional[str] = None,
         quantity_at_time_of: str = "load",
@@ -139,6 +141,8 @@ class CargoMovements(Record, Search):
 
             filter_vessel_propulsion: An attribute ID, or list of attribute IDs to filter on.
 
+            filter_vessel_tags: A time bound vessel tag, or list of time bound vessel tags to filter on.
+
             exclude_origins: A geography ID, or list of geography IDs to exclude.
 
             exclude_destinations: A geography ID, or list of geography IDs to exclude.
@@ -166,6 +170,8 @@ class CargoMovements(Record, Search):
             exclude_vessel_ice_class: An attribute ID, or list of attribute IDs to exclude.
 
             exclude_vessel_propulsion: An attribute ID, or list of attribute IDs to exclude.
+
+            exclude_vessel_tags: A time bound vessel tag, or list of time bound vessel tags to exclude.
 
             disable_geographic_exclusion_rules: This controls a popular industry term "intra-movements" and determines
              the filter behaviour for cargo leaving then entering the same geographic area.
@@ -310,6 +316,8 @@ class CargoMovements(Record, Search):
             "filter_vessel_propulsion": convert_to_list(
                 filter_vessel_propulsion
             ),
+            "vessel_tags": convert_to_list(filter_vessel_tags),
+            "vessel_tags_excluded": convert_to_list(exclude_vessel_tags),
             "exclude": exclude_params,
             "disable_geographic_exclusion_rules": disable_geographic_exclusion_rules,
             "intra_movements": intra_movements,
