@@ -294,7 +294,7 @@
   filter_vessel_age_max: typing.Optional[int] = None,
   filter_vessel_scrubbers: str = 'disabled',
   filter_vessel_tags:
-    typing.Union[typing.List[vortexasdk.api.shared_types.Tag], vortexasdk.api.shared_types.Tag, NoneType] = None,
+    typing.Union[vortexasdk.api.shared_types.Tag, typing.List[vortexasdk.api.shared_types.Tag], NoneType] = None,
   exclude_products: typing.Union[str, typing.List[str], NoneType] = None,
   exclude_vessels: typing.Union[str, typing.List[str], NoneType] = None,
   exclude_vessel_classes:
@@ -321,7 +321,7 @@
   exclude_vessel_propulsion:
     typing.Union[str, typing.List[str], NoneType] = None,
   exclude_vessel_tags:
-    typing.Union[typing.List[vortexasdk.api.shared_types.Tag], vortexasdk.api.shared_types.Tag, NoneType] = None,
+    typing.Union[vortexasdk.api.shared_types.Tag, typing.List[vortexasdk.api.shared_types.Tag], NoneType] = None,
   intra_movements: typing.Optional[str] = None)
 </code></pre>
 <p>Origin locations breakdown aggregation by geographic area</p>

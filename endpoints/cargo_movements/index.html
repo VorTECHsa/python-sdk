@@ -265,9 +265,9 @@
 <pre><code class="language-python">CargoMovements.search(
   filter_activity: typing.Optional[str] = None,
   filter_time_min:
-    datetime = datetime.datetime(2026, 2, 2, 11, 51, 36, 460448),
+    datetime = datetime.datetime(2026, 2, 12, 13, 50, 11, 229223),
   filter_time_max:
-    datetime = datetime.datetime(2026, 2, 2, 11, 51, 36, 460450),
+    datetime = datetime.datetime(2026, 2, 12, 13, 50, 11, 229226),
   cm_unit: str = 'b',
   filter_charterers: typing.Union[str, typing.List[str], NoneType] = None,
   filter_destinations:
@@ -300,6 +300,8 @@
     typing.Union[str, typing.List[str], NoneType] = None,
   filter_vessel_propulsion:
     typing.Union[str, typing.List[str], NoneType] = None,
+  filter_vessel_tags:
+    typing.Union[vortexasdk.api.shared_types.Tag, typing.List[vortexasdk.api.shared_types.Tag], NoneType] = None,
   exclude_origins: typing.Union[str, typing.List[str], NoneType] = None,
   exclude_destinations:
     typing.Union[str, typing.List[str], NoneType] = None,
@@ -324,6 +326,8 @@
     typing.Union[str, typing.List[str], NoneType] = None,
   exclude_vessel_propulsion:
     typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_vessel_tags:
+    typing.Union[vortexasdk.api.shared_types.Tag, typing.List[vortexasdk.api.shared_types.Tag], NoneType] = None,
   disable_geographic_exclusion_rules: typing.Optional[bool] = None,
   intra_movements: typing.Optional[str] = None,
   quantity_at_time_of: str = 'load')
@@ -359,6 +363,7 @@
 <p>filter_vessel_flags: A vessel flag, or list of vessel flags to filter on.</p>
 <p>filter_vessel_ice_class: An attribute ID, or list of attribute IDs to filter on.</p>
 <p>filter_vessel_propulsion: An attribute ID, or list of attribute IDs to filter on.</p>
+<p>filter_vessel_tags: A time bound vessel tag, or list of time bound vessel tags to filter on.</p>
 <p>exclude_origins: A geography ID, or list of geography IDs to exclude.</p>
 <p>exclude_destinations: A geography ID, or list of geography IDs to exclude.</p>
 <p>exclude_products: A product ID, or list of product IDs to exclude.</p>
@@ -373,6 +378,7 @@
 <p>exclude_vessel_flags: A geography ID, or list of geography IDs to exclude.</p>
 <p>exclude_vessel_ice_class: An attribute ID, or list of attribute IDs to exclude.</p>
 <p>exclude_vessel_propulsion: An attribute ID, or list of attribute IDs to exclude.</p>
+<p>exclude_vessel_tags: A time bound vessel tag, or list of time bound vessel tags to exclude.</p>
 <p>disable_geographic_exclusion_rules: This controls a popular industry term "intra-movements" and determines
  the filter behaviour for cargo leaving then entering the same geographic area.</p>
 <p>intra_movements: This enum controls a popular industry term intra-movements and determines the filter behaviour for cargo leaving then entering the same geographic area.
