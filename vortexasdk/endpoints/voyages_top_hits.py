@@ -226,10 +226,10 @@ class VoyagesTopHits(Search):
             intra_movements: Filter movements based on whether the vessel started and ended in the same country, or geographical layer.
 
             voyage_date_range_activity: Filter to return voyages within the given time range - must be one of [`'active'`, `'arrivals'`, `'departures'`, `'waypoint'`].
-            Active - active (or ongoing) during the specified time range,
-            Arrivals - arrived during the specified time range,
-            Departures - departed during the specified time range.
-            Waypoint - had a waypoint event during the specified time range.
+            active - active (or ongoing) during the specified time range,
+            arrivals - arrived during the specified time range,
+            departures - departed during the specified time range.
+            waypoint - had a waypoint event during the specified time range.
 
             origin_behaviour: The origin behaviour determines which departure mode the `voyage_date_range_activity` should count, must be one of  [`first_load`, `any_load`].
 
