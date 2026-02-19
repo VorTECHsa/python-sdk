@@ -411,7 +411,11 @@
 <p>has_ship_to_ship: Filter data where at least one STS transfer occurs, or none. - one of: <code>'disabled'</code>, <code>'inc'</code>, <code>'exc'</code>. Passing disabled means the filter is not active.</p>
 <p>has_charterer: Filter data where at least one charterer is specified, or none. - one of: <code>'disabled'</code>, <code>'inc'</code>, <code>'exc'</code>. Passing disabled means the filter is not active.</p>
 <p>intra_movements: Filter movements based on whether the vessel started and ended in the same country, or geographical layer.</p>
-<p>voyage_date_range_activity: Filter to determine how the voyages should be counted. Must be one of [<code>active</code>, <code>departures</code>, <code>arrivals</code>]</p>
+<p>voyage_date_range_activity: Filter to return voyages within the given time range - must be one of [<code>'active'</code>, <code>'arrivals'</code>, <code>'departures'</code>, <code>'waypoint'</code>].
+active - active (or ongoing) during the specified time range,
+arrivals - arrived during the specified time range,
+departures - departed during the specified time range.
+waypoint - had a waypoint event during the specified time range.</p>
 <p>origin_behaviour: The origin behaviour determines which departure mode the <code>voyage_date_range_activity</code> should count, must be one of  [<code>first_load</code>, <code>any_load</code>].</p>
 <p>destination_behaviour: The destination behaviour determines which arrival mode the voyage_date_range_activity should count, must be one of [last_discharge, any_discharge].</p>
 </li>
