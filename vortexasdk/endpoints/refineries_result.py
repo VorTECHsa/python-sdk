@@ -10,7 +10,14 @@ from vortexasdk.result_conversions import create_dataframe, create_list
 
 logger = get_logger(__name__)
 
-DEFAULT_COLUMNS = ["id", "name", "status", "country_name"]
+DEFAULT_COLUMNS = [
+    "id",
+    "name",
+    "status",
+    "country_name",
+    "refinery_owner_name",
+    "refinery_operator_name",
+]
 
 
 class RefineriesResult(Result):
@@ -30,7 +37,7 @@ class RefineriesResult(Result):
 
         # Arguments
             columns: The refinery features we want in the dataframe. Enter `columns='all'` to include all features.
-            Defaults to `columns = ['id', 'name', 'status', 'country_name']`.
+            Defaults to `columns = ['id', 'name', 'status', 'country_name', 'refinery_owner_name', 'refinery_operator_name']`.
 
 
         # Returns
