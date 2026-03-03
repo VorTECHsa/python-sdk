@@ -52,7 +52,7 @@ setuptools.setup(
             "types-python-dateutil==2.8.19",
             "types-six==1.16.21.20240311",
             "jupyter==1.0.0",
-            "statsmodels==0.13.5",
+            "statsmodels>=0.14.0",
             "matplotlib>=3.5.3",
             "packaging>=24.0",
         ],
