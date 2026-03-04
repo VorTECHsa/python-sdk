@@ -374,3 +374,51 @@ class TestCargoMovementsReal(TestCaseUsingRealAPI):
                             trade["id"]
                             != "5b3fcbc1bd2efec8999bd37d128a7e2132ebd9acf5a1a6fd8d6d2ba234c13938"
                         )
+
+    def test_filter_by_buyer_and_seller(self):
+        cms = CargoMovements().search(
+            filter_activity="loading_start",
+            filter_time_min=datetime(2025, 6, 8),
+            filter_time_max=datetime(2025, 6, 10),
+            filter_buyer="7b3c9abe7a56425f27bfcd227426ff6a8bc68357cbbb775d7c6c3d0df9bb2f2c",
+            filter_seller="5b3fcbc1bd2efec8999bd37d128a7e2132ebd9acf5a1a6fd8d6d2ba234c13938",
+        )
+
+        for i, cm in enumerate(cms):
+            assert "trades" in cm
+            assert cm["trades"]
+
+            for trade in cm["trades"]:
+                if trade["type"] == "buyer":
+                    assert (
+                        trade["id"]
+                        == "7b3c9abe7a56425f27bfcd227426ff6a8bc68357cbbb775d7c6c3d0df9bb2f2c"
+                    )
+                elif trade["type"] == "seller":
+                    assert (
+                        trade["id"]
+                        == "5b3fcbc1bd2efec8999bd37d128a7e2132ebd9acf5a1a6fd8d6d2ba234c13938"
+                    )
+
+    def test_filter_exclude_buyer_and_seller(self):
+        cms = CargoMovements().search(
+            filter_activity="loading_start",
+            filter_time_min=datetime(2025, 6, 8),
+            filter_time_max=datetime(2025, 6, 10),
+            exclude_buyer="7b3c9abe7a56425f27bfcd227426ff6a8bc68357cbbb775d7c6c3d0df9bb2f2c",
+            exclude_seller="5b3fcbc1bd2efec8999bd37d128a7e2132ebd9acf5a1a6fd8d6d2ba234c13938",
+        )
+
+        for i, cm in enumerate(cms):
+            if "trades" in cm and cm["trades"]:
+                for trade in cm["trades"]:
+                    if trade["type"] == "buyer":
+                        assert (
+                            trade["id"]
+                            != "7b3c9abe7a56425f27bfcd227426ff6a8bc68357cbbb775d7c6c3d0df9bb2f2c"
+                        )
+                    elif trade["type"] == "seller":
+                        assert (
+                            trade["id"]
+                            != "5b3fcbc1bd2efec8999bd37d128a7e2132ebd9acf5a1a6fd8d6d2ba234c13938"
+                        )

@@ -134,11 +134,23 @@ class CargoMovementProductEntry(BaseModel):
     layer: Optional[str] = None
     label: Optional[str] = None
 
+CargoMovementContractType = Literal["spot", "term"]
+
+CargoMovementDeliveryMethodType = Literal["FOB", "DES", "CFR", "CIF"]
 
 class CargoMovementTradeEntry(BaseModel):
     type: Literal["load", "discharge", "shipper", "consignee"]
     id: Optional[ID] = None
     label: Optional[str] = None
+    label_keyword: Optional[str] = None
+    buyer_id: Optional[ID] = None
+    buyer_label: Optional[str] = None
+    seller_id: Optional[ID] = None
+    seller_label: Optional[str] = None
+    contract_type: Optional[CargoMovementContractType] = None
+    delivery_method: Optional[CargoMovementDeliveryMethodType] = None
+    buyer_reason: Optional[str] = None
+    seller_reason: Optional[str] = None
 
 
 class CargoMovement(BaseModel):

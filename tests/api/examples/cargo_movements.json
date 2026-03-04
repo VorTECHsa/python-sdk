@@ -108,6 +108,17 @@
         "type": "consignee",
         "id": "5b3fcbc1bd2efec8999bd37d128a7e2132ebd9acf5a1a6fd8d6d2ba234c13938",
         "label": "RELIANCE"
+      },
+      {
+        "type": "load",
+        "buyer_id": "a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2",
+        "buyer_label": "BUYER CORP",
+        "seller_id": "f6e5d4c3b2a1f6e5d4c3b2a1f6e5d4c3b2a1f6e5d4c3b2a1f6e5d4c3b2a1f6e5",
+        "seller_label": "SELLER CORP",
+        "contract_type": "spot",
+        "delivery_method": "FOB",
+        "buyer_reason": "ais_history",
+        "seller_reason": "ais_history"
       }
     ]
   }
