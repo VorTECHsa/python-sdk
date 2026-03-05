@@ -376,49 +376,79 @@ class TestCargoMovementsReal(TestCaseUsingRealAPI):
                         )
 
     def test_filter_by_buyer_and_seller(self):
-        cms = CargoMovements().search(
-            filter_activity="loading_start",
-            filter_time_min=datetime(2025, 6, 8),
-            filter_time_max=datetime(2025, 6, 10),
-            filter_buyer="7b3c9abe7a56425f27bfcd227426ff6a8bc68357cbbb775d7c6c3d0df9bb2f2c",
-            filter_seller="5b3fcbc1bd2efec8999bd37d128a7e2132ebd9acf5a1a6fd8d6d2ba234c13938",
+        # BP as buyer, Atlantic LNG as seller
+        buyer_id = (
+            "409dd25aeff466583e8d738f2972ab7d6032622b07c2722f6459edd1be32e1de"
+        )
+        seller_id = (
+            "273f7718a1739b407893709d5738992f5c5653bb98460db69295ced21bb38c72"
         )
 
-        for i, cm in enumerate(cms):
+        cms = CargoMovements().search(
+            filter_activity="loading_start",
+            filter_time_min=datetime(2025, 1, 1),
+            filter_time_max=datetime(2025, 1, 14),
+            filter_buyer=buyer_id,
+            filter_seller=seller_id,
+        )
+
+        results = list(cms)
+        assert len(results) > 0, "Expected at least one cargo movement"
+
+        for cm in results:
             assert "trades" in cm
             assert cm["trades"]
 
-            for trade in cm["trades"]:
-                if trade["type"] == "buyer":
-                    assert (
-                        trade["id"]
-                        == "7b3c9abe7a56425f27bfcd227426ff6a8bc68357cbbb775d7c6c3d0df9bb2f2c"
-                    )
-                elif trade["type"] == "seller":
-                    assert (
-                        trade["id"]
-                        == "5b3fcbc1bd2efec8999bd37d128a7e2132ebd9acf5a1a6fd8d6d2ba234c13938"
-                    )
+            # At least one trade should have the filtered buyer_id
+            buyer_ids = [
+                t.get("buyer_id") for t in cm["trades"] if t.get("buyer_id")
+            ]
+            assert buyer_id in buyer_ids, f"Expected {buyer_id} in trades"
+
+            # At least one trade should have the filtered seller_id
+            seller_ids = [
+                t.get("seller_id") for t in cm["trades"] if t.get("seller_id")
+            ]
+            assert seller_id in seller_ids, f"Expected {seller_id} in trades"
 
     def test_filter_exclude_buyer_and_seller(self):
-        cms = CargoMovements().search(
-            filter_activity="loading_start",
-            filter_time_min=datetime(2025, 6, 8),
-            filter_time_max=datetime(2025, 6, 10),
-            exclude_buyer="7b3c9abe7a56425f27bfcd227426ff6a8bc68357cbbb775d7c6c3d0df9bb2f2c",
-            exclude_seller="5b3fcbc1bd2efec8999bd37d128a7e2132ebd9acf5a1a6fd8d6d2ba234c13938",
+        # Exclude BP as buyer, Atlantic LNG as seller
+        buyer_id = (
+            "409dd25aeff466583e8d738f2972ab7d6032622b07c2722f6459edd1be32e1de"
+        )
+        seller_id = (
+            "273f7718a1739b407893709d5738992f5c5653bb98460db69295ced21bb38c72"
         )
 
-        for i, cm in enumerate(cms):
+        cms = CargoMovements().search(
+            filter_activity="loading_start",
+            filter_time_min=datetime(2025, 1, 1),
+            filter_time_max=datetime(2025, 1, 14),
+            exclude_buyer=buyer_id,
+            exclude_seller=seller_id,
+        )
+
+        results = list(cms)
+        assert len(results) > 0, "Expected at least one cargo movement"
+
+        for cm in results:
             if "trades" in cm and cm["trades"]:
-                for trade in cm["trades"]:
-                    if trade["type"] == "buyer":
-                        assert (
-                            trade["id"]
-                            != "7b3c9abe7a56425f27bfcd227426ff6a8bc68357cbbb775d7c6c3d0df9bb2f2c"
-                        )
-                    elif trade["type"] == "seller":
-                        assert (
-                            trade["id"]
-                            != "5b3fcbc1bd2efec8999bd37d128a7e2132ebd9acf5a1a6fd8d6d2ba234c13938"
-                        )
+                # No trade should have the excluded buyer_id
+                buyer_ids = [
+                    t.get("buyer_id")
+                    for t in cm["trades"]
+                    if t.get("buyer_id")
+                ]
+                assert (
+                    buyer_id not in buyer_ids
+                ), f"Did not expect {buyer_id} in trades"
+
+                # No trade should have the excluded seller_id
+                seller_ids = [
+                    t.get("seller_id")
+                    for t in cm["trades"]
+                    if t.get("seller_id")
+                ]
+                assert (
+                    seller_id not in seller_ids
+                ), f"Did not expect {seller_id} in trades"

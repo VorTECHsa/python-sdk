@@ -134,9 +134,11 @@ class CargoMovementProductEntry(BaseModel):
     layer: Optional[str] = None
     label: Optional[str] = None
 
+
 CargoMovementContractType = Literal["spot", "term"]
 
 CargoMovementDeliveryMethodType = Literal["FOB", "DES", "CFR", "CIF"]
+
 
 class CargoMovementTradeEntry(BaseModel):
     type: Literal["load", "discharge", "shipper", "consignee"]
