@@ -415,7 +415,15 @@ a previous id of the cargo movement, and a <code>splinter_timestamp</code>, the 
 <pre><code class="language-python">CargoMovementTradeEntry(
   *, type:
     typing_extensions.Literal['load', 'discharge', 'shipper', 'consignee'],
-  id: typing.Optional[str], label: typing.Optional[str])
+  id: typing.Optional[str], label: typing.Optional[str],
+  label_keyword: typing.Optional[str], buyer_id: typing.Optional[str],
+  buyer_label: typing.Optional[str], seller_id: typing.Optional[str],
+  seller_label: typing.Optional[str], contract_type:
+    typing.Optional[typing_extensions.Literal['spot', 'term']],
+  delivery_method:
+    typing.Optional[typing_extensions.Literal['FOB', 'DES', 'CFR', 'CIF']],
+  buyer_reason: typing.Optional[str],
+  seller_reason: typing.Optional[str])
 </code></pre>
 <h3 id="vortexasdk.api.cargo_movement.CargoMovementTradeEntry.model_config">model_config</h3>
 

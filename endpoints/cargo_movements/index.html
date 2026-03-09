@@ -265,9 +265,9 @@
 <pre><code class="language-python">CargoMovements.search(
   filter_activity: typing.Optional[str] = None,
   filter_time_min:
-    datetime = datetime.datetime(2026, 3, 3, 17, 48, 44, 489616),
+    datetime = datetime.datetime(2026, 3, 9, 15, 42, 0, 379290),
   filter_time_max:
-    datetime = datetime.datetime(2026, 3, 3, 17, 48, 44, 489621),
+    datetime = datetime.datetime(2026, 3, 9, 15, 42, 0, 379292),
   cm_unit: str = 'b',
   filter_charterers: typing.Union[str, typing.List[str], NoneType] = None,
   filter_destinations:
@@ -330,7 +330,11 @@
     typing.Union[vortexasdk.api.shared_types.Tag, typing.List[vortexasdk.api.shared_types.Tag], NoneType] = None,
   disable_geographic_exclusion_rules: typing.Optional[bool] = None,
   intra_movements: typing.Optional[str] = None,
-  quantity_at_time_of: str = 'load')
+  quantity_at_time_of: str = 'load',
+  filter_buyer: typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_buyer: typing.Union[str, typing.List[str], NoneType] = None,
+  filter_seller: typing.Union[str, typing.List[str], NoneType] = None,
+  exclude_seller: typing.Union[str, typing.List[str], NoneType] = None)
 </code></pre>
 <p>Find CargoMovements matching the given search parameters.</p>
 <p><strong>Arguments</strong></p>
@@ -380,13 +384,17 @@
 <p>exclude_vessel_propulsion: An attribute ID, or list of attribute IDs to exclude.</p>
 <p>exclude_vessel_tags: A time bound vessel tag, or list of time bound vessel tags to exclude.</p>
 <p>disable_geographic_exclusion_rules: This controls a popular industry term "intra-movements" and determines
- the filter behaviour for cargo leaving then entering the same geographic area.</p>
+the filter behaviour for cargo leaving then entering the same geographic area.</p>
 <p>intra_movements: This enum controls a popular industry term intra-movements and determines the filter behaviour for cargo leaving then entering the same geographic area.
- One of <code>all</code>, <code>exclude_intra_country</code> or <code>exclude_intra_geography</code></p>
+One of <code>all</code>, <code>exclude_intra_country</code> or <code>exclude_intra_geography</code></p>
 <p>quantity_at_time_of: This parameter is designed for LNG cargo and gives the user the freedom to choose whether to create the time series based on the load volume or discharged volumes, as we consider the discharge quantities to differ from load quantities due to boil-off gas.</p>
 <p>One of:
- <code>load</code> - represents the quantity of the selected unit at the time of the loading event.
- <code>unload</code> - represents the quantity of the selected unit at the time of the unloading event.</p>
+<code>load</code> - represents the quantity of the selected unit at the time of the loading event.
+<code>unload</code> - represents the quantity of the selected unit at the time of the unloading event.</p>
+<p>filter_buyer: A buyer ID, or list of buyer IDs to filter on.
+exclude_buyer: A buyer ID, or list of buyer IDs to exclude.
+filter_seller: A seller ID, or list of seller IDs to filter on.
+exclude_seller: A seller ID, or list of seller IDs to exclude.</p>
 </li>
 </ul>
 <p><strong>Returns</strong></p>
