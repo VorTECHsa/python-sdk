@@ -374,3 +374,90 @@ class TestCargoMovementsReal(TestCaseUsingRealAPI):
                             trade["id"]
                             != "5b3fcbc1bd2efec8999bd37d128a7e2132ebd9acf5a1a6fd8d6d2ba234c13938"
                         )
+
+    def test_filter_by_buyer_and_seller(self):
+        # BP as buyer, Atlantic LNG as seller
+        buyer_id = (
+            "409dd25aeff466583e8d738f2972ab7d6032622b07c2722f6459edd1be32e1de"
+        )
+        seller_id = (
+            "273f7718a1739b407893709d5738992f5c5653bb98460db69295ced21bb38c72"
+        )
+
+        cms = CargoMovements().search(
+            filter_activity="loading_start",
+            filter_time_min=datetime(2025, 1, 1),
+            filter_time_max=datetime(2025, 1, 14),
+            filter_buyer=buyer_id,
+            filter_seller=seller_id,
+        )
+
+        results = list(cms)
+        assert len(results) > 0, "Expected at least one cargo movement"
+
+        found_matching_trade = False
+        for cm in results:
+            if "trades" in cm and cm["trades"]:
+                # At least one trade should have the filtered buyer_id
+                buyer_ids = [
+                    t.get("buyer_id")
+                    for t in cm["trades"]
+                    if t.get("buyer_id")
+                ]
+                if buyer_id in buyer_ids:
+                    found_matching_trade = True
+
+                # At least one trade should have the filtered seller_id
+                seller_ids = [
+                    t.get("seller_id")
+                    for t in cm["trades"]
+                    if t.get("seller_id")
+                ]
+                if seller_id in seller_ids:
+                    found_matching_trade = True
+
+        assert (
+            found_matching_trade
+        ), "Expected at least one trade with matching buyer_id or seller_id"
+
+    def test_filter_exclude_buyer_and_seller(self):
+        # Exclude BP as buyer, Atlantic LNG as seller
+        buyer_id = (
+            "409dd25aeff466583e8d738f2972ab7d6032622b07c2722f6459edd1be32e1de"
+        )
+        seller_id = (
+            "273f7718a1739b407893709d5738992f5c5653bb98460db69295ced21bb38c72"
+        )
+
+        cms = CargoMovements().search(
+            filter_activity="loading_start",
+            filter_time_min=datetime(2025, 1, 1),
+            filter_time_max=datetime(2025, 1, 14),
+            exclude_buyer=buyer_id,
+            exclude_seller=seller_id,
+        )
+
+        results = list(cms)
+        assert len(results) > 0, "Expected at least one cargo movement"
+
+        for cm in results:
+            if "trades" in cm and cm["trades"]:
+                # No trade should have the excluded buyer_id
+                buyer_ids = [
+                    t.get("buyer_id")
+                    for t in cm["trades"]
+                    if t.get("buyer_id")
+                ]
+                assert (
+                    buyer_id not in buyer_ids
+                ), f"Did not expect {buyer_id} in trades"
+
+                # No trade should have the excluded seller_id
+                seller_ids = [
+                    t.get("seller_id")
+                    for t in cm["trades"]
+                    if t.get("seller_id")
+                ]
+                assert (
+                    seller_id not in seller_ids
+                ), f"Did not expect {seller_id} in trades"

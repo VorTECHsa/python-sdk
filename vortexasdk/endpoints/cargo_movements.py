@@ -84,6 +84,10 @@ class CargoMovements(Record, Search):
         disable_geographic_exclusion_rules: Optional[bool] = None,
         intra_movements: Optional[str] = None,
         quantity_at_time_of: str = "load",
+        filter_buyer: Optional[Union[ID, List[ID]]] = None,
+        exclude_buyer: Optional[Union[ID, List[ID]]] = None,
+        filter_seller: Optional[Union[ID, List[ID]]] = None,
+        exclude_seller: Optional[Union[ID, List[ID]]] = None,
     ) -> CargoMovementsResult:
         """
 
@@ -174,16 +178,21 @@ class CargoMovements(Record, Search):
             exclude_vessel_tags: A time bound vessel tag, or list of time bound vessel tags to exclude.
 
             disable_geographic_exclusion_rules: This controls a popular industry term "intra-movements" and determines
-             the filter behaviour for cargo leaving then entering the same geographic area.
+            the filter behaviour for cargo leaving then entering the same geographic area.
 
             intra_movements: This enum controls a popular industry term intra-movements and determines the filter behaviour for cargo leaving then entering the same geographic area.
-             One of `all`, `exclude_intra_country` or `exclude_intra_geography`
+            One of `all`, `exclude_intra_country` or `exclude_intra_geography`
 
             quantity_at_time_of: This parameter is designed for LNG cargo and gives the user the freedom to choose whether to create the time series based on the load volume or discharged volumes, as we consider the discharge quantities to differ from load quantities due to boil-off gas.
 
-             One of:
-             `load` - represents the quantity of the selected unit at the time of the loading event.
-             `unload` - represents the quantity of the selected unit at the time of the unloading event.
+            One of:
+            `load` - represents the quantity of the selected unit at the time of the loading event.
+            `unload` - represents the quantity of the selected unit at the time of the unloading event.
+
+            filter_buyer: A buyer ID, or list of buyer IDs to filter on.
+            exclude_buyer: A buyer ID, or list of buyer IDs to exclude.
+            filter_seller: A seller ID, or list of seller IDs to filter on.
+            exclude_seller: A seller ID, or list of seller IDs to exclude.
 
         # Returns
         `CargoMovementsResult`, containing all the cargo movements matching the given search terms.
@@ -278,6 +287,8 @@ class CargoMovements(Record, Search):
             "filter_vessel_propulsion": convert_to_list(
                 exclude_vessel_propulsion
             ),
+            "filter_seller": convert_to_list(exclude_seller),
+            "filter_buyer": convert_to_list(exclude_buyer),
         }
 
         api_params: Dict[str, Any] = {
@@ -323,6 +334,8 @@ class CargoMovements(Record, Search):
             "intra_movements": intra_movements,
             "size": self._MAX_PAGE_RESULT_SIZE,
             "quantity_at_time_of": quantity_at_time_of,
+            "filter_buyer": convert_to_list(filter_buyer),
+            "filter_seller": convert_to_list(filter_seller),
         }
 
         response = super().search_with_client(**api_params)
