@@ -15,6 +15,7 @@ DEFAULT_COLUMNS = [
     "name",
     "status",
     "country_name",
+    "current_capacity_kbd",
     "refinery_owner_name",
     "refinery_operator_name",
 ]
@@ -37,7 +38,7 @@ class RefineriesResult(Result):
 
         # Arguments
             columns: The refinery features we want in the dataframe. Enter `columns='all'` to include all features.
-            Defaults to `columns = ['id', 'name', 'status', 'country_name', 'refinery_owner_name', 'refinery_operator_name']`.
+            Defaults to `columns = ['id', 'name', 'status', 'country_name', 'current_capacity_kbd', 'refinery_owner_name', 'refinery_operator_name']`.
 
 
         # Returns
