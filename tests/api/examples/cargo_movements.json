@@ -68,9 +68,16 @@
       {
         "id": "9d52ede1cff0421a8cd7283b0171afe8d23f519dca5f4e489734522f9cdf804c",
         "layer": "grade",
-        "probability": 0.4756425,
-        "source": "model",
-        "label": "Biodiesel Feedstock"
+        "source": "external",
+        "label": "Biodiesel Feedstock",
+        "external_sources": [
+          {
+            "probability": 1,
+            "type": "bol",
+            "sorting_order": 1,
+            "id": "9d52ede1cff0421a"
+          }
+        ]
       }
     ],
     "events": [
