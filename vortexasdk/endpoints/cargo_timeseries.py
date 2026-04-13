@@ -7,6 +7,7 @@ Try me out in your browser:
 from datetime import datetime
 from typing import Any, Dict, List, Optional, Union
 
+from vortexasdk.api.cargo_movement import CargoMovementRecordSourceType
 from vortexasdk.api.shared_types import to_ISODate
 from vortexasdk.api import ID
 from vortexasdk.endpoints.endpoints import CARGO_TIMESERIES_RESOURCE
@@ -77,6 +78,18 @@ class CargoTimeSeries(Search):
         timeseries_activity_time_span_max: Optional[int] = None,
         timeseries_property: Optional[str] = None,
         quantity_at_time_of: str = "load",
+        filter_hard_data: Optional[
+            Union[
+                CargoMovementRecordSourceType,
+                List[CargoMovementRecordSourceType],
+            ]
+        ] = None,
+        exclude_hard_data: Optional[
+            Union[
+                CargoMovementRecordSourceType,
+                List[CargoMovementRecordSourceType],
+            ]
+        ] = None,
     ) -> TimeSeriesResult:
         """
 
@@ -221,6 +234,10 @@ class CargoTimeSeries(Search):
             `load` - represents the quantity of the selected unit at the time of the loading event.
             `unload` - represents the quantity of the selected unit at the time of the unloading event.
 
+            filter_hard_data: Filter movements by hard data sources. Must be one of: `external`, `model`, `bol`, `port`, `fixture`, `market_analyst`
+
+            exclude_hard_data: Exclude movements by hard data sources. Must be one of: `external`, `model`, `bol`, `port`, `fixture`, `market_analyst`
+
         # Returns
         `TimeSeriesResult`
 
@@ -299,6 +316,7 @@ class CargoTimeSeries(Search):
                 exclude_vessel_propulsion
             ),
             "filter_waypoints": convert_to_list(exclude_waypoints),
+            "filter_hard_data": convert_to_list(exclude_hard_data),
         }
 
         api_params: Dict[str, Any] = {
@@ -330,6 +348,7 @@ class CargoTimeSeries(Search):
                 filter_ship_to_ship_locations
             ),
             "filter_waypoints": convert_to_list(filter_waypoints),
+            "filter_hard_data": convert_to_list(filter_hard_data),
             "exclude": exclude_params,
             "disable_geographic_exclusion_rules": disable_geographic_exclusion_rules,
             "intra_movements": intra_movements,

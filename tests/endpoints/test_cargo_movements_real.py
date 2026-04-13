@@ -461,3 +461,56 @@ class TestCargoMovementsReal(TestCaseUsingRealAPI):
                 assert (
                     seller_id not in seller_ids
                 ), f"Did not expect {seller_id} in trades"
+
+    def test_filter_by_hard_data(self):
+        bol_data_type = ["bol"]
+
+        cms = CargoMovements().search(
+            filter_activity="loading_start",
+            filter_time_min=datetime(2025, 1, 1),
+            filter_time_max=datetime(2025, 1, 14),
+            filter_hard_data=bol_data_type,
+        )
+
+        results = list(cms)
+        assert len(results) > 0, "Expected at least one cargo movement"
+
+        all_have_bol_data = True
+        for cm in results:
+            has_bol = any(
+                source.get("type") == "bol"
+                for product_layer in cm["product"]
+                for source in product_layer.get("external_sources", [])
+            )
+            if not has_bol:
+                # if any cargo movement does not have the specified hard data type, the test should fail
+                all_have_bol_data = False
+                break
+
+        assert (
+            all_have_bol_data
+        ), f"Expected all cargo movements to have hard data type {bol_data_type} in at least one product layer"
+
+    def test_filter_exclude_hard_data(self):
+        bol_data_type = ["bol"]
+
+        cms = CargoMovements().search(
+            filter_activity="loading_start",
+            filter_time_min=datetime(2025, 1, 1),
+            filter_time_max=datetime(2025, 1, 14),
+            exclude_hard_data=bol_data_type,
+        )
+
+        results = list(cms)
+        assert len(results) > 0, "Expected at least one cargo movement"
+
+        for cm in results:
+            has_bol = any(
+                # Check if any product layer has an external source with the specified hard data type
+                source.get("type") == "bol"
+                for product_layer in cm["product"]
+                for source in product_layer.get("external_sources", [])
+            )
+            assert (
+                not has_bol
+            ), f"Expected no cargo movements to have hard data type {bol_data_type} in any product layer"
