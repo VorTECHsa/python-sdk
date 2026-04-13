@@ -127,12 +127,27 @@ class ParentID(BaseModel):
     splinter_timestamp: Optional[ISODate] = None
 
 
+CargoMovementRecordSourceType = Literal[
+    "external", "model", "bol", "port", "fixture", "market_analyst"
+]
+
+
+class CargoMovementProductExternalSourceEntry(BaseModel):
+    probability: Optional[float] = None
+    type: Optional[CargoMovementRecordSourceType] = None
+    sorting_order: Optional[int] = None
+    id: Optional[ID] = None
+
+
 class CargoMovementProductEntry(BaseModel):
     probability: Optional[float] = None
-    source: Optional[str] = None
+    source: Optional[CargoMovementRecordSourceType] = None
     id: Optional[ID] = None
     layer: Optional[str] = None
     label: Optional[str] = None
+    external_sources: Optional[
+        List[CargoMovementProductExternalSourceEntry]
+    ] = None
 
 
 CargoMovementContractType = Literal["spot", "term"]

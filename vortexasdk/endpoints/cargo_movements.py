@@ -8,6 +8,7 @@ from datetime import datetime
 from typing import Any, Dict, List, Optional, Union
 
 from vortexasdk.api import ID
+from vortexasdk.api.cargo_movement import CargoMovementRecordSourceType
 from vortexasdk.api.shared_types import Tag, to_ISODate
 from vortexasdk.endpoints.cargo_movements_result import CargoMovementsResult
 from vortexasdk.endpoints.endpoints import (
@@ -88,6 +89,18 @@ class CargoMovements(Record, Search):
         exclude_buyer: Optional[Union[ID, List[ID]]] = None,
         filter_seller: Optional[Union[ID, List[ID]]] = None,
         exclude_seller: Optional[Union[ID, List[ID]]] = None,
+        filter_hard_data: Optional[
+            Union[
+                CargoMovementRecordSourceType,
+                List[CargoMovementRecordSourceType],
+            ]
+        ] = None,
+        exclude_hard_data: Optional[
+            Union[
+                CargoMovementRecordSourceType,
+                List[CargoMovementRecordSourceType],
+            ]
+        ] = None,
     ) -> CargoMovementsResult:
         """
 
@@ -194,6 +207,10 @@ class CargoMovements(Record, Search):
             filter_seller: A seller ID, or list of seller IDs to filter on.
             exclude_seller: A seller ID, or list of seller IDs to exclude.
 
+            filter_hard_data: Filter movements by hard data sources. Must be one of: `external`, `model`, `bol`, `port`, `fixture`, `market_analyst`
+
+            exclude_hard_data: Exclude movements by hard data sources. Must be one of: `external`, `model`, `bol`, `port`, `fixture`, `market_analyst`
+
         # Returns
         `CargoMovementsResult`, containing all the cargo movements matching the given search terms.
 
@@ -289,6 +306,7 @@ class CargoMovements(Record, Search):
             ),
             "filter_seller": convert_to_list(exclude_seller),
             "filter_buyer": convert_to_list(exclude_buyer),
+            "filter_hard_data": convert_to_list(exclude_hard_data),
         }
 
         api_params: Dict[str, Any] = {
@@ -336,6 +354,7 @@ class CargoMovements(Record, Search):
             "quantity_at_time_of": quantity_at_time_of,
             "filter_buyer": convert_to_list(filter_buyer),
             "filter_seller": convert_to_list(filter_seller),
+            "filter_hard_data": convert_to_list(filter_hard_data),
         }
 
         response = super().search_with_client(**api_params)
