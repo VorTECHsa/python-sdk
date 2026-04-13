@@ -207,9 +207,9 @@ class CargoMovements(Record, Search):
             filter_seller: A seller ID, or list of seller IDs to filter on.
             exclude_seller: A seller ID, or list of seller IDs to exclude.
 
-            filter_hard_data: Filter movements by hard data sources. Must be one of: `external`, `model`, `bol`, `port`, `fixture`, `market_analyst`
+            filter_hard_data: A hard data source type, or list of hard data source types, to filter on. Must be one of: `external`, `model`, `bol`, `port`, `fixture`, `market_analyst`
 
-            exclude_hard_data: Exclude movements by hard data sources. Must be one of: `external`, `model`, `bol`, `port`, `fixture`, `market_analyst`
+            exclude_hard_data: A hard data source type, or list of hard data source types, to exclude. Must be one of: `external`, `model`, `bol`, `port`, `fixture`, `market_analyst`
 
         # Returns
         `CargoMovementsResult`, containing all the cargo movements matching the given search terms.
