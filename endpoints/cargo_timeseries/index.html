@@ -259,72 +259,70 @@
 <h3 id="vortexasdk.endpoints.cargo_timeseries.CargoTimeSeries.search">search</h3>
 
 <pre><code class="language-python">CargoTimeSeries.search(
-  filter_activity: str,
-  timeseries_activity: typing.Optional[str] = None,
-  timeseries_frequency: str = 'day',
-  timeseries_unit: str = 'b',
-  filter_time_min: datetime = datetime.datetime(2019, 10, 1, 0, 0),
-  filter_time_max: datetime = datetime.datetime(2019, 10, 1, 1, 0),
-  filter_charterers: typing.Union[str, typing.List[str], NoneType] = None,
-  filter_destinations:
+    filter_activity: str,
+    timeseries_activity: typing.Optional[str] = None,
+    timeseries_frequency: str = 'day',
+    timeseries_unit: str = 'b',
+    filter_time_min: datetime = datetime.datetime(2019, 10, 1, 0, 0),
+    filter_time_max: datetime = datetime.datetime(2019, 10, 1, 1, 0),
+    filter_charterers: typing.Union[str, typing.List[str], NoneType] = None,
+    filter_destinations: typing.Union[str, typing.List[str], NoneType] = None,
+    filter_origins: typing.Union[str, typing.List[str], NoneType] = None,
+    filter_owners: typing.Union[str, typing.List[str], NoneType] = None,
+    filter_vessel_owners: typing.Union[str, typing.List[str], NoneType] = None,
+    filter_time_charterers:
     typing.Union[str, typing.List[str], NoneType] = None,
-  filter_origins: typing.Union[str, typing.List[str], NoneType] = None,
-  filter_owners: typing.Union[str, typing.List[str], NoneType] = None,
-  filter_vessel_owners:
+    filter_effective_controllers:
     typing.Union[str, typing.List[str], NoneType] = None,
-  filter_time_charterers:
+    filter_shipper: typing.Union[str, typing.List[str], NoneType] = None,
+    filter_consignee: typing.Union[str, typing.List[str], NoneType] = None,
+    filter_products: typing.Union[str, typing.List[str], NoneType] = None,
+    filter_vessels: typing.Union[str, typing.List[str], NoneType] = None,
+    filter_vessel_classes: typing.Union[str, typing.List[str], NoneType] = None,
+    filter_vessel_age_min: typing.Optional[int] = None,
+    filter_vessel_age_max: typing.Optional[int] = None,
+    filter_storage_locations:
     typing.Union[str, typing.List[str], NoneType] = None,
-  filter_effective_controllers:
+    filter_ship_to_ship_locations:
     typing.Union[str, typing.List[str], NoneType] = None,
-  filter_shipper: typing.Union[str, typing.List[str], NoneType] = None,
-  filter_consignee: typing.Union[str, typing.List[str], NoneType] = None,
-  filter_products: typing.Union[str, typing.List[str], NoneType] = None,
-  filter_vessels: typing.Union[str, typing.List[str], NoneType] = None,
-  filter_vessel_classes:
+    filter_waypoints: typing.Union[str, typing.List[str], NoneType] = None,
+    exclude_ship_to_ship: typing.Optional[bool] = False,
+    exclude_ship_to_ship_locations:
     typing.Union[str, typing.List[str], NoneType] = None,
-  filter_vessel_age_min: typing.Optional[int] = None,
-  filter_vessel_age_max: typing.Optional[int] = None,
-  filter_storage_locations:
+    exclude_storage_locations:
     typing.Union[str, typing.List[str], NoneType] = None,
-  filter_ship_to_ship_locations:
+    exclude_charterers: typing.Union[str, typing.List[str], NoneType] = None,
+    exclude_vessel_owners: typing.Union[str, typing.List[str], NoneType] = None,
+    exclude_time_charterers:
     typing.Union[str, typing.List[str], NoneType] = None,
-  filter_waypoints: typing.Union[str, typing.List[str], NoneType] = None,
-  exclude_ship_to_ship: typing.Optional[bool] = False,
-  exclude_ship_to_ship_locations:
+    exclude_shipper: typing.Union[str, typing.List[str], NoneType] = None,
+    exclude_consignee: typing.Union[str, typing.List[str], NoneType] = None,
+    exclude_origins: typing.Union[str, typing.List[str], NoneType] = None,
+    exclude_products: typing.Union[str, typing.List[str], NoneType] = None,
+    exclude_vessels: typing.Union[str, typing.List[str], NoneType] = None,
+    exclude_vessel_classes:
     typing.Union[str, typing.List[str], NoneType] = None,
-  exclude_storage_locations:
+    exclude_vessel_flags: typing.Union[str, typing.List[str], NoneType] = None,
+    exclude_vessel_ice_class:
     typing.Union[str, typing.List[str], NoneType] = None,
-  exclude_charterers:
+    exclude_vessel_propulsion:
     typing.Union[str, typing.List[str], NoneType] = None,
-  exclude_vessel_owners:
+    exclude_effective_controllers:
     typing.Union[str, typing.List[str], NoneType] = None,
-  exclude_time_charterers:
-    typing.Union[str, typing.List[str], NoneType] = None,
-  exclude_shipper: typing.Union[str, typing.List[str], NoneType] = None,
-  exclude_consignee: typing.Union[str, typing.List[str], NoneType] = None,
-  exclude_origins: typing.Union[str, typing.List[str], NoneType] = None,
-  exclude_products: typing.Union[str, typing.List[str], NoneType] = None,
-  exclude_vessels: typing.Union[str, typing.List[str], NoneType] = None,
-  exclude_vessel_classes:
-    typing.Union[str, typing.List[str], NoneType] = None,
-  exclude_vessel_flags:
-    typing.Union[str, typing.List[str], NoneType] = None,
-  exclude_vessel_ice_class:
-    typing.Union[str, typing.List[str], NoneType] = None,
-  exclude_vessel_propulsion:
-    typing.Union[str, typing.List[str], NoneType] = None,
-  exclude_effective_controllers:
-    typing.Union[str, typing.List[str], NoneType] = None,
-  exclude_owners: typing.Union[str, typing.List[str], NoneType] = None,
-  exclude_destinations:
-    typing.Union[str, typing.List[str], NoneType] = None,
-  exclude_waypoints: typing.Union[str, typing.List[str], NoneType] = None,
-  disable_geographic_exclusion_rules: typing.Optional[bool] = None,
-  intra_movements: typing.Optional[str] = None,
-  timeseries_activity_time_span_min: typing.Optional[int] = None,
-  timeseries_activity_time_span_max: typing.Optional[int] = None,
-  timeseries_property: typing.Optional[str] = None,
-  quantity_at_time_of: str = 'load')
+    exclude_owners: typing.Union[str, typing.List[str], NoneType] = None,
+    exclude_destinations: typing.Union[str, typing.List[str], NoneType] = None,
+    exclude_waypoints: typing.Union[str, typing.List[str], NoneType] = None,
+    disable_geographic_exclusion_rules: typing.Optional[bool] = None,
+    intra_movements: typing.Optional[str] = None,
+    timeseries_activity_time_span_min: typing.Optional[int] = None,
+    timeseries_activity_time_span_max: typing.Optional[int] = None,
+    timeseries_property: typing.Optional[str] = None,
+    quantity_at_time_of: str = 'load',
+    filter_hard_data:
+    typing.Union[typing_extensions.Literal['external', 'model', 'bol', 'port', 'fixture', 'market_analyst'], typing.List[typing_extensions.Literal['external', 'model', 'bol', 'port', 'fixture', 'market_analyst']], NoneType] = None,
+    exclude_hard_data:
+    typing.Union[typing_extensions.Literal['external', 'model', 'bol', 'port', 'fixture', 'market_analyst'], typing.List[typing_extensions.Literal['external', 'model', 'bol', 'port', 'fixture', 'market_analyst']], NoneType] = None
+)
 </code></pre>
 <p>Find Aggregate flows between regions, for various products, for various vessels, or various corporations.</p>
 <p>Example questions that can be answered with this endpoint:</p>
@@ -422,6 +420,8 @@ as we consider the discharge quantities to differ from load quantities due to bo
 Can be <code>load</code> or <code>unload</code>. Default is <code>load</code>.
 <code>load</code> - represents the quantity of the selected unit at the time of the loading event.
 <code>unload</code> - represents the quantity of the selected unit at the time of the unloading event.</p>
+<p>filter_hard_data: Filter movements by hard data sources. Must be one of: <code>external</code>, <code>model</code>, <code>bol</code>, <code>port</code>, <code>fixture</code>, <code>market_analyst</code></p>
+<p>exclude_hard_data: Exclude movements by hard data sources. Must be one of: <code>external</code>, <code>model</code>, <code>bol</code>, <code>port</code>, <code>fixture</code>, <code>market_analyst</code></p>
 </li>
 </ul>
 <p><strong>Returns</strong></p>

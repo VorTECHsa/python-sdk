@@ -400,13 +400,24 @@ a previous id of the cargo movement, and a <code>splinter_timestamp</code>, the 
 <p><a href="https://docs.vortexa.com/reference/intro-cargo-movement">Cargo Movement Further Documentation</a></p>
 <h3 id="vortexasdk.api.cargo_movement.ParentID.model_config">model_config</h3>
 
+<h2 id="vortexasdk.api.cargo_movement.CargoMovementProductExternalSourceEntry">CargoMovementProductExternalSourceEntry</h2>
+
+<pre><code class="language-python">CargoMovementProductExternalSourceEntry(
+  *, probability: typing.Optional[float], type:
+    typing.Optional[typing_extensions.Literal['external', 'model', 'bol', 'port', 'fixture', 'market_analyst']],
+  sorting_order: typing.Optional[int], id: typing.Optional[str])
+</code></pre>
+<h3 id="vortexasdk.api.cargo_movement.CargoMovementProductExternalSourceEntry.model_config">model_config</h3>
+
 <h2 id="vortexasdk.api.cargo_movement.CargoMovementProductEntry">CargoMovementProductEntry</h2>
 
-<pre><code class="language-python">CargoMovementProductEntry(*, probability: typing.Optional[float],
-                          source: typing.Optional[str],
-                          id: typing.Optional[str],
-                          layer: typing.Optional[str],
-                          label: typing.Optional[str])
+<pre><code class="language-python">CargoMovementProductEntry(
+    *, probability: typing.Optional[float], source:
+    typing.Optional[typing_extensions.Literal['external', 'model', 'bol', 'port', 'fixture', 'market_analyst']],
+    id: typing.Optional[str], layer: typing.Optional[str],
+    label: typing.Optional[str], external_sources:
+    typing.Optional[typing.List[vortexasdk.api.cargo_movement.CargoMovementProductExternalSourceEntry]]
+)
 </code></pre>
 <h3 id="vortexasdk.api.cargo_movement.CargoMovementProductEntry.model_config">model_config</h3>
 
