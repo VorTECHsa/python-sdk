@@ -463,14 +463,13 @@ class TestCargoMovementsReal(TestCaseUsingRealAPI):
                 ), f"Did not expect {seller_id} in trades"
 
     def test_filter_by_hard_data(self):
-        bol_data_type = "bol"
+        bol_data_type = ["bol"]
 
         cms = CargoMovements().search(
             filter_activity="loading_start",
             filter_time_min=datetime(2025, 1, 1),
             filter_time_max=datetime(2025, 1, 14),
-            filter_hard_data_type=bol_data_type,
-            size=10,
+            filter_hard_data=bol_data_type,
         )
 
         results = list(cms)
@@ -493,14 +492,13 @@ class TestCargoMovementsReal(TestCaseUsingRealAPI):
         ), f"Expected all cargo movements to have hard data type {bol_data_type} in at least one product layer"
 
     def test_filter_exclude_hard_data(self):
-        bol_data_type = "bol"
+        bol_data_type = ["bol"]
 
         cms = CargoMovements().search(
             filter_activity="loading_start",
             filter_time_min=datetime(2025, 1, 1),
             filter_time_max=datetime(2025, 1, 14),
-            exclude_hard_data_type=bol_data_type,
-            size=10,
+            exclude_hard_data=bol_data_type,
         )
 
         results = list(cms)
