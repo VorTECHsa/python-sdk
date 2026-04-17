@@ -14,6 +14,13 @@ class TestCargoMovement(TestCase):
     dictionary = {
         "cargo_movement_id": "00886b05a0747522b67322f50123ee60e61e219fc9a9c6011be1a1dade65f63e",
         "quantity": 4401,
+        "discharge_quantity": 4380,
+        "quantity_barrels": 4401,
+        "quantity_tonnes": 612,
+        "quantity_cubic_metres": 700,
+        "quantity_discharge_barrels": 4380,
+        "quantity_discharge_tonnes": 609,
+        "quantity_discharge_cubic_metres": 697,
         "status": "unloaded_state",
         "vessels": [
             {
@@ -174,6 +181,13 @@ class TestCargoMovement(TestCase):
             "product.grade.external_sources.0.sorting_order": 1,
             "product.grade.external_sources.0.type": "bol",
             "quantity": 4401,
+            "discharge_quantity": 4380,
+            "quantity_barrels": 4401,
+            "quantity_tonnes": 612,
+            "quantity_cubic_metres": 700,
+            "quantity_discharge_barrels": 4380,
+            "quantity_discharge_tonnes": 609,
+            "quantity_discharge_cubic_metres": 697,
             "status": "unloaded_state",
             "vessels.0.corporate_entities.effective_controller.id": "f9bd45e65e292909a7b751b0026dcf7795c6194b3c0712910a241caee32c99b8",
             "vessels.0.corporate_entities.effective_controller.label": "Essberger J.T.",

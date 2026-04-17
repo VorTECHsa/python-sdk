@@ -182,7 +182,19 @@ class CargoMovement(BaseModel):
     """
 
     cargo_movement_id: ID
+
+    # `quantity` and `discharge_quantity` are in the unit specified by the
+    # `cm_unit` parameter passed to `CargoMovements().search()`.
+    # The remaining quantity fields are always returned in their explicit units.
     quantity: Optional[int] = None
+    discharge_quantity: Optional[int] = None
+
+    quantity_barrels: Optional[int] = None
+    quantity_tonnes: Optional[int] = None
+    quantity_cubic_metres: Optional[int] = None
+    quantity_discharge_barrels: Optional[int] = None
+    quantity_discharge_tonnes: Optional[int] = None
+    quantity_discharge_cubic_metres: Optional[int] = None
     status: Optional[str] = None
     vessels: Optional[List[VesselEntity]] = None
     product: Optional[List[CargoMovementProductEntry]] = None
