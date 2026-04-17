@@ -442,6 +442,13 @@ a previous id of the cargo movement, and a <code>splinter_timestamp</code>, the 
 
 <pre><code class="language-python">CargoMovement(
     *, cargo_movement_id: str, quantity: typing.Optional[int],
+    discharge_quantity: typing.Optional[int],
+    quantity_barrels: typing.Optional[int],
+    quantity_tonnes: typing.Optional[int],
+    quantity_cubic_metres: typing.Optional[int],
+    quantity_discharge_barrels: typing.Optional[int],
+    quantity_discharge_tonnes: typing.Optional[int],
+    quantity_discharge_cubic_metres: typing.Optional[int],
     status: typing.Optional[str],
     vessels: typing.Optional[typing.List[vortexasdk.api.vessel.VesselEntity]],
     product:
