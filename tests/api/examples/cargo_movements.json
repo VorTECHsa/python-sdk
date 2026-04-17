@@ -2,6 +2,13 @@
   {
     "cargo_movement_id": "00886b05a0747522b67322f50123ee60e61e219fc9a9c6011be1a1dade65f63e",
     "quantity": 4401,
+    "discharge_quantity": 4380,
+    "quantity_barrels": 4401,
+    "quantity_tonnes": 612,
+    "quantity_cubic_metres": 700,
+    "quantity_discharge_barrels": 4380,
+    "quantity_discharge_tonnes": 609,
+    "quantity_discharge_cubic_metres": 697,
     "status": "unloaded_state",
     "vessels": [
       {
