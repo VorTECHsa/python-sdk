@@ -131,6 +131,8 @@ class VesselAvailabilitySearch(Search):
             filter_vessel_tags: A tag ID, or list of tag IDs to filter on.
 
             filter_vessel_risk_level: A risk level ID, or list of risk level IDs to filter on.
+            Note: This filter may not be available for all accounts. If not available,
+            the filter will be ignored, results will not be filtered by risk level, and vessel_risk_level will not appear in response data.
 
             filter_recent_visits: Filter availability by each vessel's recent visits
 
@@ -155,6 +157,8 @@ class VesselAvailabilitySearch(Search):
             exclude_vessel_tags: A tag ID, or list of tag IDs to exclude.
 
             exclude_vessel_risk_level: A risk level ID, or list of risk level IDs to exclude.
+            Note: This filter may not be available for all accounts. If not available,
+            the filter will be ignored and vessel_risk_level will not appear in response data.
 
         # Returns
         `VesselAvailabilityResult`

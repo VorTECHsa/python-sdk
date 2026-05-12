@@ -251,8 +251,12 @@ class VoyagesVesselClassBreakdown(Search):
             vessel_tags_excluded: A time bound vessel tag, or list of time bound vessel tags to exclude.
 
             vessel_risk_level: A vessel risk level, or list of vessel risk levels to filter on.
+            Note: This filter may not be available for all accounts. If not available,
+            the filter will be ignored, results will not be filtered by risk level, and vessel_risk_level will not appear in response data.
 
             vessel_risk_level_excluded: A vessel risk level, or list of vessel risk levels to exclude.
+            Note: This filter may not be available for all accounts. If not available,
+            the filter will be ignored and vessel_risk_level will not appear in response data.
 
             has_ship_to_ship: Filter data where at least one STS transfer occurs, or none. - one of: `'disabled'`, `'inc'`, `'exc'`. Passing disabled means the filter is not active.
 
