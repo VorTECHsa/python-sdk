@@ -24,6 +24,16 @@ pages:
       Products: endpoints/products.md
       Vessels: endpoints/vessels.md
       Fixtures: endpoints/fixtures.md
+      Anywhere Freight Pricing:
+        Latest Update: endpoints/anywhere_freight_pricing_latest_update_timestamp.md
+        Time-series: endpoints/anywhere_freight_pricing_price_timeseries.md
+        Price:
+          Get Prices: endpoints/anywhere_freight_pricing_get_price_details.md
+          Post Prices: endpoints/anywhere_freight_pricing_post_price_details.md
+        Top Ports: 
+          Origin: endpoints/anywhere_freight_pricing_top_ports_origin.md
+          Destination: endpoints/anywhere_freight_pricing_top_ports_destination.md
+        Vessel Classes: endpoints/anywhere_freight_pricing_vessel_classes_details.md
       Vessel Availability:
         Search: endpoints/vessel_availability_search.md
         Time Series: endpoints/vessel_availability_timeseries.md
@@ -75,3 +85,5 @@ theme:
   custom_dir: custom_theme/
   name: readthedocs
   search_index_only: false
+extra_css:
+  - css/custom.css

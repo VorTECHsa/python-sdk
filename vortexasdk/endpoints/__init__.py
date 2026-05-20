@@ -68,6 +68,12 @@ from vortexasdk.endpoints.vessel_summary import VesselSummary
 from vortexasdk.endpoints.vessel_positions import VesselPositions
 
 from vortexasdk.endpoints.refineries import Refineries
+from vortexasdk.endpoints.anywhere_freight_pricing_latest_update_timestamp import (
+    AnywhereFreightPricingLatestUpdateTimestamp,
+)
+from vortexasdk.endpoints.anywhere_freight_pricing_price_timeseries import (
+    AnywhereFreightPricingPriceTimeseries,
+)
 
 # Explicitly list all exported classes, to help MyPy know what is available
 __all__ = [
@@ -109,4 +115,6 @@ __all__ = [
     "VesselSummary",
     "VesselPositions",
     "Refineries",
+    "AnywhereFreightPricingLatestUpdateTimestamp",
+    "AnywhereFreightPricingPriceTimeseries",
 ]

@@ -33,6 +33,9 @@ REFINERY_REFERENCE = "/v5/reference/refineries"
 FREIGHT_PRICING_SEARCH = "/v5/freight-outlook/rates"
 FREIGHT_PRICING_TIMESERIES = "/v5/freight-outlook/timeseries"
 
+ANYWHERE_FREIGHT_PRICING_LATEST_UPDATE = "/v5/anywhere-freight-pricing/latest-update-timestamp"
+ANYWHERE_FREIGHT_PRICING_PRICE_TIMESERIES = "/v5/anywhere-freight-pricing/price-timeseries"
+
 VOYAGES_SEARCH_ENRICHED = "/v5/voyages/search-enriched"
 VOYAGES_TOP_HITS = "/v5/voyages/top-hits"
 VOYAGES_CONGESTION_BREAKDOWN = "/v5/voyages/congestion-breakdown"
