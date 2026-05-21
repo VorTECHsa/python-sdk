@@ -100,8 +100,8 @@ class AnywhereFreightPricingPriceTimeseries(Search):
         """
         api_params: Dict[str, Any] = {
             "routes": routes,
-            "time_min": to_date_string(time_min) if time_min else None,
-            "time_max": to_date_string(time_max) if time_max else None,
+            "time_min": to_date_string(time_min),
+            "time_max": to_date_string(time_max),
             "frequency": frequency,
             "unit": unit,
         }
