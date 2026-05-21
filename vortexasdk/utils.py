@@ -93,6 +93,11 @@ def filter_empty_values(data: Dict) -> Dict:
     }
 
 
+def to_date_string(dt: datetime) -> str:
+    """Convert datetime to YYYY-MM-DD date string as required by AFP API."""
+    return dt.strftime("%Y-%m-%d")
+
+
 def sts_param_value(param: Optional[bool]) -> Dict[str, bool]:
     """
     If sts filter is True, apply cross filter.

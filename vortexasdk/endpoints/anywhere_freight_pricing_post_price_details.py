@@ -1,19 +1,17 @@
 from datetime import datetime
 from typing import Any, Dict, List
 
-from vortexasdk.endpoints.endpoints import ANYWHERE_FREIGHT_PRICING_PRICE_DETAILS
+from vortexasdk.endpoints.endpoints import (
+    ANYWHERE_FREIGHT_PRICING_PRICE_DETAILS,
+)
 from vortexasdk.endpoints.anywhere_freight_pricing_result import (
     AnywhereFreightPricingResult,
 )
 from vortexasdk.logger import get_logger
 from vortexasdk.operations import Search
+from vortexasdk.utils import to_date_string
 
 logger = get_logger(__name__)
-
-
-def _to_date_string(dt: datetime) -> str:
-    """Convert datetime to YYYY-MM-DD date string as required by AFP API."""
-    return dt.strftime("%Y-%m-%d")
 
 
 class AnywhereFreightPricingPostPriceDetails(Search):
@@ -105,12 +103,14 @@ class AnywhereFreightPricingPostPriceDetails(Search):
         """
         api_params: Dict[str, Any] = {
             "routes": routes,
-            "time_min": _to_date_string(time_min) if time_min else None,
-            "time_max": _to_date_string(time_max) if time_max else None,
+            "time_min": to_date_string(time_min) if time_min else None,
+            "time_max": to_date_string(time_max) if time_max else None,
             "unit": unit,
         }
 
-        response = super().search_with_client(response_type="breakdown", **api_params)
+        response = super().search_with_client(
+            response_type="breakdown", **api_params
+        )
 
         return AnywhereFreightPricingResult(
             records=response["data"], reference=response.get("reference", {})

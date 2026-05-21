@@ -1,5 +1,7 @@
 from vortexasdk.client import default_client, _handle_response
-from vortexasdk.endpoints.endpoints import ANYWHERE_FREIGHT_PRICING_VESSEL_CLASSES_DETAILS
+from vortexasdk.endpoints.endpoints import (
+    ANYWHERE_FREIGHT_PRICING_VESSEL_CLASSES_DETAILS,
+)
 from vortexasdk.endpoints.anywhere_freight_pricing_result import (
     AnywhereFreightPricingResult,
 )

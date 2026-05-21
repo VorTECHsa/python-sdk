@@ -1,7 +1,9 @@
 from typing import Any, Dict, List, Optional
 
 from vortexasdk.client import default_client, _handle_response
-from vortexasdk.endpoints.endpoints import ANYWHERE_FREIGHT_PRICING_TOP_PORTS_ORIGIN
+from vortexasdk.endpoints.endpoints import (
+    ANYWHERE_FREIGHT_PRICING_TOP_PORTS_ORIGIN,
+)
 from vortexasdk.endpoints.anywhere_freight_pricing_result import (
     AnywhereFreightPricingResult,
 )
@@ -31,7 +33,7 @@ class AnywhereFreightPricingTopPortsOrigin:
         vessel_class: str,
         product: str,
         unit: str = "usd_per_tonne",
-        avoid_zone: Optional[List[str]] = None
+        avoid_zone: Optional[List[str]] = None,
     ) -> AnywhereFreightPricingResult:
         """
         List top origin ports for a given destination.

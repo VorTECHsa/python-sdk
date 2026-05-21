@@ -1,7 +1,9 @@
 from typing import Dict
 
 from vortexasdk.client import default_client, _handle_response
-from vortexasdk.endpoints.endpoints import ANYWHERE_FREIGHT_PRICING_LATEST_UPDATE
+from vortexasdk.endpoints.endpoints import (
+    ANYWHERE_FREIGHT_PRICING_LATEST_UPDATE,
+)
 from vortexasdk.logger import get_logger
 from vortexasdk.retry_session import retry_get
 
@@ -45,7 +47,9 @@ class AnywhereFreightPricingLatestUpdateTimestamp:
         ```
 
         """
-        logger.info("Fetching Anywhere Freight Pricing latest update timestamp")
+        logger.info(
+            "Fetching Anywhere Freight Pricing latest update timestamp"
+        )
 
         client = default_client()
         url = client._create_url(self._resource)

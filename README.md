@@ -9,7 +9,7 @@ Data Scientists, Analysts and Developers efficiently explore the world’s
 waterborne oil movements, and to build custom models & reports with minimum
 setup cost.
 
-The SDK!! sits as a thin python wrapper around
+The SDK sits as a thin python wrapper around
 [Vortexa's API](https://docs.vortexa.com), giving you immediate access to pandas
 DataFrames.
 

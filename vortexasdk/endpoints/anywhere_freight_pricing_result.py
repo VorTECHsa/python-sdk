@@ -1,12 +1,10 @@
 from typing import Any, Dict, List
 
 import pandas as pd
-from pydantic import Field
-
-from vortexasdk.api.search_result import Result
+from pydantic import BaseModel, Field
 
 
-class AnywhereFreightPricingResult(Result):
+class AnywhereFreightPricingResult(BaseModel):
     """Container class that holds results from Anywhere Freight Pricing endpoints."""
 
     records: List = Field(default_factory=list)

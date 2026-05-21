@@ -3,19 +3,17 @@ from typing import Any, Dict, List, Optional
 from urllib.parse import urlencode
 
 from vortexasdk.client import default_client, _handle_response
-from vortexasdk.endpoints.endpoints import ANYWHERE_FREIGHT_PRICING_PRICE_DETAILS
+from vortexasdk.endpoints.endpoints import (
+    ANYWHERE_FREIGHT_PRICING_PRICE_DETAILS,
+)
 from vortexasdk.endpoints.anywhere_freight_pricing_result import (
     AnywhereFreightPricingResult,
 )
 from vortexasdk.logger import get_logger
 from vortexasdk.retry_session import retry_get
+from vortexasdk.utils import to_date_string
 
 logger = get_logger(__name__)
-
-
-def _to_date_string(dt: datetime) -> str:
-    """Convert datetime to YYYY-MM-DD date string as required by AFP API."""
-    return dt.strftime("%Y-%m-%d")
 
 
 class AnywhereFreightPricingGetPriceDetails:
@@ -112,8 +110,8 @@ class AnywhereFreightPricingGetPriceDetails:
         )
 
         params: Dict[str, Any] = {
-            "time_min": _to_date_string(time_min),
-            "time_max": _to_date_string(time_max),
+            "time_min": to_date_string(time_min),
+            "time_max": to_date_string(time_max),
             "origin_port": origin_port,
             "destination_port": destination_port,
             "vessel_class": vessel_class,
