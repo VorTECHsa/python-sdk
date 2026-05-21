@@ -97,9 +97,10 @@ generate:
         - vortexasdk.endpoints.refineries++
   - endpoints/anywhere_freight_pricing_latest_update_timestamp.md:
       - vortexasdk.endpoints.anywhere_freight_pricing_latest_update_timestamp++
+  - endpoints/anywhere_freight_pricing_result.md:
+      - vortexasdk.endpoints.anywhere_freight_pricing_result++
   - endpoints/anywhere_freight_pricing_price_timeseries.md:
       - vortexasdk.endpoints.anywhere_freight_pricing_price_timeseries++
-      - vortexasdk.endpoints.anywhere_freight_pricing_price_timeseries_result++
   - endpoints/anywhere_freight_pricing_get_price_details.md:
       - vortexasdk.endpoints.anywhere_freight_pricing_get_price_details++
   - endpoints/anywhere_freight_pricing_post_price_details.md:

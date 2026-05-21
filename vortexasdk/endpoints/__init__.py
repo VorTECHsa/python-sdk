@@ -74,6 +74,21 @@ from vortexasdk.endpoints.anywhere_freight_pricing_latest_update_timestamp impor
 from vortexasdk.endpoints.anywhere_freight_pricing_price_timeseries import (
     AnywhereFreightPricingPriceTimeseries,
 )
+from vortexasdk.endpoints.anywhere_freight_pricing_get_price_details import (
+    AnywhereFreightPricingGetPriceDetails,
+)
+from vortexasdk.endpoints.anywhere_freight_pricing_post_price_details import (
+    AnywhereFreightPricingPostPriceDetails,
+)
+from vortexasdk.endpoints.anywhere_freight_pricing_top_ports_destination import (
+    AnywhereFreightPricingTopPortsDestination,
+)
+from vortexasdk.endpoints.anywhere_freight_pricing_top_ports_origin import (
+    AnywhereFreightPricingTopPortsOrigin,
+)
+from vortexasdk.endpoints.anywhere_freight_pricing_vessel_classes_details import (
+    AnywhereFreightPricingVesselClassesDetails,
+)
 
 # Explicitly list all exported classes, to help MyPy know what is available
 __all__ = [
@@ -117,4 +132,9 @@ __all__ = [
     "Refineries",
     "AnywhereFreightPricingLatestUpdateTimestamp",
     "AnywhereFreightPricingPriceTimeseries",
+    "AnywhereFreightPricingGetPriceDetails",
+    "AnywhereFreightPricingPostPriceDetails",
+    "AnywhereFreightPricingTopPortsDestination",
+    "AnywhereFreightPricingTopPortsOrigin",
+    "AnywhereFreightPricingVesselClassesDetails",
 ]

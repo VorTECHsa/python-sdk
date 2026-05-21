@@ -42,6 +42,11 @@ from vortexasdk.endpoints import (
     Refineries,
     AnywhereFreightPricingLatestUpdateTimestamp,
     AnywhereFreightPricingPriceTimeseries,
+    AnywhereFreightPricingGetPriceDetails,
+    AnywhereFreightPricingPostPriceDetails,
+    AnywhereFreightPricingTopPortsDestination,
+    AnywhereFreightPricingTopPortsOrigin,
+    AnywhereFreightPricingVesselClassesDetails,
 )
 
 # noinspection PyUnresolvedReferences
@@ -92,6 +97,11 @@ __all__ = [
     "Refineries",
     "AnywhereFreightPricingLatestUpdateTimestamp",
     "AnywhereFreightPricingPriceTimeseries",
+    "AnywhereFreightPricingGetPriceDetails",
+    "AnywhereFreightPricingPostPriceDetails",
+    "AnywhereFreightPricingTopPortsDestination",
+    "AnywhereFreightPricingTopPortsOrigin",
+    "AnywhereFreightPricingVesselClassesDetails",
     "__version__",
     "run_all_checks",
 ]

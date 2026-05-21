@@ -2,8 +2,8 @@ from datetime import datetime
 from typing import Any, Dict, List
 
 from vortexasdk.endpoints.endpoints import ANYWHERE_FREIGHT_PRICING_PRICE_TIMESERIES
-from vortexasdk.endpoints.anywhere_freight_pricing_price_timeseries_result import (
-    AnywhereFreightPricingPriceTimeseriesResult,
+from vortexasdk.endpoints.anywhere_freight_pricing_result import (
+    AnywhereFreightPricingResult,
 )
 from vortexasdk.logger import get_logger
 from vortexasdk.operations import Search
@@ -34,7 +34,7 @@ class AnywhereFreightPricingPriceTimeseries(Search):
         time_max: datetime,
         frequency: str = "month",
         unit: str = "usd_per_tonne",
-    ) -> AnywhereFreightPricingPriceTimeseriesResult:
+    ) -> AnywhereFreightPricingResult:
         """
         Get historical pricing over time for multiple routes.
 
@@ -65,7 +65,7 @@ class AnywhereFreightPricingPriceTimeseries(Search):
             unit: The unit for pricing. Must be one of: `'usd_per_tonne'`, `'usd_per_barrel'`.
 
         # Returns
-        `AnywhereFreightPricingPriceTimeseriesResult`
+        `AnywhereFreightPricingResult`
 
         # Example
         _Get daily pricing for a Handymax MR2 clean route from Rotterdam to New York._
@@ -110,6 +110,6 @@ class AnywhereFreightPricingPriceTimeseries(Search):
 
         response = super().search_with_client(response_type="breakdown", **api_params)
 
-        return AnywhereFreightPricingPriceTimeseriesResult(
+        return AnywhereFreightPricingResult(
             records=response["data"], reference=response.get("reference", {})
         )

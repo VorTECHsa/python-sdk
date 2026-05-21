@@ -1,5 +1,3 @@
-# TODO: Check if we want a try me now Binder notebook
-
 from typing import Dict
 
 from vortexasdk.client import default_client

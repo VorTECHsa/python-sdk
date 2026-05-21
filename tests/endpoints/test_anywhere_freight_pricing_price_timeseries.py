@@ -49,7 +49,7 @@ class TestAnywhereFreightPricingPriceTimeseries(TestCaseUsingRealAPI):
 
         df = result.to_df()
         assert len(df) > 0
+        # Top-level keys preserved, nested arrays like prices stay as lists
         assert "origin_port" in df.columns
         assert "destination_port" in df.columns
-        assert "date" in df.columns
-        assert "price" in df.columns
+        assert "vessel_class" in df.columns
