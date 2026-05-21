@@ -1,4 +1,4 @@
-from vortexasdk.client import default_client
+from vortexasdk.client import default_client, _handle_response
 from vortexasdk.endpoints.endpoints import ANYWHERE_FREIGHT_PRICING_VESSEL_CLASSES_DETAILS
 from vortexasdk.endpoints.anywhere_freight_pricing_result import (
     AnywhereFreightPricingResult,
@@ -59,14 +59,7 @@ class AnywhereFreightPricingVesselClassesDetails:
 
         response = retry_get(url)
 
-        if not response.ok:
-            logger.error(response.reason)
-            raise ValueError(
-                f"[{response.status_code} {response.reason}] "
-                f"Failed to fetch vessel classes details"
-            )
-
-        data = response.json()
+        data = _handle_response(response)
         return AnywhereFreightPricingResult(
             records=data.get("data", []),
             reference=data.get("metadata", {}),

@@ -2,7 +2,7 @@ from datetime import datetime
 from typing import Any, Dict, List, Optional
 from urllib.parse import urlencode
 
-from vortexasdk.client import default_client
+from vortexasdk.client import default_client, _handle_response
 from vortexasdk.endpoints.endpoints import ANYWHERE_FREIGHT_PRICING_PRICE_DETAILS
 from vortexasdk.endpoints.anywhere_freight_pricing_result import (
     AnywhereFreightPricingResult,
@@ -136,14 +136,7 @@ class AnywhereFreightPricingGetPriceDetails:
 
         response = retry_get(url)
 
-        if not response.ok:
-            logger.error(response.reason)
-            raise ValueError(
-                f"[{response.status_code} {response.reason}] "
-                f"Failed to fetch price details"
-            )
-
-        data = response.json()
+        data = _handle_response(response)
         return AnywhereFreightPricingResult(
             records=data.get("data", []),
             reference=data.get("metadata", {}),

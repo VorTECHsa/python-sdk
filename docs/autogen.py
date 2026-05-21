@@ -53,6 +53,20 @@ def copy_examples(examples_dir: str, destination_dir: str) -> None:
             f_out.write("```")
 
 
+def copy_css(source_dir: str, destination_dir: str) -> None:
+    """Copy CSS files to the documentation build directory."""
+    pathlib.Path(destination_dir).mkdir(parents=True, exist_ok=True)
+    for file in os.listdir(source_dir):
+        if file.endswith(".css"):
+            source_path = os.path.join(source_dir, file)
+            dest_path = os.path.join(destination_dir, file)
+            with open(source_path, "r", encoding="utf-8") as f_in:
+                content = f_in.read()
+            with open(dest_path, "w", encoding="utf-8") as f_out:
+                f_out.write(content)
+
+
 if __name__ == "__main__":
     print(os.getcwd())
     copy_examples("./docs/examples", "./_build/pydocmd/examples")
+    copy_css("./docs/css", "./_build/pydocmd/css")

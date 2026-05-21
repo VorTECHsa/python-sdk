@@ -1,6 +1,6 @@
 from typing import Any, Dict, List, Optional
 
-from vortexasdk.client import default_client
+from vortexasdk.client import default_client, _handle_response
 from vortexasdk.endpoints.endpoints import ANYWHERE_FREIGHT_PRICING_TOP_PORTS_ORIGIN
 from vortexasdk.endpoints.anywhere_freight_pricing_result import (
     AnywhereFreightPricingResult,
@@ -100,14 +100,7 @@ class AnywhereFreightPricingTopPortsOrigin:
 
         response = retry_post(url, json=payload)
 
-        if not response.ok:
-            logger.error(response.reason)
-            raise ValueError(
-                f"[{response.status_code} {response.reason}] "
-                f"Failed to fetch top origin ports"
-            )
-
-        data = response.json()
+        data = _handle_response(response)
         return AnywhereFreightPricingResult(
             records=data.get("data", []),
             reference=data.get("metadata", {}),
