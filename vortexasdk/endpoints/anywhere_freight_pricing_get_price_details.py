@@ -136,7 +136,9 @@ class AnywhereFreightPricingGetPriceDetails:
             params["suggested_tonnage"] = suggested_tonnage
 
         client = default_client()
-        url = client._create_url_with_params(self._resource, params, doseq=True)
+        url = client._create_url_with_params(
+            self._resource, params, doseq=True
+        )
 
         response = retry_get(url)
 
