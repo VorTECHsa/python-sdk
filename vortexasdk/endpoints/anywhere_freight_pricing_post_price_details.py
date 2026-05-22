@@ -68,6 +68,7 @@ class AnywhereFreightPricingPostPriceDetails(Search):
             time_max: The UTC end date of the time filter.
 
             unit: The unit for pricing. Must be one of: `'usd_per_tonne'`, `'usd_per_barrel'`.
+                Defaults to `'usd_per_tonne'`.
 
         # Returns
         `AnywhereFreightPricingResult`
@@ -106,8 +107,8 @@ class AnywhereFreightPricingPostPriceDetails(Search):
 
         |    | date       | rate  | lumpsum   | confidence |
         |---:|:-----------|------:|----------:|-----------:|
-        |  0 | 2024-01-01 | 12.50 | 1250000.0 |       0.85 |
-        |  1 | 2024-01-02 | 12.75 | 1275000.0 |       0.87 |
+        |  0 | 2024-01-01 | 12.50 | 1250000.0 |          2 |
+        |  1 | 2024-01-02 | 12.75 | 1275000.0 |          2 |
 
         """
         api_params: Dict[str, Any] = {

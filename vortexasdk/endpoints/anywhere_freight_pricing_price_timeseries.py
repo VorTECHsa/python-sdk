@@ -69,8 +69,10 @@ class AnywhereFreightPricingPriceTimeseries(Search):
 
             frequency: Frequency denoting the granularity of the time series.
                 Must be one of: `'day'`, `'week'`, `'doe_week'`, `'month'`, `'quarter'`, `'year'`.
+                Defaults to `'month'`.
 
             unit: The unit for pricing. Must be one of: `'usd_per_tonne'`, `'usd_per_barrel'`.
+                Defaults to `'usd_per_tonne'`.
 
         # Returns
         `AnywhereFreightPricingResult`
