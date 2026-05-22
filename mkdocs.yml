@@ -30,7 +30,7 @@ pages:
         Price:
           Get Prices: endpoints/anywhere_freight_pricing_get_price_details.md
           Post Prices: endpoints/anywhere_freight_pricing_post_price_details.md
-        Top Ports: 
+        Top Ports:
           Origin: endpoints/anywhere_freight_pricing_top_ports_origin.md
           Destination: endpoints/anywhere_freight_pricing_top_ports_destination.md
         Vessel Classes: endpoints/anywhere_freight_pricing_vessel_classes_details.md

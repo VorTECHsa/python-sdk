@@ -1,6 +1,10 @@
+"""
+Try me out in your browser:
+
+[![Binder](https://img.shields.io/badge/try%20me%20out-launch%20notebook-579ACA.svg?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFkAAABZCAMAAABi1XidAAAB8lBMVEX///9XmsrmZYH1olJXmsr1olJXmsrmZYH1olJXmsr1olJXmsrmZYH1olL1olJXmsr1olJXmsrmZYH1olL1olJXmsrmZYH1olJXmsr1olL1olJXmsrmZYH1olL1olJXmsrmZYH1olL1olL0nFf1olJXmsrmZYH1olJXmsq8dZb1olJXmsrmZYH1olJXmspXmspXmsr1olL1olJXmsrmZYH1olJXmsr1olL1olJXmsrmZYH1olL1olLeaIVXmsrmZYH1olL1olL1olJXmsrmZYH1olLna31Xmsr1olJXmsr1olJXmsrmZYH1olLqoVr1olJXmsr1olJXmsrmZYH1olL1olKkfaPobXvviGabgadXmsqThKuofKHmZ4Dobnr1olJXmsr1olJXmspXmsr1olJXmsrfZ4TuhWn1olL1olJXmsqBi7X1olJXmspZmslbmMhbmsdemsVfl8ZgmsNim8Jpk8F0m7R4m7F5nLB6jbh7jbiDirOEibOGnKaMhq+PnaCVg6qWg6qegKaff6WhnpKofKGtnomxeZy3noG6dZi+n3vCcpPDcpPGn3bLb4/Mb47UbIrVa4rYoGjdaIbeaIXhoWHmZYHobXvpcHjqdHXreHLroVrsfG/uhGnuh2bwj2Hxk17yl1vzmljzm1j0nlX1olL3AJXWAAAAbXRSTlMAEBAQHx8gICAuLjAwMDw9PUBAQEpQUFBXV1hgYGBkcHBwcXl8gICAgoiIkJCQlJicnJ2goKCmqK+wsLC4usDAwMjP0teleN20NbsvaOsY2+3LL9/Tz1bC0dLQ1dXZ2Nrf4+Lk5urq7/P3+fn4+Pz9/f7+/gB+Q1KaQJdScAAAAAElFTkSuQmCC)](https://mybinder.org/v2/gh/VorTECHsa/python-sdk/master?filepath=docs%2Fexamples%2Ftry_me_out%2Fanywhere_freight_pricing_get_price_details.ipynb)
+"""
 from datetime import datetime
 from typing import Any, Dict, List, Optional
-from urllib.parse import urlencode
 
 from vortexasdk.client import default_client, _handle_response
 from vortexasdk.endpoints.endpoints import (
@@ -9,9 +13,15 @@ from vortexasdk.endpoints.endpoints import (
 from vortexasdk.endpoints.anywhere_freight_pricing_result import (
     AnywhereFreightPricingResult,
 )
+from vortexasdk.endpoints.anywhere_freight_pricing_types import (
+    AfpAvoidZone,
+    AfpProduct,
+    AfpUnit,
+    AfpVesselClass,
+)
 from vortexasdk.logger import get_logger
 from vortexasdk.retry_session import retry_get
-from vortexasdk.utils import to_date_string
+from vortexasdk.api.shared_types import to_date_string
 
 logger = get_logger(__name__)
 
@@ -36,10 +46,10 @@ class AnywhereFreightPricingGetPriceDetails:
         time_max: datetime,
         origin_port: str,
         destination_port: str,
-        vessel_class: str,
-        product: str,
-        unit: str = "usd_per_tonne",
-        avoid_zone: Optional[List[str]] = None,
+        vessel_class: AfpVesselClass,
+        product: AfpProduct,
+        unit: AfpUnit = "usd_per_tonne",
+        avoid_zone: Optional[List[AfpAvoidZone]] = None,
         suggested_tonnage: Optional[float] = None,
     ) -> AnywhereFreightPricingResult:
         """
@@ -119,18 +129,14 @@ class AnywhereFreightPricingGetPriceDetails:
             "unit": unit,
         }
 
-        if avoid_zone:
+        if avoid_zone is not None:
             params["avoid_zone"] = avoid_zone
 
         if suggested_tonnage is not None:
             params["suggested_tonnage"] = suggested_tonnage
 
         client = default_client()
-        url = client._create_url(self._resource)
-
-        # Use doseq=True to handle list parameters (avoid_zone)
-        query_string = urlencode(params, doseq=True)
-        url = f"{url}&{query_string}"
+        url = client._create_url_with_params(self._resource, params, doseq=True)
 
         response = retry_get(url)
 

@@ -89,6 +89,14 @@ from vortexasdk.endpoints.anywhere_freight_pricing_top_ports_origin import (
 from vortexasdk.endpoints.anywhere_freight_pricing_vessel_classes_details import (
     AnywhereFreightPricingVesselClassesDetails,
 )
+from vortexasdk.endpoints.anywhere_freight_pricing_types import (
+    AfpAvoidZone,
+    AfpFrequency,
+    AfpProduct,
+    AfpRoute,
+    AfpUnit,
+    AfpVesselClass,
+)
 
 # Explicitly list all exported classes, to help MyPy know what is available
 __all__ = [
@@ -137,4 +145,11 @@ __all__ = [
     "AnywhereFreightPricingTopPortsDestination",
     "AnywhereFreightPricingTopPortsOrigin",
     "AnywhereFreightPricingVesselClassesDetails",
+    # AFP types for user type annotations
+    "AfpAvoidZone",
+    "AfpFrequency",
+    "AfpProduct",
+    "AfpRoute",
+    "AfpUnit",
+    "AfpVesselClass",
 ]

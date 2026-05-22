@@ -1,30 +1,36 @@
-from typing import Any, Dict, List
+from typing import List, Optional, Union
 
 import pandas as pd
-from pydantic import BaseModel, Field
+from typing_extensions import Literal
+
+from vortexasdk.api.search_result import Result
 
 
-class AnywhereFreightPricingResult(BaseModel):
+class AnywhereFreightPricingResult(Result):
     """Container class that holds results from Anywhere Freight Pricing endpoints."""
 
-    records: List = Field(default_factory=list)
-    reference: Dict[str, Any] = Field(default_factory=dict)
-
-    def to_list(self) -> List[Dict[str, Any]]:
-        """
-        Represent the results as a list of records.
-
-        Returns the raw API response data.
-        """
-        return self.records
-
-    def to_df(self) -> pd.DataFrame:
+    def to_df(
+        self, columns: Optional[Union[List[str], Literal["all"]]] = "all"
+    ) -> pd.DataFrame:
         """
         Represent the results as a DataFrame.
 
-        Uses pd.json_normalize to flatten nested structures.
+        # Arguments
+            columns: Output columns present in the `pd.DataFrame`.
+            Enter `columns='all'` to return all available columns.
+            Enter a list of column names to return only those columns.
+
+        # Returns
+        `pd.DataFrame` with the results, using json_normalize to flatten nested structures.
         """
         if not self.records:
             return pd.DataFrame()
 
-        return pd.json_normalize(self.records)
+        df = pd.json_normalize(self.records)
+
+        if columns is None or columns == "all":
+            return df
+
+        # Filter to requested columns that exist in the dataframe
+        available_columns = [col for col in columns if col in df.columns]
+        return df[available_columns]

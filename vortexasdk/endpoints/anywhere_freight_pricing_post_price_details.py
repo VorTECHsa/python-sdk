@@ -1,3 +1,8 @@
+"""
+Try me out in your browser:
+
+[![Binder](https://img.shields.io/badge/try%20me%20out-launch%20notebook-579ACA.svg?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFkAAABZCAMAAABi1XidAAAB8lBMVEX///9XmsrmZYH1olJXmsr1olJXmsrmZYH1olJXmsr1olJXmsrmZYH1olL1olJXmsr1olJXmsrmZYH1olL1olJXmsrmZYH1olJXmsr1olL1olJXmsrmZYH1olL1olJXmsrmZYH1olL1olL0nFf1olJXmsrmZYH1olJXmsq8dZb1olJXmsrmZYH1olJXmspXmspXmsr1olL1olJXmsrmZYH1olJXmsr1olL1olJXmsrmZYH1olL1olLeaIVXmsrmZYH1olL1olL1olJXmsrmZYH1olLna31Xmsr1olJXmsr1olJXmsrmZYH1olLqoVr1olJXmsr1olJXmsrmZYH1olL1olKkfaPobXvviGabgadXmsqThKuofKHmZ4Dobnr1olJXmsr1olJXmspXmsr1olJXmsrfZ4TuhWn1olL1olJXmsqBi7X1olJXmspZmslbmMhbmsdemsVfl8ZgmsNim8Jpk8F0m7R4m7F5nLB6jbh7jbiDirOEibOGnKaMhq+PnaCVg6qWg6qegKaff6WhnpKofKGtnomxeZy3noG6dZi+n3vCcpPDcpPGn3bLb4/Mb47UbIrVa4rYoGjdaIbeaIXhoWHmZYHobXvpcHjqdHXreHLroVrsfG/uhGnuh2bwj2Hxk17yl1vzmljzm1j0nlX1olL3AJXWAAAAbXRSTlMAEBAQHx8gICAuLjAwMDw9PUBAQEpQUFBXV1hgYGBkcHBwcXl8gICAgoiIkJCQlJicnJ2goKCmqK+wsLC4usDAwMjP0teleN20NbsvaOsY2+3LL9/Tz1bC0dLQ1dXZ2Nrf4+Lk5urq7/P3+fn4+Pz9/f7+/gB+Q1KaQJdScAAAAAElFTkSuQmCC)](https://mybinder.org/v2/gh/VorTECHsa/python-sdk/master?filepath=docs%2Fexamples%2Ftry_me_out%2Fanywhere_freight_pricing_post_price_details.ipynb)
+"""
 from datetime import datetime
 from typing import Any, Dict, List
 
@@ -7,9 +12,13 @@ from vortexasdk.endpoints.endpoints import (
 from vortexasdk.endpoints.anywhere_freight_pricing_result import (
     AnywhereFreightPricingResult,
 )
+from vortexasdk.endpoints.anywhere_freight_pricing_types import (
+    AfpRoute,
+    AfpUnit,
+)
 from vortexasdk.logger import get_logger
 from vortexasdk.operations import Search
-from vortexasdk.utils import to_date_string
+from vortexasdk.api.shared_types import to_date_string
 
 logger = get_logger(__name__)
 
@@ -30,10 +39,10 @@ class AnywhereFreightPricingPostPriceDetails(Search):
 
     def search(
         self,
-        routes: List[Dict[str, Any]],
+        routes: List[AfpRoute],
         time_min: datetime,
         time_max: datetime,
-        unit: str = "usd_per_tonne",
+        unit: AfpUnit = "usd_per_tonne",
     ) -> AnywhereFreightPricingResult:
         """
         List prices for multiple routes.

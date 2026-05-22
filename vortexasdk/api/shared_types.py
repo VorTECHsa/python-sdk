@@ -20,6 +20,16 @@ def to_ISODate_Array(days: List[datetime]) -> List[ISODate]:
     return [to_ISODate(date) for date in days]
 
 
+def to_date_string(dt: datetime) -> str:
+    """
+    Convert datetime to YYYY-MM-DD date string.
+
+    The Anywhere Freight Pricing (AFP) API requires date-only strings without
+    time components, unlike other Vortexa endpoints which use full ISO-8601.
+    """
+    return dt.strftime("%Y-%m-%d")
+
+
 class EntityWithSingleLayer(BaseModel):
     """Holds commonly used properties."""
 
