@@ -46,10 +46,10 @@ pip install -e '.[tests]'
 
 To run the live tests, you'll need to have the `VORTEXA_API_KEY` environment variable set - `export VORTEXA_API_KEY=xyz`
 
-run tests
+run all tests
 
 ```bash
-python setup.py test
+pytest
 ```
 
 If you're just looking to run tests in a single module (`test_vessels` in this case), you can do like this:

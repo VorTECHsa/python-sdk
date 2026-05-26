@@ -40,6 +40,20 @@ from vortexasdk.endpoints import (
     VesselSummary,
     VesselPositions,
     Refineries,
+    AnywhereFreightPricingLatestUpdateTimestamp,
+    AnywhereFreightPricingPriceTimeseries,
+    AnywhereFreightPricingGetPriceDetails,
+    AnywhereFreightPricingPostPriceDetails,
+    AnywhereFreightPricingTopPortsDestination,
+    AnywhereFreightPricingTopPortsOrigin,
+    AnywhereFreightPricingVesselClassesDetails,
+    # AFP types
+    AfpAvoidZone,
+    AfpFrequency,
+    AfpProduct,
+    AfpRoute,
+    AfpUnit,
+    AfpVesselClass,
 )
 
 # noinspection PyUnresolvedReferences
@@ -88,6 +102,20 @@ __all__ = [
     "VesselSummary",
     "VesselPositions",
     "Refineries",
+    "AnywhereFreightPricingLatestUpdateTimestamp",
+    "AnywhereFreightPricingPriceTimeseries",
+    "AnywhereFreightPricingGetPriceDetails",
+    "AnywhereFreightPricingPostPriceDetails",
+    "AnywhereFreightPricingTopPortsDestination",
+    "AnywhereFreightPricingTopPortsOrigin",
+    "AnywhereFreightPricingVesselClassesDetails",
+    # AFP types
+    "AfpAvoidZone",
+    "AfpFrequency",
+    "AfpProduct",
+    "AfpRoute",
+    "AfpUnit",
+    "AfpVesselClass",
     "__version__",
     "run_all_checks",
 ]

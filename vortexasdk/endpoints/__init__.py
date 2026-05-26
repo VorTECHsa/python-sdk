@@ -68,6 +68,35 @@ from vortexasdk.endpoints.vessel_summary import VesselSummary
 from vortexasdk.endpoints.vessel_positions import VesselPositions
 
 from vortexasdk.endpoints.refineries import Refineries
+from vortexasdk.endpoints.anywhere_freight_pricing_latest_update_timestamp import (
+    AnywhereFreightPricingLatestUpdateTimestamp,
+)
+from vortexasdk.endpoints.anywhere_freight_pricing_price_timeseries import (
+    AnywhereFreightPricingPriceTimeseries,
+)
+from vortexasdk.endpoints.anywhere_freight_pricing_get_price_details import (
+    AnywhereFreightPricingGetPriceDetails,
+)
+from vortexasdk.endpoints.anywhere_freight_pricing_post_price_details import (
+    AnywhereFreightPricingPostPriceDetails,
+)
+from vortexasdk.endpoints.anywhere_freight_pricing_top_ports_destination import (
+    AnywhereFreightPricingTopPortsDestination,
+)
+from vortexasdk.endpoints.anywhere_freight_pricing_top_ports_origin import (
+    AnywhereFreightPricingTopPortsOrigin,
+)
+from vortexasdk.endpoints.anywhere_freight_pricing_vessel_classes_details import (
+    AnywhereFreightPricingVesselClassesDetails,
+)
+from vortexasdk.endpoints.anywhere_freight_pricing_types import (
+    AfpAvoidZone,
+    AfpFrequency,
+    AfpProduct,
+    AfpRoute,
+    AfpUnit,
+    AfpVesselClass,
+)
 
 # Explicitly list all exported classes, to help MyPy know what is available
 __all__ = [
@@ -109,4 +138,18 @@ __all__ = [
     "VesselSummary",
     "VesselPositions",
     "Refineries",
+    "AnywhereFreightPricingLatestUpdateTimestamp",
+    "AnywhereFreightPricingPriceTimeseries",
+    "AnywhereFreightPricingGetPriceDetails",
+    "AnywhereFreightPricingPostPriceDetails",
+    "AnywhereFreightPricingTopPortsDestination",
+    "AnywhereFreightPricingTopPortsOrigin",
+    "AnywhereFreightPricingVesselClassesDetails",
+    # AFP types for user type annotations
+    "AfpAvoidZone",
+    "AfpFrequency",
+    "AfpProduct",
+    "AfpRoute",
+    "AfpUnit",
+    "AfpVesselClass",
 ]

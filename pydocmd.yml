@@ -93,8 +93,22 @@ generate:
   - endpoints/voyages_routes_breakdown.md: vortexasdk.endpoints.voyages_routes_breakdown++
   - endpoints/voyages_top_hits.md: vortexasdk.endpoints.voyages_top_hits++
   - endpoints/voyages_congestion_breakdown.md: vortexasdk.endpoints.voyages_congestion_breakdown++
-  - endpoints/refineries.md: 
+  - endpoints/refineries.md:
         - vortexasdk.endpoints.refineries++
+  - endpoints/anywhere_freight_pricing_latest_update_timestamp.md:
+      - vortexasdk.endpoints.anywhere_freight_pricing_latest_update_timestamp++
+  - endpoints/anywhere_freight_pricing_price_timeseries.md:
+      - vortexasdk.endpoints.anywhere_freight_pricing_price_timeseries++
+  - endpoints/anywhere_freight_pricing_get_price_details.md:
+      - vortexasdk.endpoints.anywhere_freight_pricing_get_price_details++
+  - endpoints/anywhere_freight_pricing_post_price_details.md:
+      - vortexasdk.endpoints.anywhere_freight_pricing_post_price_details++
+  - endpoints/anywhere_freight_pricing_top_ports_origin.md:
+      - vortexasdk.endpoints.anywhere_freight_pricing_top_ports_origin++
+  - endpoints/anywhere_freight_pricing_top_ports_destination.md:
+      - vortexasdk.endpoints.anywhere_freight_pricing_top_ports_destination++
+  - endpoints/anywhere_freight_pricing_vessel_classes_details.md:
+      - vortexasdk.endpoints.anywhere_freight_pricing_vessel_classes_details++
 pages:
   - Home: index.md << README.md
   - Endpoints:
