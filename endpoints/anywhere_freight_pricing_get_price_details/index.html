@@ -1,0 +1,447 @@
+<!-- 
+    This content is copied from https://github.com/mkdocs/mkdocs/blob/80feaf03a42dacdd0740259b647014d5f0f9d839/mkdocs/themes/readthedocs/base.html
+    It has to be this specific commit to keep the table scrolling working (newer versions of the base.html break it)
+    The modification that is done is the addition of:
+    <meta name="robots" content="noindex,nofollow" />
+-->
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow" />
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Get Prices - VortexaSDK</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  <link href="../../css/custom.css" rel="stylesheet" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Get Prices";
+    var mkdocs_page_input_path = "endpoints/anywhere_freight_pricing_get_price_details.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-153895438-1', 'vortechsa.github.io');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> VortexaSDK</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Endpoints</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../about-endpoints/">About Endpoints</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../attributes/">Attributes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../canal_transit/">Canal Transit</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../canal_transit_timeseries/">Canal Transit Timeseries</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../cargo_movements/">Cargo Movements</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../movement_status_breakdown/">Movement Status Breakdown</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../product_breakdown/">Product Breakdown</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../parent_product_breakdown/">Parent Product Breakdown</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../vessel_class_breakdown/">Vessel Class Breakdown</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../origin_breakdown/">Origin Breakdown</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../destination_breakdown/">Destination Breakdown</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../cargo_timeseries/">Cargo Time Series</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../corporations/">Corporations</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../eia_forecasts/">EIA Forecasts</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../geographies/">Geographies</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../products/">Products</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../vessels/">Vessels</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../fixtures/">Fixtures</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="#">Anywhere Freight Pricing</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../anywhere_freight_pricing_latest_update_timestamp/">Latest Update</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../anywhere_freight_pricing_price_timeseries/">Time-series</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">Price</a>
+    <ul class="current">
+                <li class="toctree-l3 current"><a class="reference internal current" href="./">Get Prices</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../anywhere_freight_pricing_post_price_details/">Post Prices</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">Top Ports</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../anywhere_freight_pricing_top_ports_origin/">Origin</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../anywhere_freight_pricing_top_ports_destination/">Destination</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../anywhere_freight_pricing_vessel_classes_details/">Vessel Classes</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Vessel Availability</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../vessel_availability_search/">Search</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../vessel_availability_timeseries/">Time Series</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../vessel_availability_breakdown/">Breakdown</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Crude Onshore Inventories</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../onshore_inventories_search/">Search</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../onshore_inventories_timeseries/">Time Series</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">Reference Data</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../asset_tanks/">Asset Tanks</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../storage_terminals/">Storage Terminals</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Freight Pricing</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../freight_pricing_search/">Search</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../freight_pricing_timeseries/">Time Series</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Voyages</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../voyages_search_enriched/">Search Enriched</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../voyages_timeseries/">Time Series</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../voyages_timeseries_v2/">Time Series V2</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../voyages_top_hits/">Top Hits</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../voyages_geography_breakdown/">Geography Breakdown</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../voyages_vessel_class_breakdown/">Vessel Class Breakdown</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../voyages_product_breakdown/">Product Breakdown</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../voyages_routes_breakdown/">Routes Breakdown</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../voyages_congestion_breakdown/">Congestion Breakdown</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../refineries/">Refineries</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Entities</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../entities/canal_transit/">Canal Transit</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../entities/cargo_movement/">Cargo Movement</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../entities/corporation/">Corporation</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../entities/geography/">Geography</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../entities/product/">Product</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../entities/vessel/">Vessel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../entities/voyages/">Voyages</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../entities/vessel_availability/">Vessel Availability</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../entities/timeseries_item/">Time Series Item</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../entities/breakdown_item/">Breakdown Item</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../config/">Config</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">FAQ</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../faq/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../faq_setup/">Setup</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Examples</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../examples/0_sample_load_cargo_movements/">0 Simple Load Cargo Movements</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../examples/1_china/">1 China VLCC Discharges</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../examples/jupyter_notebooks/">Jupyter Notebooks</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">VortexaSDK</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Endpoints &raquo;</li>
+        
+      
+        
+          <li>Anywhere Freight Pricing &raquo;</li>
+        
+      
+        
+          <li>Price &raquo;</li>
+        
+      
+    
+    <li>Get Prices</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/vortechsa/python-sdk/edit/master/docs/endpoints/anywhere_freight_pricing_get_price_details.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="vortexasdk.endpoints.anywhere_freight_pricing_get_price_details">vortexasdk.endpoints.anywhere_freight_pricing_get_price_details</h1>
+
+<p>Try me out in your browser:</p>
+<p><a href="https://mybinder.org/v2/gh/VorTECHsa/python-sdk/master?filepath=docs%2Fexamples%2Ftry_me_out%2Fanywhere_freight_pricing_get_price_details.ipynb"><img alt="Binder" src="https://img.shields.io/badge/try%20me%20out-launch%20notebook-579ACA.svg?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFkAAABZCAMAAABi1XidAAAB8lBMVEX///9XmsrmZYH1olJXmsr1olJXmsrmZYH1olJXmsr1olJXmsrmZYH1olL1olJXmsr1olJXmsrmZYH1olL1olJXmsrmZYH1olJXmsr1olL1olJXmsrmZYH1olL1olJXmsrmZYH1olL1olL0nFf1olJXmsrmZYH1olJXmsq8dZb1olJXmsrmZYH1olJXmspXmspXmsr1olL1olJXmsrmZYH1olJXmsr1olL1olJXmsrmZYH1olL1olLeaIVXmsrmZYH1olL1olL1olJXmsrmZYH1olLna31Xmsr1olJXmsr1olJXmsrmZYH1olLqoVr1olJXmsr1olJXmsrmZYH1olL1olKkfaPobXvviGabgadXmsqThKuofKHmZ4Dobnr1olJXmsr1olJXmspXmsr1olJXmsrfZ4TuhWn1olL1olJXmsqBi7X1olJXmspZmslbmMhbmsdemsVfl8ZgmsNim8Jpk8F0m7R4m7F5nLB6jbh7jbiDirOEibOGnKaMhq+PnaCVg6qWg6qegKaff6WhnpKofKGtnomxeZy3noG6dZi+n3vCcpPDcpPGn3bLb4/Mb47UbIrVa4rYoGjdaIbeaIXhoWHmZYHobXvpcHjqdHXreHLroVrsfG/uhGnuh2bwj2Hxk17yl1vzmljzm1j0nlX1olL3AJXWAAAAbXRSTlMAEBAQHx8gICAuLjAwMDw9PUBAQEpQUFBXV1hgYGBkcHBwcXl8gICAgoiIkJCQlJicnJ2goKCmqK+wsLC4usDAwMjP0teleN20NbsvaOsY2+3LL9/Tz1bC0dLQ1dXZ2Nrf4+Lk5urq7/P3+fn4+Pz9/f7+/gB+Q1KaQJdScAAAAAElFTkSuQmCC" /></a></p>
+<h2 id="vortexasdk.endpoints.anywhere_freight_pricing_get_price_details.AnywhereFreightPricingGetPriceDetails">AnywhereFreightPricingGetPriceDetails</h2>
+
+<pre><code class="language-python">AnywhereFreightPricingGetPriceDetails(self)
+</code></pre>
+<p>Anywhere Freight Pricing Get Price Details endpoint.</p>
+<p>Given a set of details about a single route (origin, destination, etc),
+this will find rates, lumpsums and prediction confidence of the route.</p>
+<p>Please note: you will require a subscription to our Anywhere Freight Pricing
+module to access this endpoint.</p>
+<h3 id="vortexasdk.endpoints.anywhere_freight_pricing_get_price_details.AnywhereFreightPricingGetPriceDetails.search">search</h3>
+
+<pre><code class="language-python">AnywhereFreightPricingGetPriceDetails.search(
+  time_min: datetime,
+  time_max: datetime,
+  origin_port: str,
+  destination_port: str,
+  vessel_class:
+    typing_extensions.Literal['oil_coastal', 'oil_specialised', 'oil_handysize_mr1', 'oil_handymax_mr2', 'oil_panamax_lr1', 'oil_aframax_lr2', 'oil_suezmax_lr3', 'oil_vlcc'],
+  product: typing_extensions.Literal['clean', 'dirty', 'crude'],
+  unit:
+    typing_extensions.Literal['usd_per_tonne', 'usd_per_barrel'] = 'usd_per_tonne',
+  avoid_zone:
+    typing.Optional[typing.List[typing_extensions.Literal['Panama Canal', 'Suez Canal']]] = None,
+  suggested_tonnage: typing.Optional[float] = None)
+</code></pre>
+<p>List prices of a route.</p>
+<p>Given a set of details about a single route (origin, destination, etc),
+this will find rates, lumpsums and prediction confidence of the route.</p>
+<p><strong>Arguments</strong></p>
+<pre><code>time_min: The UTC start date of the time filter.
+
+time_max: The UTC end date of the time filter.
+
+origin_port: Geographic ID of the origin port.
+
+destination_port: Geographic ID of the destination port.
+
+vessel_class: The vessel class for the route. Must be one of:
+    `'oil_coastal'`, `'oil_specialised'`, `'oil_handysize_mr1'`,
+    `'oil_handymax_mr2'`, `'oil_panamax_lr1'`, `'oil_aframax_lr2'`,
+    `'oil_suezmax_lr3'`, `'oil_vlcc'`.
+
+product: The product type. Must be one of: `'clean'`, `'dirty'`, `'crude'`.
+
+unit: The unit for pricing. Must be one of: `'usd_per_tonne'`, `'usd_per_barrel'`.
+    Defaults to `'usd_per_tonne'`.
+
+avoid_zone: Routing zones to avoid for this route. Options:
+    `'Panama Canal'`, `'Suez Canal'`.
+
+suggested_tonnage: Override the default suggested tonnage Vortexa will
+    suggest based on the vessel class.
+</code></pre>
+<p><strong>Returns</strong></p>
+<p><code>AnywhereFreightPricingResult</code></p>
+<p><strong>Example</strong></p>
+<p><em>Get price details for an Aframax LR2 crude route from Houston to Rotterdam.</em></p>
+<pre><code class="language-python">&gt;&gt;&gt; from vortexasdk import AnywhereFreightPricingGetPriceDetails
+&gt;&gt;&gt; from datetime import datetime
+&gt;&gt;&gt; result = AnywhereFreightPricingGetPriceDetails().search(
+...     time_min=datetime(2024, 1, 1),
+...     time_max=datetime(2024, 12, 31),
+...     origin_port=&quot;7f314ba0a498c36359b1c88781e94a73e19dcc9bbb030ec6b82f944a73d4da2f&quot;,
+...     destination_port=&quot;68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e&quot;,
+...     vessel_class=&quot;oil_aframax_lr2&quot;,
+...     product=&quot;crude&quot;,
+...     unit=&quot;usd_per_tonne&quot;,
+... )
+&gt;&gt;&gt; df = result.to_df()
+
+</code></pre>
+<p>Returns a DataFrame with columns including rates, lumpsums, and confidence values:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;"></th>
+<th style="text-align: left;">date</th>
+<th style="text-align: right;">rate</th>
+<th style="text-align: right;">lumpsum</th>
+<th style="text-align: right;">confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">2024-01-01</td>
+<td style="text-align: right;">12.50</td>
+<td style="text-align: right;">1250000.0</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">2024-01-02</td>
+<td style="text-align: right;">12.75</td>
+<td style="text-align: right;">1275000.0</td>
+<td style="text-align: right;">2</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../anywhere_freight_pricing_post_price_details/" class="btn btn-neutral float-right" title="Post Prices">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../anywhere_freight_pricing_price_timeseries/" class="btn btn-neutral" title="Time-series"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/vortechsa/python-sdk/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../anywhere_freight_pricing_price_timeseries/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../anywhere_freight_pricing_post_price_details/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

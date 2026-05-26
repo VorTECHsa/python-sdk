@@ -23,6 +23,7 @@
   <link rel="stylesheet" href="../../css/theme.css" />
   <link rel="stylesheet" href="../../css/theme_extra.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  <link href="../../css/custom.css" rel="stylesheet" />
   
   <script>
     // Current page data
@@ -107,6 +108,32 @@
                     <li class="toctree-l1"><a class="reference internal" href="../vessels/">Vessels</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../fixtures/">Fixtures</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Anywhere Freight Pricing</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../anywhere_freight_pricing_latest_update_timestamp/">Latest Update</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../anywhere_freight_pricing_price_timeseries/">Time-series</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">Price</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../anywhere_freight_pricing_get_price_details/">Get Prices</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../anywhere_freight_pricing_post_price_details/">Post Prices</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">Top Ports</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../anywhere_freight_pricing_top_ports_origin/">Origin</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../anywhere_freight_pricing_top_ports_destination/">Destination</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../anywhere_freight_pricing_vessel_classes_details/">Vessel Classes</a>
+                </li>
+    </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="#">Vessel Availability</a>
     <ul>
@@ -265,9 +292,9 @@
 <pre><code class="language-python">CargoMovements.search(
     filter_activity: typing.Optional[str] = None,
     filter_time_min:
-    datetime = datetime.datetime(2026, 4, 17, 12, 51, 12, 368509),
+    datetime = datetime.datetime(2026, 5, 26, 7, 50, 50, 267042),
     filter_time_max:
-    datetime = datetime.datetime(2026, 4, 17, 12, 51, 12, 368514),
+    datetime = datetime.datetime(2026, 5, 26, 7, 50, 50, 267044),
     cm_unit: str = 'b',
     filter_charterers: typing.Union[str, typing.List[str], NoneType] = None,
     filter_destinations: typing.Union[str, typing.List[str], NoneType] = None,

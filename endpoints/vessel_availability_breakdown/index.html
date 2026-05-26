@@ -23,6 +23,7 @@
   <link rel="stylesheet" href="../../css/theme.css" />
   <link rel="stylesheet" href="../../css/theme_extra.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  <link href="../../css/custom.css" rel="stylesheet" />
   
   <script>
     // Current page data
@@ -105,6 +106,32 @@
                     <li class="toctree-l1"><a class="reference internal" href="../vessels/">Vessels</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../fixtures/">Fixtures</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Anywhere Freight Pricing</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../anywhere_freight_pricing_latest_update_timestamp/">Latest Update</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../anywhere_freight_pricing_price_timeseries/">Time-series</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">Price</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../anywhere_freight_pricing_get_price_details/">Get Prices</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../anywhere_freight_pricing_post_price_details/">Post Prices</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">Top Ports</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../anywhere_freight_pricing_top_ports_origin/">Origin</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../anywhere_freight_pricing_top_ports_destination/">Destination</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../anywhere_freight_pricing_vessel_classes_details/">Vessel Classes</a>
+                </li>
+    </ul>
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="#">Vessel Availability</a>
     <ul class="current">
@@ -360,6 +387,8 @@ filter_vessel_ice_class: An ice class ID, or list of ice class IDs to filter on.
 filter_vessel_tags: A tag ID, or list of tag IDs to filter on.
 
 filter_vessel_risk_level: A risk level ID, or list of risk level IDs to filter on.
+Note: This filter may not be available for all accounts. If not available,
+the filter will be ignored, results will not be filtered by risk level, and vessel_risk_level will not appear in response data.
 
 filter_recent_visits: Filter availability by each vessel's recent visits
 
@@ -384,6 +413,8 @@ exclude_vessel_ice_class: An ice class ID, or list of ice class IDs to exclude.
 exclude_vessel_tags: A tag ID, or list of tag IDs to exclude.
 
 exclude_vessel_risk_level: A risk level ID, or list of risk level IDs to exclude.
+Note: This filter may not be available for all accounts. If not available,
+the filter will be ignored and vessel_risk_level will not appear in response data.
 </code></pre>
 <p><strong>Returns</strong></p>
 <p><code>TimeSeriesResult</code></p>
