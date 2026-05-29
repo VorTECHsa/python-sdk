@@ -39,6 +39,9 @@ ANYWHERE_FREIGHT_PRICING_LATEST_UPDATE = (
 ANYWHERE_FREIGHT_PRICING_PRICE_TIMESERIES = (
     "/v5/anywhere-freight-pricing/price-timeseries"
 )
+ANYWHERE_FREIGHT_PRICING_FORECAST_TIMESERIES = (
+    "/v5/anywhere-freight-pricing/forecast-timeseries"
+)
 ANYWHERE_FREIGHT_PRICING_PRICE_DETAILS = (
     "/v5/anywhere-freight-pricing/price/details"
 )
@@ -50,6 +53,9 @@ ANYWHERE_FREIGHT_PRICING_TOP_PORTS_ORIGIN = (
 )
 ANYWHERE_FREIGHT_PRICING_VESSEL_CLASSES_DETAILS = (
     "/v5/anywhere-freight-pricing/vessel-classes-details"
+)
+ANYWHERE_FREIGHT_PRICING_FORECAST_EXPLANATION = (
+    "/v5/anywhere-freight-pricing/forecast-explanation"
 )
 
 VOYAGES_SEARCH_ENRICHED = "/v5/voyages/search-enriched"

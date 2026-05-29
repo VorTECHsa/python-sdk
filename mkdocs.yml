@@ -34,6 +34,8 @@ pages:
           Origin: endpoints/anywhere_freight_pricing_top_ports_origin.md
           Destination: endpoints/anywhere_freight_pricing_top_ports_destination.md
         Vessel Classes: endpoints/anywhere_freight_pricing_vessel_classes_details.md
+        Forecast Timeseries: endpoints/anywhere_freight_pricing_forecast_timeseries.md
+        Forecast Explainability: endpoints/anywhere_freight_pricing_forecast_explainability.md
       Vessel Availability:
         Search: endpoints/vessel_availability_search.md
         Time Series: endpoints/vessel_availability_timeseries.md

@@ -24,6 +24,8 @@ AfpFrequency = Literal["day", "week", "doe_week", "month", "quarter", "year"]
 
 AfpAvoidZone = Literal["Panama Canal", "Suez Canal"]
 
+AfpExplanationFrequency = Literal["day", "week", "month", "month_fixed"]
+
 
 class AfpRoute(TypedDict, total=False):
     """
