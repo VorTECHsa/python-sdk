@@ -85,3 +85,12 @@ class AfpForecastRoute(TypedDict, total=False):
     vessel_class: AfpForecastVesselClass
     avoid_zone: List[AfpAvoidZone]
     suggested_tonnage: float
+
+
+class AfpForecastRouteRequired(TypedDict):
+    """Required fields for AfpForecastRoute."""
+
+    origin_port: str
+    destination_port: str
+    product: AfpProduct
+    vessel_class: AfpForecastVesselClass
