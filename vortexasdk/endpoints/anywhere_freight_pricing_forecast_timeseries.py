@@ -13,8 +13,8 @@ from vortexasdk.endpoints.anywhere_freight_pricing_result import (
     AnywhereFreightPricingResult,
 )
 from vortexasdk.endpoints.anywhere_freight_pricing_types import (
+    AfpForecastRoute,
     AfpFrequency,
-    AfpRoute,
     AfpUnit,
 )
 from vortexasdk.logger import get_logger
@@ -37,10 +37,10 @@ class AnywhereFreightPricingForecastTimeseries(Search):
 
     def search(
         self,
-        routes: List[AfpRoute],
+        routes: List[AfpForecastRoute],
         time_min: datetime,
         time_max: datetime,
-        frequency: AfpFrequency = "month",
+        frequency: AfpFrequency = "week",
         unit: AfpUnit = "usd_per_tonne",
     ) -> AnywhereFreightPricingResult:
         """
@@ -58,7 +58,9 @@ class AnywhereFreightPricingForecastTimeseries(Search):
                 - `product` (str, required): One of `'clean'`, `'dirty'`, `'crude'`.
                 - `vessel_class` (str, required): One of `'oil_coastal'`, `'oil_specialised'`,
                   `'oil_handysize_mr1'`, `'oil_handymax_mr2'`, `'oil_panamax_lr1'`,
-                  `'oil_aframax_lr2'`, `'oil_suezmax_lr3'`, `'oil_vlcc'`.
+                  `'oil_aframax_lr2'`, `'oil_suezmax_lr3'`, `'oil_vlcc'`, `'lpg_sgc'`,
+                  `'lpg_mgc'`, `'lpg_lgc'`, `'lpg_vlgc_vlec'`, `'lng_small_scale_lng'`,
+                  `'lng_mid_scale_lng'`, `'lng_conventional_lng'`, `'lng_q_fleet'`.
                 - `avoid_zone` (list, optional): Routing zones to avoid. Options:
                   `'Panama Canal'`, `'Suez Canal'`.
                 - `suggested_tonnage` (float, optional): Suggested tonnage for the route.
@@ -71,7 +73,7 @@ class AnywhereFreightPricingForecastTimeseries(Search):
                 Must be one of: `'day'`, `'week'`, `'doe_week'`, `'month'`, `'quarter'`, `'year'`.
                 Note: `'quarter'` and `'year'` are not supported by the forecast model and
                 will return empty prices.
-                Defaults to `'month'`.
+                Defaults to `'week'`.
 
             unit: The unit for pricing. Must be one of: `'usd_per_tonne'`, `'usd_per_barrel'`.
                 Defaults to `'usd_per_tonne'`.

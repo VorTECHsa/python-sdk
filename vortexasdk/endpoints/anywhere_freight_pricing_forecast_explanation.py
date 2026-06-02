@@ -19,8 +19,8 @@ from vortexasdk.endpoints.anywhere_freight_pricing_result import (
 from vortexasdk.endpoints.anywhere_freight_pricing_types import (
     AfpAvoidZone,
     AfpExplanationFrequency,
+    AfpForecastVesselClass,
     AfpProduct,
-    AfpVesselClass,
 )
 from vortexasdk.logger import get_logger
 from vortexasdk.retry_session import retry_get
@@ -46,7 +46,7 @@ class AnywhereFreightPricingForecastExplanation:
         self,
         origin_port: str,
         destination_port: str,
-        vessel_class: AfpVesselClass,
+        vessel_class: AfpForecastVesselClass,
         product: AfpProduct,
         frequency: AfpExplanationFrequency = "month_fixed",
         avoid_zone: Optional[List[AfpAvoidZone]] = None,
@@ -67,7 +67,9 @@ class AnywhereFreightPricingForecastExplanation:
             vessel_class: The vessel class for the route. Must be one of:
                 `'oil_coastal'`, `'oil_specialised'`, `'oil_handysize_mr1'`,
                 `'oil_handymax_mr2'`, `'oil_panamax_lr1'`, `'oil_aframax_lr2'`,
-                `'oil_suezmax_lr3'`, `'oil_vlcc'`.
+                `'oil_suezmax_lr3'`, `'oil_vlcc'`, `'lpg_sgc'`, `'lpg_mgc'`,
+                `'lpg_lgc'`, `'lpg_vlgc_vlec'`, `'lng_small_scale_lng'`,
+                `'lng_mid_scale_lng'`, `'lng_conventional_lng'`, `'lng_q_fleet'`.
 
             product: The product type. Must be one of: `'clean'`, `'dirty'`, `'crude'`.
 
@@ -128,7 +130,7 @@ class AnywhereFreightPricingForecastExplanation:
             params["avoid_zone"] = avoid_zone
 
         if include_port_costs is not None:
-            params["include_port_costs"] = include_port_costs
+            params["include_port_costs"] = str(include_port_costs).lower()
 
         client = default_client()
         url = client._create_url_with_params(
