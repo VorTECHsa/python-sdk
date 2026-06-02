@@ -30,7 +30,7 @@ class VoyagesGeographyBreakdown(Search):
     """
     VoyagesGeographyBreakdown class requires a _geography_property_ to be provided and has an optional _second_breakdown_ property.
 
-    Please note: you will require a subscription to our Freight module to access this endpoint.
+    Please note, a subscription to our Freight module is required to access this endpoint.
 
     # Arguments
 

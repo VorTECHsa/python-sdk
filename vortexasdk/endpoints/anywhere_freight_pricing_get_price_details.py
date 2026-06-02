@@ -33,8 +33,8 @@ class AnywhereFreightPricingGetPriceDetails:
     Given a set of details about a single route (origin, destination, etc),
     this will find rates, lumpsums and prediction confidence of the route.
 
-    Please note: you will require a subscription to our Anywhere Freight Pricing
-    module to access this endpoint.
+    Please note, a subscription to our Anywhere Freight Pricing module is
+    required to access Anywhere Freight Pricing.
     """
 
     def __init__(self) -> None:

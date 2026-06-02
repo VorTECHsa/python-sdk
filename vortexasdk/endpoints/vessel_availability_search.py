@@ -22,7 +22,7 @@ logger = get_logger(__name__)
 class VesselAvailabilitySearch(Search):
     """
     Vessel Availability Endpoint, use this to search through Vortexa's vessel availability data.
-    Please note: you will require a subscription to our Freight module to access this endpoint.
+    Please note, a subscription to our Freight module is required to access this endpoint.
     """
 
     _MAX_PAGE_RESULT_SIZE = 500

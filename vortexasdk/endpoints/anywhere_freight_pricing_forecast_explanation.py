@@ -35,8 +35,8 @@ class AnywhereFreightPricingForecastExplanation:
     Explains forecast price movements for a route by providing a base date
     and a list of explanations for upcoming time periods.
 
-    Please note: you will require a subscription to our Anywhere Freight Pricing
-    module to access this endpoint.
+    Please note, a subscription to our Anywhere Freight Pricing module is
+    required to access Anywhere Freight Pricing.
     """
 
     def __init__(self) -> None:

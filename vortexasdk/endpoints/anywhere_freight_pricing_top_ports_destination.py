@@ -31,8 +31,8 @@ class AnywhereFreightPricingTopPortsDestination:
     List top destination ports. A top destination port refers to the port
     with the greatest volume of incoming voyages from vessels in a specified class.
 
-    Please note: you will require a subscription to our Anywhere Freight Pricing
-    module to access this endpoint.
+    Please note, a subscription to our Anywhere Freight Pricing module is
+    required to access Anywhere Freight Pricing.
     """
 
     def __init__(self) -> None:

@@ -23,7 +23,7 @@ from vortexasdk.utils import convert_to_list
 
 class VoyagesTimeseries(Search):
     """
-    Please note: you will require a subscription to our Freight module to access this endpoint.
+    Please note, a subscription to our Freight module is required to access this endpoint.
     """
 
     def __init__(self) -> None:
