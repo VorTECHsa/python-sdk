@@ -17,7 +17,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Latest Update - VortexaSDK</title>
+  <title>Forecast Timeseries - VortexaSDK</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -27,8 +27,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Latest Update";
-    var mkdocs_page_input_path = "endpoints/anywhere_freight_pricing_latest_update_timestamp.md";
+    var mkdocs_page_name = "Forecast Timeseries";
+    var mkdocs_page_input_path = "endpoints/anywhere_freight_pricing_forecast_timeseries.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -109,7 +109,7 @@
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="#">Anywhere Freight Pricing</a>
     <ul class="current">
-                <li class="toctree-l2 current"><a class="reference internal current" href="./">Latest Update</a>
+                <li class="toctree-l2"><a class="reference internal" href="../anywhere_freight_pricing_latest_update_timestamp/">Latest Update</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../anywhere_freight_pricing_price_timeseries/">Time-series</a>
                 </li>
@@ -131,7 +131,7 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../anywhere_freight_pricing_vessel_classes_details/">Vessel Classes</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../anywhere_freight_pricing_forecast_timeseries/">Forecast Timeseries</a>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Forecast Timeseries</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../anywhere_freight_pricing_forecast_explanation/">Forecast Explanation</a>
                 </li>
@@ -268,10 +268,10 @@
         
       
     
-    <li>Latest Update</li>
+    <li>Forecast Timeseries</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/vortechsa/python-sdk/edit/master/docs/endpoints/anywhere_freight_pricing_latest_update_timestamp.md"
+        <a href="https://github.com/vortechsa/python-sdk/edit/master/docs/endpoints/anywhere_freight_pricing_forecast_timeseries.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -283,36 +283,112 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="vortexasdk.endpoints.anywhere_freight_pricing_latest_update_timestamp">vortexasdk.endpoints.anywhere_freight_pricing_latest_update_timestamp</h1>
+                <h1 id="vortexasdk.endpoints.anywhere_freight_pricing_forecast_timeseries">vortexasdk.endpoints.anywhere_freight_pricing_forecast_timeseries</h1>
 
 <p>Try me out in your browser:</p>
-<p><a href="https://mybinder.org/v2/gh/VorTECHsa/python-sdk/master?filepath=docs%2Fexamples%2Ftry_me_out%2Fanywhere_freight_pricing_latest_update_timestamp.ipynb"><img alt="Binder" src="https://img.shields.io/badge/try%20me%20out-launch%20notebook-579ACA.svg?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFkAAABZCAMAAABi1XidAAAB8lBMVEX///9XmsrmZYH1olJXmsr1olJXmsrmZYH1olJXmsr1olJXmsrmZYH1olL1olJXmsr1olJXmsrmZYH1olL1olJXmsrmZYH1olJXmsr1olL1olJXmsrmZYH1olL1olJXmsrmZYH1olL1olL0nFf1olJXmsrmZYH1olJXmsq8dZb1olJXmsrmZYH1olJXmspXmspXmsr1olL1olJXmsrmZYH1olJXmsr1olL1olJXmsrmZYH1olL1olLeaIVXmsrmZYH1olL1olL1olJXmsrmZYH1olLna31Xmsr1olJXmsr1olJXmsrmZYH1olLqoVr1olJXmsr1olJXmsrmZYH1olL1olKkfaPobXvviGabgadXmsqThKuofKHmZ4Dobnr1olJXmsr1olJXmspXmsr1olJXmsrfZ4TuhWn1olL1olJXmsqBi7X1olJXmspZmslbmMhbmsdemsVfl8ZgmsNim8Jpk8F0m7R4m7F5nLB6jbh7jbiDirOEibOGnKaMhq+PnaCVg6qWg6qegKaff6WhnpKofKGtnomxeZy3noG6dZi+n3vCcpPDcpPGn3bLb4/Mb47UbIrVa4rYoGjdaIbeaIXhoWHmZYHobXvpcHjqdHXreHLroVrsfG/uhGnuh2bwj2Hxk17yl1vzmljzm1j0nlX1olL3AJXWAAAAbXRSTlMAEBAQHx8gICAuLjAwMDw9PUBAQEpQUFBXV1hgYGBkcHBwcXl8gICAgoiIkJCQlJicnJ2goKCmqK+wsLC4usDAwMjP0teleN20NbsvaOsY2+3LL9/Tz1bC0dLQ1dXZ2Nrf4+Lk5urq7/P3+fn4+Pz9/f7+/gB+Q1KaQJdScAAAAAElFTkSuQmCC" /></a></p>
-<h2 id="vortexasdk.endpoints.anywhere_freight_pricing_latest_update_timestamp.AnywhereFreightPricingLatestUpdateTimestamp">AnywhereFreightPricingLatestUpdateTimestamp</h2>
+<p><a href="https://mybinder.org/v2/gh/VorTECHsa/python-sdk/master?filepath=docs%2Fexamples%2Ftry_me_out%2Fanywhere_freight_pricing_forecast_timeseries.ipynb"><img alt="Binder" src="https://img.shields.io/badge/try%20me%20out-launch%20notebook-579ACA.svg?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFkAAABZCAMAAABi1XidAAAB8lBMVEX///9XmsrmZYH1olJXmsr1olJXmsrmZYH1olJXmsr1olJXmsrmZYH1olL1olJXmsr1olJXmsrmZYH1olL1olJXmsrmZYH1olJXmsr1olL1olJXmsrmZYH1olL1olJXmsrmZYH1olL1olL0nFf1olJXmsrmZYH1olJXmsq8dZb1olJXmsrmZYH1olJXmspXmspXmsr1olL1olJXmsrmZYH1olJXmsr1olL1olJXmsrmZYH1olL1olLeaIVXmsrmZYH1olL1olL1olJXmsrmZYH1olLna31Xmsr1olJXmsr1olJXmsrmZYH1olLqoVr1olJXmsr1olJXmsrmZYH1olL1olKkfaPobXvviGabgadXmsqThKuofKHmZ4Dobnr1olJXmsr1olJXmspXmsr1olJXmsrfZ4TuhWn1olL1olJXmsqBi7X1olJXmspZmslbmMhbmsdemsVfl8ZgmsNim8Jpk8F0m7R4m7F5nLB6jbh7jbiDirOEibOGnKaMhq+PnaCVg6qWg6qegKaff6WhnpKofKGtnomxeZy3noG6dZi+n3vCcpPDcpPGn3bLb4/Mb47UbIrVa4rYoGjdaIbeaIXhoWHmZYHobXvpcHjqdHXreHLroVrsfG/uhGnuh2bwj2Hxk17yl1vzmljzm1j0nlX1olL3AJXWAAAAbXRSTlMAEBAQHx8gICAuLjAwMDw9PUBAQEpQUFBXV1hgYGBkcHBwcXl8gICAgoiIkJCQlJicnJ2goKCmqK+wsLC4usDAwMjP0teleN20NbsvaOsY2+3LL9/Tz1bC0dLQ1dXZ2Nrf4+Lk5urq7/P3+fn4+Pz9/f7+/gB+Q1KaQJdScAAAAAElFTkSuQmCC" /></a></p>
+<h2 id="vortexasdk.endpoints.anywhere_freight_pricing_forecast_timeseries.AnywhereFreightPricingForecastTimeseries">AnywhereFreightPricingForecastTimeseries</h2>
 
-<pre><code class="language-python">AnywhereFreightPricingLatestUpdateTimestamp(self)
+<pre><code class="language-python">AnywhereFreightPricingForecastTimeseries(self)
 </code></pre>
-<p>Anywhere Freight Pricing Latest Update Timestamp endpoint.</p>
+<p>Anywhere Freight Pricing Forecast Timeseries endpoint.</p>
 <p>Please note, a subscription to our Anywhere Freight Pricing module is
 required to access Anywhere Freight Pricing.</p>
-<h3 id="vortexasdk.endpoints.anywhere_freight_pricing_latest_update_timestamp.AnywhereFreightPricingLatestUpdateTimestamp.search">search</h3>
+<h3 id="vortexasdk.endpoints.anywhere_freight_pricing_forecast_timeseries.AnywhereFreightPricingForecastTimeseries.search">search</h3>
 
-<pre><code class="language-python">AnywhereFreightPricingLatestUpdateTimestamp.search()
+<pre><code class="language-python">AnywhereFreightPricingForecastTimeseries.search(
+    routes:
+    typing.List[vortexasdk.endpoints.anywhere_freight_pricing_types.AfpForecastRoute],
+    time_min: datetime,
+    time_max: datetime,
+    frequency:
+    typing_extensions.Literal['day', 'week', 'doe_week', 'month', 'quarter', 'year'] = 'week',
+    unit:
+    typing_extensions.Literal['usd_per_tonne', 'usd_per_barrel'] = 'usd_per_tonne'
+)
 </code></pre>
-<p>Get the time the predicted route prices were last updated.</p>
+<p>Get forecast pricing over time for multiple routes.</p>
+<p>Given a set of details about multiple routes (origin, destination, etc),
+a time period and frequency, this returns forecast pricing over time
+bucketed by the chosen frequency.</p>
+<p><strong>Arguments</strong></p>
+<pre><code>routes: A list of route dictionaries. Each route must contain:
+    - `origin_port` (str, required): Geographical ID of the origin port.
+    - `destination_port` (str, required): Geographical ID of the destination port.
+    - `product` (str, required): One of `'clean'`, `'dirty'`, `'crude'`.
+    - `vessel_class` (str, required): One of `'oil_coastal'`, `'oil_specialised'`,
+      `'oil_handysize_mr1'`, `'oil_handymax_mr2'`, `'oil_panamax_lr1'`,
+      `'oil_aframax_lr2'`, `'oil_suezmax_lr3'`, `'oil_vlcc'`, `'lpg_sgc'`,
+      `'lpg_mgc'`, `'lpg_lgc'`, `'lpg_vlgc_vlec'`, `'lng_small_scale_lng'`,
+      `'lng_mid_scale_lng'`, `'lng_conventional_lng'`, `'lng_q_fleet'`.
+    - `avoid_zone` (list, optional): Routing zones to avoid. Options:
+      `'Panama Canal'`, `'Suez Canal'`.
+    - `suggested_tonnage` (float, optional): Suggested tonnage for the route.
+
+time_min: The UTC start date of the time filter.
+
+time_max: The UTC end date of the time filter.
+
+frequency: Frequency denoting the granularity of the time series.
+    Must be one of: `'day'`, `'week'`, `'doe_week'`, `'month'`, `'quarter'`, `'year'`.
+    Note: `'quarter'` and `'year'` are not supported by the forecast model and
+    will return empty prices.
+    Defaults to `'week'`.
+
+unit: The unit for pricing. Must be one of: `'usd_per_tonne'`, `'usd_per_barrel'`.
+    Defaults to `'usd_per_tonne'`.
+</code></pre>
 <p><strong>Returns</strong></p>
-<p>A dictionary containing a <code>timestamp</code> key with the ISO 8601 formatted
-date-time string of when the pricing predictions were last updated.</p>
+<p><code>AnywhereFreightPricingResult</code></p>
 <p><strong>Example</strong></p>
-<p><em>Get the latest update timestamp for Anywhere Freight Pricing.</em></p>
-<pre><code class="language-python">&gt;&gt;&gt; from vortexasdk import AnywhereFreightPricingLatestUpdateTimestamp
-&gt;&gt;&gt; result = AnywhereFreightPricingLatestUpdateTimestamp().search()
+<p><em>Get weekly forecast pricing for a Handymax MR2 clean route from Rotterdam to New York.</em></p>
+<pre><code class="language-python">&gt;&gt;&gt; from vortexasdk import AnywhereFreightPricingForecastTimeseries
+&gt;&gt;&gt; from datetime import datetime
+&gt;&gt;&gt; routes = [
+...     {
+...         &quot;origin_port&quot;: &quot;68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e&quot;,
+...         &quot;destination_port&quot;: &quot;ea4921c8ad4fddb5fe3e7a4f834c1aa5863e43283c73da5f02d93bbc5dba72eb&quot;,
+...         &quot;product&quot;: &quot;clean&quot;,
+...         &quot;vessel_class&quot;: &quot;oil_handymax_mr2&quot;,
+...     }
+... ]
+&gt;&gt;&gt; result = AnywhereFreightPricingForecastTimeseries().search(
+...     routes=routes,
+...     time_min=datetime(2026, 5, 26),
+...     time_max=datetime(2026, 8, 26),
+...     frequency=&quot;week&quot;,
+...     unit=&quot;usd_per_tonne&quot;,
+... )
+&gt;&gt;&gt; df = result.to_df()
 
 </code></pre>
-<p>Returns:</p>
-<pre><code>{
-    'timestamp': '2025-01-30T14:40:06.803Z'
-}
-</code></pre>
+<p>Returns a DataFrame with columns:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;"></th>
+<th style="text-align: left;">origin_port</th>
+<th style="text-align: left;">destination_port</th>
+<th style="text-align: left;">vessel_class</th>
+<th style="text-align: left;">product</th>
+<th style="text-align: left;">prices</th>
+<th style="text-align: left;">lumpsums</th>
+<th style="text-align: right;">suggested_tonnage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">68faf65a...</td>
+<td style="text-align: left;">ea4921c8...</td>
+<td style="text-align: left;">oil_handymax_mr2</td>
+<td style="text-align: left;">clean</td>
+<td style="text-align: left;">[{'date': '2026-06-01', ...}]</td>
+<td style="text-align: left;">[{'date': '2026-06-01', ...}]</td>
+<td style="text-align: right;">37000.0</td>
+</tr>
+</tbody>
+</table>
               
             </div>
           </div>
@@ -320,10 +396,10 @@ date-time string of when the pricing predictions were last updated.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../anywhere_freight_pricing_price_timeseries/" class="btn btn-neutral float-right" title="Time-series">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../anywhere_freight_pricing_forecast_explanation/" class="btn btn-neutral float-right" title="Forecast Explanation">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../fixtures/" class="btn btn-neutral" title="Fixtures"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../anywhere_freight_pricing_vessel_classes_details/" class="btn btn-neutral" title="Vessel Classes"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -353,10 +429,10 @@ date-time string of when the pricing predictions were last updated.</p>
         </span>
     
     
-      <span><a href="../fixtures/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../anywhere_freight_pricing_vessel_classes_details/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../anywhere_freight_pricing_price_timeseries/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../anywhere_freight_pricing_forecast_explanation/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
