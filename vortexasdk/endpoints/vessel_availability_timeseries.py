@@ -25,7 +25,7 @@ logger = get_logger(__name__)
 
 class VesselAvailabilityTimeseries(Search):
     """
-    Please note: you will require a subscription to our Freight module to access this endpoint.
+    Please note, a subscription to our Freight module is required to access this endpoint.
     """
 
     def __init__(self) -> None:

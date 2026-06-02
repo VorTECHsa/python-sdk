@@ -1,20 +1,20 @@
 """
 Try me out in your browser:
 
-[![Binder](https://img.shields.io/badge/try%20me%20out-launch%20notebook-579ACA.svg?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFkAAABZCAMAAABi1XidAAAB8lBMVEX///9XmsrmZYH1olJXmsr1olJXmsrmZYH1olJXmsr1olJXmsrmZYH1olL1olJXmsr1olJXmsrmZYH1olL1olJXmsrmZYH1olJXmsr1olL1olJXmsrmZYH1olL1olJXmsrmZYH1olL1olL0nFf1olJXmsrmZYH1olJXmsq8dZb1olJXmsrmZYH1olJXmspXmspXmsr1olL1olJXmsrmZYH1olJXmsr1olL1olJXmsrmZYH1olL1olLeaIVXmsrmZYH1olL1olL1olJXmsrmZYH1olLna31Xmsr1olJXmsr1olJXmsrmZYH1olLqoVr1olJXmsr1olJXmsrmZYH1olL1olKkfaPobXvviGabgadXmsqThKuofKHmZ4Dobnr1olJXmsr1olJXmspXmsr1olJXmsrfZ4TuhWn1olL1olJXmsqBi7X1olJXmspZmslbmMhbmsdemsVfl8ZgmsNim8Jpk8F0m7R4m7F5nLB6jbh7jbiDirOEibOGnKaMhq+PnaCVg6qWg6qegKaff6WhnpKofKGtnomxeZy3noG6dZi+n3vCcpPDcpPGn3bLb4/Mb47UbIrVa4rYoGjdaIbeaIXhoWHmZYHobXvpcHjqdHXreHLroVrsfG/uhGnuh2bwj2Hxk17yl1vzmljzm1j0nlX1olL3AJXWAAAAbXRSTlMAEBAQHx8gICAuLjAwMDw9PUBAQEpQUFBXV1hgYGBkcHBwcXl8gICAgoiIkJCQlJicnJ2goKCmqK+wsLC4usDAwMjP0teleN20NbsvaOsY2+3LL9/Tz1bC0dLQ1dXZ2Nrf4+Lk5urq7/P3+fn4+Pz9/f7+/gB+Q1KaQJdScAAAAAElFTkSuQmCC)](https://mybinder.org/v2/gh/VorTECHsa/python-sdk/master?filepath=docs%2Fexamples%2Ftry_me_out%2Fanywhere_freight_pricing_price_timeseries.ipynb)
+[![Binder](https://img.shields.io/badge/try%20me%20out-launch%20notebook-579ACA.svg?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFkAAABZCAMAAABi1XidAAAB8lBMVEX///9XmsrmZYH1olJXmsr1olJXmsrmZYH1olJXmsr1olJXmsrmZYH1olL1olJXmsr1olJXmsrmZYH1olL1olJXmsrmZYH1olJXmsr1olL1olJXmsrmZYH1olL1olJXmsrmZYH1olL1olL0nFf1olJXmsrmZYH1olJXmsq8dZb1olJXmsrmZYH1olJXmspXmspXmsr1olL1olJXmsrmZYH1olJXmsr1olL1olJXmsrmZYH1olL1olLeaIVXmsrmZYH1olL1olL1olJXmsrmZYH1olLna31Xmsr1olJXmsr1olJXmsrmZYH1olLqoVr1olJXmsr1olJXmsrmZYH1olL1olKkfaPobXvviGabgadXmsqThKuofKHmZ4Dobnr1olJXmsr1olJXmspXmsr1olJXmsrfZ4TuhWn1olL1olJXmsqBi7X1olJXmspZmslbmMhbmsdemsVfl8ZgmsNim8Jpk8F0m7R4m7F5nLB6jbh7jbiDirOEibOGnKaMhq+PnaCVg6qWg6qegKaff6WhnpKofKGtnomxeZy3noG6dZi+n3vCcpPDcpPGn3bLb4/Mb47UbIrVa4rYoGjdaIbeaIXhoWHmZYHobXvpcHjqdHXreHLroVrsfG/uhGnuh2bwj2Hxk17yl1vzmljzm1j0nlX1olL3AJXWAAAAbXRSTlMAEBAQHx8gICAuLjAwMDw9PUBAQEpQUFBXV1hgYGBkcHBwcXl8gICAgoiIkJCQlJicnJ2goKCmqK+wsLC4usDAwMjP0teleN20NbsvaOsY2+3LL9/Tz1bC0dLQ1dXZ2Nrf4+Lk5urq7/P3+fn4+Pz9/f7+/gB+Q1KaQJdScAAAAAElFTkSuQmCC)](https://mybinder.org/v2/gh/VorTECHsa/python-sdk/master?filepath=docs%2Fexamples%2Ftry_me_out%2Fanywhere_freight_pricing_forecast_timeseries.ipynb)
 """
 from datetime import datetime
 from typing import Any, Dict, List
 
 from vortexasdk.endpoints.endpoints import (
-    ANYWHERE_FREIGHT_PRICING_PRICE_TIMESERIES,
+    ANYWHERE_FREIGHT_PRICING_FORECAST_TIMESERIES,
 )
 from vortexasdk.endpoints.anywhere_freight_pricing_result import (
     AnywhereFreightPricingResult,
 )
 from vortexasdk.endpoints.anywhere_freight_pricing_types import (
+    AfpForecastRoute,
     AfpFrequency,
-    AfpRoute,
     AfpUnit,
 )
 from vortexasdk.logger import get_logger
@@ -24,30 +24,30 @@ from vortexasdk.api.shared_types import to_date_string
 logger = get_logger(__name__)
 
 
-class AnywhereFreightPricingPriceTimeseries(Search):
+class AnywhereFreightPricingForecastTimeseries(Search):
     """
-    Anywhere Freight Pricing Price Timeseries endpoint.
+    Anywhere Freight Pricing Forecast Timeseries endpoint.
 
     Please note, a subscription to our Anywhere Freight Pricing module is
     required to access Anywhere Freight Pricing.
     """
 
     def __init__(self) -> None:
-        Search.__init__(self, ANYWHERE_FREIGHT_PRICING_PRICE_TIMESERIES)
+        Search.__init__(self, ANYWHERE_FREIGHT_PRICING_FORECAST_TIMESERIES)
 
     def search(
         self,
-        routes: List[AfpRoute],
+        routes: List[AfpForecastRoute],
         time_min: datetime,
         time_max: datetime,
-        frequency: AfpFrequency = "month",
+        frequency: AfpFrequency = "week",
         unit: AfpUnit = "usd_per_tonne",
     ) -> AnywhereFreightPricingResult:
         """
-        Get historical pricing over time for multiple routes.
+        Get forecast pricing over time for multiple routes.
 
         Given a set of details about multiple routes (origin, destination, etc),
-        a time period and frequency, this returns historical pricing over time
+        a time period and frequency, this returns forecast pricing over time
         bucketed by the chosen frequency.
 
         # Arguments
@@ -58,7 +58,9 @@ class AnywhereFreightPricingPriceTimeseries(Search):
                 - `product` (str, required): One of `'clean'`, `'dirty'`, `'crude'`.
                 - `vessel_class` (str, required): One of `'oil_coastal'`, `'oil_specialised'`,
                   `'oil_handysize_mr1'`, `'oil_handymax_mr2'`, `'oil_panamax_lr1'`,
-                  `'oil_aframax_lr2'`, `'oil_suezmax_lr3'`, `'oil_vlcc'`.
+                  `'oil_aframax_lr2'`, `'oil_suezmax_lr3'`, `'oil_vlcc'`, `'lpg_sgc'`,
+                  `'lpg_mgc'`, `'lpg_lgc'`, `'lpg_vlgc_vlec'`, `'lng_small_scale_lng'`,
+                  `'lng_mid_scale_lng'`, `'lng_conventional_lng'`, `'lng_q_fleet'`.
                 - `avoid_zone` (list, optional): Routing zones to avoid. Options:
                   `'Panama Canal'`, `'Suez Canal'`.
                 - `suggested_tonnage` (float, optional): Suggested tonnage for the route.
@@ -69,7 +71,9 @@ class AnywhereFreightPricingPriceTimeseries(Search):
 
             frequency: Frequency denoting the granularity of the time series.
                 Must be one of: `'day'`, `'week'`, `'doe_week'`, `'month'`, `'quarter'`, `'year'`.
-                Defaults to `'month'`.
+                Note: `'quarter'` and `'year'` are not supported by the forecast model and
+                will return empty prices.
+                Defaults to `'week'`.
 
             unit: The unit for pricing. Must be one of: `'usd_per_tonne'`, `'usd_per_barrel'`.
                 Defaults to `'usd_per_tonne'`.
@@ -78,10 +82,10 @@ class AnywhereFreightPricingPriceTimeseries(Search):
         `AnywhereFreightPricingResult`
 
         # Example
-        _Get daily pricing for a Handymax MR2 clean route from Rotterdam to New York._
+        _Get weekly forecast pricing for a Handymax MR2 clean route from Rotterdam to New York._
 
         ```python
-        >>> from vortexasdk import AnywhereFreightPricingPriceTimeseries
+        >>> from vortexasdk import AnywhereFreightPricingForecastTimeseries
         >>> from datetime import datetime
         >>> routes = [
         ...     {
@@ -91,11 +95,11 @@ class AnywhereFreightPricingPriceTimeseries(Search):
         ...         "vessel_class": "oil_handymax_mr2",
         ...     }
         ... ]
-        >>> result = AnywhereFreightPricingPriceTimeseries().search(
+        >>> result = AnywhereFreightPricingForecastTimeseries().search(
         ...     routes=routes,
-        ...     time_min=datetime(2026, 2, 20),
-        ...     time_max=datetime(2026, 5, 20),
-        ...     frequency="day",
+        ...     time_min=datetime(2026, 5, 26),
+        ...     time_max=datetime(2026, 8, 26),
+        ...     frequency="week",
         ...     unit="usd_per_tonne",
         ... )
         >>> df = result.to_df()
@@ -104,10 +108,9 @@ class AnywhereFreightPricingPriceTimeseries(Search):
 
         Returns a DataFrame with columns:
 
-        |    | origin_port | destination_port | vessel_class         | product | date       | price | price_lower | price_upper | voyage_price   |
-        |---:|:------------|:-----------------|:---------------------|:--------|:-----------|------:|------------:|------------:|-------------- :|
-        |  0 | 68faf65a... | ea4921c8...      | oil_handymax_mr2     | clean   | 2026-02-20 | 15.50 |       14.00 |       17.00 |      16.223888 |
-        |  1 | 68faf65a... | ea4921c8...      | oil_handymax_mr2     | clean   | 2026-02-21 | 16.20 |       14.80 |       17.60 |      16.223888 |
+        |    | origin_port | destination_port | vessel_class     | product | prices                      | lumpsums                    | suggested_tonnage |
+        |---:|:------------|:-----------------|:-----------------|:--------|:----------------------------|:----------------------------|------------------:|
+        |  0 | 68faf65a... | ea4921c8...      | oil_handymax_mr2 | clean   | [{'date': '2026-06-01', ...}] | [{'date': '2026-06-01', ...}] |           37000.0 |
 
         """
         api_params: Dict[str, Any] = {

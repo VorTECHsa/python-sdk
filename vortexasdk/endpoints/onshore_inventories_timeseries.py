@@ -17,7 +17,7 @@ from vortexasdk.utils import convert_to_list
 
 class OnshoreInventoriesTimeseries(Search):
     """
-    Please note: you will require a subscription to our Crude Onshore Inventories module to access this endpoint.
+    Please note, a subscription to our Crude Onshore Inventories module is required to access Crude Onshore Inventories.
     """
 
     def __init__(self) -> None:

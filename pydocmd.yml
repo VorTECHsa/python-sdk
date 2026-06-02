@@ -109,6 +109,10 @@ generate:
       - vortexasdk.endpoints.anywhere_freight_pricing_top_ports_destination++
   - endpoints/anywhere_freight_pricing_vessel_classes_details.md:
       - vortexasdk.endpoints.anywhere_freight_pricing_vessel_classes_details++
+  - endpoints/anywhere_freight_pricing_forecast_timeseries.md:
+      - vortexasdk.endpoints.anywhere_freight_pricing_forecast_timeseries++
+  - endpoints/anywhere_freight_pricing_forecast_explanation.md:
+      - vortexasdk.endpoints.anywhere_freight_pricing_forecast_explanation++
 pages:
   - Home: index.md << README.md
   - Endpoints:

@@ -74,6 +74,9 @@ from vortexasdk.endpoints.anywhere_freight_pricing_latest_update_timestamp impor
 from vortexasdk.endpoints.anywhere_freight_pricing_price_timeseries import (
     AnywhereFreightPricingPriceTimeseries,
 )
+from vortexasdk.endpoints.anywhere_freight_pricing_forecast_timeseries import (
+    AnywhereFreightPricingForecastTimeseries,
+)
 from vortexasdk.endpoints.anywhere_freight_pricing_get_price_details import (
     AnywhereFreightPricingGetPriceDetails,
 )
@@ -89,8 +92,12 @@ from vortexasdk.endpoints.anywhere_freight_pricing_top_ports_origin import (
 from vortexasdk.endpoints.anywhere_freight_pricing_vessel_classes_details import (
     AnywhereFreightPricingVesselClassesDetails,
 )
+from vortexasdk.endpoints.anywhere_freight_pricing_forecast_explanation import (
+    AnywhereFreightPricingForecastExplanation,
+)
 from vortexasdk.endpoints.anywhere_freight_pricing_types import (
     AfpAvoidZone,
+    AfpExplanationFrequency,
     AfpFrequency,
     AfpProduct,
     AfpRoute,
@@ -140,13 +147,16 @@ __all__ = [
     "Refineries",
     "AnywhereFreightPricingLatestUpdateTimestamp",
     "AnywhereFreightPricingPriceTimeseries",
+    "AnywhereFreightPricingForecastTimeseries",
     "AnywhereFreightPricingGetPriceDetails",
     "AnywhereFreightPricingPostPriceDetails",
     "AnywhereFreightPricingTopPortsDestination",
     "AnywhereFreightPricingTopPortsOrigin",
     "AnywhereFreightPricingVesselClassesDetails",
+    "AnywhereFreightPricingForecastExplanation",
     # AFP types for user type annotations
     "AfpAvoidZone",
+    "AfpExplanationFrequency",
     "AfpFrequency",
     "AfpProduct",
     "AfpRoute",

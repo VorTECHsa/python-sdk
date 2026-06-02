@@ -32,7 +32,7 @@ class VesselAvailabilityResult(Result):
     """
     Container class holdings search results returns from the availability endpoint.
 
-    Please note: you will require a subscription to our Freight module to access Vessel Availability.
+    Please note, a subscription to our Freight module is required to access this endpoint.
 
     This class has two methods, `to_list()`, and `to_df()`, allowing search results to be represented as a list of `Availability`(ies),
      or as a `pd.DataFrame` , respectively.

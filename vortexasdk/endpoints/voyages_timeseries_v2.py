@@ -27,7 +27,7 @@ class VoyagesTimeseriesV2(Search):
     """
     VoyagesTimeseriesV2 class requires a _metric_ and a _breakdown_property_ to be provided.
 
-    Please note: you will require a subscription to our Freight module to access this endpoint.
+    Please note, a subscription to our Freight module is required to access this endpoint.
 
     # Arguments
 

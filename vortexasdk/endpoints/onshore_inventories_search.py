@@ -23,7 +23,7 @@ logger = get_logger(__name__)
 class OnshoreInventoriesSearch(Search):
     """
     Crude Onshore Inventories Endpoint, use this to search through Vortexa's Onshore Inventory data.
-    Please note: you will require a subscription to our Crude Onshore Inventories module to access this endpoint.
+    Please note, a subscription to our Crude Onshore Inventories module is required to access Crude Onshore Inventories.
     """
 
     _MAX_PAGE_RESULT_SIZE = 500

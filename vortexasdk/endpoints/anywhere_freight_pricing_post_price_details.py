@@ -30,8 +30,8 @@ class AnywhereFreightPricingPostPriceDetails(Search):
     Given a set of details about multiple routes (origin, destination, etc),
     this will find rates, lumpsums and prediction confidence for each route.
 
-    Please note: you will require a subscription to our Anywhere Freight Pricing
-    module to access this endpoint.
+    Please note, a subscription to our Anywhere Freight Pricing module is
+    required to access Anywhere Freight Pricing.
     """
 
     def __init__(self) -> None:
