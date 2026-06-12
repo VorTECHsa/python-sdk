@@ -11,7 +11,7 @@ class TestVesselAvailabilityBreakdown(TestCaseUsingRealAPI):
         df = (
             VesselAvailabilityBreakdown()
             .search(
-                filter_days_to_arrival=[{"min": 0, "max": 5}],
+                filter_days_to_arrival={"min": 0, "max": 5},
                 filter_port=rotterdam,
             )
             .to_df()
