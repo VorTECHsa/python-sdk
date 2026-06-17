@@ -46,9 +46,13 @@ class AnywhereFreightPricingPriceTimeseries(Search):
         """
         Get historical pricing over time for multiple routes.
 
-        Given a set of details about multiple routes (origin, destination, etc),
-        a time period and frequency, this returns historical pricing over time
-        bucketed by the chosen frequency.
+        Given a set of details about multiple routes (origin, destination, product
+        and vessel class), a time period, unit and a frequency, this returns
+        historical pricing and voyage pricing over time per route bucketed by the
+        chosen frequency. Price is defined as the overall cost including voyage cost,
+        port costs and canal costs where applicable, given in the selected unit.
+        Voyage price is the price of just the voyage, given in the selected unit.
+        Lumpsum is the overall cost total of the voyage.
 
         # Arguments
 

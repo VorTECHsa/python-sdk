@@ -28,8 +28,13 @@ class AnywhereFreightPricingTopPortsDestination:
     """
     Anywhere Freight Pricing Top Ports Destination endpoint.
 
-    List top destination ports. A top destination port refers to the port
-    with the greatest volume of incoming voyages from vessels in a specified class.
+    Fetches the top destination ports for a given origin with a specified class.
+    These are the top ten ports with the greatest count of laden voyages from
+    vessels of the specified class departing the given origin.
+    Rates returns the voyage costs as well as a breakdown of additional costs
+    in the given unit. Lumpsum returns the total voyage cost as well as a
+    breakdown of additional costs as a total cost.
+    The confidence returns the confidence of these estimations.
 
     Please note, a subscription to our Anywhere Freight Pricing module is
     required to access Anywhere Freight Pricing.
@@ -49,8 +54,13 @@ class AnywhereFreightPricingTopPortsDestination:
         """
         List top destination ports from a given origin.
 
-        A top destination port refers to the port with the greatest volume of
-        incoming voyages from vessels in a specified class.
+        Fetches the top destination ports for a given origin with a specified class.
+        These are the top ten ports with the greatest count of laden voyages from
+        vessels of the specified class departing the given origin.
+        Rates returns the voyage costs as well as a breakdown of additional costs
+        in the given unit. Lumpsum returns the total voyage cost as well as a
+        breakdown of additional costs as a total cost.
+        The confidence returns the confidence of these estimations.
 
         # Arguments
 
