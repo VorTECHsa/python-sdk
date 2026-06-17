@@ -31,7 +31,10 @@ class AnywhereFreightPricingGetPriceDetails:
     Anywhere Freight Pricing Get Price Details endpoint.
 
     Given a set of details about a single route (origin, destination, etc),
-    this will find rates, lumpsums and prediction confidence of the route.
+    this will find rates, lumpsums and prediction confidences of the route.
+    Rates represent the per-unit price (voyage + port + canal costs).
+    Lumpsums are the total voyage cost in USD.
+    The confidence returns the confidence of these estimations.
 
     Please note, a subscription to our Anywhere Freight Pricing module is
     required to access Anywhere Freight Pricing.
@@ -56,7 +59,10 @@ class AnywhereFreightPricingGetPriceDetails:
         List prices of a route.
 
         Given a set of details about a single route (origin, destination, etc),
-        this will find rates, lumpsums and prediction confidence of the route.
+        this will find rates, lumpsums and prediction confidences of the route.
+        Rates represent the per-unit price (voyage + port + canal costs).
+        Lumpsums are the total voyage cost in USD.
+        The confidence returns the confidence of these estimations.
 
         # Arguments
 

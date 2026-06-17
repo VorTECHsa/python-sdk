@@ -32,8 +32,9 @@ class AnywhereFreightPricingForecastExplanation:
     """
     Anywhere Freight Pricing Forecast Explanation endpoint.
 
-    Explains forecast price movements for a route by providing a base date
-    and a list of explanations for upcoming time periods.
+    Given a route (origin, destination, vessel class, product), this returns
+    a base date and a list of forecast explanations for upcoming dates at
+    the given frequency.
 
     Please note, a subscription to our Anywhere Freight Pricing module is
     required to access Anywhere Freight Pricing.
@@ -50,13 +51,13 @@ class AnywhereFreightPricingForecastExplanation:
         product: AfpProduct,
         frequency: AfpExplanationFrequency = "month_fixed",
         avoid_zone: Optional[List[AfpAvoidZone]] = None,
-        include_port_costs: Optional[bool] = None,
     ) -> AnywhereFreightPricingResult:
         """
         Get forecast price movement explanations for a route.
 
         Given a route (origin, destination, vessel class, product), this returns
-        a base date and a list of forecast explanations for upcoming time periods.
+        a base date and a list of forecast explanations for upcoming dates at
+        the given frequency.
 
         # Arguments
 
@@ -78,8 +79,6 @@ class AnywhereFreightPricingForecastExplanation:
 
             avoid_zone: Routing zones to avoid for this route. Options:
                 `'Panama Canal'`, `'Suez Canal'`.
-
-            include_port_costs: Whether to include port costs in the calculation.
 
         # Returns
         `AnywhereFreightPricingResult`
@@ -128,9 +127,6 @@ class AnywhereFreightPricingForecastExplanation:
 
         if avoid_zone is not None:
             params["avoid_zone"] = avoid_zone
-
-        if include_port_costs is not None:
-            params["include_port_costs"] = str(include_port_costs).lower()
 
         client = default_client()
         url = client._create_url_with_params(

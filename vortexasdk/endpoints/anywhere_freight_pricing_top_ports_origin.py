@@ -28,8 +28,13 @@ class AnywhereFreightPricingTopPortsOrigin:
     """
     Anywhere Freight Pricing Top Ports Origin endpoint.
 
-    List top origin ports. A top origin port refers to the port
-    with the greatest volume of outgoing voyages from vessels in a specified class.
+    Fetches the top origin ports for a given destination with a specified class.
+    These are the top ten ports with the greatest count of laden voyages to the
+    given destination from vessels with the specified class.
+    Rates returns the voyage costs as well as a breakdown of additional costs
+    in the given unit. Lumpsum returns the total voyage cost as well as a
+    breakdown of additional costs as a total cost.
+    The confidence returns the confidence of these estimations.
 
     Please note, a subscription to our Anywhere Freight Pricing module is
     required to access Anywhere Freight Pricing.
@@ -49,8 +54,13 @@ class AnywhereFreightPricingTopPortsOrigin:
         """
         List top origin ports for a given destination.
 
-        A top origin port refers to the port with the greatest volume of
-        outgoing voyages from vessels in a specified class.
+        Fetches the top origin ports for a given destination with a specified class.
+        These are the top ten ports with the greatest count of laden voyages to the
+        given destination from vessels with the specified class.
+        Rates returns the voyage costs as well as a breakdown of additional costs
+        in the given unit. Lumpsum returns the total voyage cost as well as a
+        breakdown of additional costs as a total cost.
+        The confidence returns the confidence of these estimations.
 
         # Arguments
 
