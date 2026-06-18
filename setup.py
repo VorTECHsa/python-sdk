@@ -44,7 +44,7 @@ setuptools.setup(
             "pyyaml==6.0.1",
             "six==1.16.0",
             "tabulate==0.9.0",
-            "xlrd==1.2.0",
+            "xlrd==2.0.1",
             "openpyxl==3.0.7",
             "types-requests==2.28.9",
             "types-urllib3==1.26.23",
