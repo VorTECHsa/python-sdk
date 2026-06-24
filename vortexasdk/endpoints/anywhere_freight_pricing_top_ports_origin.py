@@ -40,7 +40,7 @@ class AnywhereFreightPricingTopPortsOrigin:
 
     def search(
         self,
-        destination_id: str,
+        destination: str,
         vessel_class: AfpVesselClass,
         product: AfpProduct,
         unit: AfpUnit = "usd_per_tonne",
@@ -54,7 +54,7 @@ class AnywhereFreightPricingTopPortsOrigin:
 
         # Arguments
 
-            destination_id: Geographical ID of the destination port.
+            destination: Geographical ID of the destination port.
 
             vessel_class: The vessel class for the route. Must be one of:
                 `'oil_coastal'`, `'oil_specialised'`, `'oil_handysize_mr1'`,
@@ -77,7 +77,7 @@ class AnywhereFreightPricingTopPortsOrigin:
         ```python
         >>> from vortexasdk import AnywhereFreightPricingTopPortsOrigin
         >>> result = AnywhereFreightPricingTopPortsOrigin().search(
-        ...     destination_id="68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e",
+        ...     destination="68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e",
         ...     vessel_class="oil_handymax_mr2",
         ...     product="clean",
         ...     unit="usd_per_tonne",
@@ -95,11 +95,11 @@ class AnywhereFreightPricingTopPortsOrigin:
 
         """
         logger.info(
-            f"Fetching Anywhere Freight Pricing top origin ports for destination {destination_id}"
+            f"Fetching Anywhere Freight Pricing top origin ports for destination {destination}"
         )
 
         payload: Dict[str, Any] = {
-            "destination_id": destination_id,
+            "destination": destination,
             "vessel_class": vessel_class,
             "product": product,
             "unit": unit,

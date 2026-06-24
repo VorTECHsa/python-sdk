@@ -8,8 +8,8 @@ class TestAnywhereFreightPricingPriceTimeseries(TestCaseUsingRealAPI):
     def test_search_returns_data(self):
         routes = [
             {
-                "origin_port": "68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e",
-                "destination_port": "ea4921c8ad4fddb5fe3e7a4f834c1aa5863e43283c73da5f02d93bbc5dba72eb",
+                "origin": "68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e",
+                "destination": "ea4921c8ad4fddb5fe3e7a4f834c1aa5863e43283c73da5f02d93bbc5dba72eb",
                 "product": "clean",
                 "vessel_class": "oil_handymax_mr2",
             }
@@ -25,15 +25,15 @@ class TestAnywhereFreightPricingPriceTimeseries(TestCaseUsingRealAPI):
 
         result_list = result.to_list()
         assert len(result_list) > 0
-        assert "origin_port" in result_list[0]
-        assert "destination_port" in result_list[0]
+        assert "origin" in result_list[0]
+        assert "destination" in result_list[0]
         assert "prices" in result_list[0]
 
     def test_search_to_df(self):
         routes = [
             {
-                "origin_port": "68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e",
-                "destination_port": "ea4921c8ad4fddb5fe3e7a4f834c1aa5863e43283c73da5f02d93bbc5dba72eb",
+                "origin": "68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e",
+                "destination": "ea4921c8ad4fddb5fe3e7a4f834c1aa5863e43283c73da5f02d93bbc5dba72eb",
                 "product": "clean",
                 "vessel_class": "oil_handymax_mr2",
             }
@@ -50,6 +50,6 @@ class TestAnywhereFreightPricingPriceTimeseries(TestCaseUsingRealAPI):
         df = result.to_df()
         assert len(df) > 0
         # Top-level keys preserved, nested arrays like prices stay as lists
-        assert "origin_port" in df.columns
-        assert "destination_port" in df.columns
+        assert "origin" in df.columns
+        assert "destination" in df.columns
         assert "vessel_class" in df.columns

@@ -44,8 +44,8 @@ class AnywhereFreightPricingGetPriceDetails:
         self,
         time_min: datetime,
         time_max: datetime,
-        origin_port: str,
-        destination_port: str,
+        origin: str,
+        destination: str,
         vessel_class: AfpVesselClass,
         product: AfpProduct,
         unit: AfpUnit = "usd_per_tonne",
@@ -64,9 +64,9 @@ class AnywhereFreightPricingGetPriceDetails:
 
             time_max: The UTC end date of the time filter.
 
-            origin_port: Geographic ID of the origin port.
+            origin: Geographic ID of the origin port.
 
-            destination_port: Geographic ID of the destination port.
+            destination: Geographic ID of the destination port.
 
             vessel_class: The vessel class for the route. Must be one of:
                 `'oil_coastal'`, `'oil_specialised'`, `'oil_handysize_mr1'`,
@@ -96,8 +96,8 @@ class AnywhereFreightPricingGetPriceDetails:
         >>> result = AnywhereFreightPricingGetPriceDetails().search(
         ...     time_min=datetime(2024, 1, 1),
         ...     time_max=datetime(2024, 12, 31),
-        ...     origin_port="7f314ba0a498c36359b1c88781e94a73e19dcc9bbb030ec6b82f944a73d4da2f",
-        ...     destination_port="68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e",
+        ...     origin="7f314ba0a498c36359b1c88781e94a73e19dcc9bbb030ec6b82f944a73d4da2f",
+        ...     destination="68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e",
         ...     vessel_class="oil_aframax_lr2",
         ...     product="crude",
         ...     unit="usd_per_tonne",
@@ -116,14 +116,14 @@ class AnywhereFreightPricingGetPriceDetails:
         """
         logger.info(
             f"Fetching Anywhere Freight Pricing price details for route "
-            f"{origin_port} -> {destination_port}"
+            f"{origin} -> {destination}"
         )
 
         params: Dict[str, Any] = {
             "time_min": to_date_string(time_min),
             "time_max": to_date_string(time_max),
-            "origin_port": origin_port,
-            "destination_port": destination_port,
+            "origin": origin,
+            "destination": destination,
             "vessel_class": vessel_class,
             "product": product,
             "unit": unit,
