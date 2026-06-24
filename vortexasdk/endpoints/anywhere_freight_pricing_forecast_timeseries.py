@@ -108,7 +108,7 @@ class AnywhereFreightPricingForecastTimeseries(Search):
 
         Returns a DataFrame with columns:
 
-        |    | origin.     | destination.     | vessel_class     | product | prices                      | lumpsums                    | suggested_tonnage |
+        |    | origin      | destination      | vessel_class     | product | prices                      | lumpsums                    | suggested_tonnage |
         |---:|:------------|:-----------------|:-----------------|:--------|:----------------------------|:----------------------------|------------------:|
         |  0 | 68faf65a... | ea4921c8...      | oil_handymax_mr2 | clean   | [{'date': '2026-06-01', ...}] | [{'date': '2026-06-01', ...}] |           37000.0 |
 
