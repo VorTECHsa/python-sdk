@@ -44,8 +44,8 @@ class AnywhereFreightPricingForecastExplanation:
 
     def search(
         self,
-        origin_port: str,
-        destination_port: str,
+        origin: str,
+        destination: str,
         vessel_class: AfpForecastVesselClass,
         product: AfpProduct,
         frequency: AfpExplanationFrequency = "month_fixed",
@@ -60,9 +60,9 @@ class AnywhereFreightPricingForecastExplanation:
 
         # Arguments
 
-            origin_port: Geographic ID of the origin port.
+            origin: Geographic ID of the origin port.
 
-            destination_port: Geographic ID of the destination port.
+            destination: Geographic ID of the destination port.
 
             vessel_class: The vessel class for the route. Must be one of:
                 `'oil_coastal'`, `'oil_specialised'`, `'oil_handysize_mr1'`,
@@ -91,8 +91,8 @@ class AnywhereFreightPricingForecastExplanation:
         ```python
         >>> from vortexasdk import AnywhereFreightPricingForecastExplanation
         >>> result = AnywhereFreightPricingForecastExplanation().search(
-        ...     origin_port="68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e",
-        ...     destination_port="ea4921c8ad4fddb5fe3e7a4f834c1aa5863e43283c73da5f02d93bbc5dba72eb",
+        ...     origin="68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e",
+        ...     destination="ea4921c8ad4fddb5fe3e7a4f834c1aa5863e43283c73da5f02d93bbc5dba72eb",
         ...     vessel_class="oil_handymax_mr2",
         ...     product="clean",
         ...     frequency="month",
@@ -115,12 +115,12 @@ class AnywhereFreightPricingForecastExplanation:
         """
         logger.info(
             f"Fetching Anywhere Freight Pricing forecast explanation for route "
-            f"{origin_port} -> {destination_port}"
+            f"{origin} -> {destination}"
         )
 
         params: Dict[str, Any] = {
-            "origin_port": origin_port,
-            "destination_port": destination_port,
+            "origin": origin,
+            "destination": destination,
             "vessel_class": vessel_class,
             "product": product,
             "frequency": frequency,

@@ -50,12 +50,12 @@ class AfpRoute(TypedDict, total=False):
     """
     Route specification for AFP POST endpoints.
 
-    Required keys: origin_port, destination_port, product, vessel_class.
+    Required keys: origin, destination, product, vessel_class.
     Optional keys: avoid_zone, suggested_tonnage.
     """
 
-    origin_port: str
-    destination_port: str
+    origin: str
+    destination: str
     product: AfpProduct
     vessel_class: AfpVesselClass
     avoid_zone: List[AfpAvoidZone]
@@ -65,8 +65,8 @@ class AfpRoute(TypedDict, total=False):
 class AfpRouteRequired(TypedDict):
     """Required fields for AfpRoute."""
 
-    origin_port: str
-    destination_port: str
+    origin: str
+    destination: str
     product: AfpProduct
     vessel_class: AfpVesselClass
 
@@ -75,12 +75,12 @@ class AfpForecastRoute(TypedDict, total=False):
     """
     Route specification for AFP Forecast endpoints.
 
-    Required keys: origin_port, destination_port, product, vessel_class.
+    Required keys: origin, destination, product, vessel_class.
     Optional keys: avoid_zone, suggested_tonnage.
     """
 
-    origin_port: str
-    destination_port: str
+    origin: str
+    destination: str
     product: AfpProduct
     vessel_class: AfpForecastVesselClass
     avoid_zone: List[AfpAvoidZone]
@@ -90,7 +90,7 @@ class AfpForecastRoute(TypedDict, total=False):
 class AfpForecastRouteRequired(TypedDict):
     """Required fields for AfpForecastRoute."""
 
-    origin_port: str
-    destination_port: str
+    origin: str
+    destination: str
     product: AfpProduct
     vessel_class: AfpForecastVesselClass

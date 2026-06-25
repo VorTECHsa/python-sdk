@@ -53,8 +53,8 @@ class AnywhereFreightPricingPostPriceDetails(Search):
         # Arguments
 
             routes: A list of route dictionaries. Each route must contain:
-                - `origin_port` (str, required): Geographical ID of the origin port.
-                - `destination_port` (str, required): Geographical ID of the destination port.
+                - `origin` (str, required): Geographical ID of the origin port.
+                - `destination` (str, required): Geographical ID of the destination port.
                 - `product` (str, required): One of `'clean'`, `'dirty'`, `'crude'`.
                 - `vessel_class` (str, required): One of `'oil_coastal'`, `'oil_specialised'`,
                   `'oil_handysize_mr1'`, `'oil_handymax_mr2'`, `'oil_panamax_lr1'`,
@@ -81,14 +81,14 @@ class AnywhereFreightPricingPostPriceDetails(Search):
         >>> from datetime import datetime
         >>> routes = [
         ...     {
-        ...         "origin_port": "7f314ba0a498c36359b1c88781e94a73e19dcc9bbb030ec6b82f944a73d4da2f",
-        ...         "destination_port": "68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e",
+        ...         "origin": "7f314ba0a498c36359b1c88781e94a73e19dcc9bbb030ec6b82f944a73d4da2f",
+        ...         "destination": "68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e",
         ...         "product": "crude",
         ...         "vessel_class": "oil_aframax_lr2",
         ...     },
         ...     {
-        ...         "origin_port": "68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e",
-        ...         "destination_port": "ea4921c8ad4fddb5fe3e7a4f834c1aa5863e43283c73da5f02d93bbc5dba72eb",
+        ...         "origin": "68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e",
+        ...         "destination": "ea4921c8ad4fddb5fe3e7a4f834c1aa5863e43283c73da5f02d93bbc5dba72eb",
         ...         "product": "clean",
         ...         "vessel_class": "oil_handymax_mr2",
         ...     }

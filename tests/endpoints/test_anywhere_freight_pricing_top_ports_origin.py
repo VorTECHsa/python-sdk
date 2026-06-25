@@ -5,7 +5,7 @@ from vortexasdk import AnywhereFreightPricingTopPortsOrigin
 class TestAnywhereFreightPricingTopPortsOrigin(TestCaseUsingRealAPI):
     def test_search_returns_data(self):
         result = AnywhereFreightPricingTopPortsOrigin().search(
-            destination_id="68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e",
+            destination="68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e",
             vessel_class="oil_handymax_mr2",
             product="clean",
             unit="usd_per_tonne",
@@ -20,7 +20,7 @@ class TestAnywhereFreightPricingTopPortsOrigin(TestCaseUsingRealAPI):
 
     def test_search_to_df(self):
         result = AnywhereFreightPricingTopPortsOrigin().search(
-            destination_id="68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e",
+            destination="68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e",
             vessel_class="oil_handymax_mr2",
             product="clean",
             unit="usd_per_tonne",
@@ -34,7 +34,7 @@ class TestAnywhereFreightPricingTopPortsOrigin(TestCaseUsingRealAPI):
 
     def test_search_with_avoid_zone(self):
         result = AnywhereFreightPricingTopPortsOrigin().search(
-            destination_id="68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e",
+            destination="68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e",
             vessel_class="oil_handymax_mr2",
             product="clean",
             unit="usd_per_tonne",
