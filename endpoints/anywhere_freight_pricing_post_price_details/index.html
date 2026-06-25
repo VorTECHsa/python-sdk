@@ -316,8 +316,8 @@ required to access Anywhere Freight Pricing.</p>
 this will find rates, lumpsums and prediction confidence for each route.</p>
 <p><strong>Arguments</strong></p>
 <pre><code>routes: A list of route dictionaries. Each route must contain:
-    - `origin_port` (str, required): Geographical ID of the origin port.
-    - `destination_port` (str, required): Geographical ID of the destination port.
+    - `origin` (str, required): Geographical ID of the origin port.
+    - `destination` (str, required): Geographical ID of the destination port.
     - `product` (str, required): One of `'clean'`, `'dirty'`, `'crude'`.
     - `vessel_class` (str, required): One of `'oil_coastal'`, `'oil_specialised'`,
       `'oil_handysize_mr1'`, `'oil_handymax_mr2'`, `'oil_panamax_lr1'`,
@@ -341,14 +341,14 @@ unit: The unit for pricing. Must be one of: `'usd_per_tonne'`, `'usd_per_barrel'
 &gt;&gt;&gt; from datetime import datetime
 &gt;&gt;&gt; routes = [
 ...     {
-...         &quot;origin_port&quot;: &quot;7f314ba0a498c36359b1c88781e94a73e19dcc9bbb030ec6b82f944a73d4da2f&quot;,
-...         &quot;destination_port&quot;: &quot;68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e&quot;,
+...         &quot;origin&quot;: &quot;7f314ba0a498c36359b1c88781e94a73e19dcc9bbb030ec6b82f944a73d4da2f&quot;,
+...         &quot;destination&quot;: &quot;68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e&quot;,
 ...         &quot;product&quot;: &quot;crude&quot;,
 ...         &quot;vessel_class&quot;: &quot;oil_aframax_lr2&quot;,
 ...     },
 ...     {
-...         &quot;origin_port&quot;: &quot;68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e&quot;,
-...         &quot;destination_port&quot;: &quot;ea4921c8ad4fddb5fe3e7a4f834c1aa5863e43283c73da5f02d93bbc5dba72eb&quot;,
+...         &quot;origin&quot;: &quot;68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e&quot;,
+...         &quot;destination&quot;: &quot;ea4921c8ad4fddb5fe3e7a4f834c1aa5863e43283c73da5f02d93bbc5dba72eb&quot;,
 ...         &quot;product&quot;: &quot;clean&quot;,
 ...         &quot;vessel_class&quot;: &quot;oil_handymax_mr2&quot;,
 ...     }

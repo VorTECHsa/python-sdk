@@ -301,8 +301,8 @@ required to access Anywhere Freight Pricing.</p>
 <h3 id="vortexasdk.endpoints.anywhere_freight_pricing_forecast_explanation.AnywhereFreightPricingForecastExplanation.search">search</h3>
 
 <pre><code class="language-python">AnywhereFreightPricingForecastExplanation.search(
-  origin_port: str,
-  destination_port: str,
+  origin: str,
+  destination: str,
   vessel_class:
     typing_extensions.Literal['oil_coastal', 'oil_specialised', 'oil_handysize_mr1', 'oil_handymax_mr2', 'oil_panamax_lr1', 'oil_aframax_lr2', 'oil_suezmax_lr3', 'oil_vlcc', 'lpg_sgc', 'lpg_mgc', 'lpg_lgc', 'lpg_vlgc_vlec', 'lng_small_scale_lng', 'lng_mid_scale_lng', 'lng_conventional_lng', 'lng_q_fleet'],
   product: typing_extensions.Literal['clean', 'dirty', 'crude'],
@@ -316,9 +316,9 @@ required to access Anywhere Freight Pricing.</p>
 <p>Given a route (origin, destination, vessel class, product), this returns
 a base date and a list of forecast explanations for upcoming time periods.</p>
 <p><strong>Arguments</strong></p>
-<pre><code>origin_port: Geographic ID of the origin port.
+<pre><code>origin: Geographic ID of the origin port.
 
-destination_port: Geographic ID of the destination port.
+destination: Geographic ID of the destination port.
 
 vessel_class: The vessel class for the route. Must be one of:
     `'oil_coastal'`, `'oil_specialised'`, `'oil_handysize_mr1'`,
@@ -344,8 +344,8 @@ include_port_costs: Whether to include port costs in the calculation.
 from Rotterdam to Houston.</em></p>
 <pre><code class="language-python">&gt;&gt;&gt; from vortexasdk import AnywhereFreightPricingForecastExplanation
 &gt;&gt;&gt; result = AnywhereFreightPricingForecastExplanation().search(
-...     origin_port=&quot;68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e&quot;,
-...     destination_port=&quot;ea4921c8ad4fddb5fe3e7a4f834c1aa5863e43283c73da5f02d93bbc5dba72eb&quot;,
+...     origin=&quot;68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e&quot;,
+...     destination=&quot;ea4921c8ad4fddb5fe3e7a4f834c1aa5863e43283c73da5f02d93bbc5dba72eb&quot;,
 ...     vessel_class=&quot;oil_handymax_mr2&quot;,
 ...     product=&quot;clean&quot;,
 ...     frequency=&quot;month&quot;,

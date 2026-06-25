@@ -303,7 +303,7 @@ required to access Anywhere Freight Pricing.</p>
 <h3 id="vortexasdk.endpoints.anywhere_freight_pricing_top_ports_origin.AnywhereFreightPricingTopPortsOrigin.search">search</h3>
 
 <pre><code class="language-python">AnywhereFreightPricingTopPortsOrigin.search(
-    destination_id: str,
+    destination: str,
     vessel_class:
     typing_extensions.Literal['oil_coastal', 'oil_specialised', 'oil_handysize_mr1', 'oil_handymax_mr2', 'oil_panamax_lr1', 'oil_aframax_lr2', 'oil_suezmax_lr3', 'oil_vlcc'],
     product: typing_extensions.Literal['clean', 'dirty', 'crude'],
@@ -317,7 +317,7 @@ required to access Anywhere Freight Pricing.</p>
 <p>A top origin port refers to the port with the greatest volume of
 outgoing voyages from vessels in a specified class.</p>
 <p><strong>Arguments</strong></p>
-<pre><code>destination_id: Geographical ID of the destination port.
+<pre><code>destination: Geographical ID of the destination port.
 
 vessel_class: The vessel class for the route. Must be one of:
     `'oil_coastal'`, `'oil_specialised'`, `'oil_handysize_mr1'`,
@@ -337,7 +337,7 @@ avoid_zone: Routing zones to avoid. Options: `'Panama Canal'`, `'Suez Canal'`.
 <p><em>Get top origin ports for clean products to Rotterdam using MR2 vessels.</em></p>
 <pre><code class="language-python">&gt;&gt;&gt; from vortexasdk import AnywhereFreightPricingTopPortsOrigin
 &gt;&gt;&gt; result = AnywhereFreightPricingTopPortsOrigin().search(
-...     destination_id=&quot;68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e&quot;,
+...     destination=&quot;68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e&quot;,
 ...     vessel_class=&quot;oil_handymax_mr2&quot;,
 ...     product=&quot;clean&quot;,
 ...     unit=&quot;usd_per_tonne&quot;,

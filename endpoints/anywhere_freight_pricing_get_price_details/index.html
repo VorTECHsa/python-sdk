@@ -305,8 +305,8 @@ required to access Anywhere Freight Pricing.</p>
 <pre><code class="language-python">AnywhereFreightPricingGetPriceDetails.search(
   time_min: datetime,
   time_max: datetime,
-  origin_port: str,
-  destination_port: str,
+  origin: str,
+  destination: str,
   vessel_class:
     typing_extensions.Literal['oil_coastal', 'oil_specialised', 'oil_handysize_mr1', 'oil_handymax_mr2', 'oil_panamax_lr1', 'oil_aframax_lr2', 'oil_suezmax_lr3', 'oil_vlcc'],
   product: typing_extensions.Literal['clean', 'dirty', 'crude'],
@@ -324,9 +324,9 @@ this will find rates, lumpsums and prediction confidence of the route.</p>
 
 time_max: The UTC end date of the time filter.
 
-origin_port: Geographic ID of the origin port.
+origin: Geographic ID of the origin port.
 
-destination_port: Geographic ID of the destination port.
+destination: Geographic ID of the destination port.
 
 vessel_class: The vessel class for the route. Must be one of:
     `'oil_coastal'`, `'oil_specialised'`, `'oil_handysize_mr1'`,
@@ -353,8 +353,8 @@ suggested_tonnage: Override the default suggested tonnage Vortexa will
 &gt;&gt;&gt; result = AnywhereFreightPricingGetPriceDetails().search(
 ...     time_min=datetime(2024, 1, 1),
 ...     time_max=datetime(2024, 12, 31),
-...     origin_port=&quot;7f314ba0a498c36359b1c88781e94a73e19dcc9bbb030ec6b82f944a73d4da2f&quot;,
-...     destination_port=&quot;68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e&quot;,
+...     origin=&quot;7f314ba0a498c36359b1c88781e94a73e19dcc9bbb030ec6b82f944a73d4da2f&quot;,
+...     destination=&quot;68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e&quot;,
 ...     vessel_class=&quot;oil_aframax_lr2&quot;,
 ...     product=&quot;crude&quot;,
 ...     unit=&quot;usd_per_tonne&quot;,
