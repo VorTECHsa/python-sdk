@@ -48,10 +48,10 @@ class AnywhereFreightPricingPostPriceDetails(Search):
         unit: AfpUnit = "usd_per_tonne",
     ) -> AnywhereFreightPricingResult:
         """
-        List prices for multiple routes.
+        List historical prices for multiple routes.
 
         Given a set of details about multiple routes (origin, destination, etc),
-        this will find rates, lumpsums and prediction confidences of each of the routes.
+        this will find historical rates, lumpsums and prediction confidences of each of the routes.
         Rates represent the per-unit price (voyage + port + canal costs).
         Lumpsums are the total voyage cost in USD.
         The confidence returns the confidence of these value estimations.

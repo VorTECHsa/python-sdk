@@ -56,10 +56,10 @@ class AnywhereFreightPricingGetPriceDetails:
         suggested_tonnage: Optional[float] = None,
     ) -> AnywhereFreightPricingResult:
         """
-        List prices of a route.
+        List historical prices of a route.
 
         Given a set of details about a single route (origin, destination, etc),
-        this will find rates, lumpsums and prediction confidences of the route.
+        this will find historical rates, lumpsums and prediction confidences of the route.
         Rates represent the per-unit price (voyage + port + canal costs).
         Lumpsums are the total voyage cost in USD.
         The confidence returns the confidence of these estimations.
