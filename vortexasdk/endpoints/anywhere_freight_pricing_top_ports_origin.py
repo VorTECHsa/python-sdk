@@ -31,10 +31,10 @@ class AnywhereFreightPricingTopPortsOrigin:
     Fetches the top origin ports for a given destination with a specified class.
     These are the top ten ports with the greatest count of laden voyages to the
     given destination from vessels with the specified class.
-    Rates returns the voyage costs as well as a breakdown of additional costs
-    in the given unit. Lumpsum returns the total voyage cost as well as a
+    Rates return the voyage costs as well as a breakdown of additional costs
+    in the given unit. Lumpsum return the total voyage cost as well as a
     breakdown of additional costs as a total cost.
-    The confidence returns the confidence of these estimations.
+    The confidence score indicates the confidence of these estimates.
 
     Please note, a subscription to our Anywhere Freight Pricing module is
     required to access Anywhere Freight Pricing.
@@ -57,10 +57,10 @@ class AnywhereFreightPricingTopPortsOrigin:
         Fetches the top origin ports for a given destination with a specified class.
         These are the top ten ports with the greatest count of laden voyages to the
         given destination from vessels with the specified class.
-        Rates returns the voyage costs as well as a breakdown of additional costs
-        in the given unit. Lumpsum returns the total voyage cost as well as a
+        Rates return the voyage costs as well as a breakdown of additional costs
+        in the given unit. Lumpsum return the total voyage cost as well as a
         breakdown of additional costs as a total cost.
-        The confidence returns the confidence of these estimations.
+        The confidence score indicates the confidence of these estimates.
 
         # Arguments
 
