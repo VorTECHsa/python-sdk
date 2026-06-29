@@ -46,9 +46,10 @@ class AnywhereFreightPricingForecastTimeseries(Search):
         """
         Get forecast pricing over time for multiple routes.
 
-        Given a set of details about multiple routes (origin, destination, etc),
-        a time period and frequency, this returns forecast pricing over time
-        bucketed by the chosen frequency.
+        Given a set of routes, a frequency, unit and a time period, this endpoint
+        returns forecast-only prices, lumpsums and upper and lower bounds bucketed
+        by the requested frequency per route. Price is the total cost including
+        voyage, port and canal costs. Lumpsum is the total voyage cost in USD.
 
         # Arguments
 
