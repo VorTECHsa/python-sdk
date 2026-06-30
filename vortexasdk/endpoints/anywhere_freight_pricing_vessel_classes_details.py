@@ -20,8 +20,9 @@ class AnywhereFreightPricingVesselClassesDetails:
     """
     Anywhere Freight Pricing Vessel Classes Details endpoint.
 
-    Lists all the vessel classes supported for Anywhere Freight Pricing
-    and the tonnages they can carry.
+    Returns the list of vessel classes supported in Anywhere Freight Pricing,
+    along with their suggested default tonnage and minimum and maximum
+    supported tonnages.
 
     Please note, a subscription to our Anywhere Freight Pricing module is
     required to access Anywhere Freight Pricing.
@@ -34,8 +35,9 @@ class AnywhereFreightPricingVesselClassesDetails:
         """
         List vessel classes with tonnages.
 
-        Lists all the vessel classes supported for Anywhere Freight Pricing
-        and the tonnages they can carry.
+        Returns the list of vessel classes supported in Anywhere Freight Pricing,
+        along with their suggested default tonnage and minimum and maximum
+        supported tonnages.
 
         # Returns
         `AnywhereFreightPricingResult`
