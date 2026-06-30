@@ -296,8 +296,13 @@
 <pre><code class="language-python">AnywhereFreightPricingTopPortsOrigin(self)
 </code></pre>
 <p>Anywhere Freight Pricing Top Ports Origin endpoint.</p>
-<p>List top origin ports. A top origin port refers to the port
-with the greatest volume of outgoing voyages from vessels in a specified class.</p>
+<p>Fetches the top origin ports for a given destination with a specified class.
+These are the top ten ports with the greatest count of laden voyages to the
+given destination from vessels with the specified class.
+Rates return the voyage costs as well as a breakdown of additional costs
+in the given unit. Lumpsum return the total voyage cost as well as a
+breakdown of additional costs as a total cost.
+The confidence score indicates the confidence of these estimates.</p>
 <p>Please note, a subscription to our Anywhere Freight Pricing module is
 required to access Anywhere Freight Pricing.</p>
 <h3 id="vortexasdk.endpoints.anywhere_freight_pricing_top_ports_origin.AnywhereFreightPricingTopPortsOrigin.search">search</h3>
@@ -314,8 +319,13 @@ required to access Anywhere Freight Pricing.</p>
 )
 </code></pre>
 <p>List top origin ports for a given destination.</p>
-<p>A top origin port refers to the port with the greatest volume of
-outgoing voyages from vessels in a specified class.</p>
+<p>Fetches the top origin ports for a given destination with a specified class.
+These are the top ten ports with the greatest count of laden voyages to the
+given destination from vessels with the specified class.
+Rates return the voyage costs as well as a breakdown of additional costs
+in the given unit. Lumpsum return the total voyage cost as well as a
+breakdown of additional costs as a total cost.
+The confidence score indicates the confidence of these estimates.</p>
 <p><strong>Arguments</strong></p>
 <pre><code>destination: Geographical ID of the destination port.
 

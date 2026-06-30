@@ -297,7 +297,10 @@
 </code></pre>
 <p>Anywhere Freight Pricing Get Price Details endpoint.</p>
 <p>Given a set of details about a single route (origin, destination, etc),
-this will find rates, lumpsums and prediction confidence of the route.</p>
+this will find rates, lumpsums and prediction confidences of the route.
+Rates represent the per-unit price (voyage + port + canal costs).
+Lumpsums are the total voyage cost in USD.
+The confidence returns the confidence of these estimations.</p>
 <p>Please note, a subscription to our Anywhere Freight Pricing module is
 required to access Anywhere Freight Pricing.</p>
 <h3 id="vortexasdk.endpoints.anywhere_freight_pricing_get_price_details.AnywhereFreightPricingGetPriceDetails.search">search</h3>
@@ -316,9 +319,12 @@ required to access Anywhere Freight Pricing.</p>
     typing.Optional[typing.List[typing_extensions.Literal['Panama Canal', 'Suez Canal']]] = None,
   suggested_tonnage: typing.Optional[float] = None)
 </code></pre>
-<p>List prices of a route.</p>
+<p>List historical prices of a route.</p>
 <p>Given a set of details about a single route (origin, destination, etc),
-this will find rates, lumpsums and prediction confidence of the route.</p>
+this will find historical rates, lumpsums and prediction confidences of the route.
+Rates represent the per-unit price (voyage + port + canal costs).
+Lumpsums are the total voyage cost in USD.
+The confidence returns the confidence of these estimations.</p>
 <p><strong>Arguments</strong></p>
 <pre><code>time_min: The UTC start date of the time filter.
 

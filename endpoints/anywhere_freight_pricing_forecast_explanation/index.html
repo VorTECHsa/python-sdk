@@ -294,27 +294,29 @@
 <pre><code class="language-python">AnywhereFreightPricingForecastExplanation(self)
 </code></pre>
 <p>Anywhere Freight Pricing Forecast Explanation endpoint.</p>
-<p>Explains forecast price movements for a route by providing a base date
-and a list of explanations for upcoming time periods.</p>
+<p>Given a route (origin, destination, vessel class, product), this returns
+a base date and a list of forecast explanations for upcoming dates at
+the given frequency.</p>
 <p>Please note, a subscription to our Anywhere Freight Pricing module is
 required to access Anywhere Freight Pricing.</p>
 <h3 id="vortexasdk.endpoints.anywhere_freight_pricing_forecast_explanation.AnywhereFreightPricingForecastExplanation.search">search</h3>
 
 <pre><code class="language-python">AnywhereFreightPricingForecastExplanation.search(
-  origin: str,
-  destination: str,
-  vessel_class:
+    origin: str,
+    destination: str,
+    vessel_class:
     typing_extensions.Literal['oil_coastal', 'oil_specialised', 'oil_handysize_mr1', 'oil_handymax_mr2', 'oil_panamax_lr1', 'oil_aframax_lr2', 'oil_suezmax_lr3', 'oil_vlcc', 'lpg_sgc', 'lpg_mgc', 'lpg_lgc', 'lpg_vlgc_vlec', 'lng_small_scale_lng', 'lng_mid_scale_lng', 'lng_conventional_lng', 'lng_q_fleet'],
-  product: typing_extensions.Literal['clean', 'dirty', 'crude'],
-  frequency:
+    product: typing_extensions.Literal['clean', 'dirty', 'crude'],
+    frequency:
     typing_extensions.Literal['day', 'week', 'month', 'month_fixed'] = 'month_fixed',
-  avoid_zone:
-    typing.Optional[typing.List[typing_extensions.Literal['Panama Canal', 'Suez Canal']]] = None,
-  include_port_costs: typing.Optional[bool] = None)
+    avoid_zone:
+    typing.Optional[typing.List[typing_extensions.Literal['Panama Canal', 'Suez Canal']]] = None
+)
 </code></pre>
 <p>Get forecast price movement explanations for a route.</p>
 <p>Given a route (origin, destination, vessel class, product), this returns
-a base date and a list of forecast explanations for upcoming time periods.</p>
+a base date and a list of forecast explanations for upcoming dates at
+the given frequency.</p>
 <p><strong>Arguments</strong></p>
 <pre><code>origin: Geographic ID of the origin port.
 
@@ -334,8 +336,6 @@ frequency: Frequency for the explanation periods. Must be one of:
 
 avoid_zone: Routing zones to avoid for this route. Options:
     `'Panama Canal'`, `'Suez Canal'`.
-
-include_port_costs: Whether to include port costs in the calculation.
 </code></pre>
 <p><strong>Returns</strong></p>
 <p><code>AnywhereFreightPricingResult</code></p>

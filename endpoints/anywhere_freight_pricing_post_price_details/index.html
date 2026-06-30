@@ -297,7 +297,10 @@
 </code></pre>
 <p>Anywhere Freight Pricing Post Price Details endpoint.</p>
 <p>Given a set of details about multiple routes (origin, destination, etc),
-this will find rates, lumpsums and prediction confidence for each route.</p>
+this will find rates, lumpsums and prediction confidences of each of the routes.
+Rates represent the per-unit price (voyage + port + canal costs).
+Lumpsums are the total voyage cost in USD.
+The confidence returns the confidence of these value estimations.</p>
 <p>Please note, a subscription to our Anywhere Freight Pricing module is
 required to access Anywhere Freight Pricing.</p>
 <h3 id="vortexasdk.endpoints.anywhere_freight_pricing_post_price_details.AnywhereFreightPricingPostPriceDetails.search">search</h3>
@@ -311,9 +314,12 @@ required to access Anywhere Freight Pricing.</p>
     typing_extensions.Literal['usd_per_tonne', 'usd_per_barrel'] = 'usd_per_tonne'
 )
 </code></pre>
-<p>List prices for multiple routes.</p>
+<p>List historical prices for multiple routes.</p>
 <p>Given a set of details about multiple routes (origin, destination, etc),
-this will find rates, lumpsums and prediction confidence for each route.</p>
+this will find historical rates, lumpsums and prediction confidences of each of the routes.
+Rates represent the per-unit price (voyage + port + canal costs).
+Lumpsums are the total voyage cost in USD.
+The confidence returns the confidence of these value estimations.</p>
 <p><strong>Arguments</strong></p>
 <pre><code>routes: A list of route dictionaries. Each route must contain:
     - `origin` (str, required): Geographical ID of the origin port.
