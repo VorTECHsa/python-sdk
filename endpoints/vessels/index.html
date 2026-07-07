@@ -300,6 +300,10 @@
   ids: typing.Union[str, typing.List[str], NoneType] = None,
   vessel_classes: typing.Union[str, typing.List[str], NoneType] = None,
   vessel_scrubbers: str = 'disabled',
+  vessel_tags:
+    typing.Union[vortexasdk.api.shared_types.Tag, typing.List[vortexasdk.api.shared_types.Tag], NoneType] = None,
+  vessel_tags_excluded:
+    typing.Union[vortexasdk.api.shared_types.Tag, typing.List[vortexasdk.api.shared_types.Tag], NoneType] = None,
   exact_term_match: bool = False)
 </code></pre>
 <p>Find all vessels matching given search arguments. Search arguments are combined in an AND manner.</p>
@@ -313,6 +317,10 @@
  To disable the filter (the default behaviour), enter 'disabled'.
  To only include vessels with scrubbers, enter 'inc'.
  To exclude vessels with scrubbers, enter 'exc'.</p>
+<p>vessel_tags: A vessel tag, or list of vessel tags to filter on.
+     e.g. <code>Tag(tag="vessel_fso_tag")</code> to filter for FSO vessels.</p>
+<p>vessel_tags_excluded: A vessel tag, or list of vessel tags to exclude.
+     e.g. <code>Tag(tag="vessel_fso_tag")</code> to exclude FSO vessels.</p>
 <p>exact_term_match: Search on only exact term matches, or allow similar matches.
      e.g. When searching for "Ocean" with <code>exact_term_match=False</code>, then the SDK will yield vessels named
     ['Ocean', 'Ocean Wisdom', ...] etc. When <code>exact_term_match=True</code>,
