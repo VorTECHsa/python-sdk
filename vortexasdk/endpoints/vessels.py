@@ -7,6 +7,7 @@ Try me out in your browser:
 from typing import Any, Dict, List, Optional, Union
 
 from vortexasdk.api import ID
+from vortexasdk.api.shared_types import Tag
 from vortexasdk.endpoints.endpoints import VESSELS_REFERENCE
 from vortexasdk.endpoints.vessels_result import VesselsResult
 from vortexasdk.operations import Reference, Search
@@ -31,6 +32,8 @@ class Vessels(Reference, Search):
         ids: Optional[Union[str, List[str]]] = None,
         vessel_classes: Optional[Union[str, List[str]]] = None,
         vessel_scrubbers: str = "disabled",
+        vessel_tags: Optional[Union[Tag, List[Tag]]] = None,
+        vessel_tags_excluded: Optional[Union[Tag, List[Tag]]] = None,
         exact_term_match: bool = False,
     ) -> VesselsResult:
         """
@@ -47,6 +50,12 @@ class Vessels(Reference, Search):
              To disable the filter (the default behaviour), enter 'disabled'.
              To only include vessels with scrubbers, enter 'inc'.
              To exclude vessels with scrubbers, enter 'exc'.
+
+            vessel_tags: A vessel tag, or list of vessel tags to filter on.
+                 e.g. `Tag(tag="vessel_fso_tag")` to filter for FSO vessels.
+
+            vessel_tags_excluded: A vessel tag, or list of vessel tags to exclude.
+                 e.g. `Tag(tag="vessel_fso_tag")` to exclude FSO vessels.
 
              exact_term_match: Search on only exact term matches, or allow similar matches.
                  e.g. When searching for "Ocean" with `exact_term_match=False`, then the SDK will yield vessels named
@@ -92,6 +101,14 @@ class Vessels(Reference, Search):
                 v.lower() for v in convert_to_list(vessel_classes)
             ],
             "vessel_scrubbers": vessel_scrubbers,
+            "vessel_tags": [
+                tag.dict(exclude_none=True)
+                for tag in convert_to_list(vessel_tags)
+            ],
+            "vessel_tags_excluded": [
+                tag.dict(exclude_none=True)
+                for tag in convert_to_list(vessel_tags_excluded)
+            ],
         }
 
         response = super().search_with_client(
