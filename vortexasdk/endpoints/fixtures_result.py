@@ -49,37 +49,21 @@ class FixtureResult(Result):
             columns: The Fixtures columns we want in the dataframe.
             Pass `columns="all"` to get all available columns.
 
-        A near complete list of available columns:
+        A near complete list of columns is given below
         ```python
         [
             "id",
             "vessel.id",
             "vessel.name",
-            "vessel.imo",
-            "vessel.mmsi",
-            "vessel.dwt",
-            "vessel.cubic_capacity",
-            "vessel.vessel_class",
-            "vessel.year",
-            "vessel.corporate_entities.charterer.label",
-            "vessel.corporate_entities.charterer.id",
-            "vessel.corporate_entities.effective_controller.label",
-            "vessel.corporate_entities.effective_controller.id",
-            "vessel.corporate_entities.time_charterer.label",
-            "vessel.corporate_entities.time_charterer.id",
             "laycan_from",
             "laycan_to",
             "tonnes",
             "fixing_timestamp",
             "vtx_fulfilled",
             "destination.label",
-            "destination.id",
             "origin.label",
-            "origin.id",
             "product.label",
-            "product.id",
             "charterer.label",
-            "charterer.id",
         ]
         ```
 
