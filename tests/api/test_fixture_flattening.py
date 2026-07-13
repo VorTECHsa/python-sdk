@@ -56,12 +56,19 @@ class TestFixtureFlattening(TestCase):
     def test_generic_flattener_uses_numeric_indices(self):
         flat = convert_to_flat_dict(self.FIXTURE, columns="all")
         assert "vessel.corporate_entities.0.label" in flat
-        assert "vessel.corporate_entities.effective_controller.label" not in flat
+        assert (
+            "vessel.corporate_entities.effective_controller.label" not in flat
+        )
 
     def test_fixture_flattener_groups_by_layer(self):
         flat = convert_fixture_to_flat_dict(self.FIXTURE, columns="all")
-        assert flat["vessel.corporate_entities.effective_controller.label"] == "Frontline Ltd"
-        assert flat["vessel.corporate_entities.time_charterer.label"] == "Shell"
+        assert (
+            flat["vessel.corporate_entities.effective_controller.label"]
+            == "Frontline Ltd"
+        )
+        assert (
+            flat["vessel.corporate_entities.time_charterer.label"] == "Shell"
+        )
 
     def test_fixture_flattener_preserves_flat_fields(self):
         flat = convert_fixture_to_flat_dict(self.FIXTURE, columns="all")
@@ -71,6 +78,9 @@ class TestFixtureFlattening(TestCase):
         assert flat["charterer.label"] == "Trafigura"
 
     def test_fixture_flattener_column_filter(self):
-        cols = ["vessel.name", "vessel.corporate_entities.effective_controller.label"]
+        cols = [
+            "vessel.name",
+            "vessel.corporate_entities.effective_controller.label",
+        ]
         flat = convert_fixture_to_flat_dict(self.FIXTURE, columns=cols)
         assert set(flat.keys()) == set(cols)
