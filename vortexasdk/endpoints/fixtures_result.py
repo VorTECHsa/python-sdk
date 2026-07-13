@@ -47,7 +47,46 @@ class FixtureResult(Result):
 
         # Arguments
             columns: The Fixtures columns we want in the dataframe.
-            Pass `columns="all"` to get all available columns.
+            Defaults to `columns = [
+                "id",
+                'vessel.corporate_entities.charterer.id',
+                'vessel.corporate_entities.charterer.label',
+                'vessel.corporate_entities.charterer.layer',
+                'vessel.corporate_entities.charterer.probability',
+                'vessel.corporate_entities.charterer.source',
+                'vessel.corporate_entities.effective_controller.id',
+                'vessel.corporate_entities.effective_controller.label',
+                'vessel.corporate_entities.effective_controller.layer',
+                'vessel.corporate_entities.effective_controller.probability',
+                'vessel.corporate_entities.effective_controller.source',
+                'vessel.corporate_entities.time_charterer.end_timestamp',
+                'vessel.corporate_entities.time_charterer.id',
+                'vessel.corporate_entities.time_charterer.label',
+                'vessel.corporate_entities.time_charterer.layer',
+                'vessel.corporate_entities.time_charterer.probability',
+                'vessel.corporate_entities.time_charterer.source',
+                'vessel.corporate_entities.time_charterer.start_timestamp',
+                'vessel.cubic_capacity',
+                'vessel.dwt',
+                'vessel.id',
+                'vessel.imo',
+                'vessel.mmsi',
+                'vessel.name',
+                'vessel.vessel_class',
+                "laycan_from",
+                "laycan_to",
+                "tonnes",
+                "fixing_timestamp",
+                "vtx_fulfilled",
+                "destination.label",
+                "destination.id",
+                "origin.label",
+                "origin.id",
+                "product.label",
+                "product.id",
+                "charterer.label",
+                "charterer.id",
+            ]`.
 
         A near complete list of columns is given below
         ```python
