@@ -84,5 +84,27 @@ def _flatten_attributes(dictionary: Dict, key: str) -> Dict:
     return copied_dict
 
 
+def convert_fixture_to_flat_dict(
+    fixture: Dict, columns: Union[Literal["all"], List[str]] = "all"
+) -> Dict:
+    """Convert nested `Fixture` object to flat dictionary, keeping *cols*."""
+    as_dict = _group_fixture_attributes_by_layer(fixture)
+
+    formatted = flatten_dictionary(as_dict)
+
+    if columns == "all":
+        return formatted
+    else:
+        return {k: v for k, v in formatted.items() if k in columns}
+
+
+def _group_fixture_attributes_by_layer(fixture: Dict) -> Dict:
+    """Group relevant `Fixture` attributes by `Entity.layer`."""
+    copied = copy.deepcopy(fixture)
+    if "vessel" in copied and isinstance(copied["vessel"], dict):
+        copied["vessel"] = _flatten_vessel_entity(copied["vessel"])
+    return copied
+
+
 def _group_by_layer(entity_list: List[Dict]) -> Dict:
     return {e["layer"]: e for e in entity_list}

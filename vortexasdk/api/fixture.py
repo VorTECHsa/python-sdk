@@ -16,7 +16,7 @@ class Fixture(BaseModel):
     vessel: Optional[VesselEntity] = None
     laycan_from: Optional[str] = None
     laycan_to: Optional[str] = None
-    tones: Optional[int] = None
+    tonnes: Optional[int] = None
     fixing_timestamp: Optional[str] = None
     vtx_fulfilled: Optional[bool] = None
     origin: Optional[Entity] = None

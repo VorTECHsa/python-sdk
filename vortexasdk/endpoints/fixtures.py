@@ -161,7 +161,7 @@ class Fixtures(Search):
 
         returns
 
-        | vessel.name              | tones            | origin.label | product.label |
+        | vessel.name              | tonnes           | origin.label | product.label |
         | ------------------------ | ---------------- | ------------ | ------------- |
         | ALPINE EAGLE             | 454.96048964485  | UK           | Crude         |
 
