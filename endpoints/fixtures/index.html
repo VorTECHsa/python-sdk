@@ -404,7 +404,7 @@ replacement fixture or "Conf" for confirmed and "Corr" for corrected.</p>
 <thead>
 <tr>
 <th>vessel.name</th>
-<th>tones</th>
+<th>tonnes</th>
 <th>origin.label</th>
 <th>product.label</th>
 </tr>
@@ -441,7 +441,7 @@ replacement fixture or "Conf" for confirmed and "Corr" for corrected.</p>
 
 <pre><code class="language-python">FixtureResult.to_df(
     columns:
-    typing.Union[typing_extensions.Literal['all'], typing.List[str], NoneType] = ['id', 'vessel.id', 'vessel.name', 'laycan_from', 'laycan_to', 'tones', 'fixing_timestamp', 'vtx_fulfilled', 'destination.label', 'origin.label', 'product.label', 'charterer.label']
+    typing.Union[typing_extensions.Literal['all'], typing.List[str], NoneType] = ['id', 'vessel.id', 'vessel.name', 'laycan_from', 'laycan_to', 'tonnes', 'fixing_timestamp', 'vtx_fulfilled', 'destination.label', 'origin.label', 'product.label', 'charterer.label']
 )
 </code></pre>
 <p>Represent Fixtures as a <code>pd.DataFrame</code>.</p>
@@ -450,40 +450,40 @@ replacement fixture or "Conf" for confirmed and "Corr" for corrected.</p>
 <li><strong>columns</strong>: The Fixtures columns we want in the dataframe.
     Defaults to <code>columns = [
         "id",
-        'vessels.corporate_entities.charterer.id',
-        'vessels.corporate_entities.charterer.label',
-        'vessels.corporate_entities.charterer.layer',
-        'vessels.corporate_entities.charterer.probability',
-        'vessels.corporate_entities.charterer.source',
-        'vessels.corporate_entities.effective_controller.id',
-        'vessels.corporate_entities.effective_controller.label',
-        'vessels.corporate_entities.effective_controller.layer',
-        'vessels.corporate_entities.effective_controller.probability',
-        'vessels.corporate_entities.effective_controller.source',
-        'vessels.corporate_entities.time_charterer.end_timestamp',
-        'vessels.corporate_entities.time_charterer.id',
-        'vessels.corporate_entities.time_charterer.label',
-        'vessels.corporate_entities.time_charterer.layer',
-        'vessels.corporate_entities.time_charterer.probability',
-        'vessels.corporate_entities.time_charterer.source',
-        'vessels.corporate_entities.time_charterer.start_timestamp',
-        'vessels.cubic_capacity',
-        'vessels.dwt',
-        'vessels.end_timestamp',
-        'vessels.id',
-        'vessels.imo',
-        'vessels.mmsi',
-        'vessels.name',
-        'vessels.start_timestamp',
-        'vessels.status',
-        'vessels.tags.end_timestamp',
-        'vessels.tags.start_timestamp',
-        'vessels.tags.tag',
-        'vessels.vessel_class',
-        'vessels.voyage_id',
+        'vessel.corporate_entities.charterer.id',
+        'vessel.corporate_entities.charterer.label',
+        'vessel.corporate_entities.charterer.layer',
+        'vessel.corporate_entities.charterer.probability',
+        'vessel.corporate_entities.charterer.source',
+        'vessel.corporate_entities.effective_controller.id',
+        'vessel.corporate_entities.effective_controller.label',
+        'vessel.corporate_entities.effective_controller.layer',
+        'vessel.corporate_entities.effective_controller.probability',
+        'vessel.corporate_entities.effective_controller.source',
+        'vessel.corporate_entities.time_charterer.end_timestamp',
+        'vessel.corporate_entities.time_charterer.id',
+        'vessel.corporate_entities.time_charterer.label',
+        'vessel.corporate_entities.time_charterer.layer',
+        'vessel.corporate_entities.time_charterer.probability',
+        'vessel.corporate_entities.time_charterer.source',
+        'vessel.corporate_entities.time_charterer.start_timestamp',
+        'vessel.cubic_capacity',
+        'vessel.dwt',
+        'vessel.end_timestamp',
+        'vessel.id',
+        'vessel.imo',
+        'vessel.mmsi',
+        'vessel.name',
+        'vessel.start_timestamp',
+        'vessel.status',
+        'vessel.tags.end_timestamp',
+        'vessel.tags.start_timestamp',
+        'vessel.tags.tag',
+        'vessel.vessel_class',
+        'vessel.voyage_id',
         "laycan_from",
         "laycan_to",
-        "tones",
+        "tonnes",
         "fixing_timestamp",
         "vtx_fulfilled",
         "destination.label",
@@ -503,7 +503,7 @@ replacement fixture or "Conf" for confirmed and "Corr" for corrected.</p>
     &quot;vessel.name&quot;,
     &quot;laycan_from&quot;,
     &quot;laycan_to&quot;,
-    &quot;tones&quot;,
+    &quot;tonnes&quot;,
     &quot;fixing_timestamp&quot;,
     &quot;vtx_fulfilled&quot;,
     &quot;destination.label&quot;,
