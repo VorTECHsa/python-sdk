@@ -128,7 +128,7 @@ class VoyagesTimeseries(Search):
 
             voyage_status_excluded: A voyage status, or list of voyage statuses to exclude.
 
-            movement_status: A movement status, or list of movement statuses to filter on. Can be one of: `'moving'`, `'stationary'`, `'waiting'`, `'congestion'`, `'slow'`.
+            movement_status: A movement status, or list of movement statuses to filter on. Can be one of: `'moving'`, `'stationary'`, `'waiting'`, `'congestion'`.
 
             movement_status_excluded: A movement status, or list of movement statuses to exclude.
 
