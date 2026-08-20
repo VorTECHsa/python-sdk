@@ -40,7 +40,7 @@ class FreightPricingTimeseries(Search):
 
              time_max: The UTC end date of the time filter.
 
-             breakdown_frequency: Must be one of: `day`, `week`, `doe_week`, `month`, `quarter` or `year`.
+             breakdown_frequency: Must be one of: `day`, `week`, `month`, `quarter` or `year`.
 
              breakdown_property: Property used to build the value of the aggregation. Must be one of the following:
              `route`, `cost` (not available for LNG routes), `tce` (not available for LNG routes).
