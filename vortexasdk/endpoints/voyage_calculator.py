@@ -103,7 +103,7 @@ class VoyageCalculator(Search):
 
         ```python
         >>> from vortexasdk import VoyageCalculator
-        >>> ras_tanura = "006bca77c1390ad4daec7e1bff40e6560583be7e4c2caab7cc641db1ae69dd9b"
+        >>> ras_tanura = "539db1548407fd97024391d01a6a2be239b1100f070a137d54a79907d03db6c8"
         >>> rotterdam = "68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e"
         >>> result = VoyageCalculator().search(
         ...     type="ETA",
