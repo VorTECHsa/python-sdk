@@ -63,6 +63,12 @@ from vortexasdk.endpoints.voyages_congestion_breakdown import (
 )
 from vortexasdk.endpoints.voyages_top_hits import VoyagesTopHits
 from vortexasdk.endpoints.voyages_search_enriched import VoyagesSearchEnriched
+from vortexasdk.endpoints.voyage_calculator import (
+    VoyageCalculator,
+    VoyageCalculatorType,
+    VoyageCalculatorVesselStatus,
+    VoyageCalculatorAvoidZone,
+)
 from vortexasdk.endpoints.fixtures import Fixtures
 from vortexasdk.endpoints.vessel_summary import VesselSummary
 from vortexasdk.endpoints.vessel_positions import VesselPositions
@@ -154,6 +160,11 @@ __all__ = [
     "AnywhereFreightPricingTopPortsOrigin",
     "AnywhereFreightPricingVesselClassesDetails",
     "AnywhereFreightPricingForecastExplanation",
+    "VoyageCalculator",
+    # Voyage Calculator types
+    "VoyageCalculatorType",
+    "VoyageCalculatorVesselStatus",
+    "VoyageCalculatorAvoidZone",
     # AFP types for user type annotations
     "AfpAvoidZone",
     "AfpExplanationFrequency",

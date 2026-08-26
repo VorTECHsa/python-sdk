@@ -69,6 +69,8 @@ VESSEL_POSITIONS = "/v6/signals/vessel-positions"
 
 FIXTURES = "/v5/search/fixtures"
 
+VOYAGE_CALCULATOR = "/v5/voyages/voyage-calculator"
+
 CANAL_TRANSIT = "/v5/canal-transit"
 CANAL_TRANSIT_SEARCH = "/v5/canal-transit/search"
 CANAL_TRANSIT_TIME_SERIES = "/v5/canal-transit/time-series"

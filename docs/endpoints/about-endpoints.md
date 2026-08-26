@@ -21,6 +21,7 @@ The VortexaSDK currently contains the following endpoints:
 1. Canal transit
 1. Canal transit Time Series
 1. Refineries
+1. Voyage Calculator
 
 Each endpoint offers either one, or both, of two different functionalities:
 
