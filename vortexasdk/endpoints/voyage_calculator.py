@@ -23,9 +23,9 @@ class VoyageCalculator(Search):
     """
     Voyage Calculator endpoint.
 
-    Calculates voyage routes, ETAs, ETDs, or speeds between an origin and destination
-    using Vortexa's pathfinder routing engine. The calculator accounts for vessel class,
-    laden/ballast status, canal avoidance zones, and optional waypoints.
+    Calculates voyage routes, ETAs, ETDs, or speeds between an origin and destination. 
+    The calculator accounts for vessel class, laden/ballast status, canal avoidance 
+    zones, and optional waypoints.
     """
 
     def __init__(self) -> None:
