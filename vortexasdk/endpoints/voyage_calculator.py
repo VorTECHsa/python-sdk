@@ -23,8 +23,8 @@ class VoyageCalculator(Search):
     """
     Voyage Calculator endpoint.
 
-    Calculates voyage routes, ETAs, ETDs, or speeds between an origin and destination. 
-    The calculator accounts for vessel class, laden/ballast status, canal avoidance 
+    Calculates voyage routes, ETAs, ETDs, or speeds between an origin and destination.
+    The calculator accounts for vessel class, laden/ballast status, canal avoidance
     zones, and optional waypoints.
     """
 
