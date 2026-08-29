@@ -48,7 +48,7 @@ setuptools.setup(
             "openpyxl==3.0.7",
             "types-requests==2.28.9",
             "types-urllib3==1.26.23",
-            "types-tabulate==0.9.0",
+            "types-tabulate==0.9.0.20241207",
             "types-python-dateutil==2.8.19",
             "types-six==1.16.21.20240311",
             "jupyter==1.0.0",
