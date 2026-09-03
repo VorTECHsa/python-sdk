@@ -65,6 +65,7 @@ from vortexasdk.endpoints.voyages_top_hits import VoyagesTopHits
 from vortexasdk.endpoints.voyages_search_enriched import VoyagesSearchEnriched
 from vortexasdk.endpoints.voyage_calculator import (
     VoyageCalculator,
+    VoyageCalculatorRoute,
     VoyageCalculatorType,
     VoyageCalculatorVesselStatus,
     VoyageCalculatorAvoidZone,
@@ -162,6 +163,7 @@ __all__ = [
     "AnywhereFreightPricingForecastExplanation",
     "VoyageCalculator",
     # Voyage Calculator types
+    "VoyageCalculatorRoute",
     "VoyageCalculatorType",
     "VoyageCalculatorVesselStatus",
     "VoyageCalculatorAvoidZone",
