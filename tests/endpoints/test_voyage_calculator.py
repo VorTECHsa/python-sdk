@@ -277,3 +277,7 @@ class TestVoyageCalculatorBatchValidation(TestCase):
 
         with self.assertRaises(ValueError):
             VoyageCalculator().batch_search(routes=routes)
+
+    def test_batch_search_empty_routes(self):
+        with self.assertRaises(ValueError):
+            VoyageCalculator().batch_search(routes=[])

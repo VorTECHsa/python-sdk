@@ -1,8 +1,8 @@
 from typing import Any, Dict, List, Optional, Union
 
-from typing_extensions import Literal, TypedDict
+from typing_extensions import Literal, Required, TypedDict
 
-from vortexasdk.client import default_client
+from vortexasdk.client import _handle_response, default_client
 from vortexasdk.endpoints.endpoints import VOYAGE_CALCULATOR
 from vortexasdk.endpoints.voyage_calculator_result import (
     VoyageCalculatorBatchResult,
@@ -35,10 +35,10 @@ class VoyageCalculatorRoute(TypedDict, total=False):
     Optional keys: vessel_id, vessel_class, waypoints, ETA, ETD, speed, avoid_zone, voyage_delay_factor.
     """
 
-    type: VoyageCalculatorType
-    vessel_status: VoyageCalculatorVesselStatus
-    origin: Union[str, LatLong]
-    destination: Union[str, LatLong]
+    type: Required[VoyageCalculatorType]
+    vessel_status: Required[VoyageCalculatorVesselStatus]
+    origin: Required[Union[str, LatLong]]
+    destination: Required[Union[str, LatLong]]
     vessel_id: str
     vessel_class: str
     waypoints: List[str]
@@ -242,6 +242,8 @@ class VoyageCalculator(Search):
         |  1 | 68faf6.. | 539db1..    | oil_suezmax_lr3  |                          |    10.5 |      744.0 |
 
         """
+        if not routes:
+            raise ValueError("batch_search requires at least 1 route")
         if len(routes) > 5:
             raise ValueError(
                 f"batch_search accepts a maximum of 5 routes, got {len(routes)}"
@@ -257,16 +259,7 @@ class VoyageCalculator(Search):
             url, json=cleaned_routes, headers=default_headers
         )
 
-        if not response.ok:
-            try:
-                message = response.json().get("message", "")
-            except Exception:
-                message = ""
-            raise ValueError(
-                f"[{response.status_code} {response.reason}] {message}"
-            )
-
-        result = response.json()
+        result = _handle_response(response)
 
         return VoyageCalculatorBatchResult(
             records=result["data"],
