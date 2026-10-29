@@ -227,6 +227,13 @@ def _handle_response(
         logger.error(f"payload: {payload}")
         error = f"[{response.status_code} {response.reason}]"
 
+        # A 401 means the API key is missing, invalid or revoked.
+        if response.status_code == 401:
+            message = (
+                f"{message} Check that your API key is correct and has not "
+                "been revoked."
+            ).strip()
+
         raise ValueError(f"{error} {message}")
 
     else:
