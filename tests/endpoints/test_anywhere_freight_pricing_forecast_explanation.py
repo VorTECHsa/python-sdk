@@ -1,4 +1,3 @@
-from tests.config import SUEZ_CANAL_ID
 from tests.testcases import TestCaseUsingRealAPI
 from vortexasdk import AnywhereFreightPricingForecastExplanation
 
@@ -53,7 +52,7 @@ class TestAnywhereFreightPricingForecastExplanation(TestCaseUsingRealAPI):
             vessel_class="oil_handymax_mr2",
             product="clean",
             frequency="month",
-            avoid_zone=[SUEZ_CANAL_ID],
+            avoid_zone=["Suez Canal"],
         )
 
         result_list = result.to_list()
