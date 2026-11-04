@@ -14,4 +14,4 @@ class TestRetrySession(TestCase):
         session = _requests_retry_session()
         retry = session.get_adapter("https://example.com").max_retries
 
-        assert set(retry.status_forcelist) == {500, 502, 504}
+        assert set(retry.status_forcelist) == {500, 502, 503, 504}
