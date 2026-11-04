@@ -1,3 +1,4 @@
+from tests.config import SUEZ_CANAL_ID
 from datetime import datetime
 
 from tests.testcases import TestCaseUsingRealAPI
@@ -86,7 +87,7 @@ class TestAnywhereFreightPricingPostPriceDetails(TestCaseUsingRealAPI):
                 "destination": "68faf65af1345067f11dc6723b8da32f00e304a6f33c000118fccd81947deb4e",
                 "product": "crude",
                 "vessel_class": "oil_aframax_lr2",
-                "avoid_zone": ["Suez Canal"],
+                "avoid_zone": [SUEZ_CANAL_ID],
             }
         ]
 

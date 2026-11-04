@@ -1,3 +1,4 @@
+from tests.config import SUEZ_CANAL_ID
 from tests.testcases import TestCaseUsingRealAPI
 from vortexasdk import AnywhereFreightPricingTopPortsDestination
 
@@ -38,7 +39,7 @@ class TestAnywhereFreightPricingTopPortsDestination(TestCaseUsingRealAPI):
             vessel_class="oil_handymax_mr2",
             product="clean",
             unit="usd_per_tonne",
-            avoid_zone=["Suez Canal"],
+            avoid_zone=[SUEZ_CANAL_ID],
         )
 
         result_list = result.to_list()

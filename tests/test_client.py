@@ -44,3 +44,24 @@ class TestClient(TestCase):
         badResponse.reason = "bad request"
         badResponse.status_code = 400
         self.assertRaises(ValueError, lambda: _handle_response(badResponse))
+
+    def test_401_error_tells_user_to_check_api_key(self):
+        response = Response()
+        response.reason = "Unauthorized"
+        response.status_code = 401
+
+        with self.assertRaises(ValueError) as context:
+            _handle_response(response)
+
+        assert "[401 Unauthorized]" in str(context.exception)
+        assert "API key" in str(context.exception)
+
+    def test_403_error_does_not_mention_api_key(self):
+        response = Response()
+        response.reason = "Forbidden"
+        response.status_code = 403
+
+        with self.assertRaises(ValueError) as context:
+            _handle_response(response)
+
+        assert "API key" not in str(context.exception)
