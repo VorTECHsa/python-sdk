@@ -198,8 +198,7 @@ class VesselAvailabilityTimeseries(Search):
             "filter_effective_controllers": convert_to_list(
                 exclude_effective_controllers
             ),
-            # The API accepts one vessel status string here, not a list.
-            "filter_vessel_status": exclude_vessel_status,
+            "filter_vessel_status": convert_to_list(exclude_vessel_status),
             "filter_vessel_location": convert_to_list(exclude_vessel_location),
             "filter_vessel_flags": convert_to_list(exclude_vessel_flags),
             "filter_vessel_ice_class": convert_to_list(

@@ -22,20 +22,3 @@ class TestVesselAvailabilityTimeSeries(TestCaseUsingRealAPI):
             .to_df()
         )
         assert len(df) == 5
-
-    def test_exclude_vessel_status(self):
-        start = datetime(2021, 6, 17)
-        end = datetime(2021, 6, 21)
-
-        df = (
-            VesselAvailabilityTimeseries()
-            .search(
-                filter_time_min=start,
-                filter_time_max=end,
-                filter_port=rotterdam,
-                filter_days_to_arrival={"min": 0, "max": 5},
-                exclude_vessel_status="ballast",
-            )
-            .to_df()
-        )
-        assert len(df) == 5

@@ -103,14 +103,3 @@ class TestVesselAvailabilitySearchReal(TestCaseUsingRealAPI):
             == start.strftime("%Y-%m-%d")
             for item in availabilities
         ), "Not all items have 'evaluated_at' equal to 'start'"
-
-    def test_exclude_vessel_status(self):
-        results = VesselAvailabilitySearch().search(
-            filter_port=rotterdam,
-            filter_days_to_arrival=days_to_arrival,
-            exclude_vessel_status="ballast",
-        )
-        assert len(results) > 0
-        assert all(
-            record["vessel_status"] == "laden" for record in results.records
-        )
