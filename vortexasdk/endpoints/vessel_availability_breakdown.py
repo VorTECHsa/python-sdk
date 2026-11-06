@@ -84,7 +84,7 @@ class VesselAvailabilityBreakdown(Search):
 
              filter_vessel_classes: A vessel class, or list of vessel classes to filter on.
 
-             filter_vessel_status: The vessel status on which to base the filter. Enter 'vessel_status_ballast' for ballast vessels, 'vessel_status_laden_known' for laden vessels with known cargo (i.e. a type of cargo that Vortexa currently tracks) or 'any_activity' for any other vessels
+             filter_vessel_status: The vessel status on which to base the filter. Enter 'ballast' for ballast vessels or 'laden' for laden vessels.
 
              filter_vessel_location: A location ID, or list of location IDs to filter on.
 
@@ -129,7 +129,7 @@ class VesselAvailabilityBreakdown(Search):
 
              exclude_vessel_classes: A vessel class, or list of vessel classes to exclude.
 
-             exclude_vessel_status: The vessel status on which to base the filter. Enter 'vessel_status_ballast' for ballast vessels, 'vessel_status_laden_known' for laden vessels with known cargo (i.e. a type of cargo that Vortexa currently tracks) or 'any_activity' for any other vessels
+             exclude_vessel_status: The vessel status to exclude. Enter 'ballast' to exclude ballast vessels or 'laden' to exclude laden vessels.
 
              exclude_effective_controllers: An effective controller ID, or list of effective controller IDs to exclude.
 
@@ -186,7 +186,8 @@ class VesselAvailabilityBreakdown(Search):
             "filter_effective_controllers": convert_to_list(
                 exclude_effective_controllers
             ),
-            "filter_vessel_status": convert_to_list(exclude_vessel_status),
+            # The API accepts one vessel status string here, not a list.
+            "filter_vessel_status": exclude_vessel_status,
             "filter_vessel_location": convert_to_list(exclude_vessel_location),
             "filter_vessel_flags": convert_to_list(exclude_vessel_flags),
             "filter_vessel_ice_class": convert_to_list(
