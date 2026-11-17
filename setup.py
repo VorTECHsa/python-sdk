@@ -39,7 +39,7 @@ setuptools.setup(
             "mkdocs==1.2.4",
             "mypy==1.9.0",
             "pre-commit==1.20.0",
-            "pytest==8.1.1",
+            "pytest==8.3.4",
             "pydoc-markdown==2.1.3",
             "pyyaml==6.0.1",
             "six==1.16.0",
