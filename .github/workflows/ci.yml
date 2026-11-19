@@ -20,8 +20,8 @@ permissions:
   contents: read
 jobs:
   check-linting:
-    # An ARM runner is more cost effective.
-    runs-on: ubuntu-arm64
+    # Python 3.9 has no build for ubuntu-latest (Ubuntu 26.04), so the image is pinned.
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -33,8 +33,8 @@ jobs:
         run: flake8 vortexasdk tests docs
 
   check-types:
-    # An ARM runner is more cost effective.
-    runs-on: ubuntu-arm64
+    # Python 3.9 has no build for ubuntu-latest (Ubuntu 26.04), so the image is pinned.
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -46,8 +46,8 @@ jobs:
         run: mypy vortexasdk tests docs
 
   check-formatting:
-    # An ARM runner is more cost effective.
-    runs-on: ubuntu-arm64
+    # Python 3.9 has no build for ubuntu-latest (Ubuntu 26.04), so the image is pinned.
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -59,8 +59,8 @@ jobs:
         run: black --check vortexasdk tests
 
   test:
-    # An ARM runner is more cost effective.
-    runs-on: ubuntu-arm64
+    # Python 3.9 has no build for ubuntu-latest (Ubuntu 26.04), so the image is pinned.
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -78,8 +78,8 @@ jobs:
           pytest -n auto
 
   test-documentation:
-    # An ARM runner is more cost effective.
-    runs-on: ubuntu-arm64
+    # Python 3.9 has no build for ubuntu-latest (Ubuntu 26.04), so the image is pinned.
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -107,8 +107,8 @@ jobs:
           pydocmd build
 
   run-examples:
-    # An ARM runner is more cost effective.
-    runs-on: ubuntu-arm64
+    # Python 3.9 has no build for ubuntu-latest (Ubuntu 26.04), so the image is pinned.
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -131,8 +131,8 @@ jobs:
   # extras_require in setup.py. Each notebook directory is its own job, and 4 notebooks run at once in each.
   # See https://mybinder.readthedocs.io/en/latest/using/config_files.html#setup-py-install-python-packages
   run-notebooks:
-    # An ARM runner is more cost effective.
-    runs-on: ubuntu-arm64
+    # Python 3.9 has no build for ubuntu-latest (Ubuntu 26.04), so the image is pinned.
+    runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
       matrix:
@@ -154,8 +154,8 @@ jobs:
             | xargs -0 -n 1 -P 4 jupyter nbconvert --to notebook --execute
 
   check-release-version:
-    # An ARM runner is more cost effective.
-    runs-on: ubuntu-arm64
+    # Python 3.9 has no build for ubuntu-latest (Ubuntu 26.04), so the image is pinned.
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout
         uses: actions/checkout@v7
