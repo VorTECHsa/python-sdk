@@ -1,0 +1,154 @@
+# ------------------
+# -- When it runs --
+# ------------------
+# Whenever a PR is opened or pushed to.
+#
+# ------------------
+# -- What it does --
+# ------------------
+# CI pipeline, i.e. lint, types, format, tests, docs, examples, and release version checks.
+# All jobs run in parallel.
+
+name: ci
+on:
+  pull_request:
+# Ensure previous in-progress CI runs are cancelled to avoid wasting compute.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  check-linting:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: ./.github/actions/setup-python
+
+      - name: Check linting
+        run: flake8 vortexasdk tests docs
+
+  check-types:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: ./.github/actions/setup-python
+
+      - name: Check types
+        run: mypy vortexasdk tests docs
+
+  check-formatting:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: ./.github/actions/setup-python
+
+      - name: Check formatting
+        run: black --check vortexasdk tests
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: ./.github/actions/setup-python
+
+      - name: Run all tests
+        env:
+          VORTEXA_API_KEY: ${{ secrets.VORTEXA_API_KEY }}
+        run: |
+          pip install tox
+          tox --verbose
+
+  test-documentation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: ./.github/actions/setup-python
+
+      # This is also run by tox, but tox does not run the doctests.
+      - name: Run doctests
+        env:
+          VORTEXA_API_KEY: ${{ secrets.VORTEXA_API_KEY }}
+        run: pytest -v --doctest-modules --ignore=tests
+
+      - name: Confirm that the check_setup script works
+        env:
+          VORTEXA_API_KEY: ${{ secrets.VORTEXA_API_KEY }}
+        run: python -m vortexasdk.check_setup
+
+      - name: Build docs
+        run: |
+          mkdir -p ./_build/pydocmd/examples
+          python docs/autogen.py
+          pydocmd build
+
+  run-examples:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: ./.github/actions/setup-python
+
+      - name: Run all examples
+        env:
+          VORTEXA_API_KEY: ${{ secrets.VORTEXA_API_KEY }}
+        run: |
+          set -xe
+          for f in docs/examples/*.py; do cp -v -- "$f" "$f-example.py"; done
+          cp docs/examples/*-example.py .
+          for f in *-example.py; do python "$f"; done
+          rm docs/examples/*-example.py
+          rm *-example.py
+
+      # mybinder does not install the extras_require in setup.py. A second virtual environment with only the
+      # binder extras replicates it.
+      # See https://mybinder.readthedocs.io/en/latest/using/config_files.html#setup-py-install-python-packages
+      - name: Create mybinder virtual environment
+        run: |
+          python -m venv .mybinder_venv
+          . .mybinder_venv/bin/activate
+          pip install -U pip
+          pip install -e ".[binder]"
+
+      - name: Run all mybinder try-me-out notebooks
+        env:
+          VORTEXA_API_KEY: ${{ secrets.VORTEXA_API_KEY }}
+        run: |
+          . .mybinder_venv/bin/activate
+          jupyter nbconvert --to notebook --execute docs/examples/try_me_out/*.ipynb
+
+      - name: Run all mybinder academy notebooks
+        env:
+          VORTEXA_API_KEY: ${{ secrets.VORTEXA_API_KEY }}
+        run: |
+          . .mybinder_venv/bin/activate
+          jupyter nbconvert --to notebook --execute docs/examples/academy/*.ipynb
+
+  check-release-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: ./.github/actions/setup-python
+
+      - name: Check the proposed release version is the valid next semver
+        run: python scripts/validate_proposed_package_version.py

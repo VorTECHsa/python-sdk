@@ -1,0 +1,29 @@
+# ---
+# This is a Composite Action that sets up Python and installs the SDK with the given extras.
+#
+# Composite Actions docs: https://docs.github.com/en/actions/sharing-automations/creating-actions/creating-a-composite-action
+# ---
+
+name: 'Setup Python with deps'
+description: 'Installs Python and the SDK with its extras, with the pip cache enabled'
+inputs:
+  extras:
+    description: The setup.py extras to install, e.g. 'tests', 'binder', or 'deploy'.
+    required: false
+    default: tests
+runs:
+  using: 'composite'
+  steps:
+    # The cache key is a hash of setup.py, the file that lists the dependencies.
+    - name: Set up Python
+      uses: actions/setup-python@v6
+      with:
+        python-version: '3.9'
+        cache: pip
+        cache-dependency-path: setup.py
+
+    - name: Install the SDK with the ${{ inputs.extras }} extras
+      shell: bash
+      run: |
+        python -m pip install -U pip
+        pip install -e ".[${{ inputs.extras }}]"

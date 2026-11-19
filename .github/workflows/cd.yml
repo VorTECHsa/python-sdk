@@ -1,0 +1,67 @@
+# ------------------
+# -- When it runs --
+# ------------------
+# Whenever commit(s) are pushed to master.
+#
+# ------------------
+# -- What it does --
+# ------------------
+# Prod CD pipeline, i.e. publishes the package to PyPI, tags the release, and deploys the docs to GitHub Pages.
+#
+# It runs no lint, type, format, or test jobs: a PR can only merge once ci.yml passes on it, so this workflow does
+# not repeat them.
+
+name: cd
+on:
+  push:
+    branches: [master]
+  # Docs: https://docs.github.com/en/actions/managing-workflow-runs-and-deployments/managing-workflow-runs/manually-running-a-workflow#running-a-workflow
+  workflow_dispatch:
+# One release at a time. cancel-in-progress: false lets a running release finish.
+concurrency:
+  group: cd
+  cancel-in-progress: false
+permissions:
+  # The docs deployment pushes to the gh-pages branch, and the release pushes a tag.
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: ./.github/actions/setup-python
+        with:
+          extras: tests,deploy
+
+      # The release tag is annotated, which needs a tagger identity. pydocmd gh-deploy commits too.
+      - name: Set the git identity
+        run: |
+          git config --global user.email "developers@vortexa.com"
+          git config --global user.name "ADT Python SDK | GitHub Actions"
+
+      - name: Deploy the package to PyPI
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+        run: |
+          rm -rf dist
+          python setup.py sdist bdist_wheel
+          python -m twine upload dist/*
+
+      # The tag is pushed after the package is published, so a failed publish leaves no tag for a version that
+      # does not exist.
+      - name: Tag the release with git
+        run: |
+          TAG=$(python setup.py --version)
+          git tag -a "$TAG" -m "New tag $TAG"
+          git push origin "$TAG"
+
+      - name: Deploy the documentation to GitHub Pages
+        run: |
+          mkdir -p ./_build/pydocmd/examples
+          python docs/autogen.py
+          pydocmd build
+          pydocmd gh-deploy
