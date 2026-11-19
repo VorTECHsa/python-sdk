@@ -1,0 +1,167 @@
+# ------------------
+# -- When it runs --
+# ------------------
+# Whenever a PR is opened or pushed to.
+#
+# ------------------
+# -- What it does --
+# ------------------
+# CI pipeline, i.e. lint, types, format, tests, docs, examples, and release version checks.
+# All jobs run in parallel.
+
+name: ci
+on:
+  pull_request:
+# Ensure previous in-progress CI runs are cancelled to avoid wasting compute.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  check-linting:
+    # Python 3.9 has no build for ubuntu-latest (Ubuntu 26.04), so the image is pinned.
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: ./.github/actions/setup-python
+
+      - name: Check linting
+        run: flake8 vortexasdk tests docs
+
+  check-types:
+    # Python 3.9 has no build for ubuntu-latest (Ubuntu 26.04), so the image is pinned.
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: ./.github/actions/setup-python
+
+      - name: Check types
+        run: mypy vortexasdk tests docs
+
+  check-formatting:
+    # Python 3.9 has no build for ubuntu-latest (Ubuntu 26.04), so the image is pinned.
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: ./.github/actions/setup-python
+
+      - name: Check formatting
+        run: black --check vortexasdk tests
+
+  test:
+    # Python 3.9 has no build for ubuntu-latest (Ubuntu 26.04), so the image is pinned.
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: ./.github/actions/setup-python
+
+      - name: Run all tests
+        env:
+          VORTEXA_API_KEY: ${{ secrets.VORTEXA_API_KEY }}
+        run: |
+          # tox only creates a venv and runs pytest. The SDK and its test extras are already installed, so pytest
+          # runs directly, split across the runner cores.
+          uv pip install --system pytest-xdist==3.8.0
+          pytest -n auto
+
+  test-documentation:
+    # Python 3.9 has no build for ubuntu-latest (Ubuntu 26.04), so the image is pinned.
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: ./.github/actions/setup-python
+
+      # The test job does not run the doctests.
+      - name: Run doctests
+        env:
+          VORTEXA_API_KEY: ${{ secrets.VORTEXA_API_KEY }}
+        run: |
+          uv pip install --system pytest-xdist==3.8.0
+          pytest -n auto -v --doctest-modules --ignore=tests
+
+      - name: Confirm that the check_setup script works
+        env:
+          VORTEXA_API_KEY: ${{ secrets.VORTEXA_API_KEY }}
+        run: python -m vortexasdk.check_setup
+
+      - name: Build docs
+        run: |
+          mkdir -p ./_build/pydocmd/examples
+          python docs/autogen.py
+          pydocmd build
+
+  run-examples:
+    # Python 3.9 has no build for ubuntu-latest (Ubuntu 26.04), so the image is pinned.
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: ./.github/actions/setup-python
+
+      - name: Run all examples
+        env:
+          VORTEXA_API_KEY: ${{ secrets.VORTEXA_API_KEY }}
+        run: |
+          set -xe
+          for f in docs/examples/*.py; do cp -v -- "$f" "$f-example.py"; done
+          cp docs/examples/*-example.py .
+          for f in *-example.py; do python "$f"; done
+          rm docs/examples/*-example.py
+          rm *-example.py
+
+  # The notebooks run in an environment with only the binder extras, because mybinder does not install the
+  # extras_require in setup.py. Each notebook directory is its own job, and 4 notebooks run at once in each.
+  # See https://mybinder.readthedocs.io/en/latest/using/config_files.html#setup-py-install-python-packages
+  run-notebooks:
+    # Python 3.9 has no build for ubuntu-latest (Ubuntu 26.04), so the image is pinned.
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        directory: [try_me_out, academy]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: ./.github/actions/setup-python
+        with:
+          extras: binder
+
+      - name: Run all mybinder ${{ matrix.directory }} notebooks
+        env:
+          VORTEXA_API_KEY: ${{ secrets.VORTEXA_API_KEY }}
+        run: |
+          find "docs/examples/${{ matrix.directory }}" -name '*.ipynb' -print0 \
+            | xargs -0 -n 1 -P 4 jupyter nbconvert --to notebook --execute
+
+  check-release-version:
+    # Python 3.9 has no build for ubuntu-latest (Ubuntu 26.04), so the image is pinned.
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: ./.github/actions/setup-python
+
+      - name: Check the proposed release version is the valid next semver
+        run: python scripts/validate_proposed_package_version.py
