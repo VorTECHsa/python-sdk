@@ -50,13 +50,21 @@ jobs:
         run: |
           rm -rf dist
           python setup.py sdist bdist_wheel
-          python -m twine upload dist/*
+          # Fail before uploading if the package metadata is broken.
+          python -m twine check dist/*
+          # Skip files already on PyPI, so a rerun after a later step failed does not fail here.
+          python -m twine upload --skip-existing dist/*
 
       # The tag is pushed after the package is published, so a failed publish leaves no tag for a version that
       # does not exist.
       - name: Tag the release with git
         run: |
           TAG=$(python setup.py --version)
+          # A rerun after a later step failed finds the tag already pushed.
+          if git ls-remote --exit-code --tags origin "refs/tags/$TAG" > /dev/null; then
+            echo "Tag $TAG already exists, skipping."
+            exit 0
+          fi
           git tag -a "$TAG" -m "New tag $TAG"
           git push origin "$TAG"
 
