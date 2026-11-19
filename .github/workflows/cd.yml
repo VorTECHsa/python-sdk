@@ -26,8 +26,8 @@ permissions:
   contents: write
 jobs:
   release:
-    # Python 3.9 has no build for ubuntu-latest (Ubuntu 26.04), so the image is pinned.
-    runs-on: ubuntu-24.04
+    # An ARM runner is more cost effective.
+    runs-on: ubuntu-arm64
     steps:
       - name: Checkout
         uses: actions/checkout@v7
