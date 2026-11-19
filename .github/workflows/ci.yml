@@ -72,8 +72,10 @@ jobs:
         env:
           VORTEXA_API_KEY: ${{ secrets.VORTEXA_API_KEY }}
         run: |
-          pip install tox
-          tox --verbose
+          # tox only creates a venv and runs pytest. The SDK and its test extras are already installed, so pytest
+          # runs directly, split across the runner cores.
+          uv pip install --system pytest-xdist==3.8.0
+          pytest -n auto
 
   test-documentation:
     # Python 3.9 has no build for ubuntu-latest (Ubuntu 26.04), so the image is pinned.
@@ -85,11 +87,13 @@ jobs:
       - name: Set up Python
         uses: ./.github/actions/setup-python
 
-      # This is also run by tox, but tox does not run the doctests.
+      # The test job does not run the doctests.
       - name: Run doctests
         env:
           VORTEXA_API_KEY: ${{ secrets.VORTEXA_API_KEY }}
-        run: pytest -v --doctest-modules --ignore=tests
+        run: |
+          uv pip install --system pytest-xdist==3.8.0
+          pytest -n auto -v --doctest-modules --ignore=tests
 
       - name: Confirm that the check_setup script works
         env:
@@ -123,29 +127,31 @@ jobs:
           rm docs/examples/*-example.py
           rm *-example.py
 
-      # mybinder does not install the extras_require in setup.py. A second virtual environment with only the
-      # binder extras replicates it.
-      # See https://mybinder.readthedocs.io/en/latest/using/config_files.html#setup-py-install-python-packages
-      - name: Create mybinder virtual environment
-        run: |
-          python -m venv .mybinder_venv
-          . .mybinder_venv/bin/activate
-          pip install -U pip
-          pip install -e ".[binder]"
+  # The notebooks run in an environment with only the binder extras, because mybinder does not install the
+  # extras_require in setup.py. Each notebook directory is its own job, and 4 notebooks run at once in each.
+  # See https://mybinder.readthedocs.io/en/latest/using/config_files.html#setup-py-install-python-packages
+  run-notebooks:
+    # Python 3.9 has no build for ubuntu-latest (Ubuntu 26.04), so the image is pinned.
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        directory: [try_me_out, academy]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
 
-      - name: Run all mybinder try-me-out notebooks
+      - name: Set up Python
+        uses: ./.github/actions/setup-python
+        with:
+          extras: binder
+
+      - name: Run all mybinder ${{ matrix.directory }} notebooks
         env:
           VORTEXA_API_KEY: ${{ secrets.VORTEXA_API_KEY }}
         run: |
-          . .mybinder_venv/bin/activate
-          jupyter nbconvert --to notebook --execute docs/examples/try_me_out/*.ipynb
-
-      - name: Run all mybinder academy notebooks
-        env:
-          VORTEXA_API_KEY: ${{ secrets.VORTEXA_API_KEY }}
-        run: |
-          . .mybinder_venv/bin/activate
-          jupyter nbconvert --to notebook --execute docs/examples/academy/*.ipynb
+          find "docs/examples/${{ matrix.directory }}" -name '*.ipynb' -print0 \
+            | xargs -0 -n 1 -P 4 jupyter nbconvert --to notebook --execute
 
   check-release-version:
     # Python 3.9 has no build for ubuntu-latest (Ubuntu 26.04), so the image is pinned.

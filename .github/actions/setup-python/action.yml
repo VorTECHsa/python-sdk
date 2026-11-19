@@ -14,16 +14,21 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    # The cache key is a hash of setup.py, the file that lists the dependencies.
     - name: Set up Python
       uses: actions/setup-python@v6
       with:
         python-version: '3.9'
-        cache: pip
-        cache-dependency-path: setup.py
+
+    # uv installs the dependencies faster than pip. Its cache is keyed on setup.py, like the pip cache above.
+    - name: Cache uv
+      uses: actions/cache@v6
+      with:
+        path: ~/.cache/uv
+        key: uv-${{ runner.os }}-${{ hashFiles('setup.py') }}-${{ inputs.extras }}
+        restore-keys: uv-${{ runner.os }}-${{ hashFiles('setup.py') }}-
 
     - name: Install the SDK with the ${{ inputs.extras }} extras
       shell: bash
       run: |
-        python -m pip install -U pip
-        pip install -e ".[${{ inputs.extras }}]"
+        python -m pip install uv==0.13.9
+        uv pip install --system -e ".[${{ inputs.extras }}]"
