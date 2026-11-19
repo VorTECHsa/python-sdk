@@ -19,13 +19,14 @@ runs:
       with:
         python-version: '3.9'
 
-    # uv installs the dependencies faster than pip. Its cache is keyed on setup.py, like the pip cache above.
+    # uv installs the dependencies faster than pip. Its cache is keyed on setup.py. The extras are not in the key,
+    # because the extras input can contain commas, which a cache key cannot. The uv cache holds wheels that any
+    # extras combination can reuse.
     - name: Cache uv
       uses: actions/cache@v6
       with:
         path: ~/.cache/uv
-        key: uv-${{ runner.os }}-${{ hashFiles('setup.py') }}-${{ inputs.extras }}
-        restore-keys: uv-${{ runner.os }}-${{ hashFiles('setup.py') }}-
+        key: uv-${{ runner.os }}-${{ hashFiles('setup.py') }}
 
     - name: Install the SDK with the ${{ inputs.extras }} extras
       shell: bash
