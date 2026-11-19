@@ -68,8 +68,11 @@ jobs:
           git tag -a "$TAG" -m "New tag $TAG"
           git push origin "$TAG"
 
+      # The checkout has only the master branch. pydocmd gh-deploy needs the existing gh-pages branch locally, to add
+      # its commit on top of it. Without it, the push is rejected as non-fast-forward.
       - name: Deploy the documentation to GitHub Pages
         run: |
+          git fetch origin gh-pages:gh-pages
           mkdir -p ./_build/pydocmd/examples
           python docs/autogen.py
           pydocmd build
