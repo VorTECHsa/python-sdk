@@ -30,6 +30,8 @@ runs:
 
     - name: Install the SDK with the ${{ inputs.extras }} extras
       shell: bash
+      env:
+        EXTRAS: ${{ inputs.extras }}
       run: |
         python -m pip install uv==0.13.9
-        uv pip install --system -e ".[${{ inputs.extras }}]"
+        uv pip install --system -e ".[$EXTRAS]"
