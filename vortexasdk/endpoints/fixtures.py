@@ -76,62 +76,62 @@ class Fixtures(Search):
         Find Fixtures matching filters and date range.
 
         # Arguments
-        filter_time_field: The field that the time range is filtered against. One of `"fixing_timestamp"` (the date
-        the contract was fixed), `"laycan_from"` (start of the estimated departure range), or `"laycan_to"` (end of the
-        estimated departure range). Defaults to `"fixing_timestamp"`.
+            filter_time_field: The field that the time range is filtered against. One of `"fixing_timestamp"` (the date
+            the contract was fixed), `"laycan_from"` (start of the estimated departure range), or `"laycan_to"` (end of the
+            estimated departure range). Defaults to `"fixing_timestamp"`.
 
-        filter_time_min: The UTC start date of the time filter.
+            filter_time_min: The UTC start date of the time filter.
 
-        filter_time_max: The UTC end date of the time filter.
+            filter_time_max: The UTC end date of the time filter.
 
-        ids: A fixture ID, or list of fixture IDs to filter on.
+            ids: A fixture ID, or list of fixture IDs to filter on.
 
-        filter_charterers: A charterer ID, or list of charterer IDs to filter on.
+            filter_charterers: A charterer ID, or list of charterer IDs to filter on.
 
-        filter_destinations: A geography ID, or list of geography IDs to filter on.
+            filter_destinations: A geography ID, or list of geography IDs to filter on.
 
-        filter_origins: A geography ID, or list of geography IDs to filter on.
+            filter_origins: A geography ID, or list of geography IDs to filter on.
 
-        filter_owners: Deprecated. Use `filter_effective_controllers` instead.
+            filter_owners: Deprecated. Use `filter_effective_controllers` instead.
 
-        filter_effective_controllers: An effective controller ID, or list of effective controller IDs to filter on.
+            filter_effective_controllers: An effective controller ID, or list of effective controller IDs to filter on.
 
-        filter_products: A product ID, or list of product IDs to filter on.
+            filter_products: A product ID, or list of product IDs to filter on.
 
-        filter_vessels: A vessel ID, or list of vessel IDs to filter on.
+            filter_vessels: A vessel ID, or list of vessel IDs to filter on.
 
-        filter_vessel_classes: A vessel class, or list of vessel classes to filter on.
+            filter_vessel_classes: A vessel class, or list of vessel classes to filter on.
 
-        filter_vessel_age_min: The minimum vessel age in years, from 1 to 100.
+            filter_vessel_age_min: The minimum vessel age in years, from 1 to 100.
 
-        filter_vessel_age_max: The maximum vessel age in years, from 1 to 100.
+            filter_vessel_age_max: The maximum vessel age in years, from 1 to 100.
 
-        filter_vessel_scrubbers: `"disabled"` to not filter on scrubbers, `"inc"` to include only vessels with
-        scrubbers, or `"exc"` to exclude vessels with scrubbers. Defaults to `"disabled"`.
+            filter_vessel_scrubbers: `"disabled"` to not filter on scrubbers, `"inc"` to include only vessels with
+            scrubbers, or `"exc"` to exclude vessels with scrubbers. Defaults to `"disabled"`.
 
-        filter_vessel_flags: A geography ID, or list of geography IDs of vessel flags to filter on.
+            filter_vessel_flags: A geography ID, or list of geography IDs of vessel flags to filter on.
 
-        exclude_origins: A geography ID, or list of geography IDs to exclude.
+            exclude_origins: A geography ID, or list of geography IDs to exclude.
 
-        exclude_destinations: A geography ID, or list of geography IDs to exclude.
+            exclude_destinations: A geography ID, or list of geography IDs to exclude.
 
-        exclude_products: A product ID, or list of product IDs to exclude.
+            exclude_products: A product ID, or list of product IDs to exclude.
 
-        exclude_vessels: A vessel ID, or list of vessel IDs to exclude.
+            exclude_vessels: A vessel ID, or list of vessel IDs to exclude.
 
-        exclude_vessel_classes: A vessel class, or list of vessel classes to exclude.
+            exclude_vessel_classes: A vessel class, or list of vessel classes to exclude.
 
-        exclude_charterers: A charterer ID, or list of charterer IDs to exclude.
+            exclude_charterers: A charterer ID, or list of charterer IDs to exclude.
 
-        exclude_vessel_flags: A geography ID, or list of geography IDs of vessel flags to exclude.
+            exclude_vessel_flags: A geography ID, or list of geography IDs of vessel flags to exclude.
 
-        order: The field used to sort the results. One of `"vessel_id"`, `"product"`, `"vessel"`, `"vessel_class"`,
-        `"fixing_timestamp"`, `"charterer"`, `"origin"`, `"destination"`, `"tonnes"`, `"laycan_from"`,
-        `"laycan_to"`, or `"period_days"`. The API default is `"vessel_id"`.
+            order: The field used to sort the results. One of `"vessel_id"`, `"product"`, `"vessel"`, `"vessel_class"`,
+            `"fixing_timestamp"`, `"charterer"`, `"origin"`, `"destination"`, `"tonnes"`, `"laycan_from"`,
+            `"laycan_to"`, or `"period_days"`. The API default is `"vessel_id"`.
 
-        order_direction: The sort direction, `"asc"` or `"desc"`. The API default is `"asc"`.
+            order_direction: The sort direction, `"asc"` or `"desc"`. The API default is `"asc"`.
 
-        size: The maximum number of fixtures to return. Defaults to 500, which is also the maximum.
+            size: The maximum number of fixtures to return. Defaults to 500, which is also the maximum.
 
         # Returns
         A `FixtureResult`. Use `to_df()` for a `pd.DataFrame` or `to_list()` for a list of `Fixture` objects.
