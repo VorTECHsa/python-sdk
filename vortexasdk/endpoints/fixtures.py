@@ -17,42 +17,11 @@ from vortexasdk.utils import convert_to_list
 class Fixtures(Search):
     """Fixtures Endpoint, use this to search through Vortexa's Fixtures data.
 
-    A detailed explanation of the fixtures can be found [here](https://docs.vortexa.com/reference/intro-fixtures).
-    Limitation
+    A fixture is a charter party contract. The data combines multiple independent sources into a single repository.
+    A detailed explanation of fixtures can be found [here](https://docs.vortexa.com/pages/resource-types/fixtures).
 
-    Fixtures are available through the UI, API & SDK only by permission from our shipbroker partner only.
-    If we limit API access to certain products then you can only pull the fixtures data for said product e.g. CPP only, then they only have access to CPP fixtures.
-
-    For an API key to have access to the endpoint, it needs the scopes "v.r.fix" and "v.r.ais".
-
-    # What conditions produce a Fixture 'fulfilled' status? - Internal
-
-    In terms of the data, we use the laycan and the mapped fixture 'origin'.
-
-    Historical movements: The start timestamp of the loading event must be within the 5-day laycan window
-    (even if the laycan window is less than 5 days, we expand it to 5), or the laycan must be within the start and end
-    timestamp of the loading event and the fixture's origin hierarchy must agree with the actual loading polygon's
-    hierarchy.
-
-    Future movements: The vessel can be in the reported fixture origin within the laycan window give or take 3 days.
-    We also compare the predicted destination's hierarchy with the fixture's origin hierarchy.
-    An agreement (given that the previous feasibility condition is met) is a sufficient condition to create a movement.
-    When there is disagreement or we don't have a predicted destination, we take into account other factors
-    (e.g. if the destination is a waypoint, we treat them as agreeing).
-
-    # Fixture status
-    Fixture status indicates the point that the deal has reached in its evolution from "Subs" for vessels on subjects,
-    to "Fxd" for fixed vessels or sometimes "Failed" or "FLD" for failed fixtures or sometimes "RPLC" for a
-    replacement fixture or "Conf" for confirmed and "Corr" for corrected.
-
-    #### What does the model do in the case of exact duplicates?
-
-    - For historical movements, we don't have a particular logic.
-    - For future movements, we apply our own internal sorting procedure.
-
-    #### When we have 2 fixtures that are near exact duplicates but with different freight rates or different charterers, how does the model pick?
-    - For historical movements, randomly.
-    - For future movements, we apply our own internal sorting procedure.
+    The API key needs the scopes `v.r.fix` and `v.r.ais`. To request access, contact
+    [support@vortexa.com](mailto:support@vortexa.com).
 
     """
 
@@ -94,60 +63,43 @@ class Fixtures(Search):
         Find Fixtures matching filters and date range.
 
         # Arguments
-        filter_time_field: The field that the time range should be filtered against.
-
-        filter_time_min: The UTC start date of the time filter.
-
-        filter_time_max: The UTC end date of the time filter.
-
-        ids: Filter specific fixtures.
-
-        filter_charterers: A charterer ID, or list of charterer IDs to filter on.
-
-        filter_destinations: A geography ID, or list of geography IDs to filter on.
-
-        filter_origins: A geography ID, or list of geography IDs to filter on.
-
-        filter_effective_controllers: An effective controller ID, or list of effective controller IDs to filter on.
-
-        filter_products: A product ID, or list of product IDs to filter on.
-
-        filter_vessels: A vessel ID, or list of vessel IDs to filter on.
-
-        filter_vessel_classes: A vessel class, or list of vessel classes to filter on.
-
-        filter_vessel_age_min: A number between 1 and 100 (representing years).
-
-        filter_vessel_age_max: A number between 1 and 100 (representing years).
-
-        filter_vessel_scrubbers: Either inactive 'disabled', or included 'inc' or excluded 'exc'.
-
-        filter_vessel_flags: A vessel flag, or list of vessel flags to filter on.
-
-        exclude_origins: A geography ID, or list of geography IDs to exclude.
-
-        exclude_destinations: A geography ID, or list of geography IDs to exclude.
-
-        exclude_products: A product ID, or list of product IDs to exclude.
-
-        exclude_vessels: A vessel ID, or list of vessel IDs to exclude.
-
-        exclude_vessel_classes: A vessel class, or list of vessel classes to exclude.
-
-        exclude_charterers: A charterer ID, or list of charterer IDs to exclude.
-
-        exclude_vessel_flags: A geography ID, or list of geography IDs to exclude.
-
-        order: Used to sort the returned results.
-
-        order_direction: Determines the direction of sorting.
+            filter_time_field: The field that the time range is filtered against. One of `"fixing_timestamp"` (the date
+            the contract was fixed), `"laycan_from"` (start of the estimated departure range), or `"laycan_to"` (end of the
+            estimated departure range). Defaults to `"fixing_timestamp"`.
+            filter_time_min: The UTC start date of the time filter.
+            filter_time_max: The UTC end date of the time filter.
+            ids: A fixture ID, or list of fixture IDs to filter on.
+            filter_charterers: A charterer ID, or list of charterer IDs to filter on.
+            filter_destinations: A geography ID, or list of geography IDs to filter on.
+            filter_origins: A geography ID, or list of geography IDs to filter on.
+            filter_owners: Deprecated. Use `filter_effective_controllers` instead.
+            filter_effective_controllers: An effective controller ID, or list of effective controller IDs to filter on.
+            filter_products: A product ID, or list of product IDs to filter on.
+            filter_vessels: A vessel ID, or list of vessel IDs to filter on.
+            filter_vessel_classes: A vessel class, or list of vessel classes to filter on.
+            filter_vessel_age_min: A number between 1 and 100 (representing years).
+            filter_vessel_age_max: A number between 1 and 100 (representing years).
+            filter_vessel_scrubbers: Either inactive 'disabled', or included 'inc' or excluded 'exc'.
+            filter_vessel_flags: A vessel flag, or list of vessel flags to filter on.
+            exclude_origins: A geography ID, or list of geography IDs to exclude.
+            exclude_destinations: A geography ID, or list of geography IDs to exclude.
+            exclude_products: A product ID, or list of product IDs to exclude.
+            exclude_vessels: A vessel ID, or list of vessel IDs to exclude.
+            exclude_vessel_classes: A vessel class, or list of vessel classes to exclude.
+            exclude_charterers: A charterer ID, or list of charterer IDs to exclude.
+            exclude_vessel_flags: A geography ID, or list of geography IDs to exclude.
+            order: The field used to sort the results. One of `"vessel_id"`, `"product"`, `"vessel"`, `"vessel_class"`,
+            `"fixing_timestamp"`, `"charterer"`, `"origin"`, `"destination"`, `"tonnes"`, `"laycan_from"`,
+            `"laycan_to"`, or `"period_days"`. The API default is `"vessel_id"`.
+            order_direction: The sort direction, `"asc"` or `"desc"`. The API default is `"asc"`.
+            size: The number of fixtures to request per page. Defaults to 500, which is also the maximum.
 
         # Returns
-        List of Fixtures objects.
+        A `FixtureResult`. Use `to_df()` for a `pd.DataFrame` or `to_list()` for a list of `Fixture` objects.
 
         # Examples
 
-        Find Fixtures from January 2020.
+        Find fixtures fixed on 1 January 2020.
         ```python
         >>> from datetime import datetime
         >>> from vortexasdk import Fixtures
@@ -161,28 +113,29 @@ class Fixtures(Search):
 
         returns
 
-        | vessel.name              | tonnes           | origin.label | product.label |
-        | ------------------------ | ---------------- | ------------ | ------------- |
-        | ALPINE EAGLE             | 454.96048964485  | UK           | Crude         |
+        | id         | vessel.name  | tonnes | origin.label | product.label | charterer.label | vtx_fulfilled |
+        | ---------- | ------------ | ------ | ------------ | ------------- | --------------- | ------------- |
+        | 3cb94f...  | EXAMPLE NAME | 37000  | Rotterdam    | Crude         | Example Charter | True          |
 
-        Some values can be NULL: value, stocks, cover, runs. It can happen when:
+        Find fixtures with a laycan start date on 1 January 2020.
+        ```python
+        >>> from datetime import datetime
+        >>> from vortexasdk import Fixtures
+        >>> df = Fixtures().search(
+        ...     filter_time_field="laycan_from",
+        ...     filter_time_min=datetime(2020, 1, 1),
+        ...     filter_time_max=datetime(2020, 1, 2),
+        ... ).to_df()
 
-        - The fixture scope is needed to access this endpoint.
+        ```
+
+        Some fields can be empty, such as `charterer`, `origin`, `destination`, and `product`.
 
         """
 
-        exclude_params: Dict[str, Any] = {
-            "filter_origins": convert_to_list(exclude_origins),
-            "filter_destinations": convert_to_list(exclude_destinations),
-            "filter_products": convert_to_list(exclude_products),
-            "filter_vessels": convert_to_list(exclude_vessels),
-            "filter_vessel_classes": convert_to_list(exclude_vessel_classes),
-            "filter_charterers": convert_to_list(exclude_charterers),
-            "filter_vessel_flags": convert_to_list(exclude_vessel_flags),
-        }
-
+        # Build the request body. The Fixtures API reads exclusions from `filter_*_excluded` fields.
         api_params: Dict[str, Any] = {
-            filter_time_field: filter_time_field,
+            "filter_time_field": filter_time_field,
             "filter_time_min": to_ISODate(filter_time_min),
             "filter_time_max": to_ISODate(filter_time_max),
             "ids": convert_to_list(ids),
@@ -202,7 +155,19 @@ class Fixtures(Search):
             "filter_vessel_flags": convert_to_list(filter_vessel_flags),
             "order": order,
             "order_direction": order_direction,
-            "exclude": exclude_params,
+            "filter_origins_excluded": convert_to_list(exclude_origins),
+            "filter_destinations_excluded": convert_to_list(
+                exclude_destinations
+            ),
+            "filter_products_excluded": convert_to_list(exclude_products),
+            "filter_vessels_excluded": convert_to_list(exclude_vessels),
+            "filter_vessel_classes_excluded": convert_to_list(
+                exclude_vessel_classes
+            ),
+            "filter_charterers_excluded": convert_to_list(exclude_charterers),
+            "filter_vessel_flags_excluded": convert_to_list(
+                exclude_vessel_flags
+            ),
             "size": size if size is not None else self._MAX_PAGE_RESULT_SIZE,
         }
 
