@@ -92,7 +92,7 @@ class Fixtures(Search):
             `"fixing_timestamp"`, `"charterer"`, `"origin"`, `"destination"`, `"tonnes"`, `"laycan_from"`,
             `"laycan_to"`, or `"period_days"`. The API default is `"vessel_id"`.
             order_direction: The sort direction, `"asc"` or `"desc"`. The API default is `"asc"`.
-            size: The maximum number of fixtures to return. Defaults to 500, which is also the maximum.
+            size: The number of fixtures to request per page. Defaults to 500, which is also the maximum.
 
         # Returns
         A `FixtureResult`. Use `to_df()` for a `pd.DataFrame` or `to_list()` for a list of `Fixture` objects.
@@ -117,16 +117,14 @@ class Fixtures(Search):
         | ---------- | ------------ | ------ | ------------ | ------------- | --------------- | ------------- |
         | 3cb94f...  | EXAMPLE NAME | 37000  | Rotterdam    | Crude         | Example Charter | True          |
 
-        Find fixtures with a laycan start date in January 2020, sorted by tonnes in descending order.
+        Find fixtures with a laycan start date on 1 January 2020.
         ```python
         >>> from datetime import datetime
         >>> from vortexasdk import Fixtures
         >>> df = Fixtures().search(
         ...     filter_time_field="laycan_from",
         ...     filter_time_min=datetime(2020, 1, 1),
-        ...     filter_time_max=datetime(2020, 2, 1),
-        ...     order="tonnes",
-        ...     order_direction="desc",
+        ...     filter_time_max=datetime(2020, 1, 2),
         ... ).to_df()
 
         ```
