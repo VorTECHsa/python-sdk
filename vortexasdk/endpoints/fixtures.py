@@ -66,57 +66,32 @@ class Fixtures(Search):
             filter_time_field: The field that the time range is filtered against. One of `"fixing_timestamp"` (the date
             the contract was fixed), `"laycan_from"` (start of the estimated departure range), or `"laycan_to"` (end of the
             estimated departure range). Defaults to `"fixing_timestamp"`.
-
             filter_time_min: The UTC start date of the time filter.
-
             filter_time_max: The UTC end date of the time filter.
-
             ids: A fixture ID, or list of fixture IDs to filter on.
-
             filter_charterers: A charterer ID, or list of charterer IDs to filter on.
-
             filter_destinations: A geography ID, or list of geography IDs to filter on.
-
             filter_origins: A geography ID, or list of geography IDs to filter on.
-
             filter_owners: Deprecated. Use `filter_effective_controllers` instead.
-
             filter_effective_controllers: An effective controller ID, or list of effective controller IDs to filter on.
-
             filter_products: A product ID, or list of product IDs to filter on.
-
             filter_vessels: A vessel ID, or list of vessel IDs to filter on.
-
             filter_vessel_classes: A vessel class, or list of vessel classes to filter on.
-
             filter_vessel_age_min: A number between 1 and 100 (representing years).
-
             filter_vessel_age_max: A number between 1 and 100 (representing years).
-
             filter_vessel_scrubbers: Either inactive 'disabled', or included 'inc' or excluded 'exc'.
-
             filter_vessel_flags: A vessel flag, or list of vessel flags to filter on.
-
             exclude_origins: A geography ID, or list of geography IDs to exclude.
-
             exclude_destinations: A geography ID, or list of geography IDs to exclude.
-
             exclude_products: A product ID, or list of product IDs to exclude.
-
             exclude_vessels: A vessel ID, or list of vessel IDs to exclude.
-
             exclude_vessel_classes: A vessel class, or list of vessel classes to exclude.
-
             exclude_charterers: A charterer ID, or list of charterer IDs to exclude.
-
             exclude_vessel_flags: A geography ID, or list of geography IDs to exclude.
-
             order: The field used to sort the results. One of `"vessel_id"`, `"product"`, `"vessel"`, `"vessel_class"`,
             `"fixing_timestamp"`, `"charterer"`, `"origin"`, `"destination"`, `"tonnes"`, `"laycan_from"`,
             `"laycan_to"`, or `"period_days"`. The API default is `"vessel_id"`.
-
             order_direction: The sort direction, `"asc"` or `"desc"`. The API default is `"asc"`.
-
             size: The maximum number of fixtures to return. Defaults to 500, which is also the maximum.
 
         # Returns
