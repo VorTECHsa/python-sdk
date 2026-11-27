@@ -20,21 +20,8 @@ class Fixtures(Search):
     A fixture is a charter party contract. The data combines multiple independent sources into a single repository.
     A detailed explanation of fixtures can be found [here](https://docs.vortexa.com/pages/resource-types/fixtures).
 
-    # Access
-
-    Fixtures are available through the UI, API and SDK only to customers with permission to the data.
-    For an API key to have access to this endpoint, it needs the scopes `v.r.fix` and `v.r.ais`.
-    If an API key is limited to certain products (for example CPP only), the endpoint returns only fixtures for
-    those products. To request access, contact [support@vortexa.com](mailto:support@vortexa.com).
-
-    # Fixture state
-
-    `state` shows how far a deal has progressed, for example `Subs` (vessel on subjects), `Fixed`, or `Failed`.
-
-    # Fulfilled fixtures
-
-    `vtx_fulfilled` is `True` when Vortexa could assign the fixture to an existing cargo movement, and `False` when
-    it could not.
+    The API key needs the scopes `v.r.fix` and `v.r.ais`. To request access, contact
+    [support@vortexa.com](mailto:support@vortexa.com).
 
     """
 
