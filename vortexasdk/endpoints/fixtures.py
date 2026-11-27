@@ -89,14 +89,13 @@ class Fixtures(Search):
 
             filter_vessel_classes: A vessel class, or list of vessel classes to filter on.
 
-            filter_vessel_age_min: The minimum vessel age in years, from 1 to 100.
+            filter_vessel_age_min: A number between 1 and 100 (representing years).
 
-            filter_vessel_age_max: The maximum vessel age in years, from 1 to 100.
+            filter_vessel_age_max: A number between 1 and 100 (representing years).
 
-            filter_vessel_scrubbers: `"disabled"` to not filter on scrubbers, `"inc"` to include only vessels with
-            scrubbers, or `"exc"` to exclude vessels with scrubbers. Defaults to `"disabled"`.
+            filter_vessel_scrubbers: Either inactive 'disabled', or included 'inc' or excluded 'exc'.
 
-            filter_vessel_flags: A geography ID, or list of geography IDs of vessel flags to filter on.
+            filter_vessel_flags: A vessel flag, or list of vessel flags to filter on.
 
             exclude_origins: A geography ID, or list of geography IDs to exclude.
 
@@ -110,7 +109,7 @@ class Fixtures(Search):
 
             exclude_charterers: A charterer ID, or list of charterer IDs to exclude.
 
-            exclude_vessel_flags: A geography ID, or list of geography IDs of vessel flags to exclude.
+            exclude_vessel_flags: A geography ID, or list of geography IDs to exclude.
 
             order: The field used to sort the results. One of `"vessel_id"`, `"product"`, `"vessel"`, `"vessel_class"`,
             `"fixing_timestamp"`, `"charterer"`, `"origin"`, `"destination"`, `"tonnes"`, `"laycan_from"`,
